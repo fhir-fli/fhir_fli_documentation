@@ -9,19 +9,16 @@ const config = {
   title: 'FHIR-FLI',
   tagline: 'How to use FHIR with Flutter',
   url: 'https://fhir-fli.github.io',
-  baseUrl: '/fhir_fli_documentation',
+  baseUrl: '/fhir_fli_documentation/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/fhir-fli-logo.png',
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'fhir-fli', // Usually your GitHub org/user name.
-  projectName: 'fhir_fli_documentation', // Usually your repo name.
+  organizationName: 'fhir-fli', // GitHub org/user name
+  projectName: 'fhir_fli_documentation', // Repo name
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -34,10 +31,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/my-org/fhir_fli_documentation/tree/main/',
+          editUrl: 'https://github.com/fhir-fli/fhir_fli_documentation/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -63,7 +57,7 @@ const config = {
             label: 'Overview',
           },
           {
-            href: 'https://github.com/my-org/fhir_fli_documentation',
+            href: 'https://github.com/fhir-fli/fhir_fli_documentation',
             position: 'right',
             className: 'navbar-github-icon',
             'aria-label': 'GitHub repository',
@@ -95,7 +89,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/my-org/fhir_fli_documentation',
+                href: 'https://github.com/fhir-fli/fhir_fli_documentation',
               },
             ],
           },
