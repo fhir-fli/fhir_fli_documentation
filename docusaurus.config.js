@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const config = {
   title: 'FHIR-FLI',
   tagline: 'How to use FHIR with Flutter',
-  url: 'https://fhir-fli-documentation.com',
-  baseUrl: '/',
+  url: 'https://fhir-fli.github.io',
+  baseUrl: '/fhir_fli_documentation',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/fhir-fli-logo.png',
