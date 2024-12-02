@@ -6,17 +6,17 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Fhir Fli Documentation',
-  tagline: 'Creating Documentation To Help Others Use FHIR-FLI',
+  title: 'FHIR-FLI',
+  tagline: 'How to use FHIR with Flutter',
   url: 'https://fhir-fli-documentation.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/fhir-fli-logo.png',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'my-org', // Usually your GitHub org/user name.
+  organizationName: 'fhir-fli', // Usually your GitHub org/user name.
   projectName: 'fhir_fli_documentation', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -50,9 +50,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Fhir Fli Documentation',
+        title: 'FHIR-FLI',
         logo: {
-          alt: 'Fhir Fli Documentation Logo',
+          alt: 'FHIR-FLI Logo',
           src: 'img/logo.svg',
         },
         items: [
