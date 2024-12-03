@@ -47,14 +47,22 @@ const config = {
         title: 'FHIR-FLI',
         logo: {
           alt: 'FHIR-FLI Logo',
-          src: 'img/logo.svg',
+          src: 'img/fhir-fli-logo.svg',
         },
         items: [
+          { type: 'doc', docId: 'overview', position: 'left', label: 'Overview' },
+          { type: 'doc', docId: 'getting-started', position: 'left', label: 'Getting Started' },
+          { to: '/about', label: 'About', position: 'left' },
+          { to: '/contact', label: 'Contact', position: 'left' },
           {
-            type: 'doc',
-            docId: 'overview',
-            position: 'left',
-            label: 'Overview',
+            href: 'https://mayjuun.com/',
+            position: 'right',
+            className: 'navbar-mayjuun-icon',
+          },
+          {
+            href: 'https://www.research.chop.edu/global-health-informatics',
+            position: 'right',
+            className: 'navbar-chop-icon',
           },
           {
             href: 'https://github.com/fhir-fli/fhir_fli_documentation',
@@ -69,19 +77,16 @@ const config = {
           {
             title: 'Docs',
             items: [
-              {
-                label: 'Overview',
-                to: '/docs/overview',
-              },
+              { label: 'Overview', to: '/docs/overview' },
+              { label: 'Getting Started', to: '/docs/getting-started' },
             ],
           },
           {
-            title: 'Resources',
+            title: 'Standalone Pages',
             items: [
-              {
-                label: 'Blog',
-                href: '#',
-              },
+              { label: 'About', to: '/about' },
+              { label: 'Contact', to: '/contact' },
+              { label: 'MayJuun', href: 'https://mayjuun.com/about/' },
             ],
           },
           {
