@@ -66,7 +66,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Pillar 1',
-    Svg: require('img/fhir-fli-logo.svg').default,
+    Svg: require('@site/static/img/pillar1.svg').default,
     description: (
       <>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
