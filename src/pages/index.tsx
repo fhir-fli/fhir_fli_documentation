@@ -50,7 +50,7 @@ function HomepageHeroImage() {
   return (
     <img
       className={clsx(styles.heroImage)}
-      src={colorMode == 'dark' ? 'static/img/fhir-fli-logo.svg' : 'static/img/fhir-fli-logo.svg'}
+      src={colorMode == 'dark' ? 'img/fhir-fli-logo.svg' : 'img/fhir-fli-logo.svg'}
       alt="Hero"
       width="720"
     />
@@ -66,7 +66,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Pillar 1',
-    Svg: require('@site/static/img/pillar1.svg').default,
+    Svg: require('@site/static/img/fhir-fli-logo.svg').default,
     description: (
       <>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
