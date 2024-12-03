@@ -50,7 +50,7 @@ function HomepageHeroImage() {
   return (
     <img
       className={clsx(styles.heroImage)}
-      src={colorMode == 'dark' ? 'img/hero_dark.svg' : 'img/hero.svg'}
+      src={colorMode == 'dark' ? 'img/fhir-fli-logo.png' : 'img/fhir-fli-logo.png'}
       alt="Hero"
       width="720"
     />
