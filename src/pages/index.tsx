@@ -95,8 +95,7 @@ const FeatureList: FeatureItem[] = [
     imgSrc: '/fhir_fli_documentation/img/pillar3.svg',
     description: (
       <>
-        Tempor orci dapibus ultrices in iaculis nunc sed augue. Convallis tellus
-        id interdum velit laoreet id donec ultrices tincidunt.
+        Nope.
       </>
     ),
   },
