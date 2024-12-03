@@ -63,15 +63,14 @@ function HomepageHeroImage() {
 
 type FeatureItem = {
   title: string;
-  Svg?: React.ComponentType<React.ComponentProps<'svg'>>; // For inline SVG components
-  imgSrc?: string; // For static <img> paths
+  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Pillar 1',
-    imgSrc: '/fhir_fli_documentation/img/fhir-fli-logo.svg',
+    Svg: require('@site/static/img/fhir-fli-logo.svg').default,
     description: (
       <>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -82,7 +81,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Pillar 2',
-    imgSrc: '/fhir_fli_documentation/img/pillar2.svg',
+    Svg: require('@site/static/img/pillar2.svg').default,
     description: (
       <>
         Quis hendrerit dolor magna eget est. Urna nunc id cursus metus aliquam.
@@ -92,24 +91,21 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Pillar 3',
-    imgSrc: '/fhir_fli_documentation/img/pillar3.svg',
+    Svg: require('@site/static/img/pillar3.svg').default,
     description: (
       <>
-        Nope.
+        Tempor orci dapibus ultrices in iaculis nunc sed augue. Convallis tellus
+        id interdum velit laoreet id donec ultrices tincidunt.
       </>
     ),
   },
 ];
 
-function Feature({ title, Svg, imgSrc, description }: FeatureItem) {
+function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        {Svg ? (
-          <Svg className={styles.featureSvg} role="img" />
-        ) : (
-          <img src={imgSrc} alt={title} className={styles.featureSvg} />
-        )}
+        <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
