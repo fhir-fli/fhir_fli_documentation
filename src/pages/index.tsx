@@ -7,5 +7,5 @@ export default function Home() {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
 
-  return <Redirect to={`${baseUrl}docs/overview`} />;
+  return <Redirect to={`${baseUrl}docs`} />;
 }

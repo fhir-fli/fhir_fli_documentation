@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'FHIR-FLI',
-  tagline: 'How to use FHIR with Flutter',
+  tagline: 'FHIR with Flutter',
   url: 'https://fhir-fli.github.io',
   baseUrl: '/fhir_fli_documentation/',
   trailingSlash: false,
@@ -32,6 +32,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/fhir-fli/fhir_fli_documentation/tree/main/',
+          routeBasePath: 'docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -50,7 +51,6 @@ const config = {
           src: 'img/fhir-fli-logo.svg',
         },
         items: [
-          { type: 'doc', docId: 'overview', position: 'left', label: 'Overview' },
           { type: 'doc', docId: 'getting-started', position: 'left', label: 'Getting Started' },
           { to: '/about', label: 'About', position: 'left' },
           { to: '/contact', label: 'Contact', position: 'left' },
@@ -77,7 +77,6 @@ const config = {
           {
             title: 'Docs',
             items: [
-              { label: 'Overview', to: '/docs/overview' },
               { label: 'Getting Started', to: '/docs/getting-started' },
             ],
           },
