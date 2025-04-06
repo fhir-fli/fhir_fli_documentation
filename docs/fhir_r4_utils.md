@@ -3,12 +3,14 @@ id: fhir_r4_utils
 title: Utility Package
 ---
 
-# FHIR R4 At Rest
+# Validation and Mapping
 
-The package for interacting with FHIR servers.
+
 
 ## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_path: ^latest_version
+  fhir_r4_utils: ^0.3.0
+  fhir_r4: ^0.3.0
+```

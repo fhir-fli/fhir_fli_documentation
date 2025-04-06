@@ -12,3 +12,4 @@ The core package that provides FHIR R4 resource models. The main purpose of this
 ```yaml
 dependencies:
   fhir_r4: ^0.3.0
+```

@@ -3,11 +3,6 @@ id: primitive_types
 title: Primitive Types
 ---
 
----
-id: primitive_types
-title: Primitive Types
----
-
 # Primitive Types in FHIR-FLI
 
 ## Understanding FHIR Primitive Types

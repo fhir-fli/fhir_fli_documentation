@@ -3,12 +3,14 @@ id: fhir_r4_path
 title: FHIRPath Package
 ---
 
-# FHIR R4 At Rest
+# R4 FHIRPath
 
-The package for interacting with FHIR servers.
+
 
 ## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_path: ^latest_version
+  fhir_r4_path: ^0.3.0
+  fhir_r4: ^0.3.0
+```

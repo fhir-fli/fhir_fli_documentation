@@ -30,7 +30,15 @@ const sidebars = {
         'core/enums',
       ],
     },
-    'fhir_r4_at_rest',
+    {
+      type: 'category',
+      label: 'fhir_r4_at_rest',
+      items: [
+        'at_rest/fhir_r4_at_rest',
+        'at_rest/restful_requests',
+        'at_rest/restful_parameters',
+      ],
+    },
     'fhir_r4_db',
     'fhir_r4_bulk',
     'fhir_r4_path',
