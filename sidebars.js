@@ -17,7 +17,19 @@
 const sidebars = {
   tutorialSidebar: [
     'getting-started',
-    'fhir_r4',
+    {
+      type: 'category',
+      label: 'fhir_r4',
+      items: [
+        'core/fhir_r4',
+        'core/basic_object',
+        'core/serialization',
+        'core/class_structure',
+        'core/polymorphic_types',
+        'core/primitive_types',
+        'core/enums',
+      ],
+    },
     'fhir_r4_at_rest',
     'fhir_r4_db',
     'fhir_r4_bulk',
