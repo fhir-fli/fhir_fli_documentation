@@ -10,7 +10,7 @@ Welcome to the Getting Started guide for FHIR-FLI. This guide will walk you thro
 
 ## What is FHIR-FLI?
 
-FHIR-FLI (<b>F</b>ast <b>H</b>ealthcare <b>I</b>nteroperability <b>R</b>esources - with <b>F</b>lutter <b>L</b>ibrary <b>I</b>ntegration) is a set of Dart libraries that enable Flutter developers to easily work with [FHIR](docs/fhir_r4) data. These libraries provide common functionality that is needed for working with FHIR, including serialization/deserialization, making [RESTful](docs/fhir_r4_at_rest) requests, [local secure storage](docs/fhir_r4_db), [FHIRPath](docs/fhir_r4_path), [FHIR Bulk Data](docs/fhir_r4_bulk), and now also FHIR Mapping. 
+FHIR-FLI (<b>F</b>ast <b>H</b>ealthcare <b>I</b>nteroperability <b>R</b>esources - with <b>F</b>lutter <b>L</b>ibrary <b>I</b>ntegration) is a set of Dart libraries that enable Flutter developers to easily work with [FHIR](docs/core/fhir_r4) data. These libraries provide common functionality that is needed for working with FHIR, including serialization/deserialization, making [RESTful](docs/fhir_r4_at_rest) requests, [local secure storage](docs/fhir_r4_db), [FHIRPath](docs/fhir_r4_path), [FHIR Bulk Data](docs/fhir_r4_bulk), and now also FHIR Mapping. 
 
 ## Here are the official Hl7 references for the above functionality
 - [FHIR](https://www.hl7.org/fhir/overview.html)

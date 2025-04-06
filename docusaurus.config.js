@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const config = {
   title: 'FHIR-FLI',
   tagline: 'FHIR with Flutter',
-  url: 'https://fhir-fli.github.io/fhir_fli_documentation',
+  url: 'https://fhir-fli.github.io',
   baseUrl: '/fhir_fli_documentation/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
@@ -77,7 +77,7 @@ const config = {
           {
             title: 'Docs',
             items: [
-              { label: 'Getting Started', to: '/docs/getting-started' },
+              { label: 'Getting Started', to: '/docs' },
             ],
           },
           {
