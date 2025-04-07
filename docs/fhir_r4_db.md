@@ -372,4 +372,4 @@ This example demonstrates a basic patient management application using the FHIR 
 
 ### Benchmarking
 
-This is not true benchmarking, its purely to give an idea of what you can expect if you're using this. I'm running it on my computer, and I stored the OPEN FHIR data set [MIMIC-IV Clinical Database Demo on FHIR](https://physionet.org/content/mimic-iv-fhir-demo/2.0/). It contains 876.2 MB of data, or about ~900,000 FHIR resources. It took about 15 minutes to load all of that into the database (because there's no good bulk load option). 
+This is not true benchmarking, its purely to give an idea of what you can expect if you're using this. I'm running it on my computer (Ubuntu Budgie, AMD Ryzen 7 PRO x 16, 64 GB RAM), and I stored the OPEN FHIR data set [MIMIC-IV Clinical Database Demo on FHIR](https://physionet.org/content/mimic-iv-fhir-demo/2.0/). It contains 876.2 MB of data, or about 899,000 FHIR resources. It takes about 4 minutes to load all of that into the database (because there's no good bulk load option), and to search for 10 individual resources it took 9ms.

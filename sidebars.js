@@ -43,14 +43,6 @@ const sidebars = {
     'fhir_r4_bulk',
     'fhir_r4_path',
     'fhir_r4_utils',
-    {
-      type: 'category',
-      label: 'Guides',
-      items: [
-        'guides/installation',
-        'guides/basic-usage',
-      ],
-    },
   ],
 };
 
