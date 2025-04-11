@@ -11,6 +11,6 @@ title: Utility Package
 
 ```yaml
 dependencies:
-  fhir_r4_utils: ^0.3.0
-  fhir_r4: ^0.3.0
+  fhir_r4_utils: ^0.4.0
+  fhir_r4: ^0.4.1
 ```

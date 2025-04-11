@@ -11,6 +11,6 @@ The package for interacting with FHIR servers.
 
 ```yaml
 dependencies:
-  fhir_r4_at_rest: ^0.3.0
-  fhir_r4: ^0.3.0
+  fhir_r4_at_rest: ^0.4.0
+  fhir_r4: ^0.4.1
 ```

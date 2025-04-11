@@ -3,18 +3,18 @@ id: enums
 title: Enums
 ---
 
-# "Enums"
+# Enums
 
 ## Understanding FHIR Code Enums
 
-In FHIR, many resources and data types include fields that are restricted to specific coded values (enumerations). FHIR-FLI implements these as "code enums" - specialized `FhirCode` subclasses that combine the flexibility of FHIR's coded values with the convenience of Dart's enum pattern.
+In FHIR, many resources and data types include fields that are restricted to specific coded values (enumerations). FHIR-FLI implements these as "code enums" - specialized `FhirCode` subclasses that combine the flexibility of FHIR's coded values with the type safety of Dart's enum pattern.
 
-Unlike traditional Dart enums, FHIR code enums:
+FHIR-FLI provides two complementary approaches to enums:
 
-- Are not `const` (cannot be used directly in `switch` statements)
-- Contain additional FHIR metadata like system, version, and display text
-- Support serialization/deserialization with FHIR's element extensions
-- Can be created dynamically with custom values
+1. **FHIR Code Enum Classes** - `FhirCodeEnum` subclasses with static values and FHIR metadata
+2. **Native Dart Enums** - Standard Dart enums paired with FHIR Code Enum classes for maximum flexibility
+
+This dual approach gives you both the rich metadata of FHIR coded values and the convenience of Dart's native enum pattern, including full support for switch statements.
 
 ## Core Architecture
 
@@ -25,8 +25,8 @@ abstract class FhirCodeEnum extends FhirCode {
   // Base implementation
 }
 
-class AccountStatus extends FhirCodeEnum {
-  // Specific implementation
+class ActionGroupingBehavior extends FhirCodeEnum {
+  // Specific implementation with both approaches
 }
 ```
 
@@ -38,28 +38,52 @@ Each code enum class provides static values that correspond to the codes defined
 
 ```dart
 // Access predefined values
-final status = AccountStatus.active;
-final error = AccountStatus.entered_in_error;
+final groupingBehavior = ActionGroupingBehavior.visualGroup;
+final appointmentStatus = AppointmentStatus.booked;
 
 // Access the code's string value
-print(status.valueString);  // 'active'
+print(groupingBehavior.valueString);  // 'visual-group'
 
 // Access additional metadata
-print(status.display?.value);  // 'Active'
-print(status.system?.value);   // 'http://hl7.org/fhir/ValueSet/account-status'
+print(groupingBehavior.display?.value);  // 'Visual Group'
+print(groupingBehavior.system?.value);   // 'http://hl7.org/fhir/ValueSet/action-grouping-behavior'
+```
+
+### Using Native Dart Enums
+
+Each FHIR code enum class is now paired with a native Dart enum, accessible via the `valueEnum` property:
+
+```dart
+// Access the native enum value
+final nativeEnum = ActionGroupingBehavior.visualGroup.valueEnum;  // ActionGroupingBehaviorEnum.visualGroup
+
+// Use in switch statements
+switch (nativeEnum) {
+  case ActionGroupingBehaviorEnum.visualGroup:
+    // Handle visual group
+    break;
+  case ActionGroupingBehaviorEnum.logicalGroup:
+    // Handle logical group
+    break;
+  case ActionGroupingBehaviorEnum.sentenceGroup:
+    // Handle sentence group
+    break;
+}
 ```
 
 ### Creating Custom Instances
 
-You can also create custom instances when needed:
+You can still create custom instances when needed:
 
 ```dart
 // Create a custom value
-final customStatus = AccountStatus(
-  'temporary',
-  display: FhirString('Temporary Status'),
-  system: FhirUri('http://example.org/custom-statuses'),
+final customBehavior = ActionGroupingBehavior(
+  'custom-behavior',
+  display: FhirString('Custom Grouping Behavior'),
+  system: FhirUri('http://example.org/custom-behaviors'),
 );
+
+// Note: Custom instances will have valueEnum == null since they don't match predefined enums
 ```
 
 ### Working with Resources
@@ -67,8 +91,8 @@ final customStatus = AccountStatus(
 Code enums can be directly assigned to appropriate resource fields:
 
 ```dart
-final account = Account(
-  status: AccountStatus.active,
+final appointment = Appointment(
+  status: AppointmentStatus.booked,
   // other fields...
 );
 ```
@@ -78,90 +102,155 @@ final account = Account(
 When comparing code enums, you can use the equality operator to check for value equality:
 
 ```dart
-if (account.status == AccountStatus.active) {
-  // Handle active account
+if (appointment.status == AppointmentStatus.booked) {
+  // Handle booked appointment
 }
 ```
 
-### In Conditional Logic
+### Enhanced Conditional Logic
 
-Since code enums are not Dart `const` enums, they cannot be used directly in `switch` statements. Instead, you can:
+The native enum integration enables more idiomatic Dart patterns:
 
 ```dart
-// Using if-else with the equality operator
-if (account.status == AccountStatus.active) {
-  // Handle active
-} else if (account.status == AccountStatus.inactive) {
-  // Handle inactive
+// Traditional approach with equality checks
+if (behavior == ActionGroupingBehavior.visualGroup) {
+  // Handle visual group
+} else if (behavior == ActionGroupingBehavior.logicalGroup) {
+  // Handle logical group
 }
 
-// Using switch with string values
-switch (account.status?.valueString) {
-  case 'active':
-    // Handle active
+// String value approach
+switch (behavior.valueString) {
+  case 'visual-group':
+    // Handle visual group
     break;
-  case 'inactive':
-    // Handle inactive
+  case 'logical-group':
+    // Handle logical group
     break;
   default:
     // Handle other cases
+}
+
+// NEW: Native enum approach with switch statements
+switch (behavior.valueEnum) {
+  case ActionGroupingBehaviorEnum.visualGroup:
+    // Handle visual group
+    break;
+  case ActionGroupingBehaviorEnum.logicalGroup:
+    // Handle logical group
+    break;
+  case ActionGroupingBehaviorEnum.sentenceGroup:
+    // Handle sentence group
+    break;
+  case null:
+    // Handle custom or unknown values
+    break;
 }
 ```
 
 ## Structure of a FHIR Code Enum Class
 
-Each FHIR code enum class follows a consistent pattern:
+Each FHIR code enum class now follows an enhanced pattern that includes a native Dart enum:
 
-1. **Private Constructor**: Used internally
-2. **Public Factory**: For custom creation
-3. **Static Final Values**: For each predefined code
-4. **Values List**: Containing all predefined values
-5. **Helper Methods**: For cloning, modification, etc.
+1. **Native Dart Enum**: Standard Dart enum for the coded values
+2. **Private Constructor**: Used internally for the FHIR code enum class
+3. **Public Factory**: For custom creation
+4. **Static Const Values**: For each predefined code
+5. **Values List**: Containing all predefined values
+6. **Helper Methods**: For cloning, modification, etc.
 
-Here's a simplified example:
+Here's a simplified example based on the implementation:
 
 ```dart
-class AccountStatus extends FhirCodeEnum {
+// Part 1: Native Dart Enum
+enum ActionGroupingBehaviorEnum {
+  visualGroup,
+  logicalGroup,
+  sentenceGroup;
+
+  String toJson() => toString();
+
+  @override
+  String toString() {
+    switch (this) {
+      case ActionGroupingBehaviorEnum.visualGroup:
+        return 'visual-group';
+      case ActionGroupingBehaviorEnum.logicalGroup:
+        return 'logical-group';
+      case ActionGroupingBehaviorEnum.sentenceGroup:
+        return 'sentence-group';
+    }
+  }
+
+  static ActionGroupingBehaviorEnum? fromJson(dynamic json) {
+    // Implementation
+  }
+
+  static ActionGroupingBehaviorEnum? fromString(String? value) {
+    // Implementation
+  }
+}
+
+// Part 2: FHIR Code Enum Class
+class ActionGroupingBehavior extends FhirCodeEnum {
   // Private constructor
-  AccountStatus._({
+  const ActionGroupingBehavior._({
     required super.valueString,
+    this.valueEnum,
     super.system,
     super.version,
     super.display,
-    // ... other fields
+    super.element,
+    // Other fields
   }) : super._();
 
   // Public factory
-  factory AccountStatus(
+  factory ActionGroupingBehavior(
     String? rawValue, {
     FhirUri? system,
     FhirString? version,
     FhirString? display,
-    // ... other parameters
+    // Other parameters
   }) {
-    // Implementation
+    final valueString = 
+        rawValue != null ? FhirCode._validateCode(rawValue) : null;
+    final valueEnum = ActionGroupingBehaviorEnum.fromString(valueString);
+    
+    return ActionGroupingBehavior._(
+      valueString: valueString,
+      valueEnum: valueEnum,
+      system: system,
+      version: version,
+      display: display,
+      // Other fields
+    );
   }
 
-  // Predefined values
-  static final AccountStatus active = AccountStatus._(
-    valueString: 'active',
-    system: 'http://hl7.org/fhir/ValueSet/account-status'.toFhirUri,
-    version: '4.3.0'.toFhirString,
-    display: 'Active'.toFhirString,
+  // Native enum reference
+  final ActionGroupingBehaviorEnum? valueEnum;
+
+  // Predefined static const values
+  static const ActionGroupingBehavior visualGroup = ActionGroupingBehavior._(
+    valueString: 'visual-group',
+    valueEnum: ActionGroupingBehaviorEnum.visualGroup,
+    system: FhirUri._(
+      valueString: 'http://hl7.org/fhir/ValueSet/action-grouping-behavior',
+    ),
+    version: FhirString._(valueString: '4.3.0'),
+    display: FhirString._(
+      valueString: 'Visual Group',
+    ),
   );
 
-  static final AccountStatus inactive = AccountStatus._(
-    valueString: 'inactive',
-    // ... other fields
-  );
-
-  // ... other predefined values
+  // Other predefined values
+  static const ActionGroupingBehavior logicalGroup = /* ... */;
+  static const ActionGroupingBehavior sentenceGroup = /* ... */;
 
   // Values list
-  static final List<AccountStatus> values = [
-    active,
-    inactive,
-    // ... other values
+  static final List<ActionGroupingBehavior> values = [
+    visualGroup,
+    logicalGroup,
+    sentenceGroup,
   ];
 
   // Helper methods
@@ -175,17 +264,20 @@ FHIR code enums are serialized and deserialized like other FHIR primitives, with
 
 ```dart
 // Serialization
-final json = accountStatus.toJson();
+final json = groupingBehavior.toJson();
 // {
-//   'value': 'active',
+//   'value': 'visual-group',
 //   '_value': { ... } // If element extensions exist
 // }
 
 // Deserialization
-final fromJson = AccountStatus.fromJson({
-  'value': 'active',
+final fromJson = ActionGroupingBehavior.fromJson({
+  'value': 'visual-group',
   '_value': { ... } // Optional element extensions
 });
+
+// The fromJson factory also sets the corresponding valueEnum
+final enumValue = fromJson.valueEnum;  // ActionGroupingBehaviorEnum.visualGroup
 ```
 
 ## Advanced Usage
@@ -196,9 +288,9 @@ Like other primitive types, code enums support element-only instances for carryi
 
 ```dart
 // Create an element-only instance
-final elementOnly = AccountStatus.elementOnly;
+final elementOnly = ActionGroupingBehavior(null, element: Element(/* ... */));
 
-// Add an element with extensions
+// Add extensions
 final withExtensions = elementOnly.withElement(
   Element(
     extension_: [
@@ -217,14 +309,14 @@ In some cases, you might need to create a code enum value dynamically based on u
 
 ```dart
 // From a string value
-final userInput = getUserInput(); // Returns a string
-final userStatus = AccountStatus(userInput);
+final userInput = getUserInput();  // Returns a string
+final userBehavior = ActionGroupingBehavior(userInput);
 
 // Check against known values
-if (AccountStatus.values.any((v) => v.valueString == userStatus.valueString)) {
-  // Valid predefined value
+if (userBehavior.valueEnum != null) {
+  // Matches a predefined enum value
 } else {
-  // Custom value
+  // Custom value not in the standard set
 }
 ```
 
@@ -234,11 +326,11 @@ When creating a custom instance, the input is validated according to FHIR's code
 
 ```dart
 // Valid code
-final valid = AccountStatus('custom-valid-code');
+final valid = ActionGroupingBehavior('custom-valid-code');
 
 // Invalid code (contains spaces or special characters)
 try {
-  final invalid = AccountStatus('not a valid code');
+  final invalid = ActionGroupingBehavior('not a valid code');
 } catch (e) {
   print('Validation error: $e');
 }
@@ -249,38 +341,42 @@ try {
 1. **Use Predefined Values** whenever possible:
    ```dart
    // Prefer this:
-   final status = AccountStatus.active;
+   final behavior = ActionGroupingBehavior.visualGroup;
    
    // Over this:
-   final status = AccountStatus('active');
+   final behavior = ActionGroupingBehavior('visual-group');
    ```
 
-2. **For Switch Statements**, use the string value:
+2. **Use Native Enums for Switch Statements**:
    ```dart
-   switch (status.valueString) {
-     case 'active':
-       // Handle active
+   // Preferred approach
+   switch (behavior.valueEnum) {
+     case ActionGroupingBehaviorEnum.visualGroup:
+       // Handle visual group
        break;
      // More cases
+     case null:
+       // Handle custom/unknown values
+       break;
    }
    ```
 
 3. **Check for Null** before accessing:
    ```dart
-   if (account.status?.valueString == 'active') {
-     // Safe access
+   if (appointment.status?.valueEnum == AppointmentStatusEnum.booked) {
+     // Safe access with enum comparison
    }
    ```
 
 4. **Use `values` List** for validation or iteration:
    ```dart
    // Check if value is a standard one
-   if (AccountStatus.values.contains(status)) {
+   if (ActionGroupingBehavior.values.contains(behavior)) {
      // Standard value
    }
    
    // Iterate all possible values
-   for (final value in AccountStatus.values) {
+   for (final value in ActionGroupingBehavior.values) {
      print('${value.valueString}: ${value.display?.value}');
    }
    ```
@@ -288,56 +384,70 @@ try {
 5. **Remember Extension Support**:
    ```dart
    // Accessing extensions works the same as other primitives
-   final extensions = status.element?.extension_;
+   final extensions = behavior.element?.extension_;
    ```
 
-## Common FHIR Code Enum Types
+## Comparison with Previous FHIR-FLI Approach
 
-FHIR-FLI includes code enum classes for all coded value sets in FHIR, such as:
+| Feature | Current Approach | Previous Approach |
+|---------|----------------|-------------------|
+| Use in `switch` | Direct via `valueEnum` | By string value only |
+| Type safety | Enhanced with native enums | Limited to equality checks |
+| Additional metadata | Yes (system, display, etc.) | Yes (same) |
+| Custom/dynamic values | Yes, with `valueEnum == null` | Yes |
+| Extension support | Yes | Yes |
+| Memory efficiency | Similar | Similar |
 
-- `AdministrativeGender`
-- `AppointmentStatus`
-- `ContactPointSystem`
-- `DeviceStatus`
-- `ObservationStatus`
-- `ResourceType`
-- And many more...
+## Comparison with Standard Dart Enums
 
-## Limitations
-
-1. **Not Dart `const` Enums**: Cannot be used directly in `switch` statements or with Dart's enum utilities
-2. **Memory Usage**: Having all predefined values as static fields can increase memory usage compared to true Dart enums
-3. **Type Safety**: Custom values can be created that aren't part of the predefined set, requiring additional validation if strict conformance is needed
+| Feature | FHIR Code Enums | Dart Native Enums Only |
+|---------|----------------|-------------------|
+| FHIR metadata | Yes | No |
+| Custom/dynamic values | Yes | No |
+| Extension support | Yes | No |
+| Use in `switch` | Yes, via `valueEnum` | Yes |
+| Memory footprint | Higher | Lower |
 
 ## Working with Unknown or Extended Codes
 
 In some cases, you might encounter codes not defined in the standard FHIR value sets. FHIR-FLI allows you to handle these situations:
 
 ```dart
-// Create a custom code value
-final extendedStatus = AccountStatus(
-  'extended-status', 
-  system: FhirUri('http://example.org/extended-statuses'),
-  display: FhirString('Extended Status'),
+// Create a custom code value (will have valueEnum == null)
+final extendedBehavior = ActionGroupingBehavior(
+  'extended-behavior', 
+  system: FhirUri('http://example.org/extended-behaviors'),
+  display: FhirString('Extended Grouping Behavior'),
 );
 
 // When receiving unknown values from external sources
 try {
-  final unknownStatus = AccountStatus.fromJson({'value': 'unknown-value'});
+  final unknownBehavior = ActionGroupingBehavior.fromJson({'value': 'unknown-value'});
   // This will work as long as the value is a valid code format
+  // unknownBehavior.valueEnum will be null
 } catch (e) {
   // Handle invalid code format
 }
+
+// Handling in switch statements
+switch (behavior.valueEnum) {
+  case ActionGroupingBehaviorEnum.visualGroup:
+  case ActionGroupingBehaviorEnum.logicalGroup:
+  case ActionGroupingBehaviorEnum.sentenceGroup:
+    // Handle standard values
+    break;
+  case null:
+    // This branch handles custom/unknown values
+    // You can check behavior.valueString for specific custom values
+    if (behavior.valueString == 'extended-behavior') {
+      // Handle specific custom value
+    } else {
+      // Handle other unknown values
+    }
+    break;
+}
 ```
 
-## Comparison with Dart Enums
+## Conclusion
 
-| Feature | FHIR Code Enums | Dart Native Enums |
-|---------|----------------|-------------------|
-| `const` | No | Yes |
-| Use in `switch` | By string value only | Direct |
-| Additional metadata | Yes (system, display, etc.) | No |
-| Custom/dynamic values | Yes | No |
-| Extension support | Yes | No |
-| Value validation | Yes | N/A |
-| Memory footprint | Higher | Lower |
+FHIR-FLI's enhanced enum approach provides the best of both worlds: the rich metadata and flexibility of FHIR's coded values, combined with the type safety and convenience of Dart's native enum pattern. By pairing each `FhirCodeEnum` class with a corresponding native Dart enum and exposing it via the `valueEnum` property, you can write more idiomatic and maintainable Dart code while still fully supporting the FHIR standard.

@@ -437,9 +437,6 @@ final clonedBoolean = myBoolean.clone();
 
 // Creating modified copies
 final updatedBoolean = myBoolean.copyWith(newValue: false);
-
-// Clearing fields
-final clearedElement = myBoolean.clear(extension_: true);
 ```
 
 ## Best Practices

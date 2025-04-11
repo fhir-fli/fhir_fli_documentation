@@ -92,46 +92,9 @@ final value = age.getChildByName('value');
 
 This method will throw an error if the field contains multiple values.
 
-#### setChildByName()
-
-Updates a field by name and returns a new instance with the updated value:
-
-```dart
-// Set the 'value' field on an Age object
-final newAge = age.setChildByName('value', FhirDecimal(10));
-```
-
-#### typeByElementName()
-
-Returns the Dart type(s) that a field can contain:
-
-```dart
-// Get the type of the 'value' field
-final valueType = age.typeByElementName('value');
-// Result: ['FhirDecimal']
-```
-
 For polymorphic fields, this method may return multiple possible types.
 
 ### Object Manipulation Methods
-
-#### createProperty()
-
-Creates an empty object at a specified field location, primarily used in FHIR mapping operations:
-
-```dart
-// Create an empty 'unit' property
-final ageWithUnit = age.createProperty('unit');
-```
-
-#### clear()
-
-Clears specific fields by setting them to null. This method is necessary because `copyWith()` cannot directly set fields to null:
-
-```dart
-// Clear the 'unit' and 'code' fields
-final clearedAge = age.clear(unit: true, code: true);
-```
 
 #### copyWith()
 
@@ -144,6 +107,8 @@ final updatedAge = age.copyWith(
   unit: FhirString('years'),
 );
 ```
+
+Importantly, similar to freezed, you CAN now pass a null value to clear a field if you so wish.
 
 #### equalsDeep()
 
@@ -177,9 +142,6 @@ print(valueField?.toString()); // Output: 65
 final updatedAge = age.setChildByName('unit', FhirString('months')) as Age;
 print(updatedAge.unit?.value); // Output: months
 
-// Clear a field
-final clearedAge = age.clear(system: true);
-print(clearedAge.system); // Output: null
 ```
 
 These utility methods allow for dynamic and flexible manipulation of FHIR resources, even without traditional reflection capabilities.

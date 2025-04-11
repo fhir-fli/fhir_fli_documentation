@@ -11,8 +11,8 @@ The `fhir_r4_path` library provides a Dart implementation of the [FHIRPath](http
 
 ```yaml
 dependencies:
-  fhir_r4_path: ^0.3.0
-  fhir_r4: ^0.3.0
+  fhir_r4_path: ^0.4.0
+  fhir_r4: ^0.4.1
 ```
 
 ## Basic Usage
