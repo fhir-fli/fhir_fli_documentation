@@ -51,6 +51,13 @@ const sidebars = {
         'mapping/fhir_mapping_engine',
       ],
     },
+    {
+      type: 'category',
+      label: 'Demos',
+      items: [
+        'demos/fhir_path_demo',
+      ],
+    },
   ],
 };
 
