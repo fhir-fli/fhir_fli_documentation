@@ -252,4 +252,4 @@ When working with the StructureMap Parser, follow these best practices:
 
 ## Next Steps
 
-Now that you understand how to parse FHIR mapping language into StructureMap resources, the next step is to learn how to use the [FHIR Mapping Engine](mapping_engine.md) to execute these maps and transform data.
+Now that you understand how to parse FHIR mapping language into StructureMap resources, the next step is to learn how to use the [FHIR Mapping Engine](fhir_mapping_engine.md) to execute these maps and transform data.
