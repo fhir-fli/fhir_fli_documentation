@@ -19,7 +19,7 @@ const sidebars = {
     'getting-started',
     {
       type: 'category',
-      label: 'fhir_r4',
+      label: 'FHIR R4b',
       items: [
         'core/fhir_r4',
         'core/basic_object',
@@ -32,7 +32,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'fhir_r4_at_rest',
+      label: 'FHIR at Rest',
       items: [
         'at_rest/fhir_r4_at_rest',
         'at_rest/restful_requests',
@@ -42,7 +42,15 @@ const sidebars = {
     'fhir_r4_db',
     'fhir_r4_bulk',
     'fhir_r4_path',
-    'fhir_r4_utils',
+    {
+      type: 'category',
+      label: 'FHIR Mapping',
+      items: [
+        'mapping/fhir_mapping',
+        'mapping/fhirmap_parsing',
+        'mapping/fhir_mapping_engine',
+      ],
+    },
   ],
 };
 
