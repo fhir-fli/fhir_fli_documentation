@@ -29,10 +29,10 @@ abstract class ResourceCache {
 
 The base `ResourceCache` defines the interface for resource lookup operations. As an abstract class, it can't be instantiated directly.
 
-#### 2. CanonicalResourceManager
+#### 2. CanonicalResourceCache
 
 ```dart
-class CanonicalResourceManager extends ResourceCache {
+class CanonicalResourceCache extends ResourceCache {
   // Implementation of resource caching with local storage
   
   // Save a resource to the local cache
@@ -46,10 +46,10 @@ class CanonicalResourceManager extends ResourceCache {
 
 This implementation provides local, in-memory caching of canonical resources. It only returns resources that have been explicitly stored in the cache.
 
-#### 3. OnlineResourceManager
+#### 3. OnlineResourceCache
 
 ```dart
-class OnlineResourceManager extends CanonicalResourceManager {
+class OnlineResourceCache extends CanonicalResourceCache {
   // Implementation with both local caching and online lookup
   
   @override
@@ -68,7 +68,7 @@ class OnlineResourceManager extends CanonicalResourceManager {
 }
 ```
 
-This extends the `CanonicalResourceManager` to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it from designated online endpoints.
+This extends the `CanonicalResourceCache` to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it from designated online endpoints.
 
 ### Resource Builders
 
@@ -135,7 +135,7 @@ Like the parser, the mapping engine must be created asynchronously:
 
 ```dart
 // Create a resource cache
-final resourceCache = CanonicalResourceManager();
+final resourceCache = CanonicalResourceCache();
 
 // Load a StructureMap (possibly from the parser)
 final structureMap = /* your StructureMap */;
@@ -219,12 +219,12 @@ You can select the appropriate resource cache based on your needs:
 
 ```dart
 // For local-only operation
-final localCache = CanonicalResourceManager();
+final localCache = CanonicalResourceCache();
 localCache.saveCanonicalResource(structureDefinitionA);
 localCache.saveCanonicalResource(valueSetB);
 
 // For mixed local/online operation
-final onlineCache = OnlineResourceManager();
+final onlineCache = OnlineResourceCache();
 onlineCache.saveCanonicalResource(structureDefinitionA);  // Priority local cache
 // Other resources will be fetched from online sources if needed
 ```
@@ -247,7 +247,7 @@ For optimal performance, pre-load resources the mapping will need:
 
 ```dart
 // Pre-load structure definitions
-final resourceCache = CanonicalResourceManager()
+final resourceCache = CanonicalResourceCache()
   ..saveCanonicalResource(structureDefinitionA)
   ..saveCanonicalResource(structureDefinitionB)
   ..saveCanonicalResource(valueSetC);
@@ -266,7 +266,7 @@ import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
 
 Future<void> main() async {
   // Step 1: Set up resource cache
-  final resourceCache = OnlineResourceManager();
+  final resourceCache = OnlineResourceCache();
   
   // Step 2: Pre-load any local resources
   resourceCache.saveCanonicalResource(await loadStructureDefinition('patient.json'));

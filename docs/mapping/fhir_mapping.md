@@ -11,7 +11,7 @@ title: FHIR Mapping Package
 dependencies:
   fhir_r4_mapping: ^0.4.0
   fhir_r4: ^0.4.1
-  fhir_r4_path: ^0.4.2
+  fhir_r4_path: ^0.4.3
 ```
 
 ## What is FHIR Mapping?

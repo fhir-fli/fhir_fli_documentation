@@ -11,7 +11,7 @@ The `fhir_r4_path` library provides a Dart implementation of the [FHIRPath](http
 
 ```yaml
 dependencies:
-  fhir_r4_path: ^0.4.0
+  fhir_r4_path: ^0.4.3
   fhir_r4: ^0.4.1
 ```
 
@@ -216,14 +216,14 @@ abstract class ResourceCache {
 
 ### Canonical Resource Manager
 
-The `CanonicalResourceManager` extends `ResourceCache` to provide version-aware storage and retrieval of resources:
+The `CanonicalResourceCache` extends `ResourceCache` to provide version-aware storage and retrieval of resources:
 
 ```dart
 import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4_path/fhir_r4_path.dart';
 
 // Create a manager
-final manager = CanonicalResourceManager();
+final manager = CanonicalResourceCache();
 
 // Store a canonical resource
 final valueSet = ValueSet(
@@ -245,7 +245,7 @@ final specificVersion = await manager.getCanonicalResource<ValueSet>(
 );
 ```
 
-Key features of `CanonicalResourceManager`:
+Key features of `CanonicalResourceCache`:
 
 - Version-aware storage and retrieval
 - Compatibility with semantic versioning
@@ -282,7 +282,7 @@ Parse the expression once with `fhirPathEngine.parse()` and then evaluate repeat
 Instead of `walkFhirPath()`, create and reuse a single `FHIRPathEngine` instance (via the async `create(...)` method).
 
 ### Leverage the Resource Cache
-If your workflow requires repeated lookups of canonical resources, use `CanonicalResourceManager` to avoid redundant fetching or parsing.
+If your workflow requires repeated lookups of canonical resources, use `CanonicalResourceCache` to avoid redundant fetching or parsing.
 
 ## Integration with FHIR Mapping
 
