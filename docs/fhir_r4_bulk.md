@@ -12,7 +12,7 @@ The `fhir_r4_bulk` library provides tools for working with FHIR bulk data operat
 ```yaml
 dependencies:
   fhir_r4_bulk: ^0.4.0
-  fhir_r4: ^0.4.1
+  fhir_r4: ^0.4.2
 ```
 
 ## Key Features

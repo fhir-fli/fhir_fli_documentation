@@ -12,7 +12,7 @@ The package for local storage of FHIR resources. The `fhir_r4_db` library provid
 ```yaml
 dependencies:
   fhir_r4_db: ^0.4.0
-  fhir_r4: ^0.4.1
+  fhir_r4: ^0.4.2
 ```
 
 ## Key Features
