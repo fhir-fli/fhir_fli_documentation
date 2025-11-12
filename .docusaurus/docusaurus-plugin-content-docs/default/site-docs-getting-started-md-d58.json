@@ -1,0 +1,24 @@
+{
+  "id": "getting-started",
+  "title": "Getting Started",
+  "description": "Welcome to the Getting Started guide for FHIR-FLI. This guide will walk you through setting up and using the FHIR-FLI Dart libraries in your projects.",
+  "source": "@site/docs/getting-started.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/fhir_fli_documentation/docs/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/getting-started.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "getting-started",
+    "title": "Getting Started",
+    "slug": "/"
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Core Package",
+    "permalink": "/fhir_fli_documentation/docs/core/fhir_r4"
+  }
+}

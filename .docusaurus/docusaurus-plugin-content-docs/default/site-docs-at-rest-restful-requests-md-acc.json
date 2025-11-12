@@ -1,0 +1,27 @@
+{
+  "id": "at_rest/restful_requests",
+  "title": "Requests",
+  "description": "The fhirr4at_rest library provides a streamlined way to construct RESTful API calls for FHIR operations. Instead of dealing with the complexities of building URLs, handling HTTP methods, and managing headers, this library offers a type-safe approach through a collection of request classes.",
+  "source": "@site/docs/at_rest/restful_requests.md",
+  "sourceDirName": "at_rest",
+  "slug": "/at_rest/restful_requests",
+  "permalink": "/fhir_fli_documentation/docs/at_rest/restful_requests",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/at_rest/restful_requests.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "restful_requests",
+    "title": "Requests"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "At Rest Package",
+    "permalink": "/fhir_fli_documentation/docs/at_rest/fhir_r4_at_rest"
+  },
+  "next": {
+    "title": "Parameters",
+    "permalink": "/fhir_fli_documentation/docs/at_rest/restful_parameters"
+  }
+}

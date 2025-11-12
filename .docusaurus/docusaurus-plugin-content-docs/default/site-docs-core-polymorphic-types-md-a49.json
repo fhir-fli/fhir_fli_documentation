@@ -1,0 +1,27 @@
+{
+  "id": "core/polymorphic_types",
+  "title": "Polymprhic Types",
+  "description": "Understanding Polymorphic Fields",
+  "source": "@site/docs/core/polymorphic_types.md",
+  "sourceDirName": "core",
+  "slug": "/core/polymorphic_types",
+  "permalink": "/fhir_fli_documentation/docs/core/polymorphic_types",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/core/polymorphic_types.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "polymorphic_types",
+    "title": "Polymprhic Types"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Class Structure",
+    "permalink": "/fhir_fli_documentation/docs/core/class_structure"
+  },
+  "next": {
+    "title": "Primitive Types",
+    "permalink": "/fhir_fli_documentation/docs/core/primitive_types"
+  }
+}

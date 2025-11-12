@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfhir_fli_documentation=self.webpackChunkfhir_fli_documentation||[]).push([[649],{5550:(t,u,n)=>{n.r(u),n.d(u,{default:()=>f});n(6540);var e=n(6347),a=n(4848);function f(){return(0,a.jsx)(e.rd,{to:"https://mayjuun.com/about/"})}}}]);

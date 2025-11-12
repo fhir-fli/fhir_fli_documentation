@@ -1,0 +1,27 @@
+{
+  "id": "core/class_structure",
+  "title": "Class Structure",
+  "description": "This document explains the structure and utility methods available in FHIR-FLI classes that allow for flexible manipulation and access to FHIR data.",
+  "source": "@site/docs/core/class_structure.md",
+  "sourceDirName": "core",
+  "slug": "/core/class_structure",
+  "permalink": "/fhir_fli_documentation/docs/core/class_structure",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/core/class_structure.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "class_structure",
+    "title": "Class Structure"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Serialization/Deserialization",
+    "permalink": "/fhir_fli_documentation/docs/core/serialization"
+  },
+  "next": {
+    "title": "Polymprhic Types",
+    "permalink": "/fhir_fli_documentation/docs/core/polymorphic_types"
+  }
+}

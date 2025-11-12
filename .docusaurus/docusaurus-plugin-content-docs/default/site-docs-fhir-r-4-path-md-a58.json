@@ -1,0 +1,27 @@
+{
+  "id": "fhir_r4_path",
+  "title": "FHIRPath Package",
+  "description": "The fhirr4path library provides a Dart implementation of the FHIRPath specification, allowing you to query and manipulate FHIR resources using standardized expressions. This library follows the official HL7 FHIRPath specification and integrates seamlessly with the fhir_r4 package.",
+  "source": "@site/docs/fhir_r4_path.md",
+  "sourceDirName": ".",
+  "slug": "/fhir_r4_path",
+  "permalink": "/fhir_fli_documentation/docs/fhir_r4_path",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/fhir_r4_path.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fhir_r4_path",
+    "title": "FHIRPath Package"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Bulk Data",
+    "permalink": "/fhir_fli_documentation/docs/fhir_r4_bulk"
+  },
+  "next": {
+    "title": "Validation Package",
+    "permalink": "/fhir_fli_documentation/docs/fhir_r4_validation"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "mapping/fhirmap_parsing",
+  "title": "FHIR Map Parser",
+  "description": "Understanding the StructureMap Parser",
+  "source": "@site/docs/mapping/fhirmap_parsing.md",
+  "sourceDirName": "mapping",
+  "slug": "/mapping/fhirmap_parsing",
+  "permalink": "/fhir_fli_documentation/docs/mapping/fhirmap_parsing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/mapping/fhirmap_parsing.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fhirmap_parsing",
+    "title": "FHIR Map Parser"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FHIR Mapping Package",
+    "permalink": "/fhir_fli_documentation/docs/mapping/fhir_mapping"
+  },
+  "next": {
+    "title": "FHIR Mapping Engine",
+    "permalink": "/fhir_fli_documentation/docs/mapping/fhir_mapping_engine"
+  }
+}

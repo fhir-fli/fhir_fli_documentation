@@ -1,0 +1,27 @@
+{
+  "id": "fhir_r4_bulk",
+  "title": "Bulk Data",
+  "description": "The fhirr4bulk library provides tools for working with FHIR bulk data operations, including import, export, and NDJSON file handling. This library is particularly useful for working with large datasets in FHIR, supporting the standard FHIR bulk operations ($export and $import).",
+  "source": "@site/docs/fhir_r4_bulk.md",
+  "sourceDirName": ".",
+  "slug": "/fhir_r4_bulk",
+  "permalink": "/fhir_fli_documentation/docs/fhir_r4_bulk",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/fhir_r4_bulk.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fhir_r4_bulk",
+    "title": "Bulk Data"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Database Package",
+    "permalink": "/fhir_fli_documentation/docs/fhir_r4_db"
+  },
+  "next": {
+    "title": "FHIRPath Package",
+    "permalink": "/fhir_fli_documentation/docs/fhir_r4_path"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "core/fhir_r4",
+  "title": "Core Package",
+  "description": "The core package that provides FHIR R4 resource models. The main purpose of this package is to create the base classes on which fire depends. These classes are all generated from structure definitions so they should be in line with the official fire specification. This library is mainly used for serialization/ deserialization But it does have some other functionality which is useful in certain situations.",
+  "source": "@site/docs/core/fhir_r4.md",
+  "sourceDirName": "core",
+  "slug": "/core/fhir_r4",
+  "permalink": "/fhir_fli_documentation/docs/core/fhir_r4",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/core/fhir_r4.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fhir_r4",
+    "title": "Core Package"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/fhir_fli_documentation/docs/"
+  },
+  "next": {
+    "title": "Basics of FHIR Classes",
+    "permalink": "/fhir_fli_documentation/docs/core/basic_object"
+  }
+}

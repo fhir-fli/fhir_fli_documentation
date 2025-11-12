@@ -1,0 +1,128 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/fhir_fli_documentation/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/fhir_fli_documentation/docs",
+          "mainDocId": "getting-started",
+          "docs": [
+            {
+              "id": "at_rest/fhir_r4_at_rest",
+              "path": "/fhir_fli_documentation/docs/at_rest/fhir_r4_at_rest",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "at_rest/restful_parameters",
+              "path": "/fhir_fli_documentation/docs/at_rest/restful_parameters",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "at_rest/restful_requests",
+              "path": "/fhir_fli_documentation/docs/at_rest/restful_requests",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/basic_object",
+              "path": "/fhir_fli_documentation/docs/core/basic_object",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/class_structure",
+              "path": "/fhir_fli_documentation/docs/core/class_structure",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/enums",
+              "path": "/fhir_fli_documentation/docs/core/enums",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/fhir_r4",
+              "path": "/fhir_fli_documentation/docs/core/fhir_r4",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/migration",
+              "path": "/fhir_fli_documentation/docs/core/migration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/polymorphic_types",
+              "path": "/fhir_fli_documentation/docs/core/polymorphic_types",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/primitive_types",
+              "path": "/fhir_fli_documentation/docs/core/primitive_types",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "core/serialization",
+              "path": "/fhir_fli_documentation/docs/core/serialization",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "demos/fhir_path_demo",
+              "path": "/fhir_fli_documentation/docs/demos/fhir_path_demo",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "fhir_r4_bulk",
+              "path": "/fhir_fli_documentation/docs/fhir_r4_bulk",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "fhir_r4_db",
+              "path": "/fhir_fli_documentation/docs/fhir_r4_db",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "fhir_r4_path",
+              "path": "/fhir_fli_documentation/docs/fhir_r4_path",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "fhir_r4_validation",
+              "path": "/fhir_fli_documentation/docs/fhir_r4_validation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "getting-started",
+              "path": "/fhir_fli_documentation/docs/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "mapping/fhir_mapping",
+              "path": "/fhir_fli_documentation/docs/mapping/fhir_mapping",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "mapping/fhir_mapping_engine",
+              "path": "/fhir_fli_documentation/docs/mapping/fhir_mapping_engine",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "mapping/fhirmap_parsing",
+              "path": "/fhir_fli_documentation/docs/mapping/fhirmap_parsing",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/fhir_fli_documentation/docs/",
+                "label": "getting-started"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

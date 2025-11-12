@@ -1,0 +1,18 @@
+{
+  "id": "auth/installation",
+  "title": "Installation",
+  "description": "This guide walks through installing and configuring fhirr4auth in your Flutter project.",
+  "source": "@site/docs/auth/installation.md",
+  "sourceDirName": "auth",
+  "slug": "/auth/installation",
+  "permalink": "/fhir_fli_documentation/docs/auth/installation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/auth/installation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "installation",
+    "title": "Installation"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "mapping/fhir_mapping_engine",
+  "title": "FHIR Mapping Engine",
+  "description": "Understanding the Mapping Engine",
+  "source": "@site/docs/mapping/fhir_mapping_engine.md",
+  "sourceDirName": "mapping",
+  "slug": "/mapping/fhir_mapping_engine",
+  "permalink": "/fhir_fli_documentation/docs/mapping/fhir_mapping_engine",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/mapping/fhir_mapping_engine.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fhir_mapping_engine",
+    "title": "FHIR Mapping Engine"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FHIR Map Parser",
+    "permalink": "/fhir_fli_documentation/docs/mapping/fhirmap_parsing"
+  },
+  "next": {
+    "title": "FHIR‑Path Demo",
+    "permalink": "/fhir_fli_documentation/docs/demos/fhir_path_demo"
+  }
+}

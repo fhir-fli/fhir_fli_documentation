@@ -1,0 +1,27 @@
+{
+  "id": "at_rest/fhir_r4_at_rest",
+  "title": "At Rest Package",
+  "description": "The package for interacting with FHIR servers.",
+  "source": "@site/docs/at_rest/fhir_r4_at_rest.md",
+  "sourceDirName": "at_rest",
+  "slug": "/at_rest/fhir_r4_at_rest",
+  "permalink": "/fhir_fli_documentation/docs/at_rest/fhir_r4_at_rest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/fhir-fli/fhir_fli_documentation/tree/main/docs/at_rest/fhir_r4_at_rest.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "fhir_r4_at_rest",
+    "title": "At Rest Package"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migration",
+    "permalink": "/fhir_fli_documentation/docs/core/migration"
+  },
+  "next": {
+    "title": "Requests",
+    "permalink": "/fhir_fli_documentation/docs/at_rest/restful_requests"
+  }
+}
