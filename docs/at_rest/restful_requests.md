@@ -324,7 +324,7 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/Patient/12345/$everything?_format=json
 ```
 
-## [Request Parameters](docs/at_rest/restful_parameters)
+## [Request Parameters](restful_parameters)
 
 All request classes support optional parameters through the `RestfulParameters` class:
 
