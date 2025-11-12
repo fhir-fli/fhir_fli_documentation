@@ -7,6 +7,12 @@ set -e
 BUILD_DIR="build"
 DOCS_DIR="docs"
 
+# Ensure dependencies are installed
+if [ ! -d "node_modules" ] || [ ! -f "node_modules/.bin/docusaurus" ]; then
+  echo "Installing dependencies..."
+  npm install
+fi
+
 npm run build
 
 # Deploy to gh-pages branch (keeps main branch clean of build artifacts)

@@ -57,16 +57,6 @@ const config = {
           { to: '/about', label: 'About', position: 'left' },
           { to: '/contact', label: 'Contact', position: 'left' },
           {
-            href: 'https://mayjuun.com/',
-            position: 'right',
-            className: 'navbar-mayjuun-icon',
-          },
-          {
-            href: 'https://www.research.chop.edu/global-health-informatics',
-            position: 'right',
-            className: 'navbar-chop-icon',
-          },
-          {
             href: 'https://github.com/fhir-fli/fhir_fli_documentation',
             position: 'right',
             className: 'navbar-github-icon',
@@ -87,7 +77,6 @@ const config = {
             items: [
               { label: 'About', to: '/about' },
               { label: 'Contact', to: '/contact' },
-              { label: 'MayJuun', href: 'https://mayjuun.com/about/' },
             ],
           },
           {
