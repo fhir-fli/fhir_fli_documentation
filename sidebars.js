@@ -77,6 +77,7 @@ const sidebars = {
     'fhir_r4_db',
     'fhir_r4_bulk',
     'fhir_r4_path',
+    'fhir_r4_validation',
     {
       type: 'category',
       label: 'FHIR Mapping',
