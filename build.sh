@@ -15,26 +15,12 @@ fi
 
 npm run build
 
-# Deploy to gh-pages branch (keeps main branch clean of build artifacts)
-CURRENT_BRANCH=$(git branch --show-current)
-if git show-ref --verify --quiet refs/heads/gh-pages; then
-  git checkout gh-pages
-else
-  git checkout --orphan gh-pages
-  git rm -rf . 2>/dev/null || true
-fi
-
-# Copy build output to gh-pages
-echo "Copying build output to gh-pages branch..."
-cp -R "$BUILD_DIR"/* .
-
-# Commit and push
-git add .
-git commit -m "Deploy Docusaurus site to gh-pages" || true
-git push origin gh-pages --force
-
-# Return to original branch
-git checkout "$CURRENT_BRANCH"
+echo "Build complete! If you want to deploy manually, run:"
+echo "  git checkout gh-pages"
+echo "  cp -R build/* ."
+echo "  git add . && git commit -m 'Deploy' && git push"
+echo ""
+echo "Or just push to main and GitHub Actions will auto-deploy to gh-pages"
 
 echo "Deployment complete"
 
