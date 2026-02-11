@@ -58,6 +58,7 @@ const sidebars = {
         'demos/fhir_path_demo',
       ],
     },
+    'cicada_ig',
   ],
 };
 
