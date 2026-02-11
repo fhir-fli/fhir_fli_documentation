@@ -1,41 +1,51 @@
-# 📚 FHIR-FLI
+# FHIR-FLI Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Documentation site for the [FHIR-FLI](https://github.com/fhir-fli) project — Dart/Flutter libraries for working with FHIR (Fast Healthcare Interoperability Resources). Built with [Docusaurus 3](https://docusaurus.io/) and deployed to GitHub Pages.
 
-### ⚙️ Installation
+**Live site:** https://fhir-fli.github.io/fhir_fli_documentation/
 
-```
-$ npm install
-```
+## What's Documented
 
-### 🧑‍💻 Local Development
+- **FHIR R4** — Core resources, primitive types, serialization, enums, polymorphic types
+- **FHIR at Rest** — REST client for FHIR servers (requests, parameters)
+- **FHIR DB** — Local encrypted Hive database
+- **FHIR Bulk** — Bulk data import/export (NDJSON)
+- **FHIRPath** — FHIRPath query language
+- **FHIR Validation** — Resource validation
+- **FHIR Mapping** — FHIR Mapping Language parsing and engine
+- **FHIRPath Demo** — Interactive Flutter web app for FHIRPath queries
+- **Cicada Vaccination IG** — Immunization forecasting Implementation Guide based on CDC CDSi
 
-```
-$ npm start
-```
+## Development
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### 📦 Build
-
-```
-$ npm run build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### ☁️ Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true npm run deploy
+```bash
+npm install            # Install dependencies
+npm start              # Dev server with hot reload
+npm run build          # Production build to /build
+npm run serve          # Serve production build locally
 ```
 
-Not using SSH:
+## Linting and Formatting
+
+```bash
+npm run format         # Format with Prettier
+npm run format:check   # Check formatting
+npm run lint           # ESLint
+npm run typecheck      # TypeScript type checking
+```
+
+## Deployment
+
+Pushing to `main` automatically builds and deploys to the `gh-pages` branch via GitHub Actions.
+
+## Project Structure
 
 ```
-$ GIT_USER=<Your GitHub username> yarn deploy
+docs/                  # Markdown documentation files
+src/pages/             # Custom React/TypeScript pages
+src/css/               # Theme customization
+static/fhir_path_demo/ # Pre-built Flutter FHIRPath demo
+static/cicada_ig/      # Pre-built Cicada Vaccination IG
+sidebars.js            # Sidebar navigation (manually defined)
+docusaurus.config.js   # Site configuration
 ```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
