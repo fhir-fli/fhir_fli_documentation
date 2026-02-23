@@ -59,6 +59,7 @@ const sidebars = {
       ],
     },
     'cicada_ig',
+    'ucum',
   ],
 };
 
