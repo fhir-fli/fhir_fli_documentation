@@ -11,7 +11,7 @@ The `ucum` package provides a Dart implementation of the [UCUM](https://unitsofm
 
 ```yaml
 dependencies:
-  ucum: ^0.6.0
+  ucum: ^0.7.0
 ```
 
 ## Quick Start
