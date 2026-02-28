@@ -4,21 +4,23 @@ title: FHIR R4 Auth
 slug: /auth
 ---
 
-# FHIR R4 Auth <img src="/fhir_fli_documentation/img/fhir-fli-logo.png" alt="FHIR-FLI Logo" style={{width: "150px", verticalAlign: "middle"}} />
+# FHIR R4 Auth
 
 Production-ready SMART on FHIR authentication and authorization for Flutter applications.
 
 ## What is FHIR R4 Auth?
 
-`fhir_r4_auth` is a comprehensive authentication library that implements the complete [SMART App Launch Framework](http://hl7.org/fhir/smart-app-launch/) specification. It provides everything needed to build secure, compliant FHIR applications that integrate with Electronic Health Record (EHR) systems.
+`fhir_r4_auth` is a comprehensive authentication library that implements the [SMART App Launch Framework](http://hl7.org/fhir/smart-app-launch/) specification. It provides everything needed to build secure, compliant FHIR applications that integrate with Electronic Health Record (EHR) systems.
+
+Also available as `fhir_r5_auth` and `fhir_r6_auth` for FHIR R5 and R6 with identical APIs.
 
 ## Key Features
 
-- ✅ **Complete SMART Implementation** - Supports all launch types (standalone, EHR, backend services)
-- ✅ **Enterprise Security** - PKCE, secure token storage, JWT validation, audit logging
-- ✅ **Multi-Platform** - Works on iOS, Android, Web, macOS, Windows, and Linux
-- ✅ **Developer Friendly** - Type-safe API, comprehensive error handling, extensive examples
-- ✅ **Battle-Tested** - 386+ tests, works with Epic, Cerner, and other major EHR systems
+- **Complete SMART Implementation** - Supports standalone launch and EHR launch types
+- **Enterprise Security** - PKCE, secure token storage, JWT validation, audit logging
+- **Multi-Platform** - Works on iOS, Android, Web, macOS, Windows, and Linux
+- **Developer Friendly** - Type-safe API, comprehensive error handling
+- **Session Management** - Idle and absolute timeouts, token refresh
 
 ## Quick Start
 
@@ -29,7 +31,7 @@ Add to your `pubspec.yaml`:
 ```yaml
 dependencies:
   fhir_r4_auth: ^0.4.0
-  fhir_r4: ^0.4.2
+  fhir_r4: ^0.4.4
 ```
 
 ### Basic Example
@@ -49,12 +51,6 @@ final client = SmartFhirClient(
 
 // Authenticate
 await client.authenticate();
-
-// Make FHIR requests
-final patient = await client.read(
-  resourceType: 'Patient',
-  id: 'patient-123',
-);
 ```
 
 ## Launch Types
@@ -64,33 +60,22 @@ Your app launches independently and asks the user to authorize access.
 
 **Use when:** Building patient-facing mobile apps, personal health record apps.
 
-[Learn more →](standalone-launch)
+[Learn more →](auth/standalone-launch)
 
 ### EHR Launch
 Your app is embedded within an EHR system and launched from the provider's workflow.
 
 **Use when:** Building clinician-facing apps, clinical decision support tools.
 
-[Learn more →](ehr-launch)
-
-### Backend Services
-Server-to-server authentication using client credentials and JWT assertions.
-
-**Use when:** Building analytics platforms, data pipelines, bulk data exports.
-
-[Learn more →](backend-services)
-
 ## Core Concepts
 
 ### Security
 
-- **PKCE** (Proof Key for Code Exchange) - Enabled by default
+- **PKCE** (Proof Key for Code Exchange) - Enabled by default (can be disabled for servers that don't support it)
 - **Secure Token Storage** - Platform-specific secure storage
 - **JWT Validation** - Full validation of ID tokens
 - **Audit Logging** - Complete audit trail
 - **Session Management** - Idle and absolute timeouts
-
-[Security guide →](security)
 
 ### Token Management
 
@@ -99,54 +84,41 @@ Server-to-server authentication using client credentials and JWT assertions.
 - Token introspection (when supported by server)
 - Secure encrypted storage
 
-[Token management guide →](token-management)
+## Platform Notes
 
-## Platform Support
+### Web
+Create a `web/callback.html` that stores the redirect URL in localStorage and posts it via `window.postMessage`:
 
-Configure authentication for your target platform:
+```html
+<!DOCTYPE html>
+<html><body><script>
+  const url = window.location.href;
+  window.localStorage.setItem('flutter-web-auth-2', url);
+  window.opener.postMessage({'flutter-web-auth-2': url}, '*');
+  window.close();
+</script></body></html>
+```
 
-- [iOS Setup](platform/ios) - Keychain configuration
-- [Android Setup](platform/android) - KeyStore and deep linking
-- [Web Setup](platform/web) - Redirect handling
-- [Desktop Setup](platform/desktop) - macOS, Windows, Linux
+### Android
+Add `manifestPlaceholders["appAuthRedirectScheme"]` in `android/app/build.gradle.kts`. URI schemes cannot have underscores (RFC 3986) - use hyphens instead.
 
-## Server Integration
+### Desktop (Linux/Windows)
+`flutter_web_auth_2` starts a temporary HTTP server on the callback port. Set `callbackUrlScheme` to the full origin (e.g., `http://localhost:8080`).
 
-Tested and working with major FHIR servers:
+## Epic Integration Notes
 
-- [Epic](servers/epic) - Epic EHR integration
-- [Cerner/Oracle Health](servers/cerner) - Cerner integration
-- [SMART Health IT Sandbox](servers/smart-sandbox) - Testing environment
-- [Google Cloud Healthcare](servers/google-healthcare) - GCP integration
+When integrating with Epic's FHIR sandbox:
 
-## What's New in fhir_r4_auth?
-
-Migrating from the older `fhir_auth` package? Here's what's improved:
-
-| Feature | Old fhir_auth | New fhir_r4_auth |
-|---------|---------------|------------------|
-| **SMART Spec** | Partial | Complete ✅ |
-| **Security** | Basic | Enterprise-grade ✅ |
-| **Platform Support** | Mobile + Web | All platforms ✅ |
-| **Session Management** | None | Full support ✅ |
-| **Token Revocation** | No | Yes ✅ |
-| **Token Introspection** | No | Yes ✅ |
-| **Audit Logging** | No | Yes ✅ |
-| **Type Safety** | Partial | Complete ✅ |
-| **Tests** | ~50 | 386+ ✅ |
-
-[Migration guide →](migration)
+- **Disable PKCE** (`enablePkce: false`) - Epic sandbox rejects `code_challenge`/`code_challenge_method`
+- **Disable OpenID** (`enableOpenId: false`) - Epic rejects the `nonce` parameter
+- **EHR launch scopes:** Use `['launch']` only - wider scopes may cause OAuth errors
 
 ## Next Steps
 
-1. **[Install the library](installation)** - Add to your project
-2. **[Choose your launch type](standalone-launch)** - Standalone, EHR, or Backend
-3. **[Platform setup](platform/ios)** - Configure your target platform
-4. **[Server integration](servers/epic)** - Connect to your FHIR server
+1. **[Install the library](auth/installation)** - Add to your project
+2. **[Standalone launch guide](auth/standalone-launch)** - Step-by-step standalone launch
 
 ## Resources
 
-- [GitHub Repository](https://github.com/fhirfli/fhir_r4_auth)
-- [API Documentation](https://pub.dev/documentation/fhir_r4_auth/latest/)
-- [Report Issues](https://github.com/fhirfli/fhir_r4_auth/issues)
-- [Discussions](https://github.com/fhirfli/fhir_r4_auth/discussions)
+- [GitHub Repository](https://github.com/fhir-fli/fhir_r4)
+- [SMART App Launch Specification](http://hl7.org/fhir/smart-app-launch/)

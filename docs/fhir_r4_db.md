@@ -5,38 +5,66 @@ title: Database Package
 
 # FHIR R4 Database
 
-The package for local storage of FHIR resources. The `fhir_r4_db` library provides a lightweight, encrypted local database solution for storing and managing FHIR resources in Flutter applications. Built as a wrapper around `hive_ce`, this library offers a simple, type-safe API for common database operations with specific optimizations for FHIR data.
+The `fhir_r4_db` library provides a local database solution for storing and managing FHIR resources in Dart and Flutter applications. Built on [Drift](https://drift.simonbinder.eu/) (SQLite), it offers type-safe CRUD operations, FHIR search parameter indexing, resource versioning, sync tracking, and optional encryption via SQLCipher.
 
 ## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_db: ^0.4.0
-  fhir_r4: ^0.4.2
+  fhir_r4_db: ^1.0.0
+  fhir_r4: ^0.4.4
+  drift: ^2.29.0
+  sqlite3: ^2.4.6
 ```
+
+For Flutter apps you will also need a platform-appropriate SQLite opener. See the [Drift documentation](https://drift.simonbinder.eu/setup/) for platform-specific setup.
 
 ## Key Features
 
-- **In-memory performance**: Lightning-fast operations with minimal setup
-- **Always encrypted**: Data is secured by default with optional custom encryption
-- **Cross-platform**: Works on all platforms supported by Flutter without special configurations
-- **Version tracking**: Automatic versioning of resources with history support
-- **Reactive updates**: Stream-based API for observing database changes
-- **FHIR-optimized**: Special handling for FHIR resources and canonical references
+- **SQLite-backed**: Persistent, file-based storage with excellent performance
+- **Search parameter indexing**: Automatic indexing of FHIR search parameters (string, token, reference, date, number, quantity, URI, composite, special)
+- **Version tracking**: Automatic versioning of resources with full history
+- **Sync support**: Track resources that need syncing to a remote server
+- **Canonical resource cache**: Store and retrieve canonical resources (ValueSet, StructureDefinition, etc.) by URL
+- **Optional encryption**: SQLCipher support for encrypted databases
+- **Cross-platform**: Works on all platforms supported by Drift (Android, iOS, macOS, Windows, Linux, Web)
+
+## Architecture
+
+The database uses Drift's DAO (Data Access Object) pattern:
+
+- **`FhirDb`** — The Drift database class. You create it by passing a `QueryExecutor` (e.g., `NativeDatabase`).
+- **`FhirDao`** — The DAO that provides all FHIR operations (CRUD, search, history, sync, canonical resources, general storage).
 
 ### Initialization
 
 ```dart
+import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
+import 'package:fhir_r4_db/fhir_r4_db.dart';
+import 'dart:io';
+
+// Create a database with a file-based SQLite backend
+final db = FhirDb(NativeDatabase(File('fhir.db')));
+
+// Access the DAO for all operations
+final dao = db.fhirDao;
+
+// For tests, use an in-memory database
+final testDb = FhirDb(NativeDatabase.memory());
+final testDao = testDb.fhirDao;
+```
+
+### Encrypted Database
+
+For encryption, use SQLCipher via the `sqlite3` package:
+
+```dart
 import 'package:fhir_r4_db/fhir_r4_db.dart';
 
-// Initialize the database without encryption
-await FhirDb().init();
-
-// Or with a custom path and encryption key
-await FhirDb().init(
-  path: 'path/to/db',
-  pw: 'your-encryption-key'
-);
+// Use cipherFromKey to create an encrypted database setup callback
+final setup = cipherFromKey('your-encryption-key');
+final db = FhirDb(NativeDatabase(File('fhir.db'), setup: setup));
 ```
 
 ## Basic Operations
@@ -44,6 +72,8 @@ await FhirDb().init(
 ### Saving Resources
 
 ```dart
+import 'package:fhir_r4/fhir_r4.dart';
+
 // Save a single resource
 final patient = Patient(
   name: [
@@ -54,322 +84,235 @@ final patient = Patient(
   ],
 );
 
-// The save method adds an ID if none exists and updates the meta fields
-final savedPatient = await FhirDb().save(resource: patient);
+// save() assigns an ID if none exists and updates meta (versionId, lastUpdated)
+final savedPatient = await dao.saveResource(patient);
 
-// Save multiple resources
-final resources = [patient, observation, condition];
-await FhirDb().saveAll(resources: resources);
+// Save multiple resources in a batch (more efficient)
+final resources = [patient1, observation1, condition1];
+final success = await dao.saveResources(resources);
 ```
 
 ### Reading Resources
 
 ```dart
 // Retrieve a resource by type and ID
-final patient = await FhirDb().get(
-  resourceType: R4ResourceType.Patient,
-  id: '12345',
+final patient = await dao.getResource(
+  R4ResourceType.Patient,
+  '12345',
 );
 
 // Check if a resource exists
-final exists = await FhirDb().exists(
-  resourceType: R4ResourceType.Patient,
-  id: '12345',
+final exists = await dao.exists(
+  R4ResourceType.Patient,
+  '12345',
 );
+
+// Get all resources of a type
+final allPatients = await dao.getResourcesByType(
+  R4ResourceType.Patient,
+);
+
+// Paginated retrieval
+final page = await dao.getResourcesWithPagination(
+  resourceType: R4ResourceType.Patient,
+  limit: 20,
+  offset: 0,
+);
+
+// Count resources of a type
+final count = await dao.getResourceCount(R4ResourceType.Patient);
+
+// List all resource types in the database
+final types = await dao.getResourceTypes();
 ```
 
 ### Searching Resources
 
+The database supports FHIR search parameters with automatic indexing:
+
 ```dart
-// Find resources by type and field value
-final patients = await FhirDb().find(
+// Search patients by name
+final patients = await dao.search(
   resourceType: R4ResourceType.Patient,
-  field: ['name', 0, 'family'],
-  value: 'Doe',
+  parameters: {'name': 'Doe'},
 );
 
-// Custom search with a finder function
-final activePatients = await FhirDb().search(
-  resourceType: R4ResourceType.Patient,
-  finder: (resource) => resource['active'] == true,
+// Search with multiple parameters
+final observations = await dao.search(
+  resourceType: R4ResourceType.Observation,
+  parameters: {
+    'patient': 'Patient/12345',
+    'code': 'http://loinc.org|85354-9',
+    'date': 'ge2024-01-01',
+  },
 );
 
-// Get all resources of specified types
-final allPatients = await FhirDb().getActiveResourcesOfType(
-  resourceTypes: [R4ResourceType.Patient],
+// Count search results
+final resultCount = await dao.searchCount(
+  resourceType: R4ResourceType.Observation,
+  parameters: {'patient': 'Patient/12345'},
 );
-
-// Get all resources in the database
-final allResources = await FhirDb().getAllActiveResources();
 ```
+
+Supported search parameter types:
+- **String** (`name`, `address`, etc.) — case-insensitive prefix matching
+- **Token** (`code`, `identifier`, etc.) — system|code matching
+- **Reference** (`patient`, `subject`, etc.) — reference resolution
+- **Date** (`date`, `birthdate`, etc.) — date range comparisons (eq, ne, gt, lt, ge, le, sa, eb, ap)
+- **Number** (`length`, etc.) — numeric comparisons
+- **Quantity** (`value-quantity`, etc.) — quantity with unit matching
+- **URI** (`url`, etc.) — URI matching
+- **Composite** — combined parameter searches
+- **Special** (`_has`, `_tag`, `_profile`, `_security`, `_source`, `_lastUpdated`) — special FHIR parameters
 
 ### Deleting Resources
 
 ```dart
 // Delete a resource by type and ID
-await FhirDb().delete(
-  resourceType: R4ResourceType.Patient,
-  id: '12345',
+final deleted = await dao.deleteResource(
+  R4ResourceType.Patient,
+  '12345',
 );
-
-// Delete all resources of a type
-await FhirDb().deleteSingleType(
-  resourceType: R4ResourceType.Patient,
-);
-
-// Delete all resources in the database
-await FhirDb().deleteAllResources();
 ```
 
 ## Advanced Features
 
 ### Resource Versioning and History
 
-The database automatically manages resource versions when updating:
+The database automatically manages resource versions on each save:
 
 ```dart
-// Save a resource initially
-final patient = await FhirDb().save(resource: patient);
+// Save creates version 1
+final v1 = await dao.saveResource(patient);
+print(v1.meta?.versionId); // "1"
 
-// Update the resource
-patient.active = FhirBoolean(true);
-final updatedPatient = await FhirDb().save(resource: patient);
+// Saving again increments the version
+final updated = v1.copyWith(active: FhirBoolean(true));
+final v2 = await dao.saveResource(updated);
+print(v2.meta?.versionId); // "2"
 
-// The updated resource has an incremented versionId
-print(updatedPatient.meta?.versionId); // Incremented version
-
-// Previous versions are accessible in the history
+// Retrieve version history
+final history = await dao.getResourceHistory(
+  R4ResourceType.Patient,
+  '12345',
+);
+// Returns all versions, most recent first
 ```
 
-You can configure version IDs to use timestamps instead of incremental numbers:
+Use timestamp-based versioning instead of incrementing integers:
 
 ```dart
-// Enable timestamp-based versioning
-FhirDb().versionIdAsTime = true;
+dao.versionIdAsTime = true;
 ```
 
-### Syncing Support
+### Sync Support
 
-For applications requiring offline-first capabilities with later synchronization:
+Track resources that need syncing to a remote server:
 
 ```dart
-// Enable storing resources for sync
-FhirDb().storeForSync = true;
+// Enable sync tracking
+dao.storeForSync = true;
 
-// Later, retrieve resources that need syncing
-final syncResources = await FhirDb().getSync();
+// Save resources — they'll be queued for sync automatically
+await dao.saveResource(patient);
 
-// Clear the sync queue after successful server sync
-await FhirDb().clearSync();
+// Retrieve resources pending sync
+final pendingSync = await dao.getSync();
+
+// Clear the sync queue after successful upload
+await dao.clearSync();
 ```
 
-### Reactive Database Updates
+### Canonical Resource Cache
 
-Subscribe to resource changes using RxDart BehaviorSubjects:
+Store canonical resources (ValueSet, StructureDefinition, etc.) indexed by URL:
 
 ```dart
-// Get a subject that emits patient changes
-final patientSubject = FhirDb().subject(
-  resourceType: R4ResourceType.Patient,
-  id: '12345',
+// Save a canonical resource
+await dao.saveCanonicalResource(valueSet);
+
+// Retrieve by URL
+final vs = await dao.getCanonicalResource(
+  'http://example.org/fhir/ValueSet/my-codes',
 );
 
-// Listen for changes
-patientSubject.listen((patient) {
-  if (patient != null) {
-    // Handle updated patient
-  } else {
-    // Handle patient deletion
-  }
-});
-```
-
-Subscribe to all sync events:
-
-```dart
-final syncSubject = FhirDb().listenSync();
-syncSubject.listen((resource) {
-  // Handle resource changes for sync
-});
-```
-
-### Working with Canonical Resources
-
-You can store Canonical Resources in their own Boxes just as you do with any other Resource. However, that stores them by ID, and often with Canonical resources, they are searched by URI. This is a single box that contains only different types of canonical resources, stored by URI (useful if you need a local Canonical Resource Cache):
-
-```dart
-// Save a canonical resource (e.g., a ValueSet)
-await FhirDb().saveCanonicalResource(resource: valueSet);
-
-// Retrieve a canonical resource by URL
-final valueSet = await FhirDb().getCanonicalResource(
-  url: 'http://example.org/fhir/ValueSet/my-codes',
+// Check if a canonical key exists
+final hasIt = await dao.containsCanonicalKey(
+  'http://example.org/fhir/ValueSet/my-codes',
 );
 
-// Get all canonical resources of a specific type
-final allValueSets = await FhirDb().getAllCanonicalByType<ValueSet>(
-  type: R4ResourceType.ValueSet,
-);
+// List all canonical keys
+final keys = await dao.listCanonicalKeys();
 ```
 
 ### General Storage
 
-For non-FHIR data:
+Store arbitrary data (non-FHIR) in the database:
 
 ```dart
-// Save arbitrary objects
-final key = await FhirDb().saveGeneral(object: {'name': 'Test'});
+// Save arbitrary data (returns an integer key)
+final key = await dao.saveGeneral(value: '{"name": "Test"}');
 
-// Retrieve by key
-final object = await FhirDb().readGeneral(key: key);
+// Read by key
+final data = await dao.readGeneral(key);
 
-// Search general objects
-final results = await FhirDb().searchGeneral(
-  finder: (obj) => (obj as Map)['name'] == 'Test',
-);
+// Get all general storage entries
+final allEntries = await dao.getAllGeneral();
 
-// Delete or clear general storage
-await FhirDb().deleteFromGeneral(key: key);
-await FhirDb().clearGeneral();
-```
+// Delete by key
+await dao.deleteFromGeneral(key);
 
-## Encryption
-
-The database is encrypted by default, but you can provide your own encryption key:
-
-```dart
-// Initialize with encryption
-await FhirDb().init(pw: 'secure-password');
-
-// Update the encryption key
-await FhirDb().updatePw(oldPw: 'old-password', newPw: 'new-password');
-```
-
-The library uses HMAC-SHA256 to derive secure encryption keys from passwords.
-
-## Performance Considerations
-
-While the in-memory database offers exceptional performance, be mindful of resource usage:
-
-- The database keeps all data in memory, making it very fast
-- Large datasets (e.g., 20GB of FHIR data) will work, but require sufficient RAM
-- For mobile applications, consider data volume constraints
-- Periodically close unused boxes for optimal memory management with large datasets
-
-```dart
-// Close specific resource type boxes
-await FhirDb().closeResourceBoxes(types: [R4ResourceType.Patient]);
-
-// Close specific boxes
-await FhirDb().closeHistoryBox();
-await FhirDb().closeGeneralBox();
-
-// Close all boxes
-await FhirDb().closeAllBoxes();
+// Clear all general storage
+await dao.clearGeneral();
 ```
 
 ## Example
 
-A complete example of using the database in a Flutter application:
+A complete example using the database in a Dart application:
 
 ```dart
+import 'dart:io';
+import 'package:drift/native.dart';
 import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4_db/fhir_r4_db.dart';
-import 'package:flutter/material.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize the database
-  await FhirDb().init(pw: 'secure-password');
-  
-  // Enable versioning and sync features
-  FhirDb().versionIdAsTime = true;
-  FhirDb().storeForSync = true;
-  
-  runApp(MyApp());
-}
+Future<void> main() async {
+  // Create the database
+  final db = FhirDb(NativeDatabase(File('example.db')));
+  final dao = db.fhirDao;
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PatientListScreen(),
-    );
-  }
-}
-
-class PatientListScreen extends StatefulWidget {
-  @override
-  _PatientListScreenState createState() => _PatientListScreenState();
-}
-
-class _PatientListScreenState extends State<PatientListScreen> {
-  List<Patient> patients = [];
-  
-  @override
-  void initState() {
-    super.initState();
-    _loadPatients();
-  }
-  
-  Future<void> _loadPatients() async {
-    final resources = await FhirDb().getActiveResourcesOfType(
-      resourceTypes: [R4ResourceType.Patient],
-    );
-    
-    setState(() {
-      patients = resources.map((r) => r as Patient).toList();
-    });
-  }
-  
-  Future<void> _addPatient() async {
-    final patient = Patient(
-      name: [
-        HumanName(
-          family: 'Doe'.toFhirString,
-          given: ['John'.toFhirString],
-        ),
-      ],
-      birthDate: FhirDate('1970-01-01'),
-    );
-    
-    await FhirDb().save(resource: patient);
-    _loadPatients();
-  }
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Patient List')),
-      body: ListView.builder(
-        itemCount: patients.length,
-        itemBuilder: (context, index) {
-          final patient = patients[index];
-          return ListTile(
-            title: Text(patient.name?.first.family?.value ?? 'Unnamed'),
-            subtitle: Text(patient.id?.value ?? ''),
-            trailing: IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () async {
-                await FhirDb().delete(resource: patient);
-                _loadPatients();
-              },
-            ),
-          );
-        },
+  // Save a patient
+  final patient = Patient(
+    name: [
+      HumanName(
+        family: 'Doe'.toFhirString,
+        given: ['John'.toFhirString],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _addPatient,
-        child: Icon(Icons.add),
-      ),
-    );
-  }
+    ],
+    birthDate: FhirDate('1970-01-01'),
+  );
+  final saved = await dao.saveResource(patient);
+  print('Saved patient: ${saved.id}');
+
+  // Search for patients
+  final results = await dao.search(
+    resourceType: R4ResourceType.Patient,
+    parameters: {'name': 'Doe'},
+  );
+  print('Found ${results.length} patients');
+
+  // Get history
+  final history = await dao.getResourceHistory(
+    R4ResourceType.Patient,
+    saved.id!.valueString!,
+  );
+  print('${history.length} versions');
+
+  // Clean up
+  await db.close();
 }
 ```
 
-This example demonstrates a basic patient management application using the FHIR database for local storage, with the ability to add and delete patients.
+### Performance
 
-### Benchmarking
-
-This is not true benchmarking, its purely to give an idea of what you can expect if you're using this. I'm running it on my computer (Ubuntu Budgie, AMD Ryzen 7 PRO x 16, 64 GB RAM), and I stored the OPEN FHIR data set [MIMIC-IV Clinical Database Demo on FHIR](https://physionet.org/content/mimic-iv-fhir-demo/2.0/). It contains 876.2 MB of data, or about 899,000 FHIR resources. It takes about 4 minutes to load all of that into the database (because there's no good bulk load option), and to search for 10 individual resources it took 9ms.
+The SQLite backend provides excellent performance. On a test machine (AMD Ryzen 7 PRO, 64 GB RAM, Linux), loading the [MIMIC-IV Clinical Database Demo on FHIR](https://physionet.org/content/mimic-iv-fhir-demo/2.0/) (876 MB, ~899,000 resources) takes about 4 minutes, and searching for individual resources completes in under 10ms.

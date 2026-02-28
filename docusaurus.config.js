@@ -34,7 +34,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/fhir-fli/fhir_fli_documentation/tree/main/',
           routeBasePath: 'docs',
-          exclude: ['auth/**'],
+          // Auth docs are now included in the build
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

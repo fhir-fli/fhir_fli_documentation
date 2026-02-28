@@ -408,7 +408,7 @@ try {
 
 Test standalone launch in your app:
 
-1. **Use a sandbox** - Start with [SMART Health IT Sandbox](servers/smart-sandbox)
+1. **Use a sandbox** - Start with [SMART Health IT Sandbox](https://launch.smarthealthit.org/)
 2. **Register your app** - Get a client ID and register your redirect URI
 3. **Test authentication flow** - Verify the full OAuth flow works
 4. **Test token refresh** - Ensure tokens refresh automatically
@@ -416,11 +416,5 @@ Test standalone launch in your app:
 
 ## Next Steps
 
-- **[Platform Setup](platform/ios)** - Configure iOS, Android, Web
-- **[Token Management](token-management)** - Handle refresh and revocation
-- **[Session Management](session-management)** - Implement timeouts
-- **[Server Integration](servers/epic)** - Connect to specific servers
-
-## Troubleshooting
-
-See the [Troubleshooting Guide](troubleshooting) for common issues with standalone launch.
+- **[Installation guide](/docs/auth/installation)** - Platform-specific setup
+- **[Auth overview](/docs/auth)** - Full API reference and feature overview

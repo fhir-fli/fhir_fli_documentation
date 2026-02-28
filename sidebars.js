@@ -38,10 +38,20 @@ const sidebars = {
         'at_rest/restful_parameters',
       ],
     },
+    {
+      type: 'category',
+      label: 'FHIR Auth',
+      items: [
+        'auth/fhir_r4_auth',
+        'auth/installation',
+        'auth/standalone-launch',
+      ],
+    },
     'fhir_r4_db',
     'fhir_r4_bulk',
     'fhir_r4_path',
     'fhir_r4_validation',
+    'fhir_r4_cql',
     {
       type: 'category',
       label: 'FHIR Mapping',
@@ -58,7 +68,17 @@ const sidebars = {
         'demos/fhir_path_demo',
       ],
     },
-    'cicada_ig',
+    {
+      type: 'category',
+      label: 'Cicada',
+      items: [
+        'cicada/cicada_overview',
+        'cicada/cicada_architecture',
+        'cicada/cicada_usage',
+        'cicada/cicada_who',
+        'cicada_ig',
+      ],
+    },
     'ucum',
   ],
 };
