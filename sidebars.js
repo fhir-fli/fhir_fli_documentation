@@ -80,6 +80,18 @@ const sidebars = {
       ],
     },
     'ucum',
+    {
+      type: 'category',
+      label: 'FHIR ANT',
+      items: [
+        'fhirant/fhirant_overview',
+        'fhirant/fhirant_capabilities',
+        'fhirant/fhirant_security',
+        'fhirant/fhirant_api_reference',
+        'fhirant/fhirant_cli',
+        'fhirant/fhirant_privacy_policy',
+      ],
+    },
   ],
 };
 
