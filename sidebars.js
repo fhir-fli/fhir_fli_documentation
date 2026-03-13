@@ -107,6 +107,14 @@ const sidebars = {
         },
         {
           type: 'category',
+          label: 'Drosophila',
+          items: [
+            'drosophila/drosophila_overview',
+            'drosophila/drosophila_demo',
+          ],
+        },
+        {
+          type: 'category',
           label: 'FHIR ANT',
           items: [
             'fhirant/fhirant_overview',
