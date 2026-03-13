@@ -91,6 +91,7 @@ const sidebars = {
             'bw_amr_ig/bw_amr_ig_architecture',
             'bw_amr_ig/bw_amr_ig_whonet',
             'bw_amr_ig/bw_amr_ig_flutter',
+            'bw_amr_ig_ig',
           ],
         },
         {
