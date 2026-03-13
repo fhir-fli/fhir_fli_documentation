@@ -56,11 +56,31 @@ Pre-generated Dart files provide ValueSet coding constants for dropdowns and val
 - AST methods (disk diffusion, MIC, Etest, automated)
 - Ward types (inpatient, outpatient, emergency, ICU)
 
+## Packages
+
+The repository contains two Dart packages:
+
+| Package | Path | Purpose |
+|---------|------|---------|
+| `bw_amr_ig` | [`flutter/`](https://github.com/Dokotela/bw-amr-ig/tree/main/flutter) | Data capture models and ValueSets for the Flutter app |
+| `bw_amr_export` | [`export/`](https://github.com/Dokotela/bw-amr-ig/tree/main/export) | WHONET/GLASS flat-file exporter (server-side or CLI) |
+
+The export package is intentionally separate — it's used server-side or from a web interface where someone can log in, run the export, and produce a file for WHONET or GLASS upload. See [WHONET Export](bw_amr_ig_whonet) for usage details.
+
 ## Installation
 
 ```yaml
+# For the data capture app
 dependencies:
-  fhir_r4: ^0.13.0
-```
+  bw_amr_ig:
+    git:
+      url: https://github.com/Dokotela/bw-amr-ig.git
+      path: flutter
 
-The Flutter models are in the `flutter/` directory of the [bw-amr-ig repository](https://github.com/Dokotela/bw-amr-ig/tree/main/flutter).
+# For export functionality (server/CLI/web)
+dependencies:
+  bw_amr_export:
+    git:
+      url: https://github.com/Dokotela/bw-amr-ig.git
+      path: export
+```

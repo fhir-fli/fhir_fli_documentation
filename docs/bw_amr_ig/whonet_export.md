@@ -57,3 +57,50 @@ Flutter app → FHIR server → $export-whonet → WHONET / GLASS
 ```
 
 ConceptMaps are used server-side during export to translate FHIR terminology codes to WHONET-native codes. The Flutter application does not need the ConceptMaps — it works with standard FHIR terminologies.
+
+## `bw_amr_export` Dart Package
+
+The export logic is implemented as a standalone Dart package (`export/` in the [bw-amr-ig repository](https://github.com/Dokotela/bw-amr-ig/tree/main/export)). It can be used from a FHIR server, a web application, or a CLI tool.
+
+### Components
+
+| Class | Purpose |
+|-------|---------|
+| `ConceptMapIndex` | Builds reverse lookup tables from ConceptMap JSON (LOINC→WHONET, SNOMED→WHONET, WHONET→ATC) |
+| `ResourceResolver` | Walks DiagnosticReport→OrganismObservation→SusceptibilityObservation and produces `IsolateRow`s |
+| `WhonetExporter` | Generates WHONET pipe-delimited output with dynamic antibiotic columns |
+| `GlassExporter` | Generates WHO GLASS CSV with ATC codes and HA/CO origin classification |
+| `IsolateRow` | Data model for a single flattened isolate row |
+
+### Usage
+
+```dart
+import 'dart:io';
+import 'package:bw_amr_export/bw_amr_export.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+
+// 1. Build the ConceptMap index from JSON files
+final index = ConceptMapIndex.fromJson(
+  antibioticToLoincJson: File('ConceptMap-whonet-antibiotic-to-loinc.json').readAsStringSync(),
+  antibioticToAtcJson: File('ConceptMap-whonet-antibiotic-to-atc.json').readAsStringSync(),
+  organismToSnomedJson: File('ConceptMap-whonet-organism-to-snomed.json').readAsStringSync(),
+);
+
+// 2. Resolve FHIR resources into flat isolate rows
+final resolver = ResourceResolver(index: index);
+final rows = resolver.resolve(bundleResources); // List<Resource>
+
+// 3. Export as WHONET pipe-delimited or GLASS CSV
+final whonetOutput = WhonetExporter().export(rows);
+final glassOutput = GlassExporter(index: index).export(rows);
+```
+
+### Installation
+
+```yaml
+dependencies:
+  bw_amr_export:
+    git:
+      url: https://github.com/Dokotela/bw-amr-ig.git
+      path: export
+```
