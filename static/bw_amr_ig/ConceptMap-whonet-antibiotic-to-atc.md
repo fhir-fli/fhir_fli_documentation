@@ -27,7 +27,7 @@ Maps WHONET antibiotic codes to WHO ATC (Anatomical Therapeutic Chemical) codes.
   "name" : "WHONETAntibioticToATC",
   "title" : "WHONET Antibiotic Codes to WHO ATC Classification",
   "status" : "draft",
-  "date" : "2026-03-13T15:54:56-04:00",
+  "date" : "2026-03-13T21:27:21-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {
@@ -42,7 +42,7 @@ Maps WHONET antibiotic codes to WHO ATC (Anatomical Therapeutic Chemical) codes.
   ],
   "description" : "Maps WHONET antibiotic codes to WHO ATC (Anatomical Therapeutic Chemical) codes. Derived from the AMR R package (https://github.com/msberends/AMR). Contains 374 WHONET antibiotic codes with ATC mappings.",
   "sourceUri" : "http://whonet.org/CodeSystem/antibiotic",
-  "targetUri" : "http://www.whocc.no/atc",
+  "targetUri" : "http://www.whocc.no/atc/vs",
   "group" : [
     {
       "source" : "http://whonet.org/CodeSystem/antibiotic",

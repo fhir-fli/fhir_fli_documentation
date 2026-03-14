@@ -27,7 +27,7 @@ Maps WHONET antibiotic codes to LOINC susceptibility test codes. Derived from th
   "name" : "WHONETAntibioticToLOINC",
   "title" : "WHONET Antibiotic Codes to LOINC Susceptibility Codes",
   "status" : "draft",
-  "date" : "2026-03-13T15:54:56-04:00",
+  "date" : "2026-03-13T21:27:21-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {
@@ -42,7 +42,7 @@ Maps WHONET antibiotic codes to LOINC susceptibility test codes. Derived from th
   ],
   "description" : "Maps WHONET antibiotic codes to LOINC susceptibility test codes. Derived from the AMR R package (https://github.com/msberends/AMR). Contains 271 WHONET antibiotic codes with LOINC mappings. Note: equivalence is 'relatedto' because one WHONET antibiotic code maps to multiple LOINC codes representing different test methods (MIC, disk diffusion, etc.).",
   "sourceUri" : "http://whonet.org/CodeSystem/antibiotic",
-  "targetUri" : "http://loinc.org",
+  "targetUri" : "http://loinc.org/vs",
   "group" : [
     {
       "source" : "http://whonet.org/CodeSystem/antibiotic",

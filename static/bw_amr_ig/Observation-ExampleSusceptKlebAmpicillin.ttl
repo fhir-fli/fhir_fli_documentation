@@ -8,21 +8,18 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://bw.health.gov/fhir/Observation/ExampleSusceptKlebAmpicillin> a fhir:Observation ;
+<http://bw.health.gov/fhir/amr/Observation/ExampleSusceptKlebAmpicillin> a fhir:Observation ;
   fhir:nodeRole fhir:treeRoot ;
   fhir:id [ fhir:v "ExampleSusceptKlebAmpicillin"] ; # 
   fhir:meta [
      fhir:profile ( [
-       fhir:v "http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/StructureDefinition/botswana-amr-susceptibility-observation"^^xsd:anyURI ;
-       fhir:l <http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/StructureDefinition/botswana-amr-susceptibility-observation>
-     ] [
-       fhir:v "http://bw.health.gov/fhir/StructureDefinition/BotswanaAMR-SusceptibilityObservation"^^xsd:anyURI ;
-       fhir:l <http://bw.health.gov/fhir/StructureDefinition/BotswanaAMR-SusceptibilityObservation>
+       fhir:v "http://bw.health.gov/fhir/amr/StructureDefinition/botswana-amr-susceptibility-observation"^^xsd:anyURI ;
+       fhir:l <http://bw.health.gov/fhir/amr/StructureDefinition/botswana-amr-susceptibility-observation>
      ] )
   ] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation ExampleSusceptKlebAmpicillin</b></p><a name=\"ExampleSusceptKlebAmpicillin\"> </a><a name=\"hcExampleSusceptKlebAmpicillin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profiles: <a href=\"StructureDefinition-botswana-amr-susceptibility-observation.html\">Botswana AMR Susceptibility Observation</a>, <code>http://bw.health.gov/fhir/StructureDefinition/BotswanaAMR-SusceptibilityObservation</code></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 28-1}\">Ampicillin [Susceptibility] by Minimum inhibitory concentration (MIC)</span></p><p><b>subject</b>: <a href=\"Patient-ExamplePatientMotswana.html\">Keabetswe Motswana  Female, DoB: 1981-05-14</a></p><p><b>effective</b>: 2026-03-11 14:00:00+0200</p><p><b>value</b>: 6 mm<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemm = 'mm')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation R}\">Resistant</span></p><p><b>method</b>: <span title=\"Codes:{http://snomed.info/sct 115254003}\">Disc diffusion method</span></p><p><b>specimen</b>: <a href=\"Specimen-ExampleSpecimenUrine.html\">Specimen: identifier = PMH-2026-U4421; type = Urine</a></p></div>"^^rdf:XMLLiteral ]
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation ExampleSusceptKlebAmpicillin</b></p><a name=\"ExampleSusceptKlebAmpicillin\"> </a><a name=\"hcExampleSusceptKlebAmpicillin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-botswana-amr-susceptibility-observation.html\">Botswana AMR Susceptibility Observation</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 28-1}\">Ampicillin [Susceptibility] by Minimum inhibitory concentration (MIC)</span></p><p><b>subject</b>: <a href=\"Patient-ExamplePatientMotswana.html\">Keabetswe Motswana  Female, DoB: 1981-05-14</a></p><p><b>effective</b>: 2026-03-11 14:00:00+0200</p><p><b>value</b>: 6 mm<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemm = 'mm')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation R}\">CLSI 2025</span></p><p><b>method</b>: <span title=\"Codes:{http://snomed.info/sct 115254003}\">Disc diffusion method</span></p><p><b>specimen</b>: <a href=\"Specimen-ExampleSpecimenUrine.html\">Specimen: identifier = PMH-2026-U4421; type = Urine</a></p></div>"^^rdf:XMLLiteral ]
   ] ; # 
   fhir:status [ fhir:v "final"] ; # 
   fhir:category ( [
@@ -57,7 +54,7 @@
      ] )
   ] ; # 
   fhir:subject [
-     fhir:l <http://bw.health.gov/fhir/Patient/ExamplePatientMotswana> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Patient/ExamplePatientMotswana> ;
      fhir:reference [ fhir:v "Patient/ExamplePatientMotswana" ]
   ] ; # 
   fhir:effective [
@@ -80,10 +77,10 @@
          fhir:v "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"^^xsd:anyURI ;
          fhir:l <http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation>
        ] ;
-       fhir:version [ fhir:v "CLSI 2025" ] ;
        fhir:code [ fhir:v "R" ] ;
        fhir:display [ fhir:v "Resistant" ]
-     ] )
+     ] ) ;
+     fhir:text [ fhir:v "CLSI 2025" ]
   ] ) ; # 
   fhir:method [
      fhir:coding ( [
@@ -97,7 +94,7 @@
      ] )
   ] ; # 
   fhir:specimen [
-     fhir:l <http://bw.health.gov/fhir/Specimen/ExampleSpecimenUrine> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Specimen/ExampleSpecimenUrine> ;
      fhir:reference [ fhir:v "Specimen/ExampleSpecimenUrine" ]
   ] . # 
 
