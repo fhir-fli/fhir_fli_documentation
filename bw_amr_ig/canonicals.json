@@ -1,5 +1,33 @@
 [
   {
+    "id" : "whonet-antibiotic-to-atc",
+    "type" : "ConceptMap",
+    "url" : "http://bw.health.gov/fhir/ConceptMap/whonet-antibiotic-to-atc",
+    "version" : "0.1.0",
+    "name" : "WHONETAntibioticToATC"
+  },
+  {
+    "id" : "whonet-antibiotic-to-loinc",
+    "type" : "ConceptMap",
+    "url" : "http://bw.health.gov/fhir/ConceptMap/whonet-antibiotic-to-loinc",
+    "version" : "0.1.0",
+    "name" : "WHONETAntibioticToLOINC"
+  },
+  {
+    "id" : "whonet-antibiotic-to-snomed",
+    "type" : "ConceptMap",
+    "url" : "http://bw.health.gov/fhir/ConceptMap/whonet-antibiotic-to-snomed",
+    "version" : "0.1.0",
+    "name" : "WHONETAntibioticToSNOMED"
+  },
+  {
+    "id" : "whonet-organism-to-snomed",
+    "type" : "ConceptMap",
+    "url" : "http://bw.health.gov/fhir/ConceptMap/whonet-organism-to-snomed",
+    "version" : "0.1.0",
+    "name" : "WHONETOrganismToSNOMED"
+  },
+  {
     "id" : "botswana-amr-local-method-cs",
     "type" : "CodeSystem",
     "url" : "http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/CodeSystem/botswana-amr-local-method-cs",

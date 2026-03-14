@@ -33,11 +33,13 @@
       "uses" : {
       },
       "ValueSet-botswana-amr-test-result-status-vs.html" : "Botswana AMR Test Result Status",
+      "ConceptMap-whonet-antibiotic-to-snomed.html" : "WHONET Antibiotic Codes to SNOMED CT Substance Codes",
+      "ValueSet-botswana-amr-specimen-site-vs.html" : "Botswana AMR Specimen Collection Sites",
       "ValueSet-botswana-amr-ast-method-vs.html" : "Botswana AMR AST Method",
+      "ValueSet-botswana-amr-gram-stain-result-vs.html" : "Botswana AMR Gram Stain Results",
       "ValueSet-botswana-amr-organism-vs.html" : "Botswana AMR Organism ValueSet",
       "ValueSet-botswana-amr-identification-method-vs.html" : "Botswana AMR Organism Identification Methods",
-      "ValueSet-botswana-amr-gram-stain-result-vs.html" : "Botswana AMR Gram Stain Results",
-      "ValueSet-botswana-amr-specimen-site-vs.html" : "Botswana AMR Specimen Collection Sites"
+      "ConceptMap-whonet-organism-to-snomed.html" : "WHONET Organism Codes to SNOMED CT"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",

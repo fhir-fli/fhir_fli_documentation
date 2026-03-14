@@ -21,7 +21,7 @@
   fhir:name [ fhir:v "BotswanaAMRASTMethodVS"] ; # 
   fhir:title [ fhir:v "Botswana AMR AST Method"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-03-13T15:05:11-04:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-03-13T15:54:56-04:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "University of Botswana Partnership"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "University of Botswana Partnership" ] ;

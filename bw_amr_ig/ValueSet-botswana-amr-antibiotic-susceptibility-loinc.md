@@ -50,7 +50,7 @@ Collection of LOINC codes for antibiotic-susceptibility tests (MIC panel and ind
   "name" : "BotswanaAMRAntibioticSusceptibilityLOINC",
   "title" : "Botswana AMR Antibiotic Susceptibility LOINC",
   "status" : "draft",
-  "date" : "2026-03-13T15:05:11-04:00",
+  "date" : "2026-03-13T15:54:56-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {

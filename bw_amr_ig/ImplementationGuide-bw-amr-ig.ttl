@@ -22,7 +22,7 @@
   fhir:name [ fhir:v "BWAMRIG"] ; # 
   fhir:title [ fhir:v "Botswana AMR Implementation Guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-03-13T15:05:11-04:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-03-13T15:54:56-04:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "University of Botswana Partnership"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "University of Botswana Partnership" ] ;
@@ -2342,6 +2342,90 @@
        ] ;
        fhir:name [ fhir:v "Specimen Collection Location" ] ;
        fhir:description [ fhir:v "Ward or facility location where specimen was collected" ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ConceptMap"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://bw.health.gov/fhir/ConceptMap/whonet-antibiotic-to-loinc> ;
+         fhir:reference [ fhir:v "ConceptMap/whonet-antibiotic-to-loinc" ]
+       ] ;
+       fhir:name [ fhir:v "WHONET Antibiotic Codes to LOINC Susceptibility Codes" ] ;
+       fhir:description [ fhir:v "Maps WHONET antibiotic codes to LOINC susceptibility test codes. Derived from the AMR R package (https://github.com/msberends/AMR). Contains 271 WHONET antibiotic codes with LOINC mappings. Note: equivalence is 'relatedto' because one WHONET antibiotic code maps to multiple LOINC codes representing different test methods (MIC, disk diffusion, etc.)." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ConceptMap"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://bw.health.gov/fhir/ConceptMap/whonet-antibiotic-to-snomed> ;
+         fhir:reference [ fhir:v "ConceptMap/whonet-antibiotic-to-snomed" ]
+       ] ;
+       fhir:name [ fhir:v "WHONET Antibiotic Codes to SNOMED CT Substance Codes" ] ;
+       fhir:description [ fhir:v "Maps WHONET antibiotic codes to SNOMED CT substance concept IDs. Derived from the official LOINC-SNOMED CT Ontology (September 2025) by tracing LOINC susceptibility codes through their SNOMED observable entity representations to the Component (704320005) relationship, which identifies the substance being tested. Contains 213 authoritative antimicrobial mappings." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ConceptMap"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://bw.health.gov/fhir/ConceptMap/whonet-antibiotic-to-atc> ;
+         fhir:reference [ fhir:v "ConceptMap/whonet-antibiotic-to-atc" ]
+       ] ;
+       fhir:name [ fhir:v "WHONET Antibiotic Codes to WHO ATC Classification" ] ;
+       fhir:description [ fhir:v "Maps WHONET antibiotic codes to WHO ATC (Anatomical Therapeutic Chemical) codes. Derived from the AMR R package (https://github.com/msberends/AMR). Contains 374 WHONET antibiotic codes with ATC mappings." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ConceptMap"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://bw.health.gov/fhir/ConceptMap/whonet-organism-to-snomed> ;
+         fhir:reference [ fhir:v "ConceptMap/whonet-organism-to-snomed" ]
+       ] ;
+       fhir:name [ fhir:v "WHONET Organism Codes to SNOMED CT" ] ;
+       fhir:description [ fhir:v "Maps WHONET organism codes to SNOMED CT concepts. Derived from the AMR R package (https://github.com/msberends/AMR) which integrates WHONET organism codes with SNOMED CT mappings. Contains 4995 WHONET organism codes." ] ;
        fhir:example [
          a fhir:Boolean ;
          fhir:v false

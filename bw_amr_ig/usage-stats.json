@@ -47,6 +47,9 @@
     "http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/StructureDefinition/specimen-collection-location": [
       "Specimen.collection"
     ],
+    "http://hl7.org/fhir/1.0/StructureDefinition/extension-ConceptMap.element.target.equivalence": [
+      "ConceptMap.group.element.target"
+    ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice": [
       "StructureDefinition.snapshot.element.constraint"
     ],
