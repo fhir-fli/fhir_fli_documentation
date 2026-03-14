@@ -1,2184 +1,2129 @@
 {
-  "date" : "Fri, 13 Mar, 2026 15:54:56 -0400",
+  "date" : "Fri, 13 Mar, 2026 21:27:21 -0400",
   "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
   "files" : [
     {
       "name" : "/fsh-generated/resources/ImplementationGuide-bw-amr-ig.json",
-      "size" : 20924,
+      "size" : 20505,
       "processes" : [
         {
           "activity" : "load",
-          "start" : 33,
-          "length" : 17
+          "start" : 20,
+          "length" : 10
         },
         {
           "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 14
+          "start" : 30,
+          "length" : 10
         },
         {
           "activity" : "generateNarratives",
-          "start" : 44,
-          "length" : 145
+          "start" : 30,
+          "length" : 83
         },
         {
           "activity" : "validate",
-          "start" : 6663,
-          "length" : 1826
+          "start" : 6595,
+          "length" : 1387
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 6597,
+          "length" : 1
+        },
+        {
+          "activity" : "validate",
+          "start" : 6597,
+          "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 165
+          "start" : 6605,
+          "length" : 138
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 145
+          "start" : 7370,
+          "length" : 129
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
+          "start" : 14497,
           "length" : 4
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 14761,
+          "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/CodeSystem-botswana-amr-local-method-cs.json",
-      "size" : 1123,
+      "size" : 1097,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 11
+          "start" : 17,
+          "length" : 4
         },
         {
           "activity" : "load",
-          "start" : 30,
-          "length" : 7
+          "start" : 18,
+          "length" : 6
         },
         {
           "activity" : "load-configure",
-          "start" : 44,
-          "length" : 1
-        },
-        {
-          "activity" : "loadDepInfo",
-          "start" : 44,
+          "start" : 30,
           "length" : 1
         },
         {
           "activity" : "checkR4R4B",
-          "start" : 44,
+          "start" : 30,
           "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 34
+          "start" : 30,
+          "length" : 23
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 34
+          "start" : 6512,
+          "length" : 23
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 63
+          "start" : 6605,
+          "length" : 59
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 511
+          "start" : 7370,
+          "length" : 390
         },
         {
-          "activity" : "makeDependencies",
-          "start" : 13831,
+          "activity" : "generateValidationPack",
+          "start" : 14497,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/CodeSystem-botswana-amr-local-organism-cs.json",
-      "size" : 3910,
+      "size" : 3884,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 6
+          "start" : 17,
+          "length" : 3
         },
         {
           "activity" : "load",
-          "start" : 30,
-          "length" : 10
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 18,
+          "length" : 4
         },
         {
           "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 32
+          "start" : 30,
+          "length" : 8
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 20
+          "start" : 6512,
+          "length" : 16
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 76
+          "start" : 6605,
+          "length" : 78
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 66
+          "start" : 7370,
+          "length" : 57
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
+          "start" : 14497,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/DiagnosticReport-ExampleDiagnosticReportAMR.json",
-      "size" : 1289,
+      "size" : 1180,
       "processes" : [
         {
           "activity" : "loadResources",
+          "start" : 17,
+          "length" : 4
+        },
+        {
+          "activity" : "generateNarratives",
           "start" : 30,
           "length" : 9
         },
         {
-          "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 28
-        },
-        {
           "activity" : "validate",
-          "start" : 6665,
-          "length" : 25
+          "start" : 6597,
+          "length" : 159
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
+          "start" : 6605,
           "length" : 37
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 34
-        },
-        {
-          "activity" : "generateExampleZip",
-          "start" : 13839,
-          "length" : 1
+          "start" : 7370,
+          "length" : 24
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Encounter-ExampleEncounterInpatient.json",
-      "size" : 574,
+      "size" : 471,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 9
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 291
+          "start" : 30,
+          "length" : 113
         },
         {
           "activity" : "validate",
-          "start" : 6665,
-          "length" : 13
-        },
-        {
-          "activity" : "generate1",
-          "start" : 6667,
-          "length" : 34
-        },
-        {
-          "activity" : "generate2",
-          "start" : 7431,
-          "length" : 19
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/Observation-ExampleGramStainNegative.json",
-      "size" : 1318,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
+          "start" : 6597,
           "length" : 8
         },
         {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 448
-        },
-        {
-          "activity" : "validate",
-          "start" : 6665,
-          "length" : 24
-        },
-        {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 37
+          "start" : 6605,
+          "length" : 31
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 20
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/Observation-ExampleOrganismEcoli.json",
-      "size" : 2229,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
-        },
-        {
-          "activity" : "load-configure",
-          "start" : 44,
-          "length" : 1
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 10
-        },
-        {
-          "activity" : "validate",
-          "start" : 6665,
-          "length" : 39
-        },
-        {
-          "activity" : "generate1",
-          "start" : 6667,
-          "length" : 43
-        },
-        {
-          "activity" : "generate2",
-          "start" : 7431,
-          "length" : 28
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/Observation-ExampleOrganismKlebsiella.json",
-      "size" : 2154,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
-        },
-        {
-          "activity" : "load",
-          "start" : 32,
-          "length" : 1
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 11
-        },
-        {
-          "activity" : "validate",
-          "start" : 6665,
-          "length" : 34
-        },
-        {
-          "activity" : "generate1",
-          "start" : 6667,
-          "length" : 39
-        },
-        {
-          "activity" : "generate2",
-          "start" : 7431,
-          "length" : 19
-        },
-        {
-          "activity" : "generateExampleZip",
-          "start" : 13840,
-          "length" : 1
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/Observation-ExampleSpecialTestEcoliEsbl.json",
-      "size" : 1315,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
-          "length" : 7
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 8
-        },
-        {
-          "activity" : "validate",
-          "start" : 6665,
-          "length" : 18
-        },
-        {
-          "activity" : "generate1",
-          "start" : 6667,
-          "length" : 36
-        },
-        {
-          "activity" : "generate2",
-          "start" : 7431,
-          "length" : 13
-        },
-        {
-          "activity" : "scanExamplesForR5",
-          "start" : 14008,
-          "length" : 1
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/Observation-ExampleSpecialTestKlebEsbl.json",
-      "size" : 1314,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
-          "length" : 9
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 10
-        },
-        {
-          "activity" : "validate",
-          "start" : 6665,
-          "length" : 18
-        },
-        {
-          "activity" : "generate1",
-          "start" : 6667,
-          "length" : 33
-        },
-        {
-          "activity" : "generate2",
-          "start" : 7431,
-          "length" : 14
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliAmoxClav.json",
-      "size" : 1732,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
-          "length" : 9
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 45,
-          "length" : 64
-        },
-        {
-          "activity" : "validate",
-          "start" : 6665,
-          "length" : 152
-        },
-        {
-          "activity" : "generate1",
-          "start" : 6667,
-          "length" : 36
-        },
-        {
-          "activity" : "generate2",
-          "start" : 7431,
+          "start" : 7370,
           "length" : 15
         }
       ]
     },
     {
-      "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliAmpicillin.json",
-      "size" : 1718,
+      "name" : "fsh-generated/resources/Observation-ExampleGramStainNegative.json",
+      "size" : 1213,
       "processes" : [
         {
           "activity" : "loadResources",
+          "start" : 17,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
           "start" : 30,
-          "length" : 9
+          "length" : 141
+        },
+        {
+          "activity" : "validate",
+          "start" : 6597,
+          "length" : 332
+        },
+        {
+          "activity" : "generate1",
+          "start" : 6605,
+          "length" : 39
+        },
+        {
+          "activity" : "generate2",
+          "start" : 7370,
+          "length" : 14
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Observation-ExampleOrganismEcoli.json",
+      "size" : 2097,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "checkR4R4B",
-          "start" : 44,
+          "start" : 30,
           "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 7
+          "start" : 30,
+          "length" : 3
         },
         {
           "activity" : "validate",
-          "start" : 6665,
-          "length" : 19
+          "start" : 6597,
+          "length" : 168
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
+          "start" : 6605,
+          "length" : 39
+        },
+        {
+          "activity" : "generate2",
+          "start" : 7370,
+          "length" : 12
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Observation-ExampleOrganismKlebsiella.json",
+      "size" : 2022,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 17,
+          "length" : 2
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 30,
+          "length" : 2
+        },
+        {
+          "activity" : "validate",
+          "start" : 6597,
+          "length" : 172
+        },
+        {
+          "activity" : "generate1",
+          "start" : 6605,
+          "length" : 36
+        },
+        {
+          "activity" : "generate2",
+          "start" : 7370,
+          "length" : 12
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Observation-ExampleSpecialTestEcoliEsbl.json",
+      "size" : 1199,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 17,
+          "length" : 2
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 30,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 30,
+          "length" : 2
+        },
+        {
+          "activity" : "validate",
+          "start" : 6598,
+          "length" : 628
+        },
+        {
+          "activity" : "generate1",
+          "start" : 6605,
+          "length" : 32
+        },
+        {
+          "activity" : "generate2",
+          "start" : 7370,
+          "length" : 8
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Observation-ExampleSpecialTestKlebEsbl.json",
+      "size" : 1198,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 17,
+          "length" : 2
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 30,
+          "length" : 2
+        },
+        {
+          "activity" : "validate",
+          "start" : 6598,
+          "length" : 5
+        },
+        {
+          "activity" : "generate1",
+          "start" : 6605,
+          "length" : 39
+        },
+        {
+          "activity" : "generate2",
+          "start" : 7370,
+          "length" : 9
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliAmoxClav.json",
+      "size" : 1606,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 17,
+          "length" : 2
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 30,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 30,
+          "length" : 38
+        },
+        {
+          "activity" : "validate",
+          "start" : 6598,
+          "length" : 1271
+        },
+        {
+          "activity" : "generate1",
+          "start" : 6605,
+          "length" : 33
+        },
+        {
+          "activity" : "generate2",
+          "start" : 7370,
+          "length" : 8
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliAmpicillin.json",
+      "size" : 1592,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 17,
+          "length" : 2
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 30,
+          "length" : 1
+        },
+        {
+          "activity" : "validate",
+          "start" : 6600,
+          "length" : 652
+        },
+        {
+          "activity" : "generate1",
+          "start" : 6606,
           "length" : 37
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
+          "start" : 7370,
           "length" : 10
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliCeftriaxone.json",
-      "size" : 1724,
+      "size" : 1598,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 9
+          "start" : 17,
+          "length" : 3
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 14
-        },
-        {
-          "activity" : "scanForUsageStats",
-          "start" : 6665,
-          "length" : 1
+          "start" : 30,
+          "length" : 2
         },
         {
           "activity" : "validate",
-          "start" : 6665,
-          "length" : 19
+          "start" : 6600,
+          "length" : 256
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 45
+          "start" : 6606,
+          "length" : 33
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 11
+          "start" : 7370,
+          "length" : 8
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliCiprofloxacin.json",
-      "size" : 1726,
+      "size" : 1600,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 11
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6665,
-          "length" : 19
+          "start" : 6600,
+          "length" : 608
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 42
+          "start" : 6606,
+          "length" : 34
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
+          "start" : 7370,
           "length" : 11
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliGentamicin.json",
-      "size" : 1722,
+      "size" : 1596,
       "processes" : [
         {
           "activity" : "loadResources",
+          "start" : 17,
+          "length" : 1
+        },
+        {
+          "activity" : "checkR4R4B",
           "start" : 30,
-          "length" : 7
+          "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 12
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 20
+          "start" : 6601,
+          "length" : 393
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 35
+          "start" : 6606,
+          "length" : 34
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 12
+          "start" : 7370,
+          "length" : 8
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliNitrofurantoin.json",
-      "size" : 1730,
+      "size" : 1604,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 7
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 11
+          "start" : 30,
+          "length" : 1
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 6597,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 15
+          "start" : 6601,
+          "length" : 687
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
+          "start" : 6606,
           "length" : 35
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 20
+          "start" : 7370,
+          "length" : 10
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptEcoliTmpSmx.json",
-      "size" : 1734,
+      "size" : 1608,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 3
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 11
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 11
+          "start" : 6602,
+          "length" : 473
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 42
+          "start" : 6606,
+          "length" : 33
         },
         {
           "activity" : "generate2",
-          "start" : 7431,
-          "length" : 16
+          "start" : 7370,
+          "length" : 9
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptKlebAmoxClav.json",
-      "size" : 1732,
+      "size" : 1606,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 9
-        },
-        {
-          "activity" : "load-configure",
-          "start" : 44,
-          "length" : 1
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 10
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 14
+          "start" : 6603,
+          "length" : 5
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 36
+          "start" : 6606,
+          "length" : 39
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 12
+          "start" : 7370,
+          "length" : 9
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptKlebAmpicillin.json",
-      "size" : 1717,
+      "size" : 1591,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 12
+          "start" : 30,
+          "length" : 2
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 15
+          "start" : 6603,
+          "length" : 6
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 35
+          "start" : 6606,
+          "length" : 36
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 11
+          "start" : 7371,
+          "length" : 8
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptKlebCeftriaxone.json",
-      "size" : 1723,
+      "size" : 1597,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 13
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 14
+          "start" : 6603,
+          "length" : 4
         },
         {
           "activity" : "generate1",
-          "start" : 6667,
-          "length" : 34
+          "start" : 6606,
+          "length" : 33
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 16
+          "start" : 7371,
+          "length" : 9
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptKlebCiprofloxacin.json",
-      "size" : 1727,
+      "size" : 1601,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 6
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 9
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 14
+          "start" : 6603,
+          "length" : 4
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 35
+          "start" : 6606,
+          "length" : 33
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 12
+          "start" : 7371,
+          "length" : 9
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptKlebGentamicin.json",
-      "size" : 1721,
+      "size" : 1595,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 9
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 13
+          "start" : 6603,
+          "length" : 7
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
+          "start" : 6606,
           "length" : 35
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 12
+          "start" : 7371,
+          "length" : 8
+        },
+        {
+          "activity" : "generateExampleZip",
+          "start" : 14496,
+          "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Observation-ExampleSusceptKlebMeropenem.json",
-      "size" : 1720,
+      "size" : 1594,
       "processes" : [
         {
           "activity" : "loadResources",
+          "start" : 17,
+          "length" : 2
+        },
+        {
+          "activity" : "load-configure",
           "start" : 30,
-          "length" : 4
+          "length" : 1
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 8
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 14
+          "start" : 6603,
+          "length" : 462
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 35
+          "start" : 6606,
+          "length" : 34
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 9
+          "start" : 7371,
+          "length" : 10
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/OperationDefinition-ExportWHONET.json",
-      "size" : 2084,
+      "size" : 2087,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 20
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 19,
+          "length" : 14
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 17
-        },
-        {
-          "activity" : "validate",
-          "start" : 6663,
+          "start" : 30,
           "length" : 6
         },
         {
+          "activity" : "validate",
+          "start" : 6595,
+          "length" : 4
+        },
+        {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 59
+          "start" : 6606,
+          "length" : 62
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 15
+          "start" : 7371,
+          "length" : 10
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Patient-ExamplePatientMotswana.json",
-      "size" : 439,
+      "size" : 338,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 7
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 6
+          "start" : 6603,
+          "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 32
+          "start" : 6606,
+          "length" : 30
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 15
+          "start" : 7371,
+          "length" : 11
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/Specimen-ExampleSpecimenUrine.json",
-      "size" : 1061,
+      "size" : 946,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 9
+          "start" : 30,
+          "length" : 5
         },
         {
           "activity" : "validate",
-          "start" : 6666,
-          "length" : 9
+          "start" : 6603,
+          "length" : 792
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 37
+          "start" : 6606,
+          "length" : 32
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 16
+          "start" : 7371,
+          "length" : 12
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 14761,
+          "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-diagnostic-report.json",
-      "size" : 5583,
+      "size" : 5210,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 11
+          "start" : 19,
+          "length" : 6
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 93
-        },
-        {
-          "activity" : "load-configure",
-          "start" : 44,
-          "length" : 1
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 20,
+          "length" : 31
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 90
+          "start" : 30,
+          "length" : 37
         },
         {
           "activity" : "validate",
-          "start" : 6659,
-          "length" : 270
+          "start" : 6592,
+          "length" : 469
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
+          "start" : 6597,
           "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 342
+          "start" : 6606,
+          "length" : 275
         },
         {
           "activity" : "generate2",
-          "start" : 7432,
-          "length" : 880
+          "start" : 7371,
+          "length" : 620
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 340
+          "start" : 14469,
+          "length" : 609
+        },
+        {
+          "activity" : "makeDependencies",
+          "start" : 14485,
+          "length" : 1
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
+          "start" : 14497,
           "length" : 5
         },
         {
-          "activity" : "scanExamplesForR5",
-          "start" : 14008,
+          "activity" : "scanProfilesForR5",
+          "start" : 14761,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-encounter.json",
-      "size" : 1713,
+      "size" : 1438,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 6
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 6
+          "start" : 19,
+          "length" : 5
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 142
+          "start" : 20,
+          "length" : 55
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 46
+          "start" : 30,
+          "length" : 19
         },
         {
           "activity" : "validate",
-          "start" : 6659,
-          "length" : 305
-        },
-        {
-          "activity" : "checkConformanceResources",
-          "start" : 6665,
-          "length" : 1
-        },
-        {
-          "activity" : "scanForUsageStats",
-          "start" : 6665,
-          "length" : 1
+          "start" : 6592,
+          "length" : 143
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 403
+          "start" : 6606,
+          "length" : 282
         },
         {
           "activity" : "generate2",
-          "start" : 7433,
-          "length" : 390
+          "start" : 7371,
+          "length" : 301
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 132
+          "start" : 14470,
+          "length" : 193
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 5
+          "start" : 14497,
+          "length" : 6
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 14761,
+          "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-gram-stain-observation.json",
-      "size" : 5125,
+      "size" : 4809,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 3
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 8
+          "start" : 19,
+          "length" : 4
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 140
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 46,
+          "start" : 20,
           "length" : 58
         },
         {
+          "activity" : "generateNarratives",
+          "start" : 30,
+          "length" : 20
+        },
+        {
           "activity" : "validate",
-          "start" : 6659,
-          "length" : 252
+          "start" : 6592,
+          "length" : 124
+        },
+        {
+          "activity" : "checkConformanceResources",
+          "start" : 6597,
+          "length" : 1
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 6597,
+          "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6668,
-          "length" : 458
+          "start" : 6607,
+          "length" : 313
         },
         {
           "activity" : "generate2",
-          "start" : 7433,
-          "length" : 520
+          "start" : 7372,
+          "length" : 698
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 108
+          "start" : 14470,
+          "length" : 139
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 9
+          "start" : 14497,
+          "length" : 8
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 14008,
+          "start" : 14761,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-organism-observation.json",
-      "size" : 6097,
+      "size" : 5711,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 6
+          "start" : 17,
+          "length" : 3
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 9
+          "start" : 19,
+          "length" : 5
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 144
+          "start" : 20,
+          "length" : 51
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 53
+          "start" : 30,
+          "length" : 22
         },
         {
           "activity" : "validate",
-          "start" : 6660,
-          "length" : 252
+          "start" : 6593,
+          "length" : 359
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
+          "start" : 6597,
           "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6669,
-          "length" : 453
+          "start" : 6607,
+          "length" : 350
         },
         {
           "activity" : "generate2",
-          "start" : 7433,
-          "length" : 366
+          "start" : 7372,
+          "length" : 296
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 90
+          "start" : 14470,
+          "length" : 120
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 7
-        },
-        {
-          "activity" : "scanExamplesForR5",
-          "start" : 14008,
-          "length" : 1
+          "start" : 14497,
+          "length" : 8
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-patient.json",
-      "size" : 1017,
+      "size" : 800,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 6
+          "start" : 19,
+          "length" : 2
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 97
+          "start" : 20,
+          "length" : 38
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 33
+          "start" : 30,
+          "length" : 12
         },
         {
           "activity" : "validate",
-          "start" : 6660,
-          "length" : 173
+          "start" : 6593,
+          "length" : 92
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
+          "start" : 6597,
           "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6669,
-          "length" : 277
+          "start" : 6607,
+          "length" : 204
         },
         {
           "activity" : "generate2",
-          "start" : 7434,
-          "length" : 277
+          "start" : 7372,
+          "length" : 207
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 66
+          "start" : 14470,
+          "length" : 91
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 4
+          "start" : 14497,
+          "length" : 7
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 14761,
+          "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-special-test-observation.json",
-      "size" : 5149,
+      "size" : 4805,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 7
+          "start" : 19,
+          "length" : 5
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 98
+          "start" : 20,
+          "length" : 49
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 54
+          "start" : 31,
+          "length" : 21
         },
         {
           "activity" : "validate",
-          "start" : 6660,
-          "length" : 209
+          "start" : 6593,
+          "length" : 134
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 6597,
+          "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6670,
-          "length" : 414
+          "start" : 6607,
+          "length" : 311
         },
         {
           "activity" : "generate2",
-          "start" : 7434,
-          "length" : 353
+          "start" : 7373,
+          "length" : 433
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 72
+          "start" : 14471,
+          "length" : 93
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 7
+          "start" : 14497,
+          "length" : 8
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 14008,
+          "start" : 14761,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-specimen.json",
-      "size" : 3306,
+      "size" : 2982,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 6
+          "start" : 19,
+          "length" : 3
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 71
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 20,
+          "length" : 38
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 39
+          "start" : 31,
+          "length" : 17
         },
         {
           "activity" : "validate",
-          "start" : 6660,
-          "length" : 195
+          "start" : 6593,
+          "length" : 92
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
+          "start" : 6597,
           "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6670,
-          "length" : 282
+          "start" : 6608,
+          "length" : 207
         },
         {
           "activity" : "generate2",
-          "start" : 7434,
-          "length" : 253
+          "start" : 7373,
+          "length" : 165
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 56
+          "start" : 14471,
+          "length" : 73
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 5
+          "start" : 14497,
+          "length" : 7
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-botswana-amr-susceptibility-observation.json",
-      "size" : 5800,
+      "size" : 5401,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 6
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 6
+          "start" : 19,
+          "length" : 5
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 79
+          "start" : 20,
+          "length" : 67
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 55
+          "start" : 31,
+          "length" : 24
         },
         {
           "activity" : "validate",
-          "start" : 6660,
-          "length" : 220
-        },
-        {
-          "activity" : "checkConformanceResources",
-          "start" : 6665,
-          "length" : 1
+          "start" : 6593,
+          "length" : 113
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
+          "start" : 6597,
           "length" : 1
         },
         {
           "activity" : "generate1",
-          "start" : 6670,
-          "length" : 443
+          "start" : 6608,
+          "length" : 337
         },
         {
           "activity" : "generate2",
-          "start" : 7435,
-          "length" : 375
+          "start" : 7373,
+          "length" : 474
         },
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 75
+          "start" : 14471,
+          "length" : 86
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 7
-        },
-        {
-          "activity" : "scanProfilesForR5",
-          "start" : 14008,
-          "length" : 1
+          "start" : 14497,
+          "length" : 8
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 14008,
+          "start" : 14761,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/StructureDefinition-specimen-collection-location.json",
-      "size" : 1550,
+      "size" : 1498,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 6
+          "start" : 19,
+          "length" : 3
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 34,
-          "length" : 16
-        },
-        {
-          "activity" : "load-configure",
-          "start" : 44,
-          "length" : 1
+          "start" : 20,
+          "length" : 10
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 14
+          "start" : 31,
+          "length" : 7
         },
         {
           "activity" : "validate",
-          "start" : 6661,
-          "length" : 2622
+          "start" : 6593,
+          "length" : 1952
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 91
+          "start" : 6608,
+          "length" : 110
         },
         {
           "activity" : "generate2",
-          "start" : 7435,
-          "length" : 120
+          "start" : 7374,
+          "length" : 82
         },
         {
           "activity" : "generate2",
-          "start" : 13817,
-          "length" : 15
+          "start" : 14471,
+          "length" : 19
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 1
+          "start" : 14497,
+          "length" : 2
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-antibiotic-susceptibility-loinc.json",
-      "size" : 6631,
+      "size" : 6605,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 30,
-          "length" : 12
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 18,
+          "length" : 4
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 151
+          "start" : 31,
+          "length" : 58
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 66
+          "start" : 6512,
+          "length" : 83
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
+          "start" : 6608,
           "length" : 74
         },
         {
           "activity" : "generate2",
-          "start" : 7435,
-          "length" : 984
+          "start" : 7374,
+          "length" : 981
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
+          "start" : 14497,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-ast-method-vs.json",
-      "size" : 959,
+      "size" : 924,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
-        },
-        {
-          "activity" : "load",
-          "start" : 30,
-          "length" : 8
-        },
-        {
-          "activity" : "load",
-          "start" : 32,
+          "start" : 17,
           "length" : 1
         },
         {
+          "activity" : "load",
+          "start" : 18,
+          "length" : 2
+        },
+        {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 14
+          "start" : 31,
+          "length" : 489
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 41
+          "start" : 6512,
+          "length" : 190
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 56
+          "start" : 6609,
+          "length" : 55
         },
         {
           "activity" : "generate2",
-          "start" : 7436,
-          "length" : 87
+          "start" : 7375,
+          "length" : 118
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-gram-stain-result-vs.json",
-      "size" : 968,
+      "size" : 961,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 5
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 30,
-          "length" : 12
+          "start" : 18,
+          "length" : 3
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 12
+          "start" : 31,
+          "length" : 216
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 4
+          "start" : 6513,
+          "length" : 151
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 54
+          "start" : 6609,
+          "length" : 64
         },
         {
           "activity" : "generate2",
-          "start" : 7436,
-          "length" : 120
+          "start" : 7375,
+          "length" : 135
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-identification-method-vs.json",
-      "size" : 1447,
+      "size" : 1395,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
+          "start" : 18,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
           "start" : 31,
           "length" : 5
         },
         {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 15
-        },
-        {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 10
+          "start" : 6513,
+          "length" : 5
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 60
+          "start" : 6609,
+          "length" : 66
         },
         {
           "activity" : "generate2",
-          "start" : 7436,
-          "length" : 193
+          "start" : 7375,
+          "length" : 194
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
+          "start" : 14497,
           "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-interpretation.json",
-      "size" : 781,
+      "size" : 755,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 5
+          "start" : 18,
+          "length" : 3
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 26
+          "start" : 31,
+          "length" : 6
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 9
+          "start" : 6513,
+          "length" : 6
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 61
+          "start" : 6609,
+          "length" : 59
         },
         {
           "activity" : "generate2",
-          "start" : 7437,
-          "length" : 107
+          "start" : 7375,
+          "length" : 97
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-organism-vs.json",
-      "size" : 860,
+      "size" : 808,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 7
-        },
-        {
-          "activity" : "load",
-          "start" : 31,
-          "length" : 6
-        },
-        {
-          "activity" : "load-configure",
-          "start" : 44,
+          "start" : 17,
           "length" : 1
         },
         {
+          "activity" : "load",
+          "start" : 18,
+          "length" : 2
+        },
+        {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 12
+          "start" : 31,
+          "length" : 5
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 6
+          "start" : 6513,
+          "length" : 5
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 58
+          "start" : 6609,
+          "length" : 55
         },
         {
           "activity" : "generate2",
-          "start" : 7437,
-          "length" : 22461
+          "start" : 7375,
+          "length" : 22259
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-special-test-vs.json",
-      "size" : 1197,
+      "size" : 1167,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 6
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 4
+          "start" : 18,
+          "length" : 2
         },
         {
-          "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 13
-        },
-        {
-          "activity" : "validate",
-          "start" : 6526,
-          "length" : 5
-        },
-        {
-          "activity" : "processProvenanceDetails",
-          "start" : 6666,
+          "activity" : "checkR4R4B",
+          "start" : 30,
           "length" : 1
         },
         {
+          "activity" : "generateNarratives",
+          "start" : 31,
+          "length" : 249
+        },
+        {
+          "activity" : "validate",
+          "start" : 6513,
+          "length" : 215
+        },
+        {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 58
+          "start" : 6609,
+          "length" : 56
         },
         {
           "activity" : "generate2",
-          "start" : 7459,
-          "length" : 60
+          "start" : 7398,
+          "length" : 147
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-specimen-site-vs.json",
-      "size" : 2091,
+      "size" : 2065,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
+          "start" : 17,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 5
+          "start" : 18,
+          "length" : 1
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 30,
+          "length" : 1
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 13
+          "start" : 32,
+          "length" : 167
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 8
+          "start" : 6513,
+          "length" : 146
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 66
+          "start" : 6609,
+          "length" : 62
         },
         {
           "activity" : "generate2",
-          "start" : 7459,
-          "length" : 350
+          "start" : 7398,
+          "length" : 578
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 14497,
+          "length" : 1
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-specimen-type-vs.json",
-      "size" : 1153,
+      "size" : 1127,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 6
+          "start" : 18,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 5
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 1
+          "start" : 18,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 21
+          "start" : 32,
+          "length" : 8
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 60
+          "start" : 6513,
+          "length" : 58
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 60
+          "start" : 6609,
+          "length" : 56
         },
         {
           "activity" : "generate2",
-          "start" : 7460,
-          "length" : 192
-        },
-        {
-          "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 1
+          "start" : 7398,
+          "length" : 198
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-test-result-status-vs.json",
-      "size" : 976,
+      "size" : 950,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 4
+          "start" : 18,
+          "length" : 1
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 4
+          "start" : 18,
+          "length" : 2
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 8
+          "start" : 32,
+          "length" : 3
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 7
+          "start" : 6513,
+          "length" : 3
         },
         {
           "activity" : "generate1",
-          "start" : 6671,
-          "length" : 58
+          "start" : 6609,
+          "length" : 55
         },
         {
           "activity" : "generate2",
-          "start" : 7460,
-          "length" : 153
+          "start" : 7399,
+          "length" : 137
         }
       ]
     },
     {
       "name" : "fsh-generated/resources/ValueSet-botswana-amr-ward-type-vs.json",
-      "size" : 1023,
+      "size" : 997,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 3
+          "start" : 18,
+          "length" : 2
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 5
+          "start" : 18,
+          "length" : 3
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 12
-        },
-        {
-          "activity" : "validate",
-          "start" : 6526,
+          "start" : 32,
           "length" : 8
         },
         {
+          "activity" : "validate",
+          "start" : 6513,
+          "length" : 4
+        },
+        {
           "activity" : "generate1",
-          "start" : 6672,
-          "length" : 60
+          "start" : 6609,
+          "length" : 61
         },
         {
           "activity" : "generate2",
-          "start" : 7460,
-          "length" : 157
+          "start" : 7399,
+          "length" : 147
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 14497,
+          "length" : 1
         }
       ]
     },
     {
       "name" : "input/resources/ConceptMap-whonet-antibiotic-to-atc.json",
-      "size" : 109644,
+      "size" : 109648,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 12
+          "start" : 18,
+          "length" : 7
         },
         {
           "activity" : "load",
-          "start" : 30,
-          "length" : 1
+          "start" : 18,
+          "length" : 27
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 49
-        },
-        {
-          "activity" : "load",
-          "start" : 32,
-          "length" : 36
+          "start" : 19,
+          "length" : 28
         },
         {
           "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 26
+          "start" : 30,
+          "length" : 11
         },
         {
           "activity" : "generateNarratives",
-          "start" : 46,
-          "length" : 86
+          "start" : 32,
+          "length" : 253
         },
         {
           "activity" : "validate",
-          "start" : 6526,
-          "length" : 359
+          "start" : 6513,
+          "length" : 256
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
-          "length" : 1
+          "start" : 6597,
+          "length" : 2
         },
         {
           "activity" : "generate1",
-          "start" : 6672,
-          "length" : 584
+          "start" : 6609,
+          "length" : 422
         },
         {
           "activity" : "generate2",
-          "start" : 7460,
-          "length" : 122
+          "start" : 7399,
+          "length" : 131
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 8
+          "start" : 14497,
+          "length" : 9
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 14008,
-          "length" : 1
+          "start" : 14761,
+          "length" : 2
         }
       ]
     },
     {
       "name" : "input/resources/ConceptMap-whonet-antibiotic-to-loinc.json",
-      "size" : 186650,
+      "size" : 186654,
       "processes" : [
         {
           "activity" : "loadResources",
+          "start" : 18,
+          "length" : 15
+        },
+        {
+          "activity" : "load",
+          "start" : 18,
+          "length" : 48
+        },
+        {
+          "activity" : "load",
+          "start" : 19,
+          "length" : 67
+        },
+        {
+          "activity" : "checkR4R4B",
           "start" : 30,
           "length" : 25
         },
         {
-          "activity" : "load",
-          "start" : 31,
-          "length" : 73
-        },
-        {
-          "activity" : "load",
-          "start" : 32,
-          "length" : 61
-        },
-        {
-          "activity" : "load-configure",
-          "start" : 44,
-          "length" : 1
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 61
-        },
-        {
           "activity" : "generateNarratives",
-          "start" : 47,
-          "length" : 328770
+          "start" : 32,
+          "length" : 285752
         },
         {
           "activity" : "validate",
-          "start" : 6527,
-          "length" : 997
+          "start" : 6513,
+          "length" : 684
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
-          "length" : 2
+          "start" : 6597,
+          "length" : 3
         },
         {
           "activity" : "generate1",
-          "start" : 6672,
-          "length" : 2091
+          "start" : 6610,
+          "length" : 1630
         },
         {
           "activity" : "generate2",
-          "start" : 7460,
-          "length" : 280038
+          "start" : 7399,
+          "length" : 406335
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 22
+          "start" : 14497,
+          "length" : 28
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 14008,
+          "start" : 14761,
           "length" : 4
         }
       ]
     },
     {
       "name" : "input/resources/ConceptMap-whonet-antibiotic-to-snomed.json",
-      "size" : 56432,
+      "size" : 56441,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 13
+          "start" : 18,
+          "length" : 4
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 31
+          "start" : 18,
+          "length" : 12
         },
         {
           "activity" : "load",
-          "start" : 32,
+          "start" : 19,
           "length" : 13
         },
         {
           "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 12
+          "start" : 30,
+          "length" : 4
         },
         {
           "activity" : "generateNarratives",
-          "start" : 375,
-          "length" : 28
+          "start" : 318,
+          "length" : 20
         },
         {
           "activity" : "validate",
-          "start" : 6528,
-          "length" : 106
-        },
-        {
-          "activity" : "scanForUsageStats",
-          "start" : 6665,
-          "length" : 1
+          "start" : 6514,
+          "length" : 2076
         },
         {
           "activity" : "generate1",
-          "start" : 6674,
-          "length" : 305
+          "start" : 6611,
+          "length" : 238
         },
         {
           "activity" : "generate2",
-          "start" : 7740,
-          "length" : 82
+          "start" : 7805,
+          "length" : 70
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 5
+          "start" : 14497,
+          "length" : 6
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 14008,
-          "length" : 1
+          "start" : 14761,
+          "length" : 2
         }
       ]
     },
     {
       "name" : "input/resources/ConceptMap-whonet-organism-to-snomed.json",
-      "size" : 3679626,
+      "size" : 3679635,
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 394
+          "start" : 18,
+          "length" : 187
         },
         {
           "activity" : "load",
-          "start" : 31,
-          "length" : 1422
+          "start" : 18,
+          "length" : 1021
         },
         {
           "activity" : "load",
-          "start" : 32,
-          "length" : 1171
+          "start" : 19,
+          "length" : 987
         },
         {
           "activity" : "checkR4R4B",
-          "start" : 44,
-          "length" : 653
+          "start" : 30,
+          "length" : 289
         },
         {
           "activity" : "generateNarratives",
-          "start" : 375,
-          "length" : 6150703
+          "start" : 318,
+          "length" : 6194442
         },
         {
           "activity" : "validate",
-          "start" : 6528,
-          "length" : 130990
+          "start" : 6516,
+          "length" : 75672
         },
         {
           "activity" : "scanForUsageStats",
-          "start" : 6665,
-          "length" : 28
+          "start" : 6597,
+          "length" : 32
         },
         {
           "activity" : "generate1",
-          "start" : 6675,
-          "length" : 40465
+          "start" : 6611,
+          "length" : 31417
         },
         {
           "activity" : "generate2",
-          "start" : 7740,
-          "length" : 6075301
+          "start" : 7805,
+          "length" : 6664024
+        },
+        {
+          "activity" : "makeDependencies",
+          "start" : 14485,
+          "length" : 1
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 13841,
-          "length" : 437
+          "start" : 14497,
+          "length" : 503
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 14008,
-          "length" : 50
+          "start" : 14761,
+          "length" : 56
         }
       ]
     },
@@ -2188,8 +2133,8 @@
       "processes" : [
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 10
+          "start" : 14469,
+          "length" : 1
         }
       ]
     },
@@ -2203,18 +2148,18 @@
     },
     {
       "name" : "/input/pagecontent/implementation.md",
-      "size" : 4836
-    },
-    {
-      "name" : "/input/pagecontent/use-cases.md",
-      "size" : 1838,
+      "size" : 4836,
       "processes" : [
         {
           "activity" : "generate2",
-          "start" : 13816,
+          "start" : 14469,
           "length" : 1
         }
       ]
+    },
+    {
+      "name" : "/input/pagecontent/use-cases.md",
+      "size" : 1838
     },
     {
       "name" : "/input/pagecontent/background.md",
@@ -2234,22 +2179,29 @@
     },
     {
       "name" : "/input/images/case-reports.png",
-      "size" : 810199
-    },
-    {
-      "name" : "/input/images/amr-deaths-graph.png",
-      "size" : 166469,
+      "size" : 810199,
       "processes" : [
         {
           "activity" : "generate2",
-          "start" : 13816,
-          "length" : 1
+          "start" : 14469,
+          "length" : 2
         }
       ]
     },
     {
+      "name" : "/input/images/amr-deaths-graph.png",
+      "size" : 166469
+    },
+    {
       "name" : "/temp/pages/_includes/artifacts.xml",
-      "size" : 25977
+      "size" : 25977,
+      "processes" : [
+        {
+          "activity" : "generate2",
+          "start" : 14469,
+          "length" : 1
+        }
+      ]
     }
   ]
 }

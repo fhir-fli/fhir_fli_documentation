@@ -8,21 +8,18 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://bw.health.gov/fhir/Observation/ExampleOrganismKlebsiella> a fhir:Observation ;
+<http://bw.health.gov/fhir/amr/Observation/ExampleOrganismKlebsiella> a fhir:Observation ;
   fhir:nodeRole fhir:treeRoot ;
   fhir:id [ fhir:v "ExampleOrganismKlebsiella"] ; # 
   fhir:meta [
      fhir:profile ( [
-       fhir:v "http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/StructureDefinition/botswana-amr-organism-observation"^^xsd:anyURI ;
-       fhir:l <http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/StructureDefinition/botswana-amr-organism-observation>
-     ] [
-       fhir:v "http://bw.health.gov/fhir/StructureDefinition/BotswanaAMR-OrganismObservation"^^xsd:anyURI ;
-       fhir:l <http://bw.health.gov/fhir/StructureDefinition/BotswanaAMR-OrganismObservation>
+       fhir:v "http://bw.health.gov/fhir/amr/StructureDefinition/botswana-amr-organism-observation"^^xsd:anyURI ;
+       fhir:l <http://bw.health.gov/fhir/amr/StructureDefinition/botswana-amr-organism-observation>
      ] )
   ] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation ExampleOrganismKlebsiella</b></p><a name=\"ExampleOrganismKlebsiella\"> </a><a name=\"hcExampleOrganismKlebsiella\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profiles: <a href=\"StructureDefinition-botswana-amr-organism-observation.html\">Botswana AMR Organism Identification Observation</a>, <code>http://bw.health.gov/fhir/StructureDefinition/BotswanaAMR-OrganismObservation</code></p></div><p><b>identifier</b>: isolate-2</p><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 634-6}\">Bacteria identified in Specimen by Culture</span></p><p><b>subject</b>: <a href=\"Patient-ExamplePatientMotswana.html\">Keabetswe Motswana  Female, DoB: 1981-05-14</a></p><p><b>effective</b>: 2026-03-11 09:00:00+0200</p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 56415008}\">Klebsiella pneumoniae</span></p><p><b>method</b>: <span title=\"Codes:{http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/CodeSystem/botswana-amr-local-method-cs vitek}\">Vitek automated system</span></p><p><b>specimen</b>: <a href=\"Specimen-ExampleSpecimenUrine.html\">Specimen: identifier = PMH-2026-U4421; type = Urine</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"Observation-ExampleSusceptKlebAmpicillin.html\">Observation Ampicillin [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebAmoxClav.html\">Observation Amoxicillin+Clavulanate [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebCeftriaxone.html\">Observation Ceftriaxone [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebCiprofloxacin.html\">Observation Ciprofloxacin [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebGentamicin.html\">Observation Gentamicin [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebMeropenem.html\">Observation Meropenem [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSpecialTestKlebEsbl.html\">Observation Extended spectrum beta lactamase [Presence] in Isolate</a></li></ul></div>"^^rdf:XMLLiteral ]
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation ExampleOrganismKlebsiella</b></p><a name=\"ExampleOrganismKlebsiella\"> </a><a name=\"hcExampleOrganismKlebsiella\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-botswana-amr-organism-observation.html\">Botswana AMR Organism Identification Observation</a></p></div><p><b>identifier</b>: isolate-2</p><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 634-6}\">Bacteria identified in Specimen by Aerobe culture</span></p><p><b>subject</b>: <a href=\"Patient-ExamplePatientMotswana.html\">Keabetswe Motswana  Female, DoB: 1981-05-14</a></p><p><b>effective</b>: 2026-03-11 09:00:00+0200</p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 56415008}\">Klebsiella pneumoniae</span></p><p><b>method</b>: <span title=\"Codes:{http://bw.health.gov/fhir/amr/CodeSystem/botswana-amr-local-method-cs vitek}\">Vitek automated system</span></p><p><b>specimen</b>: <a href=\"Specimen-ExampleSpecimenUrine.html\">Specimen: identifier = PMH-2026-U4421; type = Urine</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"Observation-ExampleSusceptKlebAmpicillin.html\">Observation Ampicillin [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebAmoxClav.html\">Observation Amoxicillin+Clavulanate [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebCeftriaxone.html\">Observation Ceftriaxone [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebCiprofloxacin.html\">Observation Ciprofloxacin [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebGentamicin.html\">Observation Gentamicin [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSusceptKlebMeropenem.html\">Observation Meropenem [Susceptibility] by Minimum inhibitory concentration (MIC)</a></li><li><a href=\"Observation-ExampleSpecialTestKlebEsbl.html\">Observation Extended spectrum beta lactamase [Presence] in Isolate</a></li></ul></div>"^^rdf:XMLLiteral ]
   ] ; # 
   fhir:identifier ( [
      fhir:value [ fhir:v "isolate-2" ]
@@ -56,11 +53,11 @@
          fhir:l <http://loinc.org>
        ] ;
        fhir:code [ fhir:v "634-6" ] ;
-       fhir:display [ fhir:v "Bacteria identified in Specimen by Culture" ]
+       fhir:display [ fhir:v "Bacteria identified in Specimen by Aerobe culture" ]
      ] )
   ] ; # 
   fhir:subject [
-     fhir:l <http://bw.health.gov/fhir/Patient/ExamplePatientMotswana> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Patient/ExamplePatientMotswana> ;
      fhir:reference [ fhir:v "Patient/ExamplePatientMotswana" ]
   ] ; # 
   fhir:effective [
@@ -82,37 +79,37 @@
   fhir:method [
      fhir:coding ( [
        fhir:system [
-         fhir:v "http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/CodeSystem/botswana-amr-local-method-cs"^^xsd:anyURI ;
-         fhir:l <http://bw.health.gov/fhir/ImplementationGuide/bw-amr-ig/CodeSystem/botswana-amr-local-method-cs>
+         fhir:v "http://bw.health.gov/fhir/amr/CodeSystem/botswana-amr-local-method-cs"^^xsd:anyURI ;
+         fhir:l <http://bw.health.gov/fhir/amr/CodeSystem/botswana-amr-local-method-cs>
        ] ;
        fhir:code [ fhir:v "vitek" ] ;
        fhir:display [ fhir:v "Vitek automated system" ]
      ] )
   ] ; # 
   fhir:specimen [
-     fhir:l <http://bw.health.gov/fhir/Specimen/ExampleSpecimenUrine> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Specimen/ExampleSpecimenUrine> ;
      fhir:reference [ fhir:v "Specimen/ExampleSpecimenUrine" ]
   ] ; # 
   fhir:hasMember ( [
-     fhir:l <http://bw.health.gov/fhir/Observation/ExampleSusceptKlebAmpicillin> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Observation/ExampleSusceptKlebAmpicillin> ;
      fhir:reference [ fhir:v "Observation/ExampleSusceptKlebAmpicillin" ]
   ] [
-     fhir:l <http://bw.health.gov/fhir/Observation/ExampleSusceptKlebAmoxClav> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Observation/ExampleSusceptKlebAmoxClav> ;
      fhir:reference [ fhir:v "Observation/ExampleSusceptKlebAmoxClav" ]
   ] [
-     fhir:l <http://bw.health.gov/fhir/Observation/ExampleSusceptKlebCeftriaxone> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Observation/ExampleSusceptKlebCeftriaxone> ;
      fhir:reference [ fhir:v "Observation/ExampleSusceptKlebCeftriaxone" ]
   ] [
-     fhir:l <http://bw.health.gov/fhir/Observation/ExampleSusceptKlebCiprofloxacin> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Observation/ExampleSusceptKlebCiprofloxacin> ;
      fhir:reference [ fhir:v "Observation/ExampleSusceptKlebCiprofloxacin" ]
   ] [
-     fhir:l <http://bw.health.gov/fhir/Observation/ExampleSusceptKlebGentamicin> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Observation/ExampleSusceptKlebGentamicin> ;
      fhir:reference [ fhir:v "Observation/ExampleSusceptKlebGentamicin" ]
   ] [
-     fhir:l <http://bw.health.gov/fhir/Observation/ExampleSusceptKlebMeropenem> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Observation/ExampleSusceptKlebMeropenem> ;
      fhir:reference [ fhir:v "Observation/ExampleSusceptKlebMeropenem" ]
   ] [
-     fhir:l <http://bw.health.gov/fhir/Observation/ExampleSpecialTestKlebEsbl> ;
+     fhir:l <http://bw.health.gov/fhir/amr/Observation/ExampleSpecialTestKlebEsbl> ;
      fhir:reference [ fhir:v "Observation/ExampleSpecialTestKlebEsbl" ]
   ] ) . # 
 

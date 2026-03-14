@@ -27,7 +27,7 @@ Maps WHONET antibiotic codes to SNOMED CT substance concept IDs. Derived from th
   "name" : "WHONETAntibioticToSNOMED",
   "title" : "WHONET Antibiotic Codes to SNOMED CT Substance Codes",
   "status" : "draft",
-  "date" : "2026-03-13T15:54:56-04:00",
+  "date" : "2026-03-13T21:27:21-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {
@@ -42,7 +42,7 @@ Maps WHONET antibiotic codes to SNOMED CT substance concept IDs. Derived from th
   ],
   "description" : "Maps WHONET antibiotic codes to SNOMED CT substance concept IDs. Derived from the official LOINC-SNOMED CT Ontology (September 2025) by tracing LOINC susceptibility codes through their SNOMED observable entity representations to the Component (704320005) relationship, which identifies the substance being tested. Contains 213 authoritative antimicrobial mappings.",
   "sourceUri" : "http://whonet.org/CodeSystem/antibiotic",
-  "targetUri" : "http://snomed.info/sct",
+  "targetUri" : "http://snomed.info/sct?fhir_vs",
   "group" : [
     {
       "source" : "http://whonet.org/CodeSystem/antibiotic",
