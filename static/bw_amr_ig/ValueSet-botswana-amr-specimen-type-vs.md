@@ -50,7 +50,7 @@ Specimen types used in Botswana AMR data collection, reusing v3-SpecimenType cod
   "name" : "BotswanaAMRSpecimenTypeVS",
   "title" : "Botswana AMR Specimen Type VS",
   "status" : "draft",
-  "date" : "2026-03-13T15:05:11-04:00",
+  "date" : "2026-03-13T15:54:56-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {

@@ -50,7 +50,7 @@ Status values for test results in Botswana AMR surveillance
   "name" : "BotswanaAMRTestResultStatusVS",
   "title" : "Botswana AMR Test Result Status",
   "status" : "draft",
-  "date" : "2026-03-13T15:05:11-04:00",
+  "date" : "2026-03-13T15:54:56-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {

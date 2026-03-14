@@ -50,7 +50,7 @@ Ward/location types for AMR surveillance, aligned with WHONET location type and 
   "name" : "BotswanaAMRWardTypeVS",
   "title" : "Botswana AMR Ward Type",
   "status" : "draft",
-  "date" : "2026-03-13T15:05:11-04:00",
+  "date" : "2026-03-13T15:54:56-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {

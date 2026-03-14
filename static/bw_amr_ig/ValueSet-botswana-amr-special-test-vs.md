@@ -50,7 +50,7 @@ Special antimicrobial resistance tests performed in Botswana AMR surveillance
   "name" : "BotswanaAMRSpecialTestVS",
   "title" : "Botswana AMR Special Tests",
   "status" : "draft",
-  "date" : "2026-03-13T15:05:11-04:00",
+  "date" : "2026-03-13T15:54:56-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {

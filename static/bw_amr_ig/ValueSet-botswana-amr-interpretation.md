@@ -50,7 +50,7 @@ Only Susceptible, Intermediate, or Resistant
   "name" : "BotswanaAMRInterpretation",
   "title" : "Botswana AMR Interpretation",
   "status" : "draft",
-  "date" : "2026-03-13T15:05:11-04:00",
+  "date" : "2026-03-13T15:54:56-04:00",
   "publisher" : "University of Botswana Partnership",
   "contact" : [
     {
