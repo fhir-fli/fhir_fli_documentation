@@ -99,6 +99,7 @@ const sidebars = {
           label: 'Cicada',
           items: [
             'cicada/cicada_overview',
+            'cicada/cicada_demo',
             'cicada/cicada_architecture',
             'cicada/cicada_usage',
             'cicada/cicada_who',
