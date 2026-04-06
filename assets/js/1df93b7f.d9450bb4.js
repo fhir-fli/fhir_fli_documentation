@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfhir_fli_documentation=globalThis.webpackChunkfhir_fli_documentation||[]).push([[4583],{6866(i,t,n){n.r(t),n.d(t,{default:()=>e});n(6540);var o=n(6347),s=n(4586),a=n(4848);function e(){const{siteConfig:{baseUrl:i}}=(0,s.A)();return(0,a.jsx)(o.rd,{to:`${i}docs`})}}}]);
