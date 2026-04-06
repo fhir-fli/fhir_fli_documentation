@@ -13,7 +13,11 @@ const config = {
   baseUrl: '/fhir_fli_documentation/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
   favicon: 'img/fhir-fli-logo.png',
 
   // GitHub pages deployment config.
