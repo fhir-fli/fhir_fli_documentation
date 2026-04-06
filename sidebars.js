@@ -119,6 +119,7 @@ const sidebars = {
           label: 'FHIR ANT',
           items: [
             'fhirant/fhirant_overview',
+            'fhirant/fhirant_getting_started',
             'fhirant/fhirant_capabilities',
             'fhirant/fhirant_security',
             'fhirant/fhirant_api_reference',
