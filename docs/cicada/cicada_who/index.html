@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>WHO Support | FHIR-FLI</title>
+    <meta property="og:title" content="WHO Support | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1169,14 +1167,14 @@
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Cicada</summary>
                 <ul>
                   <li><div><a href="docs/cicada/cicada_overview">Overview</a></div></li>
                   <li><div><a href="docs/cicada/cicada_demo">Demo</a></div></li>
                   <li><div><a href="docs/cicada/cicada_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/cicada/cicada_usage">Usage</a></div></li>
-                  <li><div><a href="docs/cicada/cicada_who">WHO Support</a></div></li>
+                  <li><div class="active"><a href="docs/cicada/cicada_who">WHO Support</a></div></li>
                   <li><div><a href="docs/cicada_ig">Published IG</a></div></li>
                 </ul>
               </details>
@@ -1205,23 +1203,240 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>WHO Support</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="who-immunization-forecasting" anchor="true">
+                  <span>WHO Immunization Forecasting</span><a href="/docs/cicada/cicada_who#who-immunization-forecasting">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Cicada supports WHO Expanded Programme on Immunization (EPI) recommendations alongside the CDC's CDSi schedule. This enables immunization forecasting for global health contexts where the U.S. schedule is not applicable.
                 </p>
+                <h3 id="who-antigens" anchor="true"><span>WHO Antigens</span><a href="/docs/cicada/cicada_who#who-antigens">#</a></h3>
+                <p>Cicada includes definitions for 22 WHO antigens:</p>
+                <h4 id="core-epi-antigens-12">Core EPI Antigens (12)</h4>
+                <table>
+                  <thead><tr><th>Antigen</th><th>Vaccine</th><th>Schedule</th><th>CVX</th></tr></thead>
+                  <tbody>
+                    <tr><td>Tuberculosis (BCG)</td><td>BCG</td><td>Birth dose</td><td>19</td></tr>
+                    <tr><td>Hepatitis B</td><td>HepB</td><td>Birth + 6/10/14 weeks</td><td>43, 198</td></tr>
+                    <tr><td>Diphtheria</td><td>DTP</td><td>6/10/14 weeks + boosters</td><td>198, 01, 107</td></tr>
+                    <tr><td>Tetanus</td><td>TT/Td</td><td>6/10/14 weeks + boosters</td><td>198, 01, 09, 139</td></tr>
+                    <tr>
+                      <td>Pertussis</td>
+                      <td>DTP</td>
+                      <td>6/10/14 weeks + booster at 12-23mo (3p+1)</td>
+                      <td>198, 01, 107</td>
+                    </tr>
+                    <tr><td>Hib</td><td>Hib</td><td>6/10/14 weeks</td><td>198, 49, 48</td></tr>
+                    <tr><td>Polio</td><td>OPV + IPV</td><td>6/10/14 weeks OPV + IPV at 9 months</td><td>178, 10, 89</td></tr>
+                    <tr><td>Measles</td><td>MR/MMR</td><td>9 months + 15-18 months</td><td>04, 03</td></tr>
+                    <tr><td>Rubella</td><td>MR/MMR</td><td>9 months + 15-18 months</td><td>04, 06</td></tr>
+                    <tr><td>PCV</td><td>PCV</td><td>6/10/14 weeks</td><td>152, 133</td></tr>
+                    <tr>
+                      <td>Rotavirus</td>
+                      <td>RV1/RV5</td>
+                      <td>6/10 weeks (2-dose) or 6/10/14 weeks (3-dose)</td>
+                      <td>116, 119</td>
+                    </tr>
+                    <tr>
+                      <td>HPV</td>
+                      <td>HPV</td>
+                      <td>9-14 years (1 dose); 15+ years (2 doses); immunocompromised (3 doses)</td>
+                      <td>165, 137, 62</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h4 id="context-dependent-antigens-10">Context-Dependent Antigens (10)</h4>
+                <table>
+                  <thead><tr><th>Antigen</th><th>When Recommended</th></tr></thead>
+                  <tbody>
+                    <tr><td>Hepatitis A</td><td>Intermediate/high endemicity (1-dose) or low endemicity (2-dose)</td></tr>
+                    <tr><td>Yellow Fever</td><td>Endemic/at-risk areas</td></tr>
+                    <tr><td>Japanese Encephalitis</td><td>Endemic areas in Asia-Pacific</td></tr>
+                    <tr><td>Meningococcal</td><td>Meningitis belt, outbreaks, travel</td></tr>
+                    <tr><td>Typhoid</td><td>Endemic areas</td></tr>
+                    <tr><td>Cholera</td><td>1-dose emergency + 2-dose endemic</td></tr>
+                    <tr><td>Rabies</td><td>High-risk areas, post-exposure</td></tr>
+                    <tr><td>Mumps</td><td>Where programmatically feasible</td></tr>
+                    <tr>
+                      <td>Influenza</td>
+                      <td>
+                        6 WHO priority groups (healthcare workers, elderly, pregnant, chronic conditions, young children, older adults)
+                      </td>
+                    </tr>
+                    <tr><td>COVID-19</td><td>Healthcare workers, older adults 60+, immunocompromised</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="key-differences-from-cdc" anchor="true">
+                  <span>Key Differences from CDC</span><a href="/docs/cicada/cicada_who#key-differences-from-cdc">#</a>
+                </h3>
+                <h4 id="vaccine-formulations">Vaccine Formulations</h4>
+                <p>The WHO schedule uses different vaccine combinations than the U.S. schedule:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Pentavalent (CVX 198)</strong>: DTP-HepB-Hib — a single vaccine covering 5 antigens, standard in the WHO EPI schedule but not used in the U.S.
                   </li>
+                  <li>
+                    <strong>OPV (CVX 178)</strong>: Oral Polio Vaccine — WHO uses a mixed OPV+IPV schedule; the U.S. uses IPV only
+                  </li>
+                  <li>
+                    <strong>MR (CVX 04)</strong>: Measles-Rubella — WHO recommends MR; the U.S. uses MMR (which adds Mumps)
+                  </li>
+                  <li><strong>DTP (CVX 01)</strong>: Whole-cell pertussis — WHO uses DTP (wP); the U.S. uses DTaP (aP)</li>
                 </ul>
+                <h4 id="timing">Timing</h4>
+                <p>
+                  WHO doses are typically scheduled at <strong>6, 10, and 14 weeks</strong> with boosters at <strong>12-23 months</strong>
+                   and <strong>4-7 years</strong>. The U.S. schedule uses <strong>2, 4, and 6 months</strong> with later boosters.
+                </p>
+                <h4 id="hpv">HPV</h4>
+                <p>
+                  The WHO adopted a <strong>single-dose HPV schedule</strong> in 2022 for girls aged 9-14. Girls 15+ receive 2 doses. This differs from the U.S. 2-dose schedule for ages 9-14 and 3-dose for 15+.
+                </p>
+                <h4 id="multi-antigen-groups">Multi-Antigen Groups</h4>
+                <table>
+                  <thead><tr><th>WHO Group</th><th>Antigens</th></tr></thead>
+                  <tbody>
+                    <tr><td>DTP</td><td>Diphtheria, Tetanus, Pertussis</td></tr>
+                    <tr><td>MR</td><td>Measles, Rubella</td></tr>
+                    <tr><td>MMR</td><td>Measles, Mumps, Rubella</td></tr>
+                  </tbody>
+                </table>
+                <p>The CDC groups are DTaP/Tdap/Td (Diphtheria, Tetanus, Pertussis) and MMR (Measles, Mumps, Rubella).</p>
+                <h3 id="usage" anchor="true"><span>Usage</span><a href="/docs/cicada/cicada_who#usage">#</a></h3>
+                <h4 id="switch-to-who-mode">Switch to WHO Mode</h4>
+                <pre><code class="language-dart">import 'package:cicada/cicada.dart';
+
+// Option 1: Pass mode to forecast function
+final result = forecastFromParameters(input, mode: ForecastMode.who);
+
+// Option 2: Set mode globally
+setForecastMode(ForecastMode.who);
+final result = forecastFromParameters(input);
+</code></pre>
+                <h4 id="check-active-mode">Check Active Mode</h4>
+                <pre><code class="language-dart">print(currentForecastMode); // ForecastMode.who
+
+// Access the active data directly
+final antigens = activeAntigenMap; // WHO antigen definitions
+final schedule = activeScheduleData; // WHO schedule data
+final groups = activeMultiAntigenGroups; // WHO multi-antigen groups
+</code></pre>
+                <h4 id="build-who-specific-input">Build WHO-Specific Input</h4>
+                <p>
+                  The input format is the same FHIR <code>Parameters</code> resource. Use CVX codes appropriate for WHO vaccines:
+                </p>
+                <pre><code class="language-dart">final input = Parameters(parameter: [
+  ParametersParameter(name: FhirString('2024-06-15')),
+  ParametersParameter(
+    name: FhirString('patient'),
+    resource: Patient(
+      birthDate: FhirDate('2024-01-15'),
+      gender: PatientGender.female,
+    ),
+  ),
+  // Pentavalent (DTP-HepB-Hib) at 6 weeks
+  ParametersParameter(
+    name: FhirString('immunization'),
+    resource: Immunization(
+      status: ImmunizationStatus.completed,
+      vaccineCode: CodeableConcept(coding: [
+        Coding(
+          system: FhirUri('http://hl7.org/fhir/sid/cvx'),
+          code: FhirCode('198'), // DTP-HepB-Hib (pentavalent)
+        ),
+      ]),
+      occurrenceDateTime: FhirDateTime('2024-02-26'),
+      patient: Reference(reference: FhirString('Patient/1')),
+    ),
+  ),
+  // OPV at 6 weeks
+  ParametersParameter(
+    name: FhirString('immunization'),
+    resource: Immunization(
+      status: ImmunizationStatus.completed,
+      vaccineCode: CodeableConcept(coding: [
+        Coding(
+          system: FhirUri('http://hl7.org/fhir/sid/cvx'),
+          code: FhirCode('178'), // OPV, bivalent
+        ),
+      ]),
+      occurrenceDateTime: FhirDateTime('2024-02-26'),
+      patient: Reference(reference: FhirString('Patient/1')),
+    ),
+  ),
+]);
+
+final result = forecastFromParameters(input, mode: ForecastMode.who);
+</code></pre>
+                <h3 id="who-schedule-data" anchor="true"><span>WHO Schedule Data</span><a href="/docs/cicada/cicada_who#who-schedule-data">#</a></h3>
+                <h4 id="observations">Observations</h4>
+                <p>
+                  WHO-specific observation codes start at 1010+ to avoid collision with CDSi codes (001-280). There are 17 codes across two ranges:
+                </p>
+                <table>
+                  <thead><tr><th>Code</th><th>Title</th></tr></thead>
+                  <tbody>
+                    <tr><td>1010</td><td>Lives in meningitis belt</td></tr>
+                    <tr><td>1011</td><td>Lives in JE endemic area</td></tr>
+                    <tr><td>1012</td><td>Lives in or traveling to YF endemic area</td></tr>
+                    <tr><td>1013</td><td>Lives in cholera endemic/outbreak area</td></tr>
+                    <tr><td>1014</td><td>Lives in typhoid endemic area</td></tr>
+                    <tr><td>1015</td><td>High risk of rabies exposure</td></tr>
+                    <tr><td>1020</td><td>Healthcare worker</td></tr>
+                    <tr><td>1021</td><td>Older adult 60+ years</td></tr>
+                    <tr><td>1022</td><td>Immunocompromised individual</td></tr>
+                    <tr><td>1023</td><td>Pregnant</td></tr>
+                    <tr><td>1024</td><td>Chronic medical condition</td></tr>
+                    <tr><td>1025</td><td>WHO influenza priority — young child (6mo-5y)</td></tr>
+                    <tr><td>1026</td><td>WHO influenza priority — older adult (65+)</td></tr>
+                    <tr><td>1027</td><td>Lives in HepA intermediate/high endemicity area</td></tr>
+                    <tr><td>1070</td><td>Serologic evidence of HepB immunity</td></tr>
+                    <tr><td>1071</td><td>Laboratory evidence of Measles immunity</td></tr>
+                  </tbody>
+                </table>
+                <h4 id="cvx-to-antigen-mapping">CVX-to-Antigen Mapping</h4>
+                <p>
+                  The WHO schedule maps 55+ CVX codes to antigens, including WHO-specific combinations like pentavalent (CVX 198 maps to Diphtheria, Tetanus, Pertussis, HepB, and Hib).
+                </p>
+                <h4 id="live-virus-conflicts">Live Virus Conflicts</h4>
+                <p>
+                  14 live virus conflict entries covering BCG, OPV, MMR, MR, Rotavirus, Yellow Fever, Measles, Rubella, Mumps, and Varicella.
+                </p>
+                <h3 id="immds-server" anchor="true"><span>ImmDS Server</span><a href="/docs/cicada/cicada_who#immds-server">#</a></h3>
+                <p>Cicada's HTTP server exposes both CDC and WHO endpoints:</p>
+                <pre><code class="language-bash"># Start the server
+dart run bin/server.dart -p 8080
+
+# CDC forecast (default)
+curl -X POST http://localhost:8080/\$immds-forecast \
+  -H 'Content-Type: application/fhir+json' \
+  -d @input.json
+
+# WHO forecast
+curl -X POST http://localhost:8080/\$immds-forecast-who \
+  -H 'Content-Type: application/fhir+json' \
+  -d @input.json
+</code></pre>
+                <p>
+                  Both endpoints accept identical FHIR <code>Parameters</code> input and return the same output format. The only difference is which schedule is used for evaluation and forecasting.
+                </p>
+                <h3 id="generator" anchor="true"><span>Generator</span><a href="/docs/cicada/cicada_who#generator">#</a></h3>
+                <p>WHO supporting data is generated from Excel source files (the source of truth):</p>
+                <pre><code class="language-bash"># Generate WHO supporting data from Excel → JSON → Dart
+dart cicada_generator/lib/main.dart --who
+</code></pre>
+                <p>The generated files are written to <code>cicada/lib/generated_files/who/</code> and include:</p>
+                <ul>
+                  <li>22 antigen <code>.dart</code> files (one per antigen)</li>
+                  <li><code>who_schedule_supporting_data.dart</code> (schedule data)</li>
+                  <li><code>who_antigen_supporting_data.dart</code> (barrel file with map and list)</li>
+                  <li><code>who_generated_supporting_data.dart</code> (top-level barrel export)</li>
+                </ul>
+                <p>
+                  Source data: 22 <code>.xlsx</code> antigen files in <code>cicada_generator/lib/WHO/antigen/</code> and 5 
+                  <code>.xlsx</code> schedule files in <code>cicada_generator/lib/WHO/schedule/</code>.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1458,13 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/cicada/cicada_who#who-immunization-forecasting">WHO Immunization Forecasting</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_who#who-antigens">WHO Antigens</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_who#key-differences-from-cdc">Key Differences from CDC</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_who#usage">Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_who#who-schedule-data">WHO Schedule Data</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_who#immds-server">ImmDS Server</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_who#generator">Generator</a></li>
                 </ul>
               </div>
             </aside>

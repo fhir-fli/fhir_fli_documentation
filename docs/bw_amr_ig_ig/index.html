@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Implementation Guide | FHIR-FLI</title>
+    <meta property="og:title" content="Implementation Guide | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1159,14 +1157,14 @@
                 <summary>Demos</summary>
                 <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Botswana AMR IG</summary>
                 <ul>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_overview">Overview</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_whonet">WHONET Export</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_flutter">Flutter App</a></div></li>
-                  <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
+                  <li><div class="active"><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
               </details>
               <details class="sidebar-group collapsible">
@@ -1205,23 +1203,33 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Implementation Guide</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="botswana-amr-implementation-guide" anchor="true">
+                  <span>Botswana AMR Implementation Guide</span><a href="/docs/bw_amr_ig_ig#botswana-amr-implementation-guide">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The Botswana AMR IG defines FHIR R4 profiles, value sets, code systems, concept maps, and operations for antimicrobial resistance surveillance in Botswana. It covers the full AMR culture workflow from specimen collection through organism identification, susceptibility testing, and WHONET/GLASS export.
                 </p>
+                <p>The IG covers:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>8 Profiles</strong> for DiagnosticReport, Encounter, Patient, Specimen, and four Observation types (GramStain, Organism, Susceptibility, SpecialTest)
                   </li>
+                  <li>
+                    <strong>11 ValueSets</strong> for organisms (SNOMED CT), antibiotics (LOINC), specimen types, AST methods, ward types, and interpretation codes
+                  </li>
+                  <li>
+                    <strong>2 CodeSystems</strong> for Botswana-specific organism combinations and identification methods
+                  </li>
+                  <li><strong>4 ConceptMaps</strong> bridging WHONET codes to SNOMED CT, LOINC, and ATC</li>
+                  <li><strong>1 Operation</strong> (<code>$export-whonet</code>) for generating WHONET/GLASS flat files</li>
                 </ul>
+                <p>
+                  <a href="https://fhir-fli.github.io/fhir_fli_documentation/bw_amr_ig/index.html">Open full screen</a>
+                </p>
+                <iframe src="bw_amr_ig/index.html" sandbox="allow-scripts allow-same-origin" style="width: 100%; height: 800px; border: none;">
+</iframe>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1251,7 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/bw_amr_ig_ig#botswana-amr-implementation-guide">Botswana AMR Implementation Guide</a></li>
                 </ul>
               </div>
             </aside>

@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>WHONET Export | FHIR-FLI</title>
+    <meta property="og:title" content="WHONET Export | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1159,12 +1157,12 @@
                 <summary>Demos</summary>
                 <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Botswana AMR IG</summary>
                 <ul>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_overview">Overview</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_architecture">Architecture</a></div></li>
-                  <li><div><a href="docs/bw_amr_ig/bw_amr_ig_whonet">WHONET Export</a></div></li>
+                  <li><div class="active"><a href="docs/bw_amr_ig/bw_amr_ig_whonet">WHONET Export</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_flutter">Flutter App</a></div></li>
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
@@ -1205,23 +1203,133 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>WHONET Export</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="whonet-and-glass-export" anchor="true">
+                  <span>WHONET and GLASS Export</span><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#whonet-and-glass-export">#</a>
+                </h2>
+                <h3 id="overview" anchor="true"><span>Overview</span><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#overview">#</a></h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Laboratory data stored as FHIR resources can be exported to flat-file formats for use with <a href="https://whonet.org/">WHONET</a>
+                   or submission to WHO <a href="https://www.who.int/initiatives/glass">GLASS</a> (Global Antimicrobial Resistance and Use Surveillance System).
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                <p>
+                  The <code>$export-whonet</code> operation on DiagnosticReport flattens the FHIR resource hierarchy into one row per isolate, with a column per antibiotic for S/I/R interpretation and MIC values.
+                </p>
+                <h3 id="operation" anchor="true"><span>Operation</span><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#operation">#</a></h3>
+                <pre><code>POST [base]/DiagnosticReport/$export-whonet
+</code></pre>
+                <h4 id="parameters">Parameters</h4>
+                <table>
+                  <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>start</code></td><td>date</td><td>Specimen collection date range start</td></tr>
+                    <tr><td><code>end</code></td><td>date</td><td>Specimen collection date range end</td></tr>
+                    <tr><td><code>facility</code></td><td>string</td><td>Filter by facility name</td></tr>
+                    <tr>
+                      <td><code>format</code></td>
+                      <td>code</td>
+                      <td><code>whonet</code> (pipe-delimited) or <code>glass</code> (GLASS CSV)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h4 id="output">Output</h4>
+                <p>
+                  A <code>Binary</code> resource with <code>contentType: text/csv</code> containing the flattened data.
+                </p>
+                <h3 id="how-it-works" anchor="true"><span>How It Works</span><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#how-it-works">#</a></h3>
+                <ol>
+                  <li>Query DiagnosticReports matching the date range and facility filters</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    For each report, resolve the Encounter (ward type, admission date), Patient (demographics), and Specimen (type, collection date)
+                  </li>
+                  <li>For each OrganismObservation in <code>result[organism]</code>, create one row</li>
+                  <li>Pivot each SusceptibilityObservation under that organism into columns</li>
+                  <li>Output as pipe-delimited text or GLASS batch CSV</li>
+                </ol>
+                <h3 id="glass-classification" anchor="true">
+                  <span>GLASS Classification</span><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#glass-classification">#</a>
+                </h3>
+                <p>The Encounter profile captures data needed for GLASS origin classification:</p>
+                <ul>
+                  <li><strong>Ward type</strong> (<code>Encounter.class</code>): Inpatient, outpatient, ICU, or emergency</li>
+                  <li>
+                    <strong>Admission date</strong> (<code>Encounter.period.start</code>): A specimen collected ≥ 2 calendar days after admission is classified as hospital-acquired
+                  </li>
+                  <li>
+                    <strong>Facility</strong> (<code>Encounter.serviceProvider</code>): Maps to the GLASS laboratory/institution identifier
                   </li>
                 </ul>
+                <h3 id="workflow" anchor="true"><span>Workflow</span><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#workflow">#</a></h3>
+                <pre><code>Flutter app → FHIR server → $export-whonet → WHONET / GLASS
+    │                              │
+    │  captures AMR data           │  generates flat files
+    │  stores as FHIR resources    │  on demand
+    └──────────────────────────────┘
+</code></pre>
+                <p>
+                  ConceptMaps are used server-side during export to translate FHIR terminology codes to WHONET-native codes. The Flutter application does not need the ConceptMaps — it works with standard FHIR terminologies.
+                </p>
+                <h3 id="bw_amr_export-dart-package" anchor="true">
+                  <span><code>bw_amr_export</code> Dart Package</span><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#bw_amr_export-dart-package">#</a>
+                </h3>
+                <p>
+                  The export logic is implemented as a standalone Dart package (<code>export/</code> in the <a href="https://github.com/Dokotela/bw-amr-ig/tree/main/export">bw-amr-ig repository</a>). It can be used from a FHIR server, a web application, or a CLI tool.
+                </p>
+                <h4 id="components">Components</h4>
+                <table>
+                  <thead><tr><th>Class</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>ConceptMapIndex</code></td>
+                      <td>Builds reverse lookup tables from ConceptMap JSON (LOINC→WHONET, SNOMED→WHONET, WHONET→ATC)</td>
+                    </tr>
+                    <tr>
+                      <td><code>ResourceResolver</code></td>
+                      <td>
+                        Walks DiagnosticReport→OrganismObservation→SusceptibilityObservation and produces 
+                        <code>IsolateRow</code>
+                        s
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>WhonetExporter</code></td>
+                      <td>Generates WHONET pipe-delimited output with dynamic antibiotic columns</td>
+                    </tr>
+                    <tr>
+                      <td><code>GlassExporter</code></td>
+                      <td>Generates WHO GLASS CSV with ATC codes and HA/CO origin classification</td>
+                    </tr>
+                    <tr><td><code>IsolateRow</code></td><td>Data model for a single flattened isolate row</td></tr>
+                  </tbody>
+                </table>
+                <h4 id="usage">Usage</h4>
+                <pre><code class="language-dart">import 'dart:io';
+import 'package:bw_amr_export/bw_amr_export.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+
+// 1. Build the ConceptMap index from JSON files
+final index = ConceptMapIndex.fromJson(
+  antibioticToLoincJson: File('ConceptMap-whonet-antibiotic-to-loinc.json').readAsStringSync(),
+  antibioticToAtcJson: File('ConceptMap-whonet-antibiotic-to-atc.json').readAsStringSync(),
+  organismToSnomedJson: File('ConceptMap-whonet-organism-to-snomed.json').readAsStringSync(),
+);
+
+// 2. Resolve FHIR resources into flat isolate rows
+final resolver = ResourceResolver(index: index);
+final rows = resolver.resolve(bundleResources); // List&lt;Resource&gt;
+
+// 3. Export as WHONET pipe-delimited or GLASS CSV
+final whonetOutput = WhonetExporter().export(rows);
+final glassOutput = GlassExporter(index: index).export(rows);
+</code></pre>
+                <h4 id="installation">Installation</h4>
+                <pre><code class="language-yaml">dependencies:
+  bw_amr_export:
+    git:
+      url: https://github.com/Dokotela/bw-amr-ig.git
+      path: export
+</code></pre>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1351,13 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#whonet-and-glass-export">WHONET and GLASS Export</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#overview">Overview</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#operation">Operation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#how-it-works">How It Works</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#glass-classification">GLASS Classification</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#workflow">Workflow</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_whonet#bw_amr_export-dart-package">bw_amr_export Dart Package</a></li>
                 </ul>
               </div>
             </aside>

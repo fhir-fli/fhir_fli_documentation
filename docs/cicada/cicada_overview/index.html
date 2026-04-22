@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Cicada Overview | FHIR-FLI</title>
+    <meta property="og:title" content="Cicada Overview | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1169,10 +1167,10 @@
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Cicada</summary>
                 <ul>
-                  <li><div><a href="docs/cicada/cicada_overview">Overview</a></div></li>
+                  <li><div class="active"><a href="docs/cicada/cicada_overview">Overview</a></div></li>
                   <li><div><a href="docs/cicada/cicada_demo">Demo</a></div></li>
                   <li><div><a href="docs/cicada/cicada_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/cicada/cicada_usage">Usage</a></div></li>
@@ -1205,21 +1203,101 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Cicada Overview</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="cicada-immunization-forecasting-engine" anchor="true">
+                  <span>Cicada Immunization Forecasting Engine</span><a href="/docs/cicada/cicada_overview#cicada-immunization-forecasting-engine">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Cicada is a Dart immunization forecasting engine that evaluates past vaccine doses and recommends future immunizations. It implements the CDC's 
+                  <a href="https://www.cdc.gov/iis/cdsi/">Clinical Decision Support for Immunization (CDSi)</a> specification and WHO Expanded Programme on Immunization (EPI) recommendations.
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                <h3 id="what-it-does" anchor="true"><span>What It Does</span><a href="/docs/cicada/cicada_overview#what-it-does">#</a></h3>
+                <p>Given a patient's demographics, immunization history, and clinical conditions, Cicada:</p>
+                <ol>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Evaluates</strong> each administered dose against the immunization schedule (age validity, minimum intervals, live virus conflicts, vaccine type matching)
+                  </li>
+                  <li>
+                    <strong>Forecasts</strong> future immunization needs with earliest, recommended, past-due, and latest dates
+                  </li>
+                  <li>
+                    <strong>Recommends</strong> specific vaccines by vaccine group with a forecast status (Complete, Not Complete, Immune, Contraindicated, Not Recommended, Aged Out)
+                  </li>
+                  <li>
+                    <strong>Serves</strong> forecasts over HTTP via <code>$immds-forecast</code> (CDC) and <code>$immds-forecast-who</code>
+                     (WHO) endpoints
+                  </li>
+                </ol>
+                <h3 id="fhir-r4-interface" anchor="true"><span>FHIR R4 Interface</span><a href="/docs/cicada/cicada_overview#fhir-r4-interface">#</a></h3>
+                <p>Cicada uses FHIR R4 resources for both input and output:</p>
+                <p><strong>Input</strong> — A FHIR <code>Parameters</code> resource containing:</p>
+                <ul>
+                  <li><code>Patient</code> (birth date, sex)</li>
+                  <li><code>Immunization</code> resources (past doses with CVX codes and administration dates)</li>
+                  <li><code>Condition</code> resources (clinical conditions)</li>
+                  <li><code>AllergyIntolerance</code> resources (allergies and contraindications)</li>
+                  <li>
+                    <code>Observation</code>, <code>Procedure</code>, <code>MedicationStatement</code> resources (additional clinical context)
+                  </li>
+                  <li>Assessment date (the date to evaluate against)</li>
+                </ul>
+                <p><strong>Output</strong> — A FHIR <code>Parameters</code> resource containing:</p>
+                <ul>
+                  <li>
+                    <code>ImmunizationEvaluation</code> resources (one per evaluated dose per antigen, with valid/not valid status and reason)
+                  </li>
+                  <li>
+                    <code>ImmunizationRecommendation</code> resources (one per vaccine group with forecast dates and status)
+                  </li>
+                </ul>
+                <h3 id="dual-schedule-support" anchor="true"><span>Dual Schedule Support</span><a href="/docs/cicada/cicada_overview#dual-schedule-support">#</a></h3>
+                <p>Cicada supports two immunization schedules:</p>
+                <table>
+                  <thead><tr><th></th><th>CDC (CDSi)</th><th>WHO (EPI)</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Schedule</strong></td>
+                      <td>U.S. immunization schedule</td>
+                      <td>WHO global recommendations</td>
+                    </tr>
+                    <tr><td><strong>Antigens</strong></td><td>30+ (U.S. formulations)</td><td>22 (global formulations)</td></tr>
+                    <tr>
+                      <td><strong>Typical vaccines</strong></td>
+                      <td>DTaP, IPV, MMR</td>
+                      <td>DTP, OPV+IPV, MR, pentavalent</td>
+                    </tr>
+                    <tr><td><strong>Dose timing</strong></td><td>2/4/6 months</td><td>6/10/14 weeks</td></tr>
+                    <tr><td><strong>Spec version</strong></td><td>CDSi v4.61-508</td><td>WHO position papers (2025)</td></tr>
+                  </tbody>
+                </table>
+                <p>Switch between modes at runtime with <code>ForecastMode.cdc</code> or <code>ForecastMode.who</code>.</p>
+                <h3 id="test-results" anchor="true"><span>Test Results</span><a href="/docs/cicada/cicada_overview#test-results">#</a></h3>
+                <p>Cicada has been extensively validated:</p>
+                <ul>
+                  <li><strong>CDC Healthy Test Cases</strong>: 1010/1014 (99.6%)</li>
+                  <li><strong>CDC Condition Test Cases</strong>: 747/777 (96.1%)</li>
+                  <li><strong>NIST FITS (external)</strong>: 167/169 (98.8%)</li>
+                </ul>
+                <p>
+                  All remaining failures are verified as version mismatch issues between test data versions and engine version, not engine bugs.
+                </p>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/cicada/cicada_overview#installation">#</a></h3>
+                <pre><code class="language-yaml">dependencies:
+  cicada:
+    git:
+      url: https://github.com/fhir-fli/cicada.git
+      path: cicada
+</code></pre>
+                <pre><code class="language-bash">cd cicada &amp;&amp; dart pub get
+</code></pre>
+                <h3 id="source-code" anchor="true"><span>Source Code</span><a href="/docs/cicada/cicada_overview#source-code">#</a></h3>
+                <ul>
+                  <li>
+                    <strong>Repository</strong>: <a href="https://github.com/fhir-fli/cicada">github.com/fhir-fli/cicada</a>
+                  </li>
+                  <li>
+                    <strong>Implementation Guide</strong>: <a href="https://fhir-fli.github.io/fhir_fli_documentation/cicada_ig/index.html">Cicada Vaccination IG</a>
                   </li>
                 </ul>
               </section>
@@ -1243,7 +1321,15 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/cicada/cicada_overview#cicada-immunization-forecasting-engine">Cicada Immunization Forecasting Engine</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_overview#what-it-does">What It Does</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_overview#fhir-r4-interface">FHIR R4 Interface</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_overview#dual-schedule-support">Dual Schedule Support</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_overview#test-results">Test Results</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_overview#installation">Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_overview#source-code">Source Code</a></li>
                 </ul>
               </div>
             </aside>

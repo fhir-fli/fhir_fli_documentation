@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Getting Started | FHIR-FLI</title>
+    <meta property="og:title" content="Getting Started | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1187,11 +1185,11 @@
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR ANT</summary>
                 <ul>
                   <li><div><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
-                  <li><div><a href="docs/fhirant/fhirant_getting_started">Getting Started</a></div></li>
+                  <li><div class="active"><a href="docs/fhirant/fhirant_getting_started">Getting Started</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_capabilities">Capabilities</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_security">Security</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_api_reference">API Reference</a></div></li>
@@ -1205,23 +1203,190 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Getting Started</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="getting-started" anchor="true"><span>Getting Started</span><a href="/docs/fhirant/fhirant_getting_started#getting-started">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  This guide walks you through your first session with FHIR ANT — from installation to making authenticated API calls.
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                <h3 id="install" anchor="true"><span>Install</span><a href="/docs/fhirant/fhirant_getting_started#install">#</a></h3>
+                <p>
+                  Download FHIR ANT from the <a href="https://play.google.com/store/apps/details?id=com.fhirfli.fhirant">Google Play Store</a>. It also runs as a Linux desktop app or a standalone CLI server (see 
+                  <a href="fhirant_cli">CLI Usage</a>).
+                </p>
+                <h3 id="first-launch" anchor="true"><span>First Launch</span><a href="/docs/fhirant/fhirant_getting_started#first-launch">#</a></h3>
+                <p>When you open the app for the first time, you'll see a three-page onboarding:</p>
+                <ol>
+                  <li><strong>Welcome</strong> — what FHIR ANT is</li>
+                  <li><strong>How It Works</strong> — features overview</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Sample Data</strong> — optionally load a set of realistic clinical data (MIMIC-IV subset) to explore with
                   </li>
+                </ol>
+                <p>
+                  You can always load or clear sample data later. Tap <strong>Get Started</strong> to reach the dashboard.
+                </p>
+                <h3 id="the-dashboard" anchor="true"><span>The Dashboard</span><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">#</a></h3>
+                <p>The dashboard has four sections:</p>
+                <ul>
+                  <li><strong>Server Control</strong> — start/stop the server, toggle Dev Mode, set the port</li>
+                  <li>
+                    <strong>Network Info</strong> — your device's IP address and a QR code other devices can scan to connect
+                  </li>
+                  <li><strong>Resource Counts</strong> — how many FHIR resources are stored, by type</li>
+                  <li><strong>Request Log</strong> — live feed of incoming HTTP requests</li>
                 </ul>
+                <h3 id="starting-the-server" anchor="true">
+                  <span>Starting the Server</span><a href="/docs/fhirant/fhirant_getting_started#starting-the-server">#</a>
+                </h3>
+                <p>
+                  Tap <strong>Start</strong> on the Server Control card. The server binds to all network interfaces on the configured port (default 8080). The URL will look something like:
+                </p>
+                <pre><code>http://192.168.1.42:8080
+</code></pre>
+                <p>Any device on the same Wi-Fi network can reach this URL.</p>
+                <h4 id="dev-mode-vs-authenticated-mode">Dev Mode vs Authenticated Mode</h4>
+                <p>
+                  By default, the server starts in <strong>Dev Mode</strong> — authentication is disabled and all requests are accepted. This is useful for quick testing.
+                </p>
+                <p>
+                  To require authentication, toggle Dev Mode <strong>off</strong> before starting the server. When Dev Mode is off, all non-public endpoints require a valid JWT token.
+                </p>
+                <h3 id="using-dev-mode" anchor="true"><span>Using Dev Mode</span><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">#</a></h3>
+                <p>With Dev Mode on, you can immediately start making requests:</p>
+                <pre><code class="language-bash"># Server capabilities
+curl http://192.168.1.42:8080/metadata
+
+# Search for all patients
+curl http://192.168.1.42:8080/Patient
+
+# Create a patient
+curl -X POST http://192.168.1.42:8080/Patient \
+  -H "Content-Type: application/fhir+json" \
+  -d '{"resourceType":"Patient","name":[{"family":"Smith","given":["John"]}]}'
+</code></pre>
+                <p>No tokens or credentials needed — every request is treated as an admin.</p>
+                <h3 id="setting-up-authentication" anchor="true">
+                  <span>Setting Up Authentication</span><a href="/docs/fhirant/fhirant_getting_started#setting-up-authentication">#</a>
+                </h3>
+                <p>When you're ready to use auth, stop the server, toggle Dev Mode off, and start it again.</p>
+                <h4 id="step-1-check-server-status">Step 1: Check Server Status</h4>
+                <p>The <code>/auth/status</code> endpoint is public and tells you whether any users exist:</p>
+                <pre><code class="language-bash">curl http://192.168.1.42:8080/auth/status
+</code></pre>
+                <pre><code class="language-json">{"firstUser": true}
+</code></pre>
+                <p><code>"firstUser": true</code> means no users have been created yet.</p>
+                <h4 id="step-2-create-the-admin-account">Step 2: Create the Admin Account</h4>
+                <p>
+                  When no users exist, anyone can register — this is the bootstrap mechanism. The first user is <strong>automatically promoted to admin</strong>
+                   regardless of what role you request:
+                </p>
+                <pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "password": "mysecurepassword"}'
+</code></pre>
+                <pre><code class="language-json">{
+  "id": 1,
+  "token": "eyJ...",
+  "refresh_token": "eyJ...",
+  "token_type": "Bearer",
+  "username": "admin",
+  "role": "admin",
+  "scopes": ["system/*.*"]
+}
+</code></pre>
+                <p>Registration returns a JWT immediately — you're logged in.</p>
+                <div class="callout callout-info">
+                  <span><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="20px" height="20px"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></span>
+                  <span>
+**Password Requirements**<p>Passwords must be 12-128 characters. There are no complexity rules (no required uppercase, numbers, or symbols), but common passwords like <code>password123456</code> are blocked. This follows <a href="https://pages.nist.gov/800-63-3/sp800-63b.html">NIST 800-63B</a> guidelines — length matters more than complexity.
+</p><h4 id="step-3-make-authenticated-requests">Step 3: Make Authenticated Requests</h4><p>Use the <code>token</code> from registration or login in the <code>Authorization</code> header:</p><pre><code class="language-bash">TOKEN="eyJ..."
+
+# Search patients
+curl -H "Authorization: Bearer $TOKEN" \
+  http://192.168.1.42:8080/Patient
+
+# Create a resource
+curl -X POST http://192.168.1.42:8080/Observation \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/fhir+json" \
+  -d '{
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {"text": "Heart rate"},
+    "valueQuantity": {"value": 72, "unit": "bpm"}
+  }'
+</code></pre><h4 id="step-4-register-additional-users">Step 4: Register Additional Users</h4><p>Once the admin account exists, only admins can create new users. Use the admin token and optionally specify a role:</p><pre><code class="language-bash"># Create a clinician (default role)
+curl -X POST http://192.168.1.42:8080/auth/register \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "drjones", "password": "anothersecurepassword"}'
+
+# Create a read-only user
+curl -X POST http://192.168.1.42:8080/auth/register \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "viewer", "password": "viewersecurepassword", "role": "readonly"}'
+</code></pre><p>Available roles and their default SMART scopes:</p><table><thead><tr><th>Role</th><th>Default Scopes</th><th>Can Do</th></tr></thead><tbody><tr><td><code>admin</code></td><td><code>system/*.*</code></td><td>Everything, including registering users</td></tr><tr><td><code>clinician</code></td><td><code>user/*.*</code></td><td>Full CRUD on all resource types</td></tr><tr><td><code>readonly</code></td><td><code>user/*.rs</code></td><td>Read and search only</td></tr></tbody></table><p>You can also assign custom SMART scopes per user:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/register \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "labtech",
+    "password": "labsecurepassword",
+    "role": "clinician",
+    "scopes": ["user/Observation.cruds", "user/DiagnosticReport.cruds", "user/Patient.rs"]
+  }'
+</code></pre><h4 id="step-5-logging-in">Step 5: Logging In</h4><p>Other users log in with their credentials:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "drjones", "password": "anothersecurepassword"}'
+</code></pre><pre><code class="language-json">{
+  "token": "eyJ...",
+  "refresh_token": "eyJ...",
+  "token_type": "Bearer",
+  "username": "drjones",
+  "role": "clinician",
+  "scopes": ["user/*.*"]
+}
+</code></pre><h4 id="step-6-refreshing-tokens">Step 6: Refreshing Tokens</h4><p>Access tokens expire after 8 hours. Use the refresh token (valid for 7 days) to get a new one:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"grant_type": "refresh_token", "refresh_token": "eyJ..."}'
+</code></pre><h4 id="step-7-logging-out">Step 7: Logging Out</h4><p>Revoke your current token:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/logout \
+  -H "Authorization: Bearer $TOKEN"
+</code></pre><p>Or revoke a specific token:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/revoke \
+  -H "Content-Type: application/json" \
+  -d '{"token": "eyJ..."}'
+</code></pre><h3 id="common-workflows" anchor="true"><span>Common Workflows</span><a href="/docs/fhirant/fhirant_getting_started#common-workflows">#</a></h3><h4 id="browse-resources-in-the-app">Browse Resources in the App</h4><p>Tap on any resource type in the Resource Counts card to open the resource browser. You can view resources as JSON or YAML, and tap on FHIR references (like <code>Patient/123</code>) to navigate to the referenced resource.</p><h4 id="search-with-parameters">Search with Parameters</h4><p>FHIR ANT supports the full range of FHIR search parameters:</p><pre><code class="language-bash"># Search by name
+curl "$BASE/Patient?name=smith"
+
+# Search by date range
+curl "$BASE/Observation?date=gt2024-01-01&amp;date=lt2024-12-31"
+
+# Include referenced resources
+curl "$BASE/Observation?patient=Patient/123&amp;_include=Observation:patient"
+
+# Chain through references
+curl "$BASE/Observation?patient.name=smith"
+</code></pre><h4 id="backup-and-restore">Backup and Restore</h4><p>Export all data as a FHIR Bundle:</p><pre><code class="language-bash">curl -X POST "$BASE/\$backup" -H "Authorization: Bearer $TOKEN" &gt; backup.json
+</code></pre><p>Restore from a backup:</p><pre><code class="language-bash">curl -X POST "$BASE/\$restore" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/fhir+json" \
+  -d @backup.json
+</code></pre><h3 id="connecting-from-a-fhir-client" anchor="true"><span>Connecting from a FHIR Client</span><a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">#</a></h3><p>FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the <a href="../at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a> Dart package:</p><pre><code class="language-dart">final request = FhirSearchRequest(
+  base: Uri.parse('http://192.168.1.42:8080'),
+  type: R4ResourceType.Patient,
+  parameters: FhirSearchParams(params: [
+    SearchString(FhirSearchParamDefinition.familyParam, ['Smith']),
+  ]),
+);
+final response = await request.request();
+</code></pre><h3 id="troubleshooting" anchor="true"><span>Troubleshooting</span><a href="/docs/fhirant/fhirant_getting_started#troubleshooting">#</a></h3><p><strong>App shows a loading spinner that never finishes</strong>
+Try clearing the app cache in Android Settings &gt; Apps &gt; FHIR ANT &gt; Clear Cache, then relaunch.</p><p><strong>Can't connect from another device</strong>
+Make sure both devices are on the same Wi-Fi network. Some networks (especially guest networks) isolate devices from each other.</p><p><strong>"Account is locked" error</strong>
+After 5 failed login attempts, the account locks for 15 minutes. Wait for it to expire, or have an admin unlock it:</p><pre><code class="language-bash">curl -X POST "$BASE/admin/unlock/2" -H "Authorization: Bearer $ADMIN_TOKEN"
+</code></pre><p><strong>Token expired</strong>
+Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see Step 6 above). Refresh tokens last 7 days.</p><h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/fhirant/fhirant_getting_started#next-steps">#</a></h3><ul><li><a href="fhirant_capabilities">Capabilities</a> — full feature matrix</li><li><a href="fhirant_api_reference">API Reference</a> — every endpoint</li><li><a href="fhirant_security">Security &amp; Auth</a> — OAuth 2.0, SMART scopes, password policy</li><li><a href="fhirant_cli">CLI Usage</a> — run the server from the command line</li></ul></span>
+                </div>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1408,21 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#getting-started">Getting Started</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#install">Install</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#first-launch">First Launch</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">The Dashboard</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#starting-the-server">Starting the Server</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">Using Dev Mode</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#setting-up-authentication">Setting Up Authentication</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#common-workflows">Common Workflows</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">Connecting from a FHIR Client</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#troubleshooting">Troubleshooting</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#next-steps">Next Steps</a></li>
                 </ul>
               </div>
             </aside>

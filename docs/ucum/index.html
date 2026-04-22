@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>UCUM Package | FHIR-FLI</title>
+    <meta property="og:title" content="UCUM Package | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1144,7 +1142,7 @@
                   <li><div><a href="docs/mapping/fhir_mapping_engine">Mapping Engine</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Additional Packages</summary>
                 <ul>
                   <li><div><a href="docs/fhir_r4_db">fhir_r4_db</a></div></li>
@@ -1152,7 +1150,7 @@
                   <li><div><a href="docs/fhir_r4_path">fhir_r4_path</a></div></li>
                   <li><div><a href="docs/fhir_r4_validation">fhir_r4_validation</a></div></li>
                   <li><div><a href="docs/fhir_r4_cql">fhir_r4_cql</a></div></li>
-                  <li><div><a href="docs/ucum">UCUM</a></div></li>
+                  <li><div class="active"><a href="docs/ucum">UCUM</a></div></li>
                 </ul>
               </details>
               <details class="sidebar-group collapsible">
@@ -1205,22 +1203,299 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>UCUM Package</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="ucum--unified-code-for-units-of-measure" anchor="true">
+                  <span>UCUM — Unified Code for Units of Measure</span><a href="/docs/ucum#ucum--unified-code-for-units-of-measure">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The <code>ucum</code> package provides a Dart implementation of the <a href="https://unitsofmeasure.org/">UCUM</a>
+                   standard, enabling unit validation, conversion, comparison, and arithmetic for healthcare and scientific measurements. Translated from the official Java reference implementation, it supports all 2000+ UCUM-defined units with arbitrary-precision decimal arithmetic.
+                </p>
+                <h4 id="installation">Installation</h4>
+                <pre><code class="language-yaml">dependencies:
+  ucum: ^0.8.0
+</code></pre>
+                <h3 id="quick-start" anchor="true"><span>Quick Start</span><a href="/docs/ucum#quick-start">#</a></h3>
+                <pre><code class="language-dart">import 'package:ucum/ucum.dart';
+
+void main() {
+  final ucum = UcumService();
+
+  // Validate a unit string
+  final error = ucum.validate('mg/dL');
+  print(error); // null — unit is valid
+
+  // Convert 100 mg to grams
+  final result = ucum.convert(
+    UcumDecimal.fromString('100'),
+    'mg',
+    'g',
+  );
+  print(result.asUcumDecimal()); // 0.1
+
+  // Check if two units are comparable
+  print(ucum.isComparable('mg', 'g')); // true
+  print(ucum.isComparable('mg', 'mL')); // false
+}
+</code></pre>
+                <h3 id="ucumservice" anchor="true"><span>UcumService</span><a href="/docs/ucum#ucumservice">#</a></h3>
+                <p>
+                  <code>UcumService</code> is the main public API. It is a singleton — calling <code>UcumService()</code>
+                   always returns the same instance.
+                </p>
+                <h4 id="validation">Validation</h4>
+                <pre><code class="language-dart">final ucum = UcumService();
+
+// Returns null if the unit is valid, or an error message
+final error = ucum.validate('kg');
+print(error); // null
+
+final bad = ucum.validate('not_a_unit');
+print(bad); // "not_a_unit is not a valid UCUM unit"
+</code></pre>
+                <h4 id="conversion">Conversion</h4>
+                <pre><code class="language-dart">final ucum = UcumService();
+
+// Convert a value from one unit to another
+final grams = ucum.convert(
+  UcumDecimal.fromString('2.5'),
+  'kg',
+  'g',
+);
+print(grams.asUcumDecimal()); // 2500
+
+// Convert temperature
+final fahrenheit = ucum.convert(
+  UcumDecimal.fromString('37'),
+  'Cel',
+  '[degF]',
+);
+print(fahrenheit.asUcumDecimal()); // 98.6
+</code></pre>
+                <h4 id="multiplication-and-division">Multiplication and Division</h4>
+                <p>Multiply and divide quantities using <code>Pair</code> objects (value + unit):</p>
+                <pre><code class="language-dart">final ucum = UcumService();
+
+// Multiply: 5 m * 3 m = 15 m2
+final area = ucum.multiply(
+  Pair(value: UcumDecimal.fromString('5'), unit: 'm'),
+  Pair(value: UcumDecimal.fromString('3'), unit: 'm'),
+);
+print('${area.value.asUcumDecimal()} ${area.unit}'); // 15 m2
+
+// Divide: 100 mg / 2 dL = 50 mg/dL
+final concentration = ucum.divideBy(
+  Pair(value: UcumDecimal.fromString('100'), unit: 'mg'),
+  Pair(value: UcumDecimal.fromString('2'), unit: 'dL'),
+);
+print('${concentration.value.asUcumDecimal()} ${concentration.unit}');
+// 50 mg/dL
+</code></pre>
+                <h4 id="analysis-and-canonical-forms">Analysis and Canonical Forms</h4>
+                <pre><code class="language-dart">final ucum = UcumService();
+
+// Get canonical (base SI) units
+print(ucum.getCanonicalUnits('km/h')); // m/s
+
+// Analyse a unit string
+print(ucum.analyse('mg/dL')); // g/L
+
+// Get canonical form with converted value
+final canonical = ucum.getCanonicalForm(
+  Pair(value: UcumDecimal.fromString('60'), unit: 'km/h'),
+);
+print('${canonical.value.asUcumDecimal()} ${canonical.unit}');
+// 16.6666666666666666666667 m/s
+</code></pre>
+                <h4 id="search">Search</h4>
+                <pre><code class="language-dart">final ucum = UcumService();
+
+// Search for units by name
+final results = ucum.search(ConceptKind.unit, 'gram', false);
+for (final concept in results) {
+  print('${concept.code} — ${concept.names.first}');
+}
+</code></pre>
+                <h3 id="ucumdecimal" anchor="true"><span>UcumDecimal</span><a href="/docs/ucum#ucumdecimal">#</a></h3>
+                <p>
+                  <code>UcumDecimal</code> provides arbitrary-precision decimal arithmetic, avoiding floating-point rounding errors that are critical to avoid in healthcare calculations. It tracks precision (significant figures) through all operations.
+                </p>
+                <h4 id="constructors">Constructors</h4>
+                <pre><code class="language-dart">// From a string (preserves precision from the string representation)
+final a = UcumDecimal.fromString('1.50');  // precision = 3
+final b = UcumDecimal.fromString('100');   // precision = 3
+
+// From native numbers
+final c = UcumDecimal.fromInt(42);
+final d = UcumDecimal.fromDouble(3.14);
+final e = UcumDecimal.fromNum(100);
+final f = UcumDecimal.fromBigInt(BigInt.from(999));
+
+// Named constructors
+final zero = UcumDecimal.zero();
+final one = UcumDecimal.one();
+</code></pre>
+                <h4 id="arithmetic">Arithmetic</h4>
+                <pre><code class="language-dart">final a = UcumDecimal.fromString('10.5');
+final b = UcumDecimal.fromString('3.2');
+
+final sum = a.add(b);        // 13.7
+final diff = a.subtract(b);  // 7.3
+final prod = a.multiply(b);  // 33.60
+final quot = a.divide(b);    // 3.3
+
+// Integer division and modulo
+final intDiv = a.divInt(b);  // 3
+final mod = a.modulo(b);     // 0.9
+</code></pre>
+                <h4 id="comparison">Comparison</h4>
+                <pre><code class="language-dart">final a = UcumDecimal.fromString('10.0');
+final b = UcumDecimal.fromString('10.00');
+
+// String equality (exact representation)
+a.equals(b);      // false — different precision
+
+// Numeric value equality
+a.equalsValue(b);  // true — same numeric value
+
+// Comparison (-1, 0, 1)
+a.comparesTo(b);   // 0
+</code></pre>
+                <h3 id="validatedquantity" anchor="true"><span>ValidatedQuantity</span><a href="/docs/ucum#validatedquantity">#</a></h3>
+                <p>
+                  <code>ValidatedQuantity</code> combines a <code>UcumDecimal</code> value with a validated UCUM unit string. It supports full arithmetic operators and unit conversion.
+                </p>
+                <h4 id="constructors">Constructors</h4>
+                <pre><code class="language-dart">// Standard constructor
+final q1 = ValidatedQuantity(
+  value: UcumDecimal.fromString('5.0'),
+  unit: 'mg',
+);
+
+// Parse from string ("value unit" format)
+final q2 = ValidatedQuantity.fromString('5.0 mg');
+
+// From native number
+final q3 = ValidatedQuantity.fromNumber(5.0, unit: 'mg');
+</code></pre>
+                <h4 id="arithmetic-operators">Arithmetic Operators</h4>
+                <p>
+                  <code>ValidatedQuantity</code> supports <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, 
+                  <code>~/</code>, and <code>%</code> with automatic unit handling:
+                </p>
+                <pre><code class="language-dart">final weight1 = ValidatedQuantity.fromString('70 kg');
+final weight2 = ValidatedQuantity.fromString('5 kg');
+
+final total = weight1 + weight2;   // 75 kg
+final diff = weight1 - weight2;    // 65 kg
+
+// Cross-unit arithmetic converts automatically
+final mg = ValidatedQuantity.fromString('500 mg');
+final g = ValidatedQuantity.fromString('1 g');
+final sum = mg + g;  // 1500 mg (converts to left operand's unit)
+</code></pre>
+                <h4 id="comparison-operators">Comparison Operators</h4>
+                <pre><code class="language-dart">final a = ValidatedQuantity.fromString('1 kg');
+final b = ValidatedQuantity.fromString('500 g');
+
+print(a &gt; b);   // true (1 kg &gt; 500 g)
+print(a == b);   // false
+print(a &gt;= b);   // true
+</code></pre>
+                <h4 id="unit-conversion">Unit Conversion</h4>
+                <pre><code class="language-dart">final temp = ValidatedQuantity.fromString('100 Cel');
+final fahrenheit = temp.convertTo('[degF]');
+print(fahrenheit); // 212 [degF]
+</code></pre>
+                <h4 id="duration-support">Duration Support</h4>
+                <p><code>ValidatedQuantity</code> recognizes time units and provides convenient accessors:</p>
+                <pre><code class="language-dart">final duration = ValidatedQuantity.fromString('90 min');
+print(duration.isDuration);    // true
+print(duration.hours);         // 1
+print(duration.minutes);       // 30
+</code></pre>
+                <h3 id="pair" anchor="true"><span>Pair</span><a href="/docs/ucum#pair">#</a></h3>
+                <p>
+                  <code>Pair</code> is a lightweight container holding a <code>UcumDecimal</code> value and a unit string. It is the input/output type for 
+                  <code>UcumService.multiply()</code>, <code>UcumService.divideBy()</code>, and <code>UcumService.getCanonicalForm()</code>.
+                </p>
+                <pre><code class="language-dart">final pair = Pair(
+  value: UcumDecimal.fromString('100'),
+  unit: 'mg',
+);
+
+print(pair.value.asUcumDecimal()); // 100
+print(pair.unit);                  // mg
+</code></pre>
+                <h3 id="common-healthcare-unit-conversions" anchor="true">
+                  <span>Common Healthcare Unit Conversions</span><a href="/docs/ucum#common-healthcare-unit-conversions">#</a>
+                </h3>
+                <pre><code class="language-dart">final ucum = UcumService();
+
+// Weight
+ucum.convert(UcumDecimal.fromString('1'), '[lb_av]', 'kg');
+// 0.45359237 kg
+
+ucum.convert(UcumDecimal.fromString('1'), 'kg', '[lb_av]');
+// 2.20462262184877580996888 lb
+
+// Volume
+ucum.convert(UcumDecimal.fromString('1'), 'L', 'mL');
+// 1000 mL
+
+// Temperature
+ucum.convert(UcumDecimal.fromString('37'), 'Cel', '[degF]');
+// 98.6 degF
+
+ucum.convert(UcumDecimal.fromString('98.6'), '[degF]', 'Cel');
+// 37 Cel
+
+// Length
+ucum.convert(UcumDecimal.fromString('1'), '[in_i]', 'cm');
+// 2.54 cm
+
+// Time
+ucum.convert(UcumDecimal.fromString('1'), 'h', 'min');
+// 60 min
+
+// Lab values
+ucum.convert(UcumDecimal.fromString('1'), 'mmol/L', 'mol/L');
+// 0.001 mol/L
+</code></pre>
+                <h3 id="integration-with-fhir" anchor="true"><span>Integration with FHIR</span><a href="/docs/ucum#integration-with-fhir">#</a></h3>
+                <p>The <code>ucum</code> package is used by other FHIR-FLI packages for unit-aware calculations:</p>
+                <ul>
+                  <li>
+                    <strong>fhir_r4_path</strong>: The FHIRPath engine uses UCUM for quantity comparisons and arithmetic in expressions like 
+                    <code>Observation.value.where(value &gt; 100 'mg')</code>.
+                  </li>
+                  <li>
+                    <strong>FHIR Quantity type</strong>: FHIR resources use UCUM codes in <code>Quantity.code</code> fields. Use 
+                    <code>UcumService.validate()</code> to ensure codes are valid UCUM expressions.
+                  </li>
+                </ul>
+                <pre><code class="language-dart">// Validate a FHIR Quantity's unit code
+final ucum = UcumService();
+final code = 'mg/dL';
+final error = ucum.validate(code);
+if (error != null) {
+  print('Invalid UCUM code: $error');
+}
+</code></pre>
+                <p>
+                  The package has no dependency on any FHIR packages and can be used independently in any Dart application that needs unit handling.
+                </p>
+                <h3 id="ucum-specification-reference" anchor="true"><span>UCUM Specification Reference</span><a href="/docs/ucum#ucum-specification-reference">#</a></h3>
+                <p>
+                  For the complete UCUM specification, see <a href="https://unitsofmeasure.org/">unitsofmeasure.org</a>. The package implements the full specification including:
                 </p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>All 7 SI base units (meter, kilogram, second, ampere, kelvin, mole, candela)</li>
+                  <li>20 SI prefixes (yocto through yotta)</li>
+                  <li>2000+ defined units across all domains</li>
+                  <li>Special unit handlers for non-linear conversions (Celsius, Fahrenheit, pH, etc.)</li>
+                  <li>Arbitrary-precision arithmetic preserving significant figures</li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1518,17 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/ucum#ucum--unified-code-for-units-of-measure">UCUM — Unified Code for Units of Measure</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#quick-start">Quick Start</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#ucumservice">UcumService</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#ucumdecimal">UcumDecimal</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#validatedquantity">ValidatedQuantity</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#pair">Pair</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#common-healthcare-unit-conversions">Common Healthcare Unit Conversions</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#integration-with-fhir">Integration with FHIR</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#ucum-specification-reference">UCUM Specification Reference</a></li>
                 </ul>
               </div>
             </aside>

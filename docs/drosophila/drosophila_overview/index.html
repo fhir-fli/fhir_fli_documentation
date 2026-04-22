@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Drosophila Overview | FHIR-FLI</title>
+    <meta property="og:title" content="Drosophila Overview | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1180,10 +1178,10 @@
                   <li><div><a href="docs/cicada_ig">Published IG</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Drosophila</summary>
                 <ul>
-                  <li><div><a href="docs/drosophila/drosophila_overview">Overview</a></div></li>
+                  <li><div class="active"><a href="docs/drosophila/drosophila_overview">Overview</a></div></li>
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
@@ -1205,22 +1203,132 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Drosophila Overview</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="drosophila" anchor="true"><span>Drosophila</span><a href="/docs/drosophila/drosophila_overview#drosophila">#</a></h2>
+                <p><strong>Clinical trial matching for oncology, powered by SMART on FHIR.</strong></p>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Drosophila automatically identifies clinical trials a patient may be eligible for by extracting structured data from the EHR and comparing it against trial eligibility criteria from 
+                  <a href="https://clinicaltrials.gov">ClinicalTrials.gov</a>.
+                </p>
+                <h3 id="how-it-works" anchor="true"><span>How It Works</span><a href="/docs/drosophila/drosophila_overview#how-it-works">#</a></h3>
+                <p>Drosophila follows a two-stage EHR integration pattern:</p>
+                <ol>
+                  <li>
+                    <p><strong>CDS Hooks</strong> — A <code>patient-view</code> hook fires when a clinician opens a patient chart. Drosophila returns a CDS card summarizing potential trial matches with a SMART App Link to launch the full app.</p>
+                  </li>
+                  <li>
+                    <p><strong>SMART on FHIR App</strong> — The clinician clicks the card to launch the Drosophila app inside the EHR. The app authenticates via SMART, extracts patient data, searches ClinicalTrials.gov, and displays ranked trial matches.</p>
+                  </li>
+                </ol>
+                <pre><code>EHR opens chart
+    │
+    ▼
+CDS Hooks patient-view
+    │
+    ▼
+CDS Card: "3 trials found, 2 likely eligible"
+    │  [click: SMART App Link]
+    ▼
+SMART on FHIR Launch
+    │
+    ├─► Extract patient data (FHIR R4)
+    │     Patient, Condition, Observation,
+    │     MedicationRequest, Procedure
+    │
+    ├─► Search ClinicalTrials.gov (API v2)
+    │     Condition-based query
+    │
+    ├─► Parse eligibility criteria
+    │     Free text → structured criteria
+    │
+    ├─► Match patient to trials
+    │     Each criterion: met / not met / indeterminate
+    │
+    └─► Display ranked results
+</code></pre>
+                <h3 id="architecture" anchor="true"><span>Architecture</span><a href="/docs/drosophila/drosophila_overview#architecture">#</a></h3>
+                <p>Drosophila is split into two packages:</p>
+                <table>
+                  <thead><tr><th>Package</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>drosophila_core</strong></td>
+                      <td>Pure Dart. Criteria parsing, patient matching, trial ingestion. No Flutter dependency.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>drosophila_flutter</strong></td>
+                      <td>Flutter UI. Screens, widgets, SMART launch service, CDS Hooks service, theme.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h4 id="patient-data-extraction">Patient Data Extraction</h4>
+                <p>On SMART launch, Drosophila requests these scopes and extracts:</p>
+                <table>
+                  <thead><tr><th>FHIR Resource</th><th>Extracted Data</th></tr></thead>
+                  <tbody>
+                    <tr><td>Patient</td><td>Age, sex</td></tr>
+                    <tr><td>Condition</td><td>Primary cancer diagnosis (ICD-10 / SNOMED), comorbidities</td></tr>
+                    <tr>
+                      <td>Observation</td>
+                      <td>Staging (TNM), biomarkers (HER2, ER, PR, EGFR, ALK, BRAF, KRAS, PD-L1, etc.), labs, ECOG/Karnofsky</td>
+                    </tr>
+                    <tr><td>MedicationRequest</td><td>Current and past medications</td></tr>
+                    <tr><td>Procedure</td><td>Surgical and treatment history</td></tr>
+                  </tbody>
+                </table>
+                <p>
+                  Cancer detection uses ICD-10-CM ranges (C00-C96, D00-D09, D37-D48) and a curated set of ~200 mCODE SNOMED codes covering all major cancer types.
+                </p>
+                <h4 id="eligibility-criteria-pipeline">Eligibility Criteria Pipeline</h4>
+                <p>
+                  ClinicalTrials.gov returns eligibility criteria as free text. Drosophila parses this into structured, matchable criteria:
+                </p>
+                <ol>
+                  <li>
+                    <strong>Split</strong> — Separate inclusion and exclusion sections, extract individual criteria from bullet points
+                  </li>
+                  <li>
+                    <strong>Classify</strong> — Categorize each criterion (demographics, staging, biomarker, lab, performance status, prior therapy, etc.)
+                  </li>
+                  <li>
+                    <strong>Extract</strong> — Pull structured requirements (e.g., "age ≥ 18" → <code>AgeRange(min: 18)</code>)
+                  </li>
+                  <li>
+                    <strong>Match</strong> — Compare against patient profile, producing a three-state verdict:<ul><li><strong>Met</strong> — Patient data satisfies the criterion</li><li><strong>Not Met</strong> — Patient data contradicts the criterion</li><li><strong>Indeterminate</strong> — Insufficient data to determine</li></ul>
+                  </li>
+                </ol>
+                <h4 id="scoring">Scoring</h4>
+                <p>
+                  Each trial receives a match score (0–100%) based on the proportion of criteria met, with exclusion criteria weighted more heavily. Trials are ranked by score and categorized:
                 </p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li><strong>Eligible</strong> — All evaluable criteria met, no exclusions triggered</li>
+                  <li><strong>Needs Review</strong> — Some criteria indeterminate (missing data)</li>
+                  <li><strong>Not Eligible</strong> — One or more exclusion criteria met (hidden by default)</li>
+                </ul>
+                <h3 id="trial-data" anchor="true"><span>Trial Data</span><a href="/docs/drosophila/drosophila_overview#trial-data">#</a></h3>
+                <p>
+                  Drosophila fetches from the <a href="https://clinicaltrials.gov/data-api/api">ClinicalTrials.gov API v2</a>
+                   using <code>format=json</code>. For each trial it extracts:
+                </p>
+                <ul>
+                  <li>NCT ID, title, status, phase</li>
+                  <li>Brief description</li>
+                  <li>Target conditions</li>
+                  <li>Interventions</li>
+                  <li>Sponsor</li>
+                  <li>Enrollment count</li>
+                  <li>Study locations</li>
+                  <li>Eligibility criteria (free text, parsed into structured form)</li>
+                </ul>
+                <h3 id="dependencies" anchor="true"><span>Dependencies</span><a href="/docs/drosophila/drosophila_overview#dependencies">#</a></h3>
+                <p>Drosophila builds on several FHIR-FLI packages:</p>
+                <ul>
+                  <li><strong>fhir_r4</strong> — FHIR R4 resource models</li>
+                  <li><strong>fhir_r4_at_rest</strong> — FHIR REST client for patient data extraction</li>
+                  <li><strong>fhir_r4_auth</strong> — SMART on FHIR authentication</li>
+                  <li><strong>fhir_r4_cds_hooks</strong> — CDS Hooks service definition and response building</li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1351,11 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/drosophila/drosophila_overview#drosophila">Drosophila</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/drosophila/drosophila_overview#how-it-works">How It Works</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/drosophila/drosophila_overview#architecture">Architecture</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/drosophila/drosophila_overview#trial-data">Trial Data</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/drosophila/drosophila_overview#dependencies">Dependencies</a></li>
                 </ul>
               </div>
             </aside>

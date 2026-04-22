@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>FHIR Map Parser | FHIR-FLI</title>
+    <meta property="og:title" content="FHIR Map Parser | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1136,11 +1134,11 @@
                   <li><div><a href="docs/auth/standalone-launch">Standalone Launch</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Mapping</summary>
                 <ul>
                   <li><div><a href="docs/mapping/fhir_mapping">FHIR Mapping</a></div></li>
-                  <li><div><a href="docs/mapping/fhirmap_parsing">FHIRMap Parsing</a></div></li>
+                  <li><div class="active"><a href="docs/mapping/fhirmap_parsing">FHIRMap Parsing</a></div></li>
                   <li><div><a href="docs/mapping/fhir_mapping_engine">Mapping Engine</a></div></li>
                 </ul>
               </details>
@@ -1205,23 +1203,242 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>FHIR Map Parser</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-map-to-structuremap-parser-in-fhir-fli" anchor="true">
+                  <span>FHIR Map to StructureMap Parser in FHIR-FLI</span><a href="/docs/mapping/fhirmap_parsing#fhir-map-to-structuremap-parser-in-fhir-fli">#</a>
+                </h2>
+                <h3 id="understanding-the-structuremap-parser" anchor="true">
+                  <span>Understanding the StructureMap Parser</span><a href="/docs/mapping/fhirmap_parsing#understanding-the-structuremap-parser">#</a>
+                </h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The StructureMap Parser is a crucial component in FHIR mapping that converts the human-readable FHIR mapping language into a formal StructureMap resource that the mapping engine can execute. This conversion process involves parsing the syntax, validating structure, and producing a properly formatted FHIR resource.
                 </p>
+                <h3 id="creating-a-structuremap-parser" anchor="true">
+                  <span>Creating a StructureMap Parser</span><a href="/docs/mapping/fhirmap_parsing#creating-a-structuremap-parser">#</a>
+                </h3>
+                <p>
+                  The parser must be created asynchronously due to internal setup requirements. Here's how to create a parser instance:
+                </p>
+                <pre><code class="language-dart">// Create a new StructureMap parser
+final parser = await StructureMapParser.create();
+</code></pre>
+                <p>
+                  This initialization sequence ensures that all the necessary components are properly set up before the parser is used.
+                </p>
+                <h3 id="basic-usage" anchor="true"><span>Basic Usage</span><a href="/docs/mapping/fhirmap_parsing#basic-usage">#</a></h3>
+                <p>Once you have a parser instance, you can use it to parse FHIR mapping language text:</p>
+                <pre><code class="language-dart">// A string containing FHIR mapping language
+final fhirMapText = '''
+map "http://example.org/map/PatientToPersonMap" = PatientToPerson
+
+uses "http://hl7.org/fhir/StructureDefinition/Patient" as source
+uses "http://hl7.org/fhir/StructureDefinition/Person" as target
+
+group PatientToPerson(source src : Patient, target tgt : Person) {
+  src.name -&gt; tgt.name;
+  src.gender -&gt; tgt.gender;
+  src.birthDate -&gt; tgt.birthDate;
+}
+''';
+
+// Parse the mapping language into a StructureMap resource
+try {
+  final structureMap = parser.parse(fhirMapText, 'fhirmap');
+  print('Successfully parsed StructureMap: ${structureMap.id}');
+} catch (e) {
+  print('Error parsing map: $e');
+}
+</code></pre>
+                <p>The <code>parse</code> method takes two parameters:</p>
+                <ol><li>The FHIR mapping language text</li><li>A format identifier (typically 'fhirmap')</li></ol>
+                <h3 id="parsing-process-details" anchor="true">
+                  <span>Parsing Process Details</span><a href="/docs/mapping/fhirmap_parsing#parsing-process-details">#</a>
+                </h3>
+                <p>When the parser processes a FHIR map, it goes through several stages:</p>
+                <ol>
+                  <li><strong>Lexical Analysis</strong> - Breaks down the text into tokens</li>
+                  <li><strong>Syntactic Analysis</strong> - Creates a parse tree from tokens</li>
+                  <li><strong>Semantic Analysis</strong> - Validates the meaning and relationships</li>
+                  <li><strong>StructureMap Construction</strong> - Builds the formal FHIR resource</li>
+                </ol>
+                <p>Throughout this process, the parser handles:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>URL and identifier resolution</li>
+                  <li>Group and rule organization</li>
+                  <li>Transform operation mapping</li>
+                  <li>Syntax validation</li>
                 </ul>
+                <h3 id="handling-common-scenarios" anchor="true">
+                  <span>Handling Common Scenarios</span><a href="/docs/mapping/fhirmap_parsing#handling-common-scenarios">#</a>
+                </h3>
+                <h4 id="parsing-from-files">Parsing From Files</h4>
+                <p>Often, you'll want to parse mapping files from the file system:</p>
+                <pre><code class="language-dart">import 'dart:io';
+
+Future&lt;StructureMap&gt; parseMapFile(String filePath) async {
+  final parser = await StructureMapParser.create();
+  final fileContent = await File(filePath).readAsString();
+  return parser.parse(fileContent, 'fhirmap');
+}
+</code></pre>
+                <h4 id="comparing-generated-maps-to-existing-ones">Comparing Generated Maps to Existing Ones</h4>
+                <p>
+                  When testing or validating your parser, you might want to compare the generated StructureMap to a known good version:
+                </p>
+                <pre><code class="language-dart">void compareGeneratedMap(String mapText, String referencePath) async {
+  final parser = await StructureMapParser.create();
+  
+  // Parse the map text
+  final generatedMap = parser.parse(mapText, 'fhirmap');
+  
+  // Load the reference map
+  final referenceMapJson = jsonDecode(await File(referencePath).readAsString());
+  final referenceMap = StructureMap.fromJson(referenceMapJson);
+  
+  // Compare the maps (excluding metadata fields)
+  final generatedJson = generatedMap.toJson()
+    ..remove('text')
+    ..remove('meta');
+  
+  final referenceJson = referenceMap.toJson()
+    ..remove('text')
+    ..remove('meta');
+  
+  final equals = const DeepCollectionEquality().equals(referenceJson, generatedJson);
+  print('Maps are equal: $equals');
+}
+</code></pre>
+                <h3 id="error-handling-and-debugging" anchor="true">
+                  <span>Error Handling and Debugging</span><a href="/docs/mapping/fhirmap_parsing#error-handling-and-debugging">#</a>
+                </h3>
+                <p>
+                  The parser provides detailed error information when it encounters problems in the mapping language. Common issues include:
+                </p>
+                <h4 id="syntax-errors">Syntax Errors</h4>
+                <p>
+                  If the map contains syntax errors, the parser will throw an exception with details about the location and nature of the error:
+                </p>
+                <pre><code class="language-dart">try {
+  final structureMap = parser.parse(invalidMapText, 'fhirmap');
+} catch (e) {
+  print('Syntax error: $e');
+  // Handle the error appropriately
+}
+</code></pre>
+                <h4 id="validation-errors">Validation Errors</h4>
+                <p>Even with correct syntax, a map might have semantic problems like undefined sources or targets:</p>
+                <pre><code class="language-dart">try {
+  final structureMap = parser.parse(semanticallyInvalidMap, 'fhirmap');
+} catch (e) {
+  if (e.toString().contains('undefined source')) {
+    print('Map references undefined source: $e');
+    // Handle the specific error
+  } else {
+    print('Other validation error: $e');
+  }
+}
+</code></pre>
+                <h3 id="advanced-features" anchor="true"><span>Advanced Features</span><a href="/docs/mapping/fhirmap_parsing#advanced-features">#</a></h3>
+                <h4 id="reusing-the-parser">Reusing the Parser</h4>
+                <p>
+                  The same parser instance can be reused for multiple parsing operations, which is more efficient than creating a new parser each time:
+                </p>
+                <pre><code class="language-dart">Future&lt;void&gt; parseMapsInDirectory(String directoryPath) async {
+  final dir = Directory(directoryPath);
+  final parser = await StructureMapParser.create();
+  
+  for (final file in dir.listSync()) {
+    if (file is File &amp;&amp; file.path.endsWith('.map')) {
+      try {
+        final content = await File(file.path).readAsString();
+        final map = parser.parse(content, 'fhirmap');
+        print('Successfully parsed ${file.path}');
+        
+        // Do something with the map...
+        
+      } catch (e) {
+        print('Error parsing ${file.path}: $e');
+      }
+    }
+  }
+}
+</code></pre>
+                <h4 id="serializing-structuremaps">Serializing StructureMaps</h4>
+                <p>After parsing, you might want to serialize the StructureMap to JSON for storage or transmission:</p>
+                <pre><code class="language-dart">void saveStructureMap(StructureMap map, String outputPath) {
+  final json = map.toJson();
+  final prettyJson = JsonEncoder.withIndent('  ').convert(json);
+  File(outputPath).writeAsStringSync(prettyJson);
+  print('Saved StructureMap to $outputPath');
+}
+</code></pre>
+                <h3 id="example-complete-parsing-workflow" anchor="true">
+                  <span>Example: Complete Parsing Workflow</span><a href="/docs/mapping/fhirmap_parsing#example-complete-parsing-workflow">#</a>
+                </h3>
+                <p>
+                  Here's a complete example that demonstrates parsing a FHIR map from a file, validating it, and saving the result:
+                </p>
+                <pre><code class="language-dart">import 'dart:convert';
+import 'dart:io';
+
+import 'package:collection/collection.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
+
+Future&lt;void&gt; processMapFile(String inputPath, String outputPath) async {
+  try {
+    // Create the parser
+    final parser = await StructureMapParser.create();
+    
+    // Read and parse the map file
+    final mapContent = await File(inputPath).readAsString();
+    final structureMap = parser.parse(mapContent, 'fhirmap');
+    
+    // Validate by comparing with a reference if available
+    final referencePath = inputPath.replaceAll('.map', '.json');
+    if (await File(referencePath).exists()) {
+      final referenceJson = jsonDecode(await File(referencePath).readAsString());
+      final referenceMap = StructureMap.fromJson(referenceJson);
+      
+      // Compare maps (excluding metadata)
+      final generatedJson = structureMap.toJson()
+        ..remove('text')
+        ..remove('meta');
+      
+      final referenceJson2 = referenceMap.toJson()
+        ..remove('text')
+        ..remove('meta');
+      
+      final equals = const DeepCollectionEquality().equals(referenceJson2, generatedJson);
+      print('Validation result: maps are ${equals ? "equal" : "different"}');
+    }
+    
+    // Save the parsed map to the output path
+    final prettyJson = JsonEncoder.withIndent('  ').convert(structureMap.toJson());
+    await File(outputPath).writeAsString(prettyJson);
+    print('Successfully processed and saved map to $outputPath');
+    
+  } catch (e, s) {
+    print('Error processing map file: $e');
+    print('Stack trace: $s');
+  }
+}
+</code></pre>
+                <h3 id="best-practices" anchor="true"><span>Best Practices</span><a href="/docs/mapping/fhirmap_parsing#best-practices">#</a></h3>
+                <p>When working with the StructureMap Parser, follow these best practices:</p>
+                <ol>
+                  <li><strong>Reuse the parser instance</strong> for multiple parsing operations to improve performance</li>
+                  <li><strong>Handle exceptions</strong> properly to provide meaningful feedback about parsing errors</li>
+                  <li><strong>Validate maps</strong> against reference implementations when available</li>
+                  <li><strong>Make parser creation asynchronous</strong> as shown in the examples</li>
+                  <li><strong>Store both map text and StructureMap resources</strong> for easier maintenance</li>
+                </ol>
+                <h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/mapping/fhirmap_parsing#next-steps">#</a></h3>
+                <p>
+                  Now that you understand how to parse FHIR mapping language into StructureMap resources, the next step is to learn how to use the 
+                  <a href="fhir_mapping_engine">FHIR Mapping Engine</a> to execute these maps and transform data.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1460,27 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/mapping/fhirmap_parsing#fhir-map-to-structuremap-parser-in-fhir-fli">FHIR Map to StructureMap Parser in FHIR-FLI</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/mapping/fhirmap_parsing#understanding-the-structuremap-parser">Understanding the StructureMap Parser</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/mapping/fhirmap_parsing#creating-a-structuremap-parser">Creating a StructureMap Parser</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhirmap_parsing#basic-usage">Basic Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhirmap_parsing#parsing-process-details">Parsing Process Details</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhirmap_parsing#handling-common-scenarios">Handling Common Scenarios</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/mapping/fhirmap_parsing#error-handling-and-debugging">Error Handling and Debugging</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhirmap_parsing#advanced-features">Advanced Features</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/mapping/fhirmap_parsing#example-complete-parsing-workflow">Example: Complete Parsing Workflow</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhirmap_parsing#best-practices">Best Practices</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhirmap_parsing#next-steps">Next Steps</a></li>
                 </ul>
               </div>
             </aside>

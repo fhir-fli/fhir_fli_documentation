@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Usage &amp; API | FHIR-FLI</title>
+    <meta property="og:title" content="Usage &amp; API | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1169,13 +1167,13 @@
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Cicada</summary>
                 <ul>
                   <li><div><a href="docs/cicada/cicada_overview">Overview</a></div></li>
                   <li><div><a href="docs/cicada/cicada_demo">Demo</a></div></li>
                   <li><div><a href="docs/cicada/cicada_architecture">Architecture</a></div></li>
-                  <li><div><a href="docs/cicada/cicada_usage">Usage</a></div></li>
+                  <li><div class="active"><a href="docs/cicada/cicada_usage">Usage</a></div></li>
                   <li><div><a href="docs/cicada/cicada_who">WHO Support</a></div></li>
                   <li><div><a href="docs/cicada_ig">Published IG</a></div></li>
                 </ul>
@@ -1205,23 +1203,276 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Usage &amp; API</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="usage--api" anchor="true"><span>Usage &amp; API</span><a href="/docs/cicada/cicada_usage#usage--api">#</a></h2>
+                <h3 id="basic-forecasting" anchor="true"><span>Basic Forecasting</span><a href="/docs/cicada/cicada_usage#basic-forecasting">#</a></h3>
+                <p>The primary entry point is <code>forecastFromParameters()</code>:</p>
+                <pre><code class="language-dart">import 'package:cicada/cicada.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+
+// Run a CDC forecast (default)
+final Parameters result = forecastFromParameters(inputParameters);
+
+// Run a WHO forecast
+final Parameters whoResult = forecastFromParameters(
+  inputParameters,
+  mode: ForecastMode.who,
+);
+</code></pre>
+                <h3 id="building-input-parameters" anchor="true">
+                  <span>Building Input Parameters</span><a href="/docs/cicada/cicada_usage#building-input-parameters">#</a>
+                </h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The input is a FHIR R4 <code>Parameters</code> resource. Each parameter has a <code>name</code> and either a 
+                  <code>resource</code> or a value:
                 </p>
+                <pre><code class="language-dart">final input = Parameters(parameter: [
+  // Assessment date (the date to evaluate against)
+  ParametersParameter(name: FhirString('2024-06-15')),
+
+  // Patient demographics
+  ParametersParameter(
+    name: FhirString('patient'),
+    resource: Patient(
+      birthDate: FhirDate('2024-01-15'),
+      gender: PatientGender.male,
+    ),
+  ),
+
+  // Past immunizations
+  ParametersParameter(
+    name: FhirString('immunization'),
+    resource: Immunization(
+      status: ImmunizationStatus.completed,
+      vaccineCode: CodeableConcept(coding: [
+        Coding(
+          system: FhirUri('http://hl7.org/fhir/sid/cvx'),
+          code: FhirCode('110'), // DTaP-HepB-IPV
+        ),
+      ]),
+      occurrenceDateTime: FhirDateTime('2024-03-15'),
+      patient: Reference(reference: FhirString('Patient/1')),
+    ),
+  ),
+
+  // Clinical conditions (optional)
+  ParametersParameter(
+    name: FhirString('condition'),
+    resource: Condition(
+      code: CodeableConcept(coding: [
+        Coding(
+          system: FhirUri('http://snomed.info/sct'),
+          code: FhirCode('370388006'), // Patient immunocompromised
+        ),
+      ]),
+      subject: Reference(reference: FhirString('Patient/1')),
+    ),
+  ),
+]);
+</code></pre>
+                <h4 id="assessment-date">Assessment Date</h4>
+                <p>
+                  The assessment date is encoded as a parameter whose <code>name</code> is the date string (e.g., <code>"2024-06-15"</code>). This is the date against which all age calculations and interval checks are performed.
+                </p>
+                <h4 id="supported-resource-types">Supported Resource Types</h4>
+                <table>
+                  <thead><tr><th>Resource</th><th>Parameter Name</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>Patient</code></td><td><code>patient</code></td><td>Demographics (birth date, sex)</td></tr>
+                    <tr>
+                      <td><code>Immunization</code></td>
+                      <td><code>immunization</code></td>
+                      <td>Past vaccine doses (CVX code, date)</td>
+                    </tr>
+                    <tr><td><code>Condition</code></td><td><code>condition</code></td><td>Clinical conditions</td></tr>
+                    <tr>
+                      <td><code>AllergyIntolerance</code></td>
+                      <td><code>allergyIntolerance</code></td>
+                      <td>Allergies and contraindications</td>
+                    </tr>
+                    <tr><td><code>Observation</code></td><td><code>observation</code></td><td>Clinical observations</td></tr>
+                    <tr><td><code>Procedure</code></td><td><code>procedure</code></td><td>Relevant procedures</td></tr>
+                    <tr>
+                      <td><code>MedicationStatement</code></td>
+                      <td><code>medicationStatement</code></td>
+                      <td>Medication history</td>
+                    </tr>
+                    <tr>
+                      <td><code>MedicationRequest</code></td>
+                      <td><code>medicationRequest</code></td>
+                      <td>Active prescriptions</td>
+                    </tr>
+                    <tr>
+                      <td><code>MedicationAdministration</code></td>
+                      <td><code>medicationAdministration</code></td>
+                      <td>Administered medications</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h4 id="cvx-codes">CVX Codes</h4>
+                <p>
+                  Vaccine doses are identified by <a href="https://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx">CVX (Vaccine Administered)</a>
+                   codes. The engine maps each CVX code to one or more target diseases using the schedule supporting data.
+                </p>
+                <h3 id="reading-the-output" anchor="true"><span>Reading the Output</span><a href="/docs/cicada/cicada_usage#reading-the-output">#</a></h3>
+                <p>
+                  The output <code>Parameters</code> contains <code>ImmunizationEvaluation</code> and <code>ImmunizationRecommendation</code>
+                   resources:
+                </p>
+                <pre><code class="language-dart">final result = forecastFromParameters(input);
+
+for (final param in result.parameter ?? []) {
+  if (param.resource is ImmunizationEvaluation) {
+    final eval = param.resource as ImmunizationEvaluation;
+    print('Dose: ${eval.date}');
+    print('Status: ${eval.status}');
+    print('Target Disease: ${eval.targetDisease}');
+    print('Dose Number: ${eval.doseNumberPositiveInt}');
+  }
+
+  if (param.resource is ImmunizationRecommendation) {
+    final rec = param.resource as ImmunizationRecommendation;
+    for (final recommendation in rec.recommendation ?? []) {
+      print('Vaccine Group: ${recommendation.vaccineCode}');
+      print('Forecast Status: ${recommendation.forecastStatus}');
+      for (final dateCriterion in recommendation.dateCriterion ?? []) {
+        print('${dateCriterion.code}: ${dateCriterion.value}');
+      }
+    }
+  }
+}
+</code></pre>
+                <h4 id="forecast-statuses">Forecast Statuses</h4>
+                <table>
+                  <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+                  <tbody>
+                    <tr><td>Not Complete</td><td>More doses needed; forecast dates provided</td></tr>
+                    <tr><td>Complete</td><td>Series is complete; no more doses needed</td></tr>
+                    <tr><td>Immune</td><td>Patient has clinical evidence of immunity</td></tr>
+                    <tr><td>Contraindicated</td><td>Vaccine is contraindicated for this patient</td></tr>
+                    <tr><td>Not Recommended</td><td>Vaccine is not recommended (e.g., aged out)</td></tr>
+                    <tr><td>Aged Out</td><td>Patient has exceeded the maximum age for the series</td></tr>
+                  </tbody>
+                </table>
+                <h4 id="dose-statuses">Dose Statuses</h4>
+                <table>
+                  <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+                  <tbody>
+                    <tr><td>Valid</td><td>Dose meets all requirements</td></tr>
+                    <tr><td>Not Valid</td><td>Dose fails one or more checks</td></tr>
+                    <tr><td>Sub-standard</td><td>Dose partially meets requirements</td></tr>
+                    <tr><td>Extraneous</td><td>Dose is not needed by the series</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="lower-level-api" anchor="true"><span>Lower-Level API</span><a href="/docs/cicada/cicada_usage#lower-level-api">#</a></h3>
+                <p>For more control, use <code>evaluateForForecast()</code> which returns the full model hierarchy:</p>
+                <pre><code class="language-dart">final ForecastResult result = evaluateForForecast(
+  input,
+  mode: ForecastMode.cdc,
+);
+
+// Access the parsed patient
+final VaxPatient patient = result.patient;
+print('Birth date: ${patient.dob}');
+
+// Access antigen-level results
+for (final entry in result.agMap.entries) {
+  final String disease = entry.key;
+  final VaxAntigen antigen = entry.value;
+  print('$disease: ${antigen.seriesStatus}');
+}
+
+// Access vaccine group forecasts
+for (final entry in result.vaccineGroupForecasts.entries) {
+  final String groupName = entry.key;
+  final VaccineGroupForecast forecast = entry.value;
+  print('$groupName: ${forecast.status}');
+  print('  Recommended: ${forecast.recommendedDate}');
+  print('  Earliest: ${forecast.earliestDate}');
+  print('  Past due: ${forecast.pastDueDate}');
+}
+</code></pre>
+                <h3 id="forecastmode" anchor="true"><span>ForecastMode</span><a href="/docs/cicada/cicada_usage#forecastmode">#</a></h3>
+                <p>The <code>ForecastMode</code> enum controls which supporting data is used:</p>
+                <pre><code class="language-dart">// Check current mode
+print(currentForecastMode); // ForecastMode.cdc
+
+// Set mode explicitly
+setForecastMode(ForecastMode.who);
+
+// Or pass mode to forecast functions
+forecastFromParameters(input, mode: ForecastMode.who);
+</code></pre>
+                <p>The mode selects between:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <code>activeAntigenMap</code> — CDC's <code>antigenSupportingDataMap</code> or WHO's <code>whoAntigenSupportingDataMap</code>
+                  </li>
+                  <li>
+                    <code>activeScheduleData</code> — CDC's <code>scheduleSupportingData</code> or WHO's <code>whoScheduleSupportingData</code>
+                  </li>
+                  <li>
+                    <code>activeMultiAntigenGroups</code> — Derived from the active schedule's vaccine-group-to-antigen map
                   </li>
                 </ul>
+                <h3 id="immds-server" anchor="true"><span>ImmDS Server</span><a href="/docs/cicada/cicada_usage#immds-server">#</a></h3>
+                <p>Cicada includes an HTTP server for the FHIR <code>$immds-forecast</code> operation:</p>
+                <pre><code class="language-bash"># Start the server
+dart run bin/server.dart -p 8080
+
+# CDC forecast (JSON)
+curl -X POST http://localhost:8080/\$immds-forecast \
+  -H 'Content-Type: application/fhir+json' \
+  -d @input.json
+
+# CDC forecast (XML)
+curl -X POST http://localhost:8080/\$immds-forecast \
+  -H 'Content-Type: application/xml' \
+  -H 'Accept: application/xml' \
+  -d @input.xml
+
+# WHO forecast (JSON)
+curl -X POST http://localhost:8080/\$immds-forecast-who \
+  -H 'Content-Type: application/fhir+json' \
+  -d @input.json
+</code></pre>
+                <p>
+                  Both <code>$immds-forecast</code> (CDC) and <code>$immds-forecast-who</code> (WHO) accept identical FHIR 
+                  <code>Parameters</code> input.
+                </p>
+                <p>The server:</p>
+                <ul>
+                  <li>Accepts JSON or XML FHIR Parameters</li>
+                  <li>Returns the same format as the input (or as specified by <code>Accept</code> header)</li>
+                  <li>Includes CORS headers for browser clients</li>
+                  <li>Logs requests to stdout</li>
+                  <li>Serves a metadata endpoint at <code>GET /metadata</code></li>
+                </ul>
+                <h4 id="fits-testing">FITS Testing</h4>
+                <p>
+                  The server is compatible with <a href="https://fits.nist.gov">NIST FITS</a> (Forecasting and Immunization Testing Standard). To test:
+                </p>
+                <ol>
+                  <li>Start the server: <code>dart run bin/server.dart -p 8080</code></li>
+                  <li>Expose with ngrok: <code>ngrok http 8080</code></li>
+                  <li>Register the ngrok URL in FITS as an R4 endpoint</li>
+                  <li>Run FITS test suites</li>
+                </ol>
+                <p>
+                  FITS sends XML with <code>Content-Type: application/xml; charset=utf8</code> and <code>Accept: application/xml</code>.
+                </p>
+                <h3 id="from-json-map" anchor="true"><span>From JSON Map</span><a href="/docs/cicada/cicada_usage#from-json-map">#</a></h3>
+                <p>If you have the input as a raw JSON map:</p>
+                <pre><code class="language-dart">final Map&lt;String, dynamic&gt; jsonInput = {
+  'resourceType': 'Parameters',
+  'parameter': [/* ... */],
+};
+
+final Parameters result = forecastFromMap(jsonInput);
+// Or with WHO mode:
+final Parameters whoResult = forecastFromMap(jsonInput, mode: ForecastMode.who);
+</code></pre>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1494,14 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/cicada/cicada_usage#usage--api">Usage &amp; API</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_usage#basic-forecasting">Basic Forecasting</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_usage#building-input-parameters">Building Input Parameters</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_usage#reading-the-output">Reading the Output</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_usage#lower-level-api">Lower-Level API</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_usage#forecastmode">ForecastMode</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_usage#immds-server">ImmDS Server</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_usage#from-json-map">From JSON Map</a></li>
                 </ul>
               </div>
             </aside>

@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Validation Package | FHIR-FLI</title>
+    <meta property="og:title" content="Validation Package | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1144,13 +1142,13 @@
                   <li><div><a href="docs/mapping/fhir_mapping_engine">Mapping Engine</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Additional Packages</summary>
                 <ul>
                   <li><div><a href="docs/fhir_r4_db">fhir_r4_db</a></div></li>
                   <li><div><a href="docs/fhir_r4_bulk">fhir_r4_bulk</a></div></li>
                   <li><div><a href="docs/fhir_r4_path">fhir_r4_path</a></div></li>
-                  <li><div><a href="docs/fhir_r4_validation">fhir_r4_validation</a></div></li>
+                  <li><div class="active"><a href="docs/fhir_r4_validation">fhir_r4_validation</a></div></li>
                   <li><div><a href="docs/fhir_r4_cql">fhir_r4_cql</a></div></li>
                   <li><div><a href="docs/ucum">UCUM</a></div></li>
                 </ul>
@@ -1205,23 +1203,296 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Validation Package</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-r4-validation" anchor="true"><span>FHIR R4 Validation</span><a href="/docs/fhir_r4_validation#fhir-r4-validation">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The <code>fhir_r4_validation</code> library provides comprehensive validation functionality for FHIR R4 resources. It validates resources against their StructureDefinitions, checking structure, cardinality, bindings, extensions, and invariants to ensure compliance with the FHIR specification.
                 </p>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_validation#installation">#</a></h3>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4_validation: ^0.4.0
+  fhir_r4: ^0.4.3
+  fhir_r4_path: ^0.4.4
+</code></pre>
+                <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_validation#key-features">#</a></h3>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>Structure Validation</strong>: Validates that resources conform to their StructureDefinition</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Cardinality Validation</strong>: Ensures required fields are present and cardinality constraints are met
+                  </li>
+                  <li><strong>Binding Validation</strong>: Validates code bindings against ValueSets and CodeSystems</li>
+                  <li><strong>Extension Validation</strong>: Validates extensions and their structure</li>
+                  <li><strong>Invariant Validation</strong>: Validates FHIRPath invariants defined in StructureDefinitions</li>
+                  <li>
+                    <strong>Questionnaire Response Validation</strong>: Specialized validation for QuestionnaireResponse resources
                   </li>
                 </ul>
+                <h3 id="basic-usage" anchor="true"><span>Basic Usage</span><a href="/docs/fhir_r4_validation#basic-usage">#</a></h3>
+                <h4 id="validating-a-fhir-resource">Validating a FHIR Resource</h4>
+                <p>The simplest way to validate a FHIR resource is using the <code>FhirValidationEngine</code>:</p>
+                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_validation/fhir_r4_validation.dart';
+
+void main() async {
+  // Create a patient resource
+  final patient = Patient(
+    name: [
+      HumanName(
+        family: 'Doe'.toFhirString,
+        given: ['John'.toFhirString],
+      ),
+    ],
+  );
+
+  // Create validation engine
+  final validator = FhirValidationEngine();
+
+  // Validate the resource
+  final results = await validator.validateFhirResource(
+    structureToValidate: patient,
+  );
+
+  // Check for errors
+  if (results.hasErrors) {
+    print('Validation errors found:');
+    for (final error in results.results.where((r) =&gt; r.severity == Severity.error)) {
+      print('  ${error.path}: ${error.diagnostics}');
+    }
+  } else {
+    print('Resource is valid!');
+  }
+}
+</code></pre>
+                <h4 id="validating-from-json">Validating from JSON</h4>
+                <p>You can also validate resources from JSON strings or maps:</p>
+                <pre><code class="language-dart">// From JSON string
+final jsonString = '''
+{
+  "resourceType": "Patient",
+  "name": [{
+    "family": "Doe",
+    "given": ["John"]
+  }]
+}
+''';
+
+final results = await validator.validateFhirString(
+  structureToValidate: jsonString,
+);
+
+// From JSON map
+final jsonMap = {
+  'resourceType': 'Patient',
+  'name': [
+    {
+      'family': 'Doe',
+      'given': ['John']
+    }
+  ]
+};
+
+final results = await validator.validateFhirMap(
+  structureToValidate: jsonMap,
+);
+</code></pre>
+                <h3 id="validation-results" anchor="true"><span>Validation Results</span><a href="/docs/fhir_r4_validation#validation-results">#</a></h3>
+                <p>The <code>ValidationResults</code> class provides detailed information about validation outcomes:</p>
+                <pre><code class="language-dart">final results = await validator.validateFhirResource(
+  structureToValidate: patient,
+);
+
+// Check if there are any errors
+if (results.hasErrors) {
+  // Handle errors
+}
+
+// Access all results
+for (final result in results.results) {
+  print('${result.severity}: ${result.path} - ${result.diagnostics}');
+}
+
+// Get results by severity
+final errors = results.results.where((r) =&gt; r.severity == Severity.error);
+final warnings = results.results.where((r) =&gt; r.severity == Severity.warning);
+final info = results.results.where((r) =&gt; r.severity == Severity.information);
+
+// Convert to JSON
+final jsonResults = results.toJson();
+</code></pre>
+                <h4 id="validationdiagnostics">ValidationDiagnostics</h4>
+                <p>Each validation result contains:</p>
+                <ul>
+                  <li><code>path</code>: The path to the element that failed validation</li>
+                  <li><code>diagnostics</code>: A description of the validation issue</li>
+                  <li><code>severity</code>: The severity level (error, warning, or information)</li>
+                  <li><code>line</code> and <code>column</code>: Location information (if available)</li>
+                </ul>
+                <h3 id="validation-types" anchor="true"><span>Validation Types</span><a href="/docs/fhir_r4_validation#validation-types">#</a></h3>
+                <p>The validation engine performs several types of validation:</p>
+                <h4 id="1-structure-validation">1. Structure Validation</h4>
+                <p>Validates that the resource structure matches its StructureDefinition:</p>
+                <pre><code class="language-dart">// Validates:
+// - All elements are defined in the StructureDefinition
+// - Element types are correct
+// - Nested structures are valid
+</code></pre>
+                <h4 id="2-cardinality-validation">2. Cardinality Validation</h4>
+                <p>Ensures that required fields are present and cardinality constraints are met:</p>
+                <pre><code class="language-dart">// Validates:
+// - Required elements (min &gt; 0) are present
+// - Maximum cardinality is not exceeded
+// - Array sizes are within bounds
+</code></pre>
+                <h4 id="3-binding-validation">3. Binding Validation</h4>
+                <p>Validates code bindings against ValueSets and CodeSystems:</p>
+                <pre><code class="language-dart">// Validates:
+// - Code values are valid according to the binding
+// - CodeSystem references are correct
+// - ValueSet expansions are valid
+</code></pre>
+                <h4 id="4-extension-validation">4. Extension Validation</h4>
+                <p>Validates extensions and their structure:</p>
+                <pre><code class="language-dart">// Validates:
+// - Extension URLs are valid
+// - Extension structures match their definitions
+// - Required extension elements are present
+</code></pre>
+                <h4 id="5-invariant-validation">5. Invariant Validation</h4>
+                <p>Validates FHIRPath invariants defined in StructureDefinitions:</p>
+                <pre><code class="language-dart">// Validates:
+// - FHIRPath expressions evaluate correctly
+// - Invariant conditions are met
+</code></pre>
+                <h3 id="providing-structuredefinitions" anchor="true">
+                  <span>Providing StructureDefinitions</span><a href="/docs/fhir_r4_validation#providing-structuredefinitions">#</a>
+                </h3>
+                <p>
+                  By default, the validator will attempt to fetch StructureDefinitions automatically. However, you can provide your own:
+                </p>
+                <pre><code class="language-dart">// Provide a StructureDefinition
+final structureDef = StructureDefinition(
+  url: 'http://hl7.org/fhir/StructureDefinition/Patient'.toFhirUri,
+  // ... structure definition content
+);
+
+final results = await validator.validateFhirResource(
+  structureToValidate: patient,
+  structureDefinition: structureDef,
+);
+</code></pre>
+                <h3 id="questionnaire-response-validation" anchor="true">
+                  <span>Questionnaire Response Validation</span><a href="/docs/fhir_r4_validation#questionnaire-response-validation">#</a>
+                </h3>
+                <p>The package includes specialized validation for QuestionnaireResponse resources:</p>
+                <pre><code class="language-dart">import 'package:fhir_r4_validation/fhir_r4_validation.dart';
+
+// Validate a QuestionnaireResponse against its Questionnaire
+final results = await validateQuestionnaireResponse(
+  questionnaireResponse: questionnaireResponse,
+  questionnaire: questionnaire,
+  resourceCache: resourceCache,
+);
+</code></pre>
+                <h3 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/fhir_r4_validation#error-handling">#</a></h3>
+                <p>The validator provides detailed error information:</p>
+                <pre><code class="language-dart">try {
+  final results = await validator.validateFhirResource(
+    structureToValidate: patient,
+  );
+  
+  if (results.hasErrors) {
+    // Process errors
+    for (final error in results.results.where((r) =&gt; r.severity == Severity.error)) {
+      print('Error at ${error.path}: ${error.diagnostics}');
+    }
+  }
+} catch (e) {
+  print('Validation failed: $e');
+}
+</code></pre>
+                <h3 id="advanced-usage" anchor="true"><span>Advanced Usage</span><a href="/docs/fhir_r4_validation#advanced-usage">#</a></h3>
+                <h4 id="custom-http-client">Custom HTTP Client</h4>
+                <p>You can provide a custom HTTP client for fetching StructureDefinitions:</p>
+                <pre><code class="language-dart">import 'package:http/http.dart';
+
+final client = Client();
+final results = await validator.validateFhirResource(
+  structureToValidate: patient,
+  client: client,
+);
+</code></pre>
+                <h4 id="resource-cache">Resource Cache</h4>
+                <p>For better performance when validating multiple resources, you can use a resource cache:</p>
+                <pre><code class="language-dart">import 'package:fhir_r4_path/fhir_r4_path.dart';
+
+final resourceCache = CanonicalResourceCache();
+
+// The validator will use the cache to avoid re-fetching StructureDefinitions
+</code></pre>
+                <h3 id="example-complete-validation-workflow" anchor="true">
+                  <span>Example: Complete Validation Workflow</span><a href="/docs/fhir_r4_validation#example-complete-validation-workflow">#</a>
+                </h3>
+                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_validation/fhir_r4_validation.dart';
+
+Future&lt;void&gt; validatePatient(Patient patient) async {
+  final validator = FhirValidationEngine();
+  
+  final results = await validator.validateFhirResource(
+    structureToValidate: patient,
+  );
+  
+  if (results.hasErrors) {
+    print('Validation failed with ${results.results.where((r) =&gt; r.severity == Severity.error).length} errors:');
+    
+    for (final error in results.results.where((r) =&gt; r.severity == Severity.error)) {
+      print('  ❌ ${error.path}: ${error.diagnostics}');
+    }
+    
+    for (final warning in results.results.where((r) =&gt; r.severity == Severity.warning)) {
+      print('  ⚠️  ${warning.path}: ${warning.diagnostics}');
+    }
+  } else {
+    print('✅ Patient resource is valid!');
+    
+    if (results.results.any((r) =&gt; r.severity == Severity.warning)) {
+      print('Warnings:');
+      for (final warning in results.results.where((r) =&gt; r.severity == Severity.warning)) {
+        print('  ⚠️  ${warning.path}: ${warning.diagnostics}');
+      }
+    }
+  }
+  
+  // Export results as JSON
+  final jsonResults = results.toJson();
+  print('\nValidation results (JSON):');
+  print(jsonEncode(jsonResults));
+}
+</code></pre>
+                <h3 id="performance-considerations" anchor="true">
+                  <span>Performance Considerations</span><a href="/docs/fhir_r4_validation#performance-considerations">#</a>
+                </h3>
+                <ul>
+                  <li>StructureDefinitions are cached automatically to avoid redundant fetching</li>
+                  <li>For batch validation, reuse the <code>FhirValidationEngine</code> instance</li>
+                  <li>Consider providing StructureDefinitions directly if you have them available</li>
+                  <li>Use a <code>ResourceCache</code> for better performance with multiple validations</li>
+                </ul>
+                <h3 id="integration-with-other-packages" anchor="true">
+                  <span>Integration with Other Packages</span><a href="/docs/fhir_r4_validation#integration-with-other-packages">#</a>
+                </h3>
+                <p>The validation package integrates seamlessly with other FHIR-FLI packages:</p>
+                <ul>
+                  <li><strong>fhir_r4</strong>: Uses FHIR resource models</li>
+                  <li><strong>fhir_r4_path</strong>: Uses FHIRPath for invariant validation</li>
+                  <li><strong>fhir_r4_db</strong>: Can validate resources before saving to the database</li>
+                  <li><strong>fhir_r4_at_rest</strong>: Can validate resources before sending to a FHIR server</li>
+                </ul>
+                <h3 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/fhir_r4_validation#conclusion">#</a></h3>
+                <p>
+                  The <code>fhir_r4_validation</code> package provides comprehensive validation capabilities for FHIR resources, ensuring they conform to the FHIR specification. Whether you're validating resources before saving them, before sending them to a server, or as part of a data quality pipeline, this package provides the tools you need to ensure FHIR compliance.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1514,26 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#fhir-r4-validation">FHIR R4 Validation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#installation">Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#key-features">Key Features</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#basic-usage">Basic Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#validation-results">Validation Results</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#validation-types">Validation Types</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#providing-structuredefinitions">Providing StructureDefinitions</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhir_r4_validation#questionnaire-response-validation">Questionnaire Response Validation</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#error-handling">Error Handling</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#advanced-usage">Advanced Usage</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhir_r4_validation#example-complete-validation-workflow">Example: Complete Validation Workflow</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#performance-considerations">Performance Considerations</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhir_r4_validation#integration-with-other-packages">Integration with Other Packages</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#conclusion">Conclusion</a></li>
                 </ul>
               </div>
             </aside>

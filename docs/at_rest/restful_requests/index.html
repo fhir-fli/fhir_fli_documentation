@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Requests | FHIR-FLI</title>
+    <meta property="og:title" content="Requests | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1120,11 +1118,11 @@
                   <li><div><a href="docs/core/migration">Migration</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>REST Client</summary>
                 <ul>
                   <li><div><a href="docs/at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a></div></li>
-                  <li><div><a href="docs/at_rest/restful_requests">Requests</a></div></li>
+                  <li><div class="active"><a href="docs/at_rest/restful_requests">Requests</a></div></li>
                   <li><div><a href="docs/at_rest/restful_parameters">Parameters</a></div></li>
                 </ul>
               </details>
@@ -1205,23 +1203,340 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Requests</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="restful-requests" anchor="true"><span>RESTful Requests</span><a href="/docs/at_rest/restful_requests#restful-requests">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The <code>fhir_r4_at_rest</code> library provides a streamlined way to construct RESTful API calls for FHIR operations. Instead of dealing with the complexities of building URLs, handling HTTP methods, and managing headers, this library offers a type-safe approach through a collection of request classes.
+                </p>
+                <h3 id="basic-concepts" anchor="true"><span>Basic Concepts</span><a href="/docs/at_rest/restful_requests#basic-concepts">#</a></h3>
+                <p>
+                  All request classes in the library inherit from the abstract <code>FhirRequest</code> class, which provides common functionality:
                 </p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>Base URL management</li>
+                  <li>HTTP headers configuration</li>
+                  <li>URI construction</li>
+                  <li>Response handling</li>
                 </ul>
+                <h3 id="common-request-structure" anchor="true">
+                  <span>Common Request Structure</span><a href="/docs/at_rest/restful_requests#common-request-structure">#</a>
+                </h3>
+                <p>All request classes share a similar construction pattern:</p>
+                <pre><code class="language-dart">final request = FhirSomeRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'), // Base FHIR server URL
+  resourceType: 'Patient',                        // The FHIR resource type
+  id: '12345',                                   // Resource ID (when applicable)
+  headers: {'Authorization': 'Bearer token123'},  // Custom HTTP headers
+  parameters: RestfulParameters()                 // Optional request parameters
+    .requestPretty()
+    .add('_count', '10'),
+);
+
+// Execute the request
+final response = await request.sendRequest();
+</code></pre>
+                <h3 id="request-types" anchor="true"><span>Request Types</span><a href="/docs/at_rest/restful_requests#request-types">#</a></h3>
+                <p>The library supports all standard FHIR RESTful operations:</p>
+                <h4 id="1-read-request">1. Read Request</h4>
+                <p>Retrieves a specific resource by its ID.</p>
+                <pre><code class="language-dart">final request = FhirReadRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// GET http://hapi.fhir.org/baseR4/Patient/12345?_format=json
+</code></pre>
+                <h4 id="2-vread-request">2. VRead Request</h4>
+                <p>Retrieves a specific version of a resource.</p>
+                <pre><code class="language-dart">final request = FhirVReadRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  vid: '2',  // Version ID
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// GET http://hapi.fhir.org/baseR4/Patient/12345/_history/2?_format=json
+</code></pre>
+                <h4 id="3-update-request">3. Update Request</h4>
+                <p>Updates an existing resource.</p>
+                <pre><code class="language-dart">final request = FhirUpdateRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  resource: {
+    'resourceType': 'Patient',
+    'id': '12345',
+    'name': [
+      {
+        'given': ['John'],
+        'family': 'Doe',
+      },
+    ],
+  },
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// PUT http://hapi.fhir.org/baseR4/Patient/12345?_format=json
+</code></pre>
+                <h4 id="4-patch-request">4. Patch Request</h4>
+                <p>Applies a partial update to a resource using JSON Patch.</p>
+                <pre><code class="language-dart">final patchBody = PatchBody()
+  ..addOperation(
+    PatchOps.replace,
+    '/name/0/family',
+    value: 'Smith',
+  );
+
+final request = FhirPatchRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  patchBody: patchBody,
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// PATCH http://hapi.fhir.org/baseR4/Patient/12345?_format=json
+</code></pre>
+                <h4 id="5-delete-request">5. Delete Request</h4>
+                <p>Deletes a resource by its ID.</p>
+                <pre><code class="language-dart">final request = FhirDeleteRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// DELETE http://hapi.fhir.org/baseR4/Patient/12345?_format=json
+</code></pre>
+                <h4 id="6-create-request">6. Create Request</h4>
+                <p>Creates a new resource.</p>
+                <pre><code class="language-dart">final request = FhirCreateRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  resource: {
+    'resourceType': 'Patient',
+    'name': [
+      {
+        'given': ['John'],
+        'family': 'Doe',
+      },
+    ],
+  },
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// POST http://hapi.fhir.org/baseR4/Patient?_format=json
+</code></pre>
+                <h4 id="7-history-request">7. History Request</h4>
+                <p>Retrieves the history of changes to a specific resource.</p>
+                <pre><code class="language-dart">final request = FhirHistoryRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// GET http://hapi.fhir.org/baseR4/Patient/12345/_history?_format=json
+</code></pre>
+                <h4 id="8-history-all-request">8. History All Request</h4>
+                <p>Retrieves the history of changes to all resources.</p>
+                <pre><code class="language-dart">final request = FhirHistoryAllRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// GET http://hapi.fhir.org/baseR4/_history?_format=json
+</code></pre>
+                <h4 id="9-capabilities-request">9. Capabilities Request</h4>
+                <p>Retrieves the server's capability statement.</p>
+                <pre><code class="language-dart">final request = FhirCapabilitiesRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  mode: Mode.normative,  // Optional: full, normative, or terminology
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// GET http://hapi.fhir.org/baseR4/metadata?mode=normative&amp;_format=json
+</code></pre>
+                <h4 id="10-transaction-request">10. Transaction Request</h4>
+                <p>Submits a bundle of operations to be processed as a single transaction.</p>
+                <pre><code class="language-dart">final bundle = Bundle(
+  type: BundleType.transaction,
+  entry: [
+    BundleEntry(
+      request: BundleRequest(
+        method: HTTPVerb.POST,
+        url: FhirUri('Patient'),
+      ),
+      resource: Patient(
+        name: [
+          HumanName(
+            family: FhirString('Doe'),
+            given: [FhirString('John')],
+          ),
+        ],
+      ),
+    ),
+  ],
+);
+
+final request = FhirTransactionRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  bundle: bundle.toJson(),
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// POST http://hapi.fhir.org/baseR4?_format=json
+</code></pre>
+                <h4 id="11-batch-request">11. Batch Request</h4>
+                <p>Similar to Transaction but allows operations to be processed independently.</p>
+                <pre><code class="language-dart">final bundle = Bundle(
+  type: BundleType.batch,
+  entry: [
+    BundleEntry(
+      request: BundleRequest(
+        method: HTTPVerb.GET,
+        url: FhirUri('Patient/12345'),
+      ),
+    ),
+    BundleEntry(
+      request: BundleRequest(
+        method: HTTPVerb.POST,
+        url: FhirUri('Observation'),
+      ),
+      resource: Observation(
+        status: ObservationStatus.final_,
+        code: CodeableConcept(
+          coding: [
+            Coding(
+              system: FhirUri('http://loinc.org'),
+              code: FhirCode('12345-6'),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ],
+);
+
+final request = FhirBatchRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  bundle: bundle.toJson(),
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// POST http://hapi.fhir.org/baseR4?_format=json
+</code></pre>
+                <h4 id="12-operation-request">12. Operation Request</h4>
+                <p>Invokes a named operation on the server, resource type, or resource instance.</p>
+                <pre><code class="language-dart">// Server-level operation
+final request = FhirOperationRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  operation: 'everything',
+  parameters: RestfulParameters()
+    .add('start', '2020-01-01')
+    .add('end', '2020-12-31'),
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+// Resource type operation
+final typeRequest = FhirOperationRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  operation: 'everything',
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+// Resource instance operation
+final instanceRequest = FhirOperationRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  operation: 'everything',
+  headers: {'Authorization': 'Bearer token123'},
+);
+
+final response = await request.sendRequest();
+// GET http://hapi.fhir.org/baseR4/$everything?start=2020-01-01&amp;end=2020-12-31&amp;_format=json
+// GET http://hapi.fhir.org/baseR4/Patient/$everything?_format=json
+// GET http://hapi.fhir.org/baseR4/Patient/12345/$everything?_format=json
+</code></pre>
+                <h3 id="request-parametersrestful_parameters" anchor="true">
+                  <span><a href="restful_parameters">Request Parameters</a></span><a href="/docs/at_rest/restful_requests#request-parametersrestful_parameters">#</a>
+                </h3>
+                <p>All request classes support optional parameters through the <code>RestfulParameters</code> class:</p>
+                <pre><code class="language-dart">final parameters = RestfulParameters()
+  .requestPretty()                     // Pretty-print the response
+  .requestSummary(Summary.true_)       // Request summary data only
+  .add('_count', '10')                 // Limit results to 10 items
+  .add('_since', '2020-01-01');        // Only include resources modified after this date
+  
+final request = FhirReadRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  parameters: parameters,
+);
+</code></pre>
+                <h3 id="working-with-http-client" anchor="true">
+                  <span>Working with HTTP Client</span><a href="/docs/at_rest/restful_requests#working-with-http-client">#</a>
+                </h3>
+                <p>
+                  By default, the library uses <code>http.Client()</code> to make requests. You can provide your own client for custom behavior:
+                </p>
+                <pre><code class="language-dart">final customClient = http.Client();
+
+final request = FhirReadRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  client: customClient,
+);
+</code></pre>
+                <h3 id="handling-responses" anchor="true"><span>Handling Responses</span><a href="/docs/at_rest/restful_requests#handling-responses">#</a></h3>
+                <p>The <code>sendRequest()</code> method returns a standard <code>http.Response</code> object:</p>
+                <pre><code class="language-dart">final request = FhirReadRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+);
+
+try {
+  final response = await request.sendRequest();
+  
+  if (response.statusCode == 200) {
+    // Parse the response body
+    final patient = Patient.fromJson(
+      jsonDecode(response.body),
+    );
+    // Use the patient resource
+  } else {
+    // Handle error responses
+    print('Error: ${response.statusCode} - ${response.body}');
+  }
+} catch (e) {
+  // Handle network or other exceptions
+  print('Exception: $e');
+}
+</code></pre>
+                <h3 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/at_rest/restful_requests#conclusion">#</a></h3>
+                <p>
+                  The <code>fhir_r4_at_rest</code> library simplifies interactions with FHIR servers by providing typed classes for each RESTful operation. This approach improves code readability and reduces the likelihood of errors when constructing FHIR API requests.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1558,14 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#restful-requests">RESTful Requests</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#basic-concepts">Basic Concepts</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#common-request-structure">Common Request Structure</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#request-types">Request Types</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#request-parametersrestful_parameters">Request Parameters</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#working-with-http-client">Working with HTTP Client</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#handling-responses">Handling Responses</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#conclusion">Conclusion</a></li>
                 </ul>
               </div>
             </aside>

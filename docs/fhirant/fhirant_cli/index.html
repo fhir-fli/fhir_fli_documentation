@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>CLI Usage | FHIR-FLI</title>
+    <meta property="og:title" content="CLI Usage | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1187,7 +1185,7 @@
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR ANT</summary>
                 <ul>
                   <li><div><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
@@ -1195,7 +1193,7 @@
                   <li><div><a href="docs/fhirant/fhirant_capabilities">Capabilities</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_security">Security</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_api_reference">API Reference</a></div></li>
-                  <li><div><a href="docs/fhirant/fhirant_cli">CLI</a></div></li>
+                  <li><div class="active"><a href="docs/fhirant/fhirant_cli">CLI</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_privacy_policy">Privacy Policy</a></div></li>
                 </ul>
               </details>
@@ -1205,23 +1203,67 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>CLI Usage</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="cli-server" anchor="true"><span>CLI Server</span><a href="/docs/fhirant/fhirant_cli#cli-server">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  FHIR ANT can also run as a standalone command-line server on any platform that supports Dart (Linux, macOS, Windows). This is useful for development, CI/CD, and server deployments.
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
-                </ul>
+                <h3 id="running" anchor="true"><span>Running</span><a href="/docs/fhirant/fhirant_cli#running">#</a></h3>
+                <pre><code class="language-bash">cd packages/fhirant_server
+dart run bin/server.dart
+</code></pre>
+                <h3 id="options" anchor="true"><span>Options</span><a href="/docs/fhirant/fhirant_cli#options">#</a></h3>
+                <table>
+                  <thead><tr><th>Flag</th><th>Default</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--port</code>, <code>-p</code></td><td><code>8080</code></td><td>Server port</td></tr>
+                    <tr><td><code>--db-path</code></td><td><code>data/db</code></td><td>Database file path</td></tr>
+                    <tr><td><code>--sqlcipher-path</code></td><td>(auto-detect)</td><td>Custom SQLCipher library path</td></tr>
+                    <tr><td><code>--config</code>, <code>-c</code></td><td>—</td><td>YAML configuration file</td></tr>
+                    <tr><td><code>--https</code></td><td><code>false</code></td><td>Enable HTTPS</td></tr>
+                    <tr><td><code>--cert-path</code></td><td>—</td><td>HTTPS certificate file</td></tr>
+                    <tr><td><code>--key-path</code></td><td>—</td><td>HTTPS private key file</td></tr>
+                    <tr><td><code>--dev-mode</code></td><td><code>false</code></td><td>Disable authentication</td></tr>
+                    <tr><td><code>--help</code>, <code>-h</code></td><td>—</td><td>Show usage</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="environment-variables" anchor="true"><span>Environment Variables</span><a href="/docs/fhirant/fhirant_cli#environment-variables">#</a></h3>
+                <table>
+                  <thead><tr><th>Variable</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>FHIRANT_ENCRYPTION_KEY</code></td><td>Database encryption key</td></tr>
+                    <tr><td><code>FHIRANT_JWT_SECRET</code></td><td>JWT signing secret</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="examples" anchor="true"><span>Examples</span><a href="/docs/fhirant/fhirant_cli#examples">#</a></h3>
+                <pre><code class="language-bash"># Basic server on port 3000
+dart run bin/server.dart --port 3000
+
+# Dev mode (no auth) with custom DB path
+dart run bin/server.dart --dev-mode --db-path /tmp/fhirant
+
+# HTTPS with certificates
+dart run bin/server.dart --https --cert-path cert.pem --key-path key.pem
+
+# Production with encryption key
+FHIRANT_ENCRYPTION_KEY=my-secret-key dart run bin/server.dart
+</code></pre>
+                <h3 id="docker" anchor="true"><span>Docker</span><a href="/docs/fhirant/fhirant_cli#docker">#</a></h3>
+                <p>A Dockerfile is included for containerized deployments:</p>
+                <pre><code class="language-bash">docker build -t fhirant .
+docker run -p 8080:8080 -e FHIRANT_ENCRYPTION_KEY=my-key fhirant
+</code></pre>
+                <h3 id="testing" anchor="true"><span>Testing</span><a href="/docs/fhirant/fhirant_cli#testing">#</a></h3>
+                <pre><code class="language-bash"># Run all server tests
+cd packages/fhirant_server &amp;&amp; dart test
+
+# Run smoke test against a running server
+dart run tools/smoke_test.dart http://localhost:8080
+
+# Run smoke test with auth testing
+dart run tools/smoke_test.dart http://localhost:8080 --auth
+</code></pre>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1285,13 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#cli-server">CLI Server</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_cli#running">Running</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_cli#options">Options</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_cli#environment-variables">Environment Variables</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_cli#examples">Examples</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_cli#docker">Docker</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_cli#testing">Testing</a></li>
                 </ul>
               </div>
             </aside>

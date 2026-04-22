@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Bulk Data | FHIR-FLI</title>
+    <meta property="og:title" content="Bulk Data | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1144,11 +1142,11 @@
                   <li><div><a href="docs/mapping/fhir_mapping_engine">Mapping Engine</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Additional Packages</summary>
                 <ul>
                   <li><div><a href="docs/fhir_r4_db">fhir_r4_db</a></div></li>
-                  <li><div><a href="docs/fhir_r4_bulk">fhir_r4_bulk</a></div></li>
+                  <li><div class="active"><a href="docs/fhir_r4_bulk">fhir_r4_bulk</a></div></li>
                   <li><div><a href="docs/fhir_r4_path">fhir_r4_path</a></div></li>
                   <li><div><a href="docs/fhir_r4_validation">fhir_r4_validation</a></div></li>
                   <li><div><a href="docs/fhir_r4_cql">fhir_r4_cql</a></div></li>
@@ -1205,23 +1203,223 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Bulk Data</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-bulk-operations" anchor="true"><span>FHIR Bulk Operations</span><a href="/docs/fhir_r4_bulk#fhir-bulk-operations">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The <code>fhir_r4_bulk</code> library provides tools for working with FHIR bulk data operations, including import, export, and NDJSON file handling. This library is particularly useful for working with large datasets in FHIR, supporting the standard FHIR bulk operations (<a href="https://hl7.org/fhir/uv/bulkdata/export.html">$export</a>
+                   and <a href="https://hl7.org/fhir/uv/bulkdata/import/index.html">$import</a>).
                 </p>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_bulk#installation">#</a></h3>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4_bulk: ^0.4.0
+  fhir_r4: ^0.4.2
+</code></pre>
+                <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_bulk#key-features">#</a></h3>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>Convert between FHIR resources and NDJSON format</li>
+                  <li>Handle compressed files (zip, tar.gz, gzip)</li>
+                  <li>Execute FHIR Bulk Data Export operations ($export)</li>
+                  <li>Execute FHIR Bulk Data Import operations ($import)</li>
                 </ul>
+                <h3 id="ndjson-operations" anchor="true"><span>NDJSON Operations</span><a href="/docs/fhir_r4_bulk#ndjson-operations">#</a></h3>
+                <p>
+                  NDJSON (Newline Delimited JSON) is the standard format for FHIR bulk data. The <code>FhirBulk</code> class provides utilities for converting between FHIR resources and NDJSON:
+                </p>
+                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_bulk/fhir_r4_bulk.dart';
+
+// Convert resources to NDJSON
+final resources = &lt;Resource&gt;[patient1, patient2, observation1];
+final ndjsonString = FhirBulk.toNdJson(resources);
+
+// Convert NDJSON to resources
+final parsedResources = FhirBulk.fromNdJson(ndjsonString);
+</code></pre>
+                <h4 id="working-with-files">Working with Files</h4>
+                <p>The library supports reading and writing NDJSON files:</p>
+                <pre><code class="language-dart">// Read NDJSON from a file
+final resources = await FhirBulk.fromFile('/path/to/patients.ndjson');
+
+// Read from compressed files
+final resourcesFromZip = await FhirBulk.fromCompressedFile('/path/to/data.zip');
+final resourcesFromGz = await FhirBulk.fromCompressedFile('/path/to/data.gz');
+final resourcesFromTarGz = await FhirBulk.fromCompressedFile('/path/to/data.tar.gz');
+</code></pre>
+                <h4 id="creating-compressed-files">Creating Compressed Files</h4>
+                <p>You can also create compressed NDJSON files:</p>
+                <pre><code class="language-dart">// Create a map of resource type -&gt; NDJSON content
+final ndJsonMap = {
+  'Patient': FhirBulk.toNdJson(patients),
+  'Observation': FhirBulk.toNdJson(observations),
+};
+
+// Create a ZIP file
+final zipBytes = await FhirBulk.toZipFile(ndJsonMap);
+
+// Create a GZIP file
+final gzipBytes = FhirBulk.toGZipFile(ndJsonMap);
+
+// Create a TAR.GZ file
+final tarGzBytes = await FhirBulk.toTarGzFile(ndJsonMap);
+
+// Write to a file
+await File('export.zip').writeAsBytes(zipBytes!);
+</code></pre>
+                <h3 id="bulk-export" anchor="true"><span>Bulk Export</span><a href="/docs/fhir_r4_bulk#bulk-export">#</a></h3>
+                <p>
+                  The FHIR Bulk Data Export operation (<code>$export</code>) allows you to retrieve large amounts of data from a FHIR server. The library supports three types of export:
+                </p>
+                <ol>
+                  <li><strong>System-level export</strong> - Export data for all patients</li>
+                  <li><strong>Group-level export</strong> - Export data for patients in a specific group</li>
+                  <li><strong>Patient-level export</strong> - Export data for all patients</li>
+                </ol>
+                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_bulk/fhir_r4_bulk.dart';
+
+// System-level export
+final systemRequest = BulkRequestSystem(
+  base: Uri.parse('https://example.com/fhir'),
+  since: FhirDateTime('2023-01-01'),
+  types: [
+    WhichResource(R4ResourceType.Patient),
+    WhichResource(R4ResourceType.Observation),
+  ],
+  headers: {'Authorization': 'Bearer token'},
+);
+
+// Group-level export
+final groupRequest = BulkRequestGroup(
+  base: Uri.parse('https://example.com/fhir'),
+  id: FhirId('diabetes-group'),
+  types: [
+    WhichResource(R4ResourceType.Patient),
+    WhichResource(R4ResourceType.Observation),
+  ],
+);
+
+// Patient-level export
+final patientRequest = BulkRequestPatient(
+  base: Uri.parse('https://example.com/fhir'),
+  types: [
+    WhichResource(R4ResourceType.Observation),
+    WhichResource(R4ResourceType.MedicationRequest),
+  ],
+);
+
+// Execute the request (choose one)
+final resources = await systemRequest.request();
+</code></pre>
+                <h4 id="export-options">Export Options</h4>
+                <p>The export operation supports several options:</p>
+                <pre><code class="language-dart">// Advanced options
+final request = BulkRequestSystem(
+  base: Uri.parse('https://example.com/fhir'),
+  // Only include resources updated since this date
+  since: FhirDateTime('2023-01-01'),
+  // Specific resource types to include
+  types: [WhichResource(R4ResourceType.Patient)],
+  // Additional filters (server-dependent)
+  typeFilters: ['Patient?gender=female'],
+  // Change output format (default is NDJSON)
+  outputFormat: 'application/fhir+ndjson',
+  // Use HTTP POST instead of GET (newer servers)
+  useHttpPost: true,
+  // Add authorization or other headers
+  headers: {'Authorization': 'Bearer token'},
+);
+</code></pre>
+                <h4 id="handling-results">Handling Results</h4>
+                <p>The result is a list of FHIR resources:</p>
+                <pre><code class="language-dart">final resources = await request.request();
+
+// Check for errors (OperationOutcome)
+for (final resource in resources) {
+  if (resource is OperationOutcome) {
+    print('Error: ${resource.issue?.first.diagnostics?.value}');
+  }
+}
+
+// Process resources by type
+final patients = resources.whereType&lt;Patient&gt;();
+final observations = resources.whereType&lt;Observation&gt;();
+
+print('Exported ${patients.length} patients');
+print('Exported ${observations.length} observations');
+</code></pre>
+                <h3 id="bulk-import" anchor="true"><span>Bulk Import</span><a href="/docs/fhir_r4_bulk#bulk-import">#</a></h3>
+                <p>
+                  The FHIR Bulk Data Import operation (<code>$import</code>) allows you to load large amounts of data into a FHIR server:
+                </p>
+                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_bulk/fhir_r4_bulk.dart';
+
+// Define the NDJSON files to import
+final importFiles = [
+  ImportFile(
+    resourceType: R4ResourceType.Patient,
+    url: Uri.parse('https://example.com/patients.ndjson'),
+  ),
+  ImportFile(
+    resourceType: R4ResourceType.Observation,
+    url: Uri.parse('https://example.com/observations.ndjson'),
+  ),
+];
+
+// Create the import request
+final importRequest = BulkImportRequest(
+  base: Uri.parse('https://example.com/fhir'),
+  files: importFiles,
+  // Optional source information
+  inputSource: 'https://source-system.org',
+  // If the NDJSON files require authentication
+  credentialHttpBasic: 'username:password',
+  // Control the batch size
+  maxBatchResourceCount: 1000,
+  // Add authorization or other headers
+  headers: {'Authorization': 'Bearer token'},
+);
+
+// Execute the import
+final outcome = await importRequest.importData();
+
+// Check the outcome
+if (outcome.issue != null &amp;&amp; outcome.issue!.isNotEmpty) {
+  // The operation outcome typically contains a job ID in the diagnostics
+  final jobId = outcome.issue!.first.diagnostics?.value;
+  print('Import job started with ID: $jobId');
+}
+</code></pre>
+                <p>
+                  The server typically responds with an <code>OperationOutcome</code> containing a job ID that you can use to poll for status.
+                </p>
+                <h3 id="performance-considerations" anchor="true"><span>Performance Considerations</span><a href="/docs/fhir_r4_bulk#performance-considerations">#</a></h3>
+                <ul>
+                  <li>Bulk operations are designed for large datasets</li>
+                  <li>The NDJSON processing is memory-efficient, handling resources one at a time</li>
+                  <li>For very large files, consider streaming approaches when possible</li>
+                  <li>The library automatically handles paginated responses from servers</li>
+                </ul>
+                <h3 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/fhir_r4_bulk#error-handling">#</a></h3>
+                <p>
+                  Both import and export operations return FHIR <code>OperationOutcome</code> resources in case of errors:
+                </p>
+                <pre><code class="language-dart">final resources = await bulkRequest.request();
+
+// Check for errors
+for (final resource in resources) {
+  if (resource is OperationOutcome) {
+    for (final issue in resource.issue ?? []) {
+      print('Error: ${issue.severity?.value} - ${issue.diagnostics?.value}');
+    }
+  }
+}
+</code></pre>
+                <h3 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/fhir_r4_bulk#conclusion">#</a></h3>
+                <p>
+                  The <code>fhir_r4_bulk</code> library provides comprehensive support for FHIR bulk data operations, making it easier to work with large FHIR datasets in Dart and Flutter applications. Whether you're extracting data from a server or loading data into one, this library provides the tools you need to work efficiently with FHIR bulk data.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1441,15 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_bulk#fhir-bulk-operations">FHIR Bulk Operations</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#installation">Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#key-features">Key Features</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#ndjson-operations">NDJSON Operations</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#bulk-export">Bulk Export</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#bulk-import">Bulk Import</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#performance-considerations">Performance Considerations</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#error-handling">Error Handling</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_bulk#conclusion">Conclusion</a></li>
                 </ul>
               </div>
             </aside>

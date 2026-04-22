@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>API Reference | FHIR-FLI</title>
+    <meta property="og:title" content="API Reference | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1187,14 +1185,14 @@
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR ANT</summary>
                 <ul>
                   <li><div><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_getting_started">Getting Started</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_capabilities">Capabilities</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_security">Security</a></div></li>
-                  <li><div><a href="docs/fhirant/fhirant_api_reference">API Reference</a></div></li>
+                  <li><div class="active"><a href="docs/fhirant/fhirant_api_reference">API Reference</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_cli">CLI</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_privacy_policy">Privacy Policy</a></div></li>
                 </ul>
@@ -1205,23 +1203,223 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>API Reference</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
-                <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
-                </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
-                </ul>
+                <h2 id="api-reference" anchor="true"><span>API Reference</span><a href="/docs/fhirant/fhirant_api_reference#api-reference">#</a></h2>
+                <p>Complete list of all endpoints available on the FHIR ANT server.</p>
+                <h3 id="public-endpoints" anchor="true"><span>Public Endpoints</span><a href="/docs/fhirant/fhirant_api_reference#public-endpoints">#</a></h3>
+                <p>These endpoints do not require authentication even when Dev Mode is off.</p>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>GET</code></td><td><code>/</code></td><td>Server info</td></tr>
+                    <tr><td><code>GET</code></td><td><code>/health</code></td><td>Health check</td></tr>
+                    <tr><td><code>GET</code></td><td><code>/metadata</code></td><td>FHIR CapabilityStatement</td></tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/.well-known/smart-configuration</code></td>
+                      <td>SMART discovery</td>
+                    </tr>
+                    <tr><td><code>GET</code></td><td><code>/favicon.ico</code></td><td>Favicon</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="authentication-endpoints" anchor="true">
+                  <span>Authentication Endpoints</span><a href="/docs/fhirant/fhirant_api_reference#authentication-endpoints">#</a>
+                </h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>POST</code></td><td><code>/auth/register</code></td><td>Register new user</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/auth/login</code></td><td>Login, returns JWT</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/auth/token</code></td><td>Token refresh / code exchange</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/auth/revoke</code></td><td>Revoke a token (RFC 7009)</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/auth/logout</code></td><td>Logout (revoke current token)</td></tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/auth/authorize</code></td>
+                      <td>OAuth authorization (show form)</td>
+                    </tr>
+                    <tr><td><code>POST</code></td><td><code>/auth/authorize</code></td><td>OAuth authorization (submit)</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="admin-endpoints" anchor="true"><span>Admin Endpoints</span><a href="/docs/fhirant/fhirant_api_reference#admin-endpoints">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/admin/unlock/&lt;userId&gt;</code></td>
+                      <td>Unlock locked account</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3 id="resource-crud" anchor="true"><span>Resource CRUD</span><a href="/docs/fhirant/fhirant_api_reference#resource-crud">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>POST</code></td><td><code>/&lt;type&gt;</code></td><td>Create resource</td></tr>
+                    <tr><td><code>GET</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td>Read resource</td></tr>
+                    <tr><td><code>PUT</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td>Update resource</td></tr>
+                    <tr>
+                      <td><code>PATCH</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
+                      <td>JSON Patch resource</td>
+                    </tr>
+                    <tr><td><code>DELETE</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td>Delete resource</td></tr>
+                    <tr><td><code>DELETE</code></td><td><code>/&lt;type&gt;</code></td><td>Conditional delete</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="search" anchor="true"><span>Search</span><a href="/docs/fhirant/fhirant_api_reference#search">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>GET</code></td><td><code>/&lt;type&gt;</code></td><td>Search by type</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/&lt;type&gt;/_search</code></td><td>POST-based search</td></tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/_search</code></td>
+                      <td>System-level search (requires <code>_type</code>)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3 id="history" anchor="true"><span>History</span><a href="/docs/fhirant/fhirant_api_reference#history">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;/_history/&lt;vid&gt;</code></td>
+                      <td>Version read</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;/_history</code></td>
+                      <td>Instance history</td>
+                    </tr>
+                    <tr><td><code>GET</code></td><td><code>/&lt;type&gt;/_history</code></td><td>Type history</td></tr>
+                    <tr><td><code>GET</code></td><td><code>/_history</code></td><td>System history</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="bundles" anchor="true"><span>Bundles</span><a href="/docs/fhirant/fhirant_api_reference#bundles">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody><tr><td><code>POST</code></td><td><code>/</code></td><td>Transaction or batch Bundle</td></tr></tbody>
+                </table>
+                <h3 id="compartments" anchor="true"><span>Compartments</span><a href="/docs/fhirant/fhirant_api_reference#compartments">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;/$everything</code></td>
+                      <td>Compartment everything</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;/&lt;resourceType&gt;</code></td>
+                      <td>Compartment search</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>Supported compartment types: Patient, Encounter, Practitioner, RelatedPerson, Device.</p>
+                <h3 id="operations" anchor="true"><span>Operations</span><a href="/docs/fhirant/fhirant_api_reference#operations">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>ALL</code></td><td><code>/$validate</code></td><td>Validate a resource</td></tr>
+                    <tr><td><code>ALL</code></td><td><code>/&lt;type&gt;/$validate</code></td><td>Validate against type</td></tr>
+                    <tr><td><code>GET/POST</code></td><td><code>/$fhirpath</code></td><td>Evaluate FHIRPath</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/$transform</code></td><td>FHIR Mapping Language</td></tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/Composition/&lt;id&gt;/$document</code></td>
+                      <td>Generate document</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;/$meta</code></td>
+                      <td>Get resource meta</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;/$meta-add</code></td>
+                      <td>Add meta tags</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;/$meta-delete</code></td>
+                      <td>Remove meta tags</td>
+                    </tr>
+                    <tr><td><code>POST</code></td><td><code>/$backup</code></td><td>Export all data</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/$restore</code></td><td>Import data</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="terminology" anchor="true"><span>Terminology</span><a href="/docs/fhirant/fhirant_api_reference#terminology">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/CodeSystem/&lt;id&gt;/$validate-code</code></td>
+                      <td>Validate code</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/CodeSystem/$validate-code</code></td>
+                      <td>Validate code (type-level)</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/ValueSet/&lt;id&gt;/$validate-code</code></td>
+                      <td>Validate code in ValueSet</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/ValueSet/$validate-code</code></td>
+                      <td>Validate code (type-level)</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/CodeSystem/&lt;id&gt;/$lookup</code></td>
+                      <td>Code lookup</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/CodeSystem/$lookup</code></td>
+                      <td>Code lookup (type-level)</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/ValueSet/&lt;id&gt;/$expand</code></td>
+                      <td>Expand ValueSet</td>
+                    </tr>
+                    <tr><td><code>GET/POST</code></td><td><code>/ValueSet/$expand</code></td><td>Expand (type-level)</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="bulk-data-export" anchor="true"><span>Bulk Data Export</span><a href="/docs/fhirant/fhirant_api_reference#bulk-data-export">#</a></h3>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>GET</code></td><td><code>/$export</code></td><td>System-level export</td></tr>
+                    <tr><td><code>GET</code></td><td><code>/Patient/$export</code></td><td>Patient-level export</td></tr>
+                    <tr><td><code>GET</code></td><td><code>/Group/&lt;id&gt;/$export</code></td><td>Group-level export</td></tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/$export-poll-status/&lt;id&gt;</code></td>
+                      <td>Poll export job</td>
+                    </tr>
+                    <tr>
+                      <td><code>DELETE</code></td>
+                      <td><code>/$export-poll-status/&lt;id&gt;</code></td>
+                      <td>Cancel export job</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/$export-file/&lt;id&gt;/&lt;file&gt;</code></td>
+                      <td>Download export file</td>
+                    </tr>
+                  </tbody>
+                </table>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1441,18 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_api_reference#api-reference">API Reference</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#public-endpoints">Public Endpoints</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#authentication-endpoints">Authentication Endpoints</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#admin-endpoints">Admin Endpoints</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#resource-crud">Resource CRUD</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#search">Search</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#history">History</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#bundles">Bundles</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#compartments">Compartments</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#operations">Operations</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#terminology">Terminology</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_api_reference#bulk-data-export">Bulk Data Export</a></li>
                 </ul>
               </div>
             </aside>

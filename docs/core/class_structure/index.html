@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Class Structure | FHIR-FLI</title>
+    <meta property="og:title" content="Class Structure | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1107,13 +1105,13 @@
           <nav class="sidebar">
             <button class="sidebar-close">×</button>
             <div>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR R4b Core</summary>
                 <ul>
                   <li><div><a href="docs/core/fhir_r4">fhir_r4</a></div></li>
                   <li><div><a href="docs/core/basic_object">Basic Object</a></div></li>
                   <li><div><a href="docs/core/serialization">Serialization</a></div></li>
-                  <li><div><a href="docs/core/class_structure">Class Structure</a></div></li>
+                  <li><div class="active"><a href="docs/core/class_structure">Class Structure</a></div></li>
                   <li><div><a href="docs/core/polymorphic_types">Polymorphic Types</a></div></li>
                   <li><div><a href="docs/core/primitive_types">Primitive Types</a></div></li>
                   <li><div><a href="docs/core/enums">Enums</a></div></li>
@@ -1205,23 +1203,125 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Class Structure</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="class-utility-methods" anchor="true"><span>Class Utility Methods</span><a href="/docs/core/class_structure#class-utility-methods">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  This document explains the structure and utility methods available in FHIR-FLI classes that allow for flexible manipulation and access to FHIR data.
                 </p>
+                <h3 id="class-structure" anchor="true"><span>Class Structure</span><a href="/docs/core/class_structure#class-structure">#</a></h3>
+                <p>
+                  Each FHIR resource in the FHIR-FLI libraries is implemented as a Dart class with a consistent structure. Let's examine the key components:
+                </p>
+                <h4 id="constructor-and-fields">Constructor and Fields</h4>
+                <p>
+                  FHIR classes have a primary constructor with named parameters for all fields defined in the FHIR specification. Fields may be required or optional, and follow the FHIR data model.
+                </p>
+                <pre><code class="language-dart">const Age({
+  super.id,
+  super.extension_,
+  super.value,
+  super.comparator,
+  super.unit,
+  super.system,
+  super.code,
+  super.disallowExtensions,
+  super.objectPath = 'Age',
+});
+</code></pre>
+                <h4 id="empty-constructor">Empty Constructor</h4>
+                <p>
+                  Each class provides an <code>.empty()</code> factory constructor that creates an instance with placeholder values for required fields. This is particularly useful for FHIR mapping operations where you need to initialize objects without specific data yet.
+                </p>
+                <pre><code class="language-dart">// Create an empty Age object with minimal initialization
+final age = Age.empty();
+</code></pre>
+                <p>
+                  The empty constructor is primarily used in FHIR mapping scenarios and not typically needed by most developers in everyday use.
+                </p>
+                <h3 id="common-utility-methods-and-properties" anchor="true">
+                  <span>Common Utility Methods and Properties</span><a href="/docs/core/class_structure#common-utility-methods-and-properties">#</a>
+                </h3>
+                <h4 id="fhirtype-property">fhirType Property</h4>
+                <p>
+                  The <code>fhirType</code> getter returns a string representation of the FHIR type as defined in the FHIR specification:
+                </p>
+                <pre><code class="language-dart">@override
+String get fhirType =&gt; 'Age';
+</code></pre>
+                <p>
+                  It's important to note that the <code>fhirType</code> is not always identical to the Dart class name. In cases where a FHIR type name conflicts with Dart keywords or common types (e.g., "List"), the Dart class is named differently (e.g., "FhirList"), but the 
+                  <code>fhirType</code> property still returns the correct FHIR type name ("List").
+                </p>
+                <h4 id="reflection-like-functionality">Reflection-Like Functionality</h4>
+                <p>
+                  Since Flutter doesn't fully support Dart reflection, FHIR-FLI implements several methods to enable reflection-like capabilities:
+                </p>
+                <h5 id="listchildrennames">listChildrenNames()</h5>
+                <p>Returns a list of all available field names in the FHIR resource:</p>
+                <pre><code class="language-dart">// Get all field names for an Age object
+final fieldNames = age.listChildrenNames();
+// Result: ['id', 'extension', 'value', 'comparator', 'unit', 'system', 'code']
+</code></pre>
+                <h5 id="getchildrenbyname">getChildrenByName()</h5>
+                <p>
+                  Retrieves all matching fields by name. It returns a list of objects, regardless of whether the underlying field is a single value or a list:
+                </p>
+                <pre><code class="language-dart">// Get the 'unit' field from an Age object
+final units = age.getChildrenByName('unit');
+</code></pre>
+                <p>Important notes about <code>getChildrenByName()</code>:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>The name passed should be the name used in FHIR JSON (not necessarily the exact Dart field name)</li>
+                  <li>For polymorphic types, you can use the base name, the base name with an "X", or a specific type name</li>
+                  <li>The optional <code>checkValid</code> parameter will throw an error if the field name is invalid</li>
                 </ul>
+                <h5 id="getchildbyname">getChildByName()</h5>
+                <p>Retrieves a single field value by name:</p>
+                <pre><code class="language-dart">// Get the 'value' field from an Age object
+final value = age.getChildByName('value');
+</code></pre>
+                <p>This method will throw an error if the field contains multiple values.</p>
+                <p>For polymorphic fields, this method may return multiple possible types.</p>
+                <h4 id="object-manipulation-methods">Object Manipulation Methods</h4>
+                <h5 id="copywith">copyWith()</h5>
+                <p>Creates a new instance with specific fields updated:</p>
+                <pre><code class="language-dart">// Create a new Age object with updated value
+final updatedAge = age.copyWith(
+  value: FhirDecimal(5),
+  unit: FhirString('years'),
+);
+</code></pre>
+                <p>Importantly, similar to freezed, you CAN now pass a null value to clear a field if you so wish.</p>
+                <h5 id="equalsdeep">equalsDeep()</h5>
+                <p>Performs a deep comparison between two instances, checking if all field values are equal:</p>
+                <pre><code class="language-dart">// Check if two Age objects are deeply equal
+final areEqual = age1.equalsDeep(age2);
+</code></pre>
+                <h3 id="usage-example" anchor="true"><span>Usage Example</span><a href="/docs/core/class_structure#usage-example">#</a></h3>
+                <p>Here's how these utility methods might be used together:</p>
+                <pre><code class="language-dart">final age = Age(
+  value: FhirDecimal(65),
+  unit: FhirString('years'),
+  system: FhirUri('http://unitsofmeasure.org'),
+  code: FhirCode('a'),
+);
+
+// Get the FHIR type
+print(age.fhirType); // Output: Age
+
+// Get the value field
+final valueField = age.getChildByName('value');
+print(valueField?.toString()); // Output: 65
+
+// Update a field by name
+final updatedAge = age.setChildByName('unit', FhirString('months')) as Age;
+print(updatedAge.unit?.value); // Output: months
+
+</code></pre>
+                <p>
+                  These utility methods allow for dynamic and flexible manipulation of FHIR resources, even without traditional reflection capabilities.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1343,12 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/core/class_structure#class-utility-methods">Class Utility Methods</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/class_structure#class-structure">Class Structure</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/class_structure#common-utility-methods-and-properties">Common Utility Methods and Properties</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/class_structure#usage-example">Usage Example</a></li>
                 </ul>
               </div>
             </aside>

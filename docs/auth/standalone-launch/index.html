@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Standalone Launch | FHIR-FLI</title>
+    <meta property="og:title" content="Standalone Launch | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1128,12 +1126,12 @@
                   <li><div><a href="docs/at_rest/restful_parameters">Parameters</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Auth</summary>
                 <ul>
                   <li><div><a href="docs/auth/fhir_r4_auth">fhir_r4_auth</a></div></li>
                   <li><div><a href="docs/auth/installation">Installation</a></div></li>
-                  <li><div><a href="docs/auth/standalone-launch">Standalone Launch</a></div></li>
+                  <li><div class="active"><a href="docs/auth/standalone-launch">Standalone Launch</a></div></li>
                 </ul>
               </details>
               <details class="sidebar-group collapsible">
@@ -1205,22 +1203,392 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Standalone Launch</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="standalone-launch" anchor="true"><span>Standalone Launch</span><a href="/docs/auth/standalone-launch#standalone-launch">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Standalone launch is used when your app launches independently (not embedded in an EHR) and needs to authenticate a user to access their health data.
                 </p>
+                <h3 id="when-to-use-standalone-launch" anchor="true">
+                  <span>When to Use Standalone Launch</span><a href="/docs/auth/standalone-launch#when-to-use-standalone-launch">#</a>
+                </h3>
+                <p>Use standalone launch for:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>Patient-facing mobile apps</strong> - Apps patients download and use independently</li>
+                  <li><strong>Personal health record apps</strong> - Apps that manage personal health information</li>
+                  <li><strong>Consumer health apps</strong> - Fitness, wellness, or health tracking applications</li>
+                  <li><strong>Research apps</strong> - Apps for clinical studies or data collection</li>
+                </ul>
+                <h3 id="how-it-works" anchor="true"><span>How It Works</span><a href="/docs/auth/standalone-launch#how-it-works">#</a></h3>
+                <pre><code>┌─────────────┐                    ┌──────────────┐                    ┌─────────────┐
+│   Your App  │                    │ FHIR Server  │                    │    User     │
+└──────┬──────┘                    └──────┬───────┘                    └──────┬──────┘
+       │                                  │                                   │
+       │  1. Get server capabilities     │                                   │
+       ├─────────────────────────────────&gt;│                                   │
+       │                                  │                                   │
+       │  2. Redirect to auth URL         │                                   │
+       ├──────────────────────────────────┼──────────────────────────────────&gt;│
+       │                                  │                                   │
+       │                                  │  3. User logs in &amp; authorizes     │
+       │                                  │&lt;──────────────────────────────────┤
+       │                                  │                                   │
+       │  4. Redirect back with auth code │                                   │
+       │&lt;─────────────────────────────────┼───────────────────────────────────┤
+       │                                  │                                   │
+       │  5. Exchange code for tokens     │                                   │
+       ├─────────────────────────────────&gt;│                                   │
+       │                                  │                                   │
+       │  6. Access token &amp; refresh token │                                   │
+       │&lt;─────────────────────────────────┤                                   │
+       │                                  │                                   │
+       │  7. Make FHIR requests           │                                   │
+       ├─────────────────────────────────&gt;│                                   │
+       │                                  │                                   │
+</code></pre>
+                <h3 id="basic-implementation" anchor="true"><span>Basic Implementation</span><a href="/docs/auth/standalone-launch#basic-implementation">#</a></h3>
+                <h4 id="step-1-create-the-client">Step 1: Create the Client</h4>
+                <pre><code class="language-dart">import 'package:fhir_r4_auth/fhir_r4_auth.dart';
+
+final client = SmartFhirClient(
+  config: SmartConfig(
+    // Your registered client ID
+    clientId: 'your-app-client-id',
+    
+    // FHIR server base URL
+    fhirBaseUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'.toFhirUri,
+    
+    // Your app's redirect URI (must be registered)
+    redirectUri: Uri.parse('com.yourcompany.yourapp://callback'),
+    
+    // Scopes you're requesting
+    scopes: [
+      'patient/*.read',           // Read all patient resources
+      'launch/patient',           // Patient context
+      'offline_access',           // Refresh token
+    ],
+    
+    // Launch type (standalone is default)
+    launchType: LaunchType.standalone,
+    
+    // Enable PKCE (recommended, enabled by default)
+    enablePkce: true,
+    
+    // Request OpenID Connect (recommended)
+    enableOpenId: true,
+  ),
+);
+</code></pre>
+                <h4 id="step-2-authenticate">Step 2: Authenticate</h4>
+                <pre><code class="language-dart">try {
+  await client.authenticate();
+  print('Successfully authenticated!');
+  
+  // Client is now ready to make FHIR requests
+} on AuthenticationException catch (e) {
+  print('Authentication failed: ${e.message}');
+  // Handle error
+} on NetworkException catch (e) {
+  print('Network error: ${e.message}');
+  // Handle network issues
+}
+</code></pre>
+                <h4 id="step-3-make-fhir-requests">Step 3: Make FHIR Requests</h4>
+                <p>Once authenticated, use the client to make FHIR requests:</p>
+                <pre><code class="language-dart">// Read a resource
+final patient = await client.read(
+  resourceType: 'Patient',
+  id: 'patient-id',
+);
+
+// Search for resources
+final observations = await client.search(
+  resourceType: 'Observation',
+  parameters: {
+    'patient': 'patient-id',
+    'category': 'vital-signs',
+    '_count': '10',
+  },
+);
+
+// Create a resource
+final newObservation = Observation(/* ... */);
+final created = await client.create(
+  resource: newObservation,
+);
+
+// Update a resource
+patient.name?.first?.text = FhirString('Updated Name');
+final updated = await client.update(
+  resource: patient,
+);
+</code></pre>
+                <h3 id="complete-example" anchor="true"><span>Complete Example</span><a href="/docs/auth/standalone-launch#complete-example">#</a></h3>
+                <p>Here's a complete Flutter app with standalone launch:</p>
+                <pre><code class="language-dart">import 'package:flutter/material.dart';
+import 'package:fhir_r4_auth/fhir_r4_auth.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+
+void main() {
+  runApp(MyHealthApp());
+}
+
+class MyHealthApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My Health App',
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() =&gt; _HomePageState();
+}
+
+class _HomePageState extends State&lt;HomePage&gt; {
+  SmartFhirClient? _client;
+  Patient? _patient;
+  bool _isLoading = false;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeClient();
+  }
+
+  void _initializeClient() {
+    _client = SmartFhirClient(
+      config: SmartConfig(
+        clientId: 'your-client-id',
+        fhirBaseUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'.toFhirUri,
+        redirectUri: Uri.parse('com.yourcompany.yourapp://callback'),
+        scopes: ['patient/*.read', 'launch/patient', 'offline_access'],
+      ),
+    );
+  }
+
+  Future&lt;void&gt; _login() async {
+    setState(() {
+      _isLoading = true;
+      _error = null;
+    });
+
+    try {
+      await _client!.authenticate();
+      
+      // Get patient ID from token response
+      final patientId = _client!.patientId;
+      
+      if (patientId != null) {
+        // Fetch patient data
+        final patient = await _client!.read(
+          resourceType: 'Patient',
+          id: patientId,
+        ) as Patient;
+        
+        setState(() {
+          _patient = patient;
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _error = e.toString();
+        _isLoading = false;
+      });
+    }
+  }
+
+  Future&lt;void&gt; _logout() async {
+    await _client?.logout();
+    setState(() {
+      _patient = null;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My Health App'),
+        actions: _patient != null
+            ? [
+                IconButton(
+                  icon: Icon(Icons.logout),
+                  onPressed: _logout,
+                ),
+              ]
+            : null,
+      ),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    if (_isLoading) {
+      return Center(child: CircularProgressIndicator());
+    }
+
+    if (_error != null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.error, size: 64, color: Colors.red),
+            SizedBox(height: 16),
+            Text('Error: $_error'),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _login,
+              child: Text('Try Again'),
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (_patient == null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.medical_services, size: 64),
+            SizedBox(height: 16),
+            Text('Welcome to My Health App'),
+            SizedBox(height: 8),
+            Text('Connect to your health records'),
+            SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: _login,
+              child: Text('Connect Health Records'),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return ListView(
+      padding: EdgeInsets.all(16),
+      children: [
+        Card(
+          child: ListTile(
+            leading: Icon(Icons.person),
+            title: Text(_patient!.name?.first?.text?.value ?? 'Unknown'),
+            subtitle: Text('Patient ID: ${_patient!.id}'),
+          ),
+        ),
+        // Add more patient information here
+      ],
+    );
+  }
+
+  @override
+  void dispose() {
+    _client?.close();
+    super.dispose();
+  }
+}
+</code></pre>
+                <h3 id="configuration-options" anchor="true"><span>Configuration Options</span><a href="/docs/auth/standalone-launch#configuration-options">#</a></h3>
+                <h4 id="scopes">Scopes</h4>
+                <p>Scopes control what data your app can access:</p>
+                <pre><code class="language-dart">scopes: [
+  // Patient resources
+  'patient/Patient.read',         // Read patient demographics
+  'patient/Observation.read',     // Read observations
+  'patient/Condition.read',       // Read conditions
+  'patient/MedicationRequest.read', // Read medications
+  'patient/*.read',               // Read all patient resources
+  
+  // Launch context
+  'launch/patient',               // Get patient context
+  
+  // Special scopes
+  'offline_access',               // Request refresh token
+  'openid',                       // OpenID Connect
+  'fhirUser',                     // Get user identity
+],
+</code></pre>
+                <p>
+                  <a href="https://www.hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html">Learn more about scopes →</a>
+                </p>
+                <h4 id="custom-parameters">Custom Parameters</h4>
+                <p>Add custom parameters to the authorization request:</p>
+                <pre><code class="language-dart">config: SmartConfig(
+  // ... other config
+  customParameters: {
+    'aud': 'https://fhir.epic.com',
+    'custom_param': 'value',
+  },
+),
+</code></pre>
+                <h3 id="session-management" anchor="true"><span>Session Management</span><a href="/docs/auth/standalone-launch#session-management">#</a></h3>
+                <p>Add session management to handle timeouts:</p>
+                <pre><code class="language-dart">final client = SmartFhirClient(
+  config: config,
+  sessionManager: SessionManager(
+    idleTimeout: Duration(minutes: 15),
+    absoluteTimeout: Duration(hours: 8),
+  ),
+);
+
+// Listen for timeout warnings
+client.onSessionTimeoutWarning?.listen((remaining) {
+  print('Session expires in ${remaining.inMinutes} minutes');
+  // Show warning to user
+});
+
+// Listen for session expiry
+client.onSessionTimeout?.listen((reason) {
+  print('Session ended: $reason');
+  // Redirect to login
+});
+
+// Record activity to prevent idle timeout
+await client.recordActivity();
+</code></pre>
+                <h3 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/auth/standalone-launch#error-handling">#</a></h3>
+                <p>Handle common error scenarios:</p>
+                <pre><code class="language-dart">try {
+  await client.authenticate();
+} on AuthenticationException catch (e) {
+  // User cancelled or auth failed
+  if (e.message.contains('cancelled')) {
+    print('User cancelled authentication');
+  } else {
+    print('Authentication error: ${e.message}');
+  }
+} on ConfigurationException catch (e) {
+  // Configuration problem
+  print('Configuration error: ${e.message}');
+  print('Check field: ${e.configurationField}');
+} on NetworkException catch (e) {
+  // Network problem
+  print('Network error: ${e.statusCode}: ${e.message}');
+} catch (e) {
+  // Other errors
+  print('Unexpected error: $e');
+}
+</code></pre>
+                <h3 id="testing" anchor="true"><span>Testing</span><a href="/docs/auth/standalone-launch#testing">#</a></h3>
+                <p>Test standalone launch in your app:</p>
+                <ol>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Use a sandbox</strong> - Start with <a href="https://launch.smarthealthit.org/">SMART Health IT Sandbox</a>
                   </li>
+                  <li><strong>Register your app</strong> - Get a client ID and register your redirect URI</li>
+                  <li><strong>Test authentication flow</strong> - Verify the full OAuth flow works</li>
+                  <li><strong>Test token refresh</strong> - Ensure tokens refresh automatically</li>
+                  <li><strong>Test logout</strong> - Verify tokens are revoked on logout</li>
+                </ol>
+                <h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/auth/standalone-launch#next-steps">#</a></h3>
+                <ul>
+                  <li><strong><a href="/docs/auth/installation">Installation guide</a></strong> - Platform-specific setup</li>
+                  <li><strong><a href="/docs/auth">Auth overview</a></strong> - Full API reference and feature overview</li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1611,18 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/auth/standalone-launch#standalone-launch">Standalone Launch</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/auth/standalone-launch#when-to-use-standalone-launch">When to Use Standalone Launch</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#how-it-works">How It Works</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#basic-implementation">Basic Implementation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#complete-example">Complete Example</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#configuration-options">Configuration Options</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#session-management">Session Management</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#error-handling">Error Handling</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#testing">Testing</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/standalone-launch#next-steps">Next Steps</a></li>
                 </ul>
               </div>
             </aside>

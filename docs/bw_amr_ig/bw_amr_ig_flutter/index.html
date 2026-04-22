@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Flutter Application | FHIR-FLI</title>
+    <meta property="og:title" content="Flutter Application | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1159,13 +1157,13 @@
                 <summary>Demos</summary>
                 <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Botswana AMR IG</summary>
                 <ul>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_overview">Overview</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_whonet">WHONET Export</a></div></li>
-                  <li><div><a href="docs/bw_amr_ig/bw_amr_ig_flutter">Flutter App</a></div></li>
+                  <li><div class="active"><a href="docs/bw_amr_ig/bw_amr_ig_flutter">Flutter App</a></div></li>
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
               </details>
@@ -1205,23 +1203,128 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Flutter Application</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="flutter-data-capture-application" anchor="true">
+                  <span>Flutter Data Capture Application</span><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#flutter-data-capture-application">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The Botswana AMR platform includes a Flutter/Dart application for capturing AMR culture and susceptibility data at the point of care.
                 </p>
+                <h3 id="architecture" anchor="true"><span>Architecture</span><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#architecture">#</a></h3>
+                <p>The Flutter app captures structured data and stores it as FHIR resources on a FHIR R4 server:</p>
+                <pre><code>┌─────────────────────────┐
+│   Flutter App            │
+│   ├── Data entry forms   │
+│   ├── Dart model classes │
+│   └── fhir_r4 package   │
+└─────────┬───────────────┘
+          │ FHIR REST API
+          ▼
+┌─────────────────────────┐
+│   FHIR R4 Server        │
+│   (e.g., FHIR ANT)      │
+│   ├── Resource storage   │
+│   └── $export-whonet     │
+└─────────────────────────┘
+</code></pre>
+                <h3 id="model-classes" anchor="true"><span>Model Classes</span><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#model-classes">#</a></h3>
+                <p>The app includes builder classes that construct FHIR resources from form data:</p>
+                <table>
+                  <thead><tr><th>Model</th><th>FHIR Resource</th><th>Key Fields</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>BotswanaAMRPatientBuilder</code></td>
+                      <td>Patient</td>
+                      <td>Name, DOB, gender, Omang (national ID)</td>
+                    </tr>
+                    <tr>
+                      <td><code>BotswanaAMREncounterBuilder</code></td>
+                      <td>Encounter</td>
+                      <td>Ward type, admission date, facility, location</td>
+                    </tr>
+                    <tr>
+                      <td><code>BotswanaAMRSpecimenBuilder</code></td>
+                      <td>Specimen</td>
+                      <td>Specimen type, collection date, body site</td>
+                    </tr>
+                    <tr>
+                      <td><code>BotswanaAMROrganismObservationBuilder</code></td>
+                      <td>Observation</td>
+                      <td>Organism (SNOMED CT), isolate number, hasMember links</td>
+                    </tr>
+                    <tr>
+                      <td><code>BotswanaAMRSusceptibilityObservationBuilder</code></td>
+                      <td>Observation</td>
+                      <td>Antibiotic (LOINC), S/I/R, MIC/zone diameter, AST method</td>
+                    </tr>
+                    <tr>
+                      <td><code>BotswanaAMRSpecialTestObservationBuilder</code></td>
+                      <td>Observation</td>
+                      <td>ESBL, carbapenemase, MRSA detection results</td>
+                    </tr>
+                    <tr>
+                      <td><code>BotswanaAMRGramStainObservationBuilder</code></td>
+                      <td>Observation</td>
+                      <td>Gram stain morphology</td>
+                    </tr>
+                    <tr>
+                      <td><code>BotswanaAMRDiagnosticReportBuilder</code></td>
+                      <td>DiagnosticReport</td>
+                      <td>Ties all observations, specimen, encounter together</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  Each builder class has a <code>buildResource()</code> method that returns a fully conformant FHIR resource using the 
+                  <a href="../core/fhir_r4">fhir_r4</a> package.
+                </p>
+                <h3 id="valuesets-in-dart" anchor="true"><span>ValueSets in Dart</span><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#valuesets-in-dart">#</a></h3>
+                <p>Pre-generated Dart files provide ValueSet coding constants for dropdowns and validation:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>Organism codes (SNOMED CT + local)</li>
+                  <li>Antibiotic susceptibility panel codes (LOINC)</li>
+                  <li>Specimen types, body sites</li>
+                  <li>S/I/R interpretation codes</li>
+                  <li>AST methods (disk diffusion, MIC, Etest, automated)</li>
+                  <li>Ward types (inpatient, outpatient, emergency, ICU)</li>
                 </ul>
+                <h3 id="packages" anchor="true"><span>Packages</span><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#packages">#</a></h3>
+                <p>The repository contains two Dart packages:</p>
+                <table>
+                  <thead><tr><th>Package</th><th>Path</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>bw_amr_ig</code></td>
+                      <td><a href="https://github.com/Dokotela/bw-amr-ig/tree/main/flutter"><code>flutter/</code></a></td>
+                      <td>Data capture models and ValueSets for the Flutter app</td>
+                    </tr>
+                    <tr>
+                      <td><code>bw_amr_export</code></td>
+                      <td><a href="https://github.com/Dokotela/bw-amr-ig/tree/main/export"><code>export/</code></a></td>
+                      <td>WHONET/GLASS flat-file exporter (server-side or CLI)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  The export package is intentionally separate — it's used server-side or from a web interface where someone can log in, run the export, and produce a file for WHONET or GLASS upload. See 
+                  <a href="bw_amr_ig_whonet">WHONET Export</a> for usage details.
+                </p>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#installation">#</a></h3>
+                <pre><code class="language-yaml"># For the data capture app
+dependencies:
+  bw_amr_ig:
+    git:
+      url: https://github.com/Dokotela/bw-amr-ig.git
+      path: flutter
+
+# For export functionality (server/CLI/web)
+dependencies:
+  bw_amr_export:
+    git:
+      url: https://github.com/Dokotela/bw-amr-ig.git
+      path: export
+</code></pre>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1346,14 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/bw_amr_ig/bw_amr_ig_flutter#flutter-data-capture-application">Flutter Data Capture Application</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#architecture">Architecture</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#model-classes">Model Classes</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#valuesets-in-dart">ValueSets in Dart</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#packages">Packages</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_flutter#installation">Installation</a></li>
                 </ul>
               </div>
             </aside>

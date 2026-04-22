@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>FHIR Mapping Package | FHIR-FLI</title>
+    <meta property="og:title" content="FHIR Mapping Package | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1136,10 +1134,10 @@
                   <li><div><a href="docs/auth/standalone-launch">Standalone Launch</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Mapping</summary>
                 <ul>
-                  <li><div><a href="docs/mapping/fhir_mapping">FHIR Mapping</a></div></li>
+                  <li><div class="active"><a href="docs/mapping/fhir_mapping">FHIR Mapping</a></div></li>
                   <li><div><a href="docs/mapping/fhirmap_parsing">FHIRMap Parsing</a></div></li>
                   <li><div><a href="docs/mapping/fhir_mapping_engine">Mapping Engine</a></div></li>
                 </ul>
@@ -1205,23 +1203,109 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>FHIR Mapping Package</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="introduction-to-fhir-mapping-in-fhir-fli" anchor="true">
+                  <span>Introduction to FHIR Mapping in FHIR-FLI</span><a href="/docs/mapping/fhir_mapping#introduction-to-fhir-mapping-in-fhir-fli">#</a>
+                </h2>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/mapping/fhir_mapping#installation">#</a></h3>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4_mapping: ^0.4.0
+  fhir_r4: ^0.4.2
+  fhir_r4_path: ^0.4.3
+</code></pre>
+                <h3 id="what-is-fhir-mapping" anchor="true"><span>What is FHIR Mapping?</span><a href="/docs/mapping/fhir_mapping#what-is-fhir-mapping">#</a></h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  FHIR Mapping is a standardized approach to transforming data between different formats or structures within the FHIR ecosystem. At its core, FHIR Mapping uses a specialized language and the StructureMap resource to define how data should be transformed from one structure to another.
+                </p>
+                <p>This capability is essential for interoperability, allowing systems to translate between:</p>
+                <ul>
+                  <li>Different FHIR versions</li>
+                  <li>Different implementation guides</li>
+                  <li>FHIR and external data formats</li>
+                  <li>Various business requirements in healthcare systems</li>
+                </ul>
+                <h3 id="the-fhir-mapping-language" anchor="true">
+                  <span>The FHIR Mapping Language</span><a href="/docs/mapping/fhir_mapping#the-fhir-mapping-language">#</a>
+                </h3>
+                <p>
+                  The FHIR Mapping Language (sometimes called FHIRMap or FHIR Map) is a domain-specific language designed for expressing transformations. It has a syntax that describes:
                 </p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>Source and target structures</li>
+                  <li>Rules for transformation</li>
+                  <li>Conditions and predicates</li>
+                  <li>Value manipulation and creation</li>
                 </ul>
+                <pre><code>map "http://example.org/map/PatientToPersonMap" = PatientToPerson
+
+uses "http://hl7.org/fhir/StructureDefinition/Patient" as source
+uses "http://hl7.org/fhir/StructureDefinition/Person" as target
+
+group PatientToPerson(source src : Patient, target tgt : Person) {
+  src.name -&gt; tgt.name;
+  src.gender -&gt; tgt.gender;
+  src.birthDate -&gt; tgt.birthDate;
+}
+</code></pre>
+                <h3 id="the-fhir-fli-implementation" anchor="true">
+                  <span>The FHIR-FLI Implementation</span><a href="/docs/mapping/fhir_mapping#the-fhir-fli-implementation">#</a>
+                </h3>
+                <p>FHIR-FLI provides a comprehensive implementation of FHIR Mapping with two key components:</p>
+                <ol>
+                  <li>
+                    <strong>The StructureMap Parser</strong> - Converts the FHIR mapping language text into a formal StructureMap FHIR resource
+                  </li>
+                  <li>
+                    <strong>The Mapping Engine</strong> - Executes the transformations defined in a StructureMap against source data
+                  </li>
+                </ol>
+                <p>Our implementation brings several advantages:</p>
+                <ul>
+                  <li><strong>Type Safety</strong> - Leverages Dart's strong typing for safer transformations</li>
+                  <li><strong>Performance</strong> - Optimized for mobile and web environments</li>
+                  <li><strong>Integration</strong> - Seamlessly works with the rest of the FHIR-FLI ecosystem</li>
+                  <li><strong>Flexibility</strong> - Supports complex transformation patterns</li>
+                </ul>
+                <h3 id="key-concepts" anchor="true"><span>Key Concepts</span><a href="/docs/mapping/fhir_mapping#key-concepts">#</a></h3>
+                <p>Understanding a few key concepts will help you work effectively with FHIR Mapping in FHIR-FLI:</p>
+                <h4 id="structuremap">StructureMap</h4>
+                <p>
+                  A FHIR resource that formally defines mapping rules between different structures. It is typically authored using the FHIR mapping language and then parsed into a StructureMap resource.
+                </p>
+                <h4 id="resource-cache">Resource Cache</h4>
+                <p>
+                  A hierarchical system for managing canonical resources needed during mapping operations. It allows the mapping engine to resolve references to structure definitions, value sets, and other resources.
+                </p>
+                <h4 id="builders">Builders</h4>
+                <p>Special mutable versions of FHIR resources that facilitate incremental construction during mapping.</p>
+                <h4 id="transformation-context">Transformation Context</h4>
+                <p>
+                  The environment in which a mapping operation executes, keeping track of resources generated during mapping and other state information.
+                </p>
+                <h3 id="when-to-use-fhir-mapping" anchor="true">
+                  <span>When to Use FHIR Mapping</span><a href="/docs/mapping/fhir_mapping#when-to-use-fhir-mapping">#</a>
+                </h3>
+                <p>FHIR Mapping is particularly useful when:</p>
+                <ul>
+                  <li>You need to transform data between different FHIR versions or profiles</li>
+                  <li>You're integrating with legacy systems that don't use FHIR natively</li>
+                  <li>You need to customize data flows between different parts of your application</li>
+                  <li>You're implementing complex validation or business rules during data transformation</li>
+                </ul>
+                <h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/mapping/fhir_mapping#next-steps">#</a></h3>
+                <p>The following pages will dive deeper into:</p>
+                <ol>
+                  <li>
+                    <a href="fhirmap_parsing">Using the StructureMap Parser</a> - How to convert mapping language text to StructureMap resources
+                  </li>
+                  <li>
+                    <a href="fhir_mapping_engine">Working with the Mapping Engine</a> - How to execute mappings and transform data
+                  </li>
+                </ol>
+                <p>
+                  By the end of these guides, you'll have a solid understanding of how to use FHIR Mapping in your Dart applications with FHIR-FLI.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1327,16 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/mapping/fhir_mapping#introduction-to-fhir-mapping-in-fhir-fli">Introduction to FHIR Mapping in FHIR-FLI</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping#installation">Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping#what-is-fhir-mapping">What is FHIR Mapping?</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping#the-fhir-mapping-language">The FHIR Mapping Language</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping#the-fhir-fli-implementation">The FHIR-FLI Implementation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping#key-concepts">Key Concepts</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping#when-to-use-fhir-mapping">When to Use FHIR Mapping</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping#next-steps">Next Steps</a></li>
                 </ul>
               </div>
             </aside>

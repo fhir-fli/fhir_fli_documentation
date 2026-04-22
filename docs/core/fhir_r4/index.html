@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Core Package | FHIR-FLI</title>
+    <meta property="og:title" content="Core Package | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1107,10 +1105,10 @@
           <nav class="sidebar">
             <button class="sidebar-close">×</button>
             <div>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR R4b Core</summary>
                 <ul>
-                  <li><div><a href="docs/core/fhir_r4">fhir_r4</a></div></li>
+                  <li><div class="active"><a href="docs/core/fhir_r4">fhir_r4</a></div></li>
                   <li><div><a href="docs/core/basic_object">Basic Object</a></div></li>
                   <li><div><a href="docs/core/serialization">Serialization</a></div></li>
                   <li><div><a href="docs/core/class_structure">Class Structure</a></div></li>
@@ -1205,23 +1203,16 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Core Package</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir_r4" anchor="true"><span>fhir_r4</span><a href="/docs/core/fhir_r4#fhir_r4">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The core package that provides FHIR R4 resource models. The main purpose of this package is to create the base classes on which fire depends. These classes are all generated from structure definitions so they should be in line with the official fire specification. This library is mainly used for serialization/ deserialization But it does have some other functionality which is useful in certain situations.
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
-                </ul>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/core/fhir_r4#installation">#</a></h3>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4: ^0.4.2
+</code></pre>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1234,8 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/core/fhir_r4#fhir_r4">fhir_r4</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/fhir_r4#installation">Installation</a></li>
                 </ul>
               </div>
             </aside>

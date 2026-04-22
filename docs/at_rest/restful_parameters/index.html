@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Parameters | FHIR-FLI</title>
+    <meta property="og:title" content="Parameters | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1120,12 +1118,12 @@
                   <li><div><a href="docs/core/migration">Migration</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>REST Client</summary>
                 <ul>
                   <li><div><a href="docs/at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a></div></li>
                   <li><div><a href="docs/at_rest/restful_requests">Requests</a></div></li>
-                  <li><div><a href="docs/at_rest/restful_parameters">Parameters</a></div></li>
+                  <li><div class="active"><a href="docs/at_rest/restful_parameters">Parameters</a></div></li>
                 </ul>
               </details>
               <details class="sidebar-group collapsible">
@@ -1205,23 +1203,276 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Parameters</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="restful-parameters" anchor="true"><span>RESTful Parameters</span><a href="/docs/at_rest/restful_parameters#restful-parameters">#</a></h2>
+                <h3 id="introduction" anchor="true"><span>Introduction</span><a href="/docs/at_rest/restful_parameters#introduction">#</a></h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The <code>fhir_r4_at_rest</code> library provides a streamlined approach to constructing FHIR query parameters through the 
+                  <code>RestfulParameters</code> class and resource-specific search classes. This system allows for type-safe, fluent construction of complex queries without having to manually build query strings.
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
-                </ul>
+                <h3 id="basic-usage" anchor="true"><span>Basic Usage</span><a href="/docs/at_rest/restful_parameters#basic-usage">#</a></h3>
+                <p>
+                  The base <code>RestfulParameters</code> class provides a flexible way to add common parameters to any FHIR request:
+                </p>
+                <pre><code class="language-dart">final parameters = RestfulParameters()
+  .requestPretty()          // Pretty-print the response
+  .addCount(20)             // Limit results to 20 items
+  .add('_sort', 'date')     // Sort by date
+  .add('_include', 'Patient:organization');  // Include referenced Organization resources
+</code></pre>
+                <p>This can be passed to any <code>FhirRequest</code> class:</p>
+                <pre><code class="language-dart">final request = FhirReadRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  id: '12345',
+  parameters: parameters,
+);
+</code></pre>
+                <h3 id="common-parameter-methods" anchor="true">
+                  <span>Common Parameter Methods</span><a href="/docs/at_rest/restful_parameters#common-parameter-methods">#</a>
+                </h3>
+                <p>
+                  The <code>RestfulParameters</code> class includes several convenience methods for commonly used parameters:
+                </p>
+                <h4 id="general-parameters">General Parameters</h4>
+                <pre><code class="language-dart">// Limit results count
+parameters.addCount(20);
+
+// Request a specific page
+parameters.addPage(2);
+
+// Request pretty-printed responses
+parameters.requestPretty();
+
+// Specify response format
+parameters.addFormat('json');
+
+// Request summary data
+parameters.requestSummary(Summary.true_);
+// Other summary options: data, text, count
+</code></pre>
+                <h4 id="custom-parameters">Custom Parameters</h4>
+                <p>
+                  For any parameter not covered by the convenience methods, you can use the generic <code>add</code> method:
+                </p>
+                <pre><code class="language-dart">// Sort by date descending
+parameters.add('_sort', '-date');
+
+// Filter by tag
+parameters.add('_tag', 'http://example.org/tags|needs-review');
+
+// Include referenced resources
+parameters.add('_include', 'Patient:organization');
+
+// Request elements subset
+parameters.add('_elements', 'name,birthDate,gender');
+</code></pre>
+                <h3 id="resource-specific-search-classes" anchor="true">
+                  <span>Resource-Specific Search Classes</span><a href="/docs/at_rest/restful_parameters#resource-specific-search-classes">#</a>
+                </h3>
+                <p>
+                  For more precise control over resource-specific search parameters, the library provides generated search classes for each resource type:
+                </p>
+                <pre><code class="language-dart">// Create a Patient search
+final patientSearch = SearchPatient()
+  .name(FhirString('Smith'))
+  .gender(FhirString('male'))
+  .birthdate(
+    FhirDateTime('1970-01-01'),
+    modifier: SearchModifier.ge, // Greater than or equal to
+  );
+
+// Use in a search request
+final request = FhirSearchRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  search: patientSearch,
+);
+</code></pre>
+                <p>
+                  The search classes provide type-safe methods for all valid search parameters defined in the FHIR specification for each resource type.
+                </p>
+                <h3 id="search-modifiers" anchor="true"><span>Search Modifiers</span><a href="/docs/at_rest/restful_parameters#search-modifiers">#</a></h3>
+                <p>Many search parameters support modifiers that change how the search is performed:</p>
+                <pre><code class="language-dart">// Patient with birthdate greater than or equal to 1970-01-01
+patientSearch.birthdate(
+  FhirDateTime('1970-01-01'),
+  modifier: SearchModifier.ge,
+);
+
+// Patient with birthdate less than 2000-01-01
+patientSearch.birthdate(
+  FhirDateTime('2000-01-01'),
+  modifier: SearchModifier.lt,
+);
+
+// Patient with a name that exactly equals "John Smith"
+patientSearch.name(
+  FhirString('John Smith'),
+  modifier: SearchModifier.eq,
+);
+</code></pre>
+                <p>Available modifiers depend on the parameter type:</p>
+                <table>
+                  <thead><tr><th>Parameter Type</th><th>Supported Modifiers</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td>String</td><td><code>eq</code>, <code>ne</code></td><td>Exact match, not equal</td></tr>
+                    <tr>
+                      <td>Quantity</td>
+                      <td><code>gt</code>, <code>lt</code>, <code>ge</code>, <code>le</code>, <code>ap</code></td>
+                      <td>Numeric comparisons</td>
+                    </tr>
+                    <tr>
+                      <td>Date</td>
+                      <td><code>gt</code>, <code>lt</code>, <code>ge</code>, <code>le</code>, <code>ap</code></td>
+                      <td>Date comparisons</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <ul><li>Token and Reference Search Modifiers are not yet available</li></ul>
+                <h3 id="chaining-multiple-conditions" anchor="true">
+                  <span>Chaining Multiple Conditions</span><a href="/docs/at_rest/restful_parameters#chaining-multiple-conditions">#</a>
+                </h3>
+                <p>The fluent API allows for building complex queries by chaining multiple conditions:</p>
+                <pre><code class="language-dart">// Find all female patients born after 1980 with the last name "Smith"
+final search = SearchPatient()
+  .gender(FhirString('female'))
+  .birthdate(
+    FhirDateTime('1980-01-01'),
+    modifier: SearchModifier.gt,
+  )
+  .family(FhirString('Smith'));
+
+// The resulting query would be:
+// Patient?gender=female&amp;gtbirthdate=1980-01-01&amp;family=Smith
+</code></pre>
+                <h3 id="token-parameters" anchor="true"><span>Token Parameters</span><a href="/docs/at_rest/restful_parameters#token-parameters">#</a></h3>
+                <p>Token parameters (like identifiers) allow for system and value pairs:</p>
+                <pre><code class="language-dart">// Search for a patient with a specific MRN
+final search = SearchPatient()
+  .identifier(
+    FhirString('12345'),
+    system: FhirUri('http://hospital.example.org/identifiers/mrn'),
+  );
+
+// The resulting query would be:
+// Patient?identifier=http://hospital.example.org/identifiers/mrn|12345
+</code></pre>
+                <h3 id="quantity-parameters" anchor="true"><span>Quantity Parameters</span><a href="/docs/at_rest/restful_parameters#quantity-parameters">#</a></h3>
+                <p>Quantity parameters include value, unit, and system:</p>
+                <pre><code class="language-dart">// Search for observations with systolic blood pressure over 140 mmHg
+final search = SearchObservation()
+  .code(
+    FhirString('8480-6'),
+    system: FhirUri('http://loinc.org'),
+  )
+  .valueQuantity(
+    FhirDecimal(140.0),
+    unit: FhirString('mm[Hg]'),
+    system: FhirUri('http://unitsofmeasure.org'),
+    modifier: SearchModifier.gt,
+  );
+</code></pre>
+                <h3 id="missing-values" anchor="true"><span>Missing Values</span><a href="/docs/at_rest/restful_parameters#missing-values">#</a></h3>
+                <p>
+                  You can search for resources where a parameter is missing using the special <code>:missing</code> modifier:
+                </p>
+                <pre><code class="language-dart">// Add a parameter directly
+parameters.add('gender:missing', 'true');
+
+// Or use the search classes (this will need to be added in a future version)
+</code></pre>
+                <h3 id="combined-searches" anchor="true"><span>Combined Searches</span><a href="/docs/at_rest/restful_parameters#combined-searches">#</a></h3>
+                <p>
+                  For complex searches across multiple resources, you can use the <code>FhirSearchRequest</code> with type "All":
+                </p>
+                <pre><code class="language-dart">// Search for all resources mentioning "Smith"
+final search = SearchResource()
+  .parameters.addAll({
+    '_type': 'Patient,Practitioner',
+    'name': 'Smith',
+  });
+
+final request = FhirSearchRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'All',
+  search: search,
+);
+</code></pre>
+                <h3 id="post-search" anchor="true"><span>POST Search</span><a href="/docs/at_rest/restful_parameters#post-search">#</a></h3>
+                <p>For very long or complex queries, you can use POST instead of GET:</p>
+                <pre><code class="language-dart">final request = FhirSearchRequest(
+  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+  resourceType: 'Patient',
+  search: patientSearch,
+  usePost: true,  // Use POST method
+);
+</code></pre>
+                <p>This will send the search parameters in the request body instead of the URL.</p>
+                <h3 id="building-the-query-string" anchor="true">
+                  <span>Building the Query String</span><a href="/docs/at_rest/restful_parameters#building-the-query-string">#</a>
+                </h3>
+                <p>When you need to access the raw query string for debugging or other purposes:</p>
+                <pre><code class="language-dart">final queryString = parameters.buildQuery();
+print(queryString); // _count=20&amp;_pretty=true&amp;_sort=date
+</code></pre>
+                <h3 id="examples-of-common-searches" anchor="true">
+                  <span>Examples of Common Searches</span><a href="/docs/at_rest/restful_parameters#examples-of-common-searches">#</a>
+                </h3>
+                <h4 id="patient-search-examples">Patient Search Examples</h4>
+                <pre><code class="language-dart">// Find patients with a specific MRN
+final search = SearchPatient()
+  .identifier(
+    FhirString('12345'),
+    system: FhirUri('http://hospital.example.org/identifiers/mrn'),
+  );
+
+// Find patients by name and birthdate range
+final search = SearchPatient()
+  .name(FhirString('Smith'))
+  .birthdate(
+    FhirDateTime('1950-01-01'),
+    modifier: SearchModifier.ge,
+  )
+  .birthdate(
+    FhirDateTime('1970-01-01'),
+    modifier: SearchModifier.le,
+  );
+
+// Find patients by address
+final search = SearchPatient()
+  .addressCity(FhirString('Boston'))
+  .addressState(FhirString('MA'));
+</code></pre>
+                <h4 id="observation-search-examples">Observation Search Examples</h4>
+                <pre><code class="language-dart">// Find blood pressure observations
+final search = SearchObservation()
+  .code(
+    FhirString('85354-9'),
+    system: FhirUri('http://loinc.org'),
+  )
+  .date(
+    FhirDateTime('2023-01-01'),
+    modifier: SearchModifier.gt,
+  );
+
+// Find observations by value range
+final search = SearchObservation()
+  .code(
+    FhirString('8867-4'),
+    system: FhirUri('http://loinc.org'),
+  ) // Heart rate
+  .valueQuantity(
+    FhirDecimal(100.0),
+    unit: FhirString('/min'),
+    modifier: SearchModifier.gt,
+  );
+</code></pre>
+                <h3 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/at_rest/restful_parameters#conclusion">#</a></h3>
+                <p>
+                  The RESTful parameters system in <code>fhir_r4_at_rest</code> provides a powerful, type-safe approach to constructing FHIR query parameters. By using the fluent API and resource-specific search classes, you can build complex queries with confidence, knowing that the parameter names and types are validated against the FHIR specification.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1494,27 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_parameters#restful-parameters">RESTful Parameters</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#introduction">Introduction</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#basic-usage">Basic Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#common-parameter-methods">Common Parameter Methods</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/at_rest/restful_parameters#resource-specific-search-classes">Resource-Specific Search Classes</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#search-modifiers">Search Modifiers</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/at_rest/restful_parameters#chaining-multiple-conditions">Chaining Multiple Conditions</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#token-parameters">Token Parameters</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#quantity-parameters">Quantity Parameters</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#missing-values">Missing Values</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#combined-searches">Combined Searches</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#post-search">POST Search</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#building-the-query-string">Building the Query String</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/at_rest/restful_parameters#examples-of-common-searches">Examples of Common Searches</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#conclusion">Conclusion</a></li>
                 </ul>
               </div>
             </aside>

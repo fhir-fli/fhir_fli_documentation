@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Architecture | FHIR-FLI</title>
+    <meta property="og:title" content="Architecture | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1159,11 +1157,11 @@
                 <summary>Demos</summary>
                 <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Botswana AMR IG</summary>
                 <ul>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_overview">Overview</a></div></li>
-                  <li><div><a href="docs/bw_amr_ig/bw_amr_ig_architecture">Architecture</a></div></li>
+                  <li><div class="active"><a href="docs/bw_amr_ig/bw_amr_ig_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_whonet">WHONET Export</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_flutter">Flutter App</a></div></li>
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
@@ -1205,21 +1203,100 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Architecture</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="resource-architecture" anchor="true">
+                  <span>Resource Architecture</span><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#resource-architecture">#</a>
+                </h2>
+                <h3 id="fhir-resource-hierarchy" anchor="true">
+                  <span>FHIR Resource Hierarchy</span><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#fhir-resource-hierarchy">#</a>
+                </h3>
+                <p>AMR culture results are modeled as a tree rooted at DiagnosticReport:</p>
+                <pre><code>DiagnosticReport (BotswanaAMRDiagnosticReport)
+├── encounter → Encounter (BotswanaAMREncounter)
+│     ├── class: ward type (inpatient/outpatient/ICU/emergency)
+│     ├── period.start: admission date
+│     └── serviceProvider → Organization (facility)
+├── specimen → Specimen (BotswanaAMRSpecimen)
+├── result[gramStain] → GramStainObservation
+└── result[organism] → OrganismObservation (1..*)
+      ├── valueCodeableConcept: identified organism (SNOMED CT)
+      ├── identifier: isolate number
+      └── hasMember → SusceptibilityObservation (0..*)
+      │     ├── code: antibiotic (LOINC panel code)
+      │     ├── interpretation: S / I / R
+      │     ├── valueQuantity: MIC (ug/mL) or zone diameter (mm)
+      │     └── method: AST method (disk diffusion, MIC, Etest, automated)
+      └── hasMember → SpecialTestObservation (0..*)
+            └── ESBL, carbapenemase, MRSA, D-zone, beta-lactamase
+</code></pre>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Each OrganismObservation represents one isolate. Susceptibility results are linked as <code>hasMember</code>
+                   references, keeping antibiotic results grouped per organism. This pattern aligns with the <a href="https://samply.github.io/bbmri-fhir-ig/">German MII Microbiology Module</a>.
                 </p>
+                <h3 id="design-decisions" anchor="true"><span>Design Decisions</span><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#design-decisions">#</a></h3>
+                <p>
+                  <strong>hasMember grouping (not derivedFrom)</strong>
+                  Susceptibility results are children of their organism via <code>OrganismObservation.hasMember</code>, not via 
+                  <code>SusceptibilityObservation.derivedFrom</code>. This keeps the parent→child direction consistent with how labs think about results and avoids orphaned susceptibility observations when querying.
+                </p>
+                <p>
+                  <strong>Triple category coding</strong>
+                  All observation profiles include both <code>laboratory</code> (HL7 ObservationCategory) and 
+                  <code>Microbiology studies (set)</code> (LOINC 18725-2) category slices, following the MII pattern for discoverability.
+                </p>
+                <p>
+                  <strong>Encounter for GLASS classification</strong>
+                  Ward type and admission date live on a dedicated Encounter profile rather than extensions on DiagnosticReport. This matches the FHIR workflow pattern and allows the same encounter to be referenced by multiple reports.
+                </p>
+                <p>
+                  <strong>Intensional organism ValueSet</strong>
+                  The organism ValueSet uses <code>include codes from system SCT where concept is-a #410607006 "Organism"</code>
+                   rather than listing individual codes. This keeps the ValueSet current as SNOMED CT is updated. Local codes for organism combinations (e.g., "Acinetobacter baumannii complex") are maintained in 
+                  <code>BotswanaAMRLocalOrganismCS</code>.
+                </p>
+                <h3 id="terminology-strategy" anchor="true">
+                  <span>Terminology Strategy</span><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#terminology-strategy">#</a>
+                </h3>
+                <table>
+                  <thead><tr><th>Domain</th><th>CodeSystem</th><th>Example</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td>Observation codes</td>
+                      <td>LOINC</td>
+                      <td><code>634-6</code> (Bacteria identified), <code>58321-0</code> (Susceptibility panel)</td>
+                    </tr>
+                    <tr>
+                      <td>Organisms</td>
+                      <td>SNOMED CT</td>
+                      <td><code>112283007</code> (E. coli), <code>56415008</code> (K. pneumoniae)</td>
+                    </tr>
+                    <tr>
+                      <td>Antibiotic substances</td>
+                      <td>SNOMED CT</td>
+                      <td>Via LOINC-SNOMED CT Ontology component relationships</td>
+                    </tr>
+                    <tr>
+                      <td>GLASS antibiotics</td>
+                      <td>ATC (WHO)</td>
+                      <td><code>J01CA04</code> (Amoxicillin), <code>J01DD04</code> (Ceftriaxone)</td>
+                    </tr>
+                    <tr>
+                      <td>S/I/R</td>
+                      <td>HL7 ObservationInterpretation</td>
+                      <td><code>S</code>, <code>I</code>, <code>R</code>, <code>SDD</code>, <code>NS</code></td>
+                    </tr>
+                    <tr><td>Local codes</td><td>BotswanaAMRLocalOrganismCS</td><td>Organism combinations not in SNOMED</td></tr>
+                  </tbody>
+                </table>
+                <h4 id="conceptmaps">ConceptMaps</h4>
+                <p>Four ConceptMaps bridge WHONET codes to standard terminologies:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>whonet-organism-to-snomed</strong> — 4,995 organism mappings</li>
+                  <li><strong>whonet-antibiotic-to-loinc</strong> — 271 antibiotic-to-LOINC susceptibility codes</li>
+                  <li><strong>whonet-antibiotic-to-atc</strong> — 374 antibiotic-to-ATC codes</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>whonet-antibiotic-to-snomed</strong> — 213 authoritative substance mappings (from LOINC-SNOMED CT Ontology)
                   </li>
                 </ul>
               </section>
@@ -1243,7 +1320,10 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#resource-architecture">Resource Architecture</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#fhir-resource-hierarchy">FHIR Resource Hierarchy</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#design-decisions">Design Decisions</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_architecture#terminology-strategy">Terminology Strategy</a></li>
                 </ul>
               </div>
             </aside>

@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Implementation Guide | FHIR-FLI</title>
+    <meta property="og:title" content="Implementation Guide | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1169,7 +1167,7 @@
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Cicada</summary>
                 <ul>
                   <li><div><a href="docs/cicada/cicada_overview">Overview</a></div></li>
@@ -1177,7 +1175,7 @@
                   <li><div><a href="docs/cicada/cicada_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/cicada/cicada_usage">Usage</a></div></li>
                   <li><div><a href="docs/cicada/cicada_who">WHO Support</a></div></li>
-                  <li><div><a href="docs/cicada_ig">Published IG</a></div></li>
+                  <li><div class="active"><a href="docs/cicada_ig">Published IG</a></div></li>
                 </ul>
               </details>
               <details class="sidebar-group collapsible">
@@ -1205,23 +1203,32 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Implementation Guide</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="cicada-vaccination-implementation-guide" anchor="true">
+                  <span>Cicada Vaccination Implementation Guide</span><a href="/docs/cicada_ig#cicada-vaccination-implementation-guide">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The Cicada Vaccination IG defines FHIR profiles, code systems, value sets, and concept maps for immunization forecasting based on the CDC's Clinical Decision Support for Immunization (CDSi) logic specification.
                 </p>
+                <p>The IG covers:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Profiles</strong> for Patient, Immunization, Condition, AllergyIntolerance, Observation, Procedure, and Medication resources used as forecasting input
                   </li>
+                  <li>
+                    <strong>Code Systems</strong> for CDSi observation codes, evaluation statuses, evaluation reasons, and vaccine gender
+                  </li>
+                  <li>
+                    <strong>Value Sets</strong> for vaccine condition codes across SNOMED, ICD-10-CM, LOINC, RxNorm, and CPT
+                  </li>
+                  <li><strong>Concept Maps</strong> mapping ICD-10-CM and SNOMED CT codes to CDSi observation codes</li>
                 </ul>
+                <p>
+                  <a href="https://fhir-fli.github.io/fhir_fli_documentation/cicada_ig/index.html">Open full screen</a>
+                </p>
+                <iframe src="cicada_ig/index.html" sandbox="allow-scripts allow-same-origin" style="width: 100%; height: 800px; border: none;">
+</iframe>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1250,9 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/cicada_ig#cicada-vaccination-implementation-guide">Cicada Vaccination Implementation Guide</a>
+                  </li>
                 </ul>
               </div>
             </aside>

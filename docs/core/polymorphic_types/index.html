@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Polymprhic Types | FHIR-FLI</title>
+    <meta property="og:title" content="Polymprhic Types | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1107,14 +1105,14 @@
           <nav class="sidebar">
             <button class="sidebar-close">×</button>
             <div>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR R4b Core</summary>
                 <ul>
                   <li><div><a href="docs/core/fhir_r4">fhir_r4</a></div></li>
                   <li><div><a href="docs/core/basic_object">Basic Object</a></div></li>
                   <li><div><a href="docs/core/serialization">Serialization</a></div></li>
                   <li><div><a href="docs/core/class_structure">Class Structure</a></div></li>
-                  <li><div><a href="docs/core/polymorphic_types">Polymorphic Types</a></div></li>
+                  <li><div class="active"><a href="docs/core/polymorphic_types">Polymorphic Types</a></div></li>
                   <li><div><a href="docs/core/primitive_types">Primitive Types</a></div></li>
                   <li><div><a href="docs/core/enums">Enums</a></div></li>
                   <li><div><a href="docs/core/migration">Migration</a></div></li>
@@ -1205,23 +1203,178 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Polymprhic Types</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="polymorphic-types-in-fhir-fli" anchor="true">
+                  <span>Polymorphic Types in FHIR-FLI</span><a href="/docs/core/polymorphic_types#polymorphic-types-in-fhir-fli">#</a>
+                </h2>
+                <h3 id="understanding-polymorphic-fields" anchor="true">
+                  <span>Understanding Polymorphic Fields</span><a href="/docs/core/polymorphic_types#understanding-polymorphic-fields">#</a>
+                </h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  FHIR resources often include polymorphic fields - fields that can contain different types of data depending on the context. For example, a field might accept a date, a datetime, a period, or even a string in different scenarios. This flexibility is powerful but creates implementation challenges, especially in strongly-typed languages like Dart.
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                <h3 id="how-fhir-fli-handles-polymorphism" anchor="true">
+                  <span>How FHIR-FLI Handles Polymorphism</span><a href="/docs/core/polymorphic_types#how-fhir-fli-handles-polymorphism">#</a>
+                </h3>
+                <p>
+                  FHIR-FLI uses a consistent approach to handle polymorphic fields through abstract classes and clear naming conventions:
+                </p>
+                <h4 id="1-the-x-naming-convention">1. The "X" Naming Convention</h4>
+                <p>
+                  Polymorphic fields in FHIR-FLI are typically named with an "X" suffix (e.g., <code>scheduledX</code>, 
+                  <code>productX</code>, <code>subjectX</code>). This naming convention clearly indicates that the field can contain multiple possible types.
+                </p>
+                <pre><code class="language-dart">// Example from CarePlanDetail class
+final ScheduledXCarePlanDetail? scheduledX;
+final ProductXCarePlanDetail? productX;
+</code></pre>
+                <h4 id="2-abstract-base-classes">2. Abstract Base Classes</h4>
+                <p>
+                  For each polymorphic field, FHIR-FLI defines an abstract class that all potential types for that field will implement:
+                </p>
+                <pre><code class="language-dart">// Example abstract class (simplified)
+abstract class ScheduledXCarePlanDetail implements FhirBase {
+  // Common interface methods
+}
+
+// Classes that can be used in this field
+class Timing implements ScheduledXCarePlanDetail { ... }
+class Period implements ScheduledXCarePlanDetail { ... }
+class FhirString implements ScheduledXCarePlanDetail { ... }
+</code></pre>
+                <p>This approach allows the compiler to verify type safety while maintaining flexibility.</p>
+                <h4 id="3-type-specific-getters">3. Type-Specific Getters</h4>
+                <p>
+                  To make working with polymorphic fields more intuitive, FHIR-FLI includes type-specific getter methods that return the value only if it matches the requested type:
+                </p>
+                <pre><code class="language-dart">// Getters for the scheduledX field in CarePlanDetail
+Timing? get scheduledTiming =&gt; scheduledX?.isAs&lt;Timing&gt;();
+Period? get scheduledPeriod =&gt; scheduledX?.isAs&lt;Period&gt;();
+FhirString? get scheduledString =&gt; scheduledX?.isAs&lt;FhirString&gt;();
+</code></pre>
+                <p>
+                  These getters make it easy to access the field in its correct type without worrying about type casting or runtime errors.
+                </p>
+                <h3 id="working-with-polymorphic-fields" anchor="true">
+                  <span>Working with Polymorphic Fields</span><a href="/docs/core/polymorphic_types#working-with-polymorphic-fields">#</a>
+                </h3>
+                <h4 id="setting-values">Setting Values</h4>
+                <p>
+                  When creating or updating a FHIR resource, you can directly use any valid type for a polymorphic field:
+                </p>
+                <pre><code class="language-dart">// Setting a polymorphic field with a specific type
+final carePlanDetail = CarePlanDetail(
+  status: CarePlanActivityStatus.active,
+  scheduledX: Timing(
+    repeat: TimingRepeat(
+      frequency: FhirPositiveInt(1),
+      period: FhirDecimal(1),
+      periodUnit: UnitsOfTime.d,
+    ),
+  ),
+  // Other fields...
+);
+
+// Alternatively, create with a different type
+final anotherCarePlanDetail = CarePlanDetail(
+  status: CarePlanActivityStatus.active,
+  scheduledX: Period(
+    start: FhirDateTime('2023-01-01'),
+    end: FhirDateTime('2023-12-31'),
+  ),
+  // Other fields...
+);
+</code></pre>
+                <p>The library handles the proper serialization and deserialization based on the type provided.</p>
+                <h4 id="checking-and-accessing-types">Checking and Accessing Types</h4>
+                <p>You can check the specific type of a polymorphic field and access it in several ways:</p>
+                <h5 id="1-using-type-specific-getters">1. Using type-specific getters:</h5>
+                <pre><code class="language-dart">// Check if scheduledX is a Timing and access it
+if (carePlanDetail.scheduledTiming != null) {
+  final timing = carePlanDetail.scheduledTiming;
+  // Work with timing...
+}
+</code></pre>
+                <h5 id="2-using-the-isast-method">2. Using the isAs&lt;T&gt;() method:</h5>
+                <pre><code class="language-dart">// Check if productX is a CodeableConcept
+if (carePlanDetail.productX?.isAs&lt;CodeableConcept&gt;() != null) {
+  final concept = carePlanDetail.productX!.isAs&lt;CodeableConcept&gt;()!;
+  // Work with concept...
+}
+</code></pre>
+                <h5 id="3-using-type-checking">3. Using type checking:</h5>
+                <pre><code class="language-dart">if (carePlanDetail.productX is CodeableConcept) {
+  final concept = carePlanDetail.productX as CodeableConcept;
+  // Work with concept...
+}
+</code></pre>
+                <h3 id="important-considerations" anchor="true">
+                  <span>Important Considerations</span><a href="/docs/core/polymorphic_types#important-considerations">#</a>
+                </h3>
+                <ol>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <p><strong>Single Type Limitation</strong>: A polymorphic field can only contain one type at a time. For example, if 
+                      <code>scheduledX</code> contains a <code>Timing</code>, it cannot simultaneously contain a <code>Period</code>
+                       or <code>FhirString</code>.</p>
                   </li>
-                </ul>
+                  <li>
+                    <p><strong>Type Safety</strong>: The abstract class implementation ensures that only valid types can be assigned to polymorphic fields, providing compile-time type safety.</p>
+                  </li>
+                  <li>
+                    <p><strong>Naming Patterns</strong>: When searching for fields by name, you can use:</p><ul><li>The base field name with an "X" suffix (e.g., <code>scheduledX</code>)</li><li>The specific type name (e.g., <code>scheduledTiming</code>, <code>scheduledPeriod</code>)</li><li>For <code>getChildrenByName()</code>, using the specific type name will only return values if the field contains that specific type</li></ul>
+                  </li>
+                  <li>
+                    <p><strong>Serialization</strong>: When serialized to JSON, the field will be appropriately labeled based on its type, following the FHIR specification.</p>
+                  </li>
+                </ol>
+                <h3 id="example-with-polymorphic-types" anchor="true">
+                  <span>Example with Polymorphic Types</span><a href="/docs/core/polymorphic_types#example-with-polymorphic-types">#</a>
+                </h3>
+                <p>
+                  Here's a complete example showing how to work with the polymorphic <code>scheduledX</code> field in <code>CarePlanDetail</code>:
+                </p>
+                <pre><code class="language-dart">// Create a CarePlanDetail with a Timing scheduledX
+final carePlanWithTiming = CarePlanDetail(
+  status: CarePlanActivityStatus.active,
+  scheduledX: Timing(
+    repeat: TimingRepeat(
+      frequency: FhirPositiveInt(2),
+      periodUnit: UnitsOfTime.d,
+    ),
+  ),
+);
+
+// Create a CarePlanDetail with a Period scheduledX
+final carePlanWithPeriod = CarePlanDetail(
+  status: CarePlanActivityStatus.active,
+  scheduledX: Period(
+    start: FhirDateTime('2023-01-01'),
+    end: FhirDateTime('2023-12-31'),
+  ),
+);
+
+// Accessing the values safely
+void processSchedule(CarePlanDetail detail) {
+  // Approach 1: Using specific getters
+  if (detail.scheduledTiming != null) {
+    print('This is a timing-based schedule');
+    final frequency = detail.scheduledTiming?.repeat?.frequency?.value;
+    print('Frequency: $frequency times');
+  } else if (detail.scheduledPeriod != null) {
+    print('This is a period-based schedule');
+    final start = detail.scheduledPeriod?.start?.value;
+    final end = detail.scheduledPeriod?.end?.value;
+    print('Period: $start to $end');
+  } else if (detail.scheduledString != null) {
+    print('This is a string-based schedule');
+    print('Description: ${detail.scheduledString?.value}');
+  }
+}
+</code></pre>
+                <p>
+                  This approach to polymorphic types allows FHIR-FLI to accurately represent the flexibility of the FHIR specification while maintaining the benefits of Dart's strong typing system.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1396,22 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/core/polymorphic_types#polymorphic-types-in-fhir-fli">Polymorphic Types in FHIR-FLI</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/polymorphic_types#understanding-polymorphic-fields">Understanding Polymorphic Fields</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/polymorphic_types#how-fhir-fli-handles-polymorphism">How FHIR-FLI Handles Polymorphism</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/polymorphic_types#working-with-polymorphic-fields">Working with Polymorphic Fields</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/polymorphic_types#important-considerations">Important Considerations</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/polymorphic_types#example-with-polymorphic-types">Example with Polymorphic Types</a>
+                  </li>
                 </ul>
               </div>
             </aside>

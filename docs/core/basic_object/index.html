@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Basics of FHIR Classes | FHIR-FLI</title>
+    <meta property="og:title" content="Basics of FHIR Classes | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1107,11 +1105,11 @@
           <nav class="sidebar">
             <button class="sidebar-close">×</button>
             <div>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR R4b Core</summary>
                 <ul>
                   <li><div><a href="docs/core/fhir_r4">fhir_r4</a></div></li>
-                  <li><div><a href="docs/core/basic_object">Basic Object</a></div></li>
+                  <li><div class="active"><a href="docs/core/basic_object">Basic Object</a></div></li>
                   <li><div><a href="docs/core/serialization">Serialization</a></div></li>
                   <li><div><a href="docs/core/class_structure">Class Structure</a></div></li>
                   <li><div><a href="docs/core/polymorphic_types">Polymorphic Types</a></div></li>
@@ -1205,23 +1203,34 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Basics of FHIR Classes</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-classes" anchor="true"><span>FHIR Classes</span><a href="/docs/core/basic_object#fhir-classes">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  These classes don't differ much from any other object oriented classes. If you want to create a patient for instance, you do it just like this:
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
-                </ul>
+                <pre><code class="language-dart">final patient = Patient(
+    id: FhirString('123'),
+    name: [
+      HumanName(
+        family: 'Doe'.toFhirString,
+        given: ['John'.toFhirString],
+      ),
+    ],
+    birthDate: '1990-01-01'.toFhirDate,
+  );
+</code></pre>
+                <p>
+                  And that's that. So a couple of things to mention. I liked freezed, but it doesn't play well with other code generators, and ends up producing a LOT of code. And while its very useful, I didn't think we needed all of it for this, so that's gone. I did still keep most of the important parts of freezed. All classes are immutable. They all have 
+                  <code>copyWith</code> functions. There are also some new functions, like <code>getChildByName</code> and 
+                  <code>fromJsonString</code> which we'll discuss in more depth in <a href="class_structure">Class Structure</a>.
+                </p>
+                <p>
+                  Another thing you'll notice, is that there are getters on all the primitive values. This is because FHIR puts requirements on what is considered a Url or a Date, or a DateTime and it doesn't usually align with Dart's perspective. Again, much more in-depth discussion in 
+                  <a href="primitive_types">Primitive Types</a>. But for now, know that there are getters for almost all of Dart's primitive types to convert them into FHIR primitive types. So you can do 
+                  <code>FhirString('123')</code> like we did above for <code>id</code>, OR you can just do <code>.toFhirString</code>
+                   like we did for the names.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1242,9 +1251,7 @@
             <aside class="toc">
               <div>
                 <h3>On this page</h3>
-                <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
-                </ul>
+                <ul><li style="padding-left: 0em"><a href="/docs/core/basic_object#fhir-classes">FHIR Classes</a></li></ul>
               </div>
             </aside>
           </div>

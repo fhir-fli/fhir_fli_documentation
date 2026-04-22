@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Privacy Policy | FHIR-FLI</title>
+    <meta property="og:title" content="Privacy Policy | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1187,7 +1185,7 @@
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR ANT</summary>
                 <ul>
                   <li><div><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
@@ -1196,7 +1194,7 @@
                   <li><div><a href="docs/fhirant/fhirant_security">Security</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_api_reference">API Reference</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_cli">CLI</a></div></li>
-                  <li><div><a href="docs/fhirant/fhirant_privacy_policy">Privacy Policy</a></div></li>
+                  <li><div class="active"><a href="docs/fhirant/fhirant_privacy_policy">Privacy Policy</a></div></li>
                 </ul>
               </details>
             </div>
@@ -1205,23 +1203,95 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Privacy Policy</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-ant-privacy-policy" anchor="true">
+                  <span>FHIR ANT Privacy Policy</span><a href="/docs/fhirant/fhirant_privacy_policy#fhir-ant-privacy-policy">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  <strong>Effective date:</strong> March 7, 2026
+                  <strong>Last updated:</strong> March 7, 2026
+                </p>
+                <h3 id="summary" anchor="true"><span>Summary</span><a href="/docs/fhirant/fhirant_privacy_policy#summary">#</a></h3>
+                <p>
+                  FHIR ANT stores all data locally on your device. We do not collect, transmit, or have access to any of your data.
+                </p>
+                <h3 id="what-data-fhir-ant-handles" anchor="true">
+                  <span>What Data FHIR ANT Handles</span><a href="/docs/fhirant/fhirant_privacy_policy#what-data-fhir-ant-handles">#</a>
+                </h3>
+                <p>FHIR ANT is a FHIR R4 server that runs entirely on your device. It may store:</p>
+                <ul>
+                  <li>
+                    <strong>FHIR resources</strong> (Patient, Observation, Condition, etc.) that you or connected clients create
+                  </li>
+                  <li><strong>User accounts</strong> (username and hashed password) for authentication</li>
+                  <li><strong>Server logs</strong> (request timestamps, methods, paths, and client IP addresses)</li>
+                  <li><strong>Encryption keys</strong> stored in your device's secure keystore (Android Keystore)</li>
+                </ul>
+                <h3 id="where-data-is-stored" anchor="true">
+                  <span>Where Data Is Stored</span><a href="/docs/fhirant/fhirant_privacy_policy#where-data-is-stored">#</a>
+                </h3>
+                <p>
+                  All data is stored <strong>locally on your device</strong> in an encrypted SQLite database. The encryption key is generated on first launch and stored in the device's hardware-backed secure keystore.
+                </p>
+                <h3 id="data-transmission" anchor="true"><span>Data Transmission</span><a href="/docs/fhirant/fhirant_privacy_policy#data-transmission">#</a></h3>
+                <p>
+                  FHIR ANT is a server — it <strong>receives</strong> requests from clients on your local network. It does not:
                 </p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>Send data to any external servers</li>
+                  <li>Include analytics or telemetry</li>
+                  <li>Phone home or check for updates</li>
+                  <li>Transmit data over the internet (unless you explicitly expose it)</li>
                 </ul>
+                <p>
+                  When the server is running, devices on the same network can connect to it via HTTP. <strong>You control who has access</strong>
+                   by managing your network and the server's authentication settings.
+                </p>
+                <h3 id="third-party-services" anchor="true">
+                  <span>Third-Party Services</span><a href="/docs/fhirant/fhirant_privacy_policy#third-party-services">#</a>
+                </h3>
+                <p>FHIR ANT does not use any third-party services, SDKs, or analytics platforms.</p>
+                <h3 id="data-retention" anchor="true"><span>Data Retention</span><a href="/docs/fhirant/fhirant_privacy_policy#data-retention">#</a></h3>
+                <p>Data persists on your device until you:</p>
+                <ul>
+                  <li>Delete individual resources through the FHIR API</li>
+                  <li>Uninstall the app (which removes all app data)</li>
+                  <li>Clear the app's data through Android settings</li>
+                </ul>
+                <h3 id="childrens-privacy" anchor="true">
+                  <span>Children's Privacy</span><a href="/docs/fhirant/fhirant_privacy_policy#childrens-privacy">#</a>
+                </h3>
+                <p>
+                  FHIR ANT is a developer and healthcare professional tool. It is not directed at children under 13. We do not knowingly collect personal information from children.
+                </p>
+                <h3 id="security" anchor="true"><span>Security</span><a href="/docs/fhirant/fhirant_privacy_policy#security">#</a></h3>
+                <ul>
+                  <li>Database encrypted with SQLCipher (AES-256)</li>
+                  <li>Encryption key stored in Android Keystore</li>
+                  <li>Passwords hashed with bcrypt</li>
+                  <li>JWT-based authentication (when Dev Mode is off)</li>
+                  <li>Account lockout after failed login attempts</li>
+                </ul>
+                <h3 id="your-rights" anchor="true"><span>Your Rights</span><a href="/docs/fhirant/fhirant_privacy_policy#your-rights">#</a></h3>
+                <p>
+                  Since all data is stored locally on your device, you have full control over it at all times. You can read, modify, export (via 
+                  <code>$backup</code>), or delete any data through the FHIR API or by uninstalling the app.
+                </p>
+                <h3 id="open-source" anchor="true"><span>Open Source</span><a href="/docs/fhirant/fhirant_privacy_policy#open-source">#</a></h3>
+                <p>
+                  FHIR ANT is open source. You can review the complete source code at <a href="https://github.com/fhir-fli/fhir">github.com/fhir-fli/fhir</a>.
+                </p>
+                <h3 id="contact" anchor="true"><span>Contact</span><a href="/docs/fhirant/fhirant_privacy_policy#contact">#</a></h3>
+                <p>If you have questions about this privacy policy:</p>
+                <ul>
+                  <li>GitHub: <a href="https://github.com/fhir-fli">github.com/fhir-fli</a></li>
+                  <li>Website: <a href="https://fhirfli.dev">fhirfli.dev</a></li>
+                </ul>
+                <h3 id="changes" anchor="true"><span>Changes</span><a href="/docs/fhirant/fhirant_privacy_policy#changes">#</a></h3>
+                <p>
+                  We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last updated" date.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1313,21 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_privacy_policy#fhir-ant-privacy-policy">FHIR ANT Privacy Policy</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#summary">Summary</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_privacy_policy#what-data-fhir-ant-handles">What Data FHIR ANT Handles</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#where-data-is-stored">Where Data Is Stored</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#data-transmission">Data Transmission</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#third-party-services">Third-Party Services</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#data-retention">Data Retention</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#childrens-privacy">Children's Privacy</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#security">Security</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#your-rights">Your Rights</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#open-source">Open Source</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#contact">Contact</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_privacy_policy#changes">Changes</a></li>
                 </ul>
               </div>
             </aside>

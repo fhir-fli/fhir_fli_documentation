@@ -3,11 +3,11 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Getting Started | FHIR-FLI</title>
+    <meta property="og:title" content="Getting Started | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
+    <meta name="description" content="Welcome to the FHIR-FLI Getting Started guide."/>
+    <meta property="og:description" content="Welcome to the FHIR-FLI Getting Started guide."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1205,22 +1205,101 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Getting Started</h1><p>Welcome to the FHIR-FLI Getting Started guide.</p></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="getting-started-with-fhir-fli-img-srcimagesfhir-fli-logopng-altfhir-fli-logo-stylewidth-150px-vertical-align-middle-" anchor="true">
+                  <span>Getting Started with FHIR-FLI <!--@jaspr_content:zoomable_image data={"src":"images/fhir-fli-logo.png","alt":"FHIR-FLI Logo","caption":null}--><figure class="image zoomable"><img alt="FHIR-FLI Logo" src="images/fhir-fli-logo.png"/></figure><!--/@jaspr_content:zoomable_image--></span><a href="/docs#getting-started-with-fhir-fli-img-srcimagesfhir-fli-logopng-altfhir-fli-logo-stylewidth-150px-vertical-align-middle-">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Welcome to the Getting Started guide for FHIR-FLI. This guide will walk you through setting up and using the FHIR-FLI Dart libraries in your projects.
                 </p>
+                <h3 id="what-is-fhir-fli" anchor="true"><span>What is FHIR-FLI?</span><a href="/docs#what-is-fhir-fli">#</a></h3>
+                <p>
+                  FHIR-FLI (<b>F</b>ast <b>H</b>ealthcare <b>I</b>nteroperability <b>R</b>esources - with <b>F</b>lutter 
+                  <b>L</b>ibrary <b>I</b>ntegration) is a set of Dart libraries that enable Flutter developers to easily work with 
+                  <a href="core/fhir_r4">FHIR</a> data. These libraries provide common functionality that is needed for working with FHIR, including serialization/deserialization, making 
+                  <a href="at_rest/fhir_r4_at_rest">RESTful</a> requests, <a href="auth/fhir_r4_auth">SMART on FHIR authentication</a>
+                   authentication, <a href="fhir_r4_db">local secure storage</a>, <a href="fhir_r4_path">FHIRPath</a>, 
+                  <a href="fhir_r4_bulk">FHIR Bulk Data</a>, <a href="mapping/fhir_mapping">FHIR Mapping</a>, <a href="fhir_r4_cql">CQL</a>, and 
+                  <a href="fhir_r4_validation">resource validation</a>.
+                </p>
+                <h3 id="fhir-version-support" anchor="true"><span>FHIR Version Support</span><a href="/docs#fhir-version-support">#</a></h3>
+                <p>
+                  All packages are available for <strong>FHIR R4, R5, and R6</strong>. The APIs are identical across versions - just swap the package name:
+                </p>
+                <table>
+                  <thead><tr><th>Package</th><th>R4</th><th>R5</th><th>R6</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td>Core types</td>
+                      <td><code>fhir_r4</code></td>
+                      <td><code>fhir_r5</code></td>
+                      <td><code>fhir_r6</code></td>
+                    </tr>
+                    <tr>
+                      <td>REST client</td>
+                      <td><code>fhir_r4_at_rest</code></td>
+                      <td><code>fhir_r5_at_rest</code></td>
+                      <td><code>fhir_r6_at_rest</code></td>
+                    </tr>
+                    <tr>
+                      <td>Auth (SMART)</td>
+                      <td><code>fhir_r4_auth</code></td>
+                      <td><code>fhir_r5_auth</code></td>
+                      <td><code>fhir_r6_auth</code></td>
+                    </tr>
+                    <tr>
+                      <td>Bulk data</td>
+                      <td><code>fhir_r4_bulk</code></td>
+                      <td><code>fhir_r5_bulk</code></td>
+                      <td><code>fhir_r6_bulk</code></td>
+                    </tr>
+                    <tr>
+                      <td>CQL</td>
+                      <td><code>fhir_r4_cql</code></td>
+                      <td><code>fhir_r5_cql</code></td>
+                      <td><code>fhir_r6_cql</code></td>
+                    </tr>
+                    <tr>
+                      <td>Database</td>
+                      <td><code>fhir_r4_db</code></td>
+                      <td><code>fhir_r5_db</code></td>
+                      <td><code>fhir_r6_db</code></td>
+                    </tr>
+                    <tr>
+                      <td>Mapping</td>
+                      <td><code>fhir_r4_mapping</code></td>
+                      <td><code>fhir_r5_mapping</code></td>
+                      <td><code>fhir_r6_mapping</code></td>
+                    </tr>
+                    <tr>
+                      <td>FHIRPath</td>
+                      <td><code>fhir_r4_path</code></td>
+                      <td><code>fhir_r5_path</code></td>
+                      <td><code>fhir_r6_path</code></td>
+                    </tr>
+                    <tr>
+                      <td>Validation</td>
+                      <td><code>fhir_r4_validation</code></td>
+                      <td><code>fhir_r5_validation</code></td>
+                      <td><code>fhir_r6_validation</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  The documentation focuses on R4 examples, but all code works identically with R5 and R6 by changing the import.
+                </p>
+                <h3 id="here-are-the-official-hl7-references-for-the-above-functionality" anchor="true">
+                  <span>Here are the official HL7 references for the above functionality</span><a href="/docs#here-are-the-official-hl7-references-for-the-above-functionality">#</a>
+                </h3>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li><a href="https://www.hl7.org/fhir/overview.html">FHIR</a></li>
+                  <li><a href="https://www.hl7.org/fhir/http.html">FHIR RESTful API</a></li>
+                  <li><a href="http://hl7.org/fhir/smart-app-launch/">SMART App Launch</a></li>
+                  <li><a href="https://hl7.org/fhirpath/N1/">FHIRPath</a></li>
+                  <li><a href="https://build.fhir.org/ig/HL7/bulk-data/">FHIR Bulk Data</a></li>
+                  <li><a href="https://build.fhir.org/mapping-language.html">FHIR Mapping</a></li>
+                  <li><a href="https://cql.hl7.org/">Clinical Quality Language (CQL)</a></li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1322,14 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs#getting-started-with-fhir-fli-img-srcimagesfhir-fli-logopng-altfhir-fli-logo-stylewidth-150px-vertical-align-middle-">Getting Started with FHIR-FLI </a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs#what-is-fhir-fli">What is FHIR-FLI?</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs#fhir-version-support">FHIR Version Support</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs#here-are-the-official-hl7-references-for-the-above-functionality">Here are the official HL7 references for the above functionality</a>
+                  </li>
                 </ul>
               </div>
             </aside>

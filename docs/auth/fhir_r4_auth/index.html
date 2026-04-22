@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>FHIR R4 Auth | FHIR-FLI</title>
+    <meta property="og:title" content="FHIR R4 Auth | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1128,10 +1126,10 @@
                   <li><div><a href="docs/at_rest/restful_parameters">Parameters</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Auth</summary>
                 <ul>
-                  <li><div><a href="docs/auth/fhir_r4_auth">fhir_r4_auth</a></div></li>
+                  <li><div class="active"><a href="docs/auth/fhir_r4_auth">fhir_r4_auth</a></div></li>
                   <li><div><a href="docs/auth/installation">Installation</a></div></li>
                   <li><div><a href="docs/auth/standalone-launch">Standalone Launch</a></div></li>
                 </ul>
@@ -1205,22 +1203,123 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>FHIR R4 Auth</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-r4-auth" anchor="true"><span>FHIR R4 Auth</span><a href="/docs/auth/fhir_r4_auth#fhir-r4-auth">#</a></h2>
+                <p>Production-ready SMART on FHIR authentication and authorization for Flutter applications.</p>
+                <h3 id="what-is-fhir-r4-auth" anchor="true"><span>What is FHIR R4 Auth?</span><a href="/docs/auth/fhir_r4_auth#what-is-fhir-r4-auth">#</a></h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  <code>fhir_r4_auth</code> is a comprehensive authentication library that implements the <a href="http://hl7.org/fhir/smart-app-launch/">SMART App Launch Framework</a>
+                   specification. It provides everything needed to build secure, compliant FHIR applications that integrate with Electronic Health Record (EHR) systems.
                 </p>
+                <p>
+                  Also available as <code>fhir_r5_auth</code> and <code>fhir_r6_auth</code> for FHIR R5 and R6 with identical APIs.
+                </p>
+                <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/auth/fhir_r4_auth#key-features">#</a></h3>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>Complete SMART Implementation</strong> - Supports standalone launch and EHR launch types</li>
+                  <li><strong>Enterprise Security</strong> - PKCE, secure token storage, JWT validation, audit logging</li>
+                  <li><strong>Multi-Platform</strong> - Works on iOS, Android, Web, macOS, Windows, and Linux</li>
+                  <li><strong>Developer Friendly</strong> - Type-safe API, comprehensive error handling</li>
+                  <li><strong>Session Management</strong> - Idle and absolute timeouts, token refresh</li>
+                </ul>
+                <h3 id="quick-start" anchor="true"><span>Quick Start</span><a href="/docs/auth/fhir_r4_auth#quick-start">#</a></h3>
+                <h4 id="installation">Installation</h4>
+                <p>Add to your <code>pubspec.yaml</code>:</p>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4_auth: ^0.4.0
+  fhir_r4: ^0.4.4
+</code></pre>
+                <h4 id="basic-example">Basic Example</h4>
+                <pre><code class="language-dart">import 'package:fhir_r4_auth/fhir_r4_auth.dart';
+
+// Configure your client
+final client = SmartFhirClient(
+  config: SmartConfig(
+    clientId: 'your-client-id',
+    fhirBaseUrl: 'https://fhir.example.com/r4'.toFhirUri,
+    redirectUri: Uri.parse('com.yourapp://callback'),
+    scopes: ['patient/*.read', 'launch/patient'],
+  ),
+);
+
+// Authenticate
+await client.authenticate();
+</code></pre>
+                <h3 id="launch-types" anchor="true"><span>Launch Types</span><a href="/docs/auth/fhir_r4_auth#launch-types">#</a></h3>
+                <h4 id="standalone-launch">Standalone Launch</h4>
+                <p>Your app launches independently and asks the user to authorize access.</p>
+                <p><strong>Use when:</strong> Building patient-facing mobile apps, personal health record apps.</p>
+                <p><a href="auth/standalone-launch">Learn more →</a></p>
+                <h4 id="ehr-launch">EHR Launch</h4>
+                <p>Your app is embedded within an EHR system and launched from the provider's workflow.</p>
+                <p><strong>Use when:</strong> Building clinician-facing apps, clinical decision support tools.</p>
+                <h3 id="core-concepts" anchor="true"><span>Core Concepts</span><a href="/docs/auth/fhir_r4_auth#core-concepts">#</a></h3>
+                <h4 id="security">Security</h4>
+                <ul>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>PKCE</strong> (Proof Key for Code Exchange) - Enabled by default (can be disabled for servers that don't support it)
                   </li>
+                  <li><strong>Secure Token Storage</strong> - Platform-specific secure storage</li>
+                  <li><strong>JWT Validation</strong> - Full validation of ID tokens</li>
+                  <li><strong>Audit Logging</strong> - Complete audit trail</li>
+                  <li><strong>Session Management</strong> - Idle and absolute timeouts</li>
+                </ul>
+                <h4 id="token-management">Token Management</h4>
+                <ul>
+                  <li>Automatic token refresh before expiry</li>
+                  <li>Token revocation support</li>
+                  <li>Token introspection (when supported by server)</li>
+                  <li>Secure encrypted storage</li>
+                </ul>
+                <h3 id="platform-notes" anchor="true"><span>Platform Notes</span><a href="/docs/auth/fhir_r4_auth#platform-notes">#</a></h3>
+                <h4 id="web">Web</h4>
+                <p>
+                  Create a <code>web/callback.html</code> that stores the redirect URL in localStorage and posts it via 
+                  <code>window.postMessage</code>:
+                </p>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;&lt;script&gt;
+  const url = window.location.href;
+  window.localStorage.setItem('flutter-web-auth-2', url);
+  window.opener.postMessage({'flutter-web-auth-2': url}, '*');
+  window.close();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+                <h4 id="android">Android</h4>
+                <p>
+                  Add <code>manifestPlaceholders["appAuthRedirectScheme"]</code> in <code>android/app/build.gradle.kts</code>. URI schemes cannot have underscores (RFC 3986) - use hyphens instead.
+                </p>
+                <h4 id="desktop-linuxwindows">Desktop (Linux/Windows)</h4>
+                <p>
+                  <code>flutter_web_auth_2</code> starts a temporary HTTP server on the callback port. Set <code>callbackUrlScheme</code>
+                   to the full origin (e.g., <code>http://localhost:8080</code>).
+                </p>
+                <h3 id="epic-integration-notes" anchor="true"><span>Epic Integration Notes</span><a href="/docs/auth/fhir_r4_auth#epic-integration-notes">#</a></h3>
+                <p>When integrating with Epic's FHIR sandbox:</p>
+                <ul>
+                  <li>
+                    <strong>Disable PKCE</strong> (<code>enablePkce: false</code>) - Epic sandbox rejects <code>code_challenge</code>/<code>code_challenge_method</code>
+                  </li>
+                  <li>
+                    <strong>Disable OpenID</strong> (<code>enableOpenId: false</code>) - Epic rejects the <code>nonce</code>
+                     parameter
+                  </li>
+                  <li>
+                    <strong>EHR launch scopes:</strong> Use <code>['launch']</code> only - wider scopes may cause OAuth errors
+                  </li>
+                </ul>
+                <h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/auth/fhir_r4_auth#next-steps">#</a></h3>
+                <ol>
+                  <li><strong><a href="auth/installation">Install the library</a></strong> - Add to your project</li>
+                  <li>
+                    <strong><a href="auth/standalone-launch">Standalone launch guide</a></strong> - Step-by-step standalone launch
+                  </li>
+                </ol>
+                <h3 id="resources" anchor="true"><span>Resources</span><a href="/docs/auth/fhir_r4_auth#resources">#</a></h3>
+                <ul>
+                  <li><a href="https://github.com/fhir-fli/fhir_r4">GitHub Repository</a></li>
+                  <li><a href="http://hl7.org/fhir/smart-app-launch/">SMART App Launch Specification</a></li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1342,16 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/auth/fhir_r4_auth#fhir-r4-auth">FHIR R4 Auth</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#what-is-fhir-r4-auth">What is FHIR R4 Auth?</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#key-features">Key Features</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#quick-start">Quick Start</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#launch-types">Launch Types</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#core-concepts">Core Concepts</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#platform-notes">Platform Notes</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#epic-integration-notes">Epic Integration Notes</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#next-steps">Next Steps</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/fhir_r4_auth#resources">Resources</a></li>
                 </ul>
               </div>
             </aside>

@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Security &amp; Auth | FHIR-FLI</title>
+    <meta property="og:title" content="Security &amp; Auth | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1187,13 +1185,13 @@
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR ANT</summary>
                 <ul>
                   <li><div><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_getting_started">Getting Started</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_capabilities">Capabilities</a></div></li>
-                  <li><div><a href="docs/fhirant/fhirant_security">Security</a></div></li>
+                  <li><div class="active"><a href="docs/fhirant/fhirant_security">Security</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_api_reference">API Reference</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_cli">CLI</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_privacy_policy">Privacy Policy</a></div></li>
@@ -1205,23 +1203,118 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Security &amp; Auth</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="security--authentication" anchor="true">
+                  <span>Security &amp; Authentication</span><a href="/docs/fhirant/fhirant_security#security--authentication">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  FHIR ANT includes a full authentication and authorization system. In <strong>Dev Mode</strong> (the default for testing), authentication is bypassed. When Dev Mode is off, all non-public endpoints require a valid JWT token.
                 </p>
+                <h3 id="dev-mode" anchor="true"><span>Dev Mode</span><a href="/docs/fhirant/fhirant_security#dev-mode">#</a></h3>
+                <p>
+                  When enabled, all requests are accepted without authentication. A synthetic admin user is injected into every request so that audit trails and scope enforcement still function internally.
+                </p>
+                <p><strong>Dev Mode is for testing only.</strong> A warning banner appears in the app when it's active.</p>
+                <h3 id="authentication-flow" anchor="true"><span>Authentication Flow</span><a href="/docs/fhirant/fhirant_security#authentication-flow">#</a></h3>
+                <h4 id="registration--login">Registration &amp; Login</h4>
+                <pre><code class="language-bash"># Register a new user (first user becomes admin)
+curl -X POST http://server:8080/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"mysecurepassword"}'
+
+# Login
+curl -X POST http://server:8080/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"mysecurepassword"}'
+# Returns: {"token": "eyJ...", "refresh_token": "eyJ...", ...}
+</code></pre>
+                <h4 id="using-tokens">Using Tokens</h4>
+                <pre><code class="language-bash"># Use the access token for authenticated requests
+curl -H "Authorization: Bearer eyJ..." http://server:8080/Patient
+</code></pre>
+                <h4 id="token-refresh">Token Refresh</h4>
+                <pre><code class="language-bash">curl -X POST http://server:8080/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"grant_type":"refresh_token","refresh_token":"eyJ..."}'
+</code></pre>
+                <h4 id="oauth-20-authorization-code-flow-pkce">OAuth 2.0 Authorization Code Flow (PKCE)</h4>
+                <p>
+                  FHIR ANT supports the full OAuth 2.0 authorization code flow with PKCE, suitable for SMART on FHIR applications:
+                </p>
+                <ol>
+                  <li><code>GET /auth/authorize</code> — Authorization endpoint</li>
+                  <li><code>POST /auth/authorize</code> — Submit authorization (JSON or form-encoded)</li>
+                  <li><code>POST /auth/token</code> — Exchange code for tokens (with <code>code_verifier</code>)</li>
+                </ol>
+                <h4 id="token-revocation-rfc-7009">Token Revocation (RFC 7009)</h4>
+                <pre><code class="language-bash"># Revoke a token
+curl -X POST http://server:8080/auth/revoke \
+  -H "Content-Type: application/json" \
+  -d '{"token":"eyJ..."}'
+
+# Logout (revokes access token from Authorization header)
+curl -X POST http://server:8080/auth/logout \
+  -H "Authorization: Bearer eyJ..."
+</code></pre>
+                <h3 id="smart-on-fhir-scopes" anchor="true"><span>SMART on FHIR Scopes</span><a href="/docs/fhirant/fhirant_security#smart-on-fhir-scopes">#</a></h3>
+                <p>FHIR ANT enforces SMART v2 scope syntax: <code>context/resourceType.permissions</code></p>
+                <table>
+                  <thead><tr><th>Context</th><th>Example</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>user</code></td>
+                      <td><code>user/Patient.rs</code></td>
+                      <td>User-level read+search on Patient</td>
+                    </tr>
+                    <tr>
+                      <td><code>patient</code></td>
+                      <td><code>patient/Observation.cruds</code></td>
+                      <td>Patient-level full access</td>
+                    </tr>
+                    <tr>
+                      <td><code>system</code></td>
+                      <td><code>system/*.*</code></td>
+                      <td>System-level full access (admin)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  <strong>Permissions:</strong> <code>c</code> (create), <code>r</code> (read), <code>u</code> (update), 
+                  <code>d</code> (delete), <code>s</code> (search)
+                </p>
+                <h4 id="default-scopes-by-role">Default Scopes by Role</h4>
+                <table>
+                  <thead><tr><th>Role</th><th>Default Scopes</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>admin</code></td><td><code>system/*.*</code></td></tr>
+                    <tr><td><code>clinician</code></td><td><code>user/*.*</code></td></tr>
+                    <tr><td><code>readonly</code></td><td><code>user/*.rs</code></td></tr>
+                  </tbody>
+                </table>
+                <h3 id="password-policy" anchor="true"><span>Password Policy</span><a href="/docs/fhirant/fhirant_security#password-policy">#</a></h3>
+                <p>Follows NIST 800-63B guidelines:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>Minimum 12 characters, maximum 128</li>
+                  <li>No complexity rules (length &gt; complexity)</li>
+                  <li>Blocked common passwords (e.g., "password123456")</li>
+                  <li>Case-insensitive blocklist matching</li>
                 </ul>
+                <h3 id="account-lockout" anchor="true"><span>Account Lockout</span><a href="/docs/fhirant/fhirant_security#account-lockout">#</a></h3>
+                <ul>
+                  <li>Account locks after 5 failed login attempts</li>
+                  <li>Auto-unlock after 15 minutes</li>
+                  <li>Admin can manually unlock via <code>POST /admin/unlock/&lt;userId&gt;</code></li>
+                  <li>Returns HTTP 423 (Locked) when account is locked</li>
+                </ul>
+                <h3 id="database-encryption" anchor="true"><span>Database Encryption</span><a href="/docs/fhirant/fhirant_security#database-encryption">#</a></h3>
+                <p>
+                  The SQLite database is encrypted with SQLCipher. The encryption key is generated on first launch and stored in the device's secure keystore (Android Keystore / iOS Keychain). Data at rest is always encrypted.
+                </p>
+                <h3 id="audit-trail" anchor="true"><span>Audit Trail</span><a href="/docs/fhirant/fhirant_security#audit-trail">#</a></h3>
+                <p>
+                  All requests are logged with timestamp, method, path, status code, duration, client IP, and authenticated user (if present).
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1336,14 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#security--authentication">Security &amp; Authentication</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#dev-mode">Dev Mode</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#authentication-flow">Authentication Flow</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#smart-on-fhir-scopes">SMART on FHIR Scopes</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#password-policy">Password Policy</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#account-lockout">Account Lockout</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#database-encryption">Database Encryption</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#audit-trail">Audit Trail</a></li>
                 </ul>
               </div>
             </aside>

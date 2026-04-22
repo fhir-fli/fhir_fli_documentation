@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Primitive Types | FHIR-FLI</title>
+    <meta property="og:title" content="Primitive Types | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1107,7 +1105,7 @@
           <nav class="sidebar">
             <button class="sidebar-close">×</button>
             <div>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR R4b Core</summary>
                 <ul>
                   <li><div><a href="docs/core/fhir_r4">fhir_r4</a></div></li>
@@ -1115,7 +1113,7 @@
                   <li><div><a href="docs/core/serialization">Serialization</a></div></li>
                   <li><div><a href="docs/core/class_structure">Class Structure</a></div></li>
                   <li><div><a href="docs/core/polymorphic_types">Polymorphic Types</a></div></li>
-                  <li><div><a href="docs/core/primitive_types">Primitive Types</a></div></li>
+                  <li><div class="active"><a href="docs/core/primitive_types">Primitive Types</a></div></li>
                   <li><div><a href="docs/core/enums">Enums</a></div></li>
                   <li><div><a href="docs/core/migration">Migration</a></div></li>
                 </ul>
@@ -1205,23 +1203,463 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Primitive Types</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="primitive-types-in-fhir-fli" anchor="true">
+                  <span>Primitive Types in FHIR-FLI</span><a href="/docs/core/primitive_types#primitive-types-in-fhir-fli">#</a>
+                </h2>
+                <h3 id="understanding-fhir-primitive-types" anchor="true">
+                  <span>Understanding FHIR Primitive Types</span><a href="/docs/core/primitive_types#understanding-fhir-primitive-types">#</a>
+                </h3>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Primitive types are the fundamental building blocks of FHIR resources. While they appear simple (booleans, strings, numbers, etc.), FHIR defines specific validation rules and formats for each primitive type that differ from standard Dart types. FHIR-FLI implements these with strong typing and additional functionality.
                 </p>
+                <p>In FHIR-FLI, all primitive types:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li>Are subclasses of <code>PrimitiveType</code>, which extends <code>FhirBase</code></li>
+                  <li>Store their values internally as strings for consistent serialization</li>
+                  <li>Include optional metadata via the <code>Element</code> class</li>
+                  <li>Provide appropriate getters to access values in their natural Dart types</li>
+                  <li>Support polymorphism and can be used in various resource fields</li>
                 </ul>
+                <h3 id="core-architecture" anchor="true"><span>Core Architecture</span><a href="/docs/core/primitive_types#core-architecture">#</a></h3>
+                <h4 id="internal-representation">Internal Representation</h4>
+                <p>All FHIR primitive types in FHIR-FLI store their primary value as a string:</p>
+                <pre><code class="language-dart">// Inside PrimitiveType class
+final String? valueString;
+</code></pre>
+                <p>
+                  This approach ensures consistent serialization and supports FHIR's extensibility model. When you create a primitive type instance, your input value is validated and converted to a string representation.
+                </p>
+                <h4 id="element-metadata">Element Metadata</h4>
+                <p>
+                  FHIR primitive types can include an <code>Element</code> instance that contains metadata like extensions:
+                </p>
+                <pre><code class="language-dart">// Inside PrimitiveType class
+final Element? element;
+</code></pre>
+                <p>This allows primitives to carry extensions and other metadata alongside their core value.</p>
+                <h3 id="common-primitive-type-structure" anchor="true">
+                  <span>Common Primitive Type Structure</span><a href="/docs/core/primitive_types#common-primitive-type-structure">#</a>
+                </h3>
+                <p>All primitive types follow a consistent pattern:</p>
+                <ol>
+                  <li><strong>Extension methods</strong> on relevant Dart types for easy conversion</li>
+                  <li><strong>Private constructor</strong> for internal use</li>
+                  <li><strong>Public factories</strong> for instance creation</li>
+                  <li><strong>JSON/YAML constructors</strong> for serialization/deserialization</li>
+                  <li><strong>Convenience getters</strong> for accessing the value in appropriate Dart types</li>
+                  <li><strong>Boolean state checkers</strong> for checking value/element presence</li>
+                  <li><strong>Utility methods</strong> for manipulation and comparison</li>
+                </ol>
+                <p>Here's a class diagram showing the inheritance and common interface for primitive types:</p>
+                <pre><code>FhirBase
+   |
+   +--&gt; PrimitiveType
+            |
+            +--&gt; FhirBoolean
+            +--&gt; FhirDecimal
+            +--&gt; FhirInteger
+            +--&gt; FhirString
+            +--&gt; FhirUri
+            +--&gt; FhirDateTime
+            +--&gt; FhirDate
+            +--&gt; FhirTime
+            +--&gt; FhirInstant
+            ...
+</code></pre>
+                <h3 id="working-with-primitive-types" anchor="true">
+                  <span>Working with Primitive Types</span><a href="/docs/core/primitive_types#working-with-primitive-types">#</a>
+                </h3>
+                <h4 id="creating-primitive-types">Creating Primitive Types</h4>
+                <p>You can create primitive types in several ways:</p>
+                <pre><code class="language-dart">// Direct constructor with native type
+final myBoolean = FhirBoolean(true);
+final myDecimal = FhirDecimal(42.5);
+
+// From string representation
+final myUri = FhirUri('http://example.org');
+
+// Using extension methods
+final boolFromNative = true.toFhirBoolean;
+final uriFromNative = 'http://example.org'.toFhirUri;
+</code></pre>
+                <h4 id="reading-values">Reading Values</h4>
+                <p>Each primitive type provides typed getters to access its value in the appropriate Dart type:</p>
+                <pre><code class="language-dart">// Boolean example
+final bool? nativeValue = myBoolean.valueBoolean;
+
+// DateTime example
+final DateTime? dateTimeValue = myFhirDateTime.valueDateTime;
+
+// Uri example
+final Uri? uriValue = myUri.valueUri;
+</code></pre>
+                <h4 id="value-only-vs-element-only-vs-both">Value-only vs Element-only vs Both</h4>
+                <p>FHIR primitives can exist in three states:</p>
+                <ol>
+                  <li><strong>Value-only</strong>: Contains just the primitive value</li>
+                  <li><strong>Element-only</strong>: Contains just metadata (extensions)</li>
+                  <li><strong>Value and Element</strong>: Contains both value and metadata</li>
+                </ol>
+                <p>Helper properties let you check which state applies:</p>
+                <pre><code class="language-dart">if (myBoolean.valueOnly) {
+  // Just a boolean value, no extensions
+}
+
+if (myBoolean.hasElementOnly) {
+  // Contains extensions but no value
+}
+
+if (myBoolean.valueAndElement) {
+  // Contains both a value and extensions
+}
+</code></pre>
+                <h3 id="specific-primitive-types" anchor="true">
+                  <span>Specific Primitive Types</span><a href="/docs/core/primitive_types#specific-primitive-types">#</a>
+                </h3>
+                <h4 id="boolean-fhirboolean">Boolean (FhirBoolean)</h4>
+                <p>Represents FHIR <code>boolean</code> type:</p>
+                <pre><code class="language-dart">// Creating a boolean
+final myBoolean = FhirBoolean(true);
+
+// Using extension method
+final myBoolean2 = true.toFhirBoolean;
+
+// Accessing the value
+final bool? value = myBoolean.valueBoolean;
+</code></pre>
+                <h4 id="string-types-fhirstring-fhircode-fhirid-fhirmarkdown-etc">String Types (FhirString, FhirCode, FhirId, FhirMarkdown, etc.)</h4>
+                <p>Various string-based types with different validation rules:</p>
+                <pre><code class="language-dart">// Creating string types
+final myString = FhirString('Hello, FHIR!');
+final myCode = FhirCode('active');
+final myId = FhirId('patient-123');
+
+// Using extension method
+final myString2 = 'Hello, FHIR!'.toFhirString;
+
+// Accessing values
+final String? stringValue = myString.value;
+</code></pre>
+                <h4 id="uri-types-fhiruri-fhirurl-fhircanonical-fhiroid">URI Types (FhirUri, FhirUrl, FhirCanonical, FhirOid)</h4>
+                <p>URI-based types with different validation rules:</p>
+                <pre><code class="language-dart">// Creating URI types
+final myUri = FhirUri('http://example.org');
+final myUrl = FhirUrl('http://example.org/fhir/Patient/123');
+
+// From Uri object
+final dartUri = Uri.parse('http://example.org');
+final myUri2 = dartUri.toFhirUri;
+
+// Using extension method
+final myUri3 = 'http://example.org'.toFhirUri;
+
+// Accessing values
+final Uri? uriValue = myUri.valueUri;
+final String? stringValue = myUri.valueString;
+
+// Additional URI helpers
+final host = myUri.host;         // 'example.org'
+final pathSegments = myUri.pathSegments;
+</code></pre>
+                <h4 id="numeric-types-fhirinteger-fhirdecimal-etc">Numeric Types (FhirInteger, FhirDecimal, etc.)</h4>
+                <p>Various numeric types with different validation rules:</p>
+                <pre><code class="language-dart">// Creating numeric types
+final myInteger = FhirInteger(42);
+final myDecimal = FhirDecimal(3.14159);
+final myPositiveInt = FhirPositiveInt(10);
+
+// Using extension methods
+final myInt2 = 42.toFhirInteger;
+final myDecimal2 = 3.14159.toFhirDecimal;
+
+// Accessing values
+final int? intValue = myInteger.valueInteger;
+final double? decimalValue = myDecimal.valueDecimal;
+</code></pre>
+                <h4 id="date-and-time-types">Date and Time Types</h4>
+                <p>FHIR has multiple date/time types, all inherited from a common base:</p>
+                <pre><code class="language-dart">// Creating date/time types
+final myDateTime = FhirDateTime('2023-06-15T13:30:45Z');
+final myDate = FhirDate('2023-06-15');
+final myTime = FhirTime('13:30:45');
+final myInstant = FhirInstant('2023-06-15T13:30:45.123Z');
+
+// From DateTime object
+final dartDateTime = DateTime.now();
+final myDateTime2 = dartDateTime.toFhirDateTime;
+
+// Using extension methods
+final myDateTime3 = '2023-06-15T13:30:45Z'.toFhirDateTime;
+
+// Accessing components
+final int? year = myDateTime.year;
+final int? month = myDateTime.month;
+final int? day = myDateTime.day;
+final int? hour = myDateTime.hour;
+
+// Accessing as DateTime
+final DateTime? dateTimeValue = myDateTime.valueDateTime;
+
+// Comparing dates
+if (myDateTime &gt; someOtherDateTime) {
+  // Date comparison
+}
+
+// Arithmetic with dates (using ExtendedDuration)
+final oneWeekLater = myDateTime + ExtendedDuration(weeks: 1);
+final oneDayEarlier = myDateTime - ExtendedDuration(days: 1);
+</code></pre>
+                <h3 id="datetime-precision-and-comparisons" anchor="true">
+                  <span>Date/Time Precision and Comparisons</span><a href="/docs/core/primitive_types#datetime-precision-and-comparisons">#</a>
+                </h3>
+                <p>FHIR date/time types follow FHIRPath rules for precision when comparing values. For example:</p>
+                <ul>
+                  <li>A date-only value (<code>2023-06-15</code>) represents the entire day</li>
+                  <li>A date-time without seconds (<code>2023-06-15T13:30</code>) represents the entire minute</li>
+                  <li>Comparing values with different precisions follows specific rules</li>
+                </ul>
+                <pre><code class="language-dart">// Per FHIRPath rules, comparing different precision levels returns null (empty)
+final dateOnly = FhirDate('2023-06-15');
+final dateTimeWithHour = FhirDateTime('2023-06-15T13:00:00');
+
+dateTimeWithHour &gt; dateOnly; // returns null, not true
+dateTimeWithHour == dateOnly; // returns null, not true or false
+</code></pre>
+                <h3 id="json-serialization-the-fhir-element-pattern" anchor="true">
+                  <span>JSON Serialization: The FHIR Element Pattern</span><a href="/docs/core/primitive_types#json-serialization-the-fhir-element-pattern">#</a>
+                </h3>
+                <p>
+                  FHIR primitive types have a unique serialization pattern that stems from FHIR's XML origins. In XML, primitives can have attributes (like extensions), but JSON doesn't have a native way to attach metadata to primitives. FHIR solves this with a special pattern:
+                </p>
+                <h4 id="the-_value-pattern">The "_value" Pattern</h4>
+                <p>
+                  For every primitive field in FHIR JSON, there can be a corresponding metadata field with the same name prefixed by an underscore:
+                </p>
+                <pre><code class="language-json">{
+  "active": true,         // The primitive value
+  "_active": {            // The Element with metadata for "active"
+    "extension": [{
+      "url": "http://example.org/some-extension",
+      "valueString": "Some extension value"
+    }]
+  }
+}
+</code></pre>
+                <h4 id="how-fhir-fli-implements-this-pattern">How FHIR-FLI Implements This Pattern</h4>
+                <p>FHIR-FLI's primitive types implement special JSON handling to support this pattern:</p>
+                <pre><code class="language-dart">// Serializing to JSON
+final myBoolean = FhirBoolean(true);
+myBoolean.toJson();  // Returns: {"value": true}
+
+// With extensions
+final myBooleanWithExt = FhirBoolean(
+  true,
+  element: Element(
+    extension_: [
+      FhirExtension(
+        url: FhirUri('http://example.org/some-extension'),
+        valueString: FhirString('Some extension value')
+      )
+    ]
+  )
+);
+
+myBooleanWithExt.toJson();
+// Returns: {
+//   "value": true,
+//   "_value": {
+//     "extension": [{
+//       "url": "http://example.org/some-extension",
+//       "valueString": "Some extension value"
+//     }]
+//   }
+// }
+
+// Deserializing from JSON
+final myBooleanFromJson = FhirBoolean.fromJson({
+  'value': true,
+  '_value': {
+    'extension': [
+      {
+        'url': 'http://example.org/some-extension',
+        'valueString': 'Some extension value'
+      }
+    ]
+  }
+});
+</code></pre>
+                <h4 id="special-handling-in-resources">Special Handling in Resources</h4>
+                <p>
+                  When primitive types are used within FHIR resources, the resource's <code>toJson()</code> and <code>fromJson()</code>
+                   methods automatically handle the field name transformation:
+                </p>
+                <pre><code class="language-dart">// Resource with primitive fields
+final patient = Patient(
+  active: FhirBoolean(true, 
+    element: Element(extension_: [someExtension])
+  ),
+  // other fields...
+);
+
+patient.toJson();
+// Returns: {
+//   "resourceType": "Patient",
+//   "active": true,
+//   "_active": {
+//     "extension": [...]
+//   },
+//   // other fields...
+// }
+</code></pre>
+                <h4 id="list-handling">List Handling</h4>
+                <p>For lists of primitives, FHIR uses parallel arrays:</p>
+                <pre><code class="language-dart">// JSON representation
+{
+  "name": ["John", "Johnny", "J"],  // Values array
+  "_name": [                        // Parallel metadata array
+    null,                           // No metadata for "John"
+    {                               // Metadata for "Johnny"
+      "extension": [...]
+    },
+    null                            // No metadata for "J"
+  ]
+}
+</code></pre>
+                <p>FHIR-FLI handles this with special list methods:</p>
+                <pre><code class="language-dart">// Create a list of primitives with metadata
+final names = [
+  FhirString("John"),
+  FhirString("Johnny", element: Element(extension_: [...])),
+  FhirString("J")
+];
+
+// Convert to parallel arrays JSON
+final json = FhirString.toJsonList(names);
+// Returns: {
+//   "value": ["John", "Johnny", "J"],
+//   "_value": [null, {...}, null]
+// }
+
+// Parse from parallel arrays
+final parsedNames = FhirString.fromJsonList(
+  json['value'] as List&lt;dynamic&gt;,
+  json['_value'] as List&lt;dynamic&gt;?
+);
+</code></pre>
+                <h4 id="important-considerations">Important Considerations</h4>
+                <ol>
+                  <li>
+                    <p><strong>Different from Other Classes</strong>: Primitive types have special JSON handling that differs from other FHIR classes to accommodate the FHIR JSON specification.</p>
+                  </li>
+                  <li>
+                    <p><strong>Field Names</strong>: Within resources, the field name is used for the value and <code>_fieldName</code>
+                       for metadata. Inside primitive types, these become <code>value</code> and <code>_value</code>.</p>
+                  </li>
+                  <li>
+                    <p><strong>Automatic Handling</strong>: Resource classes automatically handle this transformation, so it's only relevant when directly using primitive types' JSON methods.</p>
+                  </li>
+                  <li>
+                    <p><strong>Complete Serialization</strong>: This approach ensures all metadata (extensions, etc.) is properly preserved when serializing/deserializing FHIR resources.</p>
+                  </li>
+                </ol>
+                <h3 id="polymorphic-usage" anchor="true"><span>Polymorphic Usage</span><a href="/docs/core/primitive_types#polymorphic-usage">#</a></h3>
+                <p>Primitive types implement various interfaces to support polymorphic fields:</p>
+                <pre><code class="language-dart">// Example: FhirBoolean implements ValueXExtension
+// This allows it to be used in an Extension's value field
+final extension = FhirExtension(
+  url: FhirUri('http://example.org/my-boolean-extension'),
+  valueX: FhirBoolean(true), // Polymorphic usage
+);
+
+// You can retrieve the boolean using type-specific getters
+final boolValue = extension.valueBoolean?.valueBoolean;
+</code></pre>
+                <h3 id="utility-methods" anchor="true"><span>Utility Methods</span><a href="/docs/core/primitive_types#utility-methods">#</a></h3>
+                <p>All primitive types include utility methods for common operations:</p>
+                <pre><code class="language-dart">// Equality checks
+if (myBoolean == anotherBoolean) { ... }
+if (myBoolean.equals(true)) { ... }  // Works with native types too
+if (myBoolean.equalsDeep(anotherBoolean)) { ... }  // Deep comparison
+
+// Cloning
+final clonedBoolean = myBoolean.clone();
+
+// Creating modified copies
+final updatedBoolean = myBoolean.copyWith(newValue: false);
+</code></pre>
+                <h3 id="best-practices" anchor="true"><span>Best Practices</span><a href="/docs/core/primitive_types#best-practices">#</a></h3>
+                <ol>
+                  <li>
+                    <p><strong>Use extension methods</strong> for cleaner code when converting from native types:</p><pre><code class="language-dart">// Prefer this:
+final myBoolean = true.toFhirBoolean;
+   
+// Over this:
+final myBoolean = FhirBoolean(true);
+</code></pre>
+                  </li>
+                  <li>
+                    <p><strong>Check for null</strong> before accessing value getters:</p><pre><code class="language-dart">final valueOrNull = myBoolean.valueBoolean;
+if (valueOrNull != null) {
+  // Use value
+}
+</code></pre>
+                  </li>
+                  <li>
+                    <p><strong>Use typed getters</strong> instead of accessing <code>valueString</code> directly:</p><pre><code class="language-dart">// Prefer this:
+final boolValue = myBoolean.valueBoolean;
+   
+// Over this:
+final boolString = myBoolean.valueString;
+final boolValue = boolString == 'true';
+</code></pre>
+                  </li>
+                  <li>
+                    <p><strong>Be aware of date/time precision</strong> when comparing values:</p><pre><code class="language-dart">// Different precision requires careful comparison
+if (dateTime1.year == dateTime2.year &amp;&amp;
+    dateTime1.month == dateTime2.month &amp;&amp;
+    dateTime1.day == dateTime2.day) {
+  // Same day regardless of time components
+}
+</code></pre>
+                  </li>
+                  <li>
+                    <p><strong>Use the appropriate type</strong> for each FHIR field:</p><pre><code class="language-dart">// Use the correct type based on the FHIR specification
+final patient = Patient(
+  active: FhirBoolean(true),  // Boolean
+  birthDate: FhirDate('1990-01-15'),  // Date
+  telecom: [ContactPoint(
+    value: FhirString('+1-555-123-4567'),  // String
+    system: ContactPointSystem.phone,  // Code
+  )],
+);
+</code></pre>
+                  </li>
+                </ol>
+                <h3 id="common-pitfalls-and-solutions" anchor="true">
+                  <span>Common Pitfalls and Solutions</span><a href="/docs/core/primitive_types#common-pitfalls-and-solutions">#</a>
+                </h3>
+                <ol>
+                  <li>
+                    <p><strong>Problem</strong>: Comparison across different date/time types
+                      <strong>Solution</strong>: Use the appropriate comparison methods or convert to consistent precision</p>
+                  </li>
+                  <li>
+                    <p><strong>Problem</strong>: Working with extensions on primitive types
+                      <strong>Solution</strong>: Check both <code>valueX</code> and <code>_valueX</code>
+                       when deserializing</p>
+                  </li>
+                  <li>
+                    <p><strong>Problem</strong>: Unexpected serialization behavior
+                      <strong>Solution</strong>: Remember that primitives serialize as both <code>value</code>
+                       and <code>_value</code> keys</p>
+                  </li>
+                  <li>
+                    <p><strong>Problem</strong>: Lost extensions when updating values
+                      <strong>Solution</strong>: Use <code>copyWith()</code> to preserve extensions when changing values</p>
+                  </li>
+                </ol>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1681,26 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/core/primitive_types#primitive-types-in-fhir-fli">Primitive Types in FHIR-FLI</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/primitive_types#understanding-fhir-primitive-types">Understanding FHIR Primitive Types</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/primitive_types#core-architecture">Core Architecture</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/primitive_types#common-primitive-type-structure">Common Primitive Type Structure</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/primitive_types#working-with-primitive-types">Working with Primitive Types</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/primitive_types#specific-primitive-types">Specific Primitive Types</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/primitive_types#datetime-precision-and-comparisons">Date/Time Precision and Comparisons</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/primitive_types#json-serialization-the-fhir-element-pattern">JSON Serialization: The FHIR Element Pattern</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/primitive_types#polymorphic-usage">Polymorphic Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/primitive_types#utility-methods">Utility Methods</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/primitive_types#best-practices">Best Practices</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/primitive_types#common-pitfalls-and-solutions">Common Pitfalls and Solutions</a></li>
                 </ul>
               </div>
             </aside>

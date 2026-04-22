@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Overview | FHIR-FLI</title>
+    <meta property="og:title" content="Overview | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1187,10 +1185,10 @@
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR ANT</summary>
                 <ul>
-                  <li><div><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
+                  <li><div class="active"><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_getting_started">Getting Started</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_capabilities">Capabilities</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_security">Security</a></div></li>
@@ -1205,23 +1203,73 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Overview</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-ant" anchor="true"><span>FHIR ANT</span><a href="/docs/fhirant/fhirant_overview#fhir-ant">#</a></h2>
+                <p><strong>Fast Healthcare Interoperability Resources — Agile Networking Tool</strong></p>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  FHIR ANT is a complete FHIR R4 server that runs on your Android phone. It's built with Dart using the 
+                  <a href="../core/fhir_r4">fhir_r4</a> package and designed for mobile-first deployments, testing, and low-resource healthcare settings.
                 </p>
+                <h3 id="what-it-does" anchor="true"><span>What It Does</span><a href="/docs/fhirant/fhirant_overview#what-it-does">#</a></h3>
+                <p>
+                  FHIR ANT turns your phone into a fully functional FHIR server. Other devices on the same network can connect to it using standard FHIR REST APIs — just like they would with any cloud-hosted FHIR server.
+                </p>
+                <p><strong>Use cases:</strong></p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Testing &amp; development</strong> — Spin up a FHIR server instantly without cloud infrastructure
+                  </li>
+                  <li><strong>Demonstrations</strong> — Show FHIR workflows at conferences, meetings, or training sessions</li>
+                  <li>
+                    <strong>Low-resource settings</strong> — Provide FHIR capabilities where internet connectivity is limited or unavailable
+                  </li>
+                  <li><strong>Education</strong> — Learn FHIR by interacting with a real server on your own device</li>
+                  <li><strong>Personal health data</strong> — Store your own health records locally with full privacy</li>
+                </ul>
+                <h3 id="architecture" anchor="true"><span>Architecture</span><a href="/docs/fhirant/fhirant_overview#architecture">#</a></h3>
+                <p>FHIR ANT is a monorepo with four packages:</p>
+                <pre><code>fhirant/
+└── packages/
+    ├── fhirant/               # Flutter mobile app (Android)
+    ├── fhirant_server/        # HTTP server (Shelf-based)
+    ├── fhirant_db/            # Database (Drift/SQLite + SQLCipher)
+    └── fhirant_logging/       # JSON logging service
+</code></pre>
+                <ul>
+                  <li><strong>fhirant_server</strong> handles routing, middleware, and all FHIR operations</li>
+                  <li>
+                    <strong>fhirant_db</strong> extends <a href="../fhir_r4_db">fhir_r4_db</a> with server-specific tables (users, export jobs, authorization codes, revoked tokens)
+                  </li>
+                  <li>The server is pure Dart — it can also run as a CLI process on any platform</li>
+                  <li>
+                    The database is encrypted with SQLCipher; the encryption key is stored in the device's secure keystore
                   </li>
                 </ul>
+                <h3 id="quick-start" anchor="true"><span>Quick Start</span><a href="/docs/fhirant/fhirant_overview#quick-start">#</a></h3>
+                <ol>
+                  <li>Install the app on your Android device</li>
+                  <li>On first launch, walk through the onboarding screens</li>
+                  <li>Optionally load sample clinical data (MIMIC-IV subset)</li>
+                  <li>Tap <strong>Start</strong> to launch the server</li>
+                  <li>Note the URL shown on the Network Info card (e.g., <code>http://192.168.1.42:8080</code>)</li>
+                  <li>From any device on the same network, try:</li>
+                </ol>
+                <pre><code class="language-bash"># Get the server's capabilities
+curl http://192.168.1.42:8080/metadata
+
+# Search for patients
+curl http://192.168.1.42:8080/Patient
+
+# Create a patient
+curl -X POST http://192.168.1.42:8080/Patient \
+  -H "Content-Type: application/fhir+json" \
+  -d '{"resourceType":"Patient","name":[{"family":"Smith","given":["John"]}]}'
+</code></pre>
+                <h3 id="dev-mode" anchor="true"><span>Dev Mode</span><a href="/docs/fhirant/fhirant_overview#dev-mode">#</a></h3>
+                <p>
+                  By default, the app starts in <strong>Dev Mode</strong> — authentication is disabled, and all requests are accepted. This is ideal for testing and exploration. Toggle it off in the server control card to require JWT authentication.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1291,11 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_overview#fhir-ant">FHIR ANT</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_overview#what-it-does">What It Does</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_overview#architecture">Architecture</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_overview#quick-start">Quick Start</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_overview#dev-mode">Dev Mode</a></li>
                 </ul>
               </div>
             </aside>

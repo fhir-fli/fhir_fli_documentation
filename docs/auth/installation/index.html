@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Installation | FHIR-FLI</title>
+    <meta property="og:title" content="Installation | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1128,11 +1126,11 @@
                   <li><div><a href="docs/at_rest/restful_parameters">Parameters</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Auth</summary>
                 <ul>
                   <li><div><a href="docs/auth/fhir_r4_auth">fhir_r4_auth</a></div></li>
-                  <li><div><a href="docs/auth/installation">Installation</a></div></li>
+                  <li><div class="active"><a href="docs/auth/installation">Installation</a></div></li>
                   <li><div><a href="docs/auth/standalone-launch">Standalone Launch</a></div></li>
                 </ul>
               </details>
@@ -1205,23 +1203,116 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Installation</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="installation" anchor="true"><span>Installation</span><a href="/docs/auth/installation#installation">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  This guide walks through installing and configuring <code>fhir_r4_auth</code> in your Flutter project.
                 </p>
+                <h3 id="requirements" anchor="true"><span>Requirements</span><a href="/docs/auth/installation#requirements">#</a></h3>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
+                  <li><strong>Flutter</strong>: &gt;= 3.10.0</li>
+                  <li><strong>Dart</strong>: &gt;= 3.0.0</li>
+                  <li><strong>Platforms</strong>: iOS, Android, Web, macOS, Windows, Linux</li>
                 </ul>
+                <h3 id="add-to-your-project" anchor="true"><span>Add to Your Project</span><a href="/docs/auth/installation#add-to-your-project">#</a></h3>
+                <h4 id="1-update-pubspecyaml">1. Update pubspec.yaml</h4>
+                <p>Add the dependencies to your <code>pubspec.yaml</code>:</p>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4_auth: ^0.4.0
+  fhir_r4: ^0.4.4
+</code></pre>
+                <p>
+                  For R5 or R6, use <code>fhir_r5_auth</code>/<code>fhir_r6_auth</code> and <code>fhir_r5</code>/<code>fhir_r6</code>
+                   instead.
+                </p>
+                <h4 id="2-install-packages">2. Install Packages</h4>
+                <pre><code class="language-bash">flutter pub get
+</code></pre>
+                <h3 id="platform-configuration" anchor="true"><span>Platform Configuration</span><a href="/docs/auth/installation#platform-configuration">#</a></h3>
+                <p>Different platforms require specific setup for OAuth authentication to work properly.</p>
+                <h4 id="ios-configuration">iOS Configuration</h4>
+                <p>Add the following to <code>ios/Runner/Info.plist</code>:</p>
+                <pre><code class="language-xml">&lt;key&gt;CFBundleURLTypes&lt;/key&gt;
+&lt;array&gt;
+  &lt;dict&gt;
+    &lt;key&gt;CFBundleURLSchemes&lt;/key&gt;
+    &lt;array&gt;
+      &lt;string&gt;com.yourcompany.yourapp&lt;/string&gt;
+    &lt;/array&gt;
+  &lt;/dict&gt;
+&lt;/array&gt;
+</code></pre>
+                <p>Replace <code>com.yourcompany.yourapp</code> with your app's bundle ID or custom scheme.</p>
+                <h4 id="android-configuration">Android Configuration</h4>
+                <p>In <code>android/app/build.gradle.kts</code>, add the redirect scheme:</p>
+                <pre><code class="language-kotlin">android {
+    defaultConfig {
+        manifestPlaceholders["appAuthRedirectScheme"] = "com.yourcompany.yourapp"
+    }
+}
+</code></pre>
+                <p>
+                  <strong>Important:</strong> URI schemes cannot contain underscores per RFC 3986. Use hyphens instead (e.g., 
+                  <code>com.example.my-app</code>).
+                </p>
+                <p>
+                  If you use <code>flutter_web_auth_2</code> alongside <code>flutter_appauth</code> (transitive dependency), add 
+                  <code>tools:node="remove"</code> to prevent <code>RedirectUriReceiverActivity</code> from intercepting redirects:
+                </p>
+                <pre><code class="language-xml">&lt;activity
+    android:name="net.openid.appauth.RedirectUriReceiverActivity"
+    tools:node="remove" /&gt;
+</code></pre>
+                <h4 id="web-configuration">Web Configuration</h4>
+                <p>Create a file <code>web/callback.html</code>:</p>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Auth Callback&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+  const url = window.location.href;
+  window.localStorage.setItem('flutter-web-auth-2', url);
+  if (window.opener) {
+    window.opener.postMessage({'flutter-web-auth-2': url}, '*');
+  }
+  window.close();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                <h4 id="desktop-linuxwindows">Desktop (Linux/Windows)</h4>
+                <p>Install required system dependencies:</p>
+                <pre><code class="language-bash"># Linux
+sudo apt-get install -y libwebkit2gtk-4.1-dev libsecret-1-dev
+</code></pre>
+                <p>
+                  Desktop platforms use <code>flutter_web_auth_2</code> which starts a temporary HTTP server on the callback port.
+                </p>
+                <h3 id="verify-installation" anchor="true"><span>Verify Installation</span><a href="/docs/auth/installation#verify-installation">#</a></h3>
+                <p>Create a simple test to verify everything is installed correctly:</p>
+                <pre><code class="language-dart">import 'package:fhir_r4_auth/fhir_r4_auth.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+
+void main() {
+  final config = SmartConfig(
+    clientId: 'test',
+    fhirBaseUrl: 'https://example.com'.toFhirUri,
+    redirectUri: Uri.parse('com.test://callback'),
+    scopes: ['patient/*.read'],
+  );
+
+  print('fhir_r4_auth is installed correctly!');
+  print('Config: ${config.clientId}');
+}
+</code></pre>
+                <h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/auth/installation#next-steps">#</a></h3>
+                <ol>
+                  <li>
+                    <strong><a href="/docs/auth/standalone-launch">Choose your launch type</a></strong> - Standalone or EHR
+                  </li>
+                  <li><strong><a href="/docs/auth">Overview and API reference</a></strong> - Full feature overview</li>
+                </ol>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1334,12 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/auth/installation#installation">Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/installation#requirements">Requirements</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/installation#add-to-your-project">Add to Your Project</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/installation#platform-configuration">Platform Configuration</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/installation#verify-installation">Verify Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/auth/installation#next-steps">Next Steps</a></li>
                 </ul>
               </div>
             </aside>

@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Capabilities | FHIR-FLI</title>
+    <meta property="og:title" content="Capabilities | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1187,12 +1185,12 @@
                   <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR ANT</summary>
                 <ul>
                   <li><div><a href="docs/fhirant/fhirant_overview">Overview</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_getting_started">Getting Started</a></div></li>
-                  <li><div><a href="docs/fhirant/fhirant_capabilities">Capabilities</a></div></li>
+                  <li><div class="active"><a href="docs/fhirant/fhirant_capabilities">Capabilities</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_security">Security</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_api_reference">API Reference</a></div></li>
                   <li><div><a href="docs/fhirant/fhirant_cli">CLI</a></div></li>
@@ -1205,22 +1203,264 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Capabilities</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
-                <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
-                </p>
+                <h2 id="capabilities" anchor="true"><span>Capabilities</span><a href="/docs/fhirant/fhirant_capabilities#capabilities">#</a></h2>
+                <p>FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supported.</p>
+                <h3 id="fhir-rest-api" anchor="true"><span>FHIR REST API</span><a href="/docs/fhirant/fhirant_capabilities#fhir-rest-api">#</a></h3>
+                <h4 id="crud-operations">CRUD Operations</h4>
+                <table>
+                  <thead><tr><th>Operation</th><th>Method</th><th>Endpoint</th><th>Notes</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td>Create</td>
+                      <td><code>POST</code></td>
+                      <td><code>/&lt;type&gt;</code></td>
+                      <td>Auto-generates ID if not provided</td>
+                    </tr>
+                    <tr><td>Read</td><td><code>GET</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td></td></tr>
+                    <tr>
+                      <td>Update</td>
+                      <td><code>PUT</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
+                      <td>Auto-versions with timestamp</td>
+                    </tr>
+                    <tr>
+                      <td>Patch</td>
+                      <td><code>PATCH</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
+                      <td>JSON Patch (RFC 6902)</td>
+                    </tr>
+                    <tr><td>Delete</td><td><code>DELETE</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td></td></tr>
+                    <tr>
+                      <td>Conditional Create</td>
+                      <td><code>POST</code></td>
+                      <td><code>/&lt;type&gt;</code></td>
+                      <td>Via <code>If-None-Exist</code> header</td>
+                    </tr>
+                    <tr>
+                      <td>Conditional Update</td>
+                      <td><code>PUT</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
+                      <td>Via <code>If-Match</code> header</td>
+                    </tr>
+                    <tr>
+                      <td>Conditional Delete</td>
+                      <td><code>DELETE</code></td>
+                      <td><code>/&lt;type&gt;</code></td>
+                      <td>Via query parameters</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h4 id="search">Search</h4>
+                <table>
+                  <thead><tr><th>Feature</th><th>Details</th></tr></thead>
+                  <tbody>
+                    <tr><td>GET search</td><td><code>GET /&lt;type&gt;?param=value</code></td></tr>
+                    <tr><td>POST search</td><td><code>POST /&lt;type&gt;/_search</code></td></tr>
+                    <tr><td>System search</td><td><code>POST /_search</code> (requires <code>_type</code>)</td></tr>
+                    <tr><td>String params</td><td>Starts-with matching</td></tr>
+                    <tr>
+                      <td>Token params</td>
+                      <td>
+                        <code>system|code</code>
+                        , 
+                        <code>:text</code>
+                        , 
+                        <code>:in</code>
+                        , 
+                        <code>:not-in</code>
+                        , 
+                        <code>:of-type</code>
+                         modifiers
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Reference params</td>
+                      <td>Direct and chained (<code>.</code>), reverse chaining (<code>_has</code>)</td>
+                    </tr>
+                    <tr>
+                      <td>Date params</td>
+                      <td>
+                        <code>eq</code>
+                        , 
+                        <code>ne</code>
+                        , 
+                        <code>lt</code>
+                        , 
+                        <code>gt</code>
+                        , 
+                        <code>le</code>
+                        , 
+                        <code>ge</code>
+                        , 
+                        <code>sa</code>
+                        , 
+                        <code>eb</code>
+                        , 
+                        <code>ap</code>
+                         prefixes
+                      </td>
+                    </tr>
+                    <tr><td>Number params</td><td>Numeric prefixes</td></tr>
+                    <tr><td>Quantity params</td><td>Value, system, code</td></tr>
+                    <tr><td>URI params</td><td><code>:above</code>, <code>:below</code> modifiers</td></tr>
+                    <tr><td>Composite params</td><td>Multiple components</td></tr>
+                    <tr>
+                      <td><code>_include</code></td>
+                      <td>Forward includes with <code>:iterate</code> and wildcard (<code>*</code>)</td>
+                    </tr>
+                    <tr>
+                      <td><code>_revinclude</code></td>
+                      <td>Reverse includes with <code>:iterate</code> and wildcard (<code>*</code>)</td>
+                    </tr>
+                    <tr><td><code>_sort</code></td><td>Single and multi-field sorting</td></tr>
+                    <tr><td><code>_count</code> / <code>_offset</code></td><td>Pagination</td></tr>
+                    <tr><td><code>_total</code></td><td><code>none</code>, <code>estimate</code>, <code>accurate</code></td></tr>
+                    <tr>
+                      <td><code>_summary</code></td>
+                      <td><code>true</code>, <code>false</code>, <code>text</code>, <code>data</code>, <code>count</code></td>
+                    </tr>
+                    <tr><td><code>_elements</code></td><td>Return only specified fields (adds SUBSETTED tag)</td></tr>
+                  </tbody>
+                </table>
+                <h4 id="history">History</h4>
+                <table>
+                  <thead><tr><th>Endpoint</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>GET /&lt;type&gt;/&lt;id&gt;/_history</code></td><td>Instance history</td></tr>
+                    <tr><td><code>GET /&lt;type&gt;/&lt;id&gt;/_history/&lt;vid&gt;</code></td><td>Version read</td></tr>
+                    <tr><td><code>GET /&lt;type&gt;/_history</code></td><td>Type history</td></tr>
+                    <tr><td><code>GET /_history</code></td><td>System history</td></tr>
+                    <tr><td><code>_since</code> / <code>_at</code> parameters</td><td>Filter by date</td></tr>
+                  </tbody>
+                </table>
+                <h4 id="bundles">Bundles</h4>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>Transaction</strong> bundles — atomic, all-or-nothing with <code>urn:uuid</code> resolution</li>
+                  <li><strong>Batch</strong> bundles — independent operations</li>
+                  <li>Full <code>urn:uuid</code> cross-reference resolution within transactions</li>
+                </ul>
+                <h4 id="compartments">Compartments</h4>
+                <table>
+                  <thead><tr><th>Compartment</th><th><code>$everything</code></th><th>Compartment Search</th></tr></thead>
+                  <tbody>
+                    <tr><td>Patient</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>Encounter</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>Practitioner</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>RelatedPerson</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>Device</td><td>Yes</td><td>Yes</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="operations" anchor="true"><span>Operations</span><a href="/docs/fhirant/fhirant_capabilities#operations">#</a></h3>
+                <table>
+                  <thead><tr><th>Operation</th><th>Endpoint</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>$validate</code></td>
+                      <td><code>POST /$validate</code>, <code>POST /&lt;type&gt;/$validate</code></td>
+                      <td>Resource validation</td>
+                    </tr>
+                    <tr>
+                      <td><code>$everything</code></td>
+                      <td><code>GET /&lt;type&gt;/&lt;id&gt;/$everything</code></td>
+                      <td>Patient/compartment everything</td>
+                    </tr>
+                    <tr>
+                      <td><code>$document</code></td>
+                      <td><code>GET /Composition/&lt;id&gt;/$document</code></td>
+                      <td>Generate document Bundle</td>
+                    </tr>
+                    <tr>
+                      <td><code>$meta</code></td>
+                      <td><code>GET /&lt;type&gt;/&lt;id&gt;/$meta</code></td>
+                      <td>Get resource metadata</td>
+                    </tr>
+                    <tr>
+                      <td><code>$meta-add</code></td>
+                      <td><code>POST /&lt;type&gt;/&lt;id&gt;/$meta-add</code></td>
+                      <td>Add metadata</td>
+                    </tr>
+                    <tr>
+                      <td><code>$meta-delete</code></td>
+                      <td><code>POST /&lt;type&gt;/&lt;id&gt;/$meta-delete</code></td>
+                      <td>Remove metadata</td>
+                    </tr>
+                    <tr>
+                      <td><code>$fhirpath</code></td>
+                      <td><code>GET/POST /$fhirpath</code></td>
+                      <td>Evaluate FHIRPath expressions</td>
+                    </tr>
+                    <tr>
+                      <td><code>$transform</code></td>
+                      <td><code>POST /$transform</code></td>
+                      <td>FHIR Mapping Language transforms</td>
+                    </tr>
+                    <tr>
+                      <td><code>$backup</code></td>
+                      <td><code>POST /$backup</code></td>
+                      <td>Export all data as FHIR Bundle</td>
+                    </tr>
+                    <tr>
+                      <td><code>$restore</code></td>
+                      <td><code>POST /$restore</code></td>
+                      <td>Import data from FHIR Bundle</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3 id="terminology" anchor="true"><span>Terminology</span><a href="/docs/fhirant/fhirant_capabilities#terminology">#</a></h3>
+                <table>
+                  <thead><tr><th>Operation</th><th>Endpoint</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>$validate-code</code></td>
+                      <td><code>GET/POST /CodeSystem/&lt;id&gt;/$validate-code</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>$validate-code</code></td>
+                      <td><code>GET/POST /ValueSet/&lt;id&gt;/$validate-code</code></td>
+                    </tr>
+                    <tr><td><code>$lookup</code></td><td><code>GET/POST /CodeSystem/&lt;id&gt;/$lookup</code></td></tr>
+                    <tr><td><code>$expand</code></td><td><code>GET/POST /ValueSet/&lt;id&gt;/$expand</code></td></tr>
+                  </tbody>
+                </table>
+                <p>Instance-level and type-level variants are both supported.</p>
+                <h3 id="bulk-data-export" anchor="true"><span>Bulk Data Export</span><a href="/docs/fhirant/fhirant_capabilities#bulk-data-export">#</a></h3>
+                <table>
+                  <thead><tr><th>Endpoint</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>GET /$export</code></td><td>System-level export</td></tr>
+                    <tr><td><code>GET /Patient/$export</code></td><td>Patient-level export</td></tr>
+                    <tr><td><code>GET /Group/&lt;id&gt;/$export</code></td><td>Group-level export</td></tr>
+                    <tr><td><code>GET /$export-poll-status/&lt;id&gt;</code></td><td>Poll export status</td></tr>
+                    <tr><td><code>DELETE /$export-poll-status/&lt;id&gt;</code></td><td>Cancel export</td></tr>
+                    <tr><td><code>GET /$export-file/&lt;id&gt;/&lt;file&gt;</code></td><td>Download NDJSON file</td></tr>
+                  </tbody>
+                </table>
+                <p>
+                  Supports <code>_type</code>, <code>_since</code>, <code>_typeFilter</code>, and <code>_outputFormat</code>
+                   parameters.
+                </p>
+                <h3 id="content-negotiation" anchor="true">
+                  <span>Content Negotiation</span><a href="/docs/fhirant/fhirant_capabilities#content-negotiation">#</a>
+                </h3>
+                <ul>
+                  <li><code>Accept: application/fhir+json</code> (default)</li>
+                  <li><code>_format</code> parameter</li>
+                  <li><code>_pretty=true</code> for formatted output</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <code>Prefer: return=minimal</code>, <code>return=representation</code>, <code>return=OperationOutcome</code>, 
+                    <code>respond-async</code>
                   </li>
+                  <li><code>If-Modified-Since</code>, <code>If-None-Match</code>, <code>If-Match</code> headers</li>
+                </ul>
+                <h3 id="metadata" anchor="true"><span>Metadata</span><a href="/docs/fhirant/fhirant_capabilities#metadata">#</a></h3>
+                <ul>
+                  <li>
+                    <code>GET /metadata</code> — Full CapabilityStatement with all supported resources, search parameters, operations, and security information
+                  </li>
+                  <li><code>GET /.well-known/smart-configuration</code> — SMART on FHIR discovery document</li>
+                  <li><code>GET /health</code> — Server health check (status, uptime, database connectivity)</li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1483,13 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#capabilities">Capabilities</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_capabilities#fhir-rest-api">FHIR REST API</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_capabilities#operations">Operations</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_capabilities#terminology">Terminology</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_capabilities#bulk-data-export">Bulk Data Export</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_capabilities#content-negotiation">Content Negotiation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_capabilities#metadata">Metadata</a></li>
                 </ul>
               </div>
             </aside>

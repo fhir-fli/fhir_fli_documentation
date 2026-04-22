@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>CQL (Clinical Quality Language) | FHIR-FLI</title>
+    <meta property="og:title" content="CQL (Clinical Quality Language) | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1144,14 +1142,14 @@
                   <li><div><a href="docs/mapping/fhir_mapping_engine">Mapping Engine</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Additional Packages</summary>
                 <ul>
                   <li><div><a href="docs/fhir_r4_db">fhir_r4_db</a></div></li>
                   <li><div><a href="docs/fhir_r4_bulk">fhir_r4_bulk</a></div></li>
                   <li><div><a href="docs/fhir_r4_path">fhir_r4_path</a></div></li>
                   <li><div><a href="docs/fhir_r4_validation">fhir_r4_validation</a></div></li>
-                  <li><div><a href="docs/fhir_r4_cql">fhir_r4_cql</a></div></li>
+                  <li><div class="active"><a href="docs/fhir_r4_cql">fhir_r4_cql</a></div></li>
                   <li><div><a href="docs/ucum">UCUM</a></div></li>
                 </ul>
               </details>
@@ -1205,22 +1203,104 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>CQL (Clinical Quality Language)</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-r4-cql" anchor="true"><span>FHIR R4 CQL</span><a href="/docs/fhir_r4_cql#fhir-r4-cql">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The <code>fhir_r4_cql</code> package provides a Clinical Quality Language (CQL) implementation in Dart. It can parse CQL source into an Expression Logic Model (ELM) representation and execute CQL expressions against FHIR data.
+                </p>
+                <p>
+                  Also available as <code>fhir_r5_cql</code> and <code>fhir_r6_cql</code> for FHIR R5 and R6 with identical APIs.
+                </p>
+                <p><strong>Status:</strong> Early development (<code>0.0.0-dev1</code>). Pure Dart package.</p>
+                <h3 id="what-is-cql" anchor="true"><span>What is CQL?</span><a href="/docs/fhir_r4_cql#what-is-cql">#</a></h3>
+                <p>
+                  <a href="https://cql.hl7.org/">Clinical Quality Language (CQL)</a> is a high-level, domain-specific language for expressing clinical knowledge. It is used in:
                 </p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>Clinical Quality Measures (CQMs)</strong> - Defining measure logic</li>
+                  <li><strong>Clinical Decision Support (CDS)</strong> - Encoding clinical rules</li>
+                  <li><strong>Electronic Clinical Quality Improvement (eCQI)</strong> - Quality reporting</li>
+                </ul>
+                <p>
+                  CQL works alongside FHIR to express computable clinical logic that can be evaluated against patient data.
+                </p>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_cql#installation">#</a></h3>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4_cql: ^0.0.0-dev1
+  fhir_r4: ^0.4.4
+  fhir_r4_path: ^0.4.6
+</code></pre>
+                <h3 id="architecture" anchor="true"><span>Architecture</span><a href="/docs/fhir_r4_cql#architecture">#</a></h3>
+                <p>The package has four major modules:</p>
+                <h4 id="cql-to-elm-translator-cql_to_elm">CQL-to-ELM Translator (<code>cql_to_elm/</code>)</h4>
+                <p>Converts CQL source text into ELM expression trees using an ANTLR4-generated parser:</p>
+                <pre><code>CQL Source → Lexer → Parser → AST → Visitors → CqlExpression tree
+</code></pre>
+                <h4 id="execution-engine-engine">Execution Engine (<code>engine/</code>)</h4>
+                <p>Evaluates CQL expressions at runtime. Supports 150+ expression types including:</p>
+                <ul>
+                  <li><strong>Aggregates:</strong> Count, Sum, Avg, Min, Max, StdDev, Variance, Median, Mode</li>
+                  <li><strong>Arithmetic:</strong> Abs, Ceiling, Floor, Truncate, Round, Negate, Ln, Log, Power</li>
+                  <li><strong>Comparison:</strong> Greater, Less, GreaterOrEqual, LessOrEqual, Equivalent</li>
+                  <li><strong>DateTime:</strong> After, Before, SameAs, SameOrAfter, SameOrBefore, DurationBetween</li>
+                  <li><strong>Intervals:</strong> Contains, In, Includes, Meets, Overlaps, Starts, Ends, Width</li>
+                  <li><strong>Lists:</strong> Union, Intersect, Except, Distinct, Flatten, First, Last, IndexOf</li>
+                  <li><strong>Strings:</strong> Combine, Split, IndexOf, PositionOf, Matches, Length, Upper, Lower</li>
+                  <li><strong>Clinical:</strong> CalculateAge, InValueSet, InCodeSystem, Retrieve</li>
+                </ul>
+                <h4 id="model-information-model">Model Information (<code>model/</code>)</h4>
+                <p>
+                  Pre-generated type metadata for FHIR (versions 1.0.2 through 4.0.1), QDM, and QUICK models. Loaded at runtime by 
+                  <code>StandardModelInfoProvider</code>.
+                </p>
+                <h4 id="type-system-enginetypes">Type System (<code>engine/types/</code>)</h4>
+                <p>
+                  CQL-specific types: <code>CqlCode</code>, <code>CqlConcept</code>, <code>CqlValueSet</code>, <code>CqlCodeSystem</code>, 
+                  <code>CqlInterval</code>, <code>CqlTuple</code>.
+                </p>
+                <h3 id="usage" anchor="true"><span>Usage</span><a href="/docs/fhir_r4_cql#usage">#</a></h3>
+                <h4 id="evaluating-cql-expressions">Evaluating CQL Expressions</h4>
+                <pre><code class="language-dart">import 'package:fhir_r4_cql/fhir_r4_cql.dart';
+import 'package:fhir_r4/fhir_r4.dart' as fhir;
+
+// Create and evaluate expressions directly
+final list = ListExpression(element: [
+  LiteralInteger(value: '1'),
+  LiteralInteger(value: '2'),
+  LiteralInteger(value: '3'),
+]);
+
+final count = Count(source: list);
+final result = await count.execute({});
+// result == fhir.FhirInteger(3)
+</code></pre>
+                <h4 id="working-with-cql-libraries">Working with CQL Libraries</h4>
+                <pre><code class="language-dart">// Parse a CQL library
+final library = CqlLibrary.fromCql(cqlSource);
+
+// Execute the library
+final context = &lt;String, dynamic&gt;{};
+final result = await library.execute(context);
+</code></pre>
+                <h3 id="key-dependencies" anchor="true"><span>Key Dependencies</span><a href="/docs/fhir_r4_cql#key-dependencies">#</a></h3>
+                <ul>
+                  <li><strong>antlr4</strong> - Parser runtime for the CQL grammar</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>fhir_r4</strong> / <strong>fhir_r4_path</strong> - Core FHIR types and FHIRPath evaluation engine
                   </li>
+                  <li><strong>ucum</strong> - Units of measure conversion</li>
+                </ul>
+                <h3 id="cli-tool" anchor="true"><span>CLI Tool</span><a href="/docs/fhir_r4_cql#cli-tool">#</a></h3>
+                <p>Convert CQL files to ELM JSON (requires a local CQL translation service on port 8080):</p>
+                <pre><code class="language-bash">dart run bin/cql_to_json.dart
+</code></pre>
+                <h3 id="resources" anchor="true"><span>Resources</span><a href="/docs/fhir_r4_cql#resources">#</a></h3>
+                <ul>
+                  <li><a href="https://cql.hl7.org/">CQL Specification</a></li>
+                  <li><a href="https://cql.hl7.org/02-authorsguide.html">CQL Author's Guide</a></li>
+                  <li><a href="https://cql.hl7.org/04-logicalspecification.html">ELM Specification</a></li>
+                  <li><a href="https://github.com/fhir-fli/fhir_r4">GitHub Repository</a></li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1323,14 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_cql#fhir-r4-cql">FHIR R4 CQL</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_cql#what-is-cql">What is CQL?</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_cql#installation">Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_cql#architecture">Architecture</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_cql#usage">Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_cql#key-dependencies">Key Dependencies</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_cql#cli-tool">CLI Tool</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_cql#resources">Resources</a></li>
                 </ul>
               </div>
             </aside>

@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Serialization/Deserialization | FHIR-FLI</title>
+    <meta property="og:title" content="Serialization/Deserialization | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1107,12 +1105,12 @@
           <nav class="sidebar">
             <button class="sidebar-close">×</button>
             <div>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>FHIR R4b Core</summary>
                 <ul>
                   <li><div><a href="docs/core/fhir_r4">fhir_r4</a></div></li>
                   <li><div><a href="docs/core/basic_object">Basic Object</a></div></li>
-                  <li><div><a href="docs/core/serialization">Serialization</a></div></li>
+                  <li><div class="active"><a href="docs/core/serialization">Serialization</a></div></li>
                   <li><div><a href="docs/core/class_structure">Class Structure</a></div></li>
                   <li><div><a href="docs/core/polymorphic_types">Polymorphic Types</a></div></li>
                   <li><div><a href="docs/core/primitive_types">Primitive Types</a></div></li>
@@ -1205,23 +1203,124 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Serialization/Deserialization</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="serialization-and-deserialization-in-fhir-fli" anchor="true">
+                  <span>Serialization and Deserialization in FHIR-FLI</span><a href="/docs/core/serialization#serialization-and-deserialization-in-fhir-fli">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Serialization and deserialization are core functionalities in the FHIR-FLI libraries that enable conversion between FHIR resources (represented as Dart objects) and various data formats (mostly JSON, but 
+                  <a href="https://github.com/FireJuun">John</a> likes YAML). This page explains how these processes work in FHIR-FLI and how to use them effectively in your Flutter applications.
                 </p>
-                <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
-                  <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
-                  </li>
-                </ul>
+                <h3 id="concepts" anchor="true"><span>Concepts</span><a href="/docs/core/serialization#concepts">#</a></h3>
+                <h4 id="serialization">Serialization</h4>
+                <p>
+                  Serialization is the process of converting a Dart object instance into a format that can be easily stored or transmitted, such as JSON (note, FHIR also supports XML and Turtle, we do not. We do support YAML, which is just a superset of JSON anyway). In FHIR-FLI, this means converting a FHIR resource object (like 
+                  <code>Patient</code>, <code>Observation</code>, or <code>Account</code>) into a JSON string.
+                </p>
+                <h4 id="deserialization">Deserialization</h4>
+                <p>
+                  Deserialization is the reverse process - converting data from JSON format back into Dart objects that your application can work with directly.
+                </p>
+                <h3 id="working-with-json" anchor="true"><span>Working with JSON</span><a href="/docs/core/serialization#working-with-json">#</a></h3>
+                <p>
+                  JSON (JavaScript Object Notation) is the primary data interchange format for FHIR resources. FHIR-FLI provides robust support for JSON serialization and deserialization.
+                </p>
+                <h4 id="serializing-to-json">Serializing to JSON</h4>
+                <p>
+                  Every FHIR resource class in FHIR-FLI implements a <code>toJson()</code> method that converts the object to a Map representation, which can then be converted to a JSON string. So if we take our patient example:
+                </p>
+                <pre><code class="language-dart">final patient = Patient(
+    id: FhirString('123'),
+    name: [
+      HumanName(
+        family: 'Doe'.toFhirString,
+        given: ['John'.toFhirString],
+      ),
+    ],
+    birthDate: '1990-01-01'.toFhirDate,
+  );
+
+print(patient.toJson());
+</code></pre>
+                <pre><code class="language-bash">$ {resourceType: Patient, id: 123, name: [{family: Doe, given: [John]}], birthDate: 1990-01-01}
+</code></pre>
+                <p>
+                   Which is correct. And while there are some occasions where it may be useful to see that, you're usually going to be working with the Dart class OR you're going to need to change it into a JSON String representation, which is how JSON is actually transferred. So if we instead do this:
+                </p>
+                <pre><code class="language-dart">print(jsonEncode(patient.toJson()));
+</code></pre>
+                <pre><code class="language-bash">$ {"resourceType":"Patient","id":"123","name":[{"family":"Doe","given":["John"]}],"birthDate":"1990-01-01"}
+</code></pre>
+                <p>
+                  And that's what you would actually transmit via a POST request for instance. You do a lot of that in FHIR, and I found it cumbersome to have to do two steps. So in addition to a 
+                  <code>toJson()</code> method, all FHIR classes have a <code>toJsonString()</code> method, that does both parts.
+                </p>
+                <h4 id="serializing-to-yaml">Serializing to YAML</h4>
+                <p>
+                  I'm not going to talk about this alot, the idea is very much the same as the above, except that it works for YAML strings. Most FHIR servers will not accept YAML strings, but we have found it useful at times when you want a prettier or cleaner way to display FHIR data.
+                </p>
+                <pre><code class="language-dart">print(patient.toYaml());
+</code></pre>
+                <pre><code class="language-yaml">resourceType: Patient
+id: '123'
+name:
+  - family: Doe
+    given:
+      - John
+birthDate: "1990-01-01"
+</code></pre>
+                <h4 id="deserializing-from-json">Deserializing from JSON</h4>
+                <p>
+                  This is the reverse process as above. You will typically use this when you're accepting data from an outside source (a database, a server, etc.). While all classes have this function, you typically need to know what class it is. The library is not smart enough to let you take a random Map and turn it into FHIR, you have to provide it with a bit of instruction.
+                </p>
+                <pre><code class="language-dart">final name = {
+    'family': 'Doe',
+    'given': ['Jane']
+}
+
+final humanName = HumanName.fromJson(name);
+</code></pre>
+                <p>
+                  The one exception is if its a Resource. Since a FHIR Resource is the basic building block of the specification, Resources are treated slightly differently. If you know that something is a Resource, even if you don't know what kind, we can still work with that.
+                </p>
+                <pre><code class="language-dart">final resource1 = {
+  "resourceType": "Patient",
+  "name": [
+    {
+      "family": "Doe",
+      "given": ["Jane"]
+    }
+  ],
+};
+
+final resource2 = {
+  "resourceType": "Observation",
+  "status": "final",
+  "code": {
+    "text": "Blood Pressure"
+  },
+  "valueQuantity": {
+    "value": 120,
+    "unit": "mmHg"
+  }
+};
+
+
+final unknownResource1 = Resource.fromJson(resource1);
+final unknownResource2 = Resource.fromJson(resource2);
+
+print(unknownResource1 is Patient); // true
+print(unknownResource2 is Observation); // true
+</code></pre>
+                <p>
+                  This is based on the resourceType field, so that does need to be present (which if it's from a server or db it should be). But if for some reason you're writing your own maps and don't include the resourceType field, it won't work.
+                </p>
+                <h5 id="fromjsonstring-constructor">fromJsonString Constructor</h5>
+                <p>
+                  Similarly to the fromJson constructor we talked about above, there's also a convenience constructor <code>fromJsonString</code>
+                   for all classes. What this means is that if you have a string from a GET request, you can pass it directly to the constructor, you don't have to convert it into a map first. You're welcome.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1342,11 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/core/serialization#serialization-and-deserialization-in-fhir-fli">Serialization and Deserialization in FHIR-FLI</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/serialization#concepts">Concepts</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/serialization#working-with-json">Working with JSON</a></li>
                 </ul>
               </div>
             </aside>

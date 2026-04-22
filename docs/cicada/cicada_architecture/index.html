@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Architecture | FHIR-FLI</title>
+    <meta property="og:title" content="Architecture | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1169,12 +1167,12 @@
                   <li><div><a href="docs/bw_amr_ig_ig">Published IG</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Cicada</summary>
                 <ul>
                   <li><div><a href="docs/cicada/cicada_overview">Overview</a></div></li>
                   <li><div><a href="docs/cicada/cicada_demo">Demo</a></div></li>
-                  <li><div><a href="docs/cicada/cicada_architecture">Architecture</a></div></li>
+                  <li><div class="active"><a href="docs/cicada/cicada_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/cicada/cicada_usage">Usage</a></div></li>
                   <li><div><a href="docs/cicada/cicada_who">WHO Support</a></div></li>
                   <li><div><a href="docs/cicada_ig">Published IG</a></div></li>
@@ -1205,23 +1203,180 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Architecture</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="architecture" anchor="true"><span>Architecture</span><a href="/docs/cicada/cicada_architecture#architecture">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Cicada's forecasting pipeline processes FHIR input through a series of steps that mirror the CDSi Logic Specification.
+                </p>
+                <h3 id="pipeline-overview" anchor="true"><span>Pipeline Overview</span><a href="/docs/cicada/cicada_architecture#pipeline-overview">#</a></h3>
+                <pre><code>FHIR Parameters (input)
+       │
+  1. Parse ──────────▶ VaxPatient (demographics, doses, observations)
+       │
+  2. Map ────────────▶ Map&lt;String, VaxAntigen&gt; (one per target disease)
+       │
+  3. Evaluate ───────▶ Each dose checked against series requirements
+       │
+  4. Forecast ───────▶ Series determines need + recommended dates
+       │
+  5. Select Best ────▶ VaxGroup scores and picks best series
+       │
+  6. Aggregate ──────▶ Vaccine group forecasts (multi-antigen grouping)
+       │
+FHIR Parameters (output)
+</code></pre>
+                <h4 id="step-1-parse">Step 1: Parse</h4>
+                <p>
+                  The <code>PatientForAssessment</code> Riverpod provider extracts a <code>VaxPatient</code> from the FHIR 
+                  <code>Parameters</code> input. It parses:
                 </p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li>Patient demographics (birth date, sex)</li>
+                  <li>Immunization history (CVX codes, dates administered)</li>
+                  <li>Clinical conditions, allergies, observations, procedures, and medications</li>
+                </ul>
+                <p>
+                  Each clinical resource is cross-referenced against the observation crosswalk to identify CDSi observation codes (e.g., "patient is immunocompromised", "patient is pregnant").
+                </p>
+                <h4 id="step-2-map">Step 2: Map</h4>
+                <p>
+                  <code>antigenMap()</code> distributes each administered dose to the antigens it targets. A single CVX code (e.g., CVX 94 for MMR-Varicella) may map to multiple antigens (Measles, Mumps, Rubella, Varicella). The CVX-to-antigen mapping comes from the schedule supporting data.
+                </p>
+                <h4 id="step-3-evaluate">Step 3: Evaluate</h4>
+                <p>
+                  Each <code>VaxAntigen</code> contains one or more <code>VaxGroup</code>s, each containing one or more 
+                  <code>VaxSeries</code>. For each series, doses are evaluated in order per CDSi Figure 6-1:
+                </p>
+                <ol>
+                  <li><strong>Inadvertent Administration</strong> — Was the vaccine given inadvertently?</li>
+                  <li><strong>Age Validity</strong> — Was the patient within the valid age range?</li>
+                  <li><strong>Interval</strong> — Was the minimum interval from the previous dose met?</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Live Virus Conflict</strong> — Was there a conflicting live virus vaccine given too recently?
+                  </li>
+                  <li><strong>Vaccine Type</strong> — Was the administered vaccine an allowable type for this dose?</li>
+                </ol>
+                <p>
+                  The first failing check determines the evaluation reason. Valid doses are added to the series' evaluated dose list.
+                </p>
+                <h4 id="step-4-forecast">Step 4: Forecast</h4>
+                <p>Each series determines its forecast need:</p>
+                <ul>
+                  <li>Check for <strong>immunity</strong> (clinical evidence or completed series)</li>
+                  <li>Check for <strong>contraindications</strong> (both preferable and allowable vaccines)</li>
+                  <li>Determine <strong>series completeness</strong> (all target doses satisfied?)</li>
+                  <li>
+                    If not complete, calculate <strong>forecast dates</strong> using conditional skip logic and interval calculations
                   </li>
                 </ul>
+                <h4 id="step-5-select-best-series">Step 5: Select Best Series</h4>
+                <p><code>VaxGroup</code> scores and prioritizes series using CDSi Table 8-14:</p>
+                <ul>
+                  <li>Complete/Immune series are preferred over in-process</li>
+                  <li>In-process preferred over zero-dose</li>
+                  <li>Among ties, standard series preferred over risk series</li>
+                  <li>Score considers number of valid doses, number of not-valid doses, and closest forecast date</li>
+                </ul>
+                <h4 id="step-6-aggregate">Step 6: Aggregate</h4>
+                <p>
+                  Multi-antigen vaccine groups (e.g., DTaP/Tdap/Td covers Diphtheria + Tetanus + Pertussis) aggregate recommendations from constituent antigens. The 
+                  <code>administerFullVaccineGroup</code> flag determines whether to recommend the full combination or allow individual components.
+                </p>
+                <h3 id="model-hierarchy" anchor="true"><span>Model Hierarchy</span><a href="/docs/cicada/cicada_architecture#model-hierarchy">#</a></h3>
+                <pre><code>VaxPatient
+ └── VaxAntigen (one per target disease: Measles, Tetanus, HepB, etc.)
+      └── VaxGroup (groups series by vaccine group: MMR, DTaP/Tdap/Td, etc.)
+           └── VaxSeries (one CDSi series: standard, risk, evaluation-only)
+                └── VaxDose (one administered dose with evaluation status)
+</code></pre>
+                <h4 id="vaxpatient">VaxPatient</h4>
+                <p>
+                  Parsed patient with demographics, past doses, and observations. Created by the <code>PatientForAssessment</code>
+                   provider from FHIR <code>Parameters</code>.
+                </p>
+                <h4 id="vaxantigen">VaxAntigen</h4>
+                <p>
+                  One instance per target disease (e.g., Measles). Contains groups, handles immunity and contraindication checks. The set of antigens comes from 
+                  <code>activeAntigenMap</code> (CDC or WHO depending on <code>ForecastMode</code>).
+                </p>
+                <h4 id="vaxgroup">VaxGroup</h4>
+                <p>
+                  Groups related series by vaccine group. Implements the CDSi series scoring and best-series selection algorithm. A vaccine group like MMR contains multiple series (e.g., standard 2-dose MMR, catch-up).
+                </p>
+                <h4 id="vaxseries">VaxSeries</h4>
+                <p>
+                  Tracks one CDSi series definition. Evaluates administered doses against target dose requirements, manages conditional skip logic ("if patient already received X, skip dose Y"), and generates forecast dates with earliest/recommended/past-due/latest.
+                </p>
+                <p>Series types:</p>
+                <ul>
+                  <li><strong>Standard</strong> — Always included for evaluation</li>
+                  <li>
+                    <strong>Risk</strong> — Only included when patient has a matching observation (e.g., immunocompromised) and falls within the indication age range
+                  </li>
+                  <li><strong>Evaluation-only</strong> — Used for dose evaluation but does not generate forecasts</li>
+                </ul>
+                <h4 id="vaxdose">VaxDose</h4>
+                <p>An individual administered dose with its evaluation outcome:</p>
+                <ul>
+                  <li><strong>Valid</strong> — Meets all requirements for the target dose</li>
+                  <li><strong>Not Valid</strong> — Fails one or more checks (with specific reason)</li>
+                  <li><strong>Sub-standard</strong> — Partially valid (e.g., grace period)</li>
+                  <li><strong>Extraneous</strong> — Not needed by the series</li>
+                </ul>
+                <h3 id="key-types" anchor="true"><span>Key Types</span><a href="/docs/cicada/cicada_architecture#key-types">#</a></h3>
+                <h4 id="vaxdate">VaxDate</h4>
+                <p>Extends <code>DateTime</code> with CDSi date arithmetic:</p>
+                <pre><code class="language-dart">final birthDate = VaxDate(2024, 1, 15);
+final sixMonths = birthDate.change('6 months');    // 2024-07-15
+final dueDate = birthDate.change('6 months 4 days'); // 2024-07-19
+
+// Sentinel values
+VaxDate.min(); // 1900-01-01
+VaxDate.max(); // 2999-12-31
+</code></pre>
+                <h4 id="antigensupportingdata">AntigenSupportingData</h4>
+                <p>
+                  Immutable data class containing the complete definition for one antigen: target disease, vaccine group, series definitions (with dose rules, intervals, allowable vaccines), immunity criteria, and contraindications. Deserialized from generated JSON.
+                </p>
+                <h4 id="schedulesupportingdata">ScheduleSupportingData</h4>
+                <p>
+                  Global schedule data shared across all antigens: live virus conflicts, vaccine groups, vaccine-group-to-antigen map, CVX-to-antigen map, and observation definitions (clinical condition crosswalk).
+                </p>
+                <h3 id="state-management" anchor="true"><span>State Management</span><a href="/docs/cicada/cicada_architecture#state-management">#</a></h3>
+                <p>
+                  Cicada uses Riverpod (non-Flutter variant) with <code>ProviderContainer</code> for managing shared state during a forecast run:
+                </p>
+                <ul>
+                  <li><code>patientForAssessmentProvider</code> — Parses FHIR Parameters into VaxPatient</li>
+                  <li><code>observationsProvider</code> — Shared observation state across evaluation</li>
+                  <li>
+                    <code>seriesGroupCompleteProvider</code> — Tracks series group completion across antigens (used for conditional skip logic)
+                  </li>
+                  <li><code>operationOutcomesProvider</code> — Collects OperationOutcome issues (errors/warnings)</li>
+                </ul>
+                <p>
+                  A new <code>ProviderContainer</code> is created for each forecast invocation, ensuring thread safety and isolation.
+                </p>
+                <h3 id="generated-code" anchor="true"><span>Generated Code</span><a href="/docs/cicada/cicada_architecture#generated-code">#</a></h3>
+                <p>
+                  Supporting data files in <code>cicada/lib/generated_files/</code> are produced by the generator pipeline and should not be hand-edited:
+                </p>
+                <ul>
+                  <li>
+                    <strong>CDC</strong>: One <code>.dart</code> file per antigen + <code>schedule_supporting_data.dart</code>
+                     + barrel file
+                  </li>
+                  <li>
+                    <strong>WHO</strong>: Same structure in <code>generated_files/who/</code> with <code>who</code> prefix on variable names
+                  </li>
+                </ul>
+                <p>
+                  The generator reads from CDSi XML/Excel specifications (CDC) or Excel workbooks (WHO) and produces Dart files with 
+                  <code>AntigenSupportingData.fromJson()</code> and <code>ScheduleSupportingData.fromJson()</code> calls containing the full specification data. WHO Excel source files live in 
+                  <code>cicada_generator/lib/WHO/antigen/</code> (22 <code>.xlsx</code>) and <code>WHO/schedule/</code>
+                   (5 <code>.xlsx</code>).
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1398,12 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/cicada/cicada_architecture#architecture">Architecture</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_architecture#pipeline-overview">Pipeline Overview</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_architecture#model-hierarchy">Model Hierarchy</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_architecture#key-types">Key Types</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_architecture#state-management">State Management</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/cicada/cicada_architecture#generated-code">Generated Code</a></li>
                 </ul>
               </div>
             </aside>

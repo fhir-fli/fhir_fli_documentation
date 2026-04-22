@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Drosophila Demo | FHIR-FLI</title>
+    <meta property="og:title" content="Drosophila Demo | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1180,11 +1178,11 @@
                   <li><div><a href="docs/cicada_ig">Published IG</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Drosophila</summary>
                 <ul>
                   <li><div><a href="docs/drosophila/drosophila_overview">Overview</a></div></li>
-                  <li><div><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
+                  <li><div class="active"><a href="docs/drosophila/drosophila_demo">Demo</a></div></li>
                 </ul>
               </details>
               <details class="sidebar-group collapsible">
@@ -1205,22 +1203,38 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Drosophila Demo</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="live-demo" anchor="true"><span>Live Demo</span><a href="/docs/drosophila/drosophila_demo#live-demo">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  Try Drosophila with sample patient data. Select a patient to see matched clinical trials from ClinicalTrials.gov.
                 </p>
+                <p><a href="https://fhir-fli.github.io/fhir_fli_documentation/drosophila/">Open full screen</a></p>
+                <iframe src="drosophila/index.html" sandbox="allow-scripts allow-same-origin" style="width: 100%; height: 800px; border: none;">
+</iframe>
+                <h3 id="sample-patients" anchor="true"><span>Sample Patients</span><a href="/docs/drosophila/drosophila_demo#sample-patients">#</a></h3>
+                <p>The demo includes three sample oncology patients:</p>
+                <table>
+                  <thead><tr><th>Patient</th><th>Cancer Type</th><th>Key Features</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Maria Santos</strong></td><td>Breast Cancer</td><td>HER2+, ER+, PR+, Stage IIIA</td></tr>
+                    <tr><td><strong>James Chen</strong></td><td>Non-Small Cell Lung Cancer</td><td>EGFR+, Stage IV</td></tr>
+                    <tr><td><strong>Aisha Williams</strong></td><td>Triple-Negative Breast Cancer</td><td>Stage IIB</td></tr>
+                  </tbody>
+                </table>
+                <p>
+                  Each patient has a complete profile including demographics, staging, biomarkers, labs, medications, and procedures. The demo searches ClinicalTrials.gov in real time and matches the patient against actual trial eligibility criteria.
+                </p>
+                <h3 id="what-youre-seeing" anchor="true"><span>What You're Seeing</span><a href="/docs/drosophila/drosophila_demo#what-youre-seeing">#</a></h3>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Trial cards</strong> show a match score (0–100%), verdict badge, phase, and summary counts of met/not-met/indeterminate criteria
                   </li>
+                  <li><strong>Filter chips</strong> let you toggle between all trials, likely eligible, and needs review</li>
+                  <li>
+                    <strong>Trial detail</strong> (tap a card) shows every criterion with its match status, the patient value used, and the trial's requirement
+                  </li>
+                  <li>Trials where the patient is clearly not eligible are filtered out by default</li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1243,7 +1257,9 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/drosophila/drosophila_demo#live-demo">Live Demo</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/drosophila/drosophila_demo#sample-patients">Sample Patients</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/drosophila/drosophila_demo#what-youre-seeing">What You're Seeing</a></li>
                 </ul>
               </div>
             </aside>

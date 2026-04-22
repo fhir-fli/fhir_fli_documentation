@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Overview | FHIR-FLI</title>
+    <meta property="og:title" content="Overview | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1159,10 +1157,10 @@
                 <summary>Demos</summary>
                 <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Botswana AMR IG</summary>
                 <ul>
-                  <li><div><a href="docs/bw_amr_ig/bw_amr_ig_overview">Overview</a></div></li>
+                  <li><div class="active"><a href="docs/bw_amr_ig/bw_amr_ig_overview">Overview</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_architecture">Architecture</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_whonet">WHONET Export</a></div></li>
                   <li><div><a href="docs/bw_amr_ig/bw_amr_ig_flutter">Flutter App</a></div></li>
@@ -1205,21 +1203,81 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Overview</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="botswana-amr-implementation-guide" anchor="true">
+                  <span>Botswana AMR Implementation Guide</span><a href="/docs/bw_amr_ig/bw_amr_ig_overview#botswana-amr-implementation-guide">#</a>
+                </h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The Botswana AMR Implementation Guide defines FHIR R4 profiles and terminology for antimicrobial resistance surveillance as part of the 
+                  <strong>Botswana AMR Data Analytics Platform</strong> — a collaboration between the University of Botswana and Children's Hospital of Philadelphia.
                 </p>
+                <h3 id="the-problem" anchor="true"><span>The Problem</span><a href="/docs/bw_amr_ig/bw_amr_ig_overview#the-problem">#</a></h3>
+                <p>
+                  Antimicrobial Resistance (AMR) now causes more deaths than HIV/AIDS and malaria worldwide and is estimated to be the number-5 leading cause of death in Botswana. Approximately 1 in 10 patients admitted to a hospital in Botswana will experience a health-associated infection.
+                </p>
+                <h3 id="what-this-ig-does" anchor="true"><span>What This IG Does</span><a href="/docs/bw_amr_ig/bw_amr_ig_overview#what-this-ig-does">#</a></h3>
+                <p>The IG standardizes AMR culture and susceptibility data using FHIR, enabling:</p>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>Electronic surveillance</strong> — structured data capture replaces paper-based reporting</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>WHONET compatibility</strong> — a <code>$export-whonet</code> operation generates flat files for WHONET import
+                  </li>
+                  <li>
+                    <strong>GLASS reporting</strong> — ward type, admission date, and facility data support WHO Global AMR Surveillance System submissions
+                  </li>
+                  <li>
+                    <strong>Interoperability</strong> — standard FHIR profiles allow integration with national health information systems and the National Data Warehouse
+                  </li>
+                </ul>
+                <h3 id="profiles" anchor="true"><span>Profiles</span><a href="/docs/bw_amr_ig/bw_amr_ig_overview#profiles">#</a></h3>
+                <table>
+                  <thead><tr><th>Profile</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>DiagnosticReport</strong></td>
+                      <td>Bundles a complete culture result: gram stain, organism identifications, and susceptibility panels</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Encounter</strong></td>
+                      <td>Ward type, admission date, and facility — required for GLASS origin classification</td>
+                    </tr>
+                    <tr>
+                      <td><strong>OrganismObservation</strong></td>
+                      <td>
+                        Identified organism per isolate, links to susceptibility and special test results via 
+                        <code>hasMember</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>SusceptibilityObservation</strong></td>
+                      <td>S/I/R interpretation with optional MIC or zone diameter per antibiotic</td>
+                    </tr>
+                    <tr>
+                      <td><strong>SpecialTestObservation</strong></td>
+                      <td>ESBL, carbapenemase, MRSA, D-zone, and beta-lactamase detection</td>
+                    </tr>
+                    <tr><td><strong>GramStainObservation</strong></td><td>Gram stain morphology result</td></tr>
+                    <tr><td><strong>Specimen</strong></td><td>Specimen type, collection date, body site</td></tr>
+                    <tr><td><strong>Patient</strong></td><td>Demographics with Omang (national ID) support</td></tr>
+                  </tbody>
+                </table>
+                <h3 id="technology-stack" anchor="true"><span>Technology Stack</span><a href="/docs/bw_amr_ig/bw_amr_ig_overview#technology-stack">#</a></h3>
+                <ul>
+                  <li><strong>IG authoring</strong>: FSH (FHIR Shorthand) compiled with SUSHI</li>
+                  <li>
+                    <strong>Data capture</strong>: Flutter/Dart mobile application using <a href="../core/fhir_r4">fhir_r4</a>
+                  </li>
+                  <li>
+                    <strong>Server</strong>: Any FHIR R4 server (designed to work with <a href="../fhirant/fhirant_overview">FHIR ANT</a>
+                     for mobile-first deployments)
+                  </li>
+                  <li><strong>WHONET export</strong>: Server-side <code>$export-whonet</code> FHIR operation</li>
+                </ul>
+                <h3 id="source-code" anchor="true"><span>Source Code</span><a href="/docs/bw_amr_ig/bw_amr_ig_overview#source-code">#</a></h3>
+                <ul>
+                  <li>
+                    <strong>IG repository</strong>: <a href="https://github.com/Dokotela/bw-amr-ig">github.com/Dokotela/bw-amr-ig</a>
                   </li>
                 </ul>
               </section>
@@ -1243,7 +1301,14 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/bw_amr_ig/bw_amr_ig_overview#botswana-amr-implementation-guide">Botswana AMR Implementation Guide</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_overview#the-problem">The Problem</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_overview#what-this-ig-does">What This IG Does</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_overview#profiles">Profiles</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_overview#technology-stack">Technology Stack</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/bw_amr_ig/bw_amr_ig_overview#source-code">Source Code</a></li>
                 </ul>
               </div>
             </aside>

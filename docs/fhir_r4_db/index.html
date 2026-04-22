@@ -3,11 +3,9 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>FHIR-FLI | FHIR-FLI</title>
-    <meta property="og:title" content="FHIR-FLI | FHIR-FLI"/>
+    <title>Database Package | FHIR-FLI</title>
+    <meta property="og:title" content="Database Package | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
-    <meta name="description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
-    <meta property="og:description" content="FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources."/>
     <style>
       .docs .header-container {
         position: fixed;
@@ -1144,10 +1142,10 @@
                   <li><div><a href="docs/mapping/fhir_mapping_engine">Mapping Engine</a></div></li>
                 </ul>
               </details>
-              <details class="sidebar-group collapsible">
+              <details class="sidebar-group collapsible" open>
                 <summary>Additional Packages</summary>
                 <ul>
-                  <li><div><a href="docs/fhir_r4_db">fhir_r4_db</a></div></li>
+                  <li><div class="active"><a href="docs/fhir_r4_db">fhir_r4_db</a></div></li>
                   <li><div><a href="docs/fhir_r4_bulk">fhir_r4_bulk</a></div></li>
                   <li><div><a href="docs/fhir_r4_path">fhir_r4_path</a></div></li>
                   <li><div><a href="docs/fhir_r4_validation">fhir_r4_validation</a></div></li>
@@ -1205,23 +1203,297 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header">
-                <h1>FHIR-FLI</h1>
-                <p>FHIR with Flutter — Dart libraries for Fast Healthcare Interoperability Resources.</p>
-              </div>
+              <div class="content-header"><h1>Database Package</h1></div>
               <section class="content">
-                <h2 id="fhir-fli--fhir-with-flutter" anchor="true"><span>FHIR-FLI — FHIR with Flutter</span><a href="/#fhir-fli--fhir-with-flutter">#</a></h2>
+                <h2 id="fhir-r4-database" anchor="true"><span>FHIR R4 Database</span><a href="/docs/fhir_r4_db#fhir-r4-database">#</a></h2>
                 <p>
-                  FHIR-FLI is a suite of Dart libraries for working with <a href="https://www.hl7.org/fhir/">FHIR</a>, the healthcare interoperability standard. All packages support 
-                  <strong>FHIR R4, R5, and R6</strong> with identical APIs — just swap the package name.
+                  The <code>fhir_r4_db</code> library provides a local database solution for storing and managing FHIR resources in Dart and Flutter applications. Built on 
+                  <a href="https://drift.simonbinder.eu/">Drift</a> (SQLite), it offers type-safe CRUD operations, FHIR search parameter indexing, resource versioning, sync tracking, and optional encryption via SQLCipher.
                 </p>
+                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_db#installation">#</a></h3>
+                <pre><code class="language-yaml">dependencies:
+  fhir_r4_db: ^1.0.0
+  fhir_r4: ^0.4.4
+  drift: ^2.29.0
+  sqlite3: ^2.4.6
+</code></pre>
+                <p>
+                  For Flutter apps you will also need a platform-appropriate SQLite opener. See the <a href="https://drift.simonbinder.eu/setup/">Drift documentation</a>
+                   for platform-specific setup.
+                </p>
+                <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_db#key-features">#</a></h3>
                 <ul>
-                  <li><strong><a href="docs/">Getting Started</a></strong> — install the libraries and see a first example</li>
-                  <li><strong><a href="about">About</a></strong> — what FHIR-FLI is and who it's for</li>
+                  <li><strong>SQLite-backed</strong>: Persistent, file-based storage with excellent performance</li>
                   <li>
-                    <strong><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></strong> — source for this site
+                    <strong>Search parameter indexing</strong>: Automatic indexing of FHIR search parameters (string, token, reference, date, number, quantity, URI, composite, special)
+                  </li>
+                  <li><strong>Version tracking</strong>: Automatic versioning of resources with full history</li>
+                  <li><strong>Sync support</strong>: Track resources that need syncing to a remote server</li>
+                  <li>
+                    <strong>Canonical resource cache</strong>: Store and retrieve canonical resources (ValueSet, StructureDefinition, etc.) by URL
+                  </li>
+                  <li><strong>Optional encryption</strong>: SQLCipher support for encrypted databases</li>
+                  <li>
+                    <strong>Cross-platform</strong>: Works on all platforms supported by Drift (Android, iOS, macOS, Windows, Linux, Web)
                   </li>
                 </ul>
+                <h3 id="architecture" anchor="true"><span>Architecture</span><a href="/docs/fhir_r4_db#architecture">#</a></h3>
+                <p>The database uses Drift's DAO (Data Access Object) pattern:</p>
+                <ul>
+                  <li>
+                    <strong><code>FhirDb</code></strong> — The Drift database class. You create it by passing a <code>QueryExecutor</code>
+                     (e.g., <code>NativeDatabase</code>).
+                  </li>
+                  <li>
+                    <strong><code>FhirDao</code></strong> — The DAO that provides all FHIR operations (CRUD, search, history, sync, canonical resources, general storage).
+                  </li>
+                </ul>
+                <h4 id="initialization">Initialization</h4>
+                <pre><code class="language-dart">import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
+import 'package:fhir_r4_db/fhir_r4_db.dart';
+import 'dart:io';
+
+// Create a database with a file-based SQLite backend
+final db = FhirDb(NativeDatabase(File('fhir.db')));
+
+// Access the DAO for all operations
+final dao = db.fhirDao;
+
+// For tests, use an in-memory database
+final testDb = FhirDb(NativeDatabase.memory());
+final testDao = testDb.fhirDao;
+</code></pre>
+                <h4 id="encrypted-database">Encrypted Database</h4>
+                <p>For encryption, use SQLCipher via the <code>sqlite3</code> package:</p>
+                <pre><code class="language-dart">import 'package:fhir_r4_db/fhir_r4_db.dart';
+
+// Use cipherFromKey to create an encrypted database setup callback
+final setup = cipherFromKey('your-encryption-key');
+final db = FhirDb(NativeDatabase(File('fhir.db'), setup: setup));
+</code></pre>
+                <h3 id="basic-operations" anchor="true"><span>Basic Operations</span><a href="/docs/fhir_r4_db#basic-operations">#</a></h3>
+                <h4 id="saving-resources">Saving Resources</h4>
+                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+
+// Save a single resource
+final patient = Patient(
+  name: [
+    HumanName(
+      family: 'Doe'.toFhirString,
+      given: ['John'.toFhirString],
+    ),
+  ],
+);
+
+// save() assigns an ID if none exists and updates meta (versionId, lastUpdated)
+final savedPatient = await dao.saveResource(patient);
+
+// Save multiple resources in a batch (more efficient)
+final resources = [patient1, observation1, condition1];
+final success = await dao.saveResources(resources);
+</code></pre>
+                <h4 id="reading-resources">Reading Resources</h4>
+                <pre><code class="language-dart">// Retrieve a resource by type and ID
+final patient = await dao.getResource(
+  R4ResourceType.Patient,
+  '12345',
+);
+
+// Check if a resource exists
+final exists = await dao.exists(
+  R4ResourceType.Patient,
+  '12345',
+);
+
+// Get all resources of a type
+final allPatients = await dao.getResourcesByType(
+  R4ResourceType.Patient,
+);
+
+// Paginated retrieval
+final page = await dao.getResourcesWithPagination(
+  resourceType: R4ResourceType.Patient,
+  limit: 20,
+  offset: 0,
+);
+
+// Count resources of a type
+final count = await dao.getResourceCount(R4ResourceType.Patient);
+
+// List all resource types in the database
+final types = await dao.getResourceTypes();
+</code></pre>
+                <h4 id="searching-resources">Searching Resources</h4>
+                <p>The database supports FHIR search parameters with automatic indexing:</p>
+                <pre><code class="language-dart">// Search patients by name
+final patients = await dao.search(
+  resourceType: R4ResourceType.Patient,
+  parameters: {'name': 'Doe'},
+);
+
+// Search with multiple parameters
+final observations = await dao.search(
+  resourceType: R4ResourceType.Observation,
+  parameters: {
+    'patient': 'Patient/12345',
+    'code': 'http://loinc.org|85354-9',
+    'date': 'ge2024-01-01',
+  },
+);
+
+// Count search results
+final resultCount = await dao.searchCount(
+  resourceType: R4ResourceType.Observation,
+  parameters: {'patient': 'Patient/12345'},
+);
+</code></pre>
+                <p>Supported search parameter types:</p>
+                <ul>
+                  <li>
+                    <strong>String</strong> (<code>name</code>, <code>address</code>, etc.) — case-insensitive prefix matching
+                  </li>
+                  <li><strong>Token</strong> (<code>code</code>, <code>identifier</code>, etc.) — system|code matching</li>
+                  <li><strong>Reference</strong> (<code>patient</code>, <code>subject</code>, etc.) — reference resolution</li>
+                  <li>
+                    <strong>Date</strong> (<code>date</code>, <code>birthdate</code>, etc.) — date range comparisons (eq, ne, gt, lt, ge, le, sa, eb, ap)
+                  </li>
+                  <li><strong>Number</strong> (<code>length</code>, etc.) — numeric comparisons</li>
+                  <li><strong>Quantity</strong> (<code>value-quantity</code>, etc.) — quantity with unit matching</li>
+                  <li><strong>URI</strong> (<code>url</code>, etc.) — URI matching</li>
+                  <li><strong>Composite</strong> — combined parameter searches</li>
+                  <li>
+                    <strong>Special</strong> (<code>_has</code>, <code>_tag</code>, <code>_profile</code>, <code>_security</code>, 
+                    <code>_source</code>, <code>_lastUpdated</code>) — special FHIR parameters
+                  </li>
+                </ul>
+                <h4 id="deleting-resources">Deleting Resources</h4>
+                <pre><code class="language-dart">// Delete a resource by type and ID
+final deleted = await dao.deleteResource(
+  R4ResourceType.Patient,
+  '12345',
+);
+</code></pre>
+                <h3 id="advanced-features" anchor="true"><span>Advanced Features</span><a href="/docs/fhir_r4_db#advanced-features">#</a></h3>
+                <h4 id="resource-versioning-and-history">Resource Versioning and History</h4>
+                <p>The database automatically manages resource versions on each save:</p>
+                <pre><code class="language-dart">// Save creates version 1
+final v1 = await dao.saveResource(patient);
+print(v1.meta?.versionId); // "1"
+
+// Saving again increments the version
+final updated = v1.copyWith(active: FhirBoolean(true));
+final v2 = await dao.saveResource(updated);
+print(v2.meta?.versionId); // "2"
+
+// Retrieve version history
+final history = await dao.getResourceHistory(
+  R4ResourceType.Patient,
+  '12345',
+);
+// Returns all versions, most recent first
+</code></pre>
+                <p>Use timestamp-based versioning instead of incrementing integers:</p>
+                <pre><code class="language-dart">dao.versionIdAsTime = true;
+</code></pre>
+                <h4 id="sync-support">Sync Support</h4>
+                <p>Track resources that need syncing to a remote server:</p>
+                <pre><code class="language-dart">// Enable sync tracking
+dao.storeForSync = true;
+
+// Save resources — they'll be queued for sync automatically
+await dao.saveResource(patient);
+
+// Retrieve resources pending sync
+final pendingSync = await dao.getSync();
+
+// Clear the sync queue after successful upload
+await dao.clearSync();
+</code></pre>
+                <h4 id="canonical-resource-cache">Canonical Resource Cache</h4>
+                <p>Store canonical resources (ValueSet, StructureDefinition, etc.) indexed by URL:</p>
+                <pre><code class="language-dart">// Save a canonical resource
+await dao.saveCanonicalResource(valueSet);
+
+// Retrieve by URL
+final vs = await dao.getCanonicalResource(
+  'http://example.org/fhir/ValueSet/my-codes',
+);
+
+// Check if a canonical key exists
+final hasIt = await dao.containsCanonicalKey(
+  'http://example.org/fhir/ValueSet/my-codes',
+);
+
+// List all canonical keys
+final keys = await dao.listCanonicalKeys();
+</code></pre>
+                <h4 id="general-storage">General Storage</h4>
+                <p>Store arbitrary data (non-FHIR) in the database:</p>
+                <pre><code class="language-dart">// Save arbitrary data (returns an integer key)
+final key = await dao.saveGeneral(value: '{"name": "Test"}');
+
+// Read by key
+final data = await dao.readGeneral(key);
+
+// Get all general storage entries
+final allEntries = await dao.getAllGeneral();
+
+// Delete by key
+await dao.deleteFromGeneral(key);
+
+// Clear all general storage
+await dao.clearGeneral();
+</code></pre>
+                <h3 id="example" anchor="true"><span>Example</span><a href="/docs/fhir_r4_db#example">#</a></h3>
+                <p>A complete example using the database in a Dart application:</p>
+                <pre><code class="language-dart">import 'dart:io';
+import 'package:drift/native.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_db/fhir_r4_db.dart';
+
+Future&lt;void&gt; main() async {
+  // Create the database
+  final db = FhirDb(NativeDatabase(File('example.db')));
+  final dao = db.fhirDao;
+
+  // Save a patient
+  final patient = Patient(
+    name: [
+      HumanName(
+        family: 'Doe'.toFhirString,
+        given: ['John'.toFhirString],
+      ),
+    ],
+    birthDate: FhirDate('1970-01-01'),
+  );
+  final saved = await dao.saveResource(patient);
+  print('Saved patient: ${saved.id}');
+
+  // Search for patients
+  final results = await dao.search(
+    resourceType: R4ResourceType.Patient,
+    parameters: {'name': 'Doe'},
+  );
+  print('Found ${results.length} patients');
+
+  // Get history
+  final history = await dao.getResourceHistory(
+    R4ResourceType.Patient,
+    saved.id!.valueString!,
+  );
+  print('${history.length} versions');
+
+  // Clean up
+  await db.close();
+}
+</code></pre>
+                <h4 id="performance">Performance</h4>
+                <p>
+                  The SQLite backend provides excellent performance. On a test machine (AMD Ryzen 7 PRO, 64 GB RAM, Linux), loading the 
+                  <a href="https://physionet.org/content/mimic-iv-fhir-demo/2.0/">MIMIC-IV Clinical Database Demo on FHIR</a>
+                   (876 MB, ~899,000 resources) takes about 4 minutes, and searching for individual resources completes in under 10ms.
+                </p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -1243,7 +1515,13 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/#fhir-fli--fhir-with-flutter">FHIR-FLI — FHIR with Flutter</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_db#fhir-r4-database">FHIR R4 Database</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#installation">Installation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#key-features">Key Features</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#architecture">Architecture</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#basic-operations">Basic Operations</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#advanced-features">Advanced Features</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#example">Example</a></li>
                 </ul>
               </div>
             </aside>
