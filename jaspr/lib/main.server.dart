@@ -8,7 +8,6 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/callout.dart';
 import 'package:jaspr_content/components/github_button.dart';
-import 'package:jaspr_content/components/header.dart';
 import 'package:jaspr_content/components/image.dart';
 import 'package:jaspr_content/components/sidebar.dart';
 import 'package:jaspr_content/components/theme_toggle.dart';
@@ -17,6 +16,7 @@ import 'package:jaspr_content/theme.dart';
 
 import 'components/collapsible_sidebar.dart';
 import 'components/footer.dart';
+import 'components/site_header.dart';
 
 // This file is generated automatically by Jaspr, do not remove or edit.
 import 'main.server.options.dart';
@@ -37,7 +37,7 @@ void main() {
       ],
       layouts: [
         DocsLayout(
-          header: Header(
+          header: SiteHeader(
             title: 'FHIR-FLI',
             logo: 'images/fhir-fli-logo.svg',
             items: [
