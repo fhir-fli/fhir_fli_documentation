@@ -29,7 +29,8 @@ jobs:
         run: dart pub get
 
       - name: 🔧 Configure production base URL
-        run: sed -i 's|^base: /$|base: /fhir_fli_documentation/|' content/_data/site.yaml
+        run: |
+          sed -i 's|^base: /$|base: /fhir_fli_documentation/|' content/_data/site.yaml
 
       - name: 🏗️ Build website
         run: $HOME/.pub-cache/bin/jaspr build
