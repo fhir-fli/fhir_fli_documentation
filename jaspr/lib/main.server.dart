@@ -15,6 +15,7 @@ import 'package:jaspr_content/components/theme_toggle.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
 
+import 'components/collapsible_sidebar.dart';
 import 'components/footer.dart';
 
 // This file is generated automatically by Jaspr, do not remove or edit.
@@ -47,15 +48,8 @@ void main() {
               GitHubButton(repo: 'fhir-fli/fhir_fli_documentation'),
             ],
           ),
-          sidebar: Sidebar(
+          sidebar: CollapsibleSidebar(
             groups: [
-              SidebarGroup(
-                links: [
-                  SidebarLink(text: 'Getting Started', href: 'docs/'),
-                  SidebarLink(text: 'About', href: '/about'),
-                  SidebarLink(text: 'Contact', href: '/contact'),
-                ],
-              ),
               SidebarGroup(
                 title: 'FHIR R4b Core',
                 links: [
@@ -160,6 +154,9 @@ void main() {
         background: ThemeColor(ThemeColors.slate.$50, dark: ThemeColors.zinc.$950),
         colors: [
           ContentColors.quoteBorders.apply(ThemeColors.blue.$400),
+          ContentColors.preBg.apply(
+            ThemeColor(ThemeColors.gray.$800, dark: ThemeColors.zinc.$800),
+          ),
         ],
       ),
     ),
