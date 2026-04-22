@@ -1,0 +1,11 @@
+# Site configuration.
+# `base` is rendered as `<base href=...>` and prefixes all relative URLs.
+# It is left as `/` for local dev; the CI deploy workflow rewrites it to
+# `/fhir_fli_documentation/` before running `jaspr build` for production.
+titleBase: FHIR-FLI
+base: /
+favicon: images/fhir-fli-logo.png
+
+social:
+  - name: Github
+    url: https://github.com/fhir-fli/fhir_fli_documentation
