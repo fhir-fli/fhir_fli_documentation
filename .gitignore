@@ -1,1 +1,7 @@
 .DS_Store
+
+# Legacy Docusaurus/npm artifacts that may still sit in existing working
+# trees from before the Jaspr migration. Safe to delete locally.
+.docusaurus/
+/build/
+/node_modules/
