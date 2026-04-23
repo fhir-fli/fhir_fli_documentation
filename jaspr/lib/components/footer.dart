@@ -1,12 +1,15 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import 'site_styles.dart';
+
 class SiteFooter extends StatelessComponent {
   const SiteFooter({super.key});
 
   @override
   Component build(BuildContext context) {
     return Component.fragment([
+      const SiteStyles(),
       Document.head(children: [Style(styles: _styles)]),
       footer(classes: 'site-footer', [
         div(classes: 'footer-columns', [
