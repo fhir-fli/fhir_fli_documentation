@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfhir_fli_documentation=self.webpackChunkfhir_fli_documentation||[]).push([[583],{6107:(t,e,n)=>{n.r(e),n.d(e,{default:()=>o});n(6540);var i=n(6347),s=n(797),f=n(4848);function o(){const{siteConfig:{baseUrl:t}}=(0,s.A)();return(0,f.jsx)(i.rd,{to:`${t}docs`})}}}]);
