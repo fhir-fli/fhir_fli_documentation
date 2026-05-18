@@ -51,5 +51,17 @@ class SiteStyles extends StatelessComponent {
     css('.sidebar .sidebar-group.collapsible:last-of-type').styles(
       raw: {'border-bottom': 'none'},
     ),
+
+    // Header nav links (the site-specific `.nav-link` items passed to
+    // SiteHeader). Lives here, not in footer.dart, so header-related
+    // styling stays with the site's document-wide additions.
+    css('.header .nav-link').styles(
+      padding: Padding.symmetric(horizontal: 0.75.rem, vertical: 0.5.rem),
+      textDecoration: TextDecoration.none,
+      fontSize: 0.95.rem,
+    ),
+    css('.header .nav-link:hover').styles(
+      textDecoration: TextDecoration(line: TextDecorationLine.underline),
+    ),
   ];
 }

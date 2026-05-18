@@ -67,13 +67,5 @@ class SiteFooter extends StatelessComponent {
     ),
     css('.site-footer .footer-column li').styles(margin: Margin.only(bottom: 0.25.rem)),
     css('.site-footer .footer-column a').styles(textDecoration: TextDecoration.none),
-    css('.header .nav-link').styles(
-      padding: Padding.symmetric(horizontal: 0.75.rem, vertical: 0.5.rem),
-      textDecoration: TextDecoration.none,
-      fontSize: 0.95.rem,
-    ),
-    css('.header .nav-link:hover').styles(
-      textDecoration: TextDecoration(line: TextDecorationLine.underline),
-    ),
   ];
 }
