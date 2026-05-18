@@ -27,12 +27,12 @@ class SiteStyles extends StatelessComponent {
     css('.content-container table').styles(
       width: 100.percent,
       margin: Margin.symmetric(vertical: 1.rem),
-      border: Border(color: ContentColors.quoteBorders, width: 1.px, style: BorderStyle.solid),
+      border: Border.all(color: ContentColors.quoteBorders, width: 1.px, style: BorderStyle.solid),
       raw: {'border-collapse': 'collapse'},
     ),
     css('.content-container th, .content-container td').styles(
       padding: Padding.symmetric(horizontal: 0.75.rem, vertical: 0.5.rem),
-      border: Border(color: ContentColors.quoteBorders, width: 1.px, style: BorderStyle.solid),
+      border: Border.all(color: ContentColors.quoteBorders, width: 1.px, style: BorderStyle.solid),
     ),
     css('.content-container th').styles(
       fontWeight: FontWeight.w700,
