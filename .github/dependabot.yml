@@ -5,7 +5,7 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'daily'
+  # The npm ecosystem was removed when the site migrated from Docusaurus
+  # to Jaspr (pure Dart). There is no package.json, so a `npm` entry here
+  # only produces a daily failing Dependabot run. Pub deps are pinned via
+  # jaspr/pubspec.lock; Dependabot has no Dart/pub ecosystem support.
