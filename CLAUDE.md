@@ -86,7 +86,9 @@ imitate them in content.
 
 ### Embedded Flutter Demos
 
-`static/` holds pre-compiled Flutter web apps embedded via iframes:
+`jaspr/web/` holds pre-compiled Flutter web apps embedded via iframes (the
+old repo-root `static/` was an unreferenced Docusaurus-era duplicate and was
+removed — the build serves ONLY `jaspr/web/`):
 `fhir_path_demo/` (source: fhir_r4 monorepo `packages/fhir_path_demo`),
 `fhir_mapping_demo/` (source: `packages/fhir_mapping_demo`), plus
 `drosophila/`, `cicada_demo/`, `cicada_ig/`, `bw_amr_ig/`. These are build
