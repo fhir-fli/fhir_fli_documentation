@@ -123,7 +123,7 @@ final input = Parameters(parameter: [
           code: FhirCode('198'), // DTP-HepB-Hib (pentavalent)
         ),
       ]),
-      occurrenceDateTime: FhirDateTime('2024-02-26'),
+      occurrenceDateTime: FhirDateTime.fromString('2024-02-26'),
       patient: Reference(reference: FhirString('Patient/1')),
     ),
   ),
@@ -138,7 +138,7 @@ final input = Parameters(parameter: [
           code: FhirCode('178'), // OPV, bivalent
         ),
       ]),
-      occurrenceDateTime: FhirDateTime('2024-02-26'),
+      occurrenceDateTime: FhirDateTime.fromString('2024-02-26'),
       patient: Reference(reference: FhirString('Patient/1')),
     ),
   ),

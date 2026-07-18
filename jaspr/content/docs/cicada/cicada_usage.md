@@ -52,7 +52,7 @@ final input = Parameters(parameter: [
           code: FhirCode('110'), // DTaP-HepB-IPV
         ),
       ]),
-      occurrenceDateTime: FhirDateTime('2024-03-15'),
+      occurrenceDateTime: FhirDateTime.fromString('2024-03-15'),
       patient: Reference(reference: FhirString('Patient/1')),
     ),
   ),

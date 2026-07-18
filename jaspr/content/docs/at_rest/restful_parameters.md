@@ -84,7 +84,7 @@ final patientSearch = SearchPatient()
   .name(FhirString('Smith'))
   .gender(FhirString('male'))
   .birthdate(
-    FhirDateTime('1970-01-01'),
+    FhirDateTime.fromString('1970-01-01'),
     modifier: SearchModifier.ge, // Greater than or equal to
   );
 
@@ -98,38 +98,38 @@ final request = FhirSearchRequest(
 
 The search classes provide type-safe methods for all valid search parameters defined in the FHIR specification for each resource type.
 
-### Search Modifiers
+### Search Prefixes
 
-Many search parameters support modifiers that change how the search is performed:
+Per the FHIR specification, value prefixes (`eq`, `ne`, `gt`, `lt`, `ge`,
+`le`, `sa`, `eb`, `ap`) apply only to the ordered parameter types — **date,
+number, and quantity**. The generated methods for those types take an optional
+`modifier` argument holding the prefix, which is prepended to the value
+(`birthdate=ge1970-01-01`):
 
 ```dart
 // Patient with birthdate greater than or equal to 1970-01-01
 patientSearch.birthdate(
-  FhirDateTime('1970-01-01'),
+  FhirDateTime.fromString('1970-01-01'),
   modifier: SearchModifier.ge,
 );
 
 // Patient with birthdate less than 2000-01-01
 patientSearch.birthdate(
-  FhirDateTime('2000-01-01'),
+  FhirDateTime.fromString('2000-01-01'),
   modifier: SearchModifier.lt,
-);
-
-// Patient with a name that exactly equals "John Smith"
-patientSearch.name(
-  FhirString('John Smith'),
-  modifier: SearchModifier.eq,
 );
 ```
 
-Available modifiers depend on the parameter type:
-
-| Parameter Type | Supported Modifiers | Description |
+| Parameter Type | Prefixes | Description |
 |----------------|---------------------|-------------|
-| String | `eq`, `ne` | Exact match, not equal |
-| Quantity | `gt`, `lt`, `ge`, `le`, `ap` | Numeric comparisons |
-| Date | `eq`, `ne`, `gt`, `lt`, `ge`, `le`, `sa`, `eb`, `ap` | Date comparisons |
-| Token | any | Prefixes the `system\|value` pair |
+| Date | `eq`, `ne`, `gt`, `lt`, `ge`, `le`, `sa`, `eb`, `ap` | Prepended to the value |
+| Number | `eq`, `ne`, `gt`, `lt`, `ge`, `le`, `sa`, `eb`, `ap` | Prepended to the value |
+| Quantity | `eq`, `ne`, `gt`, `lt`, `ge`, `le`, `sa`, `eb`, `ap` | Prepended to the value |
+
+String, token, and uri parameters take **no** prefix — their generated methods
+have no `modifier` argument (FHIR name modifiers such as `:exact`,
+`:contains`, or `:text` are appended to the parameter *name*; use the generic
+`add()` for those, e.g. `parameters.add('name:exact', 'John Smith')`).
 
 Reference search parameters do not have dedicated methods in the generated search classes; use the generic `add()` method for those (e.g. `parameters.add('subject', 'Patient/12345')`).
 
@@ -142,7 +142,7 @@ The fluent API allows for building complex queries by chaining multiple conditio
 final search = SearchPatient()
   .gender(FhirString('female'))
   .birthdate(
-    FhirDateTime('1980-01-01'),
+    FhirDateTime.fromString('1980-01-01'),
     modifier: SearchModifier.gt,
   )
   .family(FhirString('Smith'));
@@ -258,11 +258,11 @@ final search = SearchPatient()
 final search = SearchPatient()
   .name(FhirString('Smith'))
   .birthdate(
-    FhirDateTime('1950-01-01'),
+    FhirDateTime.fromString('1950-01-01'),
     modifier: SearchModifier.ge,
   )
   .birthdate(
-    FhirDateTime('1970-01-01'),
+    FhirDateTime.fromString('1970-01-01'),
     modifier: SearchModifier.le,
   );
 
@@ -282,7 +282,7 @@ final search = SearchObservation()
     system: FhirUri('http://loinc.org'),
   )
   .date(
-    FhirDateTime('2023-01-01'),
+    FhirDateTime.fromString('2023-01-01'),
     modifier: SearchModifier.gt,
   );
 
