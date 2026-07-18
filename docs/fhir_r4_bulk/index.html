@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1245,8 +1248,8 @@
                 </p>
                 <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_bulk#installation">#</a></h3>
                 <pre><code class="language-yaml">dependencies:
-  fhir_r4_bulk: ^0.4.0
-  fhir_r4: ^0.4.2
+  fhir_r4_bulk: ^0.6.0
+  fhir_r4: ^0.6.1
 </code></pre>
                 <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_bulk#key-features">#</a></h3>
                 <ul>
@@ -1304,7 +1307,7 @@ await File('export.zip').writeAsBytes(zipBytes!);
                   The FHIR Bulk Data Export operation (<code>$export</code>) allows you to retrieve large amounts of data from a FHIR server. The library supports three types of export:
                 </p>
                 <ol>
-                  <li><strong>System-level export</strong> - Export data for all patients</li>
+                  <li><strong>System-level export</strong> - Export all data from the server</li>
                   <li><strong>Group-level export</strong> - Export data for patients in a specific group</li>
                   <li><strong>Patient-level export</strong> - Export data for all patients</li>
                 </ol>
@@ -1314,7 +1317,7 @@ import 'package:fhir_r4_bulk/fhir_r4_bulk.dart';
 // System-level export
 final systemRequest = BulkRequestSystem(
   base: Uri.parse('https://example.com/fhir'),
-  since: FhirDateTime('2023-01-01'),
+  since: FhirDateTime.fromString('2023-01-01'),
   types: [
     WhichResource(R4ResourceType.Patient),
     WhichResource(R4ResourceType.Observation),
@@ -1350,7 +1353,7 @@ final resources = await systemRequest.request();
 final request = BulkRequestSystem(
   base: Uri.parse('https://example.com/fhir'),
   // Only include resources updated since this date
-  since: FhirDateTime('2023-01-01'),
+  since: FhirDateTime.fromString('2023-01-01'),
   // Specific resource types to include
   types: [WhichResource(R4ResourceType.Patient)],
   // Additional filters (server-dependent)
@@ -1364,13 +1367,16 @@ final request = BulkRequestSystem(
 );
 </code></pre>
                 <h4 id="handling-results">Handling Results</h4>
-                <p>The result is a list of FHIR resources:</p>
+                <p>
+                  The request follows the FHIR async pattern: the library kicks off the export, polls the server's status endpoint (<code>Content-Location</code>) until the job completes, then downloads and parses the output files. It throws a 
+                  <code>TimeoutException</code> if polling exceeds the default timeout (1 hour) or maximum attempts (1000). The result is a list of FHIR resources:
+                </p>
                 <pre><code class="language-dart">final resources = await request.request();
 
 // Check for errors (OperationOutcome)
 for (final resource in resources) {
   if (resource is OperationOutcome) {
-    print('Error: ${resource.issue?.first.diagnostics?.value}');
+    print('Error: ${resource.issue.first.diagnostics?.valueString}');
   }
 }
 
@@ -1408,19 +1414,17 @@ final importRequest = BulkImportRequest(
   inputSource: 'https://source-system.org',
   // If the NDJSON files require authentication
   credentialHttpBasic: 'username:password',
-  // Control the batch size
+  // Control the batch size used by the server (HAPI default = 500)
   maxBatchResourceCount: 1000,
-  // Add authorization or other headers
-  headers: {'Authorization': 'Bearer token'},
 );
 
 // Execute the import
 final outcome = await importRequest.importData();
 
 // Check the outcome
-if (outcome.issue != null &amp;&amp; outcome.issue!.isNotEmpty) {
+if (outcome.issue.isNotEmpty) {
   // The operation outcome typically contains a job ID in the diagnostics
-  final jobId = outcome.issue!.first.diagnostics?.value;
+  final jobId = outcome.issue.first.diagnostics?.valueString;
   print('Import job started with ID: $jobId');
 }
 </code></pre>
@@ -1432,7 +1436,7 @@ if (outcome.issue != null &amp;&amp; outcome.issue!.isNotEmpty) {
                   <li>Bulk operations are designed for large datasets</li>
                   <li>The NDJSON processing is memory-efficient, handling resources one at a time</li>
                   <li>For very large files, consider streaming approaches when possible</li>
-                  <li>The library automatically handles paginated responses from servers</li>
+                  <li>Export requests handle the async kick-off / status-polling / file-download cycle for you</li>
                 </ul>
                 <h3 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/fhir_r4_bulk#error-handling">#</a></h3>
                 <p>
@@ -1443,8 +1447,11 @@ if (outcome.issue != null &amp;&amp; outcome.issue!.isNotEmpty) {
 // Check for errors
 for (final resource in resources) {
   if (resource is OperationOutcome) {
-    for (final issue in resource.issue ?? []) {
-      print('Error: ${issue.severity?.value} - ${issue.diagnostics?.value}');
+    for (final issue in resource.issue) {
+      print(
+        'Error: ${issue.severity?.valueString} - '
+        '${issue.diagnostics?.valueString}',
+      );
     }
   }
 }

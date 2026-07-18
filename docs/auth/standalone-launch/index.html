@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1314,7 +1317,7 @@ final client = SmartFhirClient(
 </code></pre>
                 <h4 id="step-2-authenticate">Step 2: Authenticate</h4>
                 <pre><code class="language-dart">try {
-  await client.authenticate();
+  await client.login();
   print('Successfully authenticated!');
   
   // Client is now ready to make FHIR requests
@@ -1327,39 +1330,54 @@ final client = SmartFhirClient(
 }
 </code></pre>
                 <h4 id="step-3-make-fhir-requests">Step 3: Make FHIR Requests</h4>
-                <p>Once authenticated, use the client to make FHIR requests:</p>
-                <pre><code class="language-dart">// Read a resource
-final patient = await client.read(
+                <p>
+                  <code>SmartFhirClient</code> is an authenticated <code>http.Client</code>. Once logged in, pass it to the typed request builders from the 
+                  <a href="docs/at_rest/fhir_r4_at_rest"><code>fhir_r4_at_rest</code></a> package (or use it with any HTTP code) and it will attach the access token for you:
+                </p>
+                <pre><code class="language-dart">import 'dart:convert';
+import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_at_rest/fhir_r4_at_rest.dart';
+
+// Read a resource
+final readRequest = FhirReadRequest(
+  base: Uri.parse(client.fhirBaseUrl.toString()),
   resourceType: 'Patient',
   id: 'patient-id',
+  client: client, // Authenticated client handles auth headers
+);
+final response = await readRequest.sendRequest();
+final patient = Patient.fromJson(
+  jsonDecode(response.body) as Map&lt;String, dynamic&gt;,
 );
 
 // Search for resources
-final observations = await client.search(
+final searchRequest = FhirSearchRequest(
+  base: Uri.parse(client.fhirBaseUrl.toString()),
   resourceType: 'Observation',
-  parameters: {
-    'patient': 'patient-id',
-    'category': 'vital-signs',
-    '_count': '10',
-  },
+  search: SearchObservation()
+    .category(FhirString('vital-signs')),
+  parameters: RestfulParameters().addCount(10),
+  client: client,
 );
+final searchResponse = await searchRequest.sendRequest();
 
 // Create a resource
 final newObservation = Observation(/* ... */);
-final created = await client.create(
-  resource: newObservation,
+final createRequest = FhirCreateRequest(
+  base: Uri.parse(client.fhirBaseUrl.toString()),
+  resourceType: 'Observation',
+  resource: newObservation.toJson(),
+  client: client,
 );
-
-// Update a resource
-patient.name?.first?.text = FhirString('Updated Name');
-final updated = await client.update(
-  resource: patient,
-);
+final created = await createRequest.sendRequest();
 </code></pre>
                 <h3 id="complete-example" anchor="true"><span>Complete Example</span><a href="/docs/auth/standalone-launch#complete-example">#</a></h3>
                 <p>Here's a complete Flutter app with standalone launch:</p>
-                <pre><code class="language-dart">import 'package:flutter/material.dart';
+                <pre><code class="language-dart">import 'dart:convert';
+
+import 'package:flutter/material.dart';
 import 'package:fhir_r4_auth/fhir_r4_auth.dart';
+import 'package:fhir_r4_at_rest/fhir_r4_at_rest.dart';
 import 'package:fhir_r4/fhir_r4.dart';
 
 void main() {
@@ -1411,17 +1429,24 @@ class _HomePageState extends State&lt;HomePage&gt; {
     });
 
     try {
-      await _client!.authenticate();
+      await _client!.login();
       
-      // Get patient ID from token response
-      final patientId = _client!.patientId;
+      // Get the patient ID from the token response's launch context
+      final patientId = _client!.patientContext;
       
       if (patientId != null) {
-        // Fetch patient data
-        final patient = await _client!.read(
+        // Fetch patient data with fhir_r4_at_rest, using the
+        // authenticated client
+        final request = FhirReadRequest(
+          base: Uri.parse(_client!.fhirBaseUrl.toString()),
           resourceType: 'Patient',
           id: patientId,
-        ) as Patient;
+          client: _client!,
+        );
+        final response = await request.sendRequest();
+        final patient = Patient.fromJson(
+          jsonDecode(response.body) as Map&lt;String, dynamic&gt;,
+        );
         
         setState(() {
           _patient = patient;
@@ -1564,8 +1589,10 @@ class _HomePageState extends State&lt;HomePage&gt; {
                 <pre><code class="language-dart">final client = SmartFhirClient(
   config: config,
   sessionManager: SessionManager(
-    idleTimeout: Duration(minutes: 15),
-    absoluteTimeout: Duration(hours: 8),
+    config: SessionConfig(
+      idleTimeout: Duration(minutes: 15),
+      absoluteTimeout: Duration(hours: 8),
+    ),
   ),
 );
 
@@ -1587,7 +1614,7 @@ await client.recordActivity();
                 <h3 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/auth/standalone-launch#error-handling">#</a></h3>
                 <p>Handle common error scenarios:</p>
                 <pre><code class="language-dart">try {
-  await client.authenticate();
+  await client.login();
 } on AuthenticationException catch (e) {
   // User cancelled or auth failed
   if (e.message.contains('cancelled')) {
@@ -1620,8 +1647,10 @@ await client.recordActivity();
                 </ol>
                 <h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/auth/standalone-launch#next-steps">#</a></h3>
                 <ul>
-                  <li><strong><a href="/docs/auth/installation">Installation guide</a></strong> - Platform-specific setup</li>
-                  <li><strong><a href="/docs/auth">Auth overview</a></strong> - Full API reference and feature overview</li>
+                  <li><strong><a href="docs/auth/installation">Installation guide</a></strong> - Platform-specific setup</li>
+                  <li>
+                    <strong><a href="docs/auth/fhir_r4_auth">Auth overview</a></strong> - Full API reference and feature overview
+                  </li>
                 </ul>
               </section>
               <div class="content-footer">

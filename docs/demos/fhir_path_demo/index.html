@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible" open>
                 <summary>Demos</summary>
-                <ul><li><div class="active"><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div class="active"><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1239,7 +1242,30 @@
               <div class="content-header"><h1>FHIR‑Path Demo</h1></div>
               <section class="content">
                 <p>
-                  Here's our live FHIRPath playground <a href="https://fhir-fli.github.io/fhir_fli_documentation/fhir_path_demo/">link for full screen</a>:
+                  This playground is a Flutter web build of a small app that runs the same FHIRPath implementation documented on this site: the model-independent 
+                  <a href="https://pub.dev/packages/fhir_path"><code>fhir_path</code></a> engine via its R4 binding, <a href="https://pub.dev/packages/fhir_r4_path"><code>fhir_r4_path</code></a>. Under the hood it creates a 
+                  <code>FHIRPathEngine</code>, parses your expression, and evaluates it with <code>evaluateWithContext</code>
+                   against the resource you provide.
+                </p>
+                <p>How to use it:</p>
+                <ul>
+                  <li>
+                    <strong>Context Resource</strong> (left): paste any FHIR R4 resource as JSON. It is used as the evaluation context, 
+                    <code>%resource</code>, and <code>%rootResource</code>. The pre-loaded example is a <code>QuestionnaireResponse</code>.
+                  </li>
+                  <li>
+                    <strong>FHIRPath Expression</strong> (right): type an expression and press <strong>Evaluate</strong> (or hit Enter). The pre-loaded expression walks the questionnaire answers with 
+                    <code>descendants()</code>.
+                  </li>
+                  <li>
+                    <strong>Results</strong>: shown as a JSON list — primitive results as values, complex results as JSON objects. Errors (bad JSON, invalid expressions) are shown in place of results.
+                  </li>
+                </ul>
+                <p>
+                  Credit to <a href="https://hl7.github.io/fhirpath.js/">fhirpath.js</a>, whose demo inspired this one.
+                </p>
+                <p>
+                  Here's the live FHIRPath playground <a href="https://fhir-fli.github.io/fhir_fli_documentation/fhir_path_demo/">link for full screen</a>:
                 </p>
                 <iframe src="fhir_path_demo/index.html" sandbox="allow-scripts allow-same-origin" style="width: 100%; height: 800px; border: none;">
 </iframe>

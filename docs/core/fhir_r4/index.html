@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1240,11 +1243,18 @@
               <section class="content">
                 <h2 id="fhir_r4" anchor="true"><span>fhir_r4</span><a href="/docs/core/fhir_r4#fhir_r4">#</a></h2>
                 <p>
-                  The core package that provides FHIR R4 resource models. The main purpose of this package is to create the base classes on which fire depends. These classes are all generated from structure definitions so they should be in line with the official fire specification. This library is mainly used for serialization/ deserialization But it does have some other functionality which is useful in certain situations.
+                  The core package that provides FHIR R4 resource models. The main purpose of this package is to create the base classes on which the rest of FHIR-FLI depends. These classes are all generated from structure definitions so they should be in line with the official FHIR specification. This library is mainly used for serialization/deserialization, but it does have some other functionality which is useful in certain situations.
+                </p>
+                <p>
+                  Under the hood, every resource and data type extends <code>FhirBase</code>, which implements the <code>FhirNode</code>
+                   reflection contract from <a href="https://pub.dev/packages/fhir_node"><code>package:fhir_node</code></a>. Because navigation (<code>getChildrenByName</code>, 
+                  <code>listChildrenNames</code>, <code>fhirType</code>, ...) is expressed through that contract, the model-independent 
+                  <a href="https://pub.dev/packages/fhir_path"><code>fhir_path</code></a>, <a href="https://pub.dev/packages/cql"><code>cql</code></a>, and 
+                  <a href="https://pub.dev/packages/ucum"><code>ucum</code></a> engines can operate on R4 data without any coupling to a specific FHIR version. The same engines power the R5 and R6 packages unchanged.
                 </p>
                 <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/core/fhir_r4#installation">#</a></h3>
                 <pre><code class="language-yaml">dependencies:
-  fhir_r4: ^0.4.2
+  fhir_r4: ^0.6.1
 </code></pre>
               </section>
               <div class="content-footer">

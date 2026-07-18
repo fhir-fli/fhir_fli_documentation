@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1410,7 +1413,7 @@ final response = await request.sendRequest();
   entry: [
     BundleEntry(
       request: BundleRequest(
-        method: HTTPVerb.POST,
+        method: HTTPVerb.pOST,
         url: FhirUri('Patient'),
       ),
       resource: Patient(
@@ -1441,13 +1444,13 @@ final response = await request.sendRequest();
   entry: [
     BundleEntry(
       request: BundleRequest(
-        method: HTTPVerb.GET,
+        method: HTTPVerb.gET,
         url: FhirUri('Patient/12345'),
       ),
     ),
     BundleEntry(
       request: BundleRequest(
-        method: HTTPVerb.POST,
+        method: HTTPVerb.pOST,
         url: FhirUri('Observation'),
       ),
       resource: Observation(
@@ -1508,8 +1511,11 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/Patient/$everything?_format=json
 // GET http://hapi.fhir.org/baseR4/Patient/12345/$everything?_format=json
 </code></pre>
-                <h3 id="request-parametersrestful_parameters" anchor="true">
-                  <span><a href="restful_parameters">Request Parameters</a></span><a href="/docs/at_rest/restful_requests#request-parametersrestful_parameters">#</a>
+                <p>
+                  Operations use GET by default. Pass <code>usePost: true</code> to send the operation as a POST with the parameters JSON-encoded in the request body instead of the URL.
+                </p>
+                <h3 id="request-parametersdocsat_restrestful_parameters" anchor="true">
+                  <span><a href="docs/at_rest/restful_parameters">Request Parameters</a></span><a href="/docs/at_rest/restful_requests#request-parametersdocsat_restrestful_parameters">#</a>
                 </h3>
                 <p>All request classes support optional parameters through the <code>RestfulParameters</code> class:</p>
                 <pre><code class="language-dart">final parameters = RestfulParameters()
@@ -1566,6 +1572,31 @@ try {
   print('Exception: $e');
 }
 </code></pre>
+                <h3 id="structured-response-parsing" anchor="true">
+                  <span>Structured Response Parsing</span><a href="/docs/at_rest/restful_requests#structured-response-parsing">#</a>
+                </h3>
+                <p>
+                  A FHIR server usually responds with a single resource, a Bundle, or an OperationOutcome. The <code>parseRequestResult</code>
+                   function sorts whatever came back into a <code>ReturnResults</code> object with separate lists for resources, informational OperationOutcomes, and error OperationOutcomes:
+                </p>
+                <pre><code class="language-dart">final response = await request.sendRequest();
+final resource = Resource.fromJson(jsonDecode(response.body));
+final result = parseRequestResult(resource);
+
+for (final resource in result.resources) {
+  print('Retrieved resource: ${resource.id}');
+}
+for (final error in result.errorOperationOutcomes) {
+  print('Error: ${error.issue.first.diagnostics}');
+}
+for (final info in result.informationOperationOutcomes) {
+  print('Info: ${info.issue.first.diagnostics}');
+}
+</code></pre>
+                <p>
+                  If you expect a specific resource type, use <code>parseRequestResultForType&lt;T&gt;</code>. Resources of type 
+                  <code>T</code> land in <code>result.resources</code>, while resources of any other type are wrapped in error OperationOutcomes for troubleshooting.
+                </p>
                 <h3 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/at_rest/restful_requests#conclusion">#</a></h3>
                 <p>
                   The <code>fhir_r4_at_rest</code> library simplifies interactions with FHIR servers by providing typed classes for each RESTful operation. This approach improves code readability and reduces the likelihood of errors when constructing FHIR API requests.
@@ -1595,9 +1626,12 @@ try {
                   <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#basic-concepts">Basic Concepts</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#common-request-structure">Common Request Structure</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#request-types">Request Types</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#request-parametersrestful_parameters">Request Parameters</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/at_rest/restful_requests#request-parametersdocsat_restrestful_parameters">Request Parameters</a>
+                  </li>
                   <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#working-with-http-client">Working with HTTP Client</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#handling-responses">Handling Responses</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#structured-response-parsing">Structured Response Parsing</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#conclusion">Conclusion</a></li>
                 </ul>
               </div>

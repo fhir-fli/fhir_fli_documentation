@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1256,11 +1259,11 @@
                 <p>
                   And that's that. So a couple of things to mention. I liked freezed, but it doesn't play well with other code generators, and ends up producing a LOT of code. And while its very useful, I didn't think we needed all of it for this, so that's gone. I did still keep most of the important parts of freezed. All classes are immutable. They all have 
                   <code>copyWith</code> functions. There are also some new functions, like <code>getChildByName</code> and 
-                  <code>fromJsonString</code> which we'll discuss in more depth in <a href="class_structure">Class Structure</a>.
+                  <code>fromJsonString</code> which we'll discuss in more depth in <a href="docs/core/class_structure">Class Structure</a>.
                 </p>
                 <p>
                   Another thing you'll notice, is that there are getters on all the primitive values. This is because FHIR puts requirements on what is considered a Url or a Date, or a DateTime and it doesn't usually align with Dart's perspective. Again, much more in-depth discussion in 
-                  <a href="primitive_types">Primitive Types</a>. But for now, know that there are getters for almost all of Dart's primitive types to convert them into FHIR primitive types. So you can do 
+                  <a href="docs/core/primitive_types">Primitive Types</a>. But for now, know that there are getters for almost all of Dart's primitive types to convert them into FHIR primitive types. So you can do 
                   <code>FhirString('123')</code> like we did above for <code>id</code>, OR you can just do <code>.toFhirString</code>
                    like we did for the names.
                 </p>

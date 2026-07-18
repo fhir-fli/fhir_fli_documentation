@@ -1190,7 +1190,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1250,12 +1253,31 @@
                 <p>
                   FHIR-FLI (<b>F</b>ast <b>H</b>ealthcare <b>I</b>nteroperability <b>R</b>esources - with <b>F</b>lutter 
                   <b>L</b>ibrary <b>I</b>ntegration) is a set of Dart libraries that enable Flutter developers to easily work with 
-                  <a href="core/fhir_r4">FHIR</a> data. These libraries provide common functionality that is needed for working with FHIR, including serialization/deserialization, making 
-                  <a href="at_rest/fhir_r4_at_rest">RESTful</a> requests, <a href="auth/fhir_r4_auth">SMART on FHIR authentication</a>
-                   authentication, <a href="fhir_r4_db">local secure storage</a>, <a href="fhir_r4_path">FHIRPath</a>, 
-                  <a href="fhir_r4_bulk">FHIR Bulk Data</a>, <a href="mapping/fhir_mapping">FHIR Mapping</a>, <a href="fhir_r4_cql">CQL</a>, and 
-                  <a href="fhir_r4_validation">resource validation</a>.
+                  <a href="docs/core/fhir_r4">FHIR</a> data. These libraries provide common functionality that is needed for working with FHIR, including serialization/deserialization, making 
+                  <a href="docs/at_rest/fhir_r4_at_rest">RESTful</a> requests, <a href="docs/auth/fhir_r4_auth">SMART on FHIR authentication</a>
+                   authentication, <a href="docs/fhir_r4_db">local secure storage</a>, <a href="docs/fhir_r4_path">FHIRPath</a>, 
+                  <a href="docs/fhir_r4_bulk">FHIR Bulk Data</a>, <a href="docs/mapping/fhir_mapping">FHIR Mapping</a>, 
+                  <a href="docs/fhir_r4_cql">CQL</a>, and <a href="docs/fhir_r4_validation">resource validation</a>.
                 </p>
+                <h3 id="architecture" anchor="true"><span>Architecture</span><a href="/docs#architecture">#</a></h3>
+                <p>The family is built in three layers:</p>
+                <ol>
+                  <li>
+                    <strong>Model-independent engines</strong> - standalone packages with no dependency on any FHIR version: 
+                    <a href="https://pub.dev/packages/fhir_path"><code>fhir_path</code></a> (FHIRPath engine), <a href="https://pub.dev/packages/cql"><code>cql</code></a>
+                     (CQL engine), <a href="https://pub.dev/packages/ucum"><code>ucum</code></a> (units of measure), and 
+                    <a href="https://pub.dev/packages/fhir_node"><code>fhir_node</code></a> (the reflection contract that lets the engines navigate any FHIR model).
+                  </li>
+                  <li>
+                    <strong>Version cores</strong> - <code>fhir_r4</code>, <code>fhir_r5</code>, and <code>fhir_r6</code>
+                     provide the generated resource models for each FHIR version. Every class implements the <code>FhirNode</code>
+                     contract, which is how the engines above work across all three versions unchanged.
+                  </li>
+                  <li>
+                    <strong>Companion packages</strong> - thin bindings and utilities per version (<code>fhir_r4_path</code>
+                     binds the <code>fhir_path</code> engine to R4, <code>fhir_r4_cql</code> binds <code>cql</code>, plus REST, auth, database, bulk data, mapping, and validation packages).
+                  </li>
+                </ol>
                 <h3 id="fhir-version-support" anchor="true"><span>FHIR Version Support</span><a href="/docs#fhir-version-support">#</a></h3>
                 <p>
                   All packages are available for <strong>FHIR R4, R5, and R6</strong>. The APIs are identical across versions - just swap the package name:
@@ -1359,6 +1381,7 @@
                     <a href="/docs#getting-started-with-fhir-fli-img-srcimagesfhir-fli-logopng-altfhir-fli-logo-stylewidth-150px-vertical-align-middle-">Getting Started with FHIR-FLI </a>
                   </li>
                   <li style="padding-left: 0.75em"><a href="/docs#what-is-fhir-fli">What is FHIR-FLI?</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs#architecture">Architecture</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs#fhir-version-support">FHIR Version Support</a></li>
                   <li style="padding-left: 0.75em">
                     <a href="/docs#here-are-the-official-hl7-references-for-the-above-functionality">Here are the official HL7 references for the above functionality</a>

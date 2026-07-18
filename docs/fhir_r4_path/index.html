@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1241,71 +1244,34 @@
                 <h2 id="fhirpath-engine" anchor="true"><span>FHIRPath Engine</span><a href="/docs/fhir_r4_path#fhirpath-engine">#</a></h2>
                 <p>
                   The <code>fhir_r4_path</code> library provides a Dart implementation of the <a href="https://hl7.org/fhirpath/">FHIRPath</a>
-                   specification, allowing you to query and manipulate FHIR resources using standardized expressions. This library follows the official HL7 FHIRPath specification and integrates seamlessly with the 
-                  <code>fhir_r4</code> package.
+                   specification, allowing you to query and manipulate FHIR resources using standardized expressions.
+                </p>
+                <p>
+                  As of version 0.6.0, the FHIRPath engine itself lives in the standalone, model-independent <a href="https://pub.dev/packages/fhir_path"><code>fhir_path</code></a>
+                   package (<a href="https://github.com/fhir-fli/fhir_path">github.com/fhir-fli/fhir_path</a>). The engine has zero FHIR-version coupling — it navigates any model through the 
+                  <code>FhirNode</code> contract from <code>package:fhir_node</code>. <code>fhir_r4_path</code> is the 
+                  <strong>R4 binding</strong> over that engine: it supplies the R4 <code>WorkerContext</code>, the R4 value factory, and the terminology/validation plumbing, then re-exports the engine. Depend on this one package and you get both the engine and its R4 model bindings. (Identical bindings exist for R5 and R6 as 
+                  <code>fhir_r5_path</code> and <code>fhir_r6_path</code>.)
                 </p>
                 <h4 id="installation">Installation</h4>
                 <pre><code class="language-yaml">dependencies:
-  fhir_r4_path: ^0.4.3
-  fhir_r4: ^0.4.2
+  fhir_r4_path: ^0.6.0
+  fhir_r4: ^0.6.1
 </code></pre>
                 <h3 id="basic-usage" anchor="true"><span>Basic Usage</span><a href="/docs/fhir_r4_path#basic-usage">#</a></h3>
-                <p>There are two main approaches to using the FHIRPath engine:</p>
-                <h4 id="1-simple-approach-walkfhirpath-async">1. Simple Approach: walkFhirPath (async)</h4>
                 <p>
-                  The <code>walkFhirPath</code> function provides a straightforward way to evaluate a FHIRPath expression against a FHIR resource without having to manage an engine instance yourself:
-                </p>
-                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4_path/fhir_r4_path.dart';
-
-void main() async {
-  // Create a patient resource
-  final patient = Patient(
-    name: [
-      HumanName(
-        family: 'Doe'.toFhirString,
-        given: ['John'.toFhirString],
-        use: HumanNameUse.official,
-      ),
-    ],
-  );
-
-  // Evaluate a FHIRPath expression
-  final result = await walkFhirPath(
-    context: patient,
-    pathExpression: "Patient.name.where(use = 'official').family",
-  );
-
-  // The result will be a List&lt;FhirBase&gt;
-  print(result.map((e) =&gt; e.toString()).join(', ')); // Outputs: Doe
-}
-</code></pre>
-                <p>Parameters for <code>walkFhirPath</code>:</p>
-                <ul>
-                  <li><code>context</code>: The FHIR resource to query (required)</li>
-                  <li><code>pathExpression</code>: The FHIRPath expression to evaluate (required)</li>
-                  <li><code>resource</code>: The resource that contains the original node (defaults to context if null)</li>
-                  <li><code>rootResource</code>: The container resource (if applicable)</li>
-                  <li><code>environment</code>: A map of environment variables (keys must start with %)</li>
-                </ul>
-                <h4 id="2-engine-approach-fhirpathengine-preferred-for-performance">2. Engine Approach: FHIRPathEngine (preferred for performance)</h4>
-                <p>
-                  When you have multiple FHIRPath expressions or you need to evaluate many resources in a loop, the recommended approach is to create a reusable 
-                  <code>FHIRPathEngine</code> instance. This is more efficient because you only parse expressions once and can share internal structures.
-                </p>
-                <h5 id="creating-the-engine">Creating the Engine</h5>
-                <p>
-                  Because the engine initialization is asynchronous, you'll use the static <code>create(...)</code> factory method:
+                  The API is <code>FHIRPathEngine</code>. Create the engine once (creation is async — it initializes its worker context), 
+                  <strong>parse each expression once</strong>, then <strong>evaluate it against as many resources as you like</strong>. Parsing is the expensive step, so the recommended pattern is parse-once / evaluate-many.
                 </p>
                 <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4_path/fhir_r4_path.dart';
 
 void main() async {
   // Create the FHIRPath engine (async)
-  final fhirPathEngine = await FHIRPathEngine.create(WorkerContext());
+  final engine = await FHIRPathEngine.create(WorkerContext());
 
   // Parse the expression once (can be reused)
-  final node = fhirPathEngine.parse("Patient.name.where(use = 'official').family");
+  final node = engine.parse("Patient.name.where(use = 'official').family");
 
   // Create some resources to test against
   final patient1 = Patient(
@@ -1329,36 +1295,84 @@ void main() async {
   );
 
   // Evaluate against different patients
-  final result1 = await fhirPathEngine.evaluate(patient1, node);
-  final result2 = await fhirPathEngine.evaluate(patient2, node);
+  final result1 = await engine.evaluate(patient1, node);
+  final result2 = await engine.evaluate(patient2, node);
 
   print(result1); // [Smith]
   print(result2); // [Brown]
 }
 </code></pre>
-                <h5 id="evaluating-expressions">Evaluating Expressions</h5>
-                <p>Once you have the <code>FHIRPathEngine</code> instance:</p>
+                <h4 id="the-core-api">The Core API</h4>
+                <p>Once you have a <code>FHIRPathEngine</code> instance:</p>
                 <ul>
-                  <li><code>parse(String expression)</code>: Parses and returns an <code>ExpressionNode</code>.</li>
                   <li>
-                    <code>evaluate(FhirBase? base, ExpressionNode node)</code>: Evaluates the parsed expression against the base resource.
+                    <code>parse(String expression)</code>: Parses the expression (synchronously) and returns an <code>ExpressionNode</code>. Throws on invalid syntax — including trailing garbage after a valid expression.
                   </li>
                   <li>
-                    <code>evaluateWithContext(...)</code>: Allows you to provide additional context/resources or environment variables.
+                    <code>isValid(String expression)</code>: Returns <code>true</code> if the expression parses cleanly, 
+                    <code>false</code> otherwise.
+                  </li>
+                  <li>
+                    <code>evaluate(FhirNode? base, ExpressionNode node)</code>: Evaluates a parsed expression against a resource. Async — returns 
+                    <code>Future&lt;List&lt;FhirNode&gt;&gt;</code>.
+                  </li>
+                  <li>
+                    <code>evaluateWithContext(...)</code>: Like <code>evaluate</code>, but lets you supply the app context, 
+                    <code>%resource</code> / <code>%rootResource</code>, and user-defined environment variables.
+                  </li>
+                  <li>
+                    <code>evaluateFromPath(FhirNode? base, String path)</code>: Convenience that parses and evaluates in one call — only for genuinely one-off expressions.
                   </li>
                 </ul>
-                <pre><code class="language-dart">final result3 = await fhirPathEngine.evaluateWithContext(
-  null,      // appContext (any object, e.g., a custom context or null)
-  patient1,  // focusResource
-  null,      // rootResource
-  patient1,  // base (the immediate context for evaluation)
+                <h4 id="working-with-results">Working with Results</h4>
+                <p>
+                  Evaluation returns <code>List&lt;FhirNode&gt;</code> — the model-independent node contract the engine works in. In an R4 context every node the engine produces is a 
+                  <code>FhirBase</code>, so when you need the typed R4 classes, narrow the list back:
+                </p>
+                <pre><code class="language-dart">final results = await engine.evaluate(patient, node);
+final typed = results.cast&lt;FhirBase&gt;();
+</code></pre>
+                <p>
+                  For display purposes, <code>toString()</code> on primitive results gives you the value directly (as in the 
+                  <code>[Smith]</code> output above).
+                </p>
+                <h4 id="evaluatewithcontext-and-environment-variables">evaluateWithContext and Environment Variables</h4>
+                <p>
+                  <code>evaluateWithContext</code> takes the full set of FHIRPath evaluation inputs as positional parameters, plus a named 
+                  <code>environment</code> map:
+                </p>
+                <pre><code class="language-dart">final node = engine.parse('Patient.birthDate &lt; %cutoffDate');
+
+final result = await engine.evaluateWithContext(
+  null,     // appContext (any app-defined object, or null)
+  patient,  // focusResource — what %resource resolves to
+  null,     // rootResource — what %rootResource resolves to
+  patient,  // base — the node evaluation starts from
   node,
   environment: {
-    '%var1': [42.toFhirInteger],
-    '%var2': ['test'.toFhirString],
+    'cutoffDate': ['2000-01-01'.toFhirDate],
   },
 );
 </code></pre>
+                <p>Notes on the <code>environment</code> map:</p>
+                <ul>
+                  <li>
+                    <strong>Keys do not include the <code>%</code> prefix.</strong> An expression referencing <code>%cutoffDate</code>
+                     is resolved against the map key <code>'cutoffDate'</code>.
+                  </li>
+                  <li>
+                    <strong>Values are lists</strong> of FHIR values (a FHIRPath variable is a collection), e.g. <code>[5.toFhirInteger]</code>
+                     or <code>['Male'.toFhirString]</code>.
+                  </li>
+                  <li>
+                    <strong>Lazy loading:</strong> a value may also be a zero-argument function returning such a list; it is only invoked if the variable is actually accessed during evaluation.
+                  </li>
+                </ul>
+                <p>
+                  The built-in variables <code>%resource</code>, <code>%rootResource</code>, and <code>%context</code> come from the positional parameters, and the standard constants (<code>%sct</code>, 
+                  <code>%loinc</code>, <code>%ucum</code>, plus the <code>%`vs-...`</code> / <code>%`cs-...`</code> / <code>%`ext-...`</code>
+                   URL shorthands) are always available.
+                </p>
                 <h3 id="common-fhirpath-expressions" anchor="true">
                   <span>Common FHIRPath Expressions</span><a href="/docs/fhir_r4_path#common-fhirpath-expressions">#</a>
                 </h3>
@@ -1400,37 +1414,28 @@ Patient.name.count() &gt; 1
 // Logical operators
 Patient.active = true and Patient.deceased = false
 </code></pre>
-                <h4 id="environment-variables">Environment Variables</h4>
-                <p>FHIRPath supports environment variables, which must be prefixed with <code>%</code>:</p>
-                <pre><code class="language-dart">final environment = {
-  '%pi': [3.14159.toFhirDecimal],
-  '%today': [FhirDateTime('2023-01-01')],
-};
-
-final result = await walkFhirPath(
-  context: patient,
-  pathExpression: "Patient.birthDate &lt; %today",
-  environment: environment,
-);
-</code></pre>
                 <h3 id="advanced-features" anchor="true"><span>Advanced Features</span><a href="/docs/fhir_r4_path#advanced-features">#</a></h3>
                 <h4 id="resource-cache">Resource Cache</h4>
                 <p>
-                  For advanced scenarios, the library provides a <code>ResourceCache</code> abstract class to cache canonical resources (like CodeSystem, ValueSet, StructureDefinition), potentially saving time on repeated lookups:
+                  For advanced scenarios, the library provides a <code>ResourceCache</code> abstract class for caching canonical resources (like 
+                  <code>CodeSystem</code>, <code>ValueSet</code>, <code>StructureDefinition</code>), saving time on repeated lookups:
                 </p>
                 <pre><code class="language-dart">abstract class ResourceCache {
   Future&lt;T?&gt; getCanonicalResource&lt;T extends CanonicalResource&gt;(
     String url, [String? version]
   );
-  
+
   Future&lt;void&gt; saveCanonicalResource(CanonicalResource resource);
-  
+
+  Future&lt;StructureDefinition?&gt; getStructureDefinition(String url);
+  Future&lt;List&lt;StructureDefinition&gt;&gt; getStructureDefinitions();
+  Future&lt;CodeSystem?&gt; getCodeSystem(String url, [String? version]);
   // ...
 }
 </code></pre>
-                <h4 id="canonical-resource-manager">Canonical Resource Manager</h4>
+                <h4 id="canonical-resource-cache">Canonical Resource Cache</h4>
                 <p>
-                  The <code>CanonicalResourceCache</code> extends <code>ResourceCache</code> to provide version-aware storage and retrieval of resources:
+                  <code>CanonicalResourceCache</code> is the standard in-memory implementation, with version-aware storage and retrieval:
                 </p>
                 <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4_path/fhir_r4_path.dart';
@@ -1446,7 +1451,7 @@ final valueSet = ValueSet(
 );
 manager.see(valueSet);
 
-// Retrieve by URL
+// Retrieve by URL (latest version)
 final retrieved = await manager.getCanonicalResource&lt;ValueSet&gt;(
   'http://example.org/fhir/ValueSet/my-codes'
 );
@@ -1457,93 +1462,81 @@ final specificVersion = await manager.getCanonicalResource&lt;ValueSet&gt;(
   '1.0.0'
 );
 </code></pre>
-                <p>Key features of <code>CanonicalResourceCache</code>:</p>
-                <ul>
-                  <li>Version-aware storage and retrieval</li>
-                  <li>Compatibility with semantic versioning</li>
-                  <li>Optional lazy loading through proxies</li>
-                  <li>Integration with HTTP clients for remote resource fetching</li>
-                </ul>
+                <p>
+                  <code>OnlineResourceCache</code> extends <code>CanonicalResourceCache</code> and falls back to an HTTP GET (with 
+                  <code>Accept: application/fhir+json</code>) when a resource is not cached locally, then caches what it fetched. To give the engine a cache, pass it to the worker context:
+                </p>
+                <pre><code class="language-dart">final engine = await FHIRPathEngine.create(
+  WorkerContext(resourceCache: OnlineResourceCache()),
+);
+</code></pre>
                 <h3 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/fhir_r4_path#error-handling">#</a></h3>
                 <p>
-                  The FHIRPath engine throws specific exceptions that give detailed information about evaluation issues:
+                  Parsing errors are thrown synchronously by <code>parse</code> (as <code>FHIRLexerException</code>, a subclass of 
+                  <code>PathEngineException</code>); evaluation problems surface as <code>PathEngineException</code> or 
+                  <code>PathEngineError</code>:
                 </p>
-                <pre><code class="language-dart">try {
-  final result = await walkFhirPath(
-    context: patient,
-    pathExpression: "Patient.invalid.expression",
-  );
+                <pre><code class="language-dart">final engine = await FHIRPathEngine.create(WorkerContext());
+
+try {
+  final node = engine.parse('Patient.name.where(');
+  final result = await engine.evaluate(patient, node);
 } on PathEngineException catch (e) {
   print('Expression error: ${e.message}');
   print('Expression: ${e.expression}');
 } on PathEngineError catch (e) {
   print('Engine error: ${e.message}');
-  print('Expression: ${e.expression}');
 }
 </code></pre>
                 <h3 id="performance-considerations" anchor="true"><span>Performance Considerations</span><a href="/docs/fhir_r4_path#performance-considerations">#</a></h3>
                 <p>For optimal performance in large-scale or batch operations:</p>
+                <h4 id="reuse-the-engine">Reuse the Engine</h4>
+                <p>
+                  <code>FHIRPathEngine.create(...)</code> does real initialization work — create one engine and share it.
+                </p>
                 <h4 id="reuse-parsed-expressions">Reuse Parsed Expressions</h4>
                 <p>
-                  Parse the expression once with <code>fhirPathEngine.parse()</code> and then evaluate repeatedly on different resources.
-                </p>
-                <h4 id="use-a-dedicated-engine">Use a Dedicated Engine</h4>
-                <p>
-                  Instead of <code>walkFhirPath()</code>, create and reuse a single <code>FHIRPathEngine</code> instance (via the async 
-                  <code>create(...)</code> method).
+                  Parse each expression once with <code>engine.parse()</code> and then evaluate repeatedly on different resources.
                 </p>
                 <h4 id="leverage-the-resource-cache">Leverage the Resource Cache</h4>
                 <p>
                   If your workflow requires repeated lookups of canonical resources, use <code>CanonicalResourceCache</code>
-                   to avoid redundant fetching or parsing.
+                   (or <code>OnlineResourceCache</code>) to avoid redundant fetching or parsing.
                 </p>
                 <h3 id="integration-with-fhir-mapping" anchor="true">
                   <span>Integration with FHIR Mapping</span><a href="/docs/fhir_r4_path#integration-with-fhir-mapping">#</a>
                 </h3>
                 <p>
-                  The FHIRPath engine is also used by the FHIR Mapping engine (<code>fhir_r4_mapping</code>), which implements the FHIR Mapping Language for transforming FHIR resources or converting between FHIR and other data formats.
+                  The FHIRPath engine is also used by the FHIR Mapping engine (<code>fhir_r4_mapping</code>), which implements the FHIR Mapping Language for transforming FHIR resources or converting between FHIR and other data formats. 
+                  <code>FhirMapEngine</code> creates its own <code>FHIRPathEngine</code> internally, wired up with host services for the mapping language's FHIRPath evaluation.
                 </p>
-                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
-
-// Transform a resource using a StructureMap
-final transformedResource = await fhirMappingEngine(
-  source,
-  structureMap,
-  resourceCache,
-);
-</code></pre>
+                <h3 id="legacy-api" anchor="true"><span>Legacy API</span><a href="/docs/fhir_r4_path#legacy-api">#</a></h3>
+                <p>
+                  Earlier versions of this package were built around a <code>walkFhirPath()</code> convenience function. It still exists for backwards compatibility but is 
+                  <strong>deprecated</strong>: it re-creates an engine and re-parses the expression on every call. Migrate any remaining 
+                  <code>walkFhirPath</code> (or <code>parseFhirPath</code> / <code>executeFhirPath</code>) call sites to the 
+                  <code>FHIRPathEngine</code> API shown above.
+                </p>
                 <h3 id="fhirpath-specification-reference" anchor="true">
                   <span>FHIRPath Specification Reference</span><a href="/docs/fhir_r4_path#fhirpath-specification-reference">#</a>
                 </h3>
                 <p>
                   For a complete reference of the FHIRPath language, see the <a href="https://hl7.org/fhirpath/">official specification</a>.
                 </p>
-                <p>The implementation supports:</p>
+                <p>
+                  The implementation is a Dart port of the HL7 Java reference implementation's FHIRPath engine and is validated against the official FHIRPath test suite, covering:
+                </p>
                 <ul>
-                  <li>Basic types (Boolean, String, Integer, Decimal, DateTime)</li>
+                  <li>
+                    Literals and the full type system (Boolean, String, Integer, Decimal, Date, DateTime, Time, Quantity)
+                  </li>
                   <li>Path selection and navigation</li>
-                  <li>Basic operators (equality, comparison, logical)</li>
-                  <li>Functions with and without arguments</li>
-                  <li>Environment variables</li>
+                  <li>The full operator set (equality, equivalence, comparison, logical, math, type operators)</li>
+                  <li>
+                    The FHIRPath function library (including <code>trace()</code>, <code>aggregate()</code>, type reflection, and math functions)
+                  </li>
+                  <li>Environment variables and the standard constants</li>
                 </ul>
-                <p>Currently not fully supported:</p>
-                <ul><li>Trace functionality</li><li>Complete reflection capabilities</li><li>System namespaces</li></ul>
-                <h3 id="appendix-legacy-access-methods" anchor="true">
-                  <span>Appendix: Legacy Access Methods</span><a href="/docs/fhir_r4_path#appendix-legacy-access-methods">#</a>
-                </h3>
-                <p>
-                  While the new <code>FHIRPathEngine.create(...)</code> approach is recommended for most cases, the package includes a "legacy" or "simple" convenience method, 
-                  <code>walkFhirPath()</code>. This is often sufficient for quick, single-use evaluations:
-                </p>
-                <pre><code class="language-dart">final result = await walkFhirPath(
-  context: patient,
-  pathExpression: '`Patient`.name.`given`[0]',
-);
-</code></pre>
-                <p>
-                  Under the hood, <code>walkFhirPath</code> uses the same engine but without exposing the details. This makes it easier for one-off expressions but less optimal for repeated operations.
-                </p>
                 <p>Happy coding with FHIRPath in Dart!</p>
               </section>
               <div class="content-footer">
@@ -1573,8 +1566,8 @@ final transformedResource = await fhirMappingEngine(
                   <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_path#error-handling">Error Handling</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_path#performance-considerations">Performance Considerations</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_path#integration-with-fhir-mapping">Integration with FHIR Mapping</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_path#legacy-api">Legacy API</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_path#fhirpath-specification-reference">FHIRPath Specification Reference</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_path#appendix-legacy-access-methods">Appendix: Legacy Access Methods</a></li>
                 </ul>
               </div>
             </aside>

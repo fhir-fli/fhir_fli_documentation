@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1245,27 +1248,36 @@
                 </p>
                 <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_db#installation">#</a></h3>
                 <pre><code class="language-yaml">dependencies:
-  fhir_r4_db: ^1.0.0
-  fhir_r4: ^0.4.4
-  drift: ^2.29.0
-  sqlite3: ^2.4.6
+  fhir_r4_db: ^0.6.0
+  fhir_r4: ^0.6.1
+  drift: ^2.33.0
+  sqlite3: ^3.1.5
 </code></pre>
                 <p>
-                  For Flutter apps you will also need a platform-appropriate SQLite opener. See the <a href="https://drift.simonbinder.eu/setup/">Drift documentation</a>
-                   for platform-specific setup.
+                  <code>sqlite3</code> 3.x loads its native SQLite library through Dart build hooks, so no separate platform-specific SQLite opener package is required. See 
+                  <a href="#encrypted-database">Encrypted Database</a> below for how the same mechanism provides SQLCipher-compatible encryption.
                 </p>
                 <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_db#key-features">#</a></h3>
                 <ul>
-                  <li><strong>SQLite-backed</strong>: Persistent, file-based storage with excellent performance</li>
                   <li>
-                    <strong>Search parameter indexing</strong>: Automatic indexing of FHIR search parameters (string, token, reference, date, number, quantity, URI, composite, special)
+                    <strong>SQLite-backed</strong>: Persistent, file-based storage with excellent performance, plus in-memory mode for tests
                   </li>
-                  <li><strong>Version tracking</strong>: Automatic versioning of resources with full history</li>
+                  <li>
+                    <strong>Search parameter indexing</strong>: Automatic indexing of FHIR search parameters into typed search tables (string, token, reference, date, number, quantity, URI, composite, special)
+                  </li>
+                  <li>
+                    <strong>FHIR search</strong>: Query by search parameters, including <code>_id</code>, <code>_lastUpdated</code>, 
+                    <code>_tag</code>, <code>_profile</code>, <code>_security</code>, <code>_source</code>, <code>:missing</code>, chained references, and 
+                    <code>_has</code> reverse chaining
+                  </li>
+                  <li>
+                    <strong>Version tracking</strong>: Automatic versioning of resources with full history; deletes are recorded as tombstone history entries
+                  </li>
                   <li><strong>Sync support</strong>: Track resources that need syncing to a remote server</li>
                   <li>
                     <strong>Canonical resource cache</strong>: Store and retrieve canonical resources (ValueSet, StructureDefinition, etc.) by URL
                   </li>
-                  <li><strong>Optional encryption</strong>: SQLCipher support for encrypted databases</li>
+                  <li><strong>Optional encryption</strong>: SQLCipher (AES-256) with a PBKDF2-HMAC-SHA256 derived key</li>
                   <li>
                     <strong>Cross-platform</strong>: Works on all platforms supported by Drift (Android, iOS, macOS, Windows, Linux, Web)
                   </li>
@@ -1278,14 +1290,16 @@
                      (e.g., <code>NativeDatabase</code>).
                   </li>
                   <li>
-                    <strong><code>FhirDao</code></strong> — The DAO that provides all FHIR operations (CRUD, search, history, sync, canonical resources, general storage).
+                    <strong><code>FhirDao</code></strong> — The DAO that provides all FHIR operations (CRUD, search, history, sync, canonical resources, general storage), accessed via 
+                    <code>db.fhirDao</code>.
                   </li>
                 </ul>
                 <h4 id="initialization">Initialization</h4>
-                <pre><code class="language-dart">import 'package:drift/drift.dart';
+                <pre><code class="language-dart">import 'dart:io';
 import 'package:drift/native.dart';
-import 'package:fhir_r4_db/fhir_r4_db.dart';
-import 'dart:io';
+import 'package:fhir_r4/fhir_r4.dart';
+// Hide Resource: fhir_r4_db also exports a Drift row class named `Resource`.
+import 'package:fhir_r4_db/fhir_r4_db.dart' hide Resource;
 
 // Create a database with a file-based SQLite backend
 final db = FhirDb(NativeDatabase(File('fhir.db')));
@@ -1298,13 +1312,38 @@ final testDb = FhirDb(NativeDatabase.memory());
 final testDao = testDb.fhirDao;
 </code></pre>
                 <h4 id="encrypted-database">Encrypted Database</h4>
-                <p>For encryption, use SQLCipher via the <code>sqlite3</code> package:</p>
-                <pre><code class="language-dart">import 'package:fhir_r4_db/fhir_r4_db.dart';
-
-// Use cipherFromKey to create an encrypted database setup callback
-final setup = cipherFromKey('your-encryption-key');
-final db = FhirDb(NativeDatabase(File('fhir.db'), setup: setup));
+                <p>
+                  Encryption is provided by SQLCipher. First, tell the <code>sqlite3</code> build hooks to compile the SQLCipher-compatible 
+                  <a href="https://utelle.github.io/SQLite3MultipleCiphers/">SQLite3MultipleCiphers</a> library instead of plain SQLite by declaring this in 
+                  <strong>your app's</strong> <code>pubspec.yaml</code>:
+                </p>
+                <pre><code class="language-yaml">hooks:
+  user_defines:
+    sqlite3:
+      source: sqlite3mc
 </code></pre>
+                <p>
+                  Then derive a key from a password with <code>deriveDbKey</code> (PBKDF2-HMAC-SHA256, 100,000 iterations) and enable encryption at construction time with 
+                  <code>cipherSetup</code>, which applies the SQLCipher-compatibility PRAGMAs (<code>PRAGMA cipher = 'sqlcipher'; PRAGMA legacy = 4; PRAGMA key = ...;</code>) in the 
+                  <code>NativeDatabase</code> setup callback:
+                </p>
+                <pre><code class="language-dart">import 'dart:io';
+import 'package:drift/native.dart';
+import 'package:fhir_r4_db/fhir_r4_db.dart' hide Resource;
+
+const dir = '/path/to/db';
+final hexKey = await deriveDbKey(password: 'secure-password', dbPath: dir);
+
+final db = FhirDb(
+  NativeDatabase(
+    File('$dir/fhir.sqlite'),
+    setup: cipherSetup(hexKey),
+  ),
+);
+</code></pre>
+                <p>
+                  <code>deriveDbKey</code> returns <code>null</code> (and <code>cipherSetup(null)</code> is a no-op) when no password is supplied, so the same code path works with and without encryption.
+                </p>
                 <h3 id="basic-operations" anchor="true"><span>Basic Operations</span><a href="/docs/fhir_r4_db#basic-operations">#</a></h3>
                 <h4 id="saving-resources">Saving Resources</h4>
                 <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
@@ -1319,7 +1358,8 @@ final patient = Patient(
   ],
 );
 
-// save() assigns an ID if none exists and updates meta (versionId, lastUpdated)
+// saveResource() assigns an ID if none exists and updates meta
+// (versionId, lastUpdated)
 final savedPatient = await dao.saveResource(patient);
 
 // Save multiple resources in a batch (more efficient)
@@ -1339,7 +1379,7 @@ final exists = await dao.exists(
   '12345',
 );
 
-// Get all resources of a type
+// Get all resources of a type (most recent first)
 final allPatients = await dao.getResourcesByType(
   R4ResourceType.Patient,
 );
@@ -1347,7 +1387,7 @@ final allPatients = await dao.getResourcesByType(
 // Paginated retrieval
 final page = await dao.getResourcesWithPagination(
   resourceType: R4ResourceType.Patient,
-  limit: 20,
+  count: 20,
   offset: 0,
 );
 
@@ -1358,27 +1398,46 @@ final count = await dao.getResourceCount(R4ResourceType.Patient);
 final types = await dao.getResourceTypes();
 </code></pre>
                 <h4 id="searching-resources">Searching Resources</h4>
-                <p>The database supports FHIR search parameters with automatic indexing:</p>
+                <p>
+                  Saved resources are indexed into typed search tables, so you can query by FHIR search parameters. Each parameter maps to a 
+                  <em>list</em> of values:
+                </p>
                 <pre><code class="language-dart">// Search patients by name
 final patients = await dao.search(
   resourceType: R4ResourceType.Patient,
-  parameters: {'name': 'Doe'},
+  searchParameters: {
+    'name': ['Doe'],
+  },
 );
 
 // Search with multiple parameters
 final observations = await dao.search(
   resourceType: R4ResourceType.Observation,
-  parameters: {
-    'patient': 'Patient/12345',
-    'code': 'http://loinc.org|85354-9',
-    'date': 'ge2024-01-01',
+  searchParameters: {
+    'patient': ['Patient/12345'],
+    'code': ['http://loinc.org|85354-9'],
+    'date': ['ge2024-01-01'],
   },
 );
 
 // Count search results
 final resultCount = await dao.searchCount(
   resourceType: R4ResourceType.Observation,
-  parameters: {'patient': 'Patient/12345'},
+  searchParameters: {
+    'patient': ['Patient/12345'],
+  },
+);
+</code></pre>
+                <p>
+                  <code>search</code> also accepts optional <code>count</code>, <code>offset</code>, and <code>sort</code>
+                   arguments for paging and ordering results.
+                </p>
+                <p><code>_has</code> reverse chaining is supported via <code>HasParameter</code>:</p>
+                <pre><code class="language-dart">// Patients referenced by an Observation whose code is 1234-5
+final has = HasParameter.parse('_has:Observation:patient:code', '1234-5');
+final patients = await dao.search(
+  resourceType: R4ResourceType.Patient,
+  hasParameters: [has!],
 );
 </code></pre>
                 <p>Supported search parameter types:</p>
@@ -1387,7 +1446,9 @@ final resultCount = await dao.searchCount(
                     <strong>String</strong> (<code>name</code>, <code>address</code>, etc.) — case-insensitive prefix matching
                   </li>
                   <li><strong>Token</strong> (<code>code</code>, <code>identifier</code>, etc.) — system|code matching</li>
-                  <li><strong>Reference</strong> (<code>patient</code>, <code>subject</code>, etc.) — reference resolution</li>
+                  <li>
+                    <strong>Reference</strong> (<code>patient</code>, <code>subject</code>, etc.) — reference resolution, including chained references
+                  </li>
                   <li>
                     <strong>Date</strong> (<code>date</code>, <code>birthdate</code>, etc.) — date range comparisons (eq, ne, gt, lt, ge, le, sa, eb, ap)
                   </li>
@@ -1396,12 +1457,13 @@ final resultCount = await dao.searchCount(
                   <li><strong>URI</strong> (<code>url</code>, etc.) — URI matching</li>
                   <li><strong>Composite</strong> — combined parameter searches</li>
                   <li>
-                    <strong>Special</strong> (<code>_has</code>, <code>_tag</code>, <code>_profile</code>, <code>_security</code>, 
-                    <code>_source</code>, <code>_lastUpdated</code>) — special FHIR parameters
+                    <strong>Special</strong> (<code>_id</code>, <code>_lastUpdated</code>, <code>_tag</code>, <code>_profile</code>, 
+                    <code>_security</code>, <code>_source</code>, <code>:missing</code>, <code>_has</code>) — special FHIR parameters
                   </li>
                 </ul>
                 <h4 id="deleting-resources">Deleting Resources</h4>
-                <pre><code class="language-dart">// Delete a resource by type and ID
+                <pre><code class="language-dart">// Delete a resource by type and ID.
+// Writes a tombstone history entry, then removes the current row.
 final deleted = await dao.deleteResource(
   R4ResourceType.Patient,
   '12345',
@@ -1419,12 +1481,11 @@ final updated = v1.copyWith(active: FhirBoolean(true));
 final v2 = await dao.saveResource(updated);
 print(v2.meta?.versionId); // "2"
 
-// Retrieve version history
+// Retrieve version history (most recent first)
 final history = await dao.getResourceHistory(
   R4ResourceType.Patient,
   '12345',
 );
-// Returns all versions, most recent first
 </code></pre>
                 <p>Use timestamp-based versioning instead of incrementing integers:</p>
                 <pre><code class="language-dart">dao.versionIdAsTime = true;
@@ -1442,10 +1503,15 @@ final pendingSync = await dao.getSync();
 
 // Clear the sync queue after successful upload
 await dao.clearSync();
+
+// Or observe the sync queue reactively
+final subscription = dao.watchSync().listen((resources) {
+  // handle changes
+});
 </code></pre>
                 <h4 id="canonical-resource-cache">Canonical Resource Cache</h4>
                 <p>Store canonical resources (ValueSet, StructureDefinition, etc.) indexed by URL:</p>
-                <pre><code class="language-dart">// Save a canonical resource
+                <pre><code class="language-dart">// Save a canonical resource (keyed by its url)
 await dao.saveCanonicalResource(valueSet);
 
 // Retrieve by URL
@@ -1460,16 +1526,24 @@ final hasIt = await dao.containsCanonicalKey(
 
 // List all canonical keys
 final keys = await dao.listCanonicalKeys();
+
+// Get all canonical resources of a given type
+final valueSets =
+    await dao.getAllCanonicalByType&lt;ValueSet&gt;(R4ResourceType.ValueSet);
 </code></pre>
                 <h4 id="general-storage">General Storage</h4>
-                <p>Store arbitrary data (non-FHIR) in the database:</p>
-                <pre><code class="language-dart">// Save arbitrary data (returns an integer key)
-final key = await dao.saveGeneral(value: '{"name": "Test"}');
+                <p>
+                  Store arbitrary (non-FHIR) data in the database. Values are stored as strings, so serialize structured data yourself:
+                </p>
+                <pre><code class="language-dart">import 'dart:convert';
+
+// Save arbitrary data (returns an integer key)
+final key = await dao.saveGeneral(value: jsonEncode({'name': 'Test'}));
 
 // Read by key
 final data = await dao.readGeneral(key);
 
-// Get all general storage entries
+// Get all general storage rows
 final allEntries = await dao.getAllGeneral();
 
 // Delete by key
@@ -1483,7 +1557,7 @@ await dao.clearGeneral();
                 <pre><code class="language-dart">import 'dart:io';
 import 'package:drift/native.dart';
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4_db/fhir_r4_db.dart';
+import 'package:fhir_r4_db/fhir_r4_db.dart' hide Resource;
 
 Future&lt;void&gt; main() async {
   // Create the database
@@ -1498,7 +1572,7 @@ Future&lt;void&gt; main() async {
         given: ['John'.toFhirString],
       ),
     ],
-    birthDate: FhirDate('1970-01-01'),
+    birthDate: '1970-01-01'.toFhirDate,
   );
   final saved = await dao.saveResource(patient);
   print('Saved patient: ${saved.id}');
@@ -1506,7 +1580,9 @@ Future&lt;void&gt; main() async {
   // Search for patients
   final results = await dao.search(
     resourceType: R4ResourceType.Patient,
-    parameters: {'name': 'Doe'},
+    searchParameters: {
+      'name': ['Doe'],
+    },
   );
   print('Found ${results.length} patients');
 

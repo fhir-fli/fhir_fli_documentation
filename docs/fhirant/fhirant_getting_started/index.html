@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1245,7 +1248,7 @@
                 <h3 id="install" anchor="true"><span>Install</span><a href="/docs/fhirant/fhirant_getting_started#install">#</a></h3>
                 <p>
                   Download FHIR ANT from the <a href="https://play.google.com/store/apps/details?id=com.fhirfli.fhirant">Google Play Store</a>. It also runs as a Linux desktop app or a standalone CLI server (see 
-                  <a href="fhirant_cli">CLI Usage</a>).
+                  <a href="docs/fhirant/fhirant_cli">CLI Usage</a>).
                 </p>
                 <h3 id="first-launch" anchor="true"><span>First Launch</span><a href="/docs/fhirant/fhirant_getting_started#first-launch">#</a></h3>
                 <p>When you open the app for the first time, you'll see a three-page onboarding:</p>
@@ -1405,7 +1408,7 @@ curl "$BASE/Observation?patient.name=smith"
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/fhir+json" \
   -d @backup.json
-</code></pre><h3 id="connecting-from-a-fhir-client" anchor="true"><span>Connecting from a FHIR Client</span><a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">#</a></h3><p>FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the <a href="../at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a> Dart package:</p><pre><code class="language-dart">final request = FhirSearchRequest(
+</code></pre><h3 id="connecting-from-a-fhir-client" anchor="true"><span>Connecting from a FHIR Client</span><a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">#</a></h3><p>FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the <a href="docs/at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a> Dart package:</p><pre><code class="language-dart">final request = FhirSearchRequest(
   base: Uri.parse('http://192.168.1.42:8080'),
   type: R4ResourceType.Patient,
   parameters: FhirSearchParams(params: [
@@ -1418,7 +1421,7 @@ Try clearing the app cache in Android Settings &gt; Apps &gt; FHIR ANT &gt; Clea
 Make sure both devices are on the same Wi-Fi network. Some networks (especially guest networks) isolate devices from each other.</p><p><strong>"Account is locked" error</strong>
 After 5 failed login attempts, the account locks for 15 minutes. Wait for it to expire, or have an admin unlock it:</p><pre><code class="language-bash">curl -X POST "$BASE/admin/unlock/2" -H "Authorization: Bearer $ADMIN_TOKEN"
 </code></pre><p><strong>Token expired</strong>
-Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see Step 6 above). Refresh tokens last 7 days.</p><h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/fhirant/fhirant_getting_started#next-steps">#</a></h3><ul><li><a href="fhirant_capabilities">Capabilities</a> — full feature matrix</li><li><a href="fhirant_api_reference">API Reference</a> — every endpoint</li><li><a href="fhirant_security">Security &amp; Auth</a> — OAuth 2.0, SMART scopes, password policy</li><li><a href="fhirant_cli">CLI Usage</a> — run the server from the command line</li></ul></span>
+Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see Step 6 above). Refresh tokens last 7 days.</p><h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/fhirant/fhirant_getting_started#next-steps">#</a></h3><ul><li><a href="docs/fhirant/fhirant_capabilities">Capabilities</a> — full feature matrix</li><li><a href="docs/fhirant/fhirant_api_reference">API Reference</a> — every endpoint</li><li><a href="docs/fhirant/fhirant_security">Security &amp; Auth</a> — OAuth 2.0, SMART scopes, password policy</li><li><a href="docs/fhirant/fhirant_cli">CLI Usage</a> — run the server from the command line</li></ul></span>
                 </div>
               </section>
               <div class="content-footer">

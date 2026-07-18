@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1252,56 +1255,49 @@
                 </h3>
                 <h4 id="resource-cache-hierarchy">Resource Cache Hierarchy</h4>
                 <p>
-                  The mapping engine relies on a cache system to efficiently access and store canonical resources. FHIR-FLI provides three levels of resource caching:
+                  The mapping engine relies on a cache system to efficiently access and store canonical resources. The cache classes are provided by the 
+                  <code>fhir_r4_path</code> package (a dependency of <code>fhir_r4_mapping</code>) and come in three levels:
                 </p>
                 <h5 id="1-resourcecache-base-abstract-class">1. ResourceCache (Base Abstract Class)</h5>
                 <pre><code class="language-dart">abstract class ResourceCache {
-  // Abstract methods for resource lookup
-  Future&lt;Resource?&gt; findResourceById(String resourceType, String id);
-  Future&lt;Resource?&gt; findResourceByUrl(String url);
-  
-  // Other abstract methods...
+  // Fetches a CanonicalResource (StructureDefinition, ValueSet, etc.)
+  // by canonical URL, optionally by version
+  Future&lt;T?&gt; getCanonicalResource&lt;T extends CanonicalResource&gt;(
+    String url, [
+    String? version,
+  ]);
+
+  // Saves a CanonicalResource to the cache
+  Future&lt;void&gt; saveCanonicalResource(CanonicalResource resource);
+
+  // Convenience lookups
+  Future&lt;StructureDefinition?&gt; getStructureDefinition(String url);
+  Future&lt;List&lt;StructureDefinition&gt;&gt; getStructureDefinitions();
+  Future&lt;CodeSystem?&gt; getCodeSystem(String url, [String? version]);
+  Future&lt;Map&lt;String, dynamic&gt;?&gt; getResourceMap(String url);
+  Future&lt;List&lt;String&gt;&gt; getResourceNames();
 }
 </code></pre>
                 <p>
-                  The base <code>ResourceCache</code> defines the interface for resource lookup operations. As an abstract class, it can't be instantiated directly.
+                  The base <code>ResourceCache</code> defines the interface for canonical resource lookup operations. As an abstract class, it can't be instantiated directly.
                 </p>
                 <h5 id="2-canonicalresourcecache">2. CanonicalResourceCache</h5>
-                <pre><code class="language-dart">class CanonicalResourceCache extends ResourceCache {
-  // Implementation of resource caching with local storage
-  
-  // Save a resource to the local cache
-  void saveCanonicalResource(Resource resource) {
-    // Implementation...
-  }
-  
-  // Other implemented methods...
-}
-</code></pre>
                 <p>
-                  This implementation provides local, in-memory caching of canonical resources. It only returns resources that have been explicitly stored in the cache.
+                  This implementation provides local, in-memory caching of canonical resources. It only returns resources that have been explicitly stored in the cache:
                 </p>
+                <pre><code class="language-dart">final cache = CanonicalResourceCache();
+await cache.saveCanonicalResource(myStructureDefinition);
+
+final sd = await cache.getStructureDefinition(
+  'http://hl7.org/fhir/StructureDefinition/Patient',
+);
+</code></pre>
                 <h5 id="3-onlineresourcecache">3. OnlineResourceCache</h5>
-                <pre><code class="language-dart">class OnlineResourceCache extends CanonicalResourceCache {
-  // Implementation with both local caching and online lookup
-  
-  @override
-  Future&lt;Resource?&gt; findResourceByUrl(String url) async {
-    // First try local cache
-    final localResource = await super.findResourceByUrl(url);
-    if (localResource != null) {
-      return localResource;
-    }
-    
-    // If not found locally, try to fetch from online source
-    // Implementation...
-  }
-  
-  // Other implemented methods...
-}
+                <pre><code class="language-dart">final cache = OnlineResourceCache();
 </code></pre>
                 <p>
-                  This extends the <code>CanonicalResourceCache</code> to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it from designated online endpoints.
+                  This extends <code>CanonicalResourceCache</code> to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it over HTTP from its canonical URL, caching the result for subsequent lookups. You can optionally pass your own 
+                  <code>http</code> <code>Client</code>.
                 </p>
                 <h4 id="resource-builders">Resource Builders</h4>
                 <p>
@@ -1311,76 +1307,55 @@
                   <li>A resource might not have all required fields until mapping is complete</li>
                   <li>Mapping rules may need to modify fields during execution</li>
                 </ul>
-                <p>To address this, FHIR-FLI implements the Builder pattern with classes that mirror FHIR resources:</p>
-                <pre><code class="language-dart">// Normal immutable FHIR class
-class Patient implements Resource {
-  Patient({
-    required this.name,  // Required field
-    this.gender,
-  });
-  
-  final List&lt;HumanName&gt; name;
-  final FhirCode&lt;PatientGender&gt;? gender;
-  
-  // Other fields and methods...
-}
+                <p>
+                  To address this, <code>fhir_r4_mapping</code> ships a complete Builder tree mirroring the FHIR classes: every class in 
+                  <code>fhir_r4</code> has a mutable <code>Builder</code> counterpart (e.g. <code>PatientBuilder</code>
+                   for <code>Patient</code>):
+                </p>
+                <pre><code class="language-dart">// Create an empty builder and fill it in incrementally
+final builder = PatientBuilder.empty();
+builder.name = [
+  HumanNameBuilder.empty()..family = FhirStringBuilder('Doe'),
+];
 
-// Mutable builder version
-class PatientBuilder implements ResourceBuilder {
-  PatientBuilder();
-  
-  List&lt;HumanNameBuilder&gt;? name;  // No longer required, can be nullable
-  FhirCode&lt;PatientGender&gt;? gender;
-  
-  // Convert to immutable FHIR resource when complete
-  Patient toResource() {
-    // Validate required fields
-    if (name == null || name!.isEmpty) {
-      throw Exception('Required field missing: name');
-    }
-    
-    // Convert builders to immutable objects
-    final nameResources = name!.map((n) =&gt; n.toResource()).toList();
-    
-    // Return immutable resource
-    return Patient(
-      name: nameResources,
-      gender: gender,
-    );
-  }
-  
-  // Other methods...
-}
+// Convert to the immutable FHIR class when complete
+final Patient patient = builder.build();
+
+// Convert an immutable resource back into a builder
+final builderAgain = patient.toBuilder;
 </code></pre>
                 <p>Key characteristics of builders:</p>
                 <ul>
-                  <li>No required fields</li>
-                  <li>All fields are nullable</li>
-                  <li>Fields are mutable</li>
-                  <li>Provide methods to convert to immutable resources</li>
+                  <li>No required fields — all fields are nullable and mutable</li>
+                  <li><code>build()</code> converts a builder (sub)tree back into the immutable FHIR class</li>
+                  <li>Every immutable class exposes <code>toBuilder</code> for the reverse direction</li>
+                  <li>
+                    <code>FhirBaseBuilder.setChildByName</code> allows dynamic, name-based writes — this is what the mapping engine uses to set fields while executing rules (the immutable classes only support dynamic 
+                    <em>reads</em> via <code>getChildrenByName</code>)
+                  </li>
                 </ul>
                 <h3 id="creating-and-using-the-mapping-engine" anchor="true">
                   <span>Creating and Using the Mapping Engine</span><a href="/docs/mapping/fhir_mapping_engine#creating-and-using-the-mapping-engine">#</a>
                 </h3>
                 <h4 id="engine-creation">Engine Creation</h4>
-                <p>Like the parser, the mapping engine must be created asynchronously:</p>
+                <p>
+                  Like the parser, the mapping engine must be created asynchronously. It takes a single argument — the resource cache; the StructureMap itself is passed to each transform call:
+                </p>
                 <pre><code class="language-dart">// Create a resource cache
 final resourceCache = CanonicalResourceCache();
 
-// Load a StructureMap (possibly from the parser)
-final structureMap = /* your StructureMap */;
-
 // Create the mapping engine
-final mapEngine = await FhirMapEngine.create(resourceCache, structureMap);
+final mapEngine = await FhirMapEngine.create(resourceCache);
 </code></pre>
                 <h4 id="basic-transformation">Basic Transformation</h4>
-                <p>
-                  The simplest way to transform data is with the <code>transform</code> or <code>transformFromFhir</code>
-                   methods:
-                </p>
-                <pre><code class="language-dart">// Transform a source resource to a target using the loaded map
-Future&lt;Resource&gt; transformPatientToPerson(Patient patient) async {
-  // If no target is provided, one will be created based on the map's target type
+                <p>The simplest way to transform data is with the <code>transformFromFhir</code> method:</p>
+                <pre><code class="language-dart">// Transform a source resource to a target using a StructureMap
+Future&lt;Person&gt; transformPatientToPerson(
+  Patient patient,
+  StructureMap structureMap,
+) async {
+  // If no target is provided, one will be created based on the map's
+  // target type
   final result = await mapEngine.transformFromFhir(
     patient,          // Source resource
     structureMap,     // The StructureMap to use
@@ -1391,28 +1366,32 @@ Future&lt;Resource&gt; transformPatientToPerson(Patient patient) async {
   return result as Person;
 }
 </code></pre>
+                <p>
+                  Note that on failure the engine does not throw: it returns an <code>OperationOutcome</code> describing the error, so check the runtime type of the result before casting.
+                </p>
                 <h4 id="working-with-builders">Working with Builders</h4>
                 <p>
-                  For more control or when dealing with partially constructed resources, you can work directly with builders:
+                  For more control or when dealing with partially constructed resources, you can work directly with builders. 
+                  <code>transformBuilder</code> accepts builders for source and target and returns the already-built (immutable) result:
                 </p>
-                <pre><code class="language-dart">Future&lt;Resource?&gt; transformWithBuilders(
+                <pre><code class="language-dart">Future&lt;FhirBase&gt; transformWithBuilders(
   FhirBaseBuilder source,
   StructureMap map,
   FhirBaseBuilder? target,
 ) async {
   // Create the engine
-  final mapEngine = await FhirMapEngine.create(resourceCache, map);
+  final mapEngine = await FhirMapEngine.create(resourceCache);
   
   // Transform using builders
-  final transformedBuilder = await mapEngine.transformBuilder(
-    '',        // Optional group name (empty uses the default group)
+  final result = await mapEngine.transformBuilder(
+    '',        // appInfo (application context; pass '' if unused)
     source,    // Source resource builder
     map,       // The StructureMap to use
     target,    // Target resource builder (can be null)
   );
   
-  // Convert the builder to a resource if transformation succeeded
-  return transformedBuilder?.build();
+  // result is the built FHIR object (or an OperationOutcome on failure)
+  return result;
 }
 </code></pre>
                 <h4 id="extended-type-creation">Extended Type Creation</h4>
@@ -1442,36 +1421,31 @@ mapEngine.extendedEmptyFromType = customEmptyFromType;
                 <p>You can select the appropriate resource cache based on your needs:</p>
                 <pre><code class="language-dart">// For local-only operation
 final localCache = CanonicalResourceCache();
-localCache.saveCanonicalResource(structureDefinitionA);
-localCache.saveCanonicalResource(valueSetB);
+await localCache.saveCanonicalResource(structureDefinitionA);
+await localCache.saveCanonicalResource(valueSetB);
 
 // For mixed local/online operation
 final onlineCache = OnlineResourceCache();
-onlineCache.saveCanonicalResource(structureDefinitionA);  // Priority local cache
+await onlineCache.saveCanonicalResource(structureDefinitionA);  // Priority local cache
 // Other resources will be fetched from online sources if needed
 </code></pre>
-                <h4 id="handling-transformation-context">Handling Transformation Context</h4>
-                <p>The mapping engine maintains a transformation context during execution:</p>
-                <pre><code class="language-dart">// The context is created automatically during engine creation
-final context = TransformationContext(resolver);
-
-// You can access the context during or after mapping
-final generatedResources = context.getGeneratedResources();
-</code></pre>
                 <h4 id="pre-loading-required-resources">Pre-loading Required Resources</h4>
-                <p>For optimal performance, pre-load resources the mapping will need:</p>
+                <p>For optimal performance (and for offline operation), pre-load resources the mapping will need:</p>
                 <pre><code class="language-dart">// Pre-load structure definitions
-final resourceCache = CanonicalResourceCache()
-  ..saveCanonicalResource(structureDefinitionA)
-  ..saveCanonicalResource(structureDefinitionB)
-  ..saveCanonicalResource(valueSetC);
+final resourceCache = CanonicalResourceCache();
+await resourceCache.saveCanonicalResource(structureDefinitionA);
+await resourceCache.saveCanonicalResource(structureDefinitionB);
+await resourceCache.saveCanonicalResource(valueSetC);
 
 // Create the engine with the pre-loaded cache
-final mapEngine = await FhirMapEngine.create(resourceCache, structureMap);
+final mapEngine = await FhirMapEngine.create(resourceCache);
 </code></pre>
                 <h3 id="complete-example" anchor="true"><span>Complete Example</span><a href="/docs/mapping/fhir_mapping_engine#complete-example">#</a></h3>
                 <p>Here's a complete example that demonstrates the mapping process:</p>
-                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+                <pre><code class="language-dart">import 'dart:convert';
+import 'dart:io';
+
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
 
 Future&lt;void&gt; main() async {
@@ -1479,8 +1453,10 @@ Future&lt;void&gt; main() async {
   final resourceCache = OnlineResourceCache();
   
   // Step 2: Pre-load any local resources
-  resourceCache.saveCanonicalResource(await loadStructureDefinition('patient.json'));
-  resourceCache.saveCanonicalResource(await loadStructureDefinition('person.json'));
+  await resourceCache
+      .saveCanonicalResource(await loadStructureDefinition('patient.json'));
+  await resourceCache
+      .saveCanonicalResource(await loadStructureDefinition('person.json'));
   
   // Step 3: Create or load the StructureMap
   final parser = await StructureMapParser.create();
@@ -1488,11 +1464,11 @@ Future&lt;void&gt; main() async {
   final structureMap = parser.parse(mapContent, 'fhirmap');
   
   // Step 4: Create the mapping engine
-  final mapEngine = await FhirMapEngine.create(resourceCache, structureMap);
+  final mapEngine = await FhirMapEngine.create(resourceCache);
   
   // Step 5: Load source data
   final patientJson = jsonDecode(await File('sample_patient.json').readAsString());
-  final patient = Patient.fromJson(patientJson);
+  final patient = Patient.fromJson(patientJson as Map&lt;String, dynamic&gt;);
   
   // Step 6: Define custom builder handler (if needed)
   mapEngine.extendedEmptyFromType = (String type) {
@@ -1508,6 +1484,7 @@ Future&lt;void&gt; main() async {
   );
   
   // Step 8: Use the transformed data
+  // (on failure the engine returns an OperationOutcome instead)
   final person = result as Person;
   print('Transformed patient to person: ${person.name?.first.family}');
   
@@ -1517,9 +1494,9 @@ Future&lt;void&gt; main() async {
 }
 
 // Helper function to load structure definitions
-Future&lt;Resource&gt; loadStructureDefinition(String filename) async {
+Future&lt;StructureDefinition&gt; loadStructureDefinition(String filename) async {
   final json = jsonDecode(await File(filename).readAsString());
-  return StructureDefinition.fromJson(json);
+  return StructureDefinition.fromJson(json as Map&lt;String, dynamic&gt;);
 }
 </code></pre>
                 <h3 id="testing-mappings" anchor="true"><span>Testing Mappings</span><a href="/docs/mapping/fhir_mapping_engine#testing-mappings">#</a></h3>
@@ -1531,7 +1508,7 @@ Future&lt;Resource&gt; loadStructureDefinition(String filename) async {
   FhirBaseBuilder? target, [
   FhirBaseBuilder? Function(String)? extendedEmptyFromType,
 ]) async {
-  final mapEngine = await FhirMapEngine.create(cache, map)
+  final mapEngine = await FhirMapEngine.create(cache)
     ..extendedEmptyFromType = extendedEmptyFromType;
   final transform = await mapEngine.transformBuilder('', source, map, target);
   return transform;

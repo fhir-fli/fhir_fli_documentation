@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1259,18 +1262,11 @@
   super.system,
   super.code,
   super.disallowExtensions,
-  super.objectPath = 'Age',
 });
 </code></pre>
-                <h4 id="empty-constructor">Empty Constructor</h4>
                 <p>
-                  Each class provides an <code>.empty()</code> factory constructor that creates an instance with placeholder values for required fields. This is particularly useful for FHIR mapping operations where you need to initialize objects without specific data yet.
-                </p>
-                <pre><code class="language-dart">// Create an empty Age object with minimal initialization
-final age = Age.empty();
-</code></pre>
-                <p>
-                  The empty constructor is primarily used in FHIR mapping scenarios and not typically needed by most developers in everyday use.
+                  All of these classes are immutable. If you need mutable objects (for example, to build up a resource incrementally during a FHIR mapping operation), the 
+                  <a href="docs/mapping/fhir_mapping">fhir_r4_mapping</a> package provides a parallel set of mutable Builder classes for that purpose.
                 </p>
                 <h3 id="common-utility-methods-and-properties" anchor="true">
                   <span>Common Utility Methods and Properties</span><a href="/docs/core/class_structure#common-utility-methods-and-properties">#</a>
@@ -1288,7 +1284,11 @@ String get fhirType =&gt; 'Age';
                 </p>
                 <h4 id="reflection-like-functionality">Reflection-Like Functionality</h4>
                 <p>
-                  Since Flutter doesn't fully support Dart reflection, FHIR-FLI implements several methods to enable reflection-like capabilities:
+                  Since Flutter doesn't fully support Dart reflection, FHIR-FLI implements several methods to enable reflection-like capabilities. These methods (<code>fhirType</code>, 
+                  <code>listChildrenNames</code>, <code>getChildrenByName</code>, <code>getChildByName</code>, and friends) make up the 
+                  <code>FhirNode</code> contract from <a href="https://pub.dev/packages/fhir_node"><code>package:fhir_node</code></a>, which 
+                  <code>FhirBase</code> implements - it's the same contract the model-independent <code>fhir_path</code>
+                   and <code>cql</code> engines use to navigate resources.
                 </p>
                 <h5 id="listchildrennames">listChildrenNames()</h5>
                 <p>Returns a list of all available field names in the FHIR resource:</p>
@@ -1325,11 +1325,22 @@ final updatedAge = age.copyWith(
   unit: FhirString('years'),
 );
 </code></pre>
-                <p>Importantly, similar to freezed, you CAN now pass a null value to clear a field if you so wish.</p>
+                <p>
+                  Importantly, similar to freezed, you CAN now pass a null value to clear a field if you so wish. (If the field is required by the FHIR specification, passing null keeps the current value instead of clearing it.)
+                </p>
                 <h5 id="equalsdeep">equalsDeep()</h5>
                 <p>Performs a deep comparison between two instances, checking if all field values are equal:</p>
                 <pre><code class="language-dart">// Check if two Age objects are deeply equal
 final areEqual = age1.equalsDeep(age2);
+</code></pre>
+                <p>
+                  There are also null-safe static helpers on <code>FhirBase</code> for comparing possibly-null values and lists:
+                </p>
+                <pre><code class="language-dart">// Both may be null - two nulls are considered equal
+final sameValue = FhirBase.equalsDeepWithNull(age1.value, age2.value);
+
+// Element-by-element deep comparison of two lists
+final sameNames = FhirBase.listEquals(patient1.name, patient2.name);
 </code></pre>
                 <h3 id="usage-example" anchor="true"><span>Usage Example</span><a href="/docs/core/class_structure#usage-example">#</a></h3>
                 <p>Here's how these utility methods might be used together:</p>
@@ -1347,9 +1358,9 @@ print(age.fhirType); // Output: Age
 final valueField = age.getChildByName('value');
 print(valueField?.toString()); // Output: 65
 
-// Update a field by name
-final updatedAge = age.setChildByName('unit', FhirString('months')) as Age;
-print(updatedAge.unit?.value); // Output: months
+// Update a field with copyWith
+final updatedAge = age.copyWith(unit: FhirString('months'));
+print(updatedAge.unit?.valueString); // Output: months
 
 </code></pre>
                 <p>

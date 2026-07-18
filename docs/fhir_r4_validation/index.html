@@ -1188,7 +1188,10 @@
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Demos</summary>
-                <ul><li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li></ul>
+                <ul>
+                  <li><div><a href="docs/demos/fhir_path_demo">FHIRPath Demo</a></div></li>
+                  <li><div><a href="docs/demos/fhir_mapping_demo">FHIR Mapping Demo</a></div></li>
+                </ul>
               </details>
               <details class="sidebar-group collapsible">
                 <summary>Botswana AMR IG</summary>
@@ -1244,9 +1247,9 @@
                 </p>
                 <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_validation#installation">#</a></h3>
                 <pre><code class="language-yaml">dependencies:
-  fhir_r4_validation: ^0.4.0
-  fhir_r4: ^0.4.3
-  fhir_r4_path: ^0.4.4
+  fhir_r4_validation: ^0.6.0
+  fhir_r4: ^0.6.1
+  fhir_r4_path: ^0.6.0
 </code></pre>
                 <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_validation#key-features">#</a></h3>
                 <ul>
@@ -1256,7 +1259,10 @@
                   </li>
                   <li><strong>Binding Validation</strong>: Validates code bindings against ValueSets and CodeSystems</li>
                   <li><strong>Extension Validation</strong>: Validates extensions and their structure</li>
-                  <li><strong>Invariant Validation</strong>: Validates FHIRPath invariants defined in StructureDefinitions</li>
+                  <li>
+                    <strong>Invariant Validation</strong>: Validates FHIRPath invariants defined in StructureDefinitions, evaluated with the model-independent FHIRPath engine (via 
+                    <code>fhir_r4_path</code>)
+                  </li>
                   <li>
                     <strong>Questionnaire Response Validation</strong>: Specialized validation for QuestionnaireResponse resources
                   </li>
@@ -1420,10 +1426,10 @@ final results = await validator.validateFhirResource(
                 <p>The package includes specialized validation for QuestionnaireResponse resources:</p>
                 <pre><code class="language-dart">import 'package:fhir_r4_validation/fhir_r4_validation.dart';
 
-// Validate a QuestionnaireResponse against its Questionnaire
+// Validate a QuestionnaireResponse against its referenced Questionnaire.
+// The Questionnaire is resolved through the provided ResourceCache.
 final results = await validateQuestionnaireResponse(
   questionnaireResponse: questionnaireResponse,
-  questionnaire: questionnaire,
   resourceCache: resourceCache,
 );
 </code></pre>
@@ -1466,7 +1472,9 @@ final resourceCache = CanonicalResourceCache();
                 <h3 id="example-complete-validation-workflow" anchor="true">
                   <span>Example: Complete Validation Workflow</span><a href="/docs/fhir_r4_validation#example-complete-validation-workflow">#</a>
                 </h3>
-                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+                <pre><code class="language-dart">import 'dart:convert';
+
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4_validation/fhir_r4_validation.dart';
 
 Future&lt;void&gt; validatePatient(Patient patient) async {
@@ -1518,7 +1526,9 @@ Future&lt;void&gt; validatePatient(Patient patient) async {
                 <p>The validation package integrates seamlessly with other FHIR-FLI packages:</p>
                 <ul>
                   <li><strong>fhir_r4</strong>: Uses FHIR resource models</li>
-                  <li><strong>fhir_r4_path</strong>: Uses FHIRPath for invariant validation</li>
+                  <li>
+                    <strong>fhir_r4_path</strong>: Uses the model-independent FHIRPath engine to evaluate invariants (constraints)
+                  </li>
                   <li><strong>fhir_r4_db</strong>: Can validate resources before saving to the database</li>
                   <li><strong>fhir_r4_at_rest</strong>: Can validate resources before sending to a FHIR server</li>
                 </ul>
