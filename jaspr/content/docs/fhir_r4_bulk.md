@@ -11,8 +11,8 @@ The `fhir_r4_bulk` library provides tools for working with FHIR bulk data operat
 
 ```yaml
 dependencies:
-  fhir_r4_bulk: ^0.4.0
-  fhir_r4: ^0.4.2
+  fhir_r4_bulk: ^0.6.0
+  fhir_r4: ^0.6.1
 ```
 
 ### Key Features
@@ -80,7 +80,7 @@ await File('export.zip').writeAsBytes(zipBytes!);
 
 The FHIR Bulk Data Export operation (`$export`) allows you to retrieve large amounts of data from a FHIR server. The library supports three types of export:
 
-1. **System-level export** - Export data for all patients
+1. **System-level export** - Export all data from the server
 2. **Group-level export** - Export data for patients in a specific group
 3. **Patient-level export** - Export data for all patients
 
@@ -91,7 +91,7 @@ import 'package:fhir_r4_bulk/fhir_r4_bulk.dart';
 // System-level export
 final systemRequest = BulkRequestSystem(
   base: Uri.parse('https://example.com/fhir'),
-  since: FhirDateTime('2023-01-01'),
+  since: FhirDateTime.fromString('2023-01-01'),
   types: [
     WhichResource(R4ResourceType.Patient),
     WhichResource(R4ResourceType.Observation),
@@ -131,7 +131,7 @@ The export operation supports several options:
 final request = BulkRequestSystem(
   base: Uri.parse('https://example.com/fhir'),
   // Only include resources updated since this date
-  since: FhirDateTime('2023-01-01'),
+  since: FhirDateTime.fromString('2023-01-01'),
   // Specific resource types to include
   types: [WhichResource(R4ResourceType.Patient)],
   // Additional filters (server-dependent)
@@ -147,7 +147,7 @@ final request = BulkRequestSystem(
 
 #### Handling Results
 
-The result is a list of FHIR resources:
+The request follows the FHIR async pattern: the library kicks off the export, polls the server's status endpoint (`Content-Location`) until the job completes, then downloads and parses the output files. It throws a `TimeoutException` if polling exceeds the default timeout (1 hour) or maximum attempts (1000). The result is a list of FHIR resources:
 
 ```dart
 final resources = await request.request();
@@ -155,7 +155,7 @@ final resources = await request.request();
 // Check for errors (OperationOutcome)
 for (final resource in resources) {
   if (resource is OperationOutcome) {
-    print('Error: ${resource.issue?.first.diagnostics?.value}');
+    print('Error: ${resource.issue.first.diagnostics?.valueString}');
   }
 }
 
@@ -195,19 +195,17 @@ final importRequest = BulkImportRequest(
   inputSource: 'https://source-system.org',
   // If the NDJSON files require authentication
   credentialHttpBasic: 'username:password',
-  // Control the batch size
+  // Control the batch size used by the server (HAPI default = 500)
   maxBatchResourceCount: 1000,
-  // Add authorization or other headers
-  headers: {'Authorization': 'Bearer token'},
 );
 
 // Execute the import
 final outcome = await importRequest.importData();
 
 // Check the outcome
-if (outcome.issue != null && outcome.issue!.isNotEmpty) {
+if (outcome.issue.isNotEmpty) {
   // The operation outcome typically contains a job ID in the diagnostics
-  final jobId = outcome.issue!.first.diagnostics?.value;
+  final jobId = outcome.issue.first.diagnostics?.valueString;
   print('Import job started with ID: $jobId');
 }
 ```
@@ -219,7 +217,7 @@ The server typically responds with an `OperationOutcome` containing a job ID tha
 - Bulk operations are designed for large datasets
 - The NDJSON processing is memory-efficient, handling resources one at a time
 - For very large files, consider streaming approaches when possible
-- The library automatically handles paginated responses from servers
+- Export requests handle the async kick-off / status-polling / file-download cycle for you
 
 ### Error Handling
 
@@ -231,8 +229,11 @@ final resources = await bulkRequest.request();
 // Check for errors
 for (final resource in resources) {
   if (resource is OperationOutcome) {
-    for (final issue in resource.issue ?? []) {
-      print('Error: ${issue.severity?.value} - ${issue.diagnostics?.value}');
+    for (final issue in resource.issue) {
+      print(
+        'Error: ${issue.severity?.valueString} - '
+        '${issue.diagnostics?.valueString}',
+      );
     }
   }
 }

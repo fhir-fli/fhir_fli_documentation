@@ -21,8 +21,8 @@ Add the dependencies to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.4.0
-  fhir_r4: ^0.4.4
+  fhir_r4_auth: ^0.6.0
+  fhir_r4: ^0.6.1
 ```
 
 For R5 or R6, use `fhir_r5_auth`/`fhir_r6_auth` and `fhir_r5`/`fhir_r6` instead.
@@ -132,5 +132,5 @@ void main() {
 
 ### Next Steps
 
-1. **[Choose your launch type](/docs/auth/standalone-launch)** - Standalone or EHR
-2. **[Overview and API reference](/docs/auth)** - Full feature overview
+1. **[Choose your launch type](docs/auth/standalone-launch)** - Standalone or EHR
+2. **[Overview and API reference](docs/auth/fhir_r4_auth)** - Full feature overview

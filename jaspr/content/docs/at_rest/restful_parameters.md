@@ -53,7 +53,7 @@ parameters.addFormat('json');
 
 // Request summary data
 parameters.requestSummary(Summary.true_);
-// Other summary options: data, text, count
+// Other summary options: false_, text, count, data, none
 ```
 
 #### Custom Parameters
@@ -128,9 +128,10 @@ Available modifiers depend on the parameter type:
 |----------------|---------------------|-------------|
 | String | `eq`, `ne` | Exact match, not equal |
 | Quantity | `gt`, `lt`, `ge`, `le`, `ap` | Numeric comparisons |
-| Date | `gt`, `lt`, `ge`, `le`, `ap` | Date comparisons |
+| Date | `eq`, `ne`, `gt`, `lt`, `ge`, `le`, `sa`, `eb`, `ap` | Date comparisons |
+| Token | any | Prefixes the `system\|value` pair |
 
-* Token and Reference Search Modifiers are not yet available
+Reference search parameters do not have dedicated methods in the generated search classes; use the generic `add()` method for those (e.g. `parameters.add('subject', 'Patient/12345')`).
 
 ### Chaining Multiple Conditions
 
@@ -147,7 +148,7 @@ final search = SearchPatient()
   .family(FhirString('Smith'));
 
 // The resulting query would be:
-// Patient?gender=female&gtbirthdate=1980-01-01&family=Smith
+// Patient?gender=female&birthdate=gt1980-01-01&family=Smith
 ```
 
 ### Token Parameters
@@ -193,7 +194,9 @@ You can search for resources where a parameter is missing using the special `:mi
 // Add a parameter directly
 parameters.add('gender:missing', 'true');
 
-// Or use the search classes (this will need to be added in a future version)
+// The generated search classes have no dedicated :missing helpers;
+// the generic add() method works on them too, since they extend
+// RestfulParameters
 ```
 
 ### Combined Searches
@@ -203,7 +206,7 @@ For complex searches across multiple resources, you can use the `FhirSearchReque
 ```dart
 // Search for all resources mentioning "Smith"
 final search = SearchResource()
-  .parameters.addAll({
+  ..parameters.addAll({
     '_type': 'Patient,Practitioner',
     'name': 'Smith',
   });

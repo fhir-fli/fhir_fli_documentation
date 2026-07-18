@@ -9,7 +9,7 @@ This guide walks you through your first session with FHIR ANT — from installat
 
 ### Install
 
-Download FHIR ANT from the [Google Play Store](https://play.google.com/store/apps/details?id=com.fhirfli.fhirant). It also runs as a Linux desktop app or a standalone CLI server (see [CLI Usage](fhirant_cli)).
+Download FHIR ANT from the [Google Play Store](https://play.google.com/store/apps/details?id=com.fhirfli.fhirant). It also runs as a Linux desktop app or a standalone CLI server (see [CLI Usage](docs/fhirant/fhirant_cli)).
 
 ### First Launch
 
@@ -267,7 +267,7 @@ curl -X POST "$BASE/\$restore" \
 
 ### Connecting from a FHIR Client
 
-FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the [fhir_r4_at_rest](../at_rest/fhir_r4_at_rest) Dart package:
+FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the [fhir_r4_at_rest](docs/at_rest/fhir_r4_at_rest) Dart package:
 
 ```dart
 final request = FhirSearchRequest(
@@ -300,7 +300,7 @@ Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see
 
 ### Next Steps
 
-- [Capabilities](fhirant_capabilities) — full feature matrix
-- [API Reference](fhirant_api_reference) — every endpoint
-- [Security & Auth](fhirant_security) — OAuth 2.0, SMART scopes, password policy
-- [CLI Usage](fhirant_cli) — run the server from the command line
+- [Capabilities](docs/fhirant/fhirant_capabilities) — full feature matrix
+- [API Reference](docs/fhirant/fhirant_api_reference) — every endpoint
+- [Security & Auth](docs/fhirant/fhirant_security) — OAuth 2.0, SMART scopes, password policy
+- [CLI Usage](docs/fhirant/fhirant_cli) — run the server from the command line

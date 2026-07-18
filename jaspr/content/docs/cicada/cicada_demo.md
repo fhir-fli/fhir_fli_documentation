@@ -39,4 +39,4 @@ The demo includes three sample patients:
 3. Tap "Get Forecast" to run the CDC CDSi forecasting engine
 4. Results show which vaccines are due, with earliest, recommended, and past-due dates
 
-The forecast runs entirely in-browser using the [Cicada engine](cicada_overview) — no server calls required.
+The forecast runs entirely in-browser using the [Cicada engine](docs/cicada/cicada_overview) — no server calls required.

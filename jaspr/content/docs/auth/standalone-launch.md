@@ -86,7 +86,7 @@ final client = SmartFhirClient(
 
 ```dart
 try {
-  await client.authenticate();
+  await client.login();
   print('Successfully authenticated!');
   
   // Client is now ready to make FHIR requests
@@ -101,36 +101,45 @@ try {
 
 #### Step 3: Make FHIR Requests
 
-Once authenticated, use the client to make FHIR requests:
+`SmartFhirClient` is an authenticated `http.Client`. Once logged in, pass it to the typed request builders from the [`fhir_r4_at_rest`](docs/at_rest/fhir_r4_at_rest) package (or use it with any HTTP code) and it will attach the access token for you:
 
 ```dart
+import 'dart:convert';
+import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_at_rest/fhir_r4_at_rest.dart';
+
 // Read a resource
-final patient = await client.read(
+final readRequest = FhirReadRequest(
+  base: Uri.parse(client.fhirBaseUrl.toString()),
   resourceType: 'Patient',
   id: 'patient-id',
+  client: client, // Authenticated client handles auth headers
+);
+final response = await readRequest.sendRequest();
+final patient = Patient.fromJson(
+  jsonDecode(response.body) as Map<String, dynamic>,
 );
 
 // Search for resources
-final observations = await client.search(
+final searchRequest = FhirSearchRequest(
+  base: Uri.parse(client.fhirBaseUrl.toString()),
   resourceType: 'Observation',
-  parameters: {
-    'patient': 'patient-id',
-    'category': 'vital-signs',
-    '_count': '10',
-  },
+  search: SearchObservation()
+    .category(FhirString('vital-signs')),
+  parameters: RestfulParameters().addCount(10),
+  client: client,
 );
+final searchResponse = await searchRequest.sendRequest();
 
 // Create a resource
 final newObservation = Observation(/* ... */);
-final created = await client.create(
-  resource: newObservation,
+final createRequest = FhirCreateRequest(
+  base: Uri.parse(client.fhirBaseUrl.toString()),
+  resourceType: 'Observation',
+  resource: newObservation.toJson(),
+  client: client,
 );
-
-// Update a resource
-patient.name?.first?.text = FhirString('Updated Name');
-final updated = await client.update(
-  resource: patient,
-);
+final created = await createRequest.sendRequest();
 ```
 
 ### Complete Example
@@ -138,8 +147,11 @@ final updated = await client.update(
 Here's a complete Flutter app with standalone launch:
 
 ```dart
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fhir_r4_auth/fhir_r4_auth.dart';
+import 'package:fhir_r4_at_rest/fhir_r4_at_rest.dart';
 import 'package:fhir_r4/fhir_r4.dart';
 
 void main() {
@@ -191,17 +203,24 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      await _client!.authenticate();
+      await _client!.login();
       
-      // Get patient ID from token response
-      final patientId = _client!.patientId;
+      // Get the patient ID from the token response's launch context
+      final patientId = _client!.patientContext;
       
       if (patientId != null) {
-        // Fetch patient data
-        final patient = await _client!.read(
+        // Fetch patient data with fhir_r4_at_rest, using the
+        // authenticated client
+        final request = FhirReadRequest(
+          base: Uri.parse(_client!.fhirBaseUrl.toString()),
           resourceType: 'Patient',
           id: patientId,
-        ) as Patient;
+          client: _client!,
+        );
+        final response = await request.sendRequest();
+        final patient = Patient.fromJson(
+          jsonDecode(response.body) as Map<String, dynamic>,
+        );
         
         setState(() {
           _patient = patient;
@@ -356,8 +375,10 @@ Add session management to handle timeouts:
 final client = SmartFhirClient(
   config: config,
   sessionManager: SessionManager(
-    idleTimeout: Duration(minutes: 15),
-    absoluteTimeout: Duration(hours: 8),
+    config: SessionConfig(
+      idleTimeout: Duration(minutes: 15),
+      absoluteTimeout: Duration(hours: 8),
+    ),
   ),
 );
 
@@ -383,7 +404,7 @@ Handle common error scenarios:
 
 ```dart
 try {
-  await client.authenticate();
+  await client.login();
 } on AuthenticationException catch (e) {
   // User cancelled or auth failed
   if (e.message.contains('cancelled')) {
@@ -416,5 +437,5 @@ Test standalone launch in your app:
 
 ### Next Steps
 
-- **[Installation guide](/docs/auth/installation)** - Platform-specific setup
-- **[Auth overview](/docs/auth)** - Full API reference and feature overview
+- **[Installation guide](docs/auth/installation)** - Platform-specific setup
+- **[Auth overview](docs/auth/fhir_r4_auth)** - Full API reference and feature overview

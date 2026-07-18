@@ -217,7 +217,7 @@ final bundle = Bundle(
   entry: [
     BundleEntry(
       request: BundleRequest(
-        method: HTTPVerb.POST,
+        method: HTTPVerb.pOST,
         url: FhirUri('Patient'),
       ),
       resource: Patient(
@@ -252,13 +252,13 @@ final bundle = Bundle(
   entry: [
     BundleEntry(
       request: BundleRequest(
-        method: HTTPVerb.GET,
+        method: HTTPVerb.gET,
         url: FhirUri('Patient/12345'),
       ),
     ),
     BundleEntry(
       request: BundleRequest(
-        method: HTTPVerb.POST,
+        method: HTTPVerb.pOST,
         url: FhirUri('Observation'),
       ),
       resource: Observation(
@@ -324,7 +324,9 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/Patient/12345/$everything?_format=json
 ```
 
-### [Request Parameters](restful_parameters)
+Operations use GET by default. Pass `usePost: true` to send the operation as a POST with the parameters JSON-encoded in the request body instead of the URL.
+
+### [Request Parameters](docs/at_rest/restful_parameters)
 
 All request classes support optional parameters through the `RestfulParameters` class:
 
@@ -387,6 +389,28 @@ try {
   print('Exception: $e');
 }
 ```
+
+### Structured Response Parsing
+
+A FHIR server usually responds with a single resource, a Bundle, or an OperationOutcome. The `parseRequestResult` function sorts whatever came back into a `ReturnResults` object with separate lists for resources, informational OperationOutcomes, and error OperationOutcomes:
+
+```dart
+final response = await request.sendRequest();
+final resource = Resource.fromJson(jsonDecode(response.body));
+final result = parseRequestResult(resource);
+
+for (final resource in result.resources) {
+  print('Retrieved resource: ${resource.id}');
+}
+for (final error in result.errorOperationOutcomes) {
+  print('Error: ${error.issue.first.diagnostics}');
+}
+for (final info in result.informationOperationOutcomes) {
+  print('Info: ${info.issue.first.diagnostics}');
+}
+```
+
+If you expect a specific resource type, use `parseRequestResultForType<T>`. Resources of type `T` land in `result.resources`, while resources of any other type are wrapped in error OperationOutcomes for troubleshooting.
 
 ### Conclusion
 

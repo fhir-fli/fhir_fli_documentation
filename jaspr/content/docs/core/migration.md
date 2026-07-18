@@ -39,7 +39,7 @@ dependencies:
 #### New Package
 ```yaml
 dependencies:
-  fhir_r4: ^0.4.2
+  fhir_r4: ^0.6.1
 ```
 
 **Action Required:** Update your `pubspec.yaml` and run `flutter pub get`.
@@ -138,22 +138,26 @@ final str = FhirString('Hello');
 final date = FhirDate('2024-01-01');
 final id = FhirId('patient-123');
 
-// New - Still works!
+// New - FhirString and FhirId still work the same way
 final str = FhirString('Hello');
-final date = FhirDate('2024-01-01');
 final id = FhirId('patient-123');
 
+// New - Date/time types now use named constructors
+final date = FhirDate.fromString('2024-01-01');
+final dateTime = FhirDateTime.fromString('2024-01-01T12:00:00Z');
+
 // New - Extension methods (recommended)
-final str = 'Hello'.toFhirString;
-final date = '2024-01-01'.toFhirDate;
+final str2 = 'Hello'.toFhirString;
+final date2 = '2024-01-01'.toFhirDate;
 
 // New - With element/extensions
-final str = FhirString(
+// (note: FhirExtension's url field is a FhirString)
+final str3 = FhirString(
   'Hello',
   element: Element(
     extension_: [
       FhirExtension(
-        url: FhirUri('http://example.org/ext'),
+        url: 'http://example.org/ext'.toFhirString,
         valueString: FhirString('metadata'),
       ),
     ],
@@ -172,11 +176,11 @@ Different primitive types have different getter names in the new package:
 
 // Integer  
 // Old: myInt.value  (int?)
-// New: myInt.valueInteger  (int?)
+// New: myInt.valueInt  (int?)
 
 // Decimal
 // Old: myDecimal.value  (double?)
-// New: myDecimal.valueDecimal  (double?)
+// New: myDecimal.valueDouble  (double?) or myDecimal.valueNum  (num?)
 
 // DateTime
 // Old: myDateTime.value  (DateTime?)
@@ -241,21 +245,21 @@ final patient = Patient(
 
 #### New Package
 ```dart
-// Option 1: Same as old (still works!)
+// Option 1: Direct constructors
 final patient = Patient(
-  id: FhirId('123'),
+  id: FhirString('123'),  // Note: Resource.id is a FhirString now, not FhirId
   name: [
     HumanName(
       family: FhirString('Doe'),
       given: [FhirString('John')],
     ),
   ],
-  birthDate: FhirDate('1990-01-01'),
+  birthDate: FhirDate.fromString('1990-01-01'),
 );
 
 // Option 2: Using extension methods (recommended)
 final patient = Patient(
-  id: '123'.toFhirId,
+  id: '123'.toFhirString,
   name: [
     HumanName(
       family: 'Doe'.toFhirString,
@@ -266,7 +270,7 @@ final patient = Patient(
 );
 ```
 
-**Migration Impact:** Minimal. Most construction code works as-is, but you should consider adopting extension methods for cleaner code.
+**Migration Impact:** Small. Most construction code works as-is, with two notable exceptions: `Resource.id` is now a `FhirString` (not a `FhirId`), and the date/time types (`FhirDate`, `FhirDateTime`, `FhirInstant`) are created with named constructors like `FhirDate.fromString(...)` or the extension methods. Consider adopting extension methods for cleaner code.
 
 ---
 
@@ -428,7 +432,7 @@ if (value is FhirString) {
 ```dart
 // New package - Type-safe with abstract classes
 final extension = FhirExtension(
-  url: FhirUri('http://example.org/ext'),
+  url: 'http://example.org/ext'.toFhirString,
   valueX: FhirString('some value'),  // Note: valueX, not value
 );
 
@@ -464,11 +468,11 @@ if (str != null) {
 ```dart
 // Old
 final value = extension.value;
-final product = carePlan.product;
+final product = carePlanDetail.product;
 
 // New
 final value = extension.valueX;
-final product = carePlan.productX;
+final product = carePlanDetail.productX;
 ```
 
 3. **Use type-specific getters** instead of casting:
@@ -610,7 +614,7 @@ final id = patient.getChildByName('id');
 ```dart
 // Create modified copies (improved from old package)
 final updatedPatient = patient.copyWith(
-  id: '456'.toFhirId,
+  id: '456'.toFhirString,
   active: true.toFhirBoolean,
 );
 
@@ -778,7 +782,7 @@ if (extension.value is Quantity) {
 **New:**
 ```dart
 final extension = FhirExtension(
-  url: 'http://example.org/height'.toFhirUri,
+  url: 'http://example.org/height'.toFhirString,
   valueX: Quantity(
     value: 175.0.toFhirDecimal,
     unit: 'cm'.toFhirString,
@@ -788,7 +792,7 @@ final extension = FhirExtension(
 // Accessing - Much cleaner!
 final quantity = extension.valueQuantity;
 if (quantity != null) {
-  final value = quantity.value?.valueDecimal;
+  final value = quantity.value?.valueDouble;
 }
 ```
 
@@ -804,7 +808,7 @@ Use this checklist to systematically update your code:
 
 #### 2. Primitive Types
 - [ ] Find all `.value` accessors on FHIR primitive types
-- [ ] Replace with appropriate typed getters (`.valueString`, `.valueInteger`, `.valueBoolean`, etc.)
+- [ ] Replace with appropriate typed getters (`.valueString`, `.valueInt`, `.valueBoolean`, etc.)
 - [ ] Update any primitive type constructors if using element/extensions
 
 #### 3. Enums
@@ -881,15 +885,15 @@ Use this checklist to systematically update your code:
 | Task | Old Package | New Package |
 |------|-------------|-------------|
 | Get string value | `.value` | `.valueString` |
-| Get int value | `.value` | `.valueInteger` |
+| Get int value | `.value` | `.valueInt` |
 | Get bool value | `.value` | `.valueBoolean` |
 | Get DateTime value | `.value` | `.valueDateTime` |
-| Get double value | `.value` | `.valueDecimal` |
+| Get double value | `.value` | `.valueDouble` |
 | Create FhirString | `FhirString('text')` | `'text'.toFhirString` |
 | Create FhirDate | `FhirDate('2024-01-01')` | `'2024-01-01'.toFhirDate` |
 | Enum comparison | `status == 'active'` | `status == Status.active` |
 | Polymorphic field | `.value` or `.product` | `.valueX` or `.productX` |
-| Type-specific getter | Cast required | `.valueString`, `.valueInteger`, etc. |
+| Type-specific getter | Cast required | `.valueString`, `.valueInt`, etc. |
 | JSON to string | `jsonEncode(x.toJson())` | `x.toJsonString()` |
 | String to JSON | `X.fromJson(jsonDecode(s))` | `X.fromJsonString(s)` |
 | YAML support | Not available | `.toYaml()`, `.fromYaml()` |
@@ -931,10 +935,10 @@ final appointment = Appointment(status: AppointmentStatus.booked);
 **Solution:** Add `X` suffix:
 ```dart
 // Error
-final product = carePlan.detail?.first.product;
+final product = carePlan.activity?.first.detail?.product;
 
 // Fix
-final product = carePlan.detail?.first.productX;
+final product = carePlan.activity?.first.detail?.productX;
 ```
 
 #### Error: "The operator '==' isn't defined for the type"
@@ -1000,7 +1004,7 @@ import 'package:fhir_r4/fhir_r4.dart';
 
 void createPatient() {
   final patient = Patient(
-    id: '123'.toFhirId,  // Using extension method
+    id: '123'.toFhirString,  // Resource.id is a FhirString in the new package
     name: [
       HumanName(
         family: 'Smith'.toFhirString,
@@ -1069,7 +1073,7 @@ If you run into issues during migration:
 
 The migration from the old `fhir` package to `fhir_r4` involves these key changes:
 
-1. **Primitive type accessors**: `.value` → `.valueString` (or `.valueInteger`, `.valueBoolean`, etc.)
+1. **Primitive type accessors**: `.value` → `.valueString` (or `.valueInt`, `.valueBoolean`, etc.)
 2. **Enum handling**: String literals → FhirCodeEnum values with native enum support
 3. **Polymorphic fields**: Add `X` suffix and use type-specific getters
 4. **Serialization**: Use convenience methods (`.toJsonString()`, `.fromJsonString()`)
@@ -1090,6 +1094,6 @@ The investment is worth it for the improved developer experience and type safety
 
 - New package documentation (check project README)
 - FHIR R4 specification: https://hl7.org/fhir/R4/
-- FHIRPath documentation (for integration with fhir_path package)
+- FHIRPath support: the model-independent [`fhir_path`](https://pub.dev/packages/fhir_path) engine with the [`fhir_r4_path`](https://pub.dev/packages/fhir_r4_path) binding
 
 Good luck with your migration! 🚀

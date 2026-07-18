@@ -102,6 +102,7 @@ void main() {
                 title: 'Demos',
                 links: [
                   SidebarLink(text: 'FHIRPath Demo', href: 'docs/demos/fhir_path_demo'),
+                  SidebarLink(text: 'FHIR Mapping Demo', href: 'docs/demos/fhir_mapping_demo'),
                 ],
               ),
               SidebarGroup(

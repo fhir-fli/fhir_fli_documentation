@@ -11,7 +11,7 @@ Primitive types are the fundamental building blocks of FHIR resources. While the
 
 In FHIR-FLI, all primitive types:
 
-- Are subclasses of `PrimitiveType`, which extends `FhirBase`
+- Are subclasses of `PrimitiveType`, which extends `FhirBase` (which in turn implements the `FhirNode` reflection contract from `package:fhir_node`)
 - Store their values internally as strings for consistent serialization
 - Include optional metadata via the `Element` class
 - Provide appropriate getters to access values in their natural Dart types
@@ -56,19 +56,26 @@ All primitive types follow a consistent pattern:
 Here's a class diagram showing the inheritance and common interface for primitive types:
 
 ```
+FhirNode (contract from package:fhir_node)
+   |
 FhirBase
    |
    +--> PrimitiveType
             |
             +--> FhirBoolean
-            +--> FhirDecimal
-            +--> FhirInteger
+            +--> FhirNumber
+            |       +--> FhirDecimal
+            |       +--> FhirInteger
+            |       +--> FhirPositiveInt, FhirUnsignedInt, ...
             +--> FhirString
+            |       +--> FhirCode, FhirMarkdown, ...
             +--> FhirUri
-            +--> FhirDateTime
-            +--> FhirDate
+            |       +--> FhirUrl, FhirCanonical, FhirOid, FhirId, FhirUuid
+            +--> FhirDateTimeBase
+            |       +--> FhirDateTime
+            |       +--> FhirDate
+            |       +--> FhirInstant
             +--> FhirTime
-            +--> FhirInstant
             ...
 ```
 
@@ -99,6 +106,12 @@ Each primitive type provides typed getters to access its value in the appropriat
 // Boolean example
 final bool? nativeValue = myBoolean.valueBoolean;
 
+// Integer example
+final int? intValue = myInteger.valueInt;
+
+// Decimal example
+final double? doubleValue = myDecimal.valueDouble;
+
 // DateTime example
 final DateTime? dateTimeValue = myFhirDateTime.valueDateTime;
 
@@ -117,15 +130,15 @@ FHIR primitives can exist in three states:
 Helper properties let you check which state applies:
 
 ```dart
-if (myBoolean.valueOnly) {
+if (myBoolean.hasValue && !myBoolean.hasElement) {
   // Just a boolean value, no extensions
 }
 
-if (myBoolean.hasElementOnly) {
+if (myBoolean.hasElement && !myBoolean.hasValue) {
   // Contains extensions but no value
 }
 
-if (myBoolean.valueAndElement) {
+if (myBoolean.hasValueAndElement) {
   // Contains both a value and extensions
 }
 ```
@@ -161,7 +174,7 @@ final myId = FhirId('patient-123');
 final myString2 = 'Hello, FHIR!'.toFhirString;
 
 // Accessing values
-final String? stringValue = myString.value;
+final String? stringValue = myString.valueString;
 ```
 
 #### URI Types (FhirUri, FhirUrl, FhirCanonical, FhirOid)
@@ -204,8 +217,9 @@ final myInt2 = 42.toFhirInteger;
 final myDecimal2 = 3.14159.toFhirDecimal;
 
 // Accessing values
-final int? intValue = myInteger.valueInteger;
-final double? decimalValue = myDecimal.valueDecimal;
+final int? intValue = myInteger.valueInt;
+final double? decimalValue = myDecimal.valueDouble;
+final num? numValue = myDecimal.valueNum;
 ```
 
 #### Date and Time Types
@@ -213,11 +227,11 @@ final double? decimalValue = myDecimal.valueDecimal;
 FHIR has multiple date/time types, all inherited from a common base:
 
 ```dart
-// Creating date/time types
-final myDateTime = FhirDateTime('2023-06-15T13:30:45Z');
-final myDate = FhirDate('2023-06-15');
+// Creating date/time types (named fromString constructors)
+final myDateTime = FhirDateTime.fromString('2023-06-15T13:30:45Z');
+final myDate = FhirDate.fromString('2023-06-15');
 final myTime = FhirTime('13:30:45');
-final myInstant = FhirInstant('2023-06-15T13:30:45.123Z');
+final myInstant = FhirInstant.fromString('2023-06-15T13:30:45.123Z');
 
 // From DateTime object
 final dartDateTime = DateTime.now();
@@ -235,8 +249,9 @@ final int? hour = myDateTime.hour;
 // Accessing as DateTime
 final DateTime? dateTimeValue = myDateTime.valueDateTime;
 
-// Comparing dates
-if (myDateTime > someOtherDateTime) {
+// Comparing dates - note the comparison operators return bool? because
+// values with incompatible precision are incomparable (see below)
+if ((myDateTime > someOtherDateTime) ?? false) {
   // Date comparison
 }
 
@@ -255,11 +270,12 @@ FHIR date/time types follow FHIRPath rules for precision when comparing values. 
 
 ```dart
 // Per FHIRPath rules, comparing different precision levels returns null (empty)
-final dateOnly = FhirDate('2023-06-15');
-final dateTimeWithHour = FhirDateTime('2023-06-15T13:00:00');
+final dateOnly = FhirDate.fromString('2023-06-15');
+final dateTimeWithHour = FhirDateTime.fromString('2023-06-15T13:00:00');
 
-dateTimeWithHour > dateOnly; // returns null, not true
-dateTimeWithHour == dateOnly; // returns null, not true or false
+dateTimeWithHour > dateOnly; // returns null (bool?), not true
+dateTimeWithHour == dateOnly; // returns false (== must return bool, so an
+                              // incomparable result is reported as false)
 ```
 
 ### JSON Serialization: The FHIR Element Pattern
@@ -291,13 +307,13 @@ FHIR-FLI's primitive types implement special JSON handling to support this patte
 final myBoolean = FhirBoolean(true);
 myBoolean.toJson();  // Returns: {"value": true}
 
-// With extensions
+// With extensions (note: FhirExtension's url is a FhirString)
 final myBooleanWithExt = FhirBoolean(
   true,
   element: Element(
     extension_: [
       FhirExtension(
-        url: FhirUri('http://example.org/some-extension'),
+        url: 'http://example.org/some-extension'.toFhirString,
         valueString: FhirString('Some extension value')
       )
     ]
@@ -414,7 +430,7 @@ Primitive types implement various interfaces to support polymorphic fields:
 // Example: FhirBoolean implements ValueXExtension
 // This allows it to be used in an Extension's value field
 final extension = FhirExtension(
-  url: FhirUri('http://example.org/my-boolean-extension'),
+  url: 'http://example.org/my-boolean-extension'.toFhirString,
   valueX: FhirBoolean(true), // Polymorphic usage
 );
 
@@ -483,7 +499,7 @@ final updatedBoolean = myBoolean.copyWith(newValue: false);
    // Use the correct type based on the FHIR specification
    final patient = Patient(
      active: FhirBoolean(true),  // Boolean
-     birthDate: FhirDate('1990-01-15'),  // Date
+     birthDate: FhirDate.fromString('1990-01-15'),  // Date
      telecom: [ContactPoint(
        value: FhirString('+1-555-123-4567'),  // String
        system: ContactPointSystem.phone,  // Code

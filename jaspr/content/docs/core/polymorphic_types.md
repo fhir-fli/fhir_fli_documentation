@@ -1,6 +1,6 @@
 ---
 id: polymorphic_types
-title: Polymprhic Types
+title: Polymorphic Types
 ---
 
 ## Polymorphic Types in FHIR-FLI
@@ -28,15 +28,14 @@ final ProductXCarePlanDetail? productX;
 For each polymorphic field, FHIR-FLI defines an abstract class that all potential types for that field will implement:
 
 ```dart
-// Example abstract class (simplified)
-abstract class ScheduledXCarePlanDetail implements FhirBase {
-  // Common interface methods
-}
+// Example abstract class
+abstract class ScheduledXCarePlanDetail extends DataType
+    implements PolymorphicType {}
 
 // Classes that can be used in this field
-class Timing implements ScheduledXCarePlanDetail { ... }
-class Period implements ScheduledXCarePlanDetail { ... }
-class FhirString implements ScheduledXCarePlanDetail { ... }
+class Timing extends BackboneType implements ScheduledXCarePlanDetail { ... }
+class Period extends DataType implements ScheduledXCarePlanDetail { ... }
+class FhirString extends PrimitiveType implements ScheduledXCarePlanDetail { ... }
 ```
 
 This approach allows the compiler to verify type safety while maintaining flexibility.
@@ -63,7 +62,7 @@ When creating or updating a FHIR resource, you can directly use any valid type f
 ```dart
 // Setting a polymorphic field with a specific type
 final carePlanDetail = CarePlanDetail(
-  status: CarePlanActivityStatus.active,
+  status: CarePlanActivityStatus.inProgress,
   scheduledX: Timing(
     repeat: TimingRepeat(
       frequency: FhirPositiveInt(1),
@@ -76,10 +75,10 @@ final carePlanDetail = CarePlanDetail(
 
 // Alternatively, create with a different type
 final anotherCarePlanDetail = CarePlanDetail(
-  status: CarePlanActivityStatus.active,
+  status: CarePlanActivityStatus.inProgress,
   scheduledX: Period(
-    start: FhirDateTime('2023-01-01'),
-    end: FhirDateTime('2023-12-31'),
+    start: FhirDateTime.fromString('2023-01-01'),
+    end: FhirDateTime.fromString('2023-12-31'),
   ),
   // Other fields...
 );
@@ -140,7 +139,7 @@ Here's a complete example showing how to work with the polymorphic `scheduledX` 
 ```dart
 // Create a CarePlanDetail with a Timing scheduledX
 final carePlanWithTiming = CarePlanDetail(
-  status: CarePlanActivityStatus.active,
+  status: CarePlanActivityStatus.inProgress,
   scheduledX: Timing(
     repeat: TimingRepeat(
       frequency: FhirPositiveInt(2),
@@ -151,10 +150,10 @@ final carePlanWithTiming = CarePlanDetail(
 
 // Create a CarePlanDetail with a Period scheduledX
 final carePlanWithPeriod = CarePlanDetail(
-  status: CarePlanActivityStatus.active,
+  status: CarePlanActivityStatus.inProgress,
   scheduledX: Period(
-    start: FhirDateTime('2023-01-01'),
-    end: FhirDateTime('2023-12-31'),
+    start: FhirDateTime.fromString('2023-01-01'),
+    end: FhirDateTime.fromString('2023-12-31'),
   ),
 );
 
@@ -163,16 +162,16 @@ void processSchedule(CarePlanDetail detail) {
   // Approach 1: Using specific getters
   if (detail.scheduledTiming != null) {
     print('This is a timing-based schedule');
-    final frequency = detail.scheduledTiming?.repeat?.frequency?.value;
+    final frequency = detail.scheduledTiming?.repeat?.frequency?.valueInt;
     print('Frequency: $frequency times');
   } else if (detail.scheduledPeriod != null) {
     print('This is a period-based schedule');
-    final start = detail.scheduledPeriod?.start?.value;
-    final end = detail.scheduledPeriod?.end?.value;
+    final start = detail.scheduledPeriod?.start?.valueDateTime;
+    final end = detail.scheduledPeriod?.end?.valueDateTime;
     print('Period: $start to $end');
   } else if (detail.scheduledString != null) {
     print('This is a string-based schedule');
-    print('Description: ${detail.scheduledString?.value}');
+    print('Description: ${detail.scheduledString?.valueString}');
   }
 }
 ```

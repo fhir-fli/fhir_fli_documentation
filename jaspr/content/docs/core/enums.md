@@ -45,8 +45,8 @@ final appointmentStatus = AppointmentStatus.booked;
 print(groupingBehavior.valueString);  // 'visual-group'
 
 // Access additional metadata
-print(groupingBehavior.display?.value);  // 'Visual Group'
-print(groupingBehavior.system?.value);   // 'http://hl7.org/fhir/ValueSet/action-grouping-behavior'
+print(groupingBehavior.display?.valueString);  // 'Visual Group'
+print(groupingBehavior.system?.valueString);   // 'http://hl7.org/fhir/ValueSet/action-grouping-behavior'
 ```
 
 #### Using Native Dart Enums
@@ -295,7 +295,7 @@ final withExtensions = elementOnly.withElement(
   Element(
     extension_: [
       FhirExtension(
-        url: FhirUri('http://example.org/my-extension'),
+        url: 'http://example.org/my-extension'.toFhirString,
         valueString: FhirString('Extension value'),
       ),
     ],
@@ -377,7 +377,7 @@ try {
    
    // Iterate all possible values
    for (final value in ActionGroupingBehavior.values) {
-     print('${value.valueString}: ${value.display?.value}');
+     print('${value.valueString}: ${value.display?.valueString}');
    }
    ```
 

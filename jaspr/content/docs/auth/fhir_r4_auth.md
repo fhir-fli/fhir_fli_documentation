@@ -16,7 +16,7 @@ Also available as `fhir_r5_auth` and `fhir_r6_auth` for FHIR R5 and R6 with iden
 
 ### Key Features
 
-- **Complete SMART Implementation** - Supports standalone launch and EHR launch types
+- **Complete SMART Implementation** - Supports standalone launch, EHR launch, and backend services (server-to-server) launch types
 - **Enterprise Security** - PKCE, secure token storage, JWT validation, audit logging
 - **Multi-Platform** - Works on iOS, Android, Web, macOS, Windows, and Linux
 - **Developer Friendly** - Type-safe API, comprehensive error handling
@@ -30,8 +30,8 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.4.0
-  fhir_r4: ^0.4.4
+  fhir_r4_auth: ^0.6.0
+  fhir_r4: ^0.6.1
 ```
 
 #### Basic Example
@@ -49,8 +49,12 @@ final client = SmartFhirClient(
   ),
 );
 
-// Authenticate
-await client.authenticate();
+// Authenticate (launches the SMART authorization flow)
+await client.login();
+
+// SmartFhirClient is an authenticated http.Client. Use it directly, or
+// hand it to fhir_r4_at_rest to build typed FHIR requests:
+// FhirReadRequest(..., client: client).sendRequest();
 ```
 
 ### Launch Types
@@ -60,7 +64,7 @@ Your app launches independently and asks the user to authorize access.
 
 **Use when:** Building patient-facing mobile apps, personal health record apps.
 
-[Learn more →](auth/standalone-launch)
+[Learn more →](docs/auth/standalone-launch)
 
 #### EHR Launch
 Your app is embedded within an EHR system and launched from the provider's workflow.
@@ -79,8 +83,8 @@ Your app is embedded within an EHR system and launched from the provider's workf
 
 #### Token Management
 
-- Automatic token refresh before expiry
-- Token revocation support
+- Automatic token refresh before expiry (manual refresh via `refreshToken()`)
+- Token revocation support (`logout()`, `revokeAccessToken()`, `revokeRefreshToken()`)
 - Token introspection (when supported by server)
 - Secure encrypted storage
 
@@ -115,8 +119,8 @@ When integrating with Epic's FHIR sandbox:
 
 ### Next Steps
 
-1. **[Install the library](auth/installation)** - Add to your project
-2. **[Standalone launch guide](auth/standalone-launch)** - Step-by-step standalone launch
+1. **[Install the library](docs/auth/installation)** - Add to your project
+2. **[Standalone launch guide](docs/auth/standalone-launch)** - Step-by-step standalone launch
 
 ### Resources
 

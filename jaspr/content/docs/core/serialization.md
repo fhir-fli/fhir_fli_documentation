@@ -77,10 +77,10 @@ birthDate: "1990-01-01"
 This is the reverse process as above. You will typically use this when you're accepting data from an outside source (a database, a server, etc.). While all classes have this function, you typically need to know what class it is. The library is not smart enough to let you take a random Map and turn it into FHIR, you have to provide it with a bit of instruction. 
 
 ```dart
-final name = {
-    'family': 'Doe',
-    'given': ['Jane']
-}
+final name = <String, dynamic>{
+  'family': 'Doe',
+  'given': ['Jane'],
+};
 
 final humanName = HumanName.fromJson(name);
 ```

@@ -50,7 +50,7 @@ try {
 
 The `parse` method takes two parameters:
 1. The FHIR mapping language text
-2. A format identifier (typically 'fhirmap')
+2. A source name (e.g. `'fhirmap'` or the file name), used to identify the input in error messages
 
 ### Parsing Process Details
 
@@ -188,6 +188,15 @@ void saveStructureMap(StructureMap map, String outputPath) {
 }
 ```
 
+#### Rendering StructureMaps Back to Mapping Language
+
+The parser also works in reverse: the static `StructureMapParser.render` method renders a StructureMap resource back into FHIR mapping language text:
+
+```dart
+final mapText = StructureMapParser.render(structureMap);
+print(mapText);
+```
+
 ### Example: Complete Parsing Workflow
 
 Here's a complete example that demonstrates parsing a FHIR map from a file, validating it, and saving the result:
@@ -252,4 +261,4 @@ When working with the StructureMap Parser, follow these best practices:
 
 ### Next Steps
 
-Now that you understand how to parse FHIR mapping language into StructureMap resources, the next step is to learn how to use the [FHIR Mapping Engine](fhir_mapping_engine) to execute these maps and transform data.
+Now that you understand how to parse FHIR mapping language into StructureMap resources, the next step is to learn how to use the [FHIR Mapping Engine](docs/mapping/fhir_mapping_engine) to execute these maps and transform data.

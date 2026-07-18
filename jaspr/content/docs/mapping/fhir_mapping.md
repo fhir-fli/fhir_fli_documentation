@@ -9,9 +9,9 @@ title: FHIR Mapping Package
 
 ```yaml
 dependencies:
-  fhir_r4_mapping: ^0.4.0
-  fhir_r4: ^0.4.2
-  fhir_r4_path: ^0.4.3
+  fhir_r4_mapping: ^0.6.0
+  fhir_r4: ^0.6.1
+  fhir_r4_path: ^0.6.0
 ```
 
 ### What is FHIR Mapping?
@@ -74,7 +74,7 @@ A hierarchical system for managing canonical resources needed during mapping ope
 
 #### Builders
 
-Special mutable versions of FHIR resources that facilitate incremental construction during mapping.
+Special mutable versions of FHIR resources that facilitate incremental construction during mapping. The Builder tree ships with this package: every class in `fhir_r4` has a `Builder` counterpart (e.g. `PatientBuilder`), convertible in both directions via `toBuilder` and `build()`. Builders also support dynamic writes via `FhirBaseBuilder.setChildByName`, which the mapping engine uses internally.
 
 #### Transformation Context
 
@@ -93,7 +93,7 @@ FHIR Mapping is particularly useful when:
 
 The following pages will dive deeper into:
 
-1. [Using the StructureMap Parser](fhirmap_parsing) - How to convert mapping language text to StructureMap resources
-2. [Working with the Mapping Engine](fhir_mapping_engine) - How to execute mappings and transform data
+1. [Using the StructureMap Parser](docs/mapping/fhirmap_parsing) - How to convert mapping language text to StructureMap resources
+2. [Working with the Mapping Engine](docs/mapping/fhir_mapping_engine) - How to execute mappings and transform data
 
 By the end of these guides, you'll have a solid understanding of how to use FHIR Mapping in your Dart applications with FHIR-FLI.

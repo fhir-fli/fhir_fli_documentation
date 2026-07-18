@@ -43,7 +43,7 @@ The app includes builder classes that construct FHIR resources from form data:
 | `BotswanaAMRGramStainObservationBuilder` | Observation | Gram stain morphology |
 | `BotswanaAMRDiagnosticReportBuilder` | DiagnosticReport | Ties all observations, specimen, encounter together |
 
-Each builder class has a `buildResource()` method that returns a fully conformant FHIR resource using the [fhir_r4](../core/fhir_r4) package.
+Each builder class has a `buildResource()` method that returns a fully conformant FHIR resource using the [fhir_r4](docs/core/fhir_r4) package.
 
 ### ValueSets in Dart
 
@@ -65,7 +65,7 @@ The repository contains two Dart packages:
 | `bw_amr_ig` | [`flutter/`](https://github.com/Dokotela/bw-amr-ig/tree/main/flutter) | Data capture models and ValueSets for the Flutter app |
 | `bw_amr_export` | [`export/`](https://github.com/Dokotela/bw-amr-ig/tree/main/export) | WHONET/GLASS flat-file exporter (server-side or CLI) |
 
-The export package is intentionally separate — it's used server-side or from a web interface where someone can log in, run the export, and produce a file for WHONET or GLASS upload. See [WHONET Export](bw_amr_ig_whonet) for usage details.
+The export package is intentionally separate — it's used server-side or from a web interface where someone can log in, run the export, and produce a file for WHONET or GLASS upload. See [WHONET Export](docs/bw_amr_ig/bw_amr_ig_whonet) for usage details.
 
 ### Installation
 

@@ -5,13 +5,15 @@ title: UCUM Package
 
 ## UCUM — Unified Code for Units of Measure
 
-The `ucum` package provides a Dart implementation of the [UCUM](https://unitsofmeasure.org/) standard, enabling unit validation, conversion, comparison, and arithmetic for healthcare and scientific measurements. Translated from the official Java reference implementation, it supports all 2000+ UCUM-defined units with arbitrary-precision decimal arithmetic.
+The `ucum` package provides a Dart implementation of the [UCUM](https://unitsofmeasure.org/) standard, enabling unit validation, conversion, comparison, and arithmetic for healthcare and scientific measurements. It is a port of the reference [Ucum-java](https://github.com/FHIR/Ucum-java) library, supports all 2000+ UCUM-defined units with arbitrary-precision decimal arithmetic, and generates its unit data from ucum-essence 2.2 at build time — no runtime XML parsing, no assets, works on every platform including web.
+
+It is a standalone, dependency-free foundation package used across the FHIR-FLI ecosystem (the FHIRPath and CQL engines rely on it for `Quantity` semantics) but has no dependency on any FHIR package.
 
 #### Installation
 
 ```yaml
 dependencies:
-  ucum: ^0.8.0
+  ucum: ^0.9.0
 ```
 
 ### Quick Start
@@ -21,6 +23,10 @@ import 'package:ucum/ucum.dart';
 
 void main() {
   final ucum = UcumService();
+
+  // Which UCUM data is loaded?
+  print(ucum.ucumIdentification());
+  // UCUM specification 2.2, revision N/A (2024-06-17)
 
   // Validate a unit string
   final error = ucum.validate('mg/dL');
@@ -32,7 +38,7 @@ void main() {
     'mg',
     'g',
   );
-  print(result.asUcumDecimal()); // 0.1
+  print(result.asUcumDecimal()); // 0.10
 
   // Check if two units are comparable
   print(ucum.isComparable('mg', 'g')); // true
@@ -46,6 +52,8 @@ void main() {
 
 #### Validation
 
+`validate` is spec-strict: only real UCUM is accepted (matching Ucum-java).
+
 ```dart
 final ucum = UcumService();
 
@@ -54,8 +62,25 @@ final error = ucum.validate('kg');
 print(error); // null
 
 final bad = ucum.validate('not_a_unit');
-print(bad); // "not_a_unit is not a valid UCUM unit"
+print(bad);
+// Error processing unit: 'not_a_unit' The unit 'not_a_unit' is unknown
+// at position 0
 ```
+
+#### Lenient Resolution of Common Non-UCUM Spellings
+
+`validate` stays strict, so common non-UCUM spellings like `mcg` or `hours` fail validation. `resolveCommonUnit` is the explicit leniency layer (the approach used by NLM's ucum-lhc): input that is already valid UCUM is returned unchanged; otherwise known synonym tokens are substituted and the corrected code is returned, or null if no resolution exists.
+
+```dart
+final ucum = UcumService();
+
+print(ucum.resolveCommonUnit('mcg'));    // ug
+print(ucum.resolveCommonUnit('mcg/mL')); // ug/mL
+print(ucum.resolveCommonUnit('hours'));  // h
+print(ucum.resolveCommonUnit('kg'));     // kg (already valid — unchanged)
+```
+
+Valid codes are never rewritten — `mph` stays milli-phot, because it *is* valid UCUM. `ValidatedQuantity` (below) uses this lenient layer automatically.
 
 #### Conversion
 
@@ -70,18 +95,29 @@ final grams = ucum.convert(
 );
 print(grams.asUcumDecimal()); // 2500
 
-// Convert temperature
+// Convert temperature (affine scales handled correctly)
 final fahrenheit = ucum.convert(
   UcumDecimal.fromString('37'),
   'Cel',
   '[degF]',
 );
-print(fahrenheit.asUcumDecimal()); // 98.6
+print(fahrenheit.asUcumDecimal()); // 98.6000
+
+final kelvin = ucum.convert(
+  UcumDecimal.fromString('37'),
+  'Cel',
+  'K',
+);
+print(kelvin.asUcumDecimal()); // 310.15
 ```
+
+##### A Note on Affine Temperatures
+
+Celsius and Fahrenheit are affine scales — they have no multiplicative canonical form, so unit-level canonicalization (`getCanonicalUnits('Cel')`) throws, exactly like Ucum-java. Conversions and quantity comparisons still work correctly (`convert`, `getCanonicalForm(Pair)`, `ValidatedQuantity`) by routing through the Kelvin ratio scale. Compound or prefixed affine units (`Cel/s`, `mCel`) throw rather than silently mis-convert.
 
 #### Multiplication and Division
 
-Multiply and divide quantities using `Pair` objects (value + unit):
+Multiply and divide quantities using `Pair` objects (value + unit). Both operations return the result in canonical (base-unit) form:
 
 ```dart
 final ucum = UcumService();
@@ -93,13 +129,13 @@ final area = ucum.multiply(
 );
 print('${area.value.asUcumDecimal()} ${area.unit}'); // 15 m2
 
-// Divide: 100 mg / 2 dL = 50 mg/dL
+// Divide: 100 mg / 2 dL, canonicalized to base units
 final concentration = ucum.divideBy(
   Pair(value: UcumDecimal.fromString('100'), unit: 'mg'),
   Pair(value: UcumDecimal.fromString('2'), unit: 'dL'),
 );
 print('${concentration.value.asUcumDecimal()} ${concentration.unit}');
-// 50 mg/dL
+// 500 g.m-3
 ```
 
 #### Analysis and Canonical Forms
@@ -107,18 +143,19 @@ print('${concentration.value.asUcumDecimal()} ${concentration.unit}');
 ```dart
 final ucum = UcumService();
 
-// Get canonical (base SI) units
-print(ucum.getCanonicalUnits('km/h')); // m/s
+// Get canonical (base) units
+print(ucum.getCanonicalUnits('km/h')); // m.s-1
+print(ucum.getCanonicalUnits('N'));    // g.m.s-2
 
-// Analyse a unit string
-print(ucum.analyse('mg/dL')); // g/L
+// Analyse a unit string (human-readable description)
+print(ucum.analyse('mg/dL')); // (milligram) / (deciliter)
 
 // Get canonical form with converted value
 final canonical = ucum.getCanonicalForm(
   Pair(value: UcumDecimal.fromString('60'), unit: 'km/h'),
 );
 print('${canonical.value.asUcumDecimal()} ${canonical.unit}');
-// 16.6666666666666666666667 m/s
+// 16.66666666666666666666668 m.s-1
 ```
 
 #### Search
@@ -126,11 +163,14 @@ print('${canonical.value.asUcumDecimal()} ${canonical.unit}');
 ```dart
 final ucum = UcumService();
 
-// Search for units by name
+// Search for units by name (the last argument treats the text as a
+// regular expression when true)
 final results = ucum.search(ConceptKind.unit, 'gram', false);
 for (final concept in results) {
   print('${concept.code} — ${concept.names.first}');
 }
+// gf — gram-force
+// g% — gram percent
 ```
 
 ### UcumDecimal
@@ -163,7 +203,7 @@ final b = UcumDecimal.fromString('3.2');
 
 final sum = a.add(b);        // 13.7
 final diff = a.subtract(b);  // 7.3
-final prod = a.multiply(b);  // 33.60
+final prod = a.multiply(b);  // 33.6
 final quot = a.divide(b);    // 3.3
 
 // Integer division and modulo
@@ -189,7 +229,7 @@ a.comparesTo(b);   // 0
 
 ### ValidatedQuantity
 
-`ValidatedQuantity` combines a `UcumDecimal` value with a validated UCUM unit string. It supports full arithmetic operators and unit conversion.
+`ValidatedQuantity` combines a `UcumDecimal` value with a unit string. It is the lenient, FHIR/CQL-facing value+unit type: it resolves common non-UCUM spellings through `resolveCommonUnit` for every comparison and arithmetic operation, while keeping the original unit string for display. It supports full arithmetic operators and unit conversion.
 
 #### Constructors
 
@@ -209,7 +249,7 @@ final q3 = ValidatedQuantity.fromNumber(5.0, unit: 'mg');
 
 #### Arithmetic Operators
 
-`ValidatedQuantity` supports `+`, `-`, `*`, `/`, `~/`, and `%` with automatic unit handling:
+`ValidatedQuantity` supports `+`, `-`, `*`, `/`, `~/`, and `%` with automatic unit handling. The right operand may be another quantity, a number, a `UcumDecimal`, or a quantity string; it is converted into the left operand's unit first. Addition and subtraction return null when the units are not comparable:
 
 ```dart
 final weight1 = ValidatedQuantity.fromString('70 kg');
@@ -226,13 +266,19 @@ final sum = mg + g;  // 1500 mg (converts to left operand's unit)
 
 #### Comparison Operators
 
+Equality and ordering are unit-converting (and resolve common spellings first):
+
 ```dart
 final a = ValidatedQuantity.fromString('1 kg');
 final b = ValidatedQuantity.fromString('500 g');
 
-print(a > b);   // true (1 kg > 500 g)
+print(a > b);    // true (1 kg > 500 g)
 print(a == b);   // false
 print(a >= b);   // true
+
+print(a == ValidatedQuantity.fromString('1000 g'));  // true
+print(ValidatedQuantity.fromString('72 inch') ==
+    ValidatedQuantity.fromString('182.88 cm'));      // true
 ```
 
 #### Unit Conversion
@@ -240,18 +286,20 @@ print(a >= b);   // true
 ```dart
 final temp = ValidatedQuantity.fromString('100 Cel');
 final fahrenheit = temp.convertTo('[degF]');
-print(fahrenheit); // 212 [degF]
+print(fahrenheit); // 212 '[degF]'
 ```
 
 #### Duration Support
 
-`ValidatedQuantity` recognizes time units and provides convenient accessors:
+`ValidatedQuantity` recognizes time units and provides convenient accessors. Each accessor (`years`, `months`, `weeks`, `days`, `hours`, `minutes`, `seconds`, `milliseconds`) returns the value when the quantity's unit matches that accessor, and null otherwise:
 
 ```dart
 final duration = ValidatedQuantity.fromString('90 min');
 print(duration.isDuration);    // true
-print(duration.hours);         // 1
-print(duration.minutes);       // 30
+print(duration.minutes);       // 90
+print(duration.hours);         // null (the unit is minutes, not hours)
+
+print(duration.convertTo('h')); // 1.5 h
 ```
 
 ### Pair
@@ -278,7 +326,7 @@ ucum.convert(UcumDecimal.fromString('1'), '[lb_av]', 'kg');
 // 0.45359237 kg
 
 ucum.convert(UcumDecimal.fromString('1'), 'kg', '[lb_av]');
-// 2.20462262184877580996888 lb
+// 2.20462262184877580722974 lb
 
 // Volume
 ucum.convert(UcumDecimal.fromString('1'), 'L', 'mL');
@@ -298,6 +346,10 @@ ucum.convert(UcumDecimal.fromString('1'), '[in_i]', 'cm');
 // Time
 ucum.convert(UcumDecimal.fromString('1'), 'h', 'min');
 // 60 min
+
+// Rates
+ucum.convert(UcumDecimal.fromString('15'), '/min', '/h');
+// 900 /h
 
 // Lab values
 ucum.convert(UcumDecimal.fromString('1'), 'mmol/L', 'mol/L');
@@ -332,3 +384,9 @@ For the complete UCUM specification, see [unitsofmeasure.org](https://unitsofmea
 - 2000+ defined units across all domains
 - Special unit handlers for non-linear conversions (Celsius, Fahrenheit, pH, etc.)
 - Arbitrary-precision arithmetic preserving significant figures
+
+The full official UCUM functional test suite (575 cases) runs in CI.
+
+### Credits and License
+
+The package is ported from [Ucum-java](https://github.com/FHIR/Ucum-java) (BSD-3-Clause, © Health Intersections Pty Ltd); the ported source files retain their original copyright headers. UCUM and the ucum-essence data are © Regenstrief Institute, Inc., used under the [UCUM license](https://unitsofmeasure.org/license). The package itself is MIT-licensed, © FHIR-FLI.

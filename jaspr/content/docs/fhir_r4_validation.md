@@ -11,9 +11,9 @@ The `fhir_r4_validation` library provides comprehensive validation functionality
 
 ```yaml
 dependencies:
-  fhir_r4_validation: ^0.4.0
-  fhir_r4: ^0.4.3
-  fhir_r4_path: ^0.4.4
+  fhir_r4_validation: ^0.6.0
+  fhir_r4: ^0.6.1
+  fhir_r4_path: ^0.6.0
 ```
 
 ### Key Features
@@ -22,7 +22,7 @@ dependencies:
 - **Cardinality Validation**: Ensures required fields are present and cardinality constraints are met
 - **Binding Validation**: Validates code bindings against ValueSets and CodeSystems
 - **Extension Validation**: Validates extensions and their structure
-- **Invariant Validation**: Validates FHIRPath invariants defined in StructureDefinitions
+- **Invariant Validation**: Validates FHIRPath invariants defined in StructureDefinitions, evaluated with the model-independent FHIRPath engine (via `fhir_r4_path`)
 - **Questionnaire Response Validation**: Specialized validation for QuestionnaireResponse resources
 
 ### Basic Usage
@@ -221,10 +221,10 @@ The package includes specialized validation for QuestionnaireResponse resources:
 ```dart
 import 'package:fhir_r4_validation/fhir_r4_validation.dart';
 
-// Validate a QuestionnaireResponse against its Questionnaire
+// Validate a QuestionnaireResponse against its referenced Questionnaire.
+// The Questionnaire is resolved through the provided ResourceCache.
 final results = await validateQuestionnaireResponse(
   questionnaireResponse: questionnaireResponse,
-  questionnaire: questionnaire,
   resourceCache: resourceCache,
 );
 ```
@@ -281,6 +281,8 @@ final resourceCache = CanonicalResourceCache();
 ### Example: Complete Validation Workflow
 
 ```dart
+import 'dart:convert';
+
 import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4_validation/fhir_r4_validation.dart';
 
@@ -331,7 +333,7 @@ Future<void> validatePatient(Patient patient) async {
 The validation package integrates seamlessly with other FHIR-FLI packages:
 
 - **fhir_r4**: Uses FHIR resource models
-- **fhir_r4_path**: Uses FHIRPath for invariant validation
+- **fhir_r4_path**: Uses the model-independent FHIRPath engine to evaluate invariants (constraints)
 - **fhir_r4_db**: Can validate resources before saving to the database
 - **fhir_r4_at_rest**: Can validate resources before sending to a FHIR server
 

@@ -30,62 +30,73 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Docusaurus 3 documentation site for the FHIR-FLI project (Dart/Flutter libraries for FHIR healthcare data standards). Deployed as a static site to GitHub Pages at `https://fhir-fli.github.io/fhir_fli_documentation/`.
+Documentation site for the FHIR-FLI project (Dart/Flutter libraries for FHIR
+healthcare data standards). Built with **Jaspr** (`jaspr_content`) — the old
+Docusaurus setup is gone. Deployed as a static site to GitHub Pages at
+`https://fhir-fli.github.io/fhir_fli_documentation/`.
 
 ## Commands
 
 ```bash
-npm install            # Install dependencies (first time)
-npm start              # Dev server with hot reload
-npm run build          # Production build to /build
-npm run serve          # Serve production build locally
-npm run format         # Format with Prettier
-npm run format:check   # Check formatting (CI uses this)
-npm run lint           # ESLint
-npm run typecheck      # TypeScript type checking
-npm run clear          # Clear Docusaurus cache
+dart pub global activate jaspr_cli    # one-time
+cd jaspr
+dart pub get
+$HOME/.pub-cache/bin/jaspr serve      # dev server with hot reload at localhost:8080
+$HOME/.pub-cache/bin/jaspr build      # static output to jaspr/build/jaspr/
 ```
 
 ## CI/CD
 
-- **PRs** (`main.yaml`): runs format:check, lint, and build
-- **Push to main** (`deploy.yml`): builds and auto-deploys to `gh-pages` branch
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the
+site and publishes `jaspr/build/jaspr/` to the `gh-pages` branch.
+`content/_data/site.yaml` ships with `base: /` for local dev; the deploy
+workflow rewrites it to `/fhir_fli_documentation/` for production.
 
 ## Architecture
 
 ### Documentation Content
 
-All docs live in `docs/` as Markdown files. Sidebar navigation is manually defined in `sidebars.js` (not auto-generated from filesystem). The `docs/auth/` directory exists but is **excluded** from the build via `docusaurus.config.js` (`exclude: ['auth/**']`).
+All docs live in `jaspr/content/docs/` as Markdown files. Sidebar navigation
+is manually defined in `jaspr/lib/main.server.dart` (`SidebarGroup` /
+`SidebarLink`) — update it when adding or removing pages.
 
 Doc categories map to FHIR-FLI packages:
-- `docs/core/` — fhir_r4 core concepts (types, serialization, enums)
-- `docs/at_rest/` — fhir_r4_at_rest REST client
-- `docs/mapping/` — fhir_r4_mapping language
-- `docs/demos/` — interactive demos
-- Top-level docs: fhir_r4_db, fhir_r4_bulk, fhir_r4_path, fhir_r4_validation
+- `core/` — fhir_r4 core concepts (types, serialization, enums, migration)
+- `at_rest/` — fhir_r4_at_rest REST client
+- `auth/` — fhir_r4_auth SMART on FHIR
+- `mapping/` — fhir_r4_mapping (FHIR Mapping Language)
+- `demos/` — interactive demos (FHIRPath, FHIR Mapping)
+- Top-level: fhir_r4_db, fhir_r4_bulk, fhir_r4_path, fhir_r4_cql,
+  fhir_r4_validation, ucum, index
+- App docs: `fhirant/`, `cicada/`, `drosophila/`, `bw_amr_ig/`
 
-### Custom Pages
+### 🔗 LINK RULE (critical)
 
-`src/pages/` contains standalone React/TypeScript pages (index, about, contact). The homepage (`index.tsx`) redirects to `/docs`.
+The rendered pages carry a `<base href>` (`/` locally,
+`/fhir_fli_documentation/` in production), and **markdown links pass through
+verbatim** — they are NOT rewritten relative to the page. Every internal link
+in page bodies must therefore be **base-relative with no leading slash and the
+full `docs/` prefix**, exactly like the sidebar: `](docs/core/fhir_r4)`,
+`](docs/mapping/fhir_mapping)`. Never `](fhir_r4_db)`, never
+`](../core/fhir_r4)`, never a leading `/`.
 
-### Embedded Flutter Demo
+Known framework quirk: jaspr_content's auto-generated heading-anchor links use
+absolute `/docs#...` paths that ignore the production base path — do not
+imitate them in content.
 
-`docs/fhir_path_demo/` and `static/fhir_path_demo/` contain a pre-compiled Flutter web app for interactive FHIRPath queries. These are build artifacts — do not edit them directly.
+### Embedded Flutter Demos
 
-### Key Configuration
-
-- `docusaurus.config.js` — site config, navbar, footer, Prism languages (bash, dart, yaml)
-- `sidebars.js` — sidebar structure (must be updated when adding/removing docs)
-- `src/css/custom.css` — theme colors and GitHub icon styling
-- **Broken links**: set to `throw` (strict) — builds will fail on broken internal links
-
-### Style
-
-- Prettier with single quotes (`.prettierrc`)
-- ESLint with `@docusaurus/eslint-plugin` recommended rules
+`static/` holds pre-compiled Flutter web apps embedded via iframes:
+`fhir_path_demo/` (source: fhir_r4 monorepo `packages/fhir_path_demo`),
+`fhir_mapping_demo/` (source: `packages/fhir_mapping_demo`), plus
+`drosophila/`, `cicada_demo/`, `cicada_ig/`, `bw_amr_ig/`. These are build
+artifacts — rebuild them in their source repos with
+`flutter build web --release --base-href="/fhir_fli_documentation/<dir>/"`
+and copy `build/web/` here; do not edit them directly.
 
 ## Adding New Documentation
 
-1. Create a `.md` file in the appropriate `docs/` subdirectory
-2. Add the doc ID to `sidebars.js` in the correct category
-3. Verify with `npm run build` (broken links will cause build failure)
+1. Create a `.md` file under `jaspr/content/docs/` (front-matter: `title:`).
+2. Add a `SidebarLink` in `jaspr/lib/main.server.dart`.
+3. Follow the LINK RULE above for any internal links.
+4. Verify with `jaspr build` (all routes must generate).

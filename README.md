@@ -11,7 +11,7 @@ Documentation site for the [FHIR-FLI](https://github.com/fhir-fli) project — D
 - **FHIR Auth** — SMART on FHIR authentication
 - **FHIR DB / Bulk / Path / Validation / CQL / Mapping** — companion packages
 - **Applications** — Botswana AMR IG, Cicada (immunization forecasting), Drosophila (clinical trial matching), FHIR ANT (mobile FHIR server)
-- Embedded Flutter web demos for FHIRPath, Cicada, Drosophila, Botswana AMR, and the Cicada Vaccination IG
+- Embedded Flutter web demos for FHIRPath, FHIR Mapping, Cicada, Drosophila, Botswana AMR, and the Cicada Vaccination IG
 
 ## Development
 

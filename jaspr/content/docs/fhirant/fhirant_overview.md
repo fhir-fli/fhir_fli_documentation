@@ -7,7 +7,7 @@ title: Overview
 
 **Fast Healthcare Interoperability Resources — Agile Networking Tool**
 
-FHIR ANT is a complete FHIR R4 server that runs on your Android phone. It's built with Dart using the [fhir_r4](../core/fhir_r4) package and designed for mobile-first deployments, testing, and low-resource healthcare settings.
+FHIR ANT is a complete FHIR R4 server that runs on your Android phone. It's built with Dart using the [fhir_r4](docs/core/fhir_r4) package and designed for mobile-first deployments, testing, and low-resource healthcare settings.
 
 ### What It Does
 
@@ -34,7 +34,7 @@ fhirant/
 ```
 
 - **fhirant_server** handles routing, middleware, and all FHIR operations
-- **fhirant_db** extends [fhir_r4_db](../fhir_r4_db) with server-specific tables (users, export jobs, authorization codes, revoked tokens)
+- **fhirant_db** extends [fhir_r4_db](docs/fhir_r4_db) with server-specific tables (users, export jobs, authorization codes, revoked tokens)
 - The server is pure Dart — it can also run as a CLI process on any platform
 - The database is encrypted with SQLCipher; the encryption key is stored in the device's secure keystore
 

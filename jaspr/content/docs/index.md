@@ -9,7 +9,15 @@ Welcome to the Getting Started guide for FHIR-FLI. This guide will walk you thro
 
 ### What is FHIR-FLI?
 
-FHIR-FLI (<b>F</b>ast <b>H</b>ealthcare <b>I</b>nteroperability <b>R</b>esources - with <b>F</b>lutter <b>L</b>ibrary <b>I</b>ntegration) is a set of Dart libraries that enable Flutter developers to easily work with [FHIR](core/fhir_r4) data. These libraries provide common functionality that is needed for working with FHIR, including serialization/deserialization, making [RESTful](at_rest/fhir_r4_at_rest) requests, [SMART on FHIR authentication](auth/fhir_r4_auth) authentication, [local secure storage](fhir_r4_db), [FHIRPath](fhir_r4_path), [FHIR Bulk Data](fhir_r4_bulk), [FHIR Mapping](mapping/fhir_mapping), [CQL](fhir_r4_cql), and [resource validation](fhir_r4_validation).
+FHIR-FLI (<b>F</b>ast <b>H</b>ealthcare <b>I</b>nteroperability <b>R</b>esources - with <b>F</b>lutter <b>L</b>ibrary <b>I</b>ntegration) is a set of Dart libraries that enable Flutter developers to easily work with [FHIR](docs/core/fhir_r4) data. These libraries provide common functionality that is needed for working with FHIR, including serialization/deserialization, making [RESTful](docs/at_rest/fhir_r4_at_rest) requests, [SMART on FHIR authentication](docs/auth/fhir_r4_auth) authentication, [local secure storage](docs/fhir_r4_db), [FHIRPath](docs/fhir_r4_path), [FHIR Bulk Data](docs/fhir_r4_bulk), [FHIR Mapping](docs/mapping/fhir_mapping), [CQL](docs/fhir_r4_cql), and [resource validation](docs/fhir_r4_validation).
+
+### Architecture
+
+The family is built in three layers:
+
+1. **Model-independent engines** - standalone packages with no dependency on any FHIR version: [`fhir_path`](https://pub.dev/packages/fhir_path) (FHIRPath engine), [`cql`](https://pub.dev/packages/cql) (CQL engine), [`ucum`](https://pub.dev/packages/ucum) (units of measure), and [`fhir_node`](https://pub.dev/packages/fhir_node) (the reflection contract that lets the engines navigate any FHIR model).
+2. **Version cores** - `fhir_r4`, `fhir_r5`, and `fhir_r6` provide the generated resource models for each FHIR version. Every class implements the `FhirNode` contract, which is how the engines above work across all three versions unchanged.
+3. **Companion packages** - thin bindings and utilities per version (`fhir_r4_path` binds the `fhir_path` engine to R4, `fhir_r4_cql` binds `cql`, plus REST, auth, database, bulk data, mapping, and validation packages).
 
 ### FHIR Version Support
 

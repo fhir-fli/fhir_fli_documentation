@@ -36,8 +36,8 @@ The IG standardizes AMR culture and susceptibility data using FHIR, enabling:
 ### Technology Stack
 
 - **IG authoring**: FSH (FHIR Shorthand) compiled with SUSHI
-- **Data capture**: Flutter/Dart mobile application using [fhir_r4](../core/fhir_r4)
-- **Server**: Any FHIR R4 server (designed to work with [FHIR ANT](../fhirant/fhirant_overview) for mobile-first deployments)
+- **Data capture**: Flutter/Dart mobile application using [fhir_r4](docs/core/fhir_r4)
+- **Server**: Any FHIR R4 server (designed to work with [FHIR ANT](docs/fhirant/fhirant_overview) for mobile-first deployments)
 - **WHONET export**: Server-side `$export-whonet` FHIR operation
 
 ### Source Code
