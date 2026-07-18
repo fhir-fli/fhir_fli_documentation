@@ -1315,7 +1315,7 @@ final patientSearch = SearchPatient()
   .name(FhirString('Smith'))
   .gender(FhirString('male'))
   .birthdate(
-    FhirDateTime('1970-01-01'),
+    FhirDateTime.fromString('1970-01-01'),
     modifier: SearchModifier.ge, // Greater than or equal to
   );
 
@@ -1329,36 +1329,31 @@ final request = FhirSearchRequest(
                 <p>
                   The search classes provide type-safe methods for all valid search parameters defined in the FHIR specification for each resource type.
                 </p>
-                <h3 id="search-modifiers" anchor="true"><span>Search Modifiers</span><a href="/docs/at_rest/restful_parameters#search-modifiers">#</a></h3>
-                <p>Many search parameters support modifiers that change how the search is performed:</p>
+                <h3 id="search-prefixes" anchor="true"><span>Search Prefixes</span><a href="/docs/at_rest/restful_parameters#search-prefixes">#</a></h3>
+                <p>
+                  Per the FHIR specification, value prefixes (<code>eq</code>, <code>ne</code>, <code>gt</code>, <code>lt</code>, 
+                  <code>ge</code>,
+                  <code>le</code>, <code>sa</code>, <code>eb</code>, <code>ap</code>) apply only to the ordered parameter types — 
+                  <strong>date,
+                    number, and quantity</strong>. The generated methods for those types take an optional
+                  <code>modifier</code> argument holding the prefix, which is prepended to the value
+                  (<code>birthdate=ge1970-01-01</code>):
+                </p>
                 <pre><code class="language-dart">// Patient with birthdate greater than or equal to 1970-01-01
 patientSearch.birthdate(
-  FhirDateTime('1970-01-01'),
+  FhirDateTime.fromString('1970-01-01'),
   modifier: SearchModifier.ge,
 );
 
 // Patient with birthdate less than 2000-01-01
 patientSearch.birthdate(
-  FhirDateTime('2000-01-01'),
+  FhirDateTime.fromString('2000-01-01'),
   modifier: SearchModifier.lt,
 );
-
-// Patient with a name that exactly equals "John Smith"
-patientSearch.name(
-  FhirString('John Smith'),
-  modifier: SearchModifier.eq,
-);
 </code></pre>
-                <p>Available modifiers depend on the parameter type:</p>
                 <table>
-                  <thead><tr><th>Parameter Type</th><th>Supported Modifiers</th><th>Description</th></tr></thead>
+                  <thead><tr><th>Parameter Type</th><th>Prefixes</th><th>Description</th></tr></thead>
                   <tbody>
-                    <tr><td>String</td><td><code>eq</code>, <code>ne</code></td><td>Exact match, not equal</td></tr>
-                    <tr>
-                      <td>Quantity</td>
-                      <td><code>gt</code>, <code>lt</code>, <code>ge</code>, <code>le</code>, <code>ap</code></td>
-                      <td>Numeric comparisons</td>
-                    </tr>
                     <tr>
                       <td>Date</td>
                       <td>
@@ -1380,11 +1375,62 @@ patientSearch.name(
                         , 
                         <code>ap</code>
                       </td>
-                      <td>Date comparisons</td>
+                      <td>Prepended to the value</td>
                     </tr>
-                    <tr><td>Token</td><td>any</td><td>Prefixes the <code>system|value</code> pair</td></tr>
+                    <tr>
+                      <td>Number</td>
+                      <td>
+                        <code>eq</code>
+                        , 
+                        <code>ne</code>
+                        , 
+                        <code>gt</code>
+                        , 
+                        <code>lt</code>
+                        , 
+                        <code>ge</code>
+                        , 
+                        <code>le</code>
+                        , 
+                        <code>sa</code>
+                        , 
+                        <code>eb</code>
+                        , 
+                        <code>ap</code>
+                      </td>
+                      <td>Prepended to the value</td>
+                    </tr>
+                    <tr>
+                      <td>Quantity</td>
+                      <td>
+                        <code>eq</code>
+                        , 
+                        <code>ne</code>
+                        , 
+                        <code>gt</code>
+                        , 
+                        <code>lt</code>
+                        , 
+                        <code>ge</code>
+                        , 
+                        <code>le</code>
+                        , 
+                        <code>sa</code>
+                        , 
+                        <code>eb</code>
+                        , 
+                        <code>ap</code>
+                      </td>
+                      <td>Prepended to the value</td>
+                    </tr>
                   </tbody>
                 </table>
+                <p>
+                  String, token, and uri parameters take <strong>no</strong> prefix — their generated methods
+                  have no <code>modifier</code> argument (FHIR name modifiers such as <code>:exact</code>,
+                  <code>:contains</code>, or <code>:text</code> are appended to the parameter <em>name</em>; use the generic
+                  <code>add()</code> for those, e.g. <code>parameters.add('name:exact', 'John Smith')</code>).
+                </p>
                 <p>
                   Reference search parameters do not have dedicated methods in the generated search classes; use the generic 
                   <code>add()</code> method for those (e.g. <code>parameters.add('subject', 'Patient/12345')</code>).
@@ -1397,7 +1443,7 @@ patientSearch.name(
 final search = SearchPatient()
   .gender(FhirString('female'))
   .birthdate(
-    FhirDateTime('1980-01-01'),
+    FhirDateTime.fromString('1980-01-01'),
     modifier: SearchModifier.gt,
   )
   .family(FhirString('Smith'));
@@ -1492,11 +1538,11 @@ final search = SearchPatient()
 final search = SearchPatient()
   .name(FhirString('Smith'))
   .birthdate(
-    FhirDateTime('1950-01-01'),
+    FhirDateTime.fromString('1950-01-01'),
     modifier: SearchModifier.ge,
   )
   .birthdate(
-    FhirDateTime('1970-01-01'),
+    FhirDateTime.fromString('1970-01-01'),
     modifier: SearchModifier.le,
   );
 
@@ -1513,7 +1559,7 @@ final search = SearchObservation()
     system: FhirUri('http://loinc.org'),
   )
   .date(
-    FhirDateTime('2023-01-01'),
+    FhirDateTime.fromString('2023-01-01'),
     modifier: SearchModifier.gt,
   );
 
@@ -1561,7 +1607,7 @@ final search = SearchObservation()
                   <li style="padding-left: 0.75em">
                     <a href="/docs/at_rest/restful_parameters#resource-specific-search-classes">Resource-Specific Search Classes</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#search-modifiers">Search Modifiers</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_parameters#search-prefixes">Search Prefixes</a></li>
                   <li style="padding-left: 0.75em">
                     <a href="/docs/at_rest/restful_parameters#chaining-multiple-conditions">Chaining Multiple Conditions</a>
                   </li>
