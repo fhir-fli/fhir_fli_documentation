@@ -1241,6 +1241,29 @@
             <div class="content-container">
               <div class="content-header"><h1>Migration</h1></div>
               <section class="content">
+                <h2 id="upgrading-fhir_r4-06x--070" anchor="true">
+                  <span>Upgrading fhir_r4 0.6.x → 0.7.0</span><a href="/docs/core/migration#upgrading-fhir_r4-06x--070">#</a>
+                </h2>
+                <p>
+                  0.7.0 is a breaking release, but the breaks are small and mechanical (they apply equally to <code>fhir_r5</code>
+                   and <code>fhir_r6</code>):
+                </p>
+                <ul>
+                  <li>
+                    <strong>Enum renames (casing fix):</strong> <code>MedicationrequestStatus</code> → <code>MedicationRequestStatus</code>
+                     and <code>MessageheaderResponseRequest</code> → <code>MessageHeaderResponseRequest</code> (along with their 
+                    <code>...Enum</code> and <code>...CopyWithImpl</code> companions, and the <code>...Builder</code> variants in the mapping packages). The old names were generated from miscased tokens in HL7's own spec data. 
+                    <strong>Your existing code keeps compiling</strong> — the old names remain as deprecated typedef aliases — but the analyzer will nudge you to rename; a find-and-replace is all that's needed.
+                  </li>
+                  <li>
+                    <strong><code>ClientLogger</code> in <code>fhir_r*_path</code>:</strong> the <code>logFile</code> field (a dart:io 
+                    <code>File?</code>) is now <code>logFilePath</code> (a <code>String?</code>). This was part of making the 
+                    <code>_path</code>, <code>_bulk</code>, <code>_mapping</code>, <code>_validation</code>, and <code>_cql</code>
+                     packages web/WASM-compatible. The constructor is unchanged.
+                  </li>
+                </ul>
+                <p>Nothing about serialization, the wire format, or resource APIs changed.</p>
+                <hr/>
                 <h2 id="migration-guide-from-fhir-old-to-fhir_r4-new" anchor="true">
                   <span>Migration Guide: From fhir (old) to fhir_r4 (new)</span><a href="/docs/core/migration#migration-guide-from-fhir-old-to-fhir_r4-new">#</a>
                 </h2>
@@ -1274,7 +1297,7 @@
 </code></pre>
                 <h4 id="new-package">New Package</h4>
                 <pre><code class="language-yaml">dependencies:
-  fhir_r4: ^0.6.1
+  fhir_r4: ^0.7.0
 </code></pre>
                 <p>
                   <strong>Action Required:</strong> Update your <code>pubspec.yaml</code> and run <code>flutter pub get</code>.
@@ -2286,6 +2309,7 @@ void createPatient() {
               <div>
                 <h3>On this page</h3>
                 <ul>
+                  <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-06x--070">Upgrading fhir_r4 0.6.x → 0.7.0</a></li>
                   <li style="padding-left: 0em">
                     <a href="/docs/core/migration#migration-guide-from-fhir-old-to-fhir_r4-new">Migration Guide: From fhir (old) to fhir_r4 (new)</a>
                   </li>
