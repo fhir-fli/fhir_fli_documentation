@@ -3,6 +3,17 @@ id: migration
 title: Migration
 ---
 
+## Upgrading fhir_r4 0.6.x → 0.7.0
+
+0.7.0 is a breaking release, but the breaks are small and mechanical (they apply equally to `fhir_r5` and `fhir_r6`):
+
+- **Enum renames (casing fix):** `MedicationrequestStatus` → `MedicationRequestStatus` and `MessageheaderResponseRequest` → `MessageHeaderResponseRequest` (along with their `...Enum` and `...CopyWithImpl` companions, and the `...Builder` variants in the mapping packages). The old names were generated from miscased tokens in HL7's own spec data. **Your existing code keeps compiling** — the old names remain as deprecated typedef aliases — but the analyzer will nudge you to rename; a find-and-replace is all that's needed.
+- **`ClientLogger` in `fhir_r*_path`:** the `logFile` field (a dart:io `File?`) is now `logFilePath` (a `String?`). This was part of making the `_path`, `_bulk`, `_mapping`, `_validation`, and `_cql` packages web/WASM-compatible. The constructor is unchanged.
+
+Nothing about serialization, the wire format, or resource APIs changed.
+
+---
+
 ## Migration Guide: From fhir (old) to fhir_r4 (new)
 
 ### Introduction
@@ -39,7 +50,7 @@ dependencies:
 #### New Package
 ```yaml
 dependencies:
-  fhir_r4: ^0.6.1
+  fhir_r4: ^0.7.0
 ```
 
 **Action Required:** Update your `pubspec.yaml` and run `flutter pub get`.

@@ -21,8 +21,8 @@ Add the dependencies to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.6.0
-  fhir_r4: ^0.6.1
+  fhir_r4_auth: ^0.7.0
+  fhir_r4: ^0.7.0
 ```
 
 For R5 or R6, use `fhir_r5_auth`/`fhir_r6_auth` and `fhir_r5`/`fhir_r6` instead.

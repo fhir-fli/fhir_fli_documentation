@@ -9,9 +9,9 @@ title: FHIR Mapping Package
 
 ```yaml
 dependencies:
-  fhir_r4_mapping: ^0.6.0
-  fhir_r4: ^0.6.1
-  fhir_r4_path: ^0.6.0
+  fhir_r4_mapping: ^0.7.0
+  fhir_r4: ^0.7.0
+  fhir_r4_path: ^0.7.0
 ```
 
 ### What is FHIR Mapping?

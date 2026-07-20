@@ -30,8 +30,8 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.6.0
-  fhir_r4: ^0.6.1
+  fhir_r4_auth: ^0.7.0
+  fhir_r4: ^0.7.0
 ```
 
 #### Basic Example

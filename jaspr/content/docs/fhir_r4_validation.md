@@ -11,9 +11,9 @@ The `fhir_r4_validation` library provides comprehensive validation functionality
 
 ```yaml
 dependencies:
-  fhir_r4_validation: ^0.6.0
-  fhir_r4: ^0.6.1
-  fhir_r4_path: ^0.6.0
+  fhir_r4_validation: ^0.7.0
+  fhir_r4: ^0.7.0
+  fhir_r4_path: ^0.7.0
 ```
 
 ### Key Features

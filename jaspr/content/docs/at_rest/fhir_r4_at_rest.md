@@ -11,9 +11,9 @@ The package for interacting with FHIR servers. It handles request construction a
 
 ```yaml
 dependencies:
-  fhir_r4_at_rest: ^0.6.0
-  fhir_r4: ^0.6.1
+  fhir_r4_at_rest: ^0.7.0
+  fhir_r4: ^0.7.0
 
   # Optional: for authenticated requests
-  fhir_r4_auth: ^0.6.0
+  fhir_r4_auth: ^0.7.0
 ```

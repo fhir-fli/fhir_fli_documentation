@@ -13,8 +13,8 @@ As of version 0.6.0, the FHIRPath engine itself lives in the standalone, model-i
 
 ```yaml
 dependencies:
-  fhir_r4_path: ^0.6.0
-  fhir_r4: ^0.6.1
+  fhir_r4_path: ^0.7.0
+  fhir_r4: ^0.7.0
 ```
 
 ### Basic Usage
