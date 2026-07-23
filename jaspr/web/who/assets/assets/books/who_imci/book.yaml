@@ -1,0 +1,445 @@
+book:
+  id: "who_imci"
+  title: "Hospital Care for Children"
+  subtitle: "WHO · IMCI 2nd ed."
+  cover: "cover.png"
+  spine_color: "0xFF1565C0"
+  # contents tree — chapters/sections of the WHO Pocket Book. The Chapter 1
+  # ETAT reference charts are the first group; clinical chapters are added
+  # as groups (with sections/subsections) as they are authored.
+  contents:
+    - title: "1. Triage and emergency conditions"
+      # WHO Pocket Book color-codes by chapter; Chapter 1 = magenta. Topics
+      # inherit this; any topic may override its own palette.
+      palette:
+        accent: "0xFFD81B60"
+      children:
+        - topic: "topics/who_1_01_triage.yaml"
+        - topic: "topics/who_1_02_etat_summary.yaml"
+        - topic: "topics/who_1_03_assessment.yaml"
+        - topic: "topics/who_1_chart02_triage.yaml"
+        - topic: "topics/who_1_chart03_choking.yaml"
+        - topic: "topics/who_1_chart04_airway.yaml"
+        - topic: "topics/who_1_chart05_oxygen.yaml"
+        - topic: "topics/who_1_chart06_positioning.yaml"
+        - topic: "topics/who_1_chart07_iv_fluids_shock.yaml"
+        - topic: "topics/who_1_chart08_iv_fluids_sam.yaml"
+        - topic: "topics/who_1_chart09_diazepam.yaml"
+        - topic: "topics/who_1_chart10_glucose.yaml"
+        - topic: "topics/who_1_chart11_dehydration.yaml"
+        - topic: "topics/who_1_04_sam_emergency.yaml"
+        - title: "1.5 Diagnostic considerations"
+          topic: "topics/who_1_05_diagnostic.yaml"
+          children:
+            - topic: "topics/who_1_05_1_airway_dx.yaml"
+            - topic: "topics/who_1_05_2_shock_dx.yaml"
+            - topic: "topics/who_1_05_3_coma_dx.yaml"
+        - title: "1.6 Common poisoning"
+          topic: "topics/who_1_06_poisoning.yaml"
+          children:
+            - topic: "topics/who_1_06_1_ingested.yaml"
+            - topic: "topics/who_1_06_2_skin_eye.yaml"
+            - topic: "topics/who_1_06_3_inhaled.yaml"
+            - topic: "topics/who_1_06_4_specific.yaml"
+            - topic: "topics/who_1_06_5_prevention.yaml"
+        - topic: "topics/who_1_07_drowning.yaml"
+        - topic: "topics/who_1_08_electrocution.yaml"
+        - title: "1.9 Envenoming"
+          topic: "topics/who_1_09_envenoming.yaml"
+          children:
+            - topic: "topics/who_1_09_1_snake_bite.yaml"
+            - topic: "topics/who_1_09_2_scorpion.yaml"
+            - topic: "topics/who_1_09_3_other.yaml"
+        - title: "1.10 Trauma & injuries"
+          topic: "topics/who_1_10_trauma.yaml"
+          children:
+            - topic: "topics/who_1_10_1_primary_survey.yaml"
+            - topic: "topics/who_1_10_2_secondary_survey.yaml"
+    - title: "2. Diagnostic approaches to the sick child"
+      # WHO Pocket Book color-codes by chapter; Chapter 2 tab = red
+      # (sampled 0xFFEF2B3E from the p.41 chapter tab).
+      palette:
+        accent: "0xFFEF2B3E"
+      children:
+        - topic: "topics/who_2_01_imci_stages.yaml"
+        - topic: "topics/who_2_02_history.yaml"
+        - topic: "topics/who_2_03_examination.yaml"
+        - topic: "topics/who_2_04_labs.yaml"
+        - topic: "topics/who_2_05_differential.yaml"
+    - title: "3. Problems of the neonate and young infant"
+      # WHO Pocket Book color-codes by chapter; Chapter 3 tab = orange
+      # (sampled 0xFFF05418 from the p.46 chapter tab via pdftoppm).
+      palette:
+        accent: "0xFFF05418"
+      children:
+        - topic: "topics/who_3_01_newborn_care.yaml"
+        - topic: "topics/who_3_02_resuscitation.yaml"
+        - topic: "topics/who_3_03_routine_care.yaml"
+        - topic: "topics/who_3_04_infection_prevention.yaml"
+        - topic: "topics/who_3_05_hie.yaml"
+        - topic: "topics/who_3_06_danger_signs.yaml"
+        - topic: "topics/who_3_07_convulsions.yaml"
+        - topic: "topics/who_3_08_bacterial_infection.yaml"
+        - topic: "topics/who_3_09_meningitis.yaml"
+        - topic: "topics/who_3_10_supportive_care.yaml"
+        - title: "3.11 Preterm & low-birth-weight infants"
+          topic: "topics/who_3_11_preterm_lbw.yaml"
+          children:
+            - topic: "topics/who_3_11_1_lbw_moderate.yaml"
+            - topic: "topics/who_3_11_2_lbw_small.yaml"
+            - topic: "topics/who_3_11_3_lbw_problems.yaml"
+            - topic: "topics/who_3_11_4_lbw_discharge.yaml"
+        - title: "3.12 Other common neonatal problems"
+          topic: "topics/who_3_12_other_problems.yaml"
+          children:
+            - topic: "topics/who_3_12_1_jaundice.yaml"
+            - topic: "topics/who_3_12_2_conjunctivitis.yaml"
+            - topic: "topics/who_3_12_3_malformations.yaml"
+        - title: "3.13 Infants of mothers with infectious diseases"
+          topic: "topics/who_3_13_infected_mothers.yaml"
+          children:
+            - topic: "topics/who_3_13_1_syphilis.yaml"
+            - topic: "topics/who_3_13_2_tb.yaml"
+            - topic: "topics/who_3_13_3_hiv.yaml"
+        - topic: "topics/who_3_14_drug_doses.yaml"
+    - title: "4. Cough or difficulty in breathing"
+      # WHO Pocket Book color-codes by chapter; Chapter 4 tab = brown/ochre
+      # (sampled 0xFF9C5400 from the p.75 chapter tab via pdftoppm).
+      palette:
+        accent: "0xFF9C5400"
+      children:
+        - topic: "topics/who_4_01_cough.yaml"
+        - title: "4.2 Pneumonia"
+          topic: "topics/who_4_02_pneumonia.yaml"
+          children:
+            - topic: "topics/who_4_02_1_severe_pneumonia.yaml"
+            - topic: "topics/who_4_02_2_pneumonia.yaml"
+        - title: "4.3 Complications of pneumonia"
+          topic: "topics/who_4_03_complications.yaml"
+          children:
+            - topic: "topics/who_4_03_1_effusion.yaml"
+            - topic: "topics/who_4_03_2_abscess.yaml"
+            - topic: "topics/who_4_03_3_pneumothorax.yaml"
+        - topic: "topics/who_4_04_cough_cold.yaml"
+        - title: "4.5 Conditions presenting with wheeze"
+          topic: "topics/who_4_05_wheeze.yaml"
+          children:
+            - topic: "topics/who_4_05_1_bronchiolitis.yaml"
+            - topic: "topics/who_4_05_2_asthma.yaml"
+            - topic: "topics/who_4_05_3_wheeze_cold.yaml"
+        - title: "4.6 Conditions presenting with stridor"
+          topic: "topics/who_4_06_stridor.yaml"
+          children:
+            - topic: "topics/who_4_06_1_croup.yaml"
+            - topic: "topics/who_4_06_2_diphtheria.yaml"
+            - topic: "topics/who_4_06_3_epiglottitis.yaml"
+            - topic: "topics/who_4_06_4_anaphylaxis.yaml"
+        - title: "4.7 Conditions presenting with chronic cough"
+          topic: "topics/who_4_07_chronic_cough.yaml"
+          children:
+            - topic: "topics/who_4_07_1_pertussis.yaml"
+            - topic: "topics/who_4_07_2_tuberculosis.yaml"
+            - topic: "topics/who_4_07_3_foreign_body.yaml"
+        - topic: "topics/who_4_08_heart_failure.yaml"
+        - topic: "topics/who_4_09_rheumatic_heart.yaml"
+    - title: "5. Diarrhoea"
+      # WHO Pocket Book color-codes by chapter; Chapter 5 tab = olive/mustard
+      # (sampled 0xFF999100 from the p.125 chapter tab via pdftoppm).
+      palette:
+        accent: "0xFF999100"
+      children:
+        - topic: "topics/who_5_01_diarrhoea.yaml"
+        - title: "5.2 Acute diarrhoea"
+          topic: "topics/who_5_02_acute.yaml"
+          children:
+            - topic: "topics/who_5_02_1_severe_dehydration.yaml"
+            - topic: "topics/who_5_02_2_some_dehydration.yaml"
+            - topic: "topics/who_5_02_3_no_dehydration.yaml"
+        - title: "5.3 Persistent diarrhoea"
+          topic: "topics/who_5_03_persistent.yaml"
+          children:
+            - topic: "topics/who_5_03_1_severe_persistent.yaml"
+            - topic: "topics/who_5_03_2_persistent_nonsevere.yaml"
+        - topic: "topics/who_5_04_dysentery.yaml"
+    - title: "6. Fever"
+      # WHO Pocket Book color-codes by chapter; Chapter 6 tab = green
+      # (sampled 0xFF40BA4E from the p.149 chapter tab via pdftoppm).
+      palette:
+        accent: "0xFF40BA4E"
+      children:
+        - title: "6.1 Child presenting with fever"
+          topic: "topics/who_6_01_fever.yaml"
+          children:
+            - topic: "topics/who_6_01_1_fever_7days.yaml"
+            - topic: "topics/who_6_01_2_fever_long.yaml"
+        - title: "6.2 Malaria"
+          topic: "topics/who_6_02_malaria.yaml"
+          children:
+            - topic: "topics/who_6_02_1_severe_malaria.yaml"
+            - topic: "topics/who_6_02_2_uncomplicated_malaria.yaml"
+        - title: "6.3 Meningitis"
+          topic: "topics/who_6_03_meningitis.yaml"
+          children:
+            - topic: "topics/who_6_03_1_bacterial_meningitis.yaml"
+            - topic: "topics/who_6_03_2_meningococcal_epidemics.yaml"
+            - topic: "topics/who_6_03_3_tb_meningitis.yaml"
+            - topic: "topics/who_6_03_4_cryptococcal_meningitis.yaml"
+        - title: "6.4 Measles"
+          topic: "topics/who_6_04_measles.yaml"
+          children:
+            - topic: "topics/who_6_04_1_severe_measles.yaml"
+            - topic: "topics/who_6_04_2_nonsevere_measles.yaml"
+        - topic: "topics/who_6_05_septicaemia.yaml"
+        - topic: "topics/who_6_06_typhoid.yaml"
+        - title: "6.7 Ear infections"
+          topic: "topics/who_6_07_ear_infections.yaml"
+          children:
+            - topic: "topics/who_6_07_1_mastoiditis.yaml"
+            - topic: "topics/who_6_07_2_acute_otitis.yaml"
+            - topic: "topics/who_6_07_3_chronic_otitis.yaml"
+        - topic: "topics/who_6_08_uti.yaml"
+        - topic: "topics/who_6_09_septic_arthritis.yaml"
+        - title: "6.10 Dengue"
+          topic: "topics/who_6_10_dengue.yaml"
+          children:
+            - topic: "topics/who_6_10_1_severe_dengue.yaml"
+        - topic: "topics/who_6_11_rheumatic_fever.yaml"
+    - title: "7. Severe acute malnutrition"
+      # WHO Pocket Book color-codes by chapter; Chapter 7 tab = teal-green
+      # (sampled 0xFF009167 from the p.197 chapter tab via pdftoppm).
+      palette:
+        accent: "0xFF009167"
+      children:
+        - topic: "topics/who_7_01_sam.yaml"
+        - topic: "topics/who_7_02_initial_assessment.yaml"
+        - topic: "topics/who_7_03_organization_of_care.yaml"
+        - title: "7.4 General management (10 steps)"
+          topic: "topics/who_7_04_general_management.yaml"
+          children:
+            - topic: "topics/who_7_04_1_hypoglycaemia.yaml"
+            - topic: "topics/who_7_04_2_hypothermia.yaml"
+            - topic: "topics/who_7_04_3_dehydration.yaml"
+            - topic: "topics/who_7_04_4_electrolytes.yaml"
+            - topic: "topics/who_7_04_5_infection.yaml"
+            - topic: "topics/who_7_04_6_micronutrients.yaml"
+            - topic: "topics/who_7_04_7_initial_refeeding.yaml"
+            - topic: "topics/who_7_04_8_catchup_feeding.yaml"
+            - topic: "topics/who_7_04_9_sensory_stimulation.yaml"
+            - topic: "topics/who_7_04_10_infants_under6m.yaml"
+        - title: "7.5 Associated conditions"
+          topic: "topics/who_7_05_associated_conditions.yaml"
+          children:
+            - topic: "topics/who_7_05_1_eye_problems.yaml"
+            - topic: "topics/who_7_05_2_severe_anaemia.yaml"
+            - topic: "topics/who_7_05_3_skin_kwashiorkor.yaml"
+            - topic: "topics/who_7_05_4_continuing_diarrhoea.yaml"
+            - topic: "topics/who_7_05_5_tuberculosis.yaml"
+        - title: "7.6 Discharge and follow-up"
+          topic: "topics/who_7_06_discharge.yaml"
+          children:
+            - topic: "topics/who_7_06_1_outpatient_transfer.yaml"
+            - topic: "topics/who_7_06_2_discharge_criteria.yaml"
+            - topic: "topics/who_7_06_3_followup.yaml"
+        - title: "7.7 Monitoring quality of care"
+          topic: "topics/who_7_07_monitoring.yaml"
+          children:
+            - topic: "topics/who_7_07_1_mortality_audit.yaml"
+            - topic: "topics/who_7_07_2_weight_gain.yaml"
+
+    - title: "8. Children with HIV/AIDS"
+      # WHO Pocket Book color-codes by chapter; Chapter 8 tab = cyan-teal
+      # (sampled 0xFF00AAAF from the p.225 chapter tab via pdftoppm).
+      palette:
+        accent: "0xFF00AAAF"
+      children:
+        - title: "8.1 Suspected or confirmed HIV"
+          topic: "topics/who_8_01_suspected_hiv.yaml"
+          children:
+            - topic: "topics/who_8_01_1_clinical_diagnosis.yaml"
+            - topic: "topics/who_8_01_2_hiv_counselling.yaml"
+            - topic: "topics/who_8_01_3_testing_diagnosis.yaml"
+            - topic: "topics/who_8_01_4_clinical_staging.yaml"
+        - title: "8.2 Antiretroviral therapy"
+          topic: "topics/who_8_02_art.yaml"
+          children:
+            - topic: "topics/who_8_02_1_arv_drugs.yaml"
+            - topic: "topics/who_8_02_2_when_to_start.yaml"
+            - topic: "topics/who_8_02_3_side_effects.yaml"
+            - topic: "topics/who_8_02_4_when_to_change.yaml"
+        - title: "8.3 Supportive care"
+          topic: "topics/who_8_03_supportive_care.yaml"
+          children:
+            - topic: "topics/who_8_03_1_vaccination.yaml"
+            - topic: "topics/who_8_03_2_cotrimoxazole.yaml"
+            - topic: "topics/who_8_03_3_nutrition.yaml"
+        - title: "8.4 HIV-related conditions"
+          topic: "topics/who_8_04_related_conditions.yaml"
+          children:
+            - topic: "topics/who_8_04_1_tuberculosis.yaml"
+            - topic: "topics/who_8_04_2_pcp.yaml"
+            - topic: "topics/who_8_04_3_lip.yaml"
+            - topic: "topics/who_8_04_4_fungal.yaml"
+            - topic: "topics/who_8_04_5_kaposi.yaml"
+        - title: "8.5 PMTCT & infant feeding"
+          topic: "topics/who_8_05_pmtct.yaml"
+          children:
+            - topic: "topics/who_8_05_1_prevention_mtct.yaml"
+            - topic: "topics/who_8_05_2_infant_feeding.yaml"
+        - title: "8.6 Follow-up"
+          topic: "topics/who_8_06_followup.yaml"
+          children:
+            - topic: "topics/who_8_06_1_discharge.yaml"
+            - topic: "topics/who_8_06_2_referral.yaml"
+            - topic: "topics/who_8_06_3_clinical_followup.yaml"
+        - title: "8.7 Palliative & end-of-life care"
+          topic: "topics/who_8_07_palliative.yaml"
+          children:
+            - topic: "topics/who_8_07_1_pain_control.yaml"
+            - topic: "topics/who_8_07_2_anorexia_nausea.yaml"
+            - topic: "topics/who_8_07_3_pressure_sores.yaml"
+            - topic: "topics/who_8_07_4_mouth_care.yaml"
+            - topic: "topics/who_8_07_5_airway.yaml"
+            - topic: "topics/who_8_07_6_psychosocial.yaml"
+
+    - title: "9. Common surgical problems"
+      # WHO Pocket Book color-codes by chapter; Chapter 9 tab = sky blue
+      # (sampled 0xFF00ADEF from the p.255 chapter tab via pdftoppm).
+      palette:
+        accent: "0xFF00ADEF"
+      children:
+        - title: "9.1 Care before, during & after surgery"
+          topic: "topics/who_9_01_perioperative.yaml"
+          children:
+            - topic: "topics/who_9_01_1_preoperative.yaml"
+            - topic: "topics/who_9_01_2_intraoperative.yaml"
+            - topic: "topics/who_9_01_3_postoperative.yaml"
+        - title: "9.2 Congenital anomalies"
+          topic: "topics/who_9_02_congenital.yaml"
+          children:
+            - topic: "topics/who_9_02_1_cleft.yaml"
+            - topic: "topics/who_9_02_2_bowel_obstruction.yaml"
+            - topic: "topics/who_9_02_3_wall_defects.yaml"
+            - topic: "topics/who_9_02_4_myelomeningocoele.yaml"
+            - topic: "topics/who_9_02_5_hip_dislocation.yaml"
+            - topic: "topics/who_9_02_6_talipes.yaml"
+        - title: "9.3 Injuries"
+          topic: "topics/who_9_03_injuries.yaml"
+          children:
+            - topic: "topics/who_9_03_1_burns.yaml"
+            - topic: "topics/who_9_03_2_head_injuries.yaml"
+            - topic: "topics/who_9_03_3_chest_injuries.yaml"
+            - topic: "topics/who_9_03_4_abdominal_injuries.yaml"
+            - topic: "topics/who_9_03_5_fractures.yaml"
+            - topic: "topics/who_9_03_6_wound_care.yaml"
+        - title: "9.4 Abdominal problems"
+          topic: "topics/who_9_04_abdominal.yaml"
+          children:
+            - topic: "topics/who_9_04_1_abdominal_pain.yaml"
+            - topic: "topics/who_9_04_2_appendicitis.yaml"
+            - topic: "topics/who_9_04_3_bowel_obstruction.yaml"
+            - topic: "topics/who_9_04_4_intussusception.yaml"
+            - topic: "topics/who_9_04_5_umbilical_hernia.yaml"
+            - topic: "topics/who_9_04_6_inguinal_hernia.yaml"
+            - topic: "topics/who_9_04_7_incarcerated_hernia.yaml"
+            - topic: "topics/who_9_04_8_testicular_torsion.yaml"
+            - topic: "topics/who_9_04_9_rectal_prolapse.yaml"
+        - title: "9.5 Infections requiring surgery"
+          topic: "topics/who_9_05_infections.yaml"
+          children:
+            - topic: "topics/who_9_05_1_abscess.yaml"
+            - topic: "topics/who_9_05_2_osteomyelitis.yaml"
+            - topic: "topics/who_9_05_3_septic_arthritis.yaml"
+            - topic: "topics/who_9_05_4_pyomyositis.yaml"
+    - title: "10. Supportive care"
+      # WHO Pocket Book color-codes by chapter; Chapter 10 tab = royal blue
+      # (sampled 0xFF1C63B7 from the p.293 'Supportive care' chapter title
+      # via pdftoppm).
+      palette:
+        accent: "0xFF1C63B7"
+      children:
+        - title: "10.1 Nutritional management"
+          topic: "topics/who_10_01_nutrition.yaml"
+          children:
+            - topic: "topics/who_10_01_1_breastfeeding.yaml"
+            - topic: "topics/who_10_01_2_sick_nutrition.yaml"
+        - topic: "topics/who_10_02_fluids.yaml"
+        - topic: "topics/who_10_03_fever.yaml"
+        - topic: "topics/who_10_04_pain.yaml"
+        - topic: "topics/who_10_05_anaemia.yaml"
+        - title: "10.6 Blood transfusion"
+          topic: "topics/who_10_06_transfusion.yaml"
+          children:
+            - topic: "topics/who_10_06_1_storage.yaml"
+            - topic: "topics/who_10_06_2_problems.yaml"
+            - topic: "topics/who_10_06_3_indications.yaml"
+            - topic: "topics/who_10_06_4_giving.yaml"
+            - topic: "topics/who_10_06_5_reactions.yaml"
+        - topic: "topics/who_10_07_oxygen.yaml"
+        - topic: "topics/who_10_08_play.yaml"
+    - title: "11. Monitoring the child's progress"
+      # WHO Pocket Book color-codes by chapter; Chapter 11 tab = violet
+      # (sampled 0xFF542791 from the p.319 chapter title via pdftoppm).
+      palette:
+        accent: "0xFF542791"
+      children:
+        - topic: "topics/who_11_01_monitoring_procedures.yaml"
+        - topic: "topics/who_11_02_monitoring_chart.yaml"
+        - topic: "topics/who_11_03_audit.yaml"
+    - title: "12. Counselling & discharge from hospital"
+      # WHO Pocket Book color-codes by chapter; Chapter 12 tab = blue-violet
+      # (sampled 0xFF7264B8 from the p.321 chapter title via pdftoppm).
+      palette:
+        accent: "0xFF7264B8"
+      children:
+        - topic: "topics/who_12_01_discharge_timing.yaml"
+        - topic: "topics/who_12_02_counselling.yaml"
+        - topic: "topics/who_12_03_nutrition_counselling.yaml"
+        - topic: "topics/who_12_04_home_treatment.yaml"
+        - topic: "topics/who_12_05_mothers_health.yaml"
+        - topic: "topics/who_12_06_immunization.yaml"
+        - topic: "topics/who_12_07_communicating.yaml"
+        - topic: "topics/who_12_08_followup.yaml"
+    - title: "Annex 1 · Practical procedures"
+      # WHO Pocket Book annex tab = steel blue (sampled 0xFF5981BF from the
+      # p.333 'PRACTICAL PROCEDURES' side tab via pdftoppm).
+      topic: "topics/who_a1_00_overview.yaml"
+      palette:
+        accent: "0xFF5981BF"
+      children:
+        - topic: "topics/who_a1_01_injections.yaml"
+        - title: "A1.2 Giving parenteral fluids"
+          topic: "topics/who_a1_02_parenteral.yaml"
+          children:
+            - topic: "topics/who_a1_02_1_peripheral_iv.yaml"
+            - topic: "topics/who_a1_02_2_intraosseous.yaml"
+            - topic: "topics/who_a1_02_3_central_vein.yaml"
+            - topic: "topics/who_a1_02_4_cutdown.yaml"
+            - topic: "topics/who_a1_02_5_umbilical.yaml"
+        - topic: "topics/who_a1_03_ng_tube.yaml"
+        - topic: "topics/who_a1_04_lumbar_puncture.yaml"
+        - topic: "topics/who_a1_05_chest_drain.yaml"
+        - topic: "topics/who_a1_06_suprapubic.yaml"
+        - topic: "topics/who_a1_07_blood_glucose.yaml"
+    - title: "Annex 2 · Drug dosages"
+      # A faceted FORMULARY collection (A–Z / class / indication), not a chapter.
+      # Drugs live in formulary.yaml; the drug-index view renders them. Same
+      # steel-blue annex tab (0xFF5981BF) as Annex 1.
+      view: "collection"
+      formulary: "formulary.yaml"
+      palette:
+        accent: "0xFF5981BF"
+    # Annex 3 is a single reference table → a top-level leaf (its own
+    # steel-blue tab is set in the topic's palette), not a group.
+    - topic: "topics/who_a3_equipment.yaml"
+    # Annex 4 (IV fluids) — composition table + A4.1 choice of fluid, one
+    # short topic → a top-level leaf like Annex 3.
+    - topic: "topics/who_a4_iv_fluids.yaml"
+    # Annex 5 (Assessing nutritional status) — WHO growth z-score tables.
+    # A group; children (A5.1, A5.2, lookup, charts) added per sub-section.
+    - title: "Annex 5 · Assessing nutritional status"
+      palette:
+        accent: "0xFF5981BF"
+      children:
+        - topic: "topics/who_a5_1_weight_for_age.yaml"
+        - topic: "topics/who_a5_2_weight_for_length.yaml"
+        - topic: "topics/who_a5_2_weight_for_height.yaml"

@@ -1,0 +1,32 @@
+# ============================================================
+# WHO IMCI §1.6.3 — Inhaled poisons.
+# Pocket Book 2nd ed (2013), p.29.
+# OpenEvidence-reviewed 2026-07: reviewer confirmed accurate (delayed
+#   pneumonitis from irritant gases noted correctly) — no change.
+# ============================================================
+
+topic:
+  id: "who-imci-1-6-3-inhaled"
+  title: "Inhaled Poisons"
+  list_subtitle: "1.6.3 · remove from source, oxygen, airway"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · WHO PB 2013 (no change)"
+  tags: ["poisoning", "inhalation", "irritant gas", "oxygen", "imci"]
+  aliases:
+    - "Inhalation Injury"
+  category: "medical"
+
+  page_number: 29
+
+  blocks:
+
+    - type: "prose"
+      title: "Inhaled poisons"
+      highlight: true
+      markdown: |
+        - **Remove the child from the source** of exposure.
+        - **Urgently call for help.**
+        - Give **supplementary oxygen** for respiratory distress, cyanosis
+          or **SpO₂ ≤ 90%**.
+        - **Irritant gases** can cause upper-airway swelling/obstruction,
+          bronchospasm and **delayed pneumonitis** — intubation,
+          bronchodilators and ventilatory support may be needed.

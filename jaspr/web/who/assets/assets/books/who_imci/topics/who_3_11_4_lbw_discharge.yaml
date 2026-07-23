@@ -1,0 +1,60 @@
+# ============================================================
+# WHO IMCI §3.11.4 — Discharge and follow-up of low-birth-weight infants.
+# Pocket Book 2nd ed (2013), p.63.
+# ✅ OpenEvidence review applied (2026-07): added ROP screening
+#    (GA ≤30 wk or BW ≤1500 g) — a notable omission from the source page.
+# ============================================================
+
+topic:
+  id: "who-imci-3-11-4-lbw-discharge"
+  title: "LBW Discharge & Follow-up"
+  list_subtitle: "3.11.4 · discharge criteria + vaccines"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07 (ROP screening added)"
+  tags: ["discharge", "follow-up", "low birth weight", "immunisation", "retinopathy of prematurity", "rop", "neonate", "pediatric"]
+  aliases:
+    - "LBW Discharge"
+  category: "medical"
+
+  page_number: 63
+
+  blocks:
+
+    - type: "prose"
+      title: "Discharge when…"
+      highlight: true
+      markdown: |
+        A low-birth-weight infant can be discharged when:
+        - there are **no danger signs**
+          ([§3.6](topic:who-imci-3-6-danger-signs)) or signs of serious
+          infection;
+        - the infant is **gaining weight on breastfeeding alone**;
+        - the infant can **maintain a temperature of 36–37 °C in an open cot**;
+        - the mother is **confident and able to care** for the infant.
+
+    - type: "prose"
+      title: "Immunisation"
+      markdown: |
+        Give all **scheduled vaccines** at the time of birth, and any **second
+        doses** that are due by the time of discharge.
+
+    - type: "prose"
+      title: "Screen for retinopathy of prematurity"
+      markdown: |
+        Arrange **eye screening for retinopathy of prematurity (ROP)** in
+        infants **≤ 30 weeks' gestation** or **≤ 1500 g** birth weight (and
+        larger infants **1500–2000 g** with an unstable course). The **first
+        dilated exam** is at **4–6 weeks after birth** (or 31–33 weeks
+        postmenstrual age, whichever is later). Untreated ROP is a preventable
+        cause of childhood blindness — ensure the referral is booked **before
+        discharge**.
+
+    - type: "prose"
+      title: "Counsel before discharge"
+      markdown: |
+        Counsel parents before discharge on:
+        - **exclusive breastfeeding**
+        - **keeping the infant warm**
+        - **danger signs** for seeking care
+
+        Follow up **low-birth-weight infants weekly** — weighing and assessing
+        feeding and general health — until they reach **3 kg**.

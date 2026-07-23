@@ -1,0 +1,110 @@
+# ============================================================
+# WHO IMCI §8.2.1 — Antiretroviral drugs (Tables 24 & 25). Pocket Book
+# 2nd ed (2013), pp.233–234.
+# 🛑 OpenEvidence-reviewed 2026-07 — MAJOR REVISION (paradigm shift):
+# INSTIs (dolutegravir) are now the PREFERRED anchor class for nearly all
+# children (ODYSSEY, NEJM 2021). Table 24 rewritten to add DTG/BIC/RAL +
+# TAF + DRV/r and demote EFV/NVP/LPV/r; STAVUDINE (d4T) REMOVED (WHO
+# phase-out for toxicity). Table 25 replaced with DTG-based first-line
+# regimens by weight band. The 2013 "LPV/r-based under 3 years" framing is
+# obsolete. Refs: DHHS/OARAC Pediatric ARV Guidelines 2024; ODYSSEY 2021;
+# IMPAACT 2019 (dispersible DTG/ABC/3TC).
+# ============================================================
+
+topic:
+  id: "who-imci-8-2-1-arv-drugs"
+  title: "Antiretroviral Drugs"
+  list_subtitle: "8.2.1 · INSTI-based · dolutegravir first-line"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["HIV", "ART", "dolutegravir", "INSTI", "NRTI", "protease inhibitor", "pediatric"]
+  aliases:
+    - "ARV drugs"
+    - "First-line regimen"
+    - "Dolutegravir"
+  category: "medical"
+
+  page_number: 233
+
+  blocks:
+
+    - type: "prose"
+      title: "Dolutegravir is the preferred anchor"
+      highlight: true
+      markdown: |
+        First-line ART is **two NRTIs plus one anchor drug**. The anchor of choice
+        is now an **integrase strand transfer inhibitor (INSTI)** — **dolutegravir
+        (DTG)** — for **nearly all children**. The **ODYSSEY** trial (707 children)
+        showed DTG-based ART was **superior** to standard care for both first- and
+        second-line, and DTG is approved from **≥ 4 weeks of age and ≥ 3 kg**, with
+        **dispersible tablets** for young children.
+
+    - type: "prose"
+      title: "Four drug classes now"
+      markdown: |
+        - **INSTI** — integrase strand transfer inhibitors (**preferred anchor**)
+        - **NRTI** — nucleoside reverse transcriptase inhibitors (the backbone)
+        - **NNRTI** — non-nucleoside RTIs (**demoted** from first-line)
+        - **PI** — protease inhibitors (mainly second-line now)
+
+    - type: "table"
+      title: "Table 24 · Drugs for children (updated)"
+      columns: ["Class", "Drug", "Notes"]
+      column_flex: [3, 4, 6]
+      rows:
+        - cells: ["INSTI", "Dolutegravir (DTG)", "Preferred anchor, all ages ≥ 4 wk & ≥ 3 kg"]
+        - cells: ["INSTI", "Bictegravir (BIC)", "≥ 2 yr & ≥ 14 kg, as BIC/FTC/TAF (Biktarvy)"]
+        - cells: ["INSTI", "Raltegravir (RAL)", "Neonates < 4 wk"]
+        - cells: ["NRTI", "Abacavir (ABC)", "Preferred NRTI backbone"]
+        - cells: ["NRTI", "Lamivudine (3TC)", "Backbone"]
+        - cells: ["NRTI", "Emtricitabine (FTC)", "Backbone (= 3TC class)"]
+        - cells: ["NRTI", "Zidovudine (ZDV)", "Alternative NRTI"]
+        - cells: ["NRTI", "Tenofovir alafenamide (TAF)", "Replaces TDF — better renal/bone safety"]
+        - cells: ["NRTI", "Tenofovir DF (TDF)", "Retained, but TAF preferred"]
+        - cells: ["NNRTI", "Efavirenz (EFV)", "Demoted — no longer preferred first-line"]
+        - cells: ["NNRTI", "Nevirapine (NVP)", "Demoted — mainly neonates"]
+        - cells: ["PI", "Darunavir/r (DRV/r)", "Preferred PI for second-line ≥ 3 yr"]
+        - cells: ["PI", "Lopinavir/r (LPV/r)", "Demoted from first-line"]
+        - cells: ["PI", "Atazanavir (ATV)", "Alternative PI"]
+
+    - type: "prose"
+      title: "Stavudine (d4T) — removed"
+      callout: true
+      palette:
+        alert: "0xFFD32F2F"
+        alert_fill: "0xFFFDECEA"
+        alert_text: "0xFFB71C1C"
+      markdown: |
+        **Do NOT use stavudine (d4T).** WHO recommends complete **phase-out** for
+        unacceptable mitochondrial toxicity (lipodystrophy, lactic acidosis,
+        peripheral neuropathy) — toxicity was **50.6 per 1000 patient-years** vs
+        **1.6** for abacavir. The product has been withdrawn.
+
+    - type: "table"
+      title: "Table 25 · First-line regimens by weight/age (updated)"
+      columns: ["Group", "Preferred regimen"]
+      column_flex: [4, 6]
+      rows:
+        - cells: ["Neonate < 4 wk", "RAL- or NVP-based (DTG data limited < 4 wk)"]
+        - cells: ["≥ 4 wk & ≥ 3 kg", "DTG + ABC + 3TC (alt: DTG + ZDV + 3TC)"]
+        - cells: ["≥ 6 kg (~3 mo)", "Dispersible FDC DTG/ABC/3TC (Triumeq PD)"]
+        - cells: ["≥ 2 yr & ≥ 14 kg", "DTG + ABC + 3TC, or BIC/FTC/TAF (Biktarvy)"]
+        - cells: ["≥ 25 kg", "DTG/ABC/3TC (Triumeq) or BIC/FTC/TAF single tablet"]
+
+    - type: "prose"
+      title: "Notes on the regimens"
+      markdown: |
+        - **DTG + ABC + 3TC** is the preferred regimen across ages; the dispersible
+          fixed-dose combination (**Triumeq PD**) makes it feasible from **≥ 6 kg /
+          ~3 months** in resource-limited settings.
+        - The 2013 **"LPV/r-based for children < 3 years"** approach is **obsolete**
+          — DTG has replaced LPV/r as the preferred anchor.
+        - For exact weight-band dosages see **Annex 2 / national paediatric ARV
+          guidelines**.
+
+    - type: "prose"
+      title: "Dosing by weight band"
+      markdown: |
+        Children metabolize many ARVs **faster** than adults and need higher
+        equivalent doses. **Doses must be increased as the child grows**, or there
+        is a risk of under-dosage and resistance. Dosing is by **weight band**
+        (most convenient), body surface area, or weight.

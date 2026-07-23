@@ -1,0 +1,70 @@
+# ============================================================
+# WHO IMCI §7.4.4 — Electrolyte imbalance (Step 4). Pocket Book 2nd ed
+# (2013), p.206.
+# ✅ OpenEvidence-reviewed 2026-07: K/Mg doses + no-diuretic rule confirmed
+# current; added the hyponatraemia burden (a strong mortality predictor) and a
+# hypophosphataemia / refeeding-syndrome note.
+# ============================================================
+
+topic:
+  id: "who-imci-7-4-4-electrolytes"
+  title: "Step 4 · Electrolyte Imbalance"
+  list_subtitle: "7.4.4 · extra K + Mg · no diuretic · no added salt"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["electrolyte imbalance", "SAM", "potassium", "magnesium", "sodium", "phosphate", "hyponatraemia", "refeeding syndrome", "oedema", "pediatric"]
+  aliases:
+    - "SAM Electrolytes"
+  category: "medical"
+
+  page_number: 206
+
+  blocks:
+
+    - type: "prose"
+      title: "🛑 Do NOT give a diuretic for oedema"
+      callout: true
+      palette:
+        alert: "0xFFD32F2F"
+        alert_fill: "0xFFFDECEA"
+        alert_text: "0xFFB71C1C"
+      markdown: |
+        All children with SAM have **potassium and magnesium deficiency** (may
+        take **≥ 2 weeks** to correct). Oedema is partly from **potassium
+        deficiency and sodium retention** — there is **excess body sodium even
+        though plasma sodium may be low**. **Do NOT treat oedema with a
+        diuretic**, and **do not add salt** — **giving high sodium loads could
+        kill the child**.
+
+    - type: "prose"
+      title: "Treatment"
+      markdown: |
+        - **Extra potassium 3–4 mmol/kg per day.**
+        - **Extra magnesium 0.4–0.6 mmol/kg per day.**
+        - Add the extra potassium and magnesium to the feed **during
+          preparation** (not pre-mixed): add **20 ml of the electrolyte/mineral
+          solution to 1 litre of feed**. Alternatively, use commercially
+          available **pre-mixed sachets** formulated for malnourished children.
+        - When rehydrating, use a **low-sodium fluid** (ReSoMal or low-osmolarity
+          WHO-ORS — [§7.4.3](topic:who-imci-7-4-3-dehydration)).
+        - **Prepare food without added salt.**
+
+    - type: "prose"
+      title: "Hyponatraemia — a major mortality risk"
+      markdown: |
+        **Hyponatraemia** is common in SAM (found in **~half** of children at
+        admission in recent cohorts) and is one of the **strongest predictors of
+        death**. It reflects **excess total-body sodium with water shift**, NOT a
+        need for sodium — **do not give sodium to correct it**. Manage by treating
+        the underlying illness, using **low-sodium rehydration fluids**, and
+        **avoiding overhydration** (see the dehydration red-alert).
+
+    - type: "prose"
+      title: "Phosphate & refeeding syndrome"
+      markdown: |
+        **Hypophosphataemia** is common at admission and can worsen as feeding
+        starts — a feature of **refeeding syndrome** (intracellular shifts of
+        phosphate, potassium and magnesium). This is why re-feeding is **gradual**
+        ([§7.4.7](topic:who-imci-7-4-7-initial-refeeding)) and why **potassium and
+        magnesium are supplemented**. Where possible, **monitor phosphate** (and
+        K/Mg) in the first days of feeding; watch for refeeding syndrome,
+        especially when transitioning to catch-up feeds.

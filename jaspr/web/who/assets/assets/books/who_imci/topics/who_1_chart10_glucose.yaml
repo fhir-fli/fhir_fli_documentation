@@ -1,0 +1,116 @@
+# ============================================================
+# WHO IMCI Chart 10 — How to give glucose intravenously (hypoglycaemia)
+# Pocket Book of Hospital Care for Children (2nd ed, 2013), p.16
+# OpenEvidence review applied 2026-06-18:
+#   - Dilution formula #2 corrected: WHO's "1 part 50% in 9 parts 5%" yields
+#     ~9.5%, not 10%. Changed to 1:8 (50%:5%) → exact 10% (90/9).
+#   - Added 50% dextrose safety callout: never give undiluted D50 to
+#     neonates/young children (osmotic injury, hyperglycaemia, ICH; FDA
+#     label) — dilute to ≤ 12.5% for peripheral IV.
+#   - Added dose-discrepancy note: WHO 5 ml/kg (0.5 g/kg) is ~2.5× the
+#     PES/AAP/APLS standard 2 ml/kg (0.2 g/kg); higher WHO dose suits
+#     settings where monitoring/repeat dosing may be delayed.
+#   - Added maintenance-infusion guidance (GIR 5–8 mg/kg/min) to prevent
+#     rebound hypoglycaemia (Luo 2024 review; CHI management).
+#   - Threshold context: 2.5 mmol/L cutoff supported by SugarFACT RCT
+#     (Baker 2020, Malawi) — raising it did not reduce mortality.
+#   - Volume table & sublingual first-aid confirmed correct (sublingual
+#     supported by 2024 AHA/Red Cross + Cochrane 2019). No change.
+#   - Added 40% buccal dextrose gel as an evidence-based bridge when IV is
+#     impossible/delayed (Cochrane 2019; Sugar Babies) — 0.5 ml/kg (0.2
+#     g/kg) of 40% gel rubbed into the buccal mucosa. (Per Grey 2026-06-18.)
+# OpenEvidence-reviewed 2026-07: reviewer confirmed the 10% dose, dilution-
+#   formula correction, D50 safety callout, buccal-gel bridge, SugarFACT
+#   threshold, and GIR maintenance all accurate — no change.
+# ============================================================
+
+topic:
+  id: "who-imci-chart10-glucose"
+  title: "IV Glucose (Hypoglycaemia)"
+  list_subtitle: "IMCI Chart 10 · 5 ml/kg of 10% glucose"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · SugarFACT / PES / Luo 2024 / WHO (no change)"
+  tags: ["hypoglycaemia", "glucose", "dextrose", "iv", "d10", "imci", "pediatric"]
+  aliases:
+    - "Hypoglycemia"
+    - "Dextrose"
+  category: "medical"
+
+  page_number: 16
+
+  blocks:
+
+    - type: "prose"
+      title: "When & what to give"
+      highlight: true
+      markdown: |
+        - **Insert an IV line** and draw blood for emergency labs.
+        - **Treat as hypoglycaemia** if glucose is **< 2.5 mmol/L
+          (45 mg/dL)**, or **< 3 mmol/L (54 mg/dL)** in a severely
+          malnourished child, **or** if it **cannot be measured**.
+        - Give **5 ml/kg of 10% glucose** rapidly by IV injection.
+
+    - type: "table"
+      title: "10% glucose bolus — 5 ml/kg"
+      columns: ["Age (weight)", "Volume (5 ml/kg)"]
+      column_flex: [3, 2]
+      rows:
+        - cells: ["< 2 months (< 4 kg)", "15 ml"]
+        - cells: ["2–< 4 months (4–< 6 kg)", "25 ml"]
+        - cells: ["4–< 12 months (6–< 10 kg)", "40 ml"]
+        - cells: ["1–< 3 years (10–< 14 kg)", "60 ml"]
+        - cells: ["3–< 5 years (14–< 19 kg)", "80 ml"]
+
+    - type: "prose"
+      title: "Dose & threshold context"
+      markdown: |
+        - WHO uses **5 ml/kg (0.5 g/kg)** — about **2.5× the PES / AAP /
+          APLS standard of 2 ml/kg (0.2 g/kg)**. The higher WHO dose suits
+          settings where glucose monitoring and repeat dosing may be
+          delayed.
+        - The **2.5 mmol/L** cutoff is supported by the **SugarFACT** RCT
+          (Malawi) — raising it did **not** reduce mortality.
+
+    - type: "prose"
+      title: "After the bolus"
+      markdown: |
+        - **Recheck glucose at 30 min.** If still low, **repeat 5 ml/kg**
+          of 10% glucose.
+        - **Start a maintenance 10% glucose infusion** (≈ 5–8 mg/kg/min;
+          use 5% if 10% is unavailable) to prevent **rebound hypoglycaemia**.
+        - **Feed as soon as the child is conscious.**
+        - If the child **cannot feed safely** (aspiration risk):
+          - **milk or sugar water by NG tube** — 4 level teaspoons sugar
+            (20 g) in a 200 ml cup of clean water, or
+          - **IV fluids containing 5–10% glucose**.
+
+    - type: "prose"
+      title: "If only 50% glucose is available"
+      markdown: |
+        50% glucose = 50% dextrose. To make ~10%:
+        - **1 part 50% in 4 parts sterile water**, or
+        - **1 part 50% in 8 parts 5% glucose** (e.g. 10 ml 50% + 80 ml 5%
+          → 90 ml = 10%).
+
+    - type: "prose"
+      title: "⚠ Never give undiluted 50% dextrose"
+      callout: true
+      # Per-block palette: this danger callout reads red, while the
+      # sublingual first-aid tip below keeps the default amber.
+      palette:
+        alert: "0xFFD32F2F"
+        alert_fill: "0xFFFDECEA"
+        alert_text: "0xFFB71C1C"
+      markdown: |
+        Never give **undiluted 50% dextrose** to neonates or young children
+        — risk of **osmotic injury, hyperglycaemia, and intracerebral
+        haemorrhage**. Always **dilute to ≤ 12.5%** for a peripheral IV.
+
+    - type: "prose"
+      title: "Buccal glucose — first aid"
+      callout: true
+      markdown: |
+        If IV access is impossible or delayed:
+        - Where available, **40% dextrose gel 0.5 ml/kg (0.2 g/kg)** rubbed
+          into the **buccal mucosa**, or
+        - **1 level teaspoon of sugar, moistened with water, under the
+          tongue every 10–20 min**.
