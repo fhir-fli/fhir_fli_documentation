@@ -1,0 +1,33 @@
+# ============================================================
+# WHO IMCI §7.6 — Discharge and follow-up (overview of the nested
+# group). Pocket Book 2nd ed (2013), pp.219–221.
+# ✅ OpenEvidence-reviewed 2026-07: framed post-discharge surveillance as a
+# distinct third phase; substantive updates are in the sub-topics.
+# ============================================================
+
+topic:
+  id: "who-imci-7-6-discharge"
+  title: "Discharge & Follow-up"
+  list_subtitle: "7.6 · outpatient transfer · criteria · follow-up"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["discharge", "SAM", "follow-up", "pediatric"]
+  aliases:
+    - "SAM Discharge"
+  category: "medical"
+
+  page_number: 219
+
+  blocks:
+
+    - type: "prose"
+      title: "Two separate decisions"
+      highlight: true
+      markdown: |
+        Three distinct phases — do not conflate them:
+        - [Transfer to outpatient care](topic:who-imci-7-6-1-outpatient-transfer)
+          — moving out of hospital during the **rehabilitation** phase.
+        - [Discharge from nutritional treatment](topic:who-imci-7-6-2-discharge-criteria)
+          — anthropometric **recovery complete**.
+        - [Follow-up](topic:who-imci-7-6-3-followup) — **post-discharge
+          surveillance** for **≥ 6 months**, because recovery does **not** end at
+          discharge (relapse risk is high).

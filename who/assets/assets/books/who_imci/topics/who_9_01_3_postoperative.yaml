@@ -1,0 +1,125 @@
+# ============================================================
+# WHO IMCI §9.1.3 — Postoperative care (Tables 29 & 30). Pocket Book
+# 2nd ed (2013), pp.260–263.
+# ⚠️ OpenEvidence-reviewed 2026-07: maintenance fluids must be ISOTONIC
+# (half-normal saline removed — AAP 2018 CPG, hyponatraemia risk); pain
+# control made MULTIMODAL / opioid-sparing (add NSAIDs, regional blocks);
+# O2 target ≥95% (94% acceptable LMIC); transfusion trigger now Hb-based
+# (~7 g/dl stable) with the 10%-blood-volume rule as a bedside guide. Refs:
+# Feld AAP 2018; Kelley-Quon 2021; PALS 2025.
+# ============================================================
+
+topic:
+  id: "who-imci-9-1-3-postoperative"
+  title: "Postoperative Care"
+  list_subtitle: "9.1.3 · monitoring · isotonic fluids · multimodal pain"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["surgery", "postoperative", "fluids", "pain", "monitoring", "pediatric"]
+  aliases:
+    - "Postop care"
+  category: "medical"
+
+  page_number: 260
+
+  blocks:
+
+    - type: "prose"
+      title: "Immediately after surgery"
+      highlight: true
+      markdown: |
+        Communicate the outcome to the family. Recover the child safely from
+        anaesthesia in a monitored ward/recovery area:
+        - **monitor** airway, breathing and circulation.
+        - observe **vital signs** — temperature, pulse (Table 30), respiratory
+          rate, BP (correct cuff size); more often if a value changes from normal
+          to abnormal.
+        - monitor **oxygen saturation** (target **≥ 95%**; > 94% acceptable in
+          resource-limited settings) after a general anaesthetic; give oxygen if
+          needed.
+        - observe closely until the anaesthetic has worn off.
+
+    - type: "table"
+      title: "Table 30 · Normal pulse and BP in children"
+      columns: ["Age (yr)", "Pulse (range)", "Systolic BP (mmHg)"]
+      column_flex: [3, 4, 4]
+      rows:
+        - cells: ["0–1", "100–160", "> 60"]
+        - cells: ["1–3", "90–150", "> 70"]
+        - cells: ["3–6", "80–140", "> 75"]
+
+    - type: "prose"
+      title: "Note on pulse / pulses"
+      markdown: |
+        Normal pulse rates are **10% slower in sleeping children**. In infants and
+        children, the **presence or absence of a strong central pulse** is a more
+        useful guide to shock than a BP reading.
+
+    - type: "prose"
+      title: "Fluid management"
+      markdown: |
+        Postoperatively children commonly need **more than maintenance**. After
+        abdominal operations typically **150% of baseline**, more if peritonitis.
+        Use **isotonic fluids** with added **glucose (1–2.5%)** and **KCl** —
+        **balanced isotonic crystalloid + glucose** (or Ringer's lactate / normal
+        saline + 5% glucose). **Do NOT use hypotonic fluids (e.g. half-normal
+        saline)** for maintenance — they cause dangerous **hyponatraemia** (AAP
+        2018). Plain Ringer's/normal saline lack glucose (hypoglycaemia risk);
+        large volumes of **5% glucose alone** lack sodium (hyponatraemia / cerebral
+        oedema risk).
+
+        Record inputs/outputs (IV, nasogastric drainage, vomit, urine drain) every
+        **4–6 h**. **Urine output** is the most sensitive indicator: **infants
+        1–2 ml/kg/h; children 1 ml/kg/h**. If retention is suspected (palpable
+        bladder or unable to void), pass a **urinary catheter**.
+
+    - type: "prose"
+      title: "Pain control — multimodal, opioid-sparing"
+      callout: true
+      markdown: |
+        Combine agents to spare opioids:
+        - **Paracetamol 10–15 mg/kg every 4–6 h** (orally/rectally — can precede
+          surgery), **plus**
+        - an **NSAID** — **ibuprofen 10 mg/kg every 6–8 h**, or **ketorolac
+          0.5 mg/kg IV** — a key opioid-sparing component.
+        - **Severe pain:** IV opioid (IM injections are painful) — **morphine
+          sulfate 0.05–0.1 mg/kg IV every 2–4 h** (or continuous infusion).
+        - Use **regional anaesthesia / nerve blocks** where available.
+
+    - type: "prose"
+      title: "Nutrition and mobilization"
+      markdown: |
+        Feed children **as soon as possible** after surgery; provide a
+        **high-calorie diet with protein and vitamin** supplements; NG feed if oral
+        intake is poor; monitor weight. Encourage **early mobilization** (deep
+        breathing/coughing, exercise, passive joint movement, walking aids),
+        prevent **pressure sores** (turn frequently, keep urine/faeces off skin).
+
+    - type: "table"
+      title: "Table 29 · Blood volume by age"
+      columns: ["Group", "ml/kg body weight"]
+      column_flex: [5, 5]
+      rows:
+        - cells: ["Neonate", "85–90"]
+        - cells: ["Children", "80"]
+        - cells: ["Adults", "70"]
+
+    - type: "prose"
+      title: "Common postoperative problems"
+      markdown: |
+        - **Tachycardia** (Table 30) — pain, hypovolaemia, anaemia, fever,
+          hypoglycaemia or infection. Examine; review pre-op and intra-op care;
+          respond with pain relief, fluid boluses, oxygen, transfusion.
+          **Bradycardia = hypoxia until proven otherwise.**
+        - **Fever** — tissue injury, wound infection, pneumonia, abscess, UTI
+          (catheter), phlebitis (IV), malaria. See wound care
+          ([§9.3.6](topic:who-imci-9-3-6-wound-care)).
+        - **Low urine output** — hypovolaemia, retention or renal failure (usually
+          inadequate resuscitation). Give normal saline 10–20 ml/kg and repeat once
+          (max 40 ml/kg; watch for overload); catheterize if retention.
+        - **Hypoglycaemia** — use glucose infusions during anaesthesia; check blood
+          glucose regularly (signs may be masked by anaesthesia).
+        - **Blood loss** — measure loss. Transfusion is best guided by
+          **haemoglobin** (a **~7 g/dl** threshold for the stable child; higher for
+          active bleeding or instability); the **10% of blood volume** rule
+          (Table 29) remains a useful **bedside guide** where rapid Hb is
+          unavailable. Have blood ready if loss is anticipated.

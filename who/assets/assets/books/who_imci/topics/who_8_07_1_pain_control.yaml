@@ -1,0 +1,87 @@
+# ============================================================
+# WHO IMCI §8.7.1 — Pain control. Pocket Book 2nd ed (2013),
+# pp.250–252.
+# ⚠️ OpenEvidence-reviewed 2026-07: added explicit codeine/tramadol
+# contraindication in children (FDA 2017; AAP 2024); added morphine starting
+# doses; combine ibuprofen + paracetamol first-line; gabapentin/amitriptyline
+# adjuvants; REPLACED TAC (tetracaine-adrenaline-cocaine) with LET
+# (lidocaine-epinephrine-tetracaine) — safer, cheaper, cocaine-free. Refs:
+# AAP opioid CPG 2024; Cochrane 2017; Krauss (Lancet 2016).
+# ============================================================
+
+topic:
+  id: "who-imci-8-7-1-pain-control"
+  title: "Pain Control"
+  list_subtitle: "8.7.1 · two-step ladder · morphine doses · no codeine"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["HIV", "pain", "palliative", "analgesia", "morphine", "pediatric"]
+  aliases:
+    - "HIV pain control"
+  category: "medical"
+
+  page_number: 250
+
+  blocks:
+
+    - type: "prose"
+      title: "Same principles as other chronic disease"
+      highlight: true
+      markdown: |
+        Manage pain as in **cancer or sickle-cell disease**. Give analgesics:
+        - by the **two-step ladder** (mild → moderate-to-severe; the old "weak
+          opioid / codeine" middle step was dropped by WHO in 2012).
+        - **regularly ('by the clock')** — do not wait for severe pain to recur.
+        - by the **simplest, least painful route** (avoid IM).
+        - **titrate** for each child to ensure adequate relief.
+
+    - type: "prose"
+      title: "Do NOT use codeine or tramadol"
+      callout: true
+      palette:
+        alert: "0xFFD32F2F"
+        alert_fill: "0xFFFDECEA"
+        alert_text: "0xFFB71C1C"
+      markdown: |
+        **Codeine and tramadol are contraindicated in children** (FDA 2017; AAP
+        2024). ~**30%** of people don't respond (CYP2D6), while **ultra-rapid
+        metabolizers** risk fatal respiratory depression. Use **paracetamol/
+        ibuprofen** for mild pain and **morphine** for severe pain instead.
+
+    - type: "prose"
+      title: "Mild pain — combine paracetamol + ibuprofen"
+      markdown: |
+        Combining (concurrent or alternating) is more effective than either alone:
+        - **Paracetamol 10–15 mg/kg every 4–6 h**, and/or
+        - **Ibuprofen 5–10 mg/kg every 6–8 h** (children > 3 months). For children
+          < 3 months, use **only paracetamol**.
+
+    - type: "prose"
+      title: "Moderate-to-severe pain — morphine"
+      callout: true
+      markdown: |
+        - **Oral morphine 0.15–0.3 mg/kg every 4 h**, titrate as needed.
+        - **IV morphine 0.05–0.1 mg/kg every 2–4 h**, or continuous infusion.
+        - If morphine does not relieve, switch to **fentanyl or hydromorphone**.
+
+        **Note:** monitor for **respiratory depression**. If tolerance develops,
+        increase the dose to maintain relief.
+
+    - type: "prose"
+      title: "Adjuvant medicines"
+      markdown: |
+        - **Neuropathic pain:** **gabapentin/pregabalin**, or **amitriptyline
+          0.2–0.5 mg/kg/day** (often more available than carbamazepine, which
+          remains an option).
+        - **Muscle spasm:** **diazepam**.
+        - **Nerve compression from swelling:** **corticosteroids** (e.g.
+          dexamethasone).
+
+    - type: "prose"
+      title: "Local anaesthetics for painful lesions"
+      markdown: |
+        - **Lidocaine:** apply (with gloves) on a gauze pad to painful mouth ulcers
+          before feeds; acts within 2–5 min.
+        - **LET (lidocaine 4% + epinephrine 0.1% + tetracaine 0.5%):** apply on a
+          gauze pad over open wounds; useful during suturing (~20 min for full
+          effect). **LET replaces the older TAC** (which contained cocaine) —
+          equally effective, cheaper, and without cocaine toxicity.

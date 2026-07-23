@@ -1,0 +1,56 @@
+# ============================================================
+# WHO IMCI §3.1 — Essential newborn care at delivery.
+# Pocket Book 2nd ed (2013), p.46.
+# ✅ OpenEvidence review applied (2026-07): GA-specific cord clamping +
+#    no cord milking <28 wk (2025 AHA/AAP & ERC); skin-to-skin ≥1000 g
+#    (2023 WHO/UNICEF).
+# ============================================================
+
+topic:
+  id: "who-imci-3-1-newborn-care"
+  title: "Essential Newborn Care at Delivery"
+  list_subtitle: "3.1 · simple supportive care at & after delivery"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07 (2025 AHA/AAP & ERC, 2023 WHO/UNICEF)"
+  tags: ["newborn", "delivery", "neonatal care", "skin-to-skin", "breastfeeding", "cord care", "pediatric"]
+  aliases:
+    - "Newborn Care"
+    - "Delivery Care"
+  category: "medical"
+
+  page_number: 46
+
+  blocks:
+
+    - type: "prose"
+      title: "About this chapter"
+      highlight: true
+      markdown: |
+        Guidance on **essential newborn care** and the management of problems
+        in neonates and young infants, **birth to 2 months** — neonatal
+        resuscitation, sepsis and other bacterial infections, and preterm /
+        low-birth-weight infants. Drug doses are tabled at the end (§3.14).
+
+    - type: "prose"
+      title: "Most newborns need only simple support"
+      markdown: |
+        - **Dry** the infant with a clean towel.
+        - **Observe** while drying (see
+          [Chart 12 · §3.2](topic:who-imci-3-2-resuscitation)).
+        - Keep the infant in **skin-to-skin contact** with the mother.
+        - **Cover** to prevent heat loss.
+        - **Delay cord clamping ≥ 1 min** in any infant not needing
+          resuscitation (benefit is greatest at **≥ 120 s** in preterm
+          infants; **≥ 30 s** is the minimum at term). **Do not milk the cord
+          in infants < 28 weeks** — it raises the risk of intraventricular
+          haemorrhage.
+        - **Encourage breastfeeding within the first hour.**
+
+    - type: "prose"
+      title: "Skin-to-skin keeps them warm"
+      markdown: |
+        Skin-to-skin contact and early breastfeeding are the best ways to keep
+        the infant **warm** and prevent **hypoglycaemia**. Term and
+        low-birth-weight neonates **≥ 1000 g** who are clinically stable and
+        without complications should be put skin-to-skin with the mother soon
+        after birth (with experienced staff for the smallest infants), once
+        **thoroughly dried** to prevent hypothermia.

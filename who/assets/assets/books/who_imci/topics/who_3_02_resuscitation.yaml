@@ -1,0 +1,135 @@
+# ============================================================
+# WHO IMCI §3.2 — Neonatal resuscitation (embeds Chart 12) + §3.2.1
+# post-resuscitation care + §3.2.2 cessation. Pocket Book 2nd ed (2013),
+# pp.46–50 (Chart 12, pp.47–49).
+# ✅ OpenEvidence review applied (2026-07), layered onto Chart 12:
+#    tiered initial O₂, 100% O₂ + ETT/LMA + adrenaline dosing during
+#    compressions, individualised cessation (2025 AHA/AAP Part 5).
+# ============================================================
+
+topic:
+  id: "who-imci-3-2-resuscitation"
+  title: "Neonatal Resuscitation"
+  list_subtitle: "3.2 · Chart 12 · dry, stimulate, ventilate, HR-guided"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07 (2025 AHA/AAP Part 5)"
+  tags: ["neonatal resuscitation", "chart 12", "ppv", "bag and mask", "chest compressions", "asphyxia", "pediatric"]
+  aliases:
+    - "Chart 12"
+    - "Newborn Resuscitation"
+  category: "medical"
+
+  page_number: 47
+
+  blocks:
+
+    - type: "prose"
+      title: "When resuscitation may be needed"
+      highlight: true
+      markdown: |
+        Some infants need resuscitation — those born to mothers with **chronic
+        illness**, a **previous fetal/neonatal death**, **pre-eclampsia**, a
+        **multiple pregnancy**, **preterm** birth, **abnormal presentation**, a
+        **prolapsed cord**, **rupture of membranes**, **prolonged labour**, or
+        **meconium-stained liquor**. It often **cannot be anticipated** — be
+        prepared at **every** delivery and follow **Chart 12**.
+
+    - type: "prose"
+      title: "Chart 12 — first steps"
+      markdown: |
+        - **Dry** immediately with a clean cloth; keep warm with **skin-to-skin**
+          contact and cover.
+        - **Look for:** breathing or crying, and good muscle tone / vigorous
+          movements.
+        - **If yes → routine care** ([§3.3](topic:who-imci-3-3-routine-care))
+          and observe.
+        - **If no →** stimulate by **rubbing the back 2–3 times**. **Suction
+          only** if there was **meconium-stained liquor** or the mouth/nose is
+          full of secretions.
+
+    - type: "prose"
+      title: "Not breathing or gasping → ventilate"
+      markdown: |
+        - **CALL FOR HELP.** Move to the resuscitation area.
+        - Position the head and neck **slightly extended**.
+        - Start **positive-pressure ventilation** with mask + self-inflating
+          bag **within 1 min of birth**; make sure the **chest moves**
+          adequately.
+        - Start with the **lowest effective oxygen** and titrate to target
+          SpO₂: **21% (air)** for infants **≥ 35 weeks**; **21–30%** for
+          **32–34⁺⁶ weeks**; **≥ 30%** (up to 100% if needed) for
+          **< 32 weeks**.
+        - After **30–60 s**, check the **heart rate** with a stethoscope.
+
+    - type: "table"
+      title: "Heart rate after 30–60 s of ventilation"
+      columns: ["Heart rate", "Action"]
+      column_flex: [2, 5]
+      rows:
+        - cells: ["< 60/min", "Continue ventilation and **start chest compressions**; give **100% oxygen**; secure the airway; give **IV/IO adrenaline**. If there is **no heart rate after 20 min** of high-quality resuscitation → consider **redirecting care** (individualise — see Cessation)."]
+        - cells: ["60–100/min", "Take ventilation **corrective steps**; continue ventilating at **40/min**; consider higher O₂; suction if needed; **reassess every 1–2 min**."]
+        - cells: ["> 100/min", "Continue at **40 breaths/min**; every 1–2 min pause to check for **spontaneous breathing**; stop when **RR > 30/min**; give post-resuscitation care."]
+
+    - type: "prose"
+      title: "A · Airway"
+      markdown: |
+        - Keep the head **slightly extended** to open the airway — **do not
+          hyperextend the neck**.
+        - **Do not suction routinely.** Suction only if there is
+          **meconium-stained** fluid **and** the infant is **not** crying or
+          moving.
+        - Suck the **mouth first, then the nose**, under **direct vision** —
+          not deep in the throat (can cause **apnoea or bradycardia**).
+
+    - type: "prose"
+      title: "B · Breathing"
+      markdown: |
+        - Mask size **1** for a normal-weight infant, **0** for small
+          (**< 2.5 kg**) infants — it must cover **nose and mouth**.
+        - Ventilate at **40–60 breaths/min**; the **chest should move** with
+          each press.
+        - In a very small infant, don't move the chest too much
+          (**pneumothorax** risk).
+
+    - type: "prose"
+      title: "C · Circulation"
+      markdown: |
+        - Give **chest compressions** if HR **< 60/min after 30–60 s** of
+          ventilation with adequate chest movement.
+        - **90 compressions with 30 breaths/min** — **3 compressions : 1 breath
+          every 2 s**.
+        - Place **thumbs just below the internipple line** on the sternum;
+          compress **one third** of the chest's anterior–posterior diameter.
+        - **Increase to 100% oxygen** during compressions, then wean once the
+          heart rate recovers.
+        - **Secure the airway** — an **endotracheal tube** is preferred during
+          compressions (a **laryngeal mask** is an alternative at
+          **≥ 34 weeks**).
+        - Give **adrenaline (epinephrine)** if HR stays **< 60/min**:
+          **IV/IO 0.01–0.03 mg/kg** (endotracheal **0.05–0.1 mg/kg** only
+          while IV/IO access is being obtained). For suspected blood loss, give
+          a **volume bolus 10–20 mL/kg** (normal saline or blood).
+
+    - type: "prose"
+      title: "Post-resuscitation care (3.2.1)"
+      anchor: "post-resuscitation"
+      markdown: |
+        Infants who needed resuscitation risk **deterioration** after their
+        vital signs return to normal. Once ventilation and circulation are
+        established:
+        - **Stop ventilation.**
+        - **Return to the mother** for skin-to-skin contact as soon as possible.
+        - **Monitor closely** for breathing difficulties and signs of asphyxia;
+          anticipate the need for further care.
+
+    - type: "prose"
+      title: "Cessation of resuscitation (3.2.2)"
+      anchor: "cessation"
+      markdown: |
+        The decision to stop is **individualised**, not purely time-based —
+        weigh the **gestational age**, the **cause**, the **resources**
+        available (including therapeutic hypothermia,
+        [§3.5](topic:who-imci-3-5-hie)), and the **parents' wishes**. In
+        general, consider **redirecting care** if there is **no detectable
+        heartbeat after 20 min** of high-quality resuscitation.
+        **Record** the event and explain to the parents that the infant has
+        died; let them **hold the infant** if they wish.

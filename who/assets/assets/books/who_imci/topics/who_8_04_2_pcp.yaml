@@ -1,0 +1,64 @@
+# ============================================================
+# WHO IMCI §8.4.2 — Pneumocystis jirovecii pneumonia (PCP). Pocket Book
+# 2nd ed (2013), pp.244–245.
+# ✅ OpenEvidence-reviewed 2026-07: "jiroveci"→"jirovecii"; added
+# atovaquone (and dapsone/TMP) as alternatives; corticosteroids for
+# moderate/severe PCP within 72 h; secondary prophylaxis after treatment.
+# Refs: DHHS/OARAC Pediatric OI 2025.
+# ============================================================
+
+topic:
+  id: "who-imci-8-4-2-pcp"
+  title: "Pneumocystis Pneumonia (PCP)"
+  list_subtitle: "8.4.2 · suspect early · high-dose co-trimoxazole"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["HIV", "PCP", "pneumocystis", "pneumonia", "co-trimoxazole", "pediatric"]
+  aliases:
+    - "PCP"
+    - "Pneumocystis jirovecii pneumonia"
+
+  page_number: 244
+
+  blocks:
+
+    - type: "prose"
+      title: "Suspect early — mortality is high"
+      highlight: true
+      markdown: |
+        Suspect **PCP** in any HIV-positive infant with **severe pneumonia**. If
+        untreated, mortality is **very high** — treat as **early as possible**.
+
+    - type: "prose"
+      title: "Diagnosis"
+      markdown: |
+        - most likely in a child **< 12 months** (peak 4–6 months)
+        - **subacute or acute** onset of non-productive cough and difficulty
+          breathing
+        - **no or low-grade fever**
+        - **cyanosis or persistent hypoxia**
+        - **poor response** to 48 h of first-line antibiotics for pneumonia
+        - **elevated lactate dehydrogenase**.
+
+        Typical picture: **severe respiratory distress** (tachypnoea, indrawing,
+        cyanosis) with a **disproportionately clear chest** or diffuse signs on
+        auscultation and **low oxygen saturation**. Chest X-ray is falsely
+        negative in 10–20%, but typically shows a **bilateral diffuse interstitial
+        'ground glass'** pattern, no hilar nodes/effusion. PCP may present with
+        **pneumothorax**. Induced sputum and nasopharyngeal aspiration help obtain
+        sputum.
+
+    - type: "prose"
+      title: "Treatment"
+      callout: true
+      markdown: |
+        - **High-dose co-trimoxazole** (8 mg/kg TMP / 40 mg/kg SMX) oral or
+          preferably **IV, three times daily for 3 weeks** (first-line).
+        - **Alternatives:** **pentamidine** (4 mg/kg once daily IV) for a severe
+          drug reaction; **atovaquone**, or **dapsone + TMP**, for
+          mild-to-moderate PCP.
+        - **Corticosteroids** for **moderate/severe** PCP (PaO₂ < 70 mmHg or
+          A–a gradient > 35 mmHg) — start **within 72 h**: prednisolone
+          **1–2 mg/kg/day**, then taper.
+        - After treatment, continue **secondary prophylaxis** (co-trimoxazole)
+          until CD4 exceeds the age-specific threshold, and ensure **ART** is
+          given.
