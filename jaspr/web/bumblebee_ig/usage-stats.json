@@ -1,0 +1,311 @@
+{
+  "package": "fhir.fhir-fli.bumblebee",
+  "version": "0.1.0",
+  "fhirVersion": "4.0.1",
+  "extensions": [
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/admin-division",
+      "title": "Administrative division",
+      "types": [
+        "string",
+        "string",
+        "string",
+        "base64Binary",
+        "boolean",
+        "canonical",
+        "code",
+        "date",
+        "dateTime",
+        "decimal",
+        "id",
+        "instant",
+        "integer",
+        "markdown",
+        "oid",
+        "positiveInt",
+        "string",
+        "time",
+        "unsignedInt",
+        "uri",
+        "url",
+        "uuid",
+        "Address",
+        "Age",
+        "Annotation",
+        "Attachment",
+        "CodeableConcept",
+        "Coding",
+        "ContactPoint",
+        "Count",
+        "Distance",
+        "Duration",
+        "HumanName",
+        "Identifier",
+        "Money",
+        "Period",
+        "Quantity",
+        "Range",
+        "Ratio",
+        "Reference",
+        "SampledData",
+        "Signature",
+        "Timing",
+        "ContactDetail",
+        "Contributor",
+        "DataRequirement",
+        "Expression",
+        "ParameterDefinition",
+        "RelatedArtifact",
+        "TriggerDefinition",
+        "UsageContext",
+        "Dosage",
+        "Meta"
+      ]
+    },
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/departure-date",
+      "title": "Anticipated date of departure",
+      "types": [
+        "date"
+      ]
+    },
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/deployment-tag",
+      "title": "Deployment",
+      "types": [
+        "Identifier"
+      ]
+    },
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/disaster-relation",
+      "title": "Relation to the disaster",
+      "types": [
+        "code"
+      ]
+    },
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/estimated-age",
+      "title": "Estimated age",
+      "types": [
+        "Age"
+      ]
+    },
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/exposure-history",
+      "title": "Exposure history",
+      "types": [
+        "string"
+      ]
+    },
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/mass-casualty-mode",
+      "title": "Mass casualty mode",
+      "types": [
+        "boolean"
+      ]
+    },
+    {
+      "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/treatment-level",
+      "title": "Treatment level required",
+      "types": [
+        "code"
+      ]
+    }
+  ],
+  "profiles": {
+    "AllergyIntolerance": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-allergy",
+        "title": "Allergy"
+      }
+    ],
+    "Observation": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-triage-assessment",
+        "title": "Triage assessment"
+      },
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-vital-signs",
+        "title": "Vital signs"
+      }
+    ],
+    "AdverseEvent": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-complication",
+        "title": "Complication"
+      }
+    ],
+    "Consent": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-consent",
+        "title": "Permission for one specific thing"
+      }
+    ],
+    "Flag": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-deterioration-flag",
+        "title": "This patient is getting worse"
+      }
+    ],
+    "Condition": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-problem",
+        "title": "Standing problem"
+      }
+    ],
+    "Encounter": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-encounter",
+        "title": "Visit"
+      }
+    ],
+    "ServiceRequest": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-referral",
+        "title": "Referral — what we are asking for"
+      }
+    ],
+    "Task": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-handover",
+        "title": "Handover — who has the patient now"
+      }
+    ],
+    "Immunization": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-immunization",
+        "title": "Vaccine given"
+      }
+    ],
+    "Location": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-location",
+        "title": "Where the team is working"
+      }
+    ],
+    "MedicationAdministration": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-given",
+        "title": "Medicine given"
+      }
+    ],
+    "MedicationDispense": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-take-home",
+        "title": "Medicine they took away"
+      }
+    ],
+    "MedicationStatement": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-taken",
+        "title": "Medicine they already take"
+      }
+    ],
+    "Organization": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-organization",
+        "title": "The team"
+      }
+    ],
+    "Patient": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-patient",
+        "title": "Patient"
+      }
+    ],
+    "Composition": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-transfer-document",
+        "title": "What travels with the patient"
+      }
+    ],
+    "Procedure": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-procedure",
+        "title": "Something done to the patient"
+      }
+    ],
+    "RelatedPerson": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-related-person",
+        "title": "Accompanying person"
+      }
+    ],
+    "Communication": [
+      {
+        "url": "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-return-advice",
+        "title": "What we told them to watch for"
+      }
+    ]
+  },
+  "usage": {
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/admin-division": [
+      "Location"
+    ],
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/departure-date": [
+      "Organization"
+    ],
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/deployment-tag": [
+      "Encounter"
+    ],
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/disaster-relation": [
+      "Condition"
+    ],
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/estimated-age": [
+      "Patient"
+    ],
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/exposure-history": [
+      "Condition"
+    ],
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/mass-casualty-mode": [
+      "Encounter"
+    ],
+    "http://fhir-fli.dev/bumblebee/StructureDefinition/treatment-level": [
+      "Condition",
+      "Procedure"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice": [
+      "StructureDefinition.snapshot.element.constraint"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation": [
+      "StructureDefinition.snapshot.element.constraint"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName": [
+      "StructureDefinition.snapshot.element.binding"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet": [
+      "StructureDefinition.snapshot.element.binding"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
+      "StructureDefinition.snapshot.element"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint": [
+      "StructureDefinition.snapshot.element"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type": [
+      "StructureDefinition.snapshot.element.type"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy": [
+      "StructureDefinition.snapshot.element.type"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency": [
+      "ImplementationGuide.definition"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name": [
+      "ImplementationGuide.definition.page",
+      "ImplementationGuide.definition.page.page"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter": [
+      "ImplementationGuide.definition"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment": [
+      "ImplementationGuide.dependsOn"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/resource-information": [
+      "ImplementationGuide.definition.resource"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version": [
+      "StructureDefinition.snapshot"
+    ]
+  }
+}

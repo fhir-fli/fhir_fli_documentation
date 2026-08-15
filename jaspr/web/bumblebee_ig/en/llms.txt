@@ -1,0 +1,78 @@
+# fhir.fhir-fli.bumblebee#0.1.0: Bumblebee — a clinical record for emergency medical teams(en)
+
+## Pages
+
+* [Home](index.md)
+* [Terminology and extensions](terminology.md)
+* [Evidence basis](evidence.md)
+* [How to read the profiles](conventions.md)
+* [Design rationale](rationale.md)
+* [Artifacts Summary](artifacts.md)
+* [Other guides](relationship.md)
+* [What is not settled](open.md)
+* [What the record holds](record.md)
+
+## Resources
+
+### CodeSystems
+
+* [Body region](CodeSystem-body-region-cs.md)
+* [Relation to the disaster](CodeSystem-disaster-relation-cs.md)
+* [Treatment level required](CodeSystem-treatment-level-cs.md)
+
+### ValueSets
+
+* [Body region](ValueSet-body-region-vs.md)
+* [Relation to the disaster](ValueSet-disaster-relation-vs.md)
+* [Suspected, probable, confirmed](ValueSet-notifiable-verification-vs.md)
+* [Treatment level required](ValueSet-treatment-level-vs.md)
+
+### Resource Profiles
+
+* [Whether we asked about allergies](StructureDefinition-bumblebee-allergy-asked.md)
+* [Allergy](StructureDefinition-bumblebee-allergy.md)
+* [Finding, marked on a body diagram](StructureDefinition-bumblebee-body-site-finding.md)
+* [Complication](StructureDefinition-bumblebee-complication.md)
+* [Permission for one specific thing](StructureDefinition-bumblebee-consent.md)
+* [This patient is getting worse](StructureDefinition-bumblebee-deterioration-flag.md)
+* [Diagnosis made at this visit](StructureDefinition-bumblebee-diagnosis.md)
+* [Visit](StructureDefinition-bumblebee-encounter.md)
+* [Fluid balance](StructureDefinition-bumblebee-fluid-balance.md)
+* [Come back — when, and for what](StructureDefinition-bumblebee-follow-up.md)
+* [Handover — who has the patient now](StructureDefinition-bumblebee-handover.md)
+* [Vaccine given](StructureDefinition-bumblebee-immunization.md)
+* [Where the team is working](StructureDefinition-bumblebee-location.md)
+* [Medicine given](StructureDefinition-bumblebee-medication-given.md)
+* [Medicine they took away](StructureDefinition-bumblebee-medication-take-home.md)
+* [Medicine they already take](StructureDefinition-bumblebee-medication-taken.md)
+* [Mid-upper arm circumference](StructureDefinition-bumblebee-muac.md)
+* [Notifiable disease](StructureDefinition-bumblebee-notifiable-disease.md)
+* [The team](StructureDefinition-bumblebee-organization.md)
+* [Pain](StructureDefinition-bumblebee-pain-score.md)
+* [The copy the patient keeps](StructureDefinition-bumblebee-patient-summary.md)
+* [Patient](StructureDefinition-bumblebee-patient.md)
+* [Pregnant or not](StructureDefinition-bumblebee-pregnancy-status.md)
+* [Standing problem](StructureDefinition-bumblebee-problem.md)
+* [Something done to the patient](StructureDefinition-bumblebee-procedure.md)
+* [Referral — what we are asking for](StructureDefinition-bumblebee-referral.md)
+* [Accompanying person](StructureDefinition-bumblebee-related-person.md)
+* [What we told them to watch for](StructureDefinition-bumblebee-return-advice.md)
+* [Burn surface area](StructureDefinition-bumblebee-tbsa.md)
+* [What travels with the patient](StructureDefinition-bumblebee-transfer-document.md)
+* [Triage assessment](StructureDefinition-bumblebee-triage-assessment.md)
+* [Vital signs](StructureDefinition-bumblebee-vital-signs.md)
+
+### Extensions
+
+* [Administrative division](StructureDefinition-admin-division.md)
+* [Anticipated date of departure](StructureDefinition-departure-date.md)
+* [Deployment](StructureDefinition-deployment-tag.md)
+* [Relation to the disaster](StructureDefinition-disaster-relation.md)
+* [Estimated age](StructureDefinition-estimated-age.md)
+* [Exposure history](StructureDefinition-exposure-history.md)
+* [Mass casualty mode](StructureDefinition-mass-casualty-mode.md)
+* [Treatment level required](StructureDefinition-treatment-level.md)
+
+### ImplementationGuides
+
+* [Bumblebee — a clinical record for emergency medical teams](ImplementationGuide-fhir.fhir-fli.bumblebee.md)

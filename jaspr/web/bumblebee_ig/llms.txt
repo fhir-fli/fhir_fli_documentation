@@ -1,0 +1,78 @@
+# fhir.fhir-fli.bumblebee#0.1.0: Bumblebee — a clinical record for emergency medical teams(en)
+
+## Pages
+
+* [Home](en/index.md)
+* [Terminology and extensions](en/terminology.md)
+* [Evidence basis](en/evidence.md)
+* [How to read the profiles](en/conventions.md)
+* [Design rationale](en/rationale.md)
+* [Artifacts Summary](en/artifacts.md)
+* [Other guides](en/relationship.md)
+* [What is not settled](en/open.md)
+* [What the record holds](en/record.md)
+
+## Resources
+
+### CodeSystems
+
+* [Body region](en/CodeSystem-body-region-cs.md)
+* [Relation to the disaster](en/CodeSystem-disaster-relation-cs.md)
+* [Treatment level required](en/CodeSystem-treatment-level-cs.md)
+
+### ValueSets
+
+* [Body region](en/ValueSet-body-region-vs.md)
+* [Relation to the disaster](en/ValueSet-disaster-relation-vs.md)
+* [Suspected, probable, confirmed](en/ValueSet-notifiable-verification-vs.md)
+* [Treatment level required](en/ValueSet-treatment-level-vs.md)
+
+### Resource Profiles
+
+* [Whether we asked about allergies](en/StructureDefinition-bumblebee-allergy-asked.md)
+* [Allergy](en/StructureDefinition-bumblebee-allergy.md)
+* [Finding, marked on a body diagram](en/StructureDefinition-bumblebee-body-site-finding.md)
+* [Complication](en/StructureDefinition-bumblebee-complication.md)
+* [Permission for one specific thing](en/StructureDefinition-bumblebee-consent.md)
+* [This patient is getting worse](en/StructureDefinition-bumblebee-deterioration-flag.md)
+* [Diagnosis made at this visit](en/StructureDefinition-bumblebee-diagnosis.md)
+* [Visit](en/StructureDefinition-bumblebee-encounter.md)
+* [Fluid balance](en/StructureDefinition-bumblebee-fluid-balance.md)
+* [Come back — when, and for what](en/StructureDefinition-bumblebee-follow-up.md)
+* [Handover — who has the patient now](en/StructureDefinition-bumblebee-handover.md)
+* [Vaccine given](en/StructureDefinition-bumblebee-immunization.md)
+* [Where the team is working](en/StructureDefinition-bumblebee-location.md)
+* [Medicine given](en/StructureDefinition-bumblebee-medication-given.md)
+* [Medicine they took away](en/StructureDefinition-bumblebee-medication-take-home.md)
+* [Medicine they already take](en/StructureDefinition-bumblebee-medication-taken.md)
+* [Mid-upper arm circumference](en/StructureDefinition-bumblebee-muac.md)
+* [Notifiable disease](en/StructureDefinition-bumblebee-notifiable-disease.md)
+* [The team](en/StructureDefinition-bumblebee-organization.md)
+* [Pain](en/StructureDefinition-bumblebee-pain-score.md)
+* [The copy the patient keeps](en/StructureDefinition-bumblebee-patient-summary.md)
+* [Patient](en/StructureDefinition-bumblebee-patient.md)
+* [Pregnant or not](en/StructureDefinition-bumblebee-pregnancy-status.md)
+* [Standing problem](en/StructureDefinition-bumblebee-problem.md)
+* [Something done to the patient](en/StructureDefinition-bumblebee-procedure.md)
+* [Referral — what we are asking for](en/StructureDefinition-bumblebee-referral.md)
+* [Accompanying person](en/StructureDefinition-bumblebee-related-person.md)
+* [What we told them to watch for](en/StructureDefinition-bumblebee-return-advice.md)
+* [Burn surface area](en/StructureDefinition-bumblebee-tbsa.md)
+* [What travels with the patient](en/StructureDefinition-bumblebee-transfer-document.md)
+* [Triage assessment](en/StructureDefinition-bumblebee-triage-assessment.md)
+* [Vital signs](en/StructureDefinition-bumblebee-vital-signs.md)
+
+### Extensions
+
+* [Administrative division](en/StructureDefinition-admin-division.md)
+* [Anticipated date of departure](en/StructureDefinition-departure-date.md)
+* [Deployment](en/StructureDefinition-deployment-tag.md)
+* [Relation to the disaster](en/StructureDefinition-disaster-relation.md)
+* [Estimated age](en/StructureDefinition-estimated-age.md)
+* [Exposure history](en/StructureDefinition-exposure-history.md)
+* [Mass casualty mode](en/StructureDefinition-mass-casualty-mode.md)
+* [Treatment level required](en/StructureDefinition-treatment-level.md)
+
+### ImplementationGuides
+
+* [Bumblebee — a clinical record for emergency medical teams](en/ImplementationGuide-fhir.fhir-fli.bumblebee.md)

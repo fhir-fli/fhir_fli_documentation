@@ -1,0 +1,22 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "body-region-vs",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet body-region-vs</b></p><a name=\"body-region-vs\"> </a><a name=\"hcbody-region-vs\"> </a><ul><li>Include all codes defined in <a href=\"CodeSystem-body-region-cs.html\"><code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version &#x1F4E6;0.1.0</span></li></ul></div>"
+  },
+  "url" : "http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs",
+  "version" : "0.1.0",
+  "name" : "BodyRegionVS",
+  "title" : "Body region",
+  "status" : "draft",
+  "date" : "2026-08-14T17:06:47-04:00",
+  "publisher" : "fhir-fli",
+  "description" : "Every code, at every level. A clinician picks the one they can be sure of.",
+  "compose" : {
+    "include" : [{
+      "system" : "http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"
+    }]
+  }
+}

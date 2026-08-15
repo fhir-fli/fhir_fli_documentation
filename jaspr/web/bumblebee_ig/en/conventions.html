@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+
+
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>How to read the profiles - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/project.css" rel="stylesheet"/>
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script type="text/javascript" src="assets/js/direction-management.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"3"}
+    h3,h4,h5,h6{--heading-prefix:"3"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+
+              
+
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>How to read the profiles</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://fhir-fli.dev/bumblebee/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>How to read the profiles</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#how-to-read-the-profiles" id="markdown-toc-how-to-read-the-profiles">How to read the profiles</a></li>
+  <li><a href="#1-must-support-binds-the-software-min-binds-the-clinician" id="markdown-toc-1-must-support-binds-the-software-min-binds-the-clinician">1. Must Support binds the software. <code class="language-plaintext highlighter-rouge">min</code> binds the clinician.</a></li>
+  <li><a href="#2-text-alone-is-valid-and-it-is-the-expected-case" id="markdown-toc-2-text-alone-is-valid-and-it-is-the-expected-case">2. Text alone is valid, and it is the expected case</a></li>
+  <li><a href="#3-a-stored-value-has-to-be-readable-without-us" id="markdown-toc-3-a-stored-value-has-to-be-readable-without-us">3. A stored value has to be readable without us</a></li>
+  <li><a href="#4-point-samples-not-inferred-periods" id="markdown-toc-4-point-samples-not-inferred-periods">4. Point samples, not inferred periods</a></li>
+  <li><a href="#5-where-a-threshold-is-contested-store-the-measurement" id="markdown-toc-5-where-a-threshold-is-contested-store-the-measurement">5. Where a threshold is contested, store the measurement</a></li>
+  <li><a href="#6-absence-of-a-record-is-not-a-record-of-absence" id="markdown-toc-6-absence-of-a-record-is-not-a-record-of-absence">6. Absence of a record is not a record of absence</a></li>
+  <li><a href="#7-time-is-required-wherever-the-series-is-the-point" id="markdown-toc-7-time-is-required-wherever-the-series-is-the-point">7. Time is required wherever the series is the point</a></li>
+  <li><a href="#8-value-lists-are-deployment-data-this-guide-ships-almost-none" id="markdown-toc-8-value-lists-are-deployment-data-this-guide-ships-almost-none">8. Value lists are deployment data. This guide ships almost none.</a></li>
+  <li><a href="#9-bindings-are-extensible-unless-the-meaning-depends-on-being-closed" id="markdown-toc-9-bindings-are-extensible-unless-the-meaning-depends-on-being-closed">9. Bindings are extensible unless the meaning depends on being closed</a></li>
+  <li><a href="#a-note-on-the-deployment-tag" id="markdown-toc-a-note-on-the-deployment-tag">A note on the deployment tag</a></li>
+</ul>
+
+</div>
+<h3 id="how-to-read-the-profiles">How to read the profiles</h3>
+
+<p>Nine conventions run through all 32 profiles. Each of them is a decision, and
+each has cost somebody an argument.</p>
+
+<h3 id="1-must-support-binds-the-software-min-binds-the-clinician">1. Must Support binds the software. <code class="language-plaintext highlighter-rouge">min</code> binds the clinician.</h3>
+
+<p>This distinction is load-bearing here, and it is the one most often collapsed.</p>
+
+<ul>
+  <li><strong>Must Support</strong> is an obligation on an implementation. R4: <em>"implementations
+that produce or consume resources SHALL provide 'support' for the element in
+some meaningful way."</em> It says the software must be able to hold this, show
+it, and pass it on.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">min</code></strong> is an obligation on the instance, and therefore on the person filling
+it in. R4: <em>"the minimum number of times this element SHALL appear in the
+instance."</em></li>
+</ul>
+
+<p>Most elements in this guide are <strong>Must Support at <code class="language-plaintext highlighter-rouge">0..*</code> or <code class="language-plaintext highlighter-rouge">0..1</code></strong>. That is
+deliberate. Grey, on <code class="language-plaintext highlighter-rouge">Encounter.reasonReference</code>: <em>"do we force the clinicians to
+make something up to justify a required field? I don't like it."</em> A first visit
+has nothing to point at, leaves the element empty, and that is valid
+permanently.</p>
+
+<p><strong>A blank clinical field is never auto-filled.</strong> Filling
+<code class="language-plaintext highlighter-rouge">Encounter.reasonReference</code> from the first diagnosis on the visit would record a
+link nobody made — the same defect as asserting a triage category for a time
+when nobody looked.</p>
+
+<p>Where an element <strong>is</strong> required, the requirement is a clinical one and the
+profile says what it is. <code class="language-plaintext highlighter-rouge">BumblebeeTriageAssessment.effectiveDateTime</code> is <code class="language-plaintext highlighter-rouge">1..1</code>
+because without it there is no trajectory, and the trajectory is the reason the
+profile exists.</p>
+
+<h3 id="2-text-alone-is-valid-and-it-is-the-expected-case">2. Text alone is valid, and it is the expected case</h3>
+
+<p><code class="language-plaintext highlighter-rouge">BumblebeeDiagnosis.code</code> is <code class="language-plaintext highlighter-rouge">1..1</code>. That means <strong>say what was wrong</strong>, not
+<strong>pick from a list</strong>: a FHIR <code class="language-plaintext highlighter-rouge">CodeableConcept</code> is satisfied by <code class="language-plaintext highlighter-rouge">text</code> alone.</p>
+
+<p>This is not a degraded path. Of 13,738 health events recorded in the response to
+Cyclone Idai, 56.5% had no more specific description than "other". An
+implementer who reads <code class="language-plaintext highlighter-rouge">1..1</code> as a mandatory picker has built something that
+fights the majority of patients.</p>
+
+<p>The same applies to <code class="language-plaintext highlighter-rouge">BumblebeeAllergy.code</code> — the patient may know "penicillin"
+or only "a rash from an injection" — and to
+<code class="language-plaintext highlighter-rouge">BumblebeeMedicationTaken.medication[x]</code>, where "a white tablet for blood
+pressure" is worth more in the record than nothing.</p>
+
+<h3 id="3-a-stored-value-has-to-be-readable-without-us">3. A stored value has to be readable without us</h3>
+
+<p>Offline, on someone else's system, years later, with no lookup table to hand.</p>
+
+<p><code class="language-plaintext highlighter-rouge">BumblebeeTriageAssessment</code> requires all three of
+<code class="language-plaintext highlighter-rouge">valueCodeableConcept.coding.system</code>, <code class="language-plaintext highlighter-rouge">.code</code> and <code class="language-plaintext highlighter-rouge">.display</code>. A bare "1" is not
+a triage category: the same numeral runs in opposite directions across published
+documentation of the same scale. The label is what survives being moved,
+exported, or read by someone who was not there.</p>
+
+<p>The same reasoning is why a chosen diagnosis code is stored rather than derived
+on read, and why <code class="language-plaintext highlighter-rouge">Coding.userSelected</code> marks the one coding the clinician
+actually picked.</p>
+
+<h3 id="4-point-samples-not-inferred-periods">4. Point samples, not inferred periods</h3>
+
+<p>Triage is one <code class="language-plaintext highlighter-rouge">Observation</code> per assessment, never overwritten. <em>"Red from 14:05
+to 14:40"</em> asserts a state nobody checked at 14:20 — it records an inference.
+<em>"Assessed red at 14:05, assessed green at 14:40"</em> records what happened. Two
+timestamped points also give the rate of change directly, and a patient who went
+green to red is a different patient from one who arrived red.</p>
+
+<p>The general form: <strong>record what happened, and mark what was inferred.</strong></p>
+
+<h3 id="5-where-a-threshold-is-contested-store-the-measurement">5. Where a threshold is contested, store the measurement</h3>
+
+<p><code class="language-plaintext highlighter-rouge">BumblebeeMUAC</code> is millimetres, <code class="language-plaintext highlighter-rouge">1..1</code>, and never a malnourished yes/no. One
+long-cited definition says under 110 mm, current guidance says 115 mm, and
+screening evidence argues for higher still. Store the measurement; let the
+deployment set the line.</p>
+
+<h3 id="6-absence-of-a-record-is-not-a-record-of-absence">6. Absence of a record is not a record of absence</h3>
+
+<p><code class="language-plaintext highlighter-rouge">BumblebeeAllergyAsked</code> exists only for this. An empty allergy list means either
+"asked, nothing found" or "nobody asked". Conflating them is how a patient gets
+given something that hurts them.</p>
+
+<h3 id="7-time-is-required-wherever-the-series-is-the-point">7. Time is required wherever the series is the point</h3>
+
+<p><code class="language-plaintext highlighter-rouge">effectiveDateTime</code> is <code class="language-plaintext highlighter-rouge">1..1</code> on the triage assessment, pain, vital signs,
+mid-upper arm circumference, fluid balance and the allergy question, and
+<code class="language-plaintext highlighter-rouge">effective[x]</code> is <code class="language-plaintext highlighter-rouge">1..1</code> on a medicine given. One reading is not monitoring. The
+standards that require these require them <strong>repeatedly</strong>, and a single value
+with no time satisfies none of them.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Encounter.period.start</code> is <code class="language-plaintext highlighter-rouge">1..1</code> for a related reason: arrival time against the
+time of death is what distinguishes a patient who was dead when they arrived from
+one who died while we had them — a comparison, rather than two flags somebody has
+to keep consistent.</p>
+
+<h3 id="8-value-lists-are-deployment-data-this-guide-ships-almost-none">8. Value lists are deployment data. This guide ships almost none.</h3>
+
+<p>The triage system, the formulary, the procedure list, the languages and the
+locations are configuration, versioned and editable in the field by a team lead,
+because a disaster cannot wait for a release.</p>
+
+<p>So <code class="language-plaintext highlighter-rouge">BumblebeeTriageAssessment</code> binds no categories at all — the team brings its
+own system, and the profile requires only that whatever it brings says which
+system it is. <code class="language-plaintext highlighter-rouge">medication[x]</code> is a concept from the deployment's own formulary:
+the team cannot give what it did not bring, so the list is bounded before
+deployment, and free text stays possible for anything given from outside the kit.</p>
+
+<p>The four value sets this guide does define are on
+<a href="terminology.html">the terminology page</a>, with the reason each one is ours.</p>
+
+<h3 id="9-bindings-are-extensible-unless-the-meaning-depends-on-being-closed">9. Bindings are extensible unless the meaning depends on being closed</h3>
+
+<p><code class="language-plaintext highlighter-rouge">bodySite</code> is bound to the body-region value set as <strong>extensible</strong>: the list is
+what a clinician can point at on a diagram, and a site it does not cover is
+still worth recording.</p>
+
+<p><code class="language-plaintext highlighter-rouge">BumblebeeNotifiableDisease.verificationStatus</code> is <strong>required</strong>, constrained to
+three of FHIR's six values, because outbreak alerting is written in exactly those
+terms — one suspected case is an alert, one confirmed case is an outbreak — and a
+fourth value would have no meaning in that rule.</p>
+
+<h3 id="a-note-on-the-deployment-tag">A note on the deployment tag</h3>
+
+<p><code class="language-plaintext highlighter-rouge">DeploymentTag</code> is an <code class="language-plaintext highlighter-rouge">Identifier</code>-valued extension whose context is <code class="language-plaintext highlighter-rouge">Resource</code>,
+so it may appear on anything, and it is <code class="language-plaintext highlighter-rouge">1..1</code> on the visit. Its one job is to
+make purging a deployment a single verifiable operation. It is not a reference to
+an organisation and it does not say who looked after the patient — that is
+<code class="language-plaintext highlighter-rouge">Encounter.serviceProvider</code>, which points at
+<a href="StructureDefinition-bumblebee-organization.html">the team</a> and reaches their
+contact details.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script type="text/javascript" src="assets/js/flags.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script type="text/javascript" src="assets/js/togglechanges.js"> </script>
+  <script type="text/javascript" src="assets/js/requirements-table.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container" data-fhir="generated">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG © 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

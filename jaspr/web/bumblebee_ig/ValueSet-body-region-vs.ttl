@@ -1,0 +1,36 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "body-region-vs"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet body-region-vs</b></p><a name=\"body-region-vs\"> </a><a name=\"hcbody-region-vs\"> </a><ul><li>Include all codes defined in <a href=\"CodeSystem-body-region-cs.html\"><code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version ?0.1.0</span></li></ul></div>"
+  ] ;
+  fhir:ValueSet.url [ fhir:value "http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs"] ;
+  fhir:ValueSet.version [ fhir:value "0.1.0"] ;
+  fhir:ValueSet.name [ fhir:value "BodyRegionVS"] ;
+  fhir:ValueSet.title [ fhir:value "Body region"] ;
+  fhir:ValueSet.status [ fhir:value "draft"] ;
+  fhir:ValueSet.date [ fhir:value "2026-08-14T17:06:47-04:00"^^xsd:dateTime] ;
+  fhir:ValueSet.publisher [ fhir:value "fhir-fli"] ;
+  fhir:ValueSet.description [ fhir:value "Every code, at every level. A clinician picks the one they can be sure of."] ;
+  fhir:ValueSet.compose [
+     fhir:ValueSet.compose.include [
+       fhir:index 0 ;
+       fhir:ValueSet.compose.include.system [ fhir:value "http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

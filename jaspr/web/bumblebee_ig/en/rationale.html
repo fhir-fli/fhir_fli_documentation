@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Design rationale - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link rel="stylesheet" href="fhir.css"/>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
+
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+    <link rel="stylesheet" href="assets/css/project.css"/>
+  	<link rel="stylesheet" href="assets/css/cqf.css"/>
+      <!-- Placeholder for child template CSS declarations -->
+
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
+    <script src="assets/js/direction-management.js" type="text/javascript"> </script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif] -->
+
+      <!-- Favicons -->
+    <link sizes="144x144" rel="fhir-logo" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="fhir-logo" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="fhir-logo" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js" type="text/javascript"></script>
+	  <script src="assets/js/prism-fhirpath.js" type="text/javascript"></script>
+	  <script src="assets/js/prism-cql.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
+    <style type="text/css">h2{--heading-prefix:"5"}
+    h3,h4,h5,h6{--heading-prefix:"5"}</style>
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
+
+          <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">    <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+            <!-- status-bar -->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml -->
+
+<ul class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>    <!-- /.nav-collapse -->
+
+              
+
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><b>Design rationale</b></li>
+
+        </ul>
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+    <!-- ReleaseHeader --><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7&reg; FHIR&reg; Standard) Build Tools. See the <a href="http://fhir-fli.dev/bumblebee/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
+  <h2>Design rationale</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>  <!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#design-rationale" id="markdown-toc-design-rationale">Design rationale</a></li>
+  <li><a href="#adr-004--identity-is-a-uuid-everything-a-human-says-is-an-identifier" id="markdown-toc-adr-004--identity-is-a-uuid-everything-a-human-says-is-an-identifier">ADR-004 — Identity is a UUID; everything a human says is an identifier</a></li>
+  <li><a href="#adr-006--record-triage-never-compute-it" id="markdown-toc-adr-006--record-triage-never-compute-it">ADR-006 — Record triage; never compute it</a></li>
+  <li><a href="#adr-009--deployment-configuration-is-data-changeable-in-the-field" id="markdown-toc-adr-009--deployment-configuration-is-data-changeable-in-the-field">ADR-009 — Deployment configuration is data, changeable in the field</a></li>
+  <li><a href="#adr-013--the-patients-copy-is-mandatory-and-nothing-may-depend-on-it" id="markdown-toc-adr-013--the-patients-copy-is-mandatory-and-nothing-may-depend-on-it">ADR-013 — The patient's copy is mandatory, and nothing may depend on it</a></li>
+  <li><a href="#adr-014--a-defined-end-of-deployment-handoff" id="markdown-toc-adr-014--a-defined-end-of-deployment-handoff">ADR-014 — A defined end-of-deployment handoff</a></li>
+  <li><a href="#decision-19--consent-is-per-act-and-the-conversation-is-at-registration" id="markdown-toc-decision-19--consent-is-per-act-and-the-conversation-is-at-registration">Decision 19 — Consent is per act, and the conversation is at registration</a></li>
+  <li><a href="#decision-20--several-codings-on-one-concept-and-only-one-of-them-is-theirs" id="markdown-toc-decision-20--several-codings-on-one-concept-and-only-one-of-them-is-theirs">Decision 20 — Several codings on one concept, and only one of them is theirs</a></li>
+  <li><a href="#decision-21--the-one-field-no-patients-care-depends-on" id="markdown-toc-decision-21--the-one-field-no-patients-care-depends-on">Decision 21 — The one field no patient's care depends on</a></li>
+  <li><a href="#decision-22--episodeofcare-was-written-and-then-deleted" id="markdown-toc-decision-22--episodeofcare-was-written-and-then-deleted">Decision 22 — <code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> was written, and then deleted</a></li>
+  <li><a href="#decision-23--other-guides-are-evidence-not-a-target" id="markdown-toc-decision-23--other-guides-are-evidence-not-a-target">Decision 23 — Other guides are evidence, not a target</a></li>
+  <li><a href="#decisions-taken-inside-the-profiles" id="markdown-toc-decisions-taken-inside-the-profiles">Decisions taken inside the profiles</a></li>
+</ul>
+
+</div>
+<h3 id="design-rationale">Design rationale</h3>
+
+<p>Every profile in this guide comes from a decision that was written down before
+the FSH was. This page carries the decisions that shaped a profile, in the form
+they were recorded: what was decided, why, what was rejected, and where it came
+from.</p>
+
+<p>The full log is <code class="language-plaintext highlighter-rouge">DECISIONS.md</code> in the project's design record — 26 entries, of
+which the ones below are those a reader of these profiles needs. Everything is
+<strong>proposed</strong> until the project's first gate passes; several entries are marked
+as taken provisionally for a partner to confirm, and say so.</p>
+
+<p>The evidence each of these rests on is graded in <code class="language-plaintext highlighter-rouge">EVIDENCE.md</code> and summarised on
+<a href="evidence.html">the evidence page</a>.</p>
+
+<h3 id="adr-004--identity-is-a-uuid-everything-a-human-says-is-an-identifier">ADR-004 — Identity is a UUID; everything a human says is an identifier</h3>
+
+<p>Shapes <a href="StructureDefinition-bumblebee-patient.html">Patient</a>.</p>
+
+<p><strong>Decided.</strong> Every resource is created with a client-generated UUID that never
+changes. Human-facing identifiers — a deployment number said out loud in a tent,
+an alias for someone who cannot give a name, a wristband barcode — are
+attributes, not keys. Merge is a first-class reversible audited operation.</p>
+
+<p><strong>Why.</strong> Identity in a disaster is unreliable: names are spelled several ways,
+people cannot always give one, and some arrive unconscious. ID-translation tables
+are where offline systems lose data.</p>
+
+<p><strong>Rejected.</strong> Server-assigned identifiers with a local mapping table.</p>
+
+<p><strong>In the profile.</strong> <code class="language-plaintext highlighter-rouge">identifier</code> is <code class="language-plaintext highlighter-rouge">1..*</code> and sliced into <code class="language-plaintext highlighter-rouge">mrn</code>, <code class="language-plaintext highlighter-rouge">alias</code> and
+<code class="language-plaintext highlighter-rouge">wristband</code>, each with its own system, and the profile says outright that none of
+these is the key. The alias slice records that numeric-only aliases and reused
+supply numbers are known to cause misidentification, so the default convention is
+a phonetic word plus the deployment code.</p>
+
+<h3 id="adr-006--record-triage-never-compute-it">ADR-006 — Record triage; never compute it</h3>
+
+<p>Shapes <a href="StructureDefinition-bumblebee-triage-assessment.html">Triage assessment</a>
+and <a href="StructureDefinition-bumblebee-deterioration-flag.html">This patient is getting worse</a>.</p>
+
+<p><strong>Decided.</strong> The triage system is per-deployment configuration; the category is a
+human input; the software may display the chosen algorithm's own criteria as
+labelled reference text and may not compute a category.</p>
+
+<p><strong>Why.</strong> No triage algorithm is universally superior — START under-triage 57%
+against SALT 26%, and paediatric accuracy 56–59% across four systems — and the
+WHO handbook records that <em>"each EMT has adopted a triage system"</em>, so there is
+no common one to compute against. Computing a time-critical category also changes
+the product's regulatory class.</p>
+
+<p><strong>Rejected.</strong> Shipping one triage algorithm. Computing an acuity score.</p>
+
+<p><strong>In the profiles.</strong> The triage assessment binds no categories and requires the
+value to name its own system, code and label. The deterioration flag is set by a
+clinician: recording that judgement is in scope, predicting it is not.</p>
+
+<h3 id="adr-009--deployment-configuration-is-data-changeable-in-the-field">ADR-009 — Deployment configuration is data, changeable in the field</h3>
+
+<p>Shapes the bindings across the whole guide.</p>
+
+<p><strong>Decided.</strong> The triage system, formulary, procedure lists, languages, locations
+and roles are deployment-profile data — versioned, exportable, importable, and
+editable offline by a team lead.</p>
+
+<p><strong>Why.</strong> A disaster cannot wait for a release. Configurable lists were a stated
+strength of the one field-hospital system with a published evaluation, and were
+reused mission to mission.</p>
+
+<p><strong>Rejected.</strong> Hard-coded lists with a release cycle. A cloud-hosted configuration
+service, which would break offline operation.</p>
+
+<h3 id="adr-013--the-patients-copy-is-mandatory-and-nothing-may-depend-on-it">ADR-013 — The patient's copy is mandatory, and nothing may depend on it</h3>
+
+<p>Shapes <a href="StructureDefinition-bumblebee-patient-summary.html">The copy the patient keeps</a>.</p>
+
+<p><strong>Decided.</strong> Build the patient's document, shaped like an International Patient
+Summary — and let no part of the design depend on a patient carrying or
+presenting it. The primary continuity path is provider to provider.</p>
+
+<p><strong>Why, in two halves.</strong> The evidence for patient-held records in mobile
+populations is thin, and the study that looked hardest found the binding
+constraint was <strong>physician adherence</strong>: the record was useful when used, and
+external doctors often did not use it. Building the continuity story on an
+artefact the receiving clinician may ignore would be designing on a hope. But
+WHO's core standard requires confidential patient records <em>"with a copy available
+to the patient"</em>, so the copy is not optional and not a judgement call. Obligation
+and dependency are different questions.</p>
+
+<p><strong>Rejected.</strong> The patient-held record as the headline continuity mechanism.</p>
+
+<h3 id="adr-014--a-defined-end-of-deployment-handoff">ADR-014 — A defined end-of-deployment handoff</h3>
+
+<p>Shapes <a href="StructureDefinition-bumblebee-organization.html">The team</a> and the
+<a href="StructureDefinition-departure-date.html">anticipated date of departure</a>.</p>
+
+<p><strong>Decided.</strong> A documented handoff of the clinical record and the deployment
+configuration to the local health system, in FHIR R4 natively.</p>
+
+<p><strong>Why.</strong> An emergency medical team leaves; the patients stay. WHO's core standard
+requires reporting to the relevant local health authorities <em>"regularly and prior
+to departure"</em>, and the published reviews find that what happens to a record
+after the encounter varies wildly, hindering follow-up by local teams.</p>
+
+<p><strong>Rejected.</strong> Treating export as a convenience feature for a later phase.</p>
+
+<p><strong>In the profiles.</strong> The team is an <code class="language-plaintext highlighter-rouge">Organization</code> carrying <code class="language-plaintext highlighter-rouge">telecom</code> and
+<code class="language-plaintext highlighter-rouge">address</code>, not only a name, because the record is read months later by someone who
+was not there and has to be able to find whoever wrote it. The departure date is
+an extension on that organisation, because the handover must be coordinated at
+least seven days before shutdown.</p>
+
+<h3 id="decision-19--consent-is-per-act-and-the-conversation-is-at-registration">Decision 19 — Consent is per act, and the conversation is at registration</h3>
+
+<p>Shapes <a href="StructureDefinition-bumblebee-consent.html">Permission for one specific thing</a>.</p>
+
+<p><strong>Decided.</strong> Treating someone, and writing down that we treated them, does not
+rest on their permission — it rests on the same basis as the treatment. But they
+must be told, and be able to object, and that conversation happens at
+registration rather than in the consultation. Permission <strong>is</strong> required, and
+recorded separately, for: sharing or referring · recording sexual violence ·
+a procedure or anaesthetic · transfer to another facility · a photograph.</p>
+
+<p><strong>Why.</strong> The ICRC handbook argues that permission only counts if the person could
+realistically say no, and someone injured, frightened and dependent on you for
+treatment has <em>"no genuine choice but to accept whatever… is involved in accepting
+the aid offered."</em> Asking them to sign anyway is paperwork that looks like
+protection. But guidance on documenting sexual violence, and the emergency medical
+team standards, each require real consent for particular acts — and in the
+patient's own language.</p>
+
+<p><strong>Rejected.</strong> <em>Ask permission for everything</em> — where someone cannot realistically
+refuse, consent is a fiction, and producing it spends the clinician's time.
+<em>Ask permission for nothing on the grounds that they need care</em> — that would put
+teams outside the rules they are inspected against.</p>
+
+<p><strong>In the profile.</strong> <code class="language-plaintext highlighter-rouge">category</code> is <code class="language-plaintext highlighter-rouge">1..*</code> and says which act this consent covers.
+There is no single form at the door, because a person agreeing to be treated has
+not thereby agreed to have their assault recorded.</p>
+
+<p><strong>Source.</strong> ICRC <em>Handbook on Data Protection in Humanitarian Action</em>, 3rd ed.,
+<span class="fhir-conformance"></span><span class="fhir-conformance"></span><em>Ethical and safety recommendations for researching, documenting and
+monitoring sexual violence in emergencies</em>, 2007, <span class="fhir-conformance"></span><span class="fhir-conformance"></span><em>Classification
+and Minimum Standards for Emergency Medical Teams</em>, 2021, standards 68–70.</p>
+
+<h3 id="decision-20--several-codings-on-one-concept-and-only-one-of-them-is-theirs">Decision 20 — Several codings on one concept, and only one of them is theirs</h3>
+
+<p>Shapes <a href="StructureDefinition-bumblebee-diagnosis.html">Diagnosis</a>.</p>
+
+<p><strong>Decided.</strong> Store several codings in one <code class="language-plaintext highlighter-rouge">CodeableConcept</code>; mark exactly one
+with <code class="language-plaintext highlighter-rouge">Coding.userSelected = true</code> — the one the clinician picked; derive the rest
+only where the map is unambiguous, and store nothing derived where it is not. The
+clinician never chooses a coding system: there is one list, the deployment's, and
+the codes sit behind the items.</p>
+
+<p><strong>Why.</strong> A record must be readable without us — offline, on someone else's
+system, years later. Maps also get revised: a stored coding says what was meant
+at the time, while a crosswalk applied later says what today's map thinks was
+meant. And the classifications answer different halves of the caseload: ICPC-2
+suits the undifferentiated primary care that dominates it, while trauma, surgery
+and notifiable disease need ICD-10 or SNOMED precision that is clinically
+necessary <em>and available</em> — the surgeon knows which femur.</p>
+
+<p><strong>Rejected.</strong> <em>Store one code and map everything on read</em> — the record stops
+being self-describing, which is the property most needed offline. <em>Store all three
+silently</em> — with one-to-many maps that asserts codes the clinician never chose,
+which is a fabricated clinical claim rather than a rounding error. <em>Pick one
+classification</em> — ICD-10 describes the undifferentiated caseload badly, and ICPC-2
+alone would not serve notifiable-disease surveillance, which is ICD-10 throughout.</p>
+
+<p><strong>Still open.</strong> Whether ICPC-2 is adopted at all.</p>
+
+<h3 id="decision-21--the-one-field-no-patients-care-depends-on">Decision 21 — The one field no patient's care depends on</h3>
+
+<p>Shapes the <a href="StructureDefinition-disaster-relation.html">relation to the disaster</a>
+extension.</p>
+
+<p>Every extension in this guide was audited against a single question: <strong>does a
+clinician or a patient need this?</strong> Five passed outright. This one failed, and it
+stayed anyway — with the audit finding converted into a performance requirement.</p>
+
+<p><strong>Decided.</strong> It stays on the clinical surface, and "implemented properly" is now
+the binding constraint: one tap on a control already on screen · never blocking ·
+<code class="language-plaintext highlighter-rouge">unknown</code> a complete and permanent answer · not repeated per problem when a
+visit's problems share a cause · and measured, so that if it costs more than a
+second or two the implementation is wrong rather than the field.</p>
+
+<p><strong>Why.</strong> The objection was never that the field is wrong — it is a real
+obligation and somebody has to answer it. The objection was cost, and Grey priced
+it: <em>"that's an acceptable extra step, because it should take minimal time if
+implemented properly."</em></p>
+
+<p><strong>Rejected.</strong> Capturing it on the visit rather than the problem — one visit can
+hold a crush injury and long-standing diabetes.</p>
+
+<p><strong>What the audit still stands behind.</strong> It is not a clinical question, so it may
+never be required, never gate anything, and never be the reason another field
+exists.</p>
+
+<h3 id="decision-22--episodeofcare-was-written-and-then-deleted">Decision 22 — <code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> was written, and then deleted</h3>
+
+<p>Shapes <a href="StructureDefinition-bumblebee-encounter.html">Visit</a>, and explains an
+absence.</p>
+
+<p><strong>Decided.</strong> <code class="language-plaintext highlighter-rouge">BumblebeeEpisode</code>, which grouped a patient's visits within one
+deployment, is dropped. What we wanted from it — <em>what happened last time about
+<strong>this</strong></em> — is a <code class="language-plaintext highlighter-rouge">Condition</code> threaded across visits plus
+<code class="language-plaintext highlighter-rouge">Encounter.reasonReference</code> pointing at the problem the patient is here about.</p>
+
+<p><strong>Why.</strong> The specification states the boundary in one line: <em>"Encounter is
+continuous but Episodes are discontinuous care."</em> An <code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> is defined
+by <strong>responsibility that persists between contacts</strong> — <em>"the managing organization
+assumes a level of responsibility for the patient during this time"</em> — and it
+carries a status machine and <em>"can exist without any activities"</em>, because its job
+is to answer <em>is this patient still on our books, and for what?</em> Grouping a
+deployment's visits is neither of those. It is administrative, and the deployment
+tag already carries it on every resource.</p>
+
+<p><strong>Rejected.</strong> <em>Keep it per deployment</em> — an administrative grouping we already
+have twice over. <em>Re-point it per problem</em> — a real use of the resource, but it
+buys a status machine and a caseload list that nothing in the design needs yet.</p>
+
+<p><strong>Reopen it if</strong> a team has to hold a list of the people it is still responsible
+for between visits. That is a question about how a team works, and it is on
+<a href="open.html">the open questions page</a>.</p>
+
+<p><strong>How this was settled matters more than the answer.</strong> The first version of this
+decision was derived from element definitions, as though a clinic visit had never
+been modelled. It has been, repeatedly and in published guides, and the sweep that
+followed — recorded in <code class="language-plaintext highlighter-rouge">ENCOUNTER-IG-SWEEP.md</code> — found both the rule above and a
+second grouping mechanism that had never been considered, <code class="language-plaintext highlighter-rouge">Encounter.partOf</code>,
+which is what OpenMRS maps its own <em>Visit</em> to.</p>
+
+<p><strong>Source.</strong> <code class="language-plaintext highlighter-rouge">hl7.org/fhir/R4/episodeofcare.html</code> · <code class="language-plaintext highlighter-rouge">hl7.org/fhir/R4/encounter.html</code>
+· <code class="language-plaintext highlighter-rouge">hl7.org/fhir/R4/administration-module.html</code>.</p>
+
+<h3 id="decision-23--other-guides-are-evidence-not-a-target">Decision 23 — Other guides are evidence, not a target</h3>
+
+<p>Shapes how the whole guide was written. It has
+<a href="relationship.html">a page of its own</a>.</p>
+
+<p><strong>Decided, in Grey's words:</strong> <em>"we don't HAVE to conform to other IGs, it's just
+nice when we can and when it makes sense."</em> Alignment is free value where it costs
+nothing. Where a published guide and a patient in a tent disagree, the patient
+wins and we write down that we differed and why.</p>
+
+<p><strong>Rejected.</strong> <em>Conform to a national core</em> — it would import national regulatory
+terminology and a payer model into a product with no billing, for a population it
+was not written for. <em>Conform to nothing and derive from the base specification</em> —
+that is exactly what produced Decision 22's first, wrong answer.</p>
+
+<h3 id="decisions-taken-inside-the-profiles">Decisions taken inside the profiles</h3>
+
+<p>Not every choice needed an entry in the log. These were made while walking
+through a consultation, and each is recorded as a comment in the FSH beside the
+profile it produced.</p>
+
+<p><strong>Triage is an <code class="language-plaintext highlighter-rouge">Observation</code>, not an element on the visit.</strong> A <code class="language-plaintext highlighter-rouge">Condition</code> is
+something the patient <em>has</em>; a triage category is a judgement the team makes
+about how soon to see them, so it does not belong beside "open fracture" in the
+problem list. <strong>Rejected:</strong> <code class="language-plaintext highlighter-rouge">Encounter.priority</code>, which exists in R4 and is
+single-valued — and FHIR gave <code class="language-plaintext highlighter-rouge">Encounter</code> a <code class="language-plaintext highlighter-rouge">statusHistory</code> and a <code class="language-plaintext highlighter-rouge">classHistory</code>
+and deliberately no <code class="language-plaintext highlighter-rouge">priorityHistory</code>, so a re-assessment would overwrite the
+first.</p>
+
+<p><strong>A medicine given is a <code class="language-plaintext highlighter-rouge">MedicationAdministration</code>, not a request.</strong> In a field
+clinic the person deciding and the person handing over the tablets are usually
+the same person in the same tent. A prescription addressed to a pharmacy that is
+not there records an intention nobody will act on. A team with a real pharmacy
+queue can write requests as well; the record depends on this one.</p>
+
+<p><strong>A medicine taken away is a <code class="language-plaintext highlighter-rouge">MedicationDispense</code>.</strong> A five-day course in a paper
+bag has not gone into anybody: nothing has happened yet, and four of those five
+days happen in a shelter with nobody watching. The questions at a return visit —
+what did we give her, how much, when did she start, has she run out — are
+<code class="language-plaintext highlighter-rouge">medication[x]</code>, <code class="language-plaintext highlighter-rouge">quantity</code>, <code class="language-plaintext highlighter-rouge">whenHandedOver</code> and <code class="language-plaintext highlighter-rouge">daysSupply</code>, and they cannot be
+answered from an administration record.</p>
+
+<p><strong>Coming back is not a referral.</strong> <em>"Go home and come back Thursday for the
+dressing"</em> and <em>"go home, we are finished"</em> are the same discharge disposition,
+because a disposition is a category of location. The part that matters clinically
+is a date and a reason. <strong>Rejected:</strong> <code class="language-plaintext highlighter-rouge">Appointment</code>, which presumes a slot in a
+schedule, and there is no schedule — there is a tent and a day. <strong>Also rejected:</strong>
+folding it into the referral, which is the same resource, because the difference
+that matters is whether responsibility moves. It does not, and asking someone to
+come back must not open a handover that somebody then has to close.</p>
+
+<p><strong>Return advice is a <code class="language-plaintext highlighter-rouge">Communication</code>.</strong> WHO treats it as a documented act rather
+than a courtesy: discharge of every child must include the signs that mean return
+urgently, chosen for that child's problem. <strong>Rejected:</strong> a section of the
+patient's document, because the document is content, and what this records is
+that somebody was actually told — often the person holding the child rather than
+the patient.</p>
+
+<p><strong>Sources.</strong> WHO <em>Pocket Book of Hospital Care for Children</em>, 2nd ed. 2013,
+<span class="fhir-conformance"></span><span class="fhir-conformance"></span><em>Classification and Minimum Standards for Emergency Medical
+Teams</em>, 2021, <span class="fhir-conformance">5.1.4 · <code class="language-plaintext highlighter-rouge">EVIDENCE.md</code> </span>AM.</p>
+
+
+
+
+</div>
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
+
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
+  <script src="assets/js/flags.js" type="text/javascript"> </script>
+
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
+  <script src="assets/js/togglechanges.js" type="text/javascript"> </script>
+  <script src="assets/js/requirements-table.js" type="text/javascript"> </script>
+  <a name="bottom"> </a>
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container" data-fhir="generated">    <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="null">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+    <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>

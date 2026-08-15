@@ -1,0 +1,21 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "disaster-relation-vs",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet disaster-relation-vs</b></p><a name=\"disaster-relation-vs\"> </a><a name=\"hcdisaster-relation-vs\"> </a><ul><li>Include all codes defined in <a href=\"CodeSystem-disaster-relation-cs.html\"><code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version &#x1F4E6;0.1.0</span></li></ul></div>"
+  },
+  "url" : "http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs",
+  "version" : "0.1.0",
+  "name" : "DisasterRelationVS",
+  "title" : "Relation to the disaster",
+  "status" : "draft",
+  "date" : "2026-08-14T17:06:47-04:00",
+  "publisher" : "fhir-fli",
+  "compose" : {
+    "include" : [{
+      "system" : "http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"
+    }]
+  }
+}

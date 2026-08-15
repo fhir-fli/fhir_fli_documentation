@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+
+
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>What the record holds - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/project.css" rel="stylesheet"/>
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script type="text/javascript" src="assets/js/direction-management.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"2"}
+    h3,h4,h5,h6{--heading-prefix:"2"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+
+              
+
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>What the record holds</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://fhir-fli.dev/bumblebee/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>What the record holds</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#what-the-record-holds" id="markdown-toc-what-the-record-holds">What the record holds</a></li>
+  <li><a href="#the-person" id="markdown-toc-the-person">The person</a></li>
+  <li><a href="#the-visit" id="markdown-toc-the-visit">The visit</a></li>
+  <li><a href="#what-is-wrong-with-them" id="markdown-toc-what-is-wrong-with-them">What is wrong with them</a></li>
+  <li><a href="#what-was-measured-and-observed" id="markdown-toc-what-was-measured-and-observed">What was measured and observed</a></li>
+  <li><a href="#medicines" id="markdown-toc-medicines">Medicines</a></li>
+  <li><a href="#what-was-done" id="markdown-toc-what-was-done">What was done</a></li>
+  <li><a href="#the-end-of-the-visit" id="markdown-toc-the-end-of-the-visit">The end of the visit</a></li>
+  <li><a href="#permission-the-team-and-the-site" id="markdown-toc-permission-the-team-and-the-site">Permission, the team and the site</a></li>
+  <li><a href="#what-is-not-here" id="markdown-toc-what-is-not-here">What is not here</a></li>
+</ul>
+
+</div>
+<h3 id="what-the-record-holds">What the record holds</h3>
+
+<p>The <a href="artifacts.html">artifact index</a> lists everything alphabetically. This page
+lists the same profiles in the order a visit happens, because that is the order
+they were written in and the order they make sense in.</p>
+
+<p>Every profile constrains a base FHIR R4 resource. Nothing here is a new
+resource, and nothing here is a new base type.</p>
+
+<h3 id="the-person">The person</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-patient.html">Patient</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Patient</code></td>
+      <td>A person we are treating. The record's own key is a UUID generated on the device at registration and never changed; everything a human says out loud — a deployment number, an alias, a wristband — is an identifier rather than a key</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-related-person.html">Accompanying person</a></td>
+      <td><code class="language-plaintext highlighter-rouge">RelatedPerson</code></td>
+      <td>A parent, guardian or caregiver with the patient. It makes an unaccompanied minor a query — a child with no accompanying person — rather than a flag somebody has to remember to set</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">Patient</code> carries the <a href="StructureDefinition-estimated-age.html">estimated age</a>
+extension, because a date of birth is frequently unobtainable and age is what
+decides the dose and the screening band.</p>
+
+<h3 id="the-visit">The visit</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-encounter.html">Visit</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Encounter</code></td>
+      <td>One contact, from walking up to walking away. Someone seen twice in a day has two of these</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-triage-assessment.html">Triage assessment</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>One triage decision, at one moment, by one person. A patient waiting to be seen is re-assessed and gets another one; nothing is overwritten</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="what-is-wrong-with-them">What is wrong with them</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-diagnosis.html">Diagnosis made at this visit</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition</code></td>
+      <td>What was wrong today. <code class="language-plaintext highlighter-rouge">category = encounter-diagnosis</code></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-problem.html">Standing problem</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition</code></td>
+      <td>Something already true of this patient before they walked in. <code class="language-plaintext highlighter-rouge">category = problem-list-item</code></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-notifiable-disease.html">Notifiable disease</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition</code></td>
+      <td>A diagnosis under outbreak surveillance, carrying suspected / probable / confirmed, because the alerting rules are written in those terms</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-complication.html">Complication</a></td>
+      <td><code class="language-plaintext highlighter-rouge">AdverseEvent</code></td>
+      <td>Something that went wrong. The clinical problem itself is a diagnosis; this points at it and marks it as an adverse event</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A diagnosis and a standing problem are kept apart because they are different
+clinical facts: the standing list is what this person lives with, today's
+diagnosis is what we are treating.</p>
+
+<h3 id="what-was-measured-and-observed">What was measured and observed</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-vital-signs.html">Vital signs</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>Pulse, blood pressure, respiratory rate, temperature, oxygen saturation, weight, and level of consciousness by AVPU</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-pain-score.html">Pain</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>How much pain the patient is in, with the time required, because the obligation is repeated assessment</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-body-site-finding.html">Finding, marked on a body diagram</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>Something seen or felt, bound to a place on the body. The clinician taps where rather than describing where</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-muac.html">Mid-upper arm circumference</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>Millimetres, never a yes/no — the threshold is contested and belongs to the deployment</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-tbsa.html">Burn surface area</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>Percentage of the body burned. Decides where the patient is treated and drives fluid resuscitation</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-fluid-balance.html">Fluid balance</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>Fluid in and out, with the time</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-pregnancy-status.html">Pregnant or not</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>A state with a beginning and an end, so an observation and not a field on the person</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-deterioration-flag.html">This patient is getting worse</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Flag</code></td>
+      <td>A clinician's judgement that a patient is deteriorating. Recorded, never computed</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="medicines">Medicines</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-medication-given.html">Medicine given</a></td>
+      <td><code class="language-plaintext highlighter-rouge">MedicationAdministration</code></td>
+      <td>A drug that actually went into this patient, at a time, by someone — not a prescription</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-medication-take-home.html">Medicine they took away</a></td>
+      <td><code class="language-plaintext highlighter-rouge">MedicationDispense</code></td>
+      <td>What was counted out and handed over, with <code class="language-plaintext highlighter-rouge">daysSupply</code>, which is what tells a clinician three weeks later whether the patient ran out</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-medication-taken.html">Medicine they already take</a></td>
+      <td><code class="language-plaintext highlighter-rouge">MedicationStatement</code></td>
+      <td>What they were on before they met us, as far as anyone knows. Often the patient is the only source</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-allergy.html">Allergy</a></td>
+      <td><code class="language-plaintext highlighter-rouge">AllergyIntolerance</code></td>
+      <td>Something that will hurt this patient if we give it to them</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-allergy-asked.html">Whether we asked about allergies</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>That the question was asked, and what came back — including "nothing known" and "could not ask"</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-immunization.html">Vaccine given</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Immunization</code></td>
+      <td>What was given, or what the patient says they have had. Not a schedule the team manages</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Administration and dispense are separate profiles because they answer different
+questions. What went into the patient answers <em>what have we already given them?</em>
+at three in the morning. What went into a paper bag has not gone into anybody
+yet, and four of its five days happen in a shelter with nobody watching.</p>
+
+<p>Asking about allergies is recorded separately from the answer because an empty
+allergy list means either "asked, nothing found" or "nobody asked", and those are
+different facts.</p>
+
+<h3 id="what-was-done">What was done</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-procedure.html">Something done to the patient</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Procedure</code></td>
+      <td>A procedure, carrying whether it was major or minor, and the date it was performed</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="the-end-of-the-visit">The end of the visit</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-follow-up.html">Come back — when, and for what</a></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceRequest</code></td>
+      <td>A planned return to us: a date, and the reason to come on it</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-return-advice.html">What we told them to watch for</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Communication</code></td>
+      <td>The signs that mean come back immediately, and the record that somebody was actually told them</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-referral.html">Referral — what we are asking for</a></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceRequest</code></td>
+      <td>The clinical ask: what this patient needs, why, and from whom</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-handover.html">Handover — who has the patient now</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Task</code></td>
+      <td>Who is responsible while a referral is in progress. Responsibility moves only at <code class="language-plaintext highlighter-rouge">completed</code></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-transfer-document.html">What travels with the patient</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Composition</code></td>
+      <td>Condition, current treatment, the intention to transfer, and the mode and timeline</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-patient-summary.html">The copy the patient keeps</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Composition</code></td>
+      <td>Shaped like an International Patient Summary, because that standard exists for a clinician who has never met this person reading it cold</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A follow-up is separate from a referral because nothing is handed over: the
+patient stays ours and no handover has to be closed.</p>
+
+<p>Return advice is a <code class="language-plaintext highlighter-rouge">Communication</code> rather than a section of the patient's
+document because the document is content, while this records that the advice was
+actually given, to whom, and how — and the recipient is often not the patient. A
+two-year-old is not the recipient of the advice; the person holding her is.</p>
+
+<h3 id="permission-the-team-and-the-site">Permission, the team and the site</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Resource</th>
+      <th>What it is for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-consent.html">Permission for one specific thing</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Consent</code></td>
+      <td>Recorded per act, never once per patient</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-organization.html">The team</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Organization</code></td>
+      <td>The emergency medical team itself and its type, with contact details and an address, so whoever reads this record later can find whoever wrote it</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-bumblebee-location.html">Where the team is working</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Location</code></td>
+      <td>The site, with a state / city / village hierarchy and a geographic position, because a team is often in a field with no address</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="what-is-not-here">What is not here</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">EpisodeOfCare</code>.</strong> A profile grouping a patient's visits within one
+deployment was written and then deleted. The reasoning is on the
+<a href="rationale.html">design rationale</a> page and is kept as a comment in the FSH so
+it is not derived again.</li>
+  <li><strong>Five profiles named in the project plan and not yet written</strong>:
+<code class="language-plaintext highlighter-rouge">PractitionerRole</code>, an anaesthesia record, <code class="language-plaintext highlighter-rouge">CarePlan</code>, <code class="language-plaintext highlighter-rouge">Device</code> /
+<code class="language-plaintext highlighter-rouge">DeviceUseStatement</code>, and a protection flag.</li>
+  <li><strong>Three gaps found by working through the review questions</strong>: <em>needed and
+unavailable</em> as an outcome; whether the family has been informed after a
+death; and sensitivity labels on protection records — the labelling standard
+is chosen and the profiles do not carry it yet.</li>
+  <li><strong>Examples.</strong> None.</li>
+</ul>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script type="text/javascript" src="assets/js/flags.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script type="text/javascript" src="assets/js/togglechanges.js"> </script>
+  <script type="text/javascript" src="assets/js/requirements-table.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container" data-fhir="generated">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG © 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

@@ -116,6 +116,16 @@ void main() {
                 ],
               ),
               SidebarGroup(
+                title: 'Bumblebee',
+                links: [
+                  SidebarLink(
+                    text: 'Overview',
+                    href: 'docs/bumblebee/bumblebee_overview',
+                  ),
+                  SidebarLink(text: 'Published IG', href: 'docs/bumblebee_ig'),
+                ],
+              ),
+              SidebarGroup(
                 title: 'Cicada',
                 links: [
                   SidebarLink(text: 'Overview', href: 'docs/cicada/cicada_overview'),

@@ -1,0 +1,5 @@
+URL,Version,Status,OIDs,Name,Title,Description,Uses,Used,Sources
+http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs,0.1.0,draft,,BodyRegionVS,Body region,"Every code, at every level. A clinician picks the one they can be sure of.","StructureDefinition/bumblebee-diagnosis,StructureDefinition/bumblebee-body-site-finding","Internal"
+http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs,0.1.0,draft,,DisasterRelationVS,Relation to the disaster,"","StructureDefinition/disaster-relation","Internal"
+http://fhir-fli.dev/bumblebee/ValueSet/notifiable-verification-vs,0.1.0,draft,,NotifiableVerificationVS,Suspected, probable, confirmed,"Three of FHIR's six verification statuses, matching the surveillance vocabulary.","StructureDefinition/bumblebee-notifiable-disease","THO"
+http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs,0.1.0,draft,,TreatmentLevelVS,Treatment level required,"","StructureDefinition/treatment-level","Internal"

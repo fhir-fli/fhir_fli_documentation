@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="disaster-relation-cs"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CodeSystem disaster-relation-cs</b></p><a name="disaster-relation-cs"> </a><a name="hcdisaster-relation-cs"> </a><p>This case-sensitive code system <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code> defines the following codes:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">directly<a name="disaster-relation-cs-directly"> </a></td><td>Directly caused by the disaster</td><td>Injury caused by the earthquake, typhoon, tsunami, eruption; drowning; burn.</td></tr><tr><td style="white-space:nowrap">indirectly<a name="disaster-relation-cs-indirectly"> </a></td><td>Indirectly caused</td><td>Illness or injury from the post-disaster environment, or a chronic condition that worsened because the disaster cut off access to care.</td></tr><tr><td style="white-space:nowrap">not-related<a name="disaster-relation-cs-not-related"> </a></td><td>Not caused by the disaster</td><td>A health problem the disaster did not cause and which is not urgent.</td></tr><tr><td style="white-space:nowrap">unknown<a name="disaster-relation-cs-unknown"> </a></td><td>Not known</td><td>Nobody has said. This is the default and it is allowed to stay.</td></tr></table></div>
+  </text>
+  <url value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+  <version value="0.1.0"/>
+  <name value="DisasterRelationCS"/>
+  <title value="Relation to the disaster"/>
+  <status value="draft"/>
+  <date value="2026-08-14T17:06:47-04:00"/>
+  <publisher value="fhir-fli"/>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="4"/>
+  <concept>
+    <code value="directly"/>
+    <display value="Directly caused by the disaster"/>
+    <definition value="Injury caused by the earthquake, typhoon, tsunami, eruption; drowning; burn."/>
+  </concept>
+  <concept>
+    <code value="indirectly"/>
+    <display value="Indirectly caused"/>
+    <definition value="Illness or injury from the post-disaster environment, or a chronic condition that worsened because the disaster cut off access to care."/>
+  </concept>
+  <concept>
+    <code value="not-related"/>
+    <display value="Not caused by the disaster"/>
+    <definition value="A health problem the disaster did not cause and which is not urgent."/>
+  </concept>
+  <concept>
+    <code value="unknown"/>
+    <display value="Not known"/>
+    <definition value="Nobody has said. This is the default and it is allowed to stay."/>
+  </concept>
+</CodeSystem>

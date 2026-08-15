@@ -1,0 +1,38 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "disaster-relation-cs",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem disaster-relation-cs</b></p><a name=\"disaster-relation-cs\"> </a><a name=\"hcdisaster-relation-cs\"> </a><p>This case-sensitive code system <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">directly<a name=\"disaster-relation-cs-directly\"> </a></td><td>Directly caused by the disaster</td><td>Injury caused by the earthquake, typhoon, tsunami, eruption; drowning; burn.</td></tr><tr><td style=\"white-space:nowrap\">indirectly<a name=\"disaster-relation-cs-indirectly\"> </a></td><td>Indirectly caused</td><td>Illness or injury from the post-disaster environment, or a chronic condition that worsened because the disaster cut off access to care.</td></tr><tr><td style=\"white-space:nowrap\">not-related<a name=\"disaster-relation-cs-not-related\"> </a></td><td>Not caused by the disaster</td><td>A health problem the disaster did not cause and which is not urgent.</td></tr><tr><td style=\"white-space:nowrap\">unknown<a name=\"disaster-relation-cs-unknown\"> </a></td><td>Not known</td><td>Nobody has said. This is the default and it is allowed to stay.</td></tr></table></div>"
+  },
+  "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs",
+  "version" : "0.1.0",
+  "name" : "DisasterRelationCS",
+  "title" : "Relation to the disaster",
+  "status" : "draft",
+  "date" : "2026-08-14T17:06:47-04:00",
+  "publisher" : "fhir-fli",
+  "caseSensitive" : true,
+  "content" : "complete",
+  "count" : 4,
+  "concept" : [{
+    "code" : "directly",
+    "display" : "Directly caused by the disaster",
+    "definition" : "Injury caused by the earthquake, typhoon, tsunami, eruption; drowning; burn."
+  },
+  {
+    "code" : "indirectly",
+    "display" : "Indirectly caused",
+    "definition" : "Illness or injury from the post-disaster environment, or a chronic condition that worsened because the disaster cut off access to care."
+  },
+  {
+    "code" : "not-related",
+    "display" : "Not caused by the disaster",
+    "definition" : "A health problem the disaster did not cause and which is not urgent."
+  },
+  {
+    "code" : "unknown",
+    "display" : "Not known",
+    "definition" : "Nobody has said. This is the default and it is allowed to stay."
+  }]
+}

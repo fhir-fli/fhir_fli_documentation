@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+
+
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Other guides - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/project.css" rel="stylesheet"/>
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script type="text/javascript" src="assets/js/direction-management.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"7"}
+    h3,h4,h5,h6{--heading-prefix:"7"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+
+              
+
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Other guides</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://fhir-fli.dev/bumblebee/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Other guides</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#relationship-to-other-guides" id="markdown-toc-relationship-to-other-guides">Relationship to other guides</a></li>
+  <li><a href="#what-this-guide-does-conform-to" id="markdown-toc-what-this-guide-does-conform-to">What this guide does conform to</a></li>
+  <li><a href="#why-the-visit-layer-is-ours" id="markdown-toc-why-the-visit-layer-is-ours">Why the visit layer is ours</a></li>
+  <li><a href="#how-the-comparison-was-made" id="markdown-toc-how-the-comparison-was-made">How the comparison was made</a></li>
+  <li><a href="#where-we-already-match" id="markdown-toc-where-we-already-match">Where we already match</a></li>
+  <li><a href="#where-their-agreement-changed-our-profile" id="markdown-toc-where-their-agreement-changed-our-profile">Where their agreement changed our profile</a></li>
+  <li><a href="#where-we-deliberately-differ" id="markdown-toc-where-we-deliberately-differ">Where we deliberately differ</a></li>
+  <li><a href="#what-they-carry-that-we-do-not-and-will-not" id="markdown-toc-what-they-carry-that-we-do-not-and-will-not">What they carry that we do not, and will not</a></li>
+  <li><a href="#where-they-agree-and-we-still-say-nothing" id="markdown-toc-where-they-agree-and-we-still-say-nothing">Where they agree and we still say nothing</a></li>
+</ul>
+
+</div>
+<h3 id="relationship-to-other-guides">Relationship to other guides</h3>
+
+<p><strong>The policy, in Grey's words:</strong> <em>"we don't HAVE to conform to other IGs, it's
+just nice when we can and when it makes sense."</em></p>
+
+<p>Alignment is free value, taken wherever it costs nothing. Where a published guide
+and a patient in a tent disagree, the patient wins, and the difference is written
+down. What this rules out runs in both directions: contorting the design to match
+somebody's national profile, and ignoring a published profile because we did not
+write it. Where independently-written guides agree with each other, that agreement
+is evidence about what implementers actually needed, and it is cheap to take.</p>
+
+<h3 id="what-this-guide-does-conform-to">What this guide does conform to</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Base</td>
+      <td><strong>FHIR R4</strong> (4.0.1)</td>
+    </tr>
+    <tr>
+      <td>Standing state, and the copy the patient keeps</td>
+      <td><strong>IPS</strong> — the International Patient Summary</td>
+    </tr>
+    <tr>
+      <td>Guide structure and the layering of computable artefacts</td>
+      <td><strong>WHO SMART Guidelines</strong> — their base guide and starter kit</td>
+    </tr>
+    <tr>
+      <td>The visit layer</td>
+      <td><strong>ours, on base R4</strong>, patterned on where the national cores agree</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The last row is the one that needed establishing, and the search behind it is
+named below rather than assumed.</p>
+
+<h3 id="why-the-visit-layer-is-ours">Why the visit layer is ours</h3>
+
+<p><strong>Searched:</strong> IPA 1.1.0 · IPS · US Core 9.0.0 <code class="language-plaintext highlighter-rouge">Encounter</code> and
+<code class="language-plaintext highlighter-rouge">Condition-encounter-diagnosis</code> · AU Core 2.0.0 <code class="language-plaintext highlighter-rouge">Encounter</code> · AU Core's own
+published cross-guide comparison page · the WHO SMART <code class="language-plaintext highlighter-rouge">smart-base-clinical</code> draft
+· the base specification's Administration module and the <code class="language-plaintext highlighter-rouge">Encounter</code> /
+<code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> boundaries text.</p>
+
+<p><strong>International Patient Access does not fit</strong>, and the reason is structural
+rather than a matter of taste: it <em>"describes how an application acting on behalf
+of <strong>a patient</strong> can access information about the patient"</em>, this version of it is
+<em>"read-only"</em>, and it does not profile <code class="language-plaintext highlighter-rouge">Encounter</code> or <code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> at all. Its
+content set is the standing-state list already taken from IPS.</p>
+
+<p><strong>The strongest finding is not ours.</strong> AU Core publishes a comparison of itself
+against other national and international guides, and the only three it finds worth
+comparing against are IPA, IPS and US Core — one patient-access API, one patient
+summary, and one national core. A published guide's own survey arrives where we
+did: the international guides are patient-summary and patient-access shaped, and
+the practitioner-facing ones are nationally bound.</p>
+
+<p><strong>WHO's own clinical guide profiles <code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> and does not profile
+<code class="language-plaintext highlighter-rouge">Encounter</code>.</strong> <code class="language-plaintext highlighter-rouge">smart-base-clinical</code> defines four profiles and carries no
+encounter guidance. It is a draft on a continuous build rather than an authorised
+publication, so it is a signal about intent and not a standard to follow — but the
+group writing for this exact setting thought <code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> was the piece worth
+profiling. The successor guide named for clinical encounters returned 404 at both
+its published and its continuous-build address when this was checked on
+2026-08-04, so its current content is unverified.</p>
+
+<h3 id="how-the-comparison-was-made">How the comparison was made</h3>
+
+<p>Each profile was downloaded as its <code class="language-plaintext highlighter-rouge">StructureDefinition</code> JSON and its element
+table extracted mechanically — no reading of rendered pages, no summarising. The
+per-element matrix is <code class="language-plaintext highlighter-rouge">AGREEMENT.tsv</code> in the project's design record.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Version</th>
+      <th>Dated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>US Core <code class="language-plaintext highlighter-rouge">Encounter</code></td>
+      <td>9.0.0</td>
+      <td>2023-10-17</td>
+    </tr>
+    <tr>
+      <td>AU Core <code class="language-plaintext highlighter-rouge">Encounter</code></td>
+      <td>2.0.0</td>
+      <td>2026-01-28</td>
+    </tr>
+    <tr>
+      <td>UK Core <code class="language-plaintext highlighter-rouge">Encounter</code></td>
+      <td>2.5.0</td>
+      <td>2023-12-12</td>
+    </tr>
+    <tr>
+      <td>ISiK Kontakt (Germany)</td>
+      <td>4.0.3</td>
+      <td>2025-02-19</td>
+    </tr>
+    <tr>
+      <td>nl-core <code class="language-plaintext highlighter-rouge">Encounter</code></td>
+      <td>unversioned draft</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>nl-core marks nothing Must Support</strong> — zero occurrences in its
+<code class="language-plaintext highlighter-rouge">StructureDefinition</code> — so its contribution is its <em>definition</em> of an encounter,
+not an element set, and the counts below are out of four guides rather than five.
+Germany's general base profile package carries no <code class="language-plaintext highlighter-rouge">Encounter</code> at all; every
+<code class="language-plaintext highlighter-rouge">StructureDefinition</code> in it was searched, and its encounter profiling is in ISiK.</p>
+
+<h3 id="where-we-already-match">Where we already match</h3>
+
+<p>Four of four guides flag <code class="language-plaintext highlighter-rouge">status</code>, <code class="language-plaintext highlighter-rouge">class</code> and <code class="language-plaintext highlighter-rouge">subject</code>; we have all three, and
+<code class="language-plaintext highlighter-rouge">subject</code> at <code class="language-plaintext highlighter-rouge">1..</code>.</p>
+
+<p>Three of four flag <code class="language-plaintext highlighter-rouge">period</code>, <code class="language-plaintext highlighter-rouge">reasonCode</code> and <code class="language-plaintext highlighter-rouge">participant</code>; we have all three,
+and we <strong>require</strong> <code class="language-plaintext highlighter-rouge">period</code> where they do not. Two of four flag
+<code class="language-plaintext highlighter-rouge">hospitalization.dischargeDisposition</code>, and we mark it Must Support.</p>
+
+<h3 id="where-their-agreement-changed-our-profile">Where their agreement changed our profile</h3>
+
+<p><strong><code class="language-plaintext highlighter-rouge">reasonReference</code></strong> — three guides mark it Must Support beside <code class="language-plaintext highlighter-rouge">reasonCode</code>.
+It carries <em>she is here about the wound we dressed on Tuesday</em>, pointing at the
+<code class="language-plaintext highlighter-rouge">Condition</code> itself instead of a retyped complaint that only looks like the same
+words, which is what Decision 22 settled on in place of an episode. It is now
+Must Support, typed to a diagnosis, a standing problem or an observation, and
+<strong>left at <code class="language-plaintext highlighter-rouge">0..*</code> on purpose</strong>: a first visit has nothing to point at.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">serviceProvider</code></strong> — three guides mark it Must Support. It is now Must
+Support, typed to <a href="StructureDefinition-bumblebee-organization.html">the team</a>,
+which gained <code class="language-plaintext highlighter-rouge">telecom</code> and <code class="language-plaintext highlighter-rouge">address</code> in the same pass. The deployment tag is an
+<code class="language-plaintext highlighter-rouge">Identifier</code> and carries none of that; purge is a different job from <em>who looked
+after this person</em>.</p>
+
+<h3 id="where-we-deliberately-differ">Where we deliberately differ</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>We do</th>
+      <th>They do</th>
+      <th>Why</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">period 1..1</code> and <code class="language-plaintext highlighter-rouge">period.start 1..1</code></td>
+      <td>All four leave <code class="language-plaintext highlighter-rouge">period</code> optional</td>
+      <td>Arrival time is what distinguishes dead-on-arrival from a death in the facility</td>
+    </tr>
+    <tr>
+      <td>Triage as an <code class="language-plaintext highlighter-rouge">Observation</code>, one per decision</td>
+      <td>No guide read here profiles a triage element on <code class="language-plaintext highlighter-rouge">Encounter</code> — US Core, AU Core, UK Core, ISiK and nl-core were searched</td>
+      <td>A triage category is a judgement about how soon to see someone, not something the patient has. <code class="language-plaintext highlighter-rouge">Encounter.priority</code> is single-valued and there is no <code class="language-plaintext highlighter-rouge">priorityHistory</code>, so a re-assessment would overwrite the first</td>
+    </tr>
+    <tr>
+      <td>A deployment tag on every resource</td>
+      <td>None of the four carries an equivalent, same search</td>
+      <td>Purge as one verifiable operation</td>
+    </tr>
+    <tr>
+      <td>A mass-casualty flag on the visit</td>
+      <td>None of the four carries an equivalent, same search</td>
+      <td>Whether the visit was triaged under mass-casualty rules changes how the triage value is read back</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="what-they-carry-that-we-do-not-and-will-not">What they carry that we do not, and will not</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Whose</th>
+      <th>Why not</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">account</code></td>
+      <td>ISiK</td>
+      <td>Billing. Germany separates the billing case from both the encounter and the episode deliberately; we have no billing, so the axis is absent</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hospitalization.admitSource</code></td>
+      <td>ISiK</td>
+      <td>Admission machinery. Nearly all of this caseload is never admitted</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">diagnosis.condition</code>, <code class="language-plaintext highlighter-rouge">.use</code>, <code class="language-plaintext highlighter-rouge">.rank</code></td>
+      <td>ISiK</td>
+      <td>The encounter diagnosis is a separate <code class="language-plaintext highlighter-rouge">Condition</code> with <code class="language-plaintext highlighter-rouge">category = encounter-diagnosis</code> and <code class="language-plaintext highlighter-rouge">encounter 1..1</code> — the shape US Core uses</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">meta.lastUpdated</code></td>
+      <td>US Core</td>
+      <td>Server-side revision querying. Nothing about the patient, and these devices are local</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="where-they-agree-and-we-still-say-nothing">Where they agree and we still say nothing</h3>
+
+<p><code class="language-plaintext highlighter-rouge">location</code>, <code class="language-plaintext highlighter-rouge">identifier</code> and <code class="language-plaintext highlighter-rouge">type</code> are each flagged by three of four guides and
+are each absent here — not by oversight, but because each is a question about how
+a team actually works rather than a modelling question. They are on
+<a href="open.html">the open questions page</a>.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script type="text/javascript" src="assets/js/flags.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script type="text/javascript" src="assets/js/togglechanges.js"> </script>
+  <script type="text/javascript" src="assets/js/requirements-table.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container" data-fhir="generated">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG © 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

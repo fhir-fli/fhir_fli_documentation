@@ -1,0 +1,336 @@
+[{
+  "id" : "body-region-cs",
+  "type" : "CodeSystem",
+  "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs",
+  "version" : "0.1.0",
+  "name" : "BodyRegionCS"
+},
+{
+  "id" : "disaster-relation-cs",
+  "type" : "CodeSystem",
+  "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs",
+  "version" : "0.1.0",
+  "name" : "DisasterRelationCS"
+},
+{
+  "id" : "treatment-level-cs",
+  "type" : "CodeSystem",
+  "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs",
+  "version" : "0.1.0",
+  "name" : "TreatmentLevelCS"
+},
+{
+  "id" : "fhir.fhir-fli.bumblebee",
+  "type" : "ImplementationGuide",
+  "url" : "http://fhir-fli.dev/bumblebee/ImplementationGuide/fhir.fhir-fli.bumblebee",
+  "version" : "0.1.0",
+  "name" : "Bumblebee"
+},
+{
+  "id" : "admin-division",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/admin-division",
+  "version" : "0.1.0",
+  "name" : "AdminDivision"
+},
+{
+  "id" : "bumblebee-allergy",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-allergy",
+  "version" : "0.1.0",
+  "name" : "BumblebeeAllergy"
+},
+{
+  "id" : "bumblebee-allergy-asked",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-allergy-asked",
+  "version" : "0.1.0",
+  "name" : "BumblebeeAllergyAsked"
+},
+{
+  "id" : "bumblebee-body-site-finding",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-body-site-finding",
+  "version" : "0.1.0",
+  "name" : "BumblebeeBodySiteFinding"
+},
+{
+  "id" : "bumblebee-complication",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-complication",
+  "version" : "0.1.0",
+  "name" : "BumblebeeComplication"
+},
+{
+  "id" : "bumblebee-consent",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-consent",
+  "version" : "0.1.0",
+  "name" : "BumblebeeConsent"
+},
+{
+  "id" : "bumblebee-deterioration-flag",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-deterioration-flag",
+  "version" : "0.1.0",
+  "name" : "BumblebeeDeteriorationFlag"
+},
+{
+  "id" : "bumblebee-diagnosis",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-diagnosis",
+  "version" : "0.1.0",
+  "name" : "BumblebeeDiagnosis"
+},
+{
+  "id" : "bumblebee-encounter",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-encounter",
+  "version" : "0.1.0",
+  "name" : "BumblebeeEncounter"
+},
+{
+  "id" : "bumblebee-fluid-balance",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-fluid-balance",
+  "version" : "0.1.0",
+  "name" : "BumblebeeFluidBalance"
+},
+{
+  "id" : "bumblebee-follow-up",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-follow-up",
+  "version" : "0.1.0",
+  "name" : "BumblebeeFollowUp"
+},
+{
+  "id" : "bumblebee-handover",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-handover",
+  "version" : "0.1.0",
+  "name" : "BumblebeeHandover"
+},
+{
+  "id" : "bumblebee-immunization",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-immunization",
+  "version" : "0.1.0",
+  "name" : "BumblebeeImmunization"
+},
+{
+  "id" : "bumblebee-location",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-location",
+  "version" : "0.1.0",
+  "name" : "BumblebeeLocation"
+},
+{
+  "id" : "bumblebee-medication-given",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-given",
+  "version" : "0.1.0",
+  "name" : "BumblebeeMedicationGiven"
+},
+{
+  "id" : "bumblebee-medication-take-home",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-take-home",
+  "version" : "0.1.0",
+  "name" : "BumblebeeMedicationTakeHome"
+},
+{
+  "id" : "bumblebee-medication-taken",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-taken",
+  "version" : "0.1.0",
+  "name" : "BumblebeeMedicationTaken"
+},
+{
+  "id" : "bumblebee-muac",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-muac",
+  "version" : "0.1.0",
+  "name" : "BumblebeeMUAC"
+},
+{
+  "id" : "bumblebee-notifiable-disease",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-notifiable-disease",
+  "version" : "0.1.0",
+  "name" : "BumblebeeNotifiableDisease"
+},
+{
+  "id" : "bumblebee-organization",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-organization",
+  "version" : "0.1.0",
+  "name" : "BumblebeeOrganization"
+},
+{
+  "id" : "bumblebee-pain-score",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-pain-score",
+  "version" : "0.1.0",
+  "name" : "BumblebeePainScore"
+},
+{
+  "id" : "bumblebee-patient",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-patient",
+  "version" : "0.1.0",
+  "name" : "BumblebeePatient"
+},
+{
+  "id" : "bumblebee-patient-summary",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-patient-summary",
+  "version" : "0.1.0",
+  "name" : "BumblebeePatientSummary"
+},
+{
+  "id" : "bumblebee-pregnancy-status",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-pregnancy-status",
+  "version" : "0.1.0",
+  "name" : "BumblebeePregnancyStatus"
+},
+{
+  "id" : "bumblebee-problem",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-problem",
+  "version" : "0.1.0",
+  "name" : "BumblebeeProblem"
+},
+{
+  "id" : "bumblebee-procedure",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-procedure",
+  "version" : "0.1.0",
+  "name" : "BumblebeeProcedure"
+},
+{
+  "id" : "bumblebee-referral",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-referral",
+  "version" : "0.1.0",
+  "name" : "BumblebeeReferral"
+},
+{
+  "id" : "bumblebee-related-person",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-related-person",
+  "version" : "0.1.0",
+  "name" : "BumblebeeRelatedPerson"
+},
+{
+  "id" : "bumblebee-return-advice",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-return-advice",
+  "version" : "0.1.0",
+  "name" : "BumblebeeReturnAdvice"
+},
+{
+  "id" : "bumblebee-tbsa",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-tbsa",
+  "version" : "0.1.0",
+  "name" : "BumblebeeTBSA"
+},
+{
+  "id" : "bumblebee-transfer-document",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-transfer-document",
+  "version" : "0.1.0",
+  "name" : "BumblebeeTransferDocument"
+},
+{
+  "id" : "bumblebee-triage-assessment",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-triage-assessment",
+  "version" : "0.1.0",
+  "name" : "BumblebeeTriageAssessment"
+},
+{
+  "id" : "bumblebee-vital-signs",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-vital-signs",
+  "version" : "0.1.0",
+  "name" : "BumblebeeVitalSigns"
+},
+{
+  "id" : "departure-date",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/departure-date",
+  "version" : "0.1.0",
+  "name" : "DepartureDate"
+},
+{
+  "id" : "deployment-tag",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/deployment-tag",
+  "version" : "0.1.0",
+  "name" : "DeploymentTag"
+},
+{
+  "id" : "disaster-relation",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/disaster-relation",
+  "version" : "0.1.0",
+  "name" : "DisasterRelation"
+},
+{
+  "id" : "estimated-age",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/estimated-age",
+  "version" : "0.1.0",
+  "name" : "EstimatedAge"
+},
+{
+  "id" : "exposure-history",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/exposure-history",
+  "version" : "0.1.0",
+  "name" : "ExposureHistory"
+},
+{
+  "id" : "mass-casualty-mode",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/mass-casualty-mode",
+  "version" : "0.1.0",
+  "name" : "MassCasualtyMode"
+},
+{
+  "id" : "treatment-level",
+  "type" : "StructureDefinition",
+  "url" : "http://fhir-fli.dev/bumblebee/StructureDefinition/treatment-level",
+  "version" : "0.1.0",
+  "name" : "TreatmentLevel"
+},
+{
+  "id" : "body-region-vs",
+  "type" : "ValueSet",
+  "url" : "http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs",
+  "version" : "0.1.0",
+  "name" : "BodyRegionVS"
+},
+{
+  "id" : "disaster-relation-vs",
+  "type" : "ValueSet",
+  "url" : "http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs",
+  "version" : "0.1.0",
+  "name" : "DisasterRelationVS"
+},
+{
+  "id" : "notifiable-verification-vs",
+  "type" : "ValueSet",
+  "url" : "http://fhir-fli.dev/bumblebee/ValueSet/notifiable-verification-vs",
+  "version" : "0.1.0",
+  "name" : "NotifiableVerificationVS"
+},
+{
+  "id" : "treatment-level-vs",
+  "type" : "ValueSet",
+  "url" : "http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs",
+  "version" : "0.1.0",
+  "name" : "TreatmentLevelVS"
+}]

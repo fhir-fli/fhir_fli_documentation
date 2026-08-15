@@ -1,0 +1,47 @@
+{
+  "codeSystems" : [{
+    "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "BodyRegionCS",
+    "title" : "Body region",
+    "description" : "Where on the body something is. This exists so a clinician can TAP A DIAGRAM instead of typing - required for documenting unexplained injuries in children, and used the same way by the one field-hospital system with a published evaluation. Every code is somewhere a person can point at.",
+    "uses" : {
+    },
+    "ValueSet-body-region-vs.html" : "Body region"
+  },
+  {
+    "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "DisasterRelationCS",
+    "title" : "Relation to the disaster",
+    "description" : "",
+    "uses" : {
+    },
+    "ValueSet-disaster-relation-vs.html" : "Relation to the disaster"
+  },
+  {
+    "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "TreatmentLevelCS",
+    "title" : "Treatment level required",
+    "description" : "",
+    "uses" : {
+    },
+    "ValueSet-treatment-level-vs.html" : "Treatment level required"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+    "version" : "2.0.1",
+    "status" : "active",
+    "name" : "ConditionVerificationStatus",
+    "title" : "ConditionVerificationStatus",
+    "description" : "The verification status to support or decline the clinical status of the condition or diagnosis.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1075"],
+    "uses" : {
+    },
+    "ValueSet-notifiable-verification-vs.html" : "Suspected, probable, confirmed"
+  }]
+}
