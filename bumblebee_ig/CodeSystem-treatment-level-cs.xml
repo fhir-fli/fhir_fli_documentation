@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="treatment-level-cs"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CodeSystem treatment-level-cs</b></p><a name="treatment-level-cs"> </a><a name="hctreatment-level-cs"> </a><p>This case-sensitive code system <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code> defines the following codes:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">major<a name="treatment-level-cs-major"> </a></td><td>Major</td><td>Needs general anaesthesia and/or hospitalisation. Requires a Type 2 or Type 3 team.</td></tr><tr><td style="white-space:nowrap">moderate<a name="treatment-level-cs-moderate"> </a></td><td>Moderate</td><td>Treatable in the emergency room as an outpatient, but needs conscious sedation or a regional block.</td></tr><tr><td style="white-space:nowrap">minor<a name="treatment-level-cs-minor"> </a></td><td>Minor</td><td>First aid and light dressing, no anaesthesia. Within Type 1 mobile capability.</td></tr></table></div>
+  </text>
+  <url value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"/>
+  <version value="0.1.0"/>
+  <name value="TreatmentLevelCS"/>
+  <title value="Treatment level required"/>
+  <status value="draft"/>
+  <date value="2026-08-14T17:06:47-04:00"/>
+  <publisher value="fhir-fli"/>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="3"/>
+  <concept>
+    <code value="major"/>
+    <display value="Major"/>
+    <definition value="Needs general anaesthesia and/or hospitalisation. Requires a Type 2 or Type 3 team."/>
+  </concept>
+  <concept>
+    <code value="moderate"/>
+    <display value="Moderate"/>
+    <definition value="Treatable in the emergency room as an outpatient, but needs conscious sedation or a regional block."/>
+  </concept>
+  <concept>
+    <code value="minor"/>
+    <display value="Minor"/>
+    <definition value="First aid and light dressing, no anaesthesia. Within Type 1 mobile capability."/>
+  </concept>
+</CodeSystem>

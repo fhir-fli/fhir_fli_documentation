@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+
+
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Home - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/project.css" rel="stylesheet"/>
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script type="text/javascript" src="assets/js/direction-management.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"1"}
+    h3,h4,h5,h6{--heading-prefix:"1"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+
+              
+
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Home</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://fhir-fli.dev/bumblebee/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Home</h2>
+  
+
+
+
+
+  <table class="colsd" data-fhir="generated">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://fhir-fli.dev/bumblebee/ImplementationGuide/fhir.fhir-fli.bumblebee<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://fhir-fli.dev/bumblebee/ImplementationGuide/fhir.fhir-fli.bumblebee"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://fhir-fli.dev/bumblebee/ImplementationGuide/fhir.fhir-fli.bumblebee|0.1.0"/></span>
+      </td>
+      <td style="text-align: right;border-left-style: hidden" title="Enable this to see changes since the last official release">
+        <span id="toggle-change-display"><label style="margin:0;font-weight:normal" for="showChanges">Highlight text changes?</label>
+  
+        <input style="margin:0" type="checkbox" id="showChanges" onchange="toggleChanges()"/>
+  
+      </span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="5">
+        
+          Draft
+          
+
+            as of 
+2026-08-14
+
+          
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">Bumblebee</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#bumblebee" id="markdown-toc-bumblebee">Bumblebee</a></li>
+  <li><a href="#the-setting-these-profiles-are-built-for" id="markdown-toc-the-setting-these-profiles-are-built-for">The setting these profiles are built for</a></li>
+  <li><a href="#who-reads-and-writes-this-record" id="markdown-toc-who-reads-and-writes-this-record">Who reads and writes this record</a></li>
+  <li><a href="#what-this-guide-covers" id="markdown-toc-what-this-guide-covers">What this guide covers</a></li>
+  <li><a href="#what-this-guide-does-not-cover" id="markdown-toc-what-this-guide-does-not-cover">What this guide does not cover</a></li>
+  <li><a href="#status" id="markdown-toc-status">Status</a></li>
+  <li><a href="#reading-the-citations" id="markdown-toc-reading-the-citations">Reading the citations</a></li>
+</ul>
+
+</div>
+<h3 id="bumblebee">Bumblebee</h3>
+
+<p><strong>A clinical record for emergency medical teams.</strong> It exists to help a volunteer
+clinician take care of a patient in a disaster — offline, on a cheap phone, with
+a queue of people waiting.</p>
+
+<p>This guide is the machine-readable half of that design. It says which fields a
+record carries, which of them software has to handle, and what may go in them,
+so that a tool finds the mistakes rather than a reader.</p>
+
+<h3 id="the-setting-these-profiles-are-built-for">The setting these profiles are built for</h3>
+
+<p>A team lands in a disaster zone. It has volunteers who last used this software
+12–18 months ago, with as little as three hours of pre-deployment training; no
+internet, intermittent power, and cheap Android phones; a patient every few
+minutes, sometimes many at once; a duty to give each patient something they can
+carry to the next clinician; and a duty to do all of that without creating a
+record that could endanger the patient if the device is lost or seized.</p>
+
+<p>Two measurements from the response to Cyclone Idai in Mozambique in 2019 — 13
+teams over 110 days, the largest set of numbers we have from a real deployment —
+govern what these profiles optimise for:</p>
+
+<ul>
+  <li><strong>Of 13,738 health events, 56.5% had no more specific description than
+"other".</strong> Major head and spine, torso and extremity injuries together were
+<strong>0.5%</strong> — 66 patients out of 13,738.</li>
+  <li><strong>84.7% of health events had nothing to do with the disaster</strong>, and the share
+rose from 68.7% to 94.5% over the response, because a team in the acute phase
+substitutes for health facilities that are not working.</li>
+</ul>
+
+<p>So the clinical surface has to be excellent at <strong>ordinary illness seen once in a
+tent</strong>. Disaster trauma is the rare case, and a record shaped around it would be
+shaped around 0.5% of the work.</p>
+
+<h3 id="who-reads-and-writes-this-record">Who reads and writes this record</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>What they need from it</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Field clinician</strong> — physician, PA/NP, nurse, paramedic. The primary user</td>
+      <td>Document a visit in under a minute of screen time, see what the last person did, and hand the patient something</td>
+    </tr>
+    <tr>
+      <td><strong>Triage and intake staff</strong></td>
+      <td>Register a person who may have no name and no document, record a category, and get them moving</td>
+    </tr>
+    <tr>
+      <td><strong>Team lead / medical director</strong></td>
+      <td>A live census, without asking anyone to count anything</td>
+    </tr>
+    <tr>
+      <td><strong>The receiving clinician</strong>, days or months later</td>
+      <td>Read the record cold, without the team that wrote it, and without a network</td>
+    </tr>
+    <tr>
+      <td><strong>The patient</strong></td>
+      <td>A record of what happened to them that they can take to the next clinic</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The primary user is not a technologist and is not a full-time user of anything.
+Design decisions are settled in their favour.</p>
+
+<h3 id="what-this-guide-covers">What this guide covers</h3>
+
+<p>The <strong>clinical record</strong>: one contact between a patient and a team, from walking
+up to walking away, and the standing facts about a person that outlive any one
+visit.</p>
+
+<p><strong>32 profiles · 8 extensions · 4 value sets · 3 code systems</strong>, all on FHIR
+R4 (4.0.1).</p>
+
+<ul>
+  <li><a href="record.html">What the record holds</a> — the profiles, grouped by the moment of
+care they belong to</li>
+  <li><a href="conventions.html">How to read the profiles</a> — the conventions, including what
+Must Support does and does not mean here</li>
+  <li><a href="terminology.html">Terminology and extensions</a> — the code lists we define, and
+the six concepts FHIR has no home for</li>
+  <li><a href="rationale.html">Design rationale</a> — what was decided, what was rejected, and
+where it came from</li>
+  <li><a href="evidence.html">Evidence basis</a> — what the design is built on, and how the
+sources are graded</li>
+  <li><a href="relationship.html">Other guides</a> — where we match published profiles, where
+we deliberately differ</li>
+  <li><a href="open.html">Open questions</a> — what is not settled, and who can settle it</li>
+</ul>
+
+<h3 id="what-this-guide-does-not-cover">What this guide does not cover</h3>
+
+<ul>
+  <li><strong>The application.</strong> Screens, interaction and the queue are specified
+elsewhere in the project's design record, not here.</li>
+  <li><strong>Storage, synchronisation and security.</strong> Offline operation, replication
+between devices, purge and the handling of records that could endanger a
+patient are architectural, and this guide neither describes nor constrains
+them.</li>
+  <li><strong>Examples.</strong> There are none yet. A profile with no instance is how you ship
+something nobody can satisfy, and writing them is the next piece of work on
+this guide.</li>
+</ul>
+
+<h3 id="status">Status</h3>
+
+<p><strong>Draft, version 0.1.0.</strong> The project is at the planning stage: the profiles are
+proposed, not agreed, and several rest on decisions marked as taken
+provisionally for a partner to confirm. Every page here says which.</p>
+
+<p>Nothing in this guide has been used to record the care of a real patient.</p>
+
+<h3 id="reading-the-citations">Reading the citations</h3>
+
+<p>Claims on these pages cite the project's own design record — <code class="language-plaintext highlighter-rouge">DECISIONS.md</code> for
+what was decided, <code class="language-plaintext highlighter-rouge">EVIDENCE.md</code> for the graded source library, <code class="language-plaintext highlighter-rouge">PRINCIPLES.md</code>
+for the falsifiable commitments. Those files are not published alongside this
+guide. Where a claim rests on a published standard or a paper, the standard or
+the paper is named as well, so the claim can be checked without them.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script type="text/javascript" src="assets/js/flags.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script type="text/javascript" src="assets/js/togglechanges.js"> </script>
+  <script type="text/javascript" src="assets/js/requirements-table.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container" data-fhir="generated">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG © 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

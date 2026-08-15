@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+
+
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Terminology and extensions - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/project.css" rel="stylesheet"/>
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script type="text/javascript" src="assets/js/direction-management.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"4"}
+    h3,h4,h5,h6{--heading-prefix:"4"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+
+              
+
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Terminology and extensions</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://fhir-fli.dev/bumblebee/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Terminology and extensions</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#terminology-and-extensions" id="markdown-toc-terminology-and-extensions">Terminology and extensions</a></li>
+  <li><a href="#why-any-of-these-are-ours" id="markdown-toc-why-any-of-these-are-ours">Why any of these are ours</a></li>
+  <li><a href="#body-region--and-why-it-is-hierarchical" id="markdown-toc-body-region--and-why-it-is-hierarchical">Body region — and why it is hierarchical</a></li>
+  <li><a href="#relation-to-the-disaster" id="markdown-toc-relation-to-the-disaster">Relation to the disaster</a></li>
+  <li><a href="#treatment-level" id="markdown-toc-treatment-level">Treatment level</a></li>
+  <li><a href="#suspected-probable-confirmed" id="markdown-toc-suspected-probable-confirmed">Suspected, probable, confirmed</a></li>
+  <li><a href="#the-extensions" id="markdown-toc-the-extensions">The extensions</a></li>
+</ul>
+
+</div>
+<h3 id="terminology-and-extensions">Terminology and extensions</h3>
+
+<p>Three code systems, four value sets, eight extensions. Each one has to justify
+being ours rather than somebody else's.</p>
+
+<h3 id="why-any-of-these-are-ours">Why any of these are ours</h3>
+
+<p><strong>Body regions are ours on size alone.</strong> The body map needs a few dozen regions
+against SNOMED CT's tens of thousands, and shipping a few dozen offline is
+simpler than shipping a terminology server to a tent.</p>
+
+<p><strong>That is a size argument, not a licensing one</strong>, and the distinction matters
+because an earlier version of this reasoning ended "…and a licence", which was
+wrong and has been removed. SNOMED CT Affiliate Licences are free in member
+countries, free in the 49 World Bank low-income economies, and available on
+humanitarian grounds elsewhere. The genuinely unclear case is a middle-income
+non-member territory, where a fee may apply — a conversation to have with SNOMED
+International rather than a wall. The project's position is recorded as taken
+under uncertainty: we proceed as though storing identifiers and descriptions in
+patient records needs no licence, and we are explicitly unsure. The remedy, if
+that is wrong, is paperwork rather than a redesign, which is the whole reason
+deferring it is reasonable.</p>
+
+<p><strong>What we deliberately did not define:</strong> case classification for notifiable
+conditions. FHIR's own <code class="language-plaintext highlighter-rouge">Condition.verificationStatus</code> already carries that axis,
+and the notifiable profile constrains it to three of the six values rather than
+minting a parallel vocabulary.</p>
+
+<h3 id="body-region--and-why-it-is-hierarchical">Body region — and why it is hierarchical</h3>
+
+<p><a href="CodeSystem-body-region-cs.html"><code class="language-plaintext highlighter-rouge">BodyRegionCS</code></a> ·
+<a href="ValueSet-body-region-vs.html"><code class="language-plaintext highlighter-rouge">BodyRegionVS</code></a></p>
+
+<p>This exists so a clinician can <strong>tap a diagram</strong> instead of typing. Every code is
+somewhere a person can point at.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>head-spine → head · face · neck · spine
+torso      → chest · abdomen · back · pelvis
+extremity  → the twelve left/right limb parts
+perineum · generalised
+</code></pre></div></div>
+
+<p><strong>The hierarchy is the whole design: a clinician taps at the precision they
+actually have.</strong> A patient face-down on a stretcher gets <em>limb</em> or <em>torso</em>; the
+same patient ten minutes later gets <em>left forearm</em>. Neither is a degraded version
+of the other — they are what was known at the time, and forcing the finer one
+invents certainty that was not there. Anything that needs to add regions together
+walks the tree, rather than finding a bucket sitting in the picking list.</p>
+
+<p><strong>It replaced a flat list, and the correction is worth recording</strong> because the
+first reason given for changing it was wrong. The flat list had "head or spine"
+sitting as a sibling of "left forearm", and it was removed on the grounds that
+head and spine are opposite ends of the body. They are not: the head sits on top
+of the spine, the cervical spine <strong>is</strong> the neck, and they are one continuous
+structure. That is precisely why grouping them is anatomically sound — it is the
+neuraxis, and it is the grouping whose injuries most often leave permanent
+damage. What actually survived of the objection is that the list was <strong>flat</strong>: a
+code meaning "head OR spine" cannot answer <em>where is it</em> when it is offered
+alongside a code that can. That is an argument for a parent, not for a deletion.</p>
+
+<p><code class="language-plaintext highlighter-rouge">head-spine</code> is therefore a parent code and a legitimate answer in its own right.</p>
+
+<h3 id="relation-to-the-disaster">Relation to the disaster</h3>
+
+<p><a href="CodeSystem-disaster-relation-cs.html"><code class="language-plaintext highlighter-rouge">DisasterRelationCS</code></a> ·
+<a href="ValueSet-disaster-relation-vs.html"><code class="language-plaintext highlighter-rouge">DisasterRelationVS</code></a> ·
+<a href="StructureDefinition-disaster-relation.html"><code class="language-plaintext highlighter-rouge">DisasterRelation</code></a></p>
+
+<p>Four codes: <code class="language-plaintext highlighter-rouge">directly</code> · <code class="language-plaintext highlighter-rouge">indirectly</code> · <code class="language-plaintext highlighter-rouge">not-related</code> · <code class="language-plaintext highlighter-rouge">unknown</code>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">unknown</code> is the default and it is a complete, permanent answer.</strong> Nothing
+about the patient's care changes with this value — a clinician treating acute
+watery diarrhoea does not need to know whether a damaged water system caused it,
+because the treatment is identical either way — and two field clinicians shown
+the same case agree about 0.59 of the time. It is an obligation the team owes
+upward, it is never asked during a consultation, and nothing downstream may treat
+it as precise.</p>
+
+<p>It sits on the <code class="language-plaintext highlighter-rouge">Condition</code> rather than the visit because cause is true of a
+problem: one visit can hold a crush injury and long-standing diabetes, and a
+visit-level answer destroys that at the only point where it cannot be recovered.</p>
+
+<h3 id="treatment-level">Treatment level</h3>
+
+<p><a href="CodeSystem-treatment-level-cs.html"><code class="language-plaintext highlighter-rouge">TreatmentLevelCS</code></a> ·
+<a href="ValueSet-treatment-level-vs.html"><code class="language-plaintext highlighter-rouge">TreatmentLevelVS</code></a> ·
+<a href="StructureDefinition-treatment-level.html"><code class="language-plaintext highlighter-rouge">TreatmentLevel</code></a></p>
+
+<p><code class="language-plaintext highlighter-rouge">major</code> · <code class="language-plaintext highlighter-rouge">moderate</code> · <code class="language-plaintext highlighter-rouge">minor</code>. Mostly a statement about <strong>where this patient can
+be looked after</strong>: major needs general anaesthesia or hospitalisation and
+therefore a Type 2 or Type 3 team; minor is first aid and a light dressing,
+within what a Type 1 mobile team can do. It is the judgement that decides whether
+the patient stays or travels, and it applies to a <code class="language-plaintext highlighter-rouge">Condition</code> and to a
+<code class="language-plaintext highlighter-rouge">Procedure</code>.</p>
+
+<h3 id="suspected-probable-confirmed">Suspected, probable, confirmed</h3>
+
+<p><a href="ValueSet-notifiable-verification-vs.html"><code class="language-plaintext highlighter-rouge">NotifiableVerificationVS</code></a></p>
+
+<p>Three of FHIR's six verification statuses, matching the surveillance vocabulary:
+<code class="language-plaintext highlighter-rouge">unconfirmed</code> = suspected (meets the clinical case definition) · <code class="language-plaintext highlighter-rouge">provisional</code> =
+probable (the definition plus supporting evidence, or a link to a confirmed case)
+· <code class="language-plaintext highlighter-rouge">confirmed</code> = laboratory confirmed.</p>
+
+<h3 id="the-extensions">The extensions</h3>
+
+<p>Six of them exist because FHIR has no home for the concept. Three of the six were
+independently arrived at by Faisal and Nakayama (<em>JMIR Med Inform</em>
+2024;12:e59651), which is mild evidence that the set is close to minimal.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>On</th>
+      <th>Why</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-estimated-age.html">Estimated age</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Patient</code></td>
+      <td>FHIR has <code class="language-plaintext highlighter-rouge">birthDate</code> and nothing else. Age decides the dose, the screening band, and how a presentation reads, and an estimate is often all anyone has</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-disaster-relation.html">Relation to the disaster</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition</code></td>
+      <td>Above</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-treatment-level.html">Treatment level</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition</code>, <code class="language-plaintext highlighter-rouge">Procedure</code></td>
+      <td>Above</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-admin-division.html">Administrative division</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Location</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Location</code> has no element for an administrative hierarchy, and in a displacement setting the village is often the only part anyone can name</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-departure-date.html">Anticipated date of departure</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Organization</code></td>
+      <td>The handover to local health authorities has to be coordinated at least seven days before the team shuts down</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-deployment-tag.html">Deployment</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Resource</code></td>
+      <td>Makes purging one deployment a single verifiable operation</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-exposure-history.html">Exposure history</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition</code></td>
+      <td>Where the person is thought to have been exposed. Asked for by the surveillance standards for notifiable conditions, and by nothing else</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-mass-casualty-mode.html">Mass casualty mode</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Encounter</code></td>
+      <td>Whether this visit was triaged under mass-casualty rules rather than ordinary ones, which changes how the triage value is read back</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script type="text/javascript" src="assets/js/flags.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script type="text/javascript" src="assets/js/togglechanges.js"> </script>
+  <script type="text/javascript" src="assets/js/requirements-table.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container" data-fhir="generated">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG © 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

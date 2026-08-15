@@ -1,0 +1,19 @@
+{
+  "url" : "http://fhir-fli.dev/bumblebee/ImplementationGuide/fhir.fhir-fli.bumblebee",
+  "name" : "Bumblebee",
+  "title" : "Bumblebee — a clinical record for emergency medical teams",
+  "description" : "What a clinician records to take care of a patient in a disaster: offline, on a cheap phone, with a queue of people waiting.",
+  "status" : "draft",
+  "package-id" : "fhir.fhir-fli.bumblebee",
+  "ig-ver" : "0.1.0",
+  "date" : "Fri, 14 Aug, 2026 17:06:47 -0400",
+  "dateISO8601" : "2026-08-14T17:06:47-04:00",
+  "errs" : 0,
+  "warnings" : 63,
+  "hints" : 57,
+  "suppressed-hints" : 0,
+  "suppressed-warnings" : 0,
+  "version" : "4.0.1",
+  "tool" : "5.0.0 (3)",
+  "maxMemory" : 1508823040
+}

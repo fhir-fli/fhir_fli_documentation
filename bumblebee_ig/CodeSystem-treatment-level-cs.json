@@ -1,0 +1,33 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "treatment-level-cs",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem treatment-level-cs</b></p><a name=\"treatment-level-cs\"> </a><a name=\"hctreatment-level-cs\"> </a><p>This case-sensitive code system <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">major<a name=\"treatment-level-cs-major\"> </a></td><td>Major</td><td>Needs general anaesthesia and/or hospitalisation. Requires a Type 2 or Type 3 team.</td></tr><tr><td style=\"white-space:nowrap\">moderate<a name=\"treatment-level-cs-moderate\"> </a></td><td>Moderate</td><td>Treatable in the emergency room as an outpatient, but needs conscious sedation or a regional block.</td></tr><tr><td style=\"white-space:nowrap\">minor<a name=\"treatment-level-cs-minor\"> </a></td><td>Minor</td><td>First aid and light dressing, no anaesthesia. Within Type 1 mobile capability.</td></tr></table></div>"
+  },
+  "url" : "http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs",
+  "version" : "0.1.0",
+  "name" : "TreatmentLevelCS",
+  "title" : "Treatment level required",
+  "status" : "draft",
+  "date" : "2026-08-14T17:06:47-04:00",
+  "publisher" : "fhir-fli",
+  "caseSensitive" : true,
+  "content" : "complete",
+  "count" : 3,
+  "concept" : [{
+    "code" : "major",
+    "display" : "Major",
+    "definition" : "Needs general anaesthesia and/or hospitalisation. Requires a Type 2 or Type 3 team."
+  },
+  {
+    "code" : "moderate",
+    "display" : "Moderate",
+    "definition" : "Treatable in the emergency room as an outpatient, but needs conscious sedation or a regional block."
+  },
+  {
+    "code" : "minor",
+    "display" : "Minor",
+    "definition" : "First aid and light dressing, no anaesthesia. Within Type 1 mobile capability."
+  }]
+}

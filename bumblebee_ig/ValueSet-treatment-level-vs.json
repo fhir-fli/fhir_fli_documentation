@@ -1,0 +1,20 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "treatment-level-vs",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet treatment-level-vs</b></p><a name=\"treatment-level-vs\"> </a><a name=\"hctreatment-level-vs\"> </a><ul><li>Include all codes defined in <a href=\"CodeSystem-treatment-level-cs.html\"><code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version &#x1F4E6;0.1.0</span></li></ul></div>"
+  },
+  "url" : "http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs",
+  "version" : "0.1.0",
+  "name" : "TreatmentLevelVS",
+  "title" : "Treatment level required",
+  "status" : "draft",
+  "date" : "2026-08-14T17:06:47-04:00",
+  "publisher" : "fhir-fli",
+  "compose" : {
+    "include" : [{
+      "system" : "http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"
+    }]
+  }
+}

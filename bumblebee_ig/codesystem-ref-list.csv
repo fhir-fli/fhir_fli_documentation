@@ -1,0 +1,5 @@
+URL,Version,Status,OIDs,Name,Title,Description,Used
+http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs,0.1.0,draft,,BodyRegionCS,Body region,"Where on the body something is. This exists so a clinician can TAP A DIAGRAM instead of typing - required for documenting unexplained injuries in children, and used the same way by the one field-hospital system with a published evaluation. Every code is somewhere a person can point at.","ValueSet/body-region-vs"
+http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs,0.1.0,draft,,DisasterRelationCS,Relation to the disaster,"","ValueSet/disaster-relation-vs"
+http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs,0.1.0,draft,,TreatmentLevelCS,Treatment level required,"","ValueSet/treatment-level-vs"
+http://terminology.hl7.org/CodeSystem/condition-ver-status,2.0.1,active,"2.16.840.1.113883.4.642.1.1075",ConditionVerificationStatus,ConditionVerificationStatus,"The verification status to support or decline the clinical status of the condition or diagnosis.","ValueSet/notifiable-verification-vs"

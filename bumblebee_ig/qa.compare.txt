@@ -1,0 +1,225 @@
+Bumblebee : Validation Results
+=========================================
+
+err = 0, warn = 63, info = 57
+$--
+Generated $--. FHIR version $-- for fhir.fhir-fli.bumblebee#$-- (canonical = http://fhir-fli.dev/bumblebee)
+ Build Errors : 0 / 4 / 8
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/CodeSystem-body-region-cs : 0 / 2 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/CodeSystem-disaster-relation-cs : 0 / 3 / 1
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/CodeSystem-treatment-level-cs : 0 / 3 / 1
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/ImplementationGuide-fhir.fhir-fli.bumblebee : 0 / 0 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-admin-division : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-allergy : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-allergy-asked : 0 / 1 / 3
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-body-site-finding : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-complication : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-consent : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-deterioration-flag : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-diagnosis : 0 / 1 / 3
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-encounter : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-fluid-balance : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-follow-up : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-handover : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-immunization : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-location : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-medication-given : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-medication-take-home : 0 / 1 / 3
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-medication-taken : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-muac : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-notifiable-disease : 0 / 1 / 3
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-organization : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-pain-score : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-patient : 0 / 2 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-patient-summary : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-pregnancy-status : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-problem : 0 / 1 / 3
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-procedure : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-referral : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-related-person : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-return-advice : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-tbsa : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-transfer-document : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-triage-assessment : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-bumblebee-vital-signs : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-departure-date : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-deployment-tag : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-disaster-relation : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-estimated-age : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-exposure-history : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-mass-casualty-mode : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/StructureDefinition-treatment-level : 0 / 1 / 2
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/ValueSet-body-region-vs : 0 / 2 / 1
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/ValueSet-disaster-relation-vs : 0 / 3 / 1
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/ValueSet-notifiable-verification-vs : 0 / 2 / 3
+ /home/grey/dev/fhir/bumblebee/ig/fsh-generated/resources/ValueSet-treatment-level-vs : 0 / 3 / 1
+</table>
+== n/a ==
+INFORMATION: en/evidence.html: No conformance term found in the text: C.2, 
+INFORMATION: en/evidence.html: No conformance term found in the text: G, 
+INFORMATION: en/evidence.html: No conformance term found in the text: M.3, 
+INFORMATION: en/evidence.html: No conformance term found in the text: M.7, 
+INFORMATION: en/evidence.html: No conformance term found in the text: M.5, 
+INFORMATION: en/evidence.html: No conformance term found in the text: C.1, 
+INFORMATION: en/rationale.html: No conformance term found in the text: 
+INFORMATION: en/rationale.html: No conformance term found in the text: 5.1.4 · EVIDENCE.md 
+WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
+WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+== fsh-generated/resources/CodeSystem-body-region-cs.json ==
+INFORMATION: CodeSystem/body-region-cs: CodeSystem: CodeSystems SHOULD have a stated value for the hierarchyMeaning element so that users know the status and meaning of the code system clearly
+WARNING: CodeSystem/body-region-cs: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
+WARNING: Resource: The resource CodeSystem/body-region-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/CodeSystem-disaster-relation-cs.json ==
+WARNING: CodeSystem/disaster-relation-cs: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
+WARNING: CodeSystem/disaster-relation-cs: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.description is mandatory, but it is not present
+WARNING: Resource: The resource CodeSystem/disaster-relation-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/CodeSystem-treatment-level-cs.json ==
+WARNING: CodeSystem/treatment-level-cs: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
+WARNING: CodeSystem/treatment-level-cs: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.description is mandatory, but it is not present
+WARNING: Resource: The resource CodeSystem/treatment-level-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/ImplementationGuide-fhir.fhir-fli.bumblebee.json ==
+INFORMATION: Resource: The resource ImplementationGuide/fhir.fhir-fli.bumblebee could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/StructureDefinition-admin-division.json ==
+INFORMATION: Resource: The resource StructureDefinition/admin-division could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/admin-division'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-bumblebee-allergy.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-allergy could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-allergy'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-allergy-asked.json ==
+INFORMATION: StructureDefinition/bumblebee-allergy-asked: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0 is deprecated with the note: 'Use additionalBinding extension or element instead'
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-allergy-asked could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-allergy-asked'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-body-site-finding.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-body-site-finding could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-body-site-finding'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-complication.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-complication could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-complication'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-consent.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-consent could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-consent'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-deterioration-flag.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-deterioration-flag could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-deterioration-flag'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-diagnosis.json ==
+INFORMATION: StructureDefinition/bumblebee-diagnosis: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-diagnosis could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-diagnosis'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-encounter.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-encounter could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-encounter'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-fluid-balance.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-fluid-balance could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-fluid-balance'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-follow-up.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-follow-up could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-follow-up'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-handover.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-handover could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-handover'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-immunization.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-immunization could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-immunization'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-location.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-location could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-location'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-medication-given.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-medication-given could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-given'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-medication-take-home.json ==
+INFORMATION: StructureDefinition/bumblebee-medication-take-home: StructureDefinition.snapshot.element[28].mapping[0].map: The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-medication-take-home could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-take-home'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-medication-taken.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-medication-taken could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-medication-taken'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-muac.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-muac could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-muac'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-notifiable-disease.json ==
+INFORMATION: StructureDefinition/bumblebee-notifiable-disease: StructureDefinition.snapshot.element[15].pattern.ofType(CodeableConcept): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-notifiable-disease could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-notifiable-disease'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-organization.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-organization could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-organization'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-pain-score.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-pain-score could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-pain-score'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-patient.json ==
+WARNING: StructureDefinition/bumblebee-patient: StructureDefinition.snapshot: The slice 'wristband' on path 'Patient.identifier' is not marked as 'must-support' which is not consistent with the element that defines the slicing, where 'must-support' is true
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-patient could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-patient'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-patient-summary.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-patient-summary could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-patient-summary'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-pregnancy-status.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-pregnancy-status could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-pregnancy-status'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-problem.json ==
+INFORMATION: StructureDefinition/bumblebee-problem: StructureDefinition.snapshot.element[12].pattern.ofType(CodeableConcept): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-problem could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-problem'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-procedure.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-procedure could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-procedure'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-referral.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-referral could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-referral'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-related-person.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-related-person could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-related-person'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-return-advice.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-return-advice could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-return-advice'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-tbsa.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-tbsa could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-tbsa'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-transfer-document.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-transfer-document could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-transfer-document'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-triage-assessment.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-triage-assessment could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-triage-assessment'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-bumblebee-vital-signs.json ==
+INFORMATION: Resource: The resource StructureDefinition/bumblebee-vital-signs could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/bumblebee-vital-signs'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-departure-date.json ==
+INFORMATION: Resource: The resource StructureDefinition/departure-date could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/departure-date'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-deployment-tag.json ==
+INFORMATION: Resource: The resource StructureDefinition/deployment-tag could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/deployment-tag'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-disaster-relation.json ==
+INFORMATION: Resource: The resource StructureDefinition/disaster-relation could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/disaster-relation'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-estimated-age.json ==
+INFORMATION: Resource: The resource StructureDefinition/estimated-age could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/estimated-age'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-exposure-history.json ==
+INFORMATION: Resource: The resource StructureDefinition/exposure-history could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/exposure-history'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-mass-casualty-mode.json ==
+INFORMATION: Resource: The resource StructureDefinition/mass-casualty-mode could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/mass-casualty-mode'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-treatment-level.json ==
+INFORMATION: Resource: The resource StructureDefinition/treatment-level could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: StructureDefinition.where(url = 'http://fhir-fli.dev/bumblebee/StructureDefinition/treatment-level'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/ValueSet-body-region-vs.json ==
+WARNING: ValueSet/body-region-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+WARNING: Resource: The resource ValueSet/body-region-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/ValueSet-disaster-relation-vs.json ==
+WARNING: ValueSet/disaster-relation-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+WARNING: ValueSet/disaster-relation-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.description is mandatory, but it is not present
+WARNING: Resource: The resource ValueSet/disaster-relation-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/ValueSet-notifiable-verification-vs.json ==
+INFORMATION: ValueSet/notifiable-verification-vs: ValueSet.compose.include[0].concept[0]: Wrong Display Name 'Suspected' for http://terminology.hl7.org/CodeSystem/condition-ver-status#unconfirmed. Valid display is 'Unconfirmed' (for the language(s) 'en'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
+INFORMATION: ValueSet/notifiable-verification-vs: ValueSet.compose.include[0].concept[1]: Wrong Display Name 'Probable' for http://terminology.hl7.org/CodeSystem/condition-ver-status#provisional. Valid display is 'Provisional' (for the language(s) 'en'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
+WARNING: ValueSet/notifiable-verification-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+WARNING: Resource: The resource ValueSet/notifiable-verification-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/ValueSet-treatment-level-vs.json ==
+WARNING: ValueSet/treatment-level-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+WARNING: ValueSet/treatment-level-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.description is mandatory, but it is not present
+WARNING: Resource: The resource ValueSet/treatment-level-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)

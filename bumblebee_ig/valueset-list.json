@@ -1,0 +1,38 @@
+{
+  "codeSystems" : [{
+    "url" : "http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "BodyRegionVS",
+    "title" : "Body region",
+    "description" : "Every code, at every level. A clinician picks the one they can be sure of.",
+    "systems" : ["http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"]
+  },
+  {
+    "url" : "http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "DisasterRelationVS",
+    "title" : "Relation to the disaster",
+    "description" : "",
+    "systems" : ["http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"]
+  },
+  {
+    "url" : "http://fhir-fli.dev/bumblebee/ValueSet/notifiable-verification-vs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "NotifiableVerificationVS",
+    "title" : "Suspected, probable, confirmed",
+    "description" : "Three of FHIR's six verification statuses, matching the surveillance vocabulary.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/condition-ver-status"]
+  },
+  {
+    "url" : "http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "TreatmentLevelVS",
+    "title" : "Treatment level required",
+    "description" : "",
+    "systems" : ["http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"]
+  }]
+}

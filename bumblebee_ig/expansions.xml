@@ -1,0 +1,2527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="347e5ab2-a114-49e3-a872-98f5628c46f4"/>
+  <meta>
+    <lastUpdated value="2026-08-14T17:06:47.717-04:00"/>
+  </meta>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-body-region-cs.html">codesystem Body region v0.1.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs|0.1.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 25 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>Level</b>
+                </td>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-head-spine"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-head-spine">head-spine</a>
+                </td>
+                <td>Head and spine</td>
+                <td>Head, face, neck and the vertebral column - one continuous structure, and the one whose injuries most often leave permanent damage.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;head-spine&quot;, &quot;display&quot;: &quot;Head and spine&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;head-spine&quot;&gt;&lt;display value=&quot;Head and spine&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-head"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-head">head</a>
+                </td>
+                <td>Head</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;head&quot;, &quot;display&quot;: &quot;Head&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;head&quot;&gt;&lt;display value=&quot;Head&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-face"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-face">face</a>
+                </td>
+                <td>Face</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;face&quot;, &quot;display&quot;: &quot;Face&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;face&quot;&gt;&lt;display value=&quot;Face&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-neck"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-neck">neck</a>
+                </td>
+                <td>Neck</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;neck&quot;, &quot;display&quot;: &quot;Neck&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;neck&quot;&gt;&lt;display value=&quot;Neck&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-spine"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-spine">spine</a>
+                </td>
+                <td>Spine</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;spine&quot;, &quot;display&quot;: &quot;Spine&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;spine&quot;&gt;&lt;display value=&quot;Spine&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-torso"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-torso">torso</a>
+                </td>
+                <td>Torso</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;torso&quot;, &quot;display&quot;: &quot;Torso&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;torso&quot;&gt;&lt;display value=&quot;Torso&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-chest"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-chest">chest</a>
+                </td>
+                <td>Chest</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;chest&quot;, &quot;display&quot;: &quot;Chest&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;chest&quot;&gt;&lt;display value=&quot;Chest&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-abdomen"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-abdomen">abdomen</a>
+                </td>
+                <td>Abdomen</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;abdomen&quot;, &quot;display&quot;: &quot;Abdomen&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;abdomen&quot;&gt;&lt;display value=&quot;Abdomen&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-back"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-back">back</a>
+                </td>
+                <td>Back</td>
+                <td>The surface of the back. The vertebral column itself is spine.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;back&quot;, &quot;display&quot;: &quot;Back&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;back&quot;&gt;&lt;display value=&quot;Back&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-pelvis"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-pelvis">pelvis</a>
+                </td>
+                <td>Pelvis</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;pelvis&quot;, &quot;display&quot;: &quot;Pelvis&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;pelvis&quot;&gt;&lt;display value=&quot;Pelvis&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-extremity"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-extremity">extremity</a>
+                </td>
+                <td>Limb</td>
+                <td>Use when the limb is known and the part is not - a patient still on a stretcher, or a dressing not yet down.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;extremity&quot;, &quot;display&quot;: &quot;Limb&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;extremity&quot;&gt;&lt;display value=&quot;Limb&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-upper-arm-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-upper-arm-l">upper-arm-l</a>
+                </td>
+                <td>Left upper arm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;upper-arm-l&quot;, &quot;display&quot;: &quot;Left upper arm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;upper-arm-l&quot;&gt;&lt;display value=&quot;Left upper arm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-upper-arm-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-upper-arm-r">upper-arm-r</a>
+                </td>
+                <td>Right upper arm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;upper-arm-r&quot;, &quot;display&quot;: &quot;Right upper arm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;upper-arm-r&quot;&gt;&lt;display value=&quot;Right upper arm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-forearm-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-forearm-l">forearm-l</a>
+                </td>
+                <td>Left forearm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;forearm-l&quot;, &quot;display&quot;: &quot;Left forearm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;forearm-l&quot;&gt;&lt;display value=&quot;Left forearm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-forearm-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-forearm-r">forearm-r</a>
+                </td>
+                <td>Right forearm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;forearm-r&quot;, &quot;display&quot;: &quot;Right forearm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;forearm-r&quot;&gt;&lt;display value=&quot;Right forearm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-hand-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-hand-l">hand-l</a>
+                </td>
+                <td>Left hand</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;hand-l&quot;, &quot;display&quot;: &quot;Left hand&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;hand-l&quot;&gt;&lt;display value=&quot;Left hand&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-hand-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-hand-r">hand-r</a>
+                </td>
+                <td>Right hand</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;hand-r&quot;, &quot;display&quot;: &quot;Right hand&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;hand-r&quot;&gt;&lt;display value=&quot;Right hand&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-thigh-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-thigh-l">thigh-l</a>
+                </td>
+                <td>Left thigh</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;thigh-l&quot;, &quot;display&quot;: &quot;Left thigh&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;thigh-l&quot;&gt;&lt;display value=&quot;Left thigh&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-thigh-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-thigh-r">thigh-r</a>
+                </td>
+                <td>Right thigh</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;thigh-r&quot;, &quot;display&quot;: &quot;Right thigh&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;thigh-r&quot;&gt;&lt;display value=&quot;Right thigh&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-lower-leg-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-lower-leg-l">lower-leg-l</a>
+                </td>
+                <td>Left lower leg</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;lower-leg-l&quot;, &quot;display&quot;: &quot;Left lower leg&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;lower-leg-l&quot;&gt;&lt;display value=&quot;Left lower leg&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-lower-leg-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-lower-leg-r">lower-leg-r</a>
+                </td>
+                <td>Right lower leg</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;lower-leg-r&quot;, &quot;display&quot;: &quot;Right lower leg&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;lower-leg-r&quot;&gt;&lt;display value=&quot;Right lower leg&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-foot-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-foot-l">foot-l</a>
+                </td>
+                <td>Left foot</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;foot-l&quot;, &quot;display&quot;: &quot;Left foot&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;foot-l&quot;&gt;&lt;display value=&quot;Left foot&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-foot-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-foot-r">foot-r</a>
+                </td>
+                <td>Right foot</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;foot-r&quot;, &quot;display&quot;: &quot;Right foot&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;foot-r&quot;&gt;&lt;display value=&quot;Right foot&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-perineum"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-perineum">perineum</a>
+                </td>
+                <td>Perineum</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;perineum&quot;, &quot;display&quot;: &quot;Perineum&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;perineum&quot;&gt;&lt;display value=&quot;Perineum&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-generalised"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-generalised">generalised</a>
+                </td>
+                <td>Generalised</td>
+                <td>All over, or no single place - a rash, a burn across regions.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;generalised&quot;, &quot;display&quot;: &quot;Generalised&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;generalised&quot;&gt;&lt;display value=&quot;Generalised&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs"/>
+        <version value="0.1.0"/>
+        <name value="BodyRegionVS"/>
+        <title value="Body region"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:00fb5ab6-a9e0-47a4-bac7-4589c3778727"/>
+          <timestamp value="2026-08-14T17:07:58-04:00"/>
+          <total value="25"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs|0.1.0"/>
+          </parameter>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="head-spine"/>
+            <display value="Head and spine"/>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="head"/>
+              <display value="Head"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="face"/>
+              <display value="Face"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="neck"/>
+              <display value="Neck"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="spine"/>
+              <display value="Spine"/>
+            </contains>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="torso"/>
+            <display value="Torso"/>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="chest"/>
+              <display value="Chest"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="abdomen"/>
+              <display value="Abdomen"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="back"/>
+              <display value="Back"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="pelvis"/>
+              <display value="Pelvis"/>
+            </contains>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="extremity"/>
+            <display value="Limb"/>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="upper-arm-l"/>
+              <display value="Left upper arm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="upper-arm-r"/>
+              <display value="Right upper arm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="forearm-l"/>
+              <display value="Left forearm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="forearm-r"/>
+              <display value="Right forearm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="hand-l"/>
+              <display value="Left hand"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="hand-r"/>
+              <display value="Right hand"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="thigh-l"/>
+              <display value="Left thigh"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="thigh-r"/>
+              <display value="Right thigh"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="lower-leg-l"/>
+              <display value="Left lower leg"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="lower-leg-r"/>
+              <display value="Right lower leg"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="foot-l"/>
+              <display value="Left foot"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="foot-r"/>
+              <display value="Right foot"/>
+            </contains>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="perineum"/>
+            <display value="Perineum"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="generalised"/>
+            <display value="Generalised"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-body-region-cs.html">codesystem Body region v0.1.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs|0.1.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 25 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>Level</b>
+                </td>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-head-spine"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-head-spine">head-spine</a>
+                </td>
+                <td>Head and spine</td>
+                <td>Head, face, neck and the vertebral column - one continuous structure, and the one whose injuries most often leave permanent damage.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;head-spine&quot;, &quot;display&quot;: &quot;Head and spine&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;head-spine&quot;&gt;&lt;display value=&quot;Head and spine&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-head"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-head">head</a>
+                </td>
+                <td>Head</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;head&quot;, &quot;display&quot;: &quot;Head&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;head&quot;&gt;&lt;display value=&quot;Head&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-face"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-face">face</a>
+                </td>
+                <td>Face</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;face&quot;, &quot;display&quot;: &quot;Face&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;face&quot;&gt;&lt;display value=&quot;Face&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-neck"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-neck">neck</a>
+                </td>
+                <td>Neck</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;neck&quot;, &quot;display&quot;: &quot;Neck&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;neck&quot;&gt;&lt;display value=&quot;Neck&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-spine"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-spine">spine</a>
+                </td>
+                <td>Spine</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;spine&quot;, &quot;display&quot;: &quot;Spine&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;spine&quot;&gt;&lt;display value=&quot;Spine&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-torso"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-torso">torso</a>
+                </td>
+                <td>Torso</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;torso&quot;, &quot;display&quot;: &quot;Torso&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;torso&quot;&gt;&lt;display value=&quot;Torso&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-chest"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-chest">chest</a>
+                </td>
+                <td>Chest</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;chest&quot;, &quot;display&quot;: &quot;Chest&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;chest&quot;&gt;&lt;display value=&quot;Chest&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-abdomen"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-abdomen">abdomen</a>
+                </td>
+                <td>Abdomen</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;abdomen&quot;, &quot;display&quot;: &quot;Abdomen&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;abdomen&quot;&gt;&lt;display value=&quot;Abdomen&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-back"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-back">back</a>
+                </td>
+                <td>Back</td>
+                <td>The surface of the back. The vertebral column itself is spine.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;back&quot;, &quot;display&quot;: &quot;Back&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;back&quot;&gt;&lt;display value=&quot;Back&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-pelvis"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-pelvis">pelvis</a>
+                </td>
+                <td>Pelvis</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;pelvis&quot;, &quot;display&quot;: &quot;Pelvis&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;pelvis&quot;&gt;&lt;display value=&quot;Pelvis&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-extremity"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-extremity">extremity</a>
+                </td>
+                <td>Limb</td>
+                <td>Use when the limb is known and the part is not - a patient still on a stretcher, or a dressing not yet down.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;extremity&quot;, &quot;display&quot;: &quot;Limb&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;extremity&quot;&gt;&lt;display value=&quot;Limb&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-upper-arm-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-upper-arm-l">upper-arm-l</a>
+                </td>
+                <td>Left upper arm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;upper-arm-l&quot;, &quot;display&quot;: &quot;Left upper arm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;upper-arm-l&quot;&gt;&lt;display value=&quot;Left upper arm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-upper-arm-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-upper-arm-r">upper-arm-r</a>
+                </td>
+                <td>Right upper arm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;upper-arm-r&quot;, &quot;display&quot;: &quot;Right upper arm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;upper-arm-r&quot;&gt;&lt;display value=&quot;Right upper arm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-forearm-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-forearm-l">forearm-l</a>
+                </td>
+                <td>Left forearm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;forearm-l&quot;, &quot;display&quot;: &quot;Left forearm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;forearm-l&quot;&gt;&lt;display value=&quot;Left forearm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-forearm-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-forearm-r">forearm-r</a>
+                </td>
+                <td>Right forearm</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;forearm-r&quot;, &quot;display&quot;: &quot;Right forearm&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;forearm-r&quot;&gt;&lt;display value=&quot;Right forearm&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-hand-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-hand-l">hand-l</a>
+                </td>
+                <td>Left hand</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;hand-l&quot;, &quot;display&quot;: &quot;Left hand&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;hand-l&quot;&gt;&lt;display value=&quot;Left hand&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-hand-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-hand-r">hand-r</a>
+                </td>
+                <td>Right hand</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;hand-r&quot;, &quot;display&quot;: &quot;Right hand&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;hand-r&quot;&gt;&lt;display value=&quot;Right hand&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-thigh-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-thigh-l">thigh-l</a>
+                </td>
+                <td>Left thigh</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;thigh-l&quot;, &quot;display&quot;: &quot;Left thigh&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;thigh-l&quot;&gt;&lt;display value=&quot;Left thigh&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-thigh-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-thigh-r">thigh-r</a>
+                </td>
+                <td>Right thigh</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;thigh-r&quot;, &quot;display&quot;: &quot;Right thigh&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;thigh-r&quot;&gt;&lt;display value=&quot;Right thigh&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-lower-leg-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-lower-leg-l">lower-leg-l</a>
+                </td>
+                <td>Left lower leg</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;lower-leg-l&quot;, &quot;display&quot;: &quot;Left lower leg&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;lower-leg-l&quot;&gt;&lt;display value=&quot;Left lower leg&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-lower-leg-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-lower-leg-r">lower-leg-r</a>
+                </td>
+                <td>Right lower leg</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;lower-leg-r&quot;, &quot;display&quot;: &quot;Right lower leg&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;lower-leg-r&quot;&gt;&lt;display value=&quot;Right lower leg&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-foot-l"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-foot-l">foot-l</a>
+                </td>
+                <td>Left foot</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;foot-l&quot;, &quot;display&quot;: &quot;Left foot&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;foot-l&quot;&gt;&lt;display value=&quot;Left foot&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-foot-r"> </a>2
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">    
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-foot-r">foot-r</a>
+                </td>
+                <td>Right foot</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;foot-r&quot;, &quot;display&quot;: &quot;Right foot&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;foot-r&quot;&gt;&lt;display value=&quot;Right foot&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-perineum"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-perineum">perineum</a>
+                </td>
+                <td>Perineum</td>
+                <td/>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;perineum&quot;, &quot;display&quot;: &quot;Perineum&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;perineum&quot;&gt;&lt;display value=&quot;Perineum&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs-generalised"> </a>1
+                </td>
+                <td>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-body-region-cs.html#body-region-cs-generalised">generalised</a>
+                </td>
+                <td>Generalised</td>
+                <td>All over, or no single place - a rash, a burn across regions.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;generalised&quot;, &quot;display&quot;: &quot;Generalised&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;generalised&quot;&gt;&lt;display value=&quot;Generalised&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/body-region-vs"/>
+        <version value="0.1.0"/>
+        <name value="BodyRegionVS"/>
+        <title value="Body region"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:00fb5ab6-a9e0-47a4-bac7-4589c3778727"/>
+          <timestamp value="2026-08-14T17:07:58-04:00"/>
+          <total value="25"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs|0.1.0"/>
+          </parameter>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="head-spine"/>
+            <display value="Head and spine"/>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="head"/>
+              <display value="Head"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="face"/>
+              <display value="Face"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="neck"/>
+              <display value="Neck"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="spine"/>
+              <display value="Spine"/>
+            </contains>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="torso"/>
+            <display value="Torso"/>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="chest"/>
+              <display value="Chest"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="abdomen"/>
+              <display value="Abdomen"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="back"/>
+              <display value="Back"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="pelvis"/>
+              <display value="Pelvis"/>
+            </contains>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="extremity"/>
+            <display value="Limb"/>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="upper-arm-l"/>
+              <display value="Left upper arm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="upper-arm-r"/>
+              <display value="Right upper arm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="forearm-l"/>
+              <display value="Left forearm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="forearm-r"/>
+              <display value="Right forearm"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="hand-l"/>
+              <display value="Left hand"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="hand-r"/>
+              <display value="Right hand"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="thigh-l"/>
+              <display value="Left thigh"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="thigh-r"/>
+              <display value="Right thigh"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="lower-leg-l"/>
+              <display value="Left lower leg"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="lower-leg-r"/>
+              <display value="Right lower leg"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="foot-l"/>
+              <display value="Left foot"/>
+            </contains>
+            <contains>
+              <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+              <code value="foot-r"/>
+              <display value="Right foot"/>
+            </contains>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="perineum"/>
+            <display value="Perineum"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+            <code value="generalised"/>
+            <display value="Generalised"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-disaster-relation-cs.html">codesystem Relation to the disaster v0.1.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs|0.1.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 4 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-directly"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-directly">directly</a>
+                </td>
+                <td>Directly caused by the disaster</td>
+                <td>Injury caused by the earthquake, typhoon, tsunami, eruption; drowning; burn.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;directly&quot;, &quot;display&quot;: &quot;Directly caused by the disaster&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;directly&quot;&gt;&lt;display value=&quot;Directly caused by the disaster&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-indirectly"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-indirectly">indirectly</a>
+                </td>
+                <td>Indirectly caused</td>
+                <td>Illness or injury from the post-disaster environment, or a chronic condition that worsened because the disaster cut off access to care.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;indirectly&quot;, &quot;display&quot;: &quot;Indirectly caused&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;indirectly&quot;&gt;&lt;display value=&quot;Indirectly caused&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-not-related"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-not-related">not-related</a>
+                </td>
+                <td>Not caused by the disaster</td>
+                <td>A health problem the disaster did not cause and which is not urgent.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;not-related&quot;, &quot;display&quot;: &quot;Not caused by the disaster&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;not-related&quot;&gt;&lt;display value=&quot;Not caused by the disaster&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-unknown"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-unknown">unknown</a>
+                </td>
+                <td>Not known</td>
+                <td>Nobody has said. This is the default and it is allowed to stay.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;unknown&quot;, &quot;display&quot;: &quot;Not known&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;unknown&quot;&gt;&lt;display value=&quot;Not known&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs"/>
+        <version value="0.1.0"/>
+        <name value="DisasterRelationVS"/>
+        <title value="Relation to the disaster"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:355dfaf0-8d97-4a67-8ec1-23e2c9833ce1"/>
+          <timestamp value="2026-08-14T17:08:05-04:00"/>
+          <total value="4"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs|0.1.0"/>
+          </parameter>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="directly"/>
+            <display value="Directly caused by the disaster"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="indirectly"/>
+            <display value="Indirectly caused"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="not-related"/>
+            <display value="Not caused by the disaster"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="unknown"/>
+            <display value="Not known"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-disaster-relation-cs.html">codesystem Relation to the disaster v0.1.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs|0.1.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 4 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-directly"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-directly">directly</a>
+                </td>
+                <td>Directly caused by the disaster</td>
+                <td>Injury caused by the earthquake, typhoon, tsunami, eruption; drowning; burn.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;directly&quot;, &quot;display&quot;: &quot;Directly caused by the disaster&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;directly&quot;&gt;&lt;display value=&quot;Directly caused by the disaster&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-indirectly"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-indirectly">indirectly</a>
+                </td>
+                <td>Indirectly caused</td>
+                <td>Illness or injury from the post-disaster environment, or a chronic condition that worsened because the disaster cut off access to care.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;indirectly&quot;, &quot;display&quot;: &quot;Indirectly caused&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;indirectly&quot;&gt;&lt;display value=&quot;Indirectly caused&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-not-related"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-not-related">not-related</a>
+                </td>
+                <td>Not caused by the disaster</td>
+                <td>A health problem the disaster did not cause and which is not urgent.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;not-related&quot;, &quot;display&quot;: &quot;Not caused by the disaster&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;not-related&quot;&gt;&lt;display value=&quot;Not caused by the disaster&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs-unknown"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-disaster-relation-cs.html#disaster-relation-cs-unknown">unknown</a>
+                </td>
+                <td>Not known</td>
+                <td>Nobody has said. This is the default and it is allowed to stay.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;unknown&quot;, &quot;display&quot;: &quot;Not known&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;unknown&quot;&gt;&lt;display value=&quot;Not known&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/disaster-relation-vs"/>
+        <version value="0.1.0"/>
+        <name value="DisasterRelationVS"/>
+        <title value="Relation to the disaster"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:355dfaf0-8d97-4a67-8ec1-23e2c9833ce1"/>
+          <timestamp value="2026-08-14T17:08:05-04:00"/>
+          <total value="4"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs|0.1.0"/>
+          </parameter>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="directly"/>
+            <display value="Directly caused by the disaster"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="indirectly"/>
+            <display value="Indirectly caused"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="not-related"/>
+            <display value="Not caused by the disaster"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/disaster-relation-cs"/>
+            <code value="unknown"/>
+            <display value="Not known"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/notifiable-verification-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html">codesystem ConditionVerificationStatus v2.0.1 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://terminology.hl7.org/CodeSystem/condition-ver-status|2.0.1" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 3 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://terminology.hl7.org/CodeSystem/condition-ver-status-unconfirmed"> </a>
+                  <code>http://terminology.hl7.org/CodeSystem/condition-ver-status</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html#condition-ver-status-unconfirmed">unconfirmed</a>
+                </td>
+                <td>Suspected</td>
+                <td>There is not sufficient evidence to assert the presence of the subject's condition.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;, &quot;version&quot;: &quot;2.0.1&quot;, &quot;code&quot;: &quot;unconfirmed&quot;, &quot;display&quot;: &quot;Suspected&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;&gt;&lt;version value=&quot;2.0.1&quot;&gt;&lt;code value=&quot;unconfirmed&quot;&gt;&lt;display value=&quot;Suspected&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://terminology.hl7.org/CodeSystem/condition-ver-status-provisional"> </a>
+                  <code>http://terminology.hl7.org/CodeSystem/condition-ver-status</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html#condition-ver-status-provisional">provisional</a>
+                </td>
+                <td>Probable</td>
+                <td>This is a tentative diagnosis - still a candidate that is under consideration.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;, &quot;version&quot;: &quot;2.0.1&quot;, &quot;code&quot;: &quot;provisional&quot;, &quot;display&quot;: &quot;Probable&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;&gt;&lt;version value=&quot;2.0.1&quot;&gt;&lt;code value=&quot;provisional&quot;&gt;&lt;display value=&quot;Probable&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://terminology.hl7.org/CodeSystem/condition-ver-status-confirmed"> </a>
+                  <code>http://terminology.hl7.org/CodeSystem/condition-ver-status</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html#condition-ver-status-confirmed">confirmed</a>
+                </td>
+                <td>Confirmed</td>
+                <td>There is sufficient evidence to assert the presence of the subject's condition.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;, &quot;version&quot;: &quot;2.0.1&quot;, &quot;code&quot;: &quot;confirmed&quot;, &quot;display&quot;: &quot;Confirmed&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;&gt;&lt;version value=&quot;2.0.1&quot;&gt;&lt;code value=&quot;confirmed&quot;&gt;&lt;display value=&quot;Confirmed&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/notifiable-verification-vs"/>
+        <version value="0.1.0"/>
+        <name value="NotifiableVerificationVS"/>
+        <title value="Suspected, probable, confirmed"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:3d19cf9a-9947-4801-9c99-0f21498291e6"/>
+          <timestamp value="2026-08-14T17:08:01-04:00"/>
+          <total value="3"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://terminology.hl7.org/CodeSystem/condition-ver-status|2.0.1"/>
+          </parameter>
+          <contains>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+            <code value="unconfirmed"/>
+            <display value="Suspected"/>
+          </contains>
+          <contains>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+            <code value="provisional"/>
+            <display value="Probable"/>
+          </contains>
+          <contains>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+            <code value="confirmed"/>
+            <display value="Confirmed"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/notifiable-verification-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html">codesystem ConditionVerificationStatus v2.0.1 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://terminology.hl7.org/CodeSystem/condition-ver-status|2.0.1" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 3 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://terminology.hl7.org/CodeSystem/condition-ver-status-unconfirmed"> </a>
+                  <code>http://terminology.hl7.org/CodeSystem/condition-ver-status</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html#condition-ver-status-unconfirmed">unconfirmed</a>
+                </td>
+                <td>Suspected</td>
+                <td>There is not sufficient evidence to assert the presence of the subject's condition.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;, &quot;version&quot;: &quot;2.0.1&quot;, &quot;code&quot;: &quot;unconfirmed&quot;, &quot;display&quot;: &quot;Suspected&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;&gt;&lt;version value=&quot;2.0.1&quot;&gt;&lt;code value=&quot;unconfirmed&quot;&gt;&lt;display value=&quot;Suspected&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://terminology.hl7.org/CodeSystem/condition-ver-status-provisional"> </a>
+                  <code>http://terminology.hl7.org/CodeSystem/condition-ver-status</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html#condition-ver-status-provisional">provisional</a>
+                </td>
+                <td>Probable</td>
+                <td>This is a tentative diagnosis - still a candidate that is under consideration.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;, &quot;version&quot;: &quot;2.0.1&quot;, &quot;code&quot;: &quot;provisional&quot;, &quot;display&quot;: &quot;Probable&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;&gt;&lt;version value=&quot;2.0.1&quot;&gt;&lt;code value=&quot;provisional&quot;&gt;&lt;display value=&quot;Probable&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://terminology.hl7.org/CodeSystem/condition-ver-status-confirmed"> </a>
+                  <code>http://terminology.hl7.org/CodeSystem/condition-ver-status</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://terminology.hl7.org/7.3.0/CodeSystem-condition-ver-status.html#condition-ver-status-confirmed">confirmed</a>
+                </td>
+                <td>Confirmed</td>
+                <td>There is sufficient evidence to assert the presence of the subject's condition.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;, &quot;version&quot;: &quot;2.0.1&quot;, &quot;code&quot;: &quot;confirmed&quot;, &quot;display&quot;: &quot;Confirmed&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://terminology.hl7.org/CodeSystem/condition-ver-status&quot;&gt;&lt;version value=&quot;2.0.1&quot;&gt;&lt;code value=&quot;confirmed&quot;&gt;&lt;display value=&quot;Confirmed&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/notifiable-verification-vs"/>
+        <version value="0.1.0"/>
+        <name value="NotifiableVerificationVS"/>
+        <title value="Suspected, probable, confirmed"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:3d19cf9a-9947-4801-9c99-0f21498291e6"/>
+          <timestamp value="2026-08-14T17:08:01-04:00"/>
+          <total value="3"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://terminology.hl7.org/CodeSystem/condition-ver-status|2.0.1"/>
+          </parameter>
+          <contains>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+            <code value="unconfirmed"/>
+            <display value="Suspected"/>
+          </contains>
+          <contains>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+            <code value="provisional"/>
+            <display value="Probable"/>
+          </contains>
+          <contains>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+            <code value="confirmed"/>
+            <display value="Confirmed"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-treatment-level-cs.html">codesystem Treatment level required v0.1.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs|0.1.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 3 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs-major"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-treatment-level-cs.html#treatment-level-cs-major">major</a>
+                </td>
+                <td>Major</td>
+                <td>Needs general anaesthesia and/or hospitalisation. Requires a Type 2 or Type 3 team.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;major&quot;, &quot;display&quot;: &quot;Major&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;major&quot;&gt;&lt;display value=&quot;Major&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs-moderate"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-treatment-level-cs.html#treatment-level-cs-moderate">moderate</a>
+                </td>
+                <td>Moderate</td>
+                <td>Treatable in the emergency room as an outpatient, but needs conscious sedation or a regional block.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;moderate&quot;, &quot;display&quot;: &quot;Moderate&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;moderate&quot;&gt;&lt;display value=&quot;Moderate&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs-minor"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-treatment-level-cs.html#treatment-level-cs-minor">minor</a>
+                </td>
+                <td>Minor</td>
+                <td>First aid and light dressing, no anaesthesia. Within Type 1 mobile capability.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;minor&quot;, &quot;display&quot;: &quot;Minor&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;minor&quot;&gt;&lt;display value=&quot;Minor&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs"/>
+        <version value="0.1.0"/>
+        <name value="TreatmentLevelVS"/>
+        <title value="Treatment level required"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:f7f0e80d-d084-4c7c-abcd-417445231bcd"/>
+          <timestamp value="2026-08-14T17:08:05-04:00"/>
+          <total value="3"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs|0.1.0"/>
+          </parameter>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"/>
+            <code value="major"/>
+            <display value="Major"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"/>
+            <code value="moderate"/>
+            <display value="Moderate"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"/>
+            <code value="minor"/>
+            <display value="Minor"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion performed internally based on 
+              <a href="CodeSystem-treatment-level-cs.html">codesystem Treatment level required v0.1.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs|0.1.0" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 3 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs-major"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-treatment-level-cs.html#treatment-level-cs-major">major</a>
+                </td>
+                <td>Major</td>
+                <td>Needs general anaesthesia and/or hospitalisation. Requires a Type 2 or Type 3 team.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;major&quot;, &quot;display&quot;: &quot;Major&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;major&quot;&gt;&lt;display value=&quot;Major&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs-moderate"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-treatment-level-cs.html#treatment-level-cs-moderate">moderate</a>
+                </td>
+                <td>Moderate</td>
+                <td>Treatable in the emergency room as an outpatient, but needs conscious sedation or a regional block.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;moderate&quot;, &quot;display&quot;: &quot;Moderate&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;moderate&quot;&gt;&lt;display value=&quot;Moderate&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs-minor"> </a>
+                  <code>http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-treatment-level-cs.html#treatment-level-cs-minor">minor</a>
+                </td>
+                <td>Minor</td>
+                <td>First aid and light dressing, no anaesthesia. Within Type 1 mobile capability.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;minor&quot;, &quot;display&quot;: &quot;Minor&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;minor&quot;&gt;&lt;display value=&quot;Minor&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://fhir-fli.dev/bumblebee/ValueSet/treatment-level-vs"/>
+        <version value="0.1.0"/>
+        <name value="TreatmentLevelVS"/>
+        <title value="Treatment level required"/>
+        <status value="draft"/>
+        <date value="2026-08-14T17:06:47-04:00"/>
+        <expansion>
+          <identifier value="urn:uuid:f7f0e80d-d084-4c7c-abcd-417445231bcd"/>
+          <timestamp value="2026-08-14T17:08:05-04:00"/>
+          <total value="3"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs|0.1.0"/>
+          </parameter>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"/>
+            <code value="major"/>
+            <display value="Major"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"/>
+            <code value="moderate"/>
+            <display value="Moderate"/>
+          </contains>
+          <contains>
+            <system value="http://fhir-fli.dev/bumblebee/CodeSystem/treatment-level-cs"/>
+            <code value="minor"/>
+            <display value="Minor"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+</Bundle>

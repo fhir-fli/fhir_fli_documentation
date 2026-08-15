@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="body-region-cs"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CodeSystem body-region-cs</b></p><a name="body-region-cs"> </a><a name="hcbody-region-cs"> </a><p>This case-sensitive code system <code>http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs</code> defines the following codes in an undefined hierarchy:</p><table class="codes"><tr><td><b>Lvl</b></td><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td>1</td><td style="white-space:nowrap">head-spine<a name="body-region-cs-head-spine"> </a></td><td>Head and spine</td><td>Head, face, neck and the vertebral column - one continuous structure, and the one whose injuries most often leave permanent damage.</td></tr><tr><td>2</td><td style="white-space:nowrap">  head<a name="body-region-cs-head"> </a></td><td>Head</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  face<a name="body-region-cs-face"> </a></td><td>Face</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  neck<a name="body-region-cs-neck"> </a></td><td>Neck</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  spine<a name="body-region-cs-spine"> </a></td><td>Spine</td><td/></tr><tr><td>1</td><td style="white-space:nowrap">torso<a name="body-region-cs-torso"> </a></td><td>Torso</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  chest<a name="body-region-cs-chest"> </a></td><td>Chest</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  abdomen<a name="body-region-cs-abdomen"> </a></td><td>Abdomen</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  back<a name="body-region-cs-back"> </a></td><td>Back</td><td>The surface of the back. The vertebral column itself is spine.</td></tr><tr><td>2</td><td style="white-space:nowrap">  pelvis<a name="body-region-cs-pelvis"> </a></td><td>Pelvis</td><td/></tr><tr><td>1</td><td style="white-space:nowrap">extremity<a name="body-region-cs-extremity"> </a></td><td>Limb</td><td>Use when the limb is known and the part is not - a patient still on a stretcher, or a dressing not yet down.</td></tr><tr><td>2</td><td style="white-space:nowrap">  upper-arm-l<a name="body-region-cs-upper-arm-l"> </a></td><td>Left upper arm</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  upper-arm-r<a name="body-region-cs-upper-arm-r"> </a></td><td>Right upper arm</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  forearm-l<a name="body-region-cs-forearm-l"> </a></td><td>Left forearm</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  forearm-r<a name="body-region-cs-forearm-r"> </a></td><td>Right forearm</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  hand-l<a name="body-region-cs-hand-l"> </a></td><td>Left hand</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  hand-r<a name="body-region-cs-hand-r"> </a></td><td>Right hand</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  thigh-l<a name="body-region-cs-thigh-l"> </a></td><td>Left thigh</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  thigh-r<a name="body-region-cs-thigh-r"> </a></td><td>Right thigh</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  lower-leg-l<a name="body-region-cs-lower-leg-l"> </a></td><td>Left lower leg</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  lower-leg-r<a name="body-region-cs-lower-leg-r"> </a></td><td>Right lower leg</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  foot-l<a name="body-region-cs-foot-l"> </a></td><td>Left foot</td><td/></tr><tr><td>2</td><td style="white-space:nowrap">  foot-r<a name="body-region-cs-foot-r"> </a></td><td>Right foot</td><td/></tr><tr><td>1</td><td style="white-space:nowrap">perineum<a name="body-region-cs-perineum"> </a></td><td>Perineum</td><td/></tr><tr><td>1</td><td style="white-space:nowrap">generalised<a name="body-region-cs-generalised"> </a></td><td>Generalised</td><td>All over, or no single place - a rash, a burn across regions.</td></tr></table></div>
+  </text>
+  <url value="http://fhir-fli.dev/bumblebee/CodeSystem/body-region-cs"/>
+  <version value="0.1.0"/>
+  <name value="BodyRegionCS"/>
+  <title value="Body region"/>
+  <status value="draft"/>
+  <date value="2026-08-14T17:06:47-04:00"/>
+  <publisher value="fhir-fli"/>
+  <description value="Where on the body something is. This exists so a clinician can TAP A DIAGRAM instead of typing - required for documenting unexplained injuries in children, and used the same way by the one field-hospital system with a published evaluation. Every code is somewhere a person can point at."/>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="25"/>
+  <concept>
+    <code value="head-spine"/>
+    <display value="Head and spine"/>
+    <definition value="Head, face, neck and the vertebral column - one continuous structure, and the one whose injuries most often leave permanent damage."/>
+    <concept>
+      <code value="head"/>
+      <display value="Head"/>
+    </concept>
+    <concept>
+      <code value="face"/>
+      <display value="Face"/>
+    </concept>
+    <concept>
+      <code value="neck"/>
+      <display value="Neck"/>
+    </concept>
+    <concept>
+      <code value="spine"/>
+      <display value="Spine"/>
+    </concept>
+  </concept>
+  <concept>
+    <code value="torso"/>
+    <display value="Torso"/>
+    <concept>
+      <code value="chest"/>
+      <display value="Chest"/>
+    </concept>
+    <concept>
+      <code value="abdomen"/>
+      <display value="Abdomen"/>
+    </concept>
+    <concept>
+      <code value="back"/>
+      <display value="Back"/>
+      <definition value="The surface of the back. The vertebral column itself is spine."/>
+    </concept>
+    <concept>
+      <code value="pelvis"/>
+      <display value="Pelvis"/>
+    </concept>
+  </concept>
+  <concept>
+    <code value="extremity"/>
+    <display value="Limb"/>
+    <definition value="Use when the limb is known and the part is not - a patient still on a stretcher, or a dressing not yet down."/>
+    <concept>
+      <code value="upper-arm-l"/>
+      <display value="Left upper arm"/>
+    </concept>
+    <concept>
+      <code value="upper-arm-r"/>
+      <display value="Right upper arm"/>
+    </concept>
+    <concept>
+      <code value="forearm-l"/>
+      <display value="Left forearm"/>
+    </concept>
+    <concept>
+      <code value="forearm-r"/>
+      <display value="Right forearm"/>
+    </concept>
+    <concept>
+      <code value="hand-l"/>
+      <display value="Left hand"/>
+    </concept>
+    <concept>
+      <code value="hand-r"/>
+      <display value="Right hand"/>
+    </concept>
+    <concept>
+      <code value="thigh-l"/>
+      <display value="Left thigh"/>
+    </concept>
+    <concept>
+      <code value="thigh-r"/>
+      <display value="Right thigh"/>
+    </concept>
+    <concept>
+      <code value="lower-leg-l"/>
+      <display value="Left lower leg"/>
+    </concept>
+    <concept>
+      <code value="lower-leg-r"/>
+      <display value="Right lower leg"/>
+    </concept>
+    <concept>
+      <code value="foot-l"/>
+      <display value="Left foot"/>
+    </concept>
+    <concept>
+      <code value="foot-r"/>
+      <display value="Right foot"/>
+    </concept>
+  </concept>
+  <concept>
+    <code value="perineum"/>
+    <display value="Perineum"/>
+  </concept>
+  <concept>
+    <code value="generalised"/>
+    <display value="Generalised"/>
+    <definition value="All over, or no single place - a rash, a burn across regions."/>
+  </concept>
+</CodeSystem>

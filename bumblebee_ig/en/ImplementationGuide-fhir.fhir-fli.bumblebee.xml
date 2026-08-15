@@ -1,0 +1,1111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="fhir.fhir-fli.bumblebee"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><p class="res-header-id"><b>Generated Narrative: ImplementationGuide fhir.fhir-fli.bumblebee</b></p><a name="fhir.fhir-fli.bumblebee"> </a><a name="hcfhir.fhir-fli.bumblebee"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: en</p></div><h2>Bumblebee</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir-fli.dev/bumblebee/ImplementationGuide/fhir.fhir-fli.bumblebee</pre><div><p>What a clinician records to take care of a patient in a disaster: offline, on a cheap phone, with a queue of people waiting.</p>
+</div></div>
+  </text>
+  <url value="http://fhir-fli.dev/bumblebee/ImplementationGuide/fhir.fhir-fli.bumblebee"/>
+  <version value="0.1.0"/>
+  <name value="Bumblebee"/>
+  <title value="Bumblebee — a clinical record for emergency medical teams"/>
+  <status value="draft"/>
+  <date value="2026-08-14T17:06:47-04:00"/>
+  <publisher value="fhir-fli"/>
+  <description value="What a clinician records to take care of a patient in a disaster: offline, on a cheap phone, with a queue of people waiting."/>
+  <packageId value="fhir.fhir-fli.bumblebee"/>
+  <license value="CC0-1.0"/>
+  <fhirVersion value="4.0.1"/>
+  <dependsOn id="hl7tx">
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on HL7 Terminology"/>
+    </extension>
+    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
+    <packageId value="hl7.terminology.r4"/>
+    <version value="7.3.0"/>
+  </dependsOn>
+  <dependsOn id="hl7ext">
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"/>
+    </extension>
+    <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
+    <packageId value="hl7.fhir.uv.extensions.r4"/>
+    <version value="5.3.0"/>
+  </dependsOn>
+  <definition>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2026+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="ci-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-history"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://fhir-fli.dev/bumblebee/history.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="fmm-definition"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.org/fhir/versions.html#maturity"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="propagate-status"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="excludelogbinaryformat"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="tabbed-snapshots"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="i18n-default-lang"/>
+      </extension>
+      <extension url="value">
+        <valueString value="en"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency">
+      <valueCode value="hl7.fhir.uv.tools.r4#1.1.2"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2026+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="ci-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-history"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://fhir-fli.dev/bumblebee/history.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="fmm-definition"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.org/fhir/versions.html#maturity"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="propagate-status"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="excludelogbinaryformat"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="tabbed-snapshots"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="i18n-default-lang"/>
+      </extension>
+      <extension url="value">
+        <valueString value="en"/>
+      </extension>
+    </extension>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-related-person"/>
+      </reference>
+      <name value="Accompanying person"/>
+      <description value="A parent, guardian or caregiver with the patient. Required because a child must not be separated from their parent or agreed caretaker, and because an unaccompanied minor is then a query — a child with no accompanying person — rather than a flag somebody has to remember to set."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/admin-division"/>
+      </reference>
+      <name value="Administrative division"/>
+      <description value="State, city and village. FHIR's Location has no element for an administrative hierarchy, and in a displacement setting the village is often the only part anyone can name."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-allergy"/>
+      </reference>
+      <name value="Allergy"/>
+      <description value="Something that will hurt this patient if we give it to them. Checked before anything is given. Absence of a record is NOT a record of absence — nobody may read a missing entry as 'no known allergies', which is why asking is recorded separately from the answer."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/departure-date"/>
+      </reference>
+      <name value="Anticipated date of departure"/>
+      <description value="When the team expects to leave. Checked during field visits, and the handover to local health authorities must be coordinated at least seven days before shutdown."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/body-region-vs"/>
+      </reference>
+      <name value="Body region"/>
+      <description value="Every code, at every level. A clinician picks the one they can be sure of."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/body-region-cs"/>
+      </reference>
+      <name value="Body region (code system)"/>
+      <description value="Where on the body something is. This exists so a clinician can TAP A DIAGRAM instead of typing - required for documenting unexplained injuries in children, and used the same way by the one field-hospital system with a published evaluation. Every code is somewhere a person can point at."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-tbsa"/>
+      </reference>
+      <name value="Burn surface area"/>
+      <description value="What percentage of the body is burned. Decides where the patient is treated — above 5% a Type 1 fixed team refers onward, above 20% it needs a Type 3 — and drives fluid resuscitation from the time of arrival."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-follow-up"/>
+      </reference>
+      <name value="Come back — when, and for what"/>
+      <description value="A planned return to us: a date, and the reason to come on it. Separate from a referral because nothing is handed over — the patient stays ours and no handover has to be closed. Most patients leave with nothing arranged at all, so a follow-up that was arranged is a fact worth being able to find, and it is the thing a return visit is matched against."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-complication"/>
+      </reference>
+      <name value="Complication"/>
+      <description value="Something that went wrong. The standards name possible complications in the one sentence that defines what a record must contain, and require a register of perioperative complications specifically. The clinical problem itself is recorded as a diagnosis; this points at it and marks it as an adverse event."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/deployment-tag"/>
+      </reference>
+      <name value="Deployment"/>
+      <description value="Which deployment produced this record. Makes purging one deployment a single verifiable operation."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-diagnosis"/>
+      </reference>
+      <name value="Diagnosis made at this visit"/>
+      <description value="What was wrong with the patient today. Kept apart from a problem they already had, because they are different clinical facts: the standing list is what this person lives with, today's diagnosis is what we are treating. Merge them and you lose the history a returning patient depends on."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/estimated-age"/>
+      </reference>
+      <name value="Estimated age"/>
+      <description value="Age when date of birth is unknown, which in a disaster is common. FHIR has birthDate and nothing else, but age is what decides the dose, whether a child is screened for malnutrition, and how a presentation is read — and an estimate is often all anyone has."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/exposure-history"/>
+      </reference>
+      <name value="Exposure history"/>
+      <description value="Where the person is thought to have been exposed. Asked for by the surveillance standards for notifiable conditions, and by nothing else."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-body-site-finding"/>
+      </reference>
+      <name value="Finding, marked on a body diagram"/>
+      <description value="Something seen or felt, attached to a place on the body. The clinician taps where rather than describing where. Required by the standards for documenting unexplained injuries in children, and used the same way by the one field-hospital system with a published evaluation."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-fluid-balance"/>
+      </reference>
+      <name value="Fluid balance"/>
+      <description value="Fluid in and out. Required separately for children, and for burns the regime has to be calculated from the time of arrival — so the time matters as much as the number."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-handover"/>
+      </reference>
+      <name value="Handover — who has the patient now"/>
+      <description value="Tracks who is responsible while a referral is in progress. The standards are explicit that responsibility remains with the transferring staff until handover is carried out with the receiving facility, so a referred patient stays on our queue until this reaches completed."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/mass-casualty-mode"/>
+      </reference>
+      <name value="Mass casualty mode"/>
+      <description value="Whether this visit was triaged under mass-casualty rules rather than ordinary ones."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-medication-given"/>
+      </reference>
+      <name value="Medicine given"/>
+      <description value="A drug that actually went into this patient, at a time, by someone. Not a prescription — in a field clinic the person who decides and the person who hands over the tablets are usually the same person in the same tent, and what a later clinician needs to know is what the patient actually received. Answers 'what have we already given them?' at three in the morning, which a note in prose cannot."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-medication-taken"/>
+      </reference>
+      <name value="Medicine they already take"/>
+      <description value="What this patient was on before they met us, as far as anyone knows. Required to give two weeks of treatment continuity for a chronic condition (Blue Book 5.1.10), and required before giving anything that might interact. Often the patient is the only source and the bottle is gone — so 'they said a white tablet for blood pressure' is a legitimate entry and must be recordable."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-medication-take-home"/>
+      </reference>
+      <name value="Medicine they took away"/>
+      <description value="What was counted out and handed over at the end of the visit — the drug, how much of it, and when they were given it. Distinct from what was given in the tent: this is a supply the patient administers themselves, somewhere else, for days. A later clinician asks how much they were given and whether it has run out, and neither question can be answered from an administration record."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-muac"/>
+      </reference>
+      <name value="Mid-upper arm circumference"/>
+      <description value="A tape measure round a child's arm, the standard field test for malnutrition. Taken at first contact and triage, not later in the visit. Recorded as a number in millimetres and never as a yes/no, because the threshold is contested: one long-cited definition says under 110mm, current guidance says 115mm, and screening evidence argues for higher still. Store the measurement and let the deployment set the line."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-notifiable-disease"/>
+      </reference>
+      <name value="Notifiable disease"/>
+      <description value="A condition under outbreak surveillance. Needs more than an ordinary diagnosis because the alerting rules depend on it: one suspected case of cholera or measles is an alert, one confirmed case is an outbreak. Without the classification those rules cannot be written, and the failure would be an alert that never fires."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-pain-score"/>
+      </reference>
+      <name value="Pain"/>
+      <description value="How much pain the patient is in. The standards require pain to be assessed on arrival AND repeatedly during the stay, so a single score at triage satisfies nothing — which is why the time is mandatory here."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-patient"/>
+      </reference>
+      <name value="Patient"/>
+      <description value="A person we are treating. Identity in a disaster is unreliable — names are spelled several ways, people cannot always give one, and some arrive unconscious. So the record's own key is a UUID generated on the device at the moment of registration and never changed, and everything a human says out loud is an identifier rather than a key."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-consent"/>
+      </reference>
+      <name value="Permission for one specific thing"/>
+      <description value="Recorded per act, never once per patient. Treating someone and writing it down does not rest on their permission — they are told, and can object. But permission is required separately for sharing or referring, for recording sexual violence, for a procedure or anaesthetic, for transfer, and for a photograph. Someone agreeing to be treated has not thereby agreed to have their assault recorded."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-pregnancy-status"/>
+      </reference>
+      <name value="Pregnant or not"/>
+      <description value="Recorded because it changes care — which drugs are safe, which thresholds apply, who needs obstetric review, and whether a second person is at stake. An observation and not a field on the patient, because pregnancy is a state with a beginning and an end rather than an attribute of a person."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-referral"/>
+      </reference>
+      <name value="Referral — what we are asking for"/>
+      <description value="The clinical ask: what this patient needs, why, and from whom. Paired with a handover task that carries the state, because responsibility does not move when the request is written."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/disaster-relation"/>
+      </reference>
+      <name value="Relation to the disaster"/>
+      <description value="Whether this problem was caused by the disaster. Nothing about the patient's care changes with the answer — it is an obligation the team owes upward, never a clinical question, and it is never asked during a consultation. Defaults to unknown, and unknown is a complete answer. On the Condition rather than the visit, because cause is true of a problem: one visit can hold a crush injury and long-standing diabetes."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/disaster-relation-cs"/>
+      </reference>
+      <name value="Relation to the disaster (code system)"/>
+      <description value="Whether a problem was caused by the disaster: directly, indirectly, not related, or not known."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/disaster-relation-vs"/>
+      </reference>
+      <name value="Relation to the disaster (value set)"/>
+      <description value="Whether a problem was caused by the disaster. Not known is the default and is a complete answer."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-procedure"/>
+      </reference>
+      <name value="Something done to the patient"/>
+      <description value="Major means it usually needed general anaesthesia and hospitalisation; minor means local anaesthesia and no hospitalisation. Counted on the day it was performed, which may not be the day the patient was registered."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-problem"/>
+      </reference>
+      <name value="Standing problem"/>
+      <description value="Something already true of this patient before they walked in — diabetes, epilepsy, a previous amputation. Held separately from today's diagnosis because it is not a health event of this visit and must not be counted as one."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/notifiable-verification-vs"/>
+      </reference>
+      <name value="Suspected, probable, confirmed"/>
+      <description value="Three of FHIR's six verification statuses, matching the surveillance vocabulary."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-patient-summary"/>
+      </reference>
+      <name value="The copy the patient keeps"/>
+      <description value="Every patient is offered a record of the treatment performed, and a referral for follow-up where needed. Shaped like an International Patient Summary because that standard exists for exactly this — a clinician who has never met this person, reading it cold. In a real deployment three quarters of patients leave with no follow-up arranged, which makes this the most-used artefact in the system."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-organization"/>
+      </reference>
+      <name value="The team"/>
+      <description value="The emergency medical team itself, and its type — Type 1 mobile or fixed, Type 2 with surgery and beds, Type 3 with intensive care. Type decides what the team can treat and therefore what it must refer."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-deterioration-flag"/>
+      </reference>
+      <name value="This patient is getting worse"/>
+      <description value="Set by a clinician, not computed. The standards require a mechanism to promptly detect deteriorating patients; recording that judgement is in scope, predicting it is not."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/treatment-level"/>
+      </reference>
+      <name value="Treatment level required"/>
+      <description value="Major, moderate or minor. Mostly a statement about where this patient can be looked after: major needs a Type 2 or 3 team with surgery and beds, minor is within what a Type 1 mobile team can do. It is the judgement that decides whether they stay or travel."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/treatment-level-cs"/>
+      </reference>
+      <name value="Treatment level required (code system)"/>
+      <description value="Major, moderate or minor — the judgement that decides whether a patient can be looked after here or has to travel."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/treatment-level-vs"/>
+      </reference>
+      <name value="Treatment level required (value set)"/>
+      <description value="Major, moderate or minor treatment level."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-triage-assessment"/>
+      </reference>
+      <name value="Triage assessment"/>
+      <description value="One triage decision, at one moment, by one person. A patient waiting to be seen is re-assessed and gets another one of these; nothing is overwritten, because a clinician needs to see that this patient was green two hours ago and is red now. The Blue Book requires continued reassessment for Type 2 and 3 teams (5.1.1). The team brings its own triage system, so the value comes from deployment configuration and we ship no categories."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-immunization"/>
+      </reference>
+      <name value="Vaccine given"/>
+      <description value="A vaccine this patient received from us, or one they tell us they have had. Records what was given rather than a schedule we manage — running routine immunisation programmes is not an emergency medical team's job, but tetanus cover after a wound, post-exposure prophylaxis and outbreak response all are, and checking vaccination status is a named part of discharging a child."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-encounter"/>
+      </reference>
+      <name value="Visit"/>
+      <description value="One contact between a patient and the team, from walking up to walking away. Someone seen twice in a day has two of these: the second visit is its own clinical event, with its own triage, its own findings and its own reason for being there."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-vital-signs"/>
+      </reference>
+      <name value="Vital signs"/>
+      <description value="Pulse, blood pressure, respiratory rate, temperature, oxygen saturation, weight, and level of consciousness. Recorded at triage and again during the visit — the whole point of a vital sign is the series, not the reading. AVPU is used for consciousness rather than the Glasgow Coma Scale: it is four steps instead of thirteen and survives brief training better."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-transfer-document"/>
+      </reference>
+      <name value="What travels with the patient"/>
+      <description value="The standards specify the content: the patient's clinical condition, current treatment, the intention to transfer, and the mode and timeline of transfer. Written consent is required before transfer, and pain must be managed before transport."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-return-advice"/>
+      </reference>
+      <name value="What we told them to watch for"/>
+      <description value="The signs that mean come back immediately, and the record that somebody was actually told them. Chosen for this patient's problem rather than read off a general list. For most patients nothing else is arranged, which makes this the only safety net they leave with."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-location"/>
+      </reference>
+      <name value="Where the team is working"/>
+      <description value="The site. Carries the state, city and village hierarchy that FHIR has no element for, and a geographic position — in a disaster a team is often in a field with no address, and a place name alone will not bring anyone back to it."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/bumblebee-allergy-asked"/>
+      </reference>
+      <name value="Whether we asked about allergies"/>
+      <description value="Records that the question was asked, and what came back — including 'nothing known' and 'could not ask'. Exists because an empty allergy list means either 'asked, nothing found' or 'nobody asked', and those are different facts. Conflating them is how a patient gets given something that hurts them."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <page>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+        <valueUrl value="toc.html"/>
+      </extension>
+      <nameUrl value="toc.html"/>
+      <title value="Table of Contents"/>
+      <generation value="html"/>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="index.html"/>
+        </extension>
+        <nameUrl value="index.html"/>
+        <title value="Home"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="record.html"/>
+        </extension>
+        <nameUrl value="record.html"/>
+        <title value="What the record holds"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="conventions.html"/>
+        </extension>
+        <nameUrl value="conventions.html"/>
+        <title value="How to read the profiles"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="terminology.html"/>
+        </extension>
+        <nameUrl value="terminology.html"/>
+        <title value="Terminology and extensions"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="rationale.html"/>
+        </extension>
+        <nameUrl value="rationale.html"/>
+        <title value="Design rationale"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="evidence.html"/>
+        </extension>
+        <nameUrl value="evidence.html"/>
+        <title value="Evidence basis"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="relationship.html"/>
+        </extension>
+        <nameUrl value="relationship.html"/>
+        <title value="Other guides"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="open.html"/>
+        </extension>
+        <nameUrl value="open.html"/>
+        <title value="What is not settled"/>
+        <generation value="markdown"/>
+      </page>
+    </page>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/capabilities"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/examples"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/extensions"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/models"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/operations"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/profiles"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/vocabulary"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/maps"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/testing"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/history"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="fsh-generated/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="template/config"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/assets"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/images"/>
+    </parameter>
+    <parameter>
+      <code value="path-tx-cache"/>
+      <value value="input-cache/txcache"/>
+    </parameter>
+  </definition>
+</ImplementationGuide>

@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Evidence basis - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link rel="stylesheet" href="fhir.css"/>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
+
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+    <link rel="stylesheet" href="assets/css/project.css"/>
+  	<link rel="stylesheet" href="assets/css/cqf.css"/>
+      <!-- Placeholder for child template CSS declarations -->
+
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
+    <script src="assets/js/direction-management.js" type="text/javascript"> </script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif] -->
+
+      <!-- Favicons -->
+    <link sizes="144x144" rel="fhir-logo" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="fhir-logo" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="fhir-logo" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js" type="text/javascript"></script>
+	  <script src="assets/js/prism-fhirpath.js" type="text/javascript"></script>
+	  <script src="assets/js/prism-cql.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
+    <style type="text/css">h2{--heading-prefix:"6"}
+    h3,h4,h5,h6{--heading-prefix:"6"}</style>
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
+
+          <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">    <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+            <!-- status-bar -->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml -->
+
+<ul class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>    <!-- /.nav-collapse -->
+
+              
+
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><b>Evidence basis</b></li>
+
+        </ul>
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+    <!-- ReleaseHeader --><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7&reg; FHIR&reg; Standard) Build Tools. See the <a href="http://fhir-fli.dev/bumblebee/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
+  <h2>Evidence basis</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>  <!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#the-evidence-basis" id="markdown-toc-the-evidence-basis">The evidence basis</a></li>
+  <li><a href="#how-the-sources-are-graded" id="markdown-toc-how-the-sources-are-graded">How the sources are graded</a></li>
+  <li><a href="#the-numbers-that-govern-the-clinical-surface" id="markdown-toc-the-numbers-that-govern-the-clinical-surface">The numbers that govern the clinical surface</a></li>
+  <li><a href="#which-evidence-decided-what" id="markdown-toc-which-evidence-decided-what">Which evidence decided what</a></li>
+  <li><a href="#two-standing-rules-that-shaped-how-this-guide-was-written" id="markdown-toc-two-standing-rules-that-shaped-how-this-guide-was-written">Two standing rules that shaped how this guide was written</a></li>
+  <li><a href="#what-the-library-says-is-missing" id="markdown-toc-what-the-library-says-is-missing">What the library says is missing</a></li>
+</ul>
+
+</div>
+<h3 id="the-evidence-basis">The evidence basis</h3>
+
+<p>The profiles in this guide are not derived from first principles. They rest on a
+graded source library, <code class="language-plaintext highlighter-rouge">EVIDENCE.md</code> in the project's design record, which exists
+so that nothing is looked up twice and nothing is re-derived. This page says what
+that library contains and which parts of it decided which profile. It does not
+restate the evidence — the library is the citation.</p>
+
+<h3 id="how-the-sources-are-graded">How the sources are graded</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grade</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>STRONG</strong></td>
+      <td>controlled or quantified, replicated</td>
+    </tr>
+    <tr>
+      <td><strong>MODERATE</strong></td>
+      <td>a single good study, a consensus standard, or a validated framework</td>
+    </tr>
+    <tr>
+      <td><strong>WEAK</strong></td>
+      <td>observational, qualitative, or a stated preference</td>
+    </tr>
+    <tr>
+      <td><strong>ANECDOTAL</strong></td>
+      <td>vendor or opinion</td>
+    </tr>
+    <tr>
+      <td><strong>NEGATIVE</strong></td>
+      <td>evidence that something does <em>not</em> work</td>
+    </tr>
+    <tr>
+      <td><strong>UNVERIFIED</strong></td>
+      <td>a claim that could not be sourced</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>UNVERIFIED is used, and it is used on our own claims.</strong> One figure that three
+reviewers repeated back to us could not be found on searching for it, and it is
+recorded as not to be cited rather than quietly kept.</p>
+
+<h3 id="the-numbers-that-govern-the-clinical-surface">The numbers that govern the clinical surface</h3>
+
+<p>From the response to Cyclone Idai in Mozambique, 2019 — 13 teams over 110 days,
+18,468 consultations, 13,738 health events <em>[STRONG — primary, WHO-funded,
+ethically approved]</em>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Finding</th>
+      <th>Share</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Health events with no more specific description than "other"</td>
+      <td><strong>56.5%</strong></td>
+    </tr>
+    <tr>
+      <td>Health events unrelated to the disaster</td>
+      <td><strong>84.7%</strong>, rising 68.7% → 94.5% over the response</td>
+    </tr>
+    <tr>
+      <td>Major head/spine, torso and extremity injury, together</td>
+      <td><strong>0.5%</strong> — 66 of 13,738</td>
+    </tr>
+    <tr>
+      <td>Minor injury · acute watery diarrhoea · malaria · acute respiratory infection</td>
+      <td>9.8% · 9.4% · 6.6% · 6.0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A second, independent deployment gives the same conclusion from the opposite side
+of the world: roughly 48% of <em>consultations</em> fell into the residual category, and
+74.5% were discharged with no follow-up arranged.</p>
+
+<p><strong>What follows for these profiles.</strong> The record has to be excellent at ordinary
+illness seen once in a tent. Text-only diagnosis is the expected case, not a
+degraded one. What the patient was told to watch for is, for three of every four
+people, the only safety net they leave with — which is why it is a profile of its
+own rather than a paragraph in a document.</p>
+
+<h3 id="which-evidence-decided-what">Which evidence decided what</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Design element</th>
+      <th>What the evidence says</th>
+      <th>Where</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Triage recorded, never computed</td>
+      <td>START under-triage 57% against SALT 26%; paediatric accuracy 56–59% across four systems</td>
+      <td>&sect;E</td>
+    </tr>
+    <tr>
+      <td>Offline operation as the normal state</td>
+      <td>Whole-database synchronisation inside an encounter produced documented clinical chaos; event-delta synchronisation fixed it; the fully-offline site had no synchronisation problems at all</td>
+      <td><span class="fhir-conformance">C.2, </span><span class="fhir-conformance">C.2, </span></td>
+    </tr>
+    <tr>
+      <td>Identity as a UUID, duplicates tolerated</td>
+      <td>Unidentified-patient practice, and a deployed system's duplicate-record problem from name transliteration</td>
+      <td>&sect;F</td>
+    </tr>
+    <tr>
+      <td>Bounded choice rather than typing</td>
+      <td>Drop-downs eliminated handwriting-related prescription errors; users of the closest comparable system asked, above everything else, for less interaction depth</td>
+      <td><span class="fhir-conformance">G, </span><span class="fhir-conformance">G, </span></td>
+    </tr>
+    <tr>
+      <td>…and never hard-blocking the clinician</td>
+      <td>Relaxed validation on selected items measured a 1.60% error rate that strict validation would have hidden. You cannot measure an error rate you have made impossible to express</td>
+      <td>&sect;W.7</td>
+    </tr>
+    <tr>
+      <td>AVPU rather than the Glasgow Coma Scale</td>
+      <td>Four steps instead of thirteen, and it survives brief training better</td>
+      <td>&sect;R.4</td>
+    </tr>
+    <tr>
+      <td>Arm circumference stored in millimetres</td>
+      <td>The threshold is contested across guidance and screening evidence</td>
+      <td><span class="fhir-conformance">M.3, </span><span class="fhir-conformance">M.3, </span></td>
+    </tr>
+    <tr>
+      <td>The patient's copy is mandatory but never depended on</td>
+      <td>Physician adherence, not patient possession, was the binding constraint in the study that looked hardest</td>
+      <td><span class="fhir-conformance">M.7, </span><span class="fhir-conformance">M.7, </span></td>
+    </tr>
+    <tr>
+      <td>A separate compartment for records that could endanger someone</td>
+      <td>The interagency standard requires it; 43% of audited healthcare mobile applications had insecure local storage and 95% failed at least one mobile-security check</td>
+      <td><span class="fhir-conformance">M.5, </span><span class="fhir-conformance">M.5, </span></td>
+    </tr>
+    <tr>
+      <td>Structured referral content</td>
+      <td>Standardised referral templates improve completeness and reduce inappropriate referrals</td>
+      <td>&sect;S.4</td>
+    </tr>
+    <tr>
+      <td>The end of a visit is a specified act</td>
+      <td>Discharge of every child must include follow-up instructions, the signs that mean return urgently, and a vaccination check</td>
+      <td>&sect;AM</td>
+    </tr>
+    <tr>
+      <td>Body diagram marking</td>
+      <td>Required by the standards for documenting unexplained injuries in children, and used the same way by the one field-hospital system with a published evaluation</td>
+      <td><span class="fhir-conformance">C.1, </span><span class="fhir-conformance">C.1, </span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="two-standing-rules-that-shaped-how-this-guide-was-written">Two standing rules that shaped how this guide was written</h3>
+
+<p><strong>Novelty is a cost.</strong> Where evidence exists, follow it. A design element with no
+external support has to earn its place, because it also gives up external
+reviewer familiarity and the chance that someone else already found the failure
+mode.</p>
+
+<p><strong>Before writing "no precedent", search adjacent domains and name what was
+searched.</strong> This rule exists because the project's record on novelty claims is
+0 for 3: a list of seven design elements called unprecedented turned out to have
+evidence for all seven; a security pattern turned out to be standard; and an
+encounter layer that US Core, AU Core and the base specification all document was
+described as having nothing to build on. The tell is that <strong>if the thing is a
+routine act of clinical care — a visit, an admission, a referral, a prescription —
+it has been modelled</strong>, and reading element definitions is what you do after
+reading the published profiles, never instead.</p>
+
+<p>Both rules are enforced mechanically on this repository's markdown, which is why
+the pages here name their searches.</p>
+
+<h3 id="what-the-library-says-is-missing">What the library says is missing</h3>
+
+<p><code class="language-plaintext highlighter-rouge">EVIDENCE.md</code> keeps its own list of gaps, and two of them bear on these profiles:</p>
+
+<ul>
+  <li><strong>The controlled comparison does not exist.</strong> A controlled comparison of a
+field record against paper — documentation time, data completeness, error rate
+— is the study this project would most like to run and could not find. The
+authors of the closest comparable system recommended exactly it and did not do
+it.</li>
+  <li><strong>Numbers we could not source are marked, not dropped.</strong> Where a claim was
+repeated to us and could not be verified, it is recorded as unverified and is
+not used to justify anything here.</li>
+</ul>
+
+
+
+
+</div>
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
+
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
+  <script src="assets/js/flags.js" type="text/javascript"> </script>
+
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
+  <script src="assets/js/togglechanges.js" type="text/javascript"> </script>
+  <script src="assets/js/requirements-table.js" type="text/javascript"> </script>
+  <a name="bottom"> </a>
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container" data-fhir="generated">    <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="null">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+    <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>

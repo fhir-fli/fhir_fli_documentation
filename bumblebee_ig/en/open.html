@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+
+
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>What is not settled - Bumblebee — a clinical record for emergency medical teams v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/project.css" rel="stylesheet"/>
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script type="text/javascript" src="assets/js/direction-management.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"8"}
+    h3,h4,h5,h6{--heading-prefix:"8"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Bumblebee — a clinical record for emergency medical teams</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">The record
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="record.html">What the record holds</a>
+      </li>
+      <li>
+        <a href="conventions.html">How to read the profiles</a>
+      </li>
+      <li>
+        <a href="terminology.html">Terminology and extensions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Why it is this shape
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="rationale.html">Design rationale</a>
+      </li>
+      <li>
+        <a href="evidence.html">Evidence basis</a>
+      </li>
+      <li>
+        <a href="relationship.html">Other guides</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="open.html">What is not settled</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+
+              
+
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>What is not settled</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Bumblebee — a clinical record for emergency medical teams - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://fhir-fli.dev/bumblebee/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>What is not settled</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#what-is-not-settled" id="markdown-toc-what-is-not-settled">What is not settled</a></li>
+  <li><a href="#questions-only-a-deployed-team-can-answer" id="markdown-toc-questions-only-a-deployed-team-can-answer">Questions only a deployed team can answer</a></li>
+  <li><a href="#left-blank-on-purpose" id="markdown-toc-left-blank-on-purpose">Left blank on purpose</a></li>
+  <li><a href="#known-gaps-in-the-profile-set" id="markdown-toc-known-gaps-in-the-profile-set">Known gaps in the profile set</a></li>
+  <li><a href="#decisions-taken-under-uncertainty" id="markdown-toc-decisions-taken-under-uncertainty">Decisions taken under uncertainty</a></li>
+  <li><a href="#the-status-of-everything-else" id="markdown-toc-the-status-of-everything-else">The status of everything else</a></li>
+</ul>
+
+</div>
+<h3 id="what-is-not-settled">What is not settled</h3>
+
+<p>This guide is at version 0.1.0 and the profiles are <strong>proposed</strong>. This page is
+the list of things a reader should not take as decided, kept here rather than in
+a private file because an implementer needs to know which parts may move.</p>
+
+<h3 id="questions-only-a-deployed-team-can-answer">Questions only a deployed team can answer</h3>
+
+<p>Each of these decides an element that is currently absent. They are written out
+in full, with our current position, in <code class="language-plaintext highlighter-rouge">STAKEHOLDER-QUESTIONS.md</code>.</p>
+
+<p><strong>Does one team run more than one place at once?</strong> We have assumed a deployment
+is one place. If a team runs a clinic and also sends a mobile team out, then
+<em>where</em> someone was seen is a real clinical fact and <code class="language-plaintext highlighter-rouge">Encounter.location</code> should
+hold it. If not, it is a field nobody needs. Three of the four guides compared
+mark it Must Support, which is why the absence is deliberate rather than
+overlooked.</p>
+
+<p><strong>Does a patient leave with a number?</strong> A card, a slip, a wristband — and is the
+number for the person or for that day's visit? This decides <code class="language-plaintext highlighter-rouge">Encounter.identifier</code>,
+and it matters because the failure mode on a return visit is a silent second
+record for the same person.</p>
+
+<p><strong>Should the record say "first visit" or "follow-up"?</strong> This decides
+<code class="language-plaintext highlighter-rouge">Encounter.type</code>. It sits behind a prior question: is somebody who was triaged and
+then seen by a clinician one visit or two?</p>
+
+<p><strong>Does a team keep a list of the people it is still looking after between
+visits?</strong> That, and only that, would justify an <code class="language-plaintext highlighter-rouge">EpisodeOfCare</code> — the wound to be
+seen again in three days, the person started on two weeks of blood-pressure
+treatment. The profile that used to be here was dropped precisely because
+grouping a deployment's visits is not that.</p>
+
+<h3 id="left-blank-on-purpose">Left blank on purpose</h3>
+
+<p><strong>Who pronounced a death is not modelled.</strong> It is plainly a real clinical fact,
+and we have no source telling us how a deployed team records it or who is
+permitted to. Certification is a legal act whose holder varies by jurisdiction,
+and a visiting team may hold no such authority. What a team can produce is a
+clinical statement — who confirmed the death, when, and the circumstances — and
+we will not build something shaped like a certificate that is not one. The
+<code class="language-plaintext highlighter-rouge">Patient</code> profile carries the fact and the time and stops there.</p>
+
+<p><strong>Whether the family has been informed after a death is not modelled either.</strong>
+<em>"Nobody knows where her mother is"</em> is a real state that persists for days, has
+to be visible to the next person, and is what safe and dignified burial
+arrangements depend on. It is a known gap rather than a decision.</p>
+
+<h3 id="known-gaps-in-the-profile-set">Known gaps in the profile set</h3>
+
+<ul>
+  <li><strong>No examples.</strong> A profile with no instance is how you ship something nobody
+can satisfy, and the examples in a guide are validated against its profiles
+during the build — which turns <em>is this data the right shape?</em> from a judgement
+into a build step. This is the next piece of work.</li>
+  <li><strong>Five profiles named in the plan and not written</strong>: <code class="language-plaintext highlighter-rouge">PractitionerRole</code>, an
+anaesthesia record, <code class="language-plaintext highlighter-rouge">CarePlan</code>, <code class="language-plaintext highlighter-rouge">Device</code> / <code class="language-plaintext highlighter-rouge">DeviceUseStatement</code>, and a
+protection flag.</li>
+  <li><strong>Sensitivity labels are not carried.</strong> The labelling standard for records that
+could endanger a patient is chosen; the profiles do not yet apply it.</li>
+  <li><strong><em>Needed and unavailable</em> is not recordable as an outcome.</strong> A team that
+cannot provide something a patient needs has nowhere to say so.</li>
+</ul>
+
+<h3 id="decisions-taken-under-uncertainty">Decisions taken under uncertainty</h3>
+
+<p><strong>The SNOMED CT licence position.</strong> We proceed as though storing identifiers and
+descriptions in patient records requires no licence, and we are <strong>explicitly
+unsure</strong>. Nobody has confirmed it. It is recorded so that a later reader does not
+mistake it for something established. The remedy, if it is wrong, is an Affiliate
+Licence — free in member countries, free in the 49 World Bank low-income
+economies, available on humanitarian grounds elsewhere — so the failure mode is
+paperwork rather than a redesign. That asymmetry is the reason deferring is
+reasonable; if the remedy were architectural the decision would be wrong.</p>
+
+<p><strong>Whether ICPC-2 is adopted at all.</strong> It suits the undifferentiated half of the
+caseload, which is the majority of the work, and it appears nowhere in the
+project's documents before mid-2026. Its licence is free for non-commercial use,
+with fees negotiable otherwise.</p>
+
+<h3 id="the-status-of-everything-else">The status of everything else</h3>
+
+<p>Entries in the decision log carry a status of <code class="language-plaintext highlighter-rouge">PROPOSED</code>, <code class="language-plaintext highlighter-rouge">ACCEPTED</code>, <code class="language-plaintext highlighter-rouge">REVERSED</code>
+or <code class="language-plaintext highlighter-rouge">SUPERSEDED</code>, and a <strong>reversal condition</strong> — what would have to be true for
+the decision to be wrong. A decision with no stated reversal condition is not a
+decision, it is a habit. Several of the entries behind this guide are marked as
+taken provisionally for a partner to confirm, and the
+<a href="rationale.html">design rationale</a> page says which.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script type="text/javascript" src="assets/js/flags.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script type="text/javascript" src="assets/js/togglechanges.js"> </script>
+  <script type="text/javascript" src="assets/js/requirements-table.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container" data-fhir="generated">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG © 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="">fhir-fli</a>.  
+          Package fhir.fhir-fli.bumblebee#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-08-14 17:06:00 -0400">
+    2026-08-14
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+
