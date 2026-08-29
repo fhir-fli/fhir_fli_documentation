@@ -1248,6 +1248,75 @@
             <div class="content-container">
               <div class="content-header"><h1>Migration</h1></div>
               <section class="content">
+                <h2 id="upgrading-fhir_r4-08x--090" anchor="true">
+                  <span>Upgrading fhir_r4 0.8.x → 0.9.0</span><a href="/docs/core/migration#upgrading-fhir_r4-08x--090">#</a>
+                </h2>
+                <p>
+                  Nothing in the resource APIs changed. Two things matter, both in
+                  <code>fhir_r*_db</code>:
+                </p>
+                <ul>
+                  <li>
+                    <p><strong>The database schema goes from 4 to 5, and migrates itself on first
+                        open.</strong> The nine search-index tables gain <code>searchName</code> in their primary
+                      key. Without it a resource could hold only one parameter per path, so a
+                      second parameter reading the same element silently replaced the first. Your
+                      rows are preserved; you do not need to do anything, but the first open of
+                      an existing database does more work than usual.</p>
+                  </li>
+                  <li>
+                    <p><strong>Search parameters that were silently dropped now index.</strong> 201 of them in
+                      R4, 193 in R5, 213 in R6. Every one used an <code>as</code> cast in its FHIRPath
+                      expression, which the generator's expression splitter did not handle, so
+                      the parameter compiled to nothing. <code>value-quantity</code>, <code>value-concept</code>,
+                      <code>medication</code> and Immunization <code>date</code> were among them, and 
+                      <code>_has</code> reverse
+                      chaining can now chain through them.</p><p>Parameters that could not be indexed before appear for resources saved
+                      after the upgrade. <strong>Existing resources need re-saving to pick them up</strong>,
+                      the same way a FHIR server reindexes after a SearchParameter is added.</p>
+                  </li>
+                </ul>
+                <p>
+                  <code>FhirDao.subjectOfCare(resourceType, id)</code> is new: it resolves any resource to
+                  the patient whose record it is, reading the reference search index rather
+                  than the resource. It uses only the subject-of-care parameters, so a
+                  <code>performer</code> or <code>recorder</code> who happens to be a patient is never returned.
+                </p>
+                <hr/>
+                <h2 id="upgrading-fhir_r4-07x--080" anchor="true">
+                  <span>Upgrading fhir_r4 0.7.x → 0.8.0</span><a href="/docs/core/migration#upgrading-fhir_r4-07x--080">#</a>
+                </h2>
+                <p>
+                  One breaking change, in <code>fhir_r*_path</code> and everything built on it
+                  (<code>_mapping</code>, <code>_validation</code>, <code>_cql</code>). Both halves concern 
+                  <code>memberOf</code>:
+                </p>
+                <ul>
+                  <li>
+                    <strong><code>memberOf</code> now throws <code>PathEngineException</code> when the value set cannot be
+                      resolved</strong>, instead of returning an empty collection. The spec is explicit
+                    — "If the valueset cannot be resolved as a uri to a value set, an error is
+                    thrown" — and the old behaviour made <code>where(code.memberOf(...)).count()</code>
+                    
+                    answer a confident <code>0</code> that a caller could not tell apart from a genuine
+                    none. If you relied on the silent-empty behaviour, catch the exception at
+                    the call site and decide there what an unresolvable value set means for
+                    you.
+                  </li>
+                  <li>
+                    <strong><code>memberOf</code> now asks only whether the code is in the value set</strong>, not
+                    whether it is also valid in its own code system. A value set enumerating
+                    SNOMED concepts is answerable from the enumeration alone, and SNOMED is
+                    licensed, so the wider question returned <code>false</code> offline for a code the
+                    value set plainly listed. The operator form had both defects and now
+                    matches the function form.
+                  </li>
+                </ul>
+                <p>
+                  If you use <code>fhir_path</code> directly rather than through a binding, this arrived
+                  in <code>fhir_path</code> 0.14.0.
+                </p>
+                <hr/>
                 <h2 id="upgrading-fhir_r4-06x--070" anchor="true">
                   <span>Upgrading fhir_r4 0.6.x → 0.7.0</span><a href="/docs/core/migration#upgrading-fhir_r4-06x--070">#</a>
                 </h2>
@@ -1304,7 +1373,7 @@
 </code></pre>
                 <h4 id="new-package">New Package</h4>
                 <pre><code class="language-yaml">dependencies:
-  fhir_r4: ^0.7.0
+  fhir_r4: ^0.9.0
 </code></pre>
                 <p>
                   <strong>Action Required:</strong> Update your <code>pubspec.yaml</code> and run <code>flutter pub get</code>.
@@ -2316,6 +2385,8 @@ void createPatient() {
               <div>
                 <h3>On this page</h3>
                 <ul>
+                  <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-08x--090">Upgrading fhir_r4 0.8.x → 0.9.0</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-07x--080">Upgrading fhir_r4 0.7.x → 0.8.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-06x--070">Upgrading fhir_r4 0.6.x → 0.7.0</a></li>
                   <li style="padding-left: 0em">
                     <a href="/docs/core/migration#migration-guide-from-fhir-old-to-fhir_r4-new">Migration Guide: From fhir (old) to fhir_r4 (new)</a>
