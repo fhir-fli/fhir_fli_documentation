@@ -3,6 +3,60 @@ id: migration
 title: Migration
 ---
 
+## Upgrading fhir_r4 0.8.x → 0.9.0
+
+Nothing in the resource APIs changed. Two things matter, both in
+`fhir_r*_db`:
+
+- **The database schema goes from 4 to 5, and migrates itself on first
+  open.** The nine search-index tables gain `searchName` in their primary
+  key. Without it a resource could hold only one parameter per path, so a
+  second parameter reading the same element silently replaced the first. Your
+  rows are preserved; you do not need to do anything, but the first open of
+  an existing database does more work than usual.
+- **Search parameters that were silently dropped now index.** 201 of them in
+  R4, 193 in R5, 213 in R6. Every one used an `as` cast in its FHIRPath
+  expression, which the generator's expression splitter did not handle, so
+  the parameter compiled to nothing. `value-quantity`, `value-concept`,
+  `medication` and Immunization `date` were among them, and `_has` reverse
+  chaining can now chain through them.
+
+  Parameters that could not be indexed before appear for resources saved
+  after the upgrade. **Existing resources need re-saving to pick them up**,
+  the same way a FHIR server reindexes after a SearchParameter is added.
+
+`FhirDao.subjectOfCare(resourceType, id)` is new: it resolves any resource to
+the patient whose record it is, reading the reference search index rather
+than the resource. It uses only the subject-of-care parameters, so a
+`performer` or `recorder` who happens to be a patient is never returned.
+
+---
+
+## Upgrading fhir_r4 0.7.x → 0.8.0
+
+One breaking change, in `fhir_r*_path` and everything built on it
+(`_mapping`, `_validation`, `_cql`). Both halves concern `memberOf`:
+
+- **`memberOf` now throws `PathEngineException` when the value set cannot be
+  resolved**, instead of returning an empty collection. The spec is explicit
+  — "If the valueset cannot be resolved as a uri to a value set, an error is
+  thrown" — and the old behaviour made `where(code.memberOf(...)).count()`
+  answer a confident `0` that a caller could not tell apart from a genuine
+  none. If you relied on the silent-empty behaviour, catch the exception at
+  the call site and decide there what an unresolvable value set means for
+  you.
+- **`memberOf` now asks only whether the code is in the value set**, not
+  whether it is also valid in its own code system. A value set enumerating
+  SNOMED concepts is answerable from the enumeration alone, and SNOMED is
+  licensed, so the wider question returned `false` offline for a code the
+  value set plainly listed. The operator form had both defects and now
+  matches the function form.
+
+If you use `fhir_path` directly rather than through a binding, this arrived
+in `fhir_path` 0.14.0.
+
+---
+
 ## Upgrading fhir_r4 0.6.x → 0.7.0
 
 0.7.0 is a breaking release, but the breaks are small and mechanical (they apply equally to `fhir_r5` and `fhir_r6`):
@@ -50,7 +104,7 @@ dependencies:
 #### New Package
 ```yaml
 dependencies:
-  fhir_r4: ^0.7.0
+  fhir_r4: ^0.9.0
 ```
 
 **Action Required:** Update your `pubspec.yaml` and run `flutter pub get`.

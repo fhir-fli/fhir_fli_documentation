@@ -13,5 +13,5 @@ Under the hood, every resource and data type extends `FhirBase`, which implement
 
 ```yaml
 dependencies:
-  fhir_r4: ^0.7.0
+  fhir_r4: ^0.9.0
 ```

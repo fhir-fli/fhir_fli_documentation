@@ -11,8 +11,8 @@ The `fhir_r4_db` library provides a local database solution for storing and mana
 
 ```yaml
 dependencies:
-  fhir_r4_db: ^0.7.0
-  fhir_r4: ^0.7.0
+  fhir_r4_db: ^0.9.0
+  fhir_r4: ^0.9.0
   drift: ^2.33.0
   sqlite3: ^3.1.5
 ```
@@ -243,6 +243,47 @@ Use timestamp-based versioning instead of incrementing integers:
 ```dart
 dao.versionIdAsTime = true;
 ```
+
+#### Resolving a Resource to its Patient
+
+`subjectOfCare` answers "whose record is this?" for any resource. Added in
+0.9.0.
+
+```dart
+await dao.saveResource(
+  Observation(
+    id: 'obs-1'.toFhirString,
+    status: ObservationStatus.final_,
+    code: CodeableConcept(text: 'weight'.toFhirString),
+    subject: Reference(reference: 'Patient/pat-1'.toFhirString),
+  ),
+);
+
+// A Patient is its own subject, stored or not.
+await dao.subjectOfCare('Patient', 'pat-1');       // 'pat-1'
+
+// Anything else resolves through its stored subject reference.
+await dao.subjectOfCare('Observation', 'obs-1');   // 'pat-1'
+
+// A resource that names no patient resolves to nothing.
+await dao.subjectOfCare('Organization', 'org-1');  // null
+```
+
+It reads the reference search index rather than the resource, so it costs one
+indexed row read and no deserialization. That does mean it only sees
+resources that have been indexed: a resource saved before the parameter
+existed needs re-saving.
+
+Only the subject-of-care parameters count, `patient` and `subject`. A
+resource can reference several patients — `Observation.performer` may be a
+patient who reported their own reading — and naming a participant as the
+subject would answer "who accessed this person's record" with someone merely
+mentioned in it. A reference to a Group, Device or Location is likewise not
+returned.
+
+This is what an audit trail needs: ISO 27789 requires the record to identify
+the subject of care, and the resource in a request usually is not that
+person.
 
 #### Sync Support
 
