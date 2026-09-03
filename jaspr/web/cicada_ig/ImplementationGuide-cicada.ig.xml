@@ -11,7 +11,7 @@
   <name value="CicadaIG"/>
   <title value="The Cicada Vaccine Forecasting Engine and Guide"/>
   <status value="draft"/>
-  <date value="2026-02-11T14:37:07-05:00"/>
+  <date value="2026-09-02T22:18:14-04:00"/>
   <publisher value="FHIR-FLI"/>
   <contact>
     <name value="FHIR-FLI"/>
@@ -30,7 +30,7 @@
     </extension>
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
     <packageId value="hl7.terminology.r4"/>
-    <version value="7.0.1"/>
+    <version value="7.3.0"/>
   </dependsOn>
   <dependsOn id="hl7ext">
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
@@ -38,7 +38,12 @@
     </extension>
     <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
     <packageId value="hl7.fhir.uv.extensions.r4"/>
-    <version value="5.2.0"/>
+    <version value="5.3.0"/>
+  </dependsOn>
+  <dependsOn id="hl7_fhir_us_immds">
+    <uri value="http://hl7.org/fhir/us/immds/ImplementationGuide/hl7.fhir.us.immds"/>
+    <packageId value="hl7.fhir.us.immds"/>
+    <version value="1.0.0"/>
   </dependsOn>
   <definition>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -462,6 +467,16 @@
     </extension>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/2016-UC-0032"/>
+      </reference>
+      <name value="2016-UC-0032"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -520,6 +535,17 @@
         <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
+        <reference value="StructureDefinition/antigen-needing-dose-ext"/>
+      </reference>
+      <name value="Antigen Needing a Dose"/>
+      <description value="An antigen within this vaccine group that needs the forecast dose. A multi-antigen group forecasts as one recommendation, so without this a caller cannot tell whether all of MMR is due or only the measles component. Repeats, one per antigen."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
         <reference value="StructureDefinition/assessment-date"/>
       </reference>
       <name value="AssessmentDate"/>
@@ -550,6 +576,82 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/data-integrity"/>
+      </reference>
+      <name value="Cicada Data Integrity Code System"/>
+      <description value="Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/data-integrity-vs"/>
+      </reference>
+      <name value="Cicada Data Integrity Value Set"/>
+      <description value="Reasons a dose was reported rather than evaluated."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/EvalStatus"/>
+      </reference>
+      <name value="Cicada Evaluation Status"/>
+      <description value="Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/forecast-reason"/>
+      </reference>
+      <name value="Cicada Forecast Reason Code System"/>
+      <description value="Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/forecast-reason-vs"/>
+      </reference>
+      <name value="Cicada Forecast Reason Value Set"/>
+      <description value="Forecast reasons the engine can report."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/cicada-immunization-recommendation"/>
+      </reference>
+      <name value="Cicada Immunization Recommendation"/>
+      <description value="The forecast cicada returns. Constrains ImmunizationRecommendation to say which series group each recommendation belongs to, so that more than one recommendation for a single vaccine group can be told apart."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ImmunizationRecommendation"/>
+      </extension>
+      <reference>
+        <reference value="ImmunizationRecommendation/cicada-forecast-example"/>
+      </reference>
+      <name value="cicada-forecast-example"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -557,6 +659,17 @@
       </reference>
       <name value="Condition Profile with Vaccine Condition Codes"/>
       <description value="Profile for conditions where the code must be from the Vaccine Condition Codes value set. Accepts SNOMED CT and ICD-10-CM coded conditions."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/series-detail-ext"/>
+      </reference>
+      <name value="Contributing Series Detail"/>
+      <description value="One contributing series: its own status, its own four dates, and the component dates that produced them. A vaccine group forecast reports the aggregate over several series, so without this a group covered by more than one reports a single answer for all of them, and a due date arrives with no way to see whether age or interval produced it. Repeats, one per series."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -572,6 +685,28 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/dose-status-reason"/>
+      </reference>
+      <name value="Dose Status Reason Value Set"/>
+      <description value="Value set for dose evaluation status reasons, referencing the published ImmDS IG StatusReason CodeSystem."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/doses-remaining-ext"/>
+      </reference>
+      <name value="Doses Remaining"/>
+      <description value="How many doses remain in the series after the one being forecast, or 'Recurring' where the series ends in a recurring dose. seriesDoses and doseNumber allow a reader to subtract, but no arithmetic says the series never ends."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
@@ -579,6 +714,17 @@
       </reference>
       <name value="End Age"/>
       <description value="The age at which the vaccine is no longer applicable."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/engine-version-ext"/>
+      </reference>
+      <name value="Engine and Supporting Data Version"/>
+      <description value="The engine build and the CDSi supporting-data release that produced this resource. A forecast is a function of both, so a stored response naming neither cannot be traced to what produced it. Parameters is not a DomainResource and carries no extension, so the stamp sits on each evaluation and on each recommendation."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -605,13 +751,24 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CodeSystem"/>
+        <valueString value="ValueSet"/>
       </extension>
       <reference>
-        <reference value="CodeSystem/EvalStatus"/>
+        <reference value="ValueSet/eval-status"/>
       </reference>
-      <name value="Evaluation Status"/>
-      <description value="The status of the result of an evaluation."/>
+      <name value="Evaluation Status Value Set"/>
+      <description value="Combined value set for dose evaluation status, including HL7 THO standard codes (valid, notvalid) and the Cicada extension code (extraneous)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/evaluation-detail-ext"/>
+      </reference>
+      <name value="Evaluation Sub-step Detail"/>
+      <description value="The CDSi Chapter 6 sub-step outcomes behind a dose's evaluation: which of age, interval, conflict and vaccine choice passed, and for those that failed, which rule failed. doseStatusReason carries ten ImmDS codes; the engine knows more than that."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -619,10 +776,10 @@
         <valueString value="ValueSet"/>
       </extension>
       <reference>
-        <reference value="ValueSet/eval-status"/>
+        <reference value="ValueSet/forecast-status"/>
       </reference>
-      <name value="Evaluation Status Value Set"/>
-      <description value="Value Set for the status of the result of an evaluation."/>
+      <name value="Forecast Status Value Set"/>
+      <description value="Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -869,6 +1026,50 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/series-group-ext"/>
+      </reference>
+      <name value="Series Group"/>
+      <description value="The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/series-type-ext"/>
+      </reference>
+      <name value="Series Type"/>
+      <description value="Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/series-type"/>
+      </reference>
+      <name value="Series Type Code System"/>
+      <description value="CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/series-type-vs"/>
+      </reference>
+      <name value="Series Type Value Set"/>
+      <description value="Series types a forecast can be scoped to. In practice a forecast carries standard or risk: CDSi Table 8-14 excludes Evaluation Only series from best patient series."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="ConceptMap"/>
       </extension>
       <reference>
@@ -876,6 +1077,39 @@
       </reference>
       <name value="SNOMED CT to CDSi Observation Code Map"/>
       <description value="Maps SNOMED CT codes to CDSi observation codes used in immunization decision support."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/target-dose-status-ext"/>
+      </reference>
+      <name value="Target Dose Status"/>
+      <description value="The CDSi target dose status this administered dose produced."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/target-dose-status"/>
+      </reference>
+      <name value="Target Dose Status Code System"/>
+      <description value="CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/target-dose-status-vs"/>
+      </reference>
+      <name value="Target Dose Status Value Set"/>
+      <description value="CDSi target dose statuses."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1101,6 +1335,14 @@
         </extension>
         <nameUrl value="06_select-patient-series.html"/>
         <title value="Select Patient Series"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="07_response-extensions.html"/>
+        </extension>
+        <nameUrl value="07_response-extensions.html"/>
+        <title value="What Cicada Returns"/>
         <generation value="markdown"/>
       </page>
     </page>

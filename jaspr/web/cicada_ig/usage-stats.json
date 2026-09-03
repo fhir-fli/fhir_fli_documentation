@@ -130,6 +130,13 @@
       ]
     },
     {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext",
+      "title": "Antigen Needing a Dose",
+      "types": [
+        "string"
+      ]
+    },
+    {
       "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date",
       "title": "AssessmentDate",
       "types": [
@@ -144,10 +151,143 @@
       ]
     },
     {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext",
+      "title": "Doses Remaining",
+      "types": [
+        "string"
+      ]
+    },
+    {
       "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/end-age",
       "title": "End Age",
       "types": [
         "Age"
+      ]
+    },
+    {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext",
+      "title": "Engine and Supporting Data Version",
+      "types": [
+        "string",
+        "string",
+        "base64Binary",
+        "boolean",
+        "canonical",
+        "code",
+        "date",
+        "dateTime",
+        "decimal",
+        "id",
+        "instant",
+        "integer",
+        "markdown",
+        "oid",
+        "positiveInt",
+        "string",
+        "time",
+        "unsignedInt",
+        "uri",
+        "url",
+        "uuid",
+        "Address",
+        "Age",
+        "Annotation",
+        "Attachment",
+        "CodeableConcept",
+        "Coding",
+        "ContactPoint",
+        "Count",
+        "Distance",
+        "Duration",
+        "HumanName",
+        "Identifier",
+        "Money",
+        "Period",
+        "Quantity",
+        "Range",
+        "Ratio",
+        "Reference",
+        "SampledData",
+        "Signature",
+        "Timing",
+        "ContactDetail",
+        "Contributor",
+        "DataRequirement",
+        "Expression",
+        "ParameterDefinition",
+        "RelatedArtifact",
+        "TriggerDefinition",
+        "UsageContext",
+        "Dosage",
+        "Meta"
+      ]
+    },
+    {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext",
+      "title": "Evaluation Sub-step Detail",
+      "types": [
+        "boolean",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "string",
+        "boolean",
+        "string",
+        "base64Binary",
+        "boolean",
+        "canonical",
+        "code",
+        "date",
+        "dateTime",
+        "decimal",
+        "id",
+        "instant",
+        "integer",
+        "markdown",
+        "oid",
+        "positiveInt",
+        "string",
+        "time",
+        "unsignedInt",
+        "uri",
+        "url",
+        "uuid",
+        "Address",
+        "Age",
+        "Annotation",
+        "Attachment",
+        "CodeableConcept",
+        "Coding",
+        "ContactPoint",
+        "Count",
+        "Distance",
+        "Duration",
+        "HumanName",
+        "Identifier",
+        "Money",
+        "Period",
+        "Quantity",
+        "Range",
+        "Ratio",
+        "Reference",
+        "SampledData",
+        "Signature",
+        "Timing",
+        "ContactDetail",
+        "Contributor",
+        "DataRequirement",
+        "Expression",
+        "ParameterDefinition",
+        "RelatedArtifact",
+        "TriggerDefinition",
+        "UsageContext",
+        "Dosage",
+        "Meta"
       ]
     },
     {
@@ -281,6 +421,99 @@
       "title": "Preferred Vaccine Status",
       "types": [
         "boolean"
+      ]
+    },
+    {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext",
+      "title": "Contributing Series Detail",
+      "types": [
+        "string",
+        "string",
+        "string",
+        "CodeableConcept",
+        "positiveInt",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "dateTime",
+        "base64Binary",
+        "boolean",
+        "canonical",
+        "code",
+        "date",
+        "dateTime",
+        "decimal",
+        "id",
+        "instant",
+        "integer",
+        "markdown",
+        "oid",
+        "positiveInt",
+        "string",
+        "time",
+        "unsignedInt",
+        "uri",
+        "url",
+        "uuid",
+        "Address",
+        "Age",
+        "Annotation",
+        "Attachment",
+        "CodeableConcept",
+        "Coding",
+        "ContactPoint",
+        "Count",
+        "Distance",
+        "Duration",
+        "HumanName",
+        "Identifier",
+        "Money",
+        "Period",
+        "Quantity",
+        "Range",
+        "Ratio",
+        "Reference",
+        "SampledData",
+        "Signature",
+        "Timing",
+        "ContactDetail",
+        "Contributor",
+        "DataRequirement",
+        "Expression",
+        "ParameterDefinition",
+        "RelatedArtifact",
+        "TriggerDefinition",
+        "UsageContext",
+        "Dosage",
+        "Meta"
+      ]
+    },
+    {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext",
+      "title": "Series Group",
+      "types": [
+        "string"
+      ]
+    },
+    {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "title": "Series Type",
+      "types": [
+        "CodeableConcept"
+      ]
+    },
+    {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/target-dose-status-ext",
+      "title": "Target Dose Status",
+      "types": [
+        "CodeableConcept"
       ]
     },
     {
@@ -428,6 +661,12 @@
         "title": "Antigen Supporting Data"
       }
     ],
+    "ImmunizationRecommendation": [
+      {
+        "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation",
+        "title": "Cicada Immunization Recommendation"
+      }
+    ],
     "schedule-supporting-data": [
       {
         "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/schedule-supporting-data",
@@ -478,6 +717,9 @@
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status": [
       "Immunization"
+    ],
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext": [
+      "ImmunizationRecommendation.recommendation"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict": [
       "Immunization"

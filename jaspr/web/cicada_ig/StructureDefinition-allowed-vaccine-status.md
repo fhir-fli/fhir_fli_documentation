@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:AllowedVaccineStatus |
+| Draft as of 2026-09-02 | *Computable Name*:AllowedVaccineStatus |
 
 Indicates if the vaccine administered is allowed under certain conditions.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-allowed-vaccine-stat
   "name" : "AllowedVaccineStatus",
   "title" : "Allowed Vaccine Status",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

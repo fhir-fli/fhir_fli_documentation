@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-rxnorm | *Version*:0.1.0 |
-| Active as of 2026-02-11 | *Computable Name*:VaccineMedicationCodesRxnorm |
+| Active as of 2026-09-02 | *Computable Name*:VaccineMedicationCodesRxnorm |
 
  
 RxNorm codes for medications relevant to immunization decision support, including antivirals and aspirin. 
@@ -23,6 +23,8 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
  
 
 ### Expansion
+
+No Expansion for this valueset (not supported by Publication Tooling)
 
 -------
 
@@ -50,7 +52,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "name" : "VaccineMedicationCodesRxnorm",
   "title" : "Immunization-Relevant Medications (RxNorm)",
   "status" : "active",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

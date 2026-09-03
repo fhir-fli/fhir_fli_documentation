@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-status | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:PreferredIntervalStatus |
+| Draft as of 2026-09-02 | *Computable Name*:PreferredIntervalStatus |
 
 Indicates if the vaccine was administered at the preferred interval.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-preferred-interval-s
   "name" : "PreferredIntervalStatus",
   "title" : "Preferred Interval Status",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

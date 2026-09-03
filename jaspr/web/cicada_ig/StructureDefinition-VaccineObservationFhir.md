@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:VaccineObservationFhir |
+| Draft as of 2026-09-02 | *Computable Name*:VaccineObservationFhir |
 
  
 Profile for Observation resources carrying lab evidence of immunity or other findings relevant to immunization decisions. Codes may be from SNOMED CT, ICD-10-CM, or LOINC. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-VaccineObservationFh
   "name" : "VaccineObservationFhir",
   "title" : "Observation Profile for Immunization Decision Support",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

@@ -1,0 +1,41 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "target-dose-status",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem target-dose-status</b></p><a name=\"target-dose-status\"> </a><a name=\"hctarget-dose-status\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">satisfied<a name=\"target-dose-status-satisfied\"> </a></td><td>Satisfied</td><td>The target dose was satisfied by a vaccine dose administered.</td></tr><tr><td style=\"white-space:nowrap\">not-satisfied<a name=\"target-dose-status-not-satisfied\"> </a></td><td>Not Satisfied</td><td>The target dose was not satisfied.</td></tr><tr><td style=\"white-space:nowrap\">skipped<a name=\"target-dose-status-skipped\"> </a></td><td>Skipped</td><td>The target dose was skipped, per a conditional skip in the series.</td></tr></table></div>"
+  },
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status",
+  "version" : "0.1.0",
+  "name" : "TargetDoseStatusCS",
+  "title" : "Target Dose Status Code System",
+  "status" : "draft",
+  "date" : "2026-09-02T22:18:14-04:00",
+  "publisher" : "FHIR-FLI",
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
+  "description" : "CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable.",
+  "caseSensitive" : true,
+  "content" : "complete",
+  "count" : 3,
+  "concept" : [{
+    "code" : "satisfied",
+    "display" : "Satisfied",
+    "definition" : "The target dose was satisfied by a vaccine dose administered."
+  },
+  {
+    "code" : "not-satisfied",
+    "display" : "Not Satisfied",
+    "definition" : "The target dose was not satisfied."
+  },
+  {
+    "code" : "skipped",
+    "display" : "Skipped",
+    "definition" : "The target dose was skipped, per a conditional skip in the series."
+  }]
+}

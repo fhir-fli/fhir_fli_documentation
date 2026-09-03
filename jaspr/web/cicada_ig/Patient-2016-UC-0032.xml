@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="2016-UC-0032"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Patient 2016-UC-0032</b></p><a name="2016-UC-0032"> </a><a name="hc2016-UC-0032"> </a><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</p><hr/></div>
+  </text>
+  <name>
+    <family value="MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine."/>
+  </name>
+  <gender value="female"/>
+  <birthDate value="1955-08-12"/>
+</Patient>

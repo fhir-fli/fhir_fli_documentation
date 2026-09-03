@@ -1,0 +1,13 @@
+{
+  "resourceType" : "Patient",
+  "id" : "2016-UC-0032",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Patient 2016-UC-0032</b></p><a name=\"2016-UC-0032\"> </a><a name=\"hc2016-UC-0032\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</p><hr/></div>"
+  },
+  "name" : [{
+    "family" : "MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine."
+  }],
+  "gender" : "female",
+  "birthDate" : "1955-08-12"
+}

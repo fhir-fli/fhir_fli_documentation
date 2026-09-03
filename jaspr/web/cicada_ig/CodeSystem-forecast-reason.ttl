@@ -1,0 +1,80 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "forecast-reason"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem forecast-reason</b></p><a name=\"forecast-reason\"> </a><a name=\"hcforecast-reason\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">series-complete<a name=\"forecast-reason-series-complete\"> </a></td><td>Patient series is complete</td><td>Every target dose in the series is satisfied. Maps to ImmDS #complete.</td></tr><tr><td style=\"white-space:nowrap\">not-recommended-history<a name=\"forecast-reason-not-recommended-history\"> </a></td><td>Not recommended at this time due to past immunization history</td><td>Maps to ImmDS #notRecommended.</td></tr><tr><td style=\"white-space:nowrap\">exceeded-maximum-age<a name=\"forecast-reason-exceeded-maximum-age\"> </a></td><td>Patient has exceeded the maximum age</td><td>Maps to ImmDS #maximumAge.</td></tr><tr><td style=\"white-space:nowrap\">past-seasonal-end<a name=\"forecast-reason-past-seasonal-end\"> </a></td><td>Past seasonal recommendation end date</td><td>Maps to ImmDS #seasonalPast.</td></tr><tr><td style=\"white-space:nowrap\">complete-for-the-season<a name=\"forecast-reason-complete-for-the-season\"> </a></td><td>Patient is complete for the season</td><td>The series is complete for the current season and a further dose falls in a later one. Maps to ImmDS #seasonalComplete. A deliberate deviation from CDSi, which has no such reason: ACIP defines influenza and RSV recommendations by season, and without this a patient who has had this year's dose is indistinguishable from one who never needs another.</td></tr><tr><td style=\"white-space:nowrap\">evidence-of-immunity<a name=\"forecast-reason-evidence-of-immunity\"> </a></td><td>Patient has evidence of immunity</td><td>No ImmDS concept.</td></tr><tr><td style=\"white-space:nowrap\">contraindication<a name=\"forecast-reason-contraindication\"> </a></td><td>Patient has a contraindication</td><td>No ImmDS concept.</td></tr><tr><td style=\"white-space:nowrap\">cannot-finish-before-maximum-age<a name=\"forecast-reason-cannot-finish-before-maximum-age\"> </a></td><td>Patient is unable to finish the series prior to the maximum age</td><td>No ImmDS concept.</td></tr><tr><td style=\"white-space:nowrap\">below-minimum-age-to-start<a name=\"forecast-reason-below-minimum-age-to-start\"> </a></td><td>Patient has not reached the minimum age to start</td><td>No ImmDS concept.</td></tr><tr><td style=\"white-space:nowrap\">shared-clinical-decision-making<a name=\"forecast-reason-shared-clinical-decision-making\"> </a></td><td>Recommended by shared clinical decision-making</td><td>ACIP recommends this series by shared clinical decision-making rather than routinely, so it is not a care gap. Read from CDC's own marking in the series name, and for HPV from the 27-45 year band CDC states in its guidance. No CDSi or ImmDS concept; ICE calls it CLINICAL_PATIENT_DISCRETION.</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"^^xsd:anyURI ;
+     fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason>
+  ] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "CicadaForecastReasonCS"] ; # 
+  fhir:title [ fhir:v "Cicada Forecast Reason Code System"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "FHIR-FLI" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "http://fhirfli.dev" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped."] ; # 
+  fhir:caseSensitive [ fhir:v true] ; # 
+  fhir:content [ fhir:v "complete"] ; # 
+  fhir:count [ fhir:v "10"^^xsd:nonNegativeInteger] ; # 
+  fhir:concept ( [
+     fhir:code [ fhir:v "series-complete" ] ;
+     fhir:display [ fhir:v "Patient series is complete" ] ;
+     fhir:definition [ fhir:v "Every target dose in the series is satisfied. Maps to ImmDS #complete." ]
+  ] [
+     fhir:code [ fhir:v "not-recommended-history" ] ;
+     fhir:display [ fhir:v "Not recommended at this time due to past immunization history" ] ;
+     fhir:definition [ fhir:v "Maps to ImmDS #notRecommended." ]
+  ] [
+     fhir:code [ fhir:v "exceeded-maximum-age" ] ;
+     fhir:display [ fhir:v "Patient has exceeded the maximum age" ] ;
+     fhir:definition [ fhir:v "Maps to ImmDS #maximumAge." ]
+  ] [
+     fhir:code [ fhir:v "past-seasonal-end" ] ;
+     fhir:display [ fhir:v "Past seasonal recommendation end date" ] ;
+     fhir:definition [ fhir:v "Maps to ImmDS #seasonalPast." ]
+  ] [
+     fhir:code [ fhir:v "complete-for-the-season" ] ;
+     fhir:display [ fhir:v "Patient is complete for the season" ] ;
+     fhir:definition [ fhir:v "The series is complete for the current season and a further dose falls in a later one. Maps to ImmDS #seasonalComplete. A deliberate deviation from CDSi, which has no such reason: ACIP defines influenza and RSV recommendations by season, and without this a patient who has had this year's dose is indistinguishable from one who never needs another." ]
+  ] [
+     fhir:code [ fhir:v "evidence-of-immunity" ] ;
+     fhir:display [ fhir:v "Patient has evidence of immunity" ] ;
+     fhir:definition [ fhir:v "No ImmDS concept." ]
+  ] [
+     fhir:code [ fhir:v "contraindication" ] ;
+     fhir:display [ fhir:v "Patient has a contraindication" ] ;
+     fhir:definition [ fhir:v "No ImmDS concept." ]
+  ] [
+     fhir:code [ fhir:v "cannot-finish-before-maximum-age" ] ;
+     fhir:display [ fhir:v "Patient is unable to finish the series prior to the maximum age" ] ;
+     fhir:definition [ fhir:v "No ImmDS concept." ]
+  ] [
+     fhir:code [ fhir:v "below-minimum-age-to-start" ] ;
+     fhir:display [ fhir:v "Patient has not reached the minimum age to start" ] ;
+     fhir:definition [ fhir:v "No ImmDS concept." ]
+  ] [
+     fhir:code [ fhir:v "shared-clinical-decision-making" ] ;
+     fhir:display [ fhir:v "Recommended by shared clinical decision-making" ] ;
+     fhir:definition [ fhir:v "ACIP recommends this series by shared clinical decision-making rather than routinely, so it is not a care gap. Read from CDC's own marking in the series name, and for HPV from the 27-45 year band CDC states in its guidance. No CDSi or ImmDS concept; ICE calls it CLINICAL_PATIENT_DISCRETION." ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

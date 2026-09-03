@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-reason | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:AllowedVaccineReason |
+| Draft as of 2026-09-02 | *Computable Name*:AllowedVaccineReason |
 
 Captures the reason why a particular vaccine is allowed.
 
@@ -48,7 +48,7 @@ Other representations of profile: [CSV](StructureDefinition-allowed-vaccine-reas
   "name" : "AllowedVaccineReason",
   "title" : "Allowed Vaccine Reason",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

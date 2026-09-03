@@ -21,7 +21,7 @@
   fhir:name [ fhir:v "VaccineConditionCodesSnomed"] ; # 
   fhir:title [ fhir:v "Vaccine Condition Codes"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-02-11T14:37:07-05:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "FHIR-FLI" ] ;

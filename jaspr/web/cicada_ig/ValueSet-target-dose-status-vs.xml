@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="target-dose-status-vs"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ValueSet target-dose-status-vs</b></p><a name="target-dose-status-vs"> </a><a name="hctarget-dose-status-vs"> </a><ul><li>Include all codes defined in <a href="CodeSystem-target-dose-status.html"><code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status</code></a><span title="Version is not explicitly stated, which means it is fixed to the version provided in this specification"> version &#x1F4E6;0.1.0</span></li></ul></div>
+  </text>
+  <url value="http://fhirfli.dev/fhir/ig/cicada/ValueSet/target-dose-status-vs"/>
+  <version value="0.1.0"/>
+  <name value="TargetDoseStatusVS"/>
+  <title value="Target Dose Status Value Set"/>
+  <status value="draft"/>
+  <date value="2026-09-02T22:18:14-04:00"/>
+  <publisher value="FHIR-FLI"/>
+  <contact>
+    <name value="FHIR-FLI"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://fhirfli.dev"/>
+    </telecom>
+  </contact>
+  <description value="CDSi target dose statuses."/>
+  <compose>
+    <include>
+      <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status"/>
+    </include>
+  </compose>
+</ValueSet>

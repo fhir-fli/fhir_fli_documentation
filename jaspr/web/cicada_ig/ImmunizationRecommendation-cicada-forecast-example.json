@@ -1,0 +1,1085 @@
+{
+  "resourceType" : "ImmunizationRecommendation",
+  "id" : "cicada-forecast-example",
+  "meta" : {
+    "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation"]
+  },
+  "text" : {
+    "status" : "extensions",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ImmunizationRecommendation cicada-forecast-example</b></p><a name=\"cicada-forecast-example\"> </a><a name=\"hccicada-forecast-example\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cicada-immunization-recommendation.html\">Cicada Immunization Recommendation</a></p></div><p><b>patient</b>: <a href=\"Patient-2016-UC-0032.html\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>date</b>: 2015-04-30 00:00:00-0400</p><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type risk}\">Risk</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 03}\">MMR</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 36989005}, {http://snomed.info/sct 14189004}, {http://snomed.info/sct 36653000}\">MMR</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><p><b>description</b>: Antigens: Mumps, Measles, Rubella</p><p><b>doseNumber</b>: 2</p><p><b>supportingPatientInformation</b>: Health care personnel</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 03}\">MMR</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 36989005}, {http://snomed.info/sct 14189004}, {http://snomed.info/sct 36653000}\">MMR</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status complete}, {http://loinc.org LA13421-5}\">Complete</span></p><p><b>description</b>: Antigens: Mumps, Measles, Rubella</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 107}\">DTaP, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 27836007}, {http://snomed.info/sct 76902006}, {http://snomed.info/sct 397430003}\">DTaP/Tdap/Td</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><p><b>description</b>: Antigens: Pertussis, Tetanus, Diphtheria</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 88}\">influenza, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 6142004}\">Influenza</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><p><b>series</b>: Influenza standard series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 17}\">Hib, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 709410003}\">Hib</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}\">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 152}\">Pneumococcal Conjugate, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 16814004}\">Pneumococcal</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: Pneumococcal 50+ 1-dose PCV series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 21}\">varicella</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 38907003}\">Varicella</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><p><b>series</b>: Varicella childhood 2-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 45}\">Hep B, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 66071002}\">HepB</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 1955-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 1955-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 1955-09-08 00:00:00-0400</p></blockquote><p><b>series</b>: HepB 3-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 108}\">meningococcal, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 23511006}\">Meningococcal</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}\">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 213}\">SARS-COV-2 (COVID-19) vaccine, unspecified</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 840539006}\">COVID-19</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><p><b>series</b>: COVID-19 start at 6mo-23mo shared clinical decision-making series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 89}\">polio, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 398102009}\">Polio</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}\">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 188}\">zoster, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 4740000}\">Zoster</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: Zoster 2-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 85}\">Hep A, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 40468003}\">HepA</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}\">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 304}\">RSV, unspecified</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 55735004}\">RSV</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}\">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30981-5}\">Earliest date to give</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30980-7}\">Date vaccine due</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 59778-1}\">Date when overdue for immunization</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: RSV 75 years+ 1-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 137}\">HPV, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 240532009}\">HPV</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}\">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 164}\">meningococcal B, unspecified</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 860805006}\">Meningococcal B</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}\">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}\">Standard</span></p><p><b>vaccineCode</b>: <span title=\"Codes:{http://hl7.org/fhir/sid/cvx 122}\">rotavirus, unspecified formulation</span></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 18624000}\">Rotavirus</span></p><p><b>forecastStatus</b>: <span title=\"Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}\">Aged Out</span></p></blockquote></div>"
+  },
+  "patient" : {
+    "reference" : "Patient/2016-UC-0032"
+  },
+  "date" : "2015-04-30T00:00:00.000-04:00",
+  "recommendation" : [{
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "risk",
+          "display" : "Risk"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "03",
+        "display" : "MMR"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "36989005",
+        "display" : "Mumps"
+      },
+      {
+        "system" : "http://snomed.info/sct",
+        "code" : "14189004",
+        "display" : "Measles"
+      },
+      {
+        "system" : "http://snomed.info/sct",
+        "code" : "36653000",
+        "display" : "Rubella"
+      }],
+      "text" : "MMR"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "due",
+        "display" : "Due"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13422-3",
+        "display" : "On schedule"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "2015-05-28T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "2015-05-28T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "2015-05-28T00:00:00.000-04:00"
+    }],
+    "description" : "Antigens: Mumps, Measles, Rubella",
+    "doseNumberString" : "2",
+    "supportingPatientInformation" : [{
+      "display" : "Health care personnel"
+    }]
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "03",
+        "display" : "MMR"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "36989005",
+        "display" : "Mumps"
+      },
+      {
+        "system" : "http://snomed.info/sct",
+        "code" : "14189004",
+        "display" : "Measles"
+      },
+      {
+        "system" : "http://snomed.info/sct",
+        "code" : "36653000",
+        "display" : "Rubella"
+      }],
+      "text" : "MMR"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Complete",
+        "display" : "Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "complete",
+        "display" : "Complete"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13421-5",
+        "display" : "Complete"
+      }]
+    },
+    "description" : "Antigens: Mumps, Measles, Rubella"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "107",
+        "display" : "DTaP, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "27836007",
+        "display" : "Pertussis"
+      },
+      {
+        "system" : "http://snomed.info/sct",
+        "code" : "76902006",
+        "display" : "Tetanus"
+      },
+      {
+        "system" : "http://snomed.info/sct",
+        "code" : "397430003",
+        "display" : "Diphtheria"
+      }],
+      "text" : "DTaP/Tdap/Td"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "overdue",
+        "display" : "Overdue"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13423-1",
+        "display" : "Overdue"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "1962-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "1962-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "1962-08-12T00:00:00.000-04:00"
+    }],
+    "description" : "Antigens: Pertussis, Tetanus, Diphtheria",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "88",
+        "display" : "influenza, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "6142004",
+        "display" : "Influenza"
+      }],
+      "text" : "Influenza"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "due",
+        "display" : "Due"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13422-3",
+        "display" : "On schedule"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "2025-07-01T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "2025-07-01T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "2025-07-01T00:00:00.000-04:00"
+    }],
+    "series" : "Influenza standard series",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "17",
+        "display" : "Hib, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "709410003",
+        "display" : "Hib"
+      }],
+      "text" : "Hib"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Aged Out",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "agedout",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13424-9",
+        "display" : "Too old"
+      }]
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "152",
+        "display" : "Pneumococcal Conjugate, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "16814004",
+        "display" : "Pneumococcal"
+      }],
+      "text" : "Pneumococcal"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "overdue",
+        "display" : "Overdue"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13423-1",
+        "display" : "Overdue"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "2005-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "2005-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "2005-08-12T00:00:00.000-04:00"
+    }],
+    "series" : "Pneumococcal 50+ 1-dose PCV series",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "21",
+        "display" : "varicella"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "38907003",
+        "display" : "Varicella"
+      }],
+      "text" : "Varicella"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "due",
+        "display" : "Due"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13422-3",
+        "display" : "On schedule"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "2015-05-28T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "2015-05-28T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "2015-05-28T00:00:00.000-04:00"
+    }],
+    "series" : "Varicella childhood 2-dose series",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "45",
+        "display" : "Hep B, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "66071002",
+        "display" : "HepB"
+      }],
+      "text" : "HepB"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "overdue",
+        "display" : "Overdue"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13423-1",
+        "display" : "Overdue"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "1955-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "1955-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "1955-09-08T00:00:00.000-04:00"
+    }],
+    "series" : "HepB 3-dose series",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "108",
+        "display" : "meningococcal, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "23511006",
+        "display" : "Meningococcal"
+      }],
+      "text" : "Meningococcal"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Aged Out",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "agedout",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13424-9",
+        "display" : "Too old"
+      }]
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "213",
+        "display" : "SARS-COV-2 (COVID-19) vaccine, unspecified"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "840539006",
+        "display" : "COVID-19"
+      }],
+      "text" : "COVID-19"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "due",
+        "display" : "Due"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13422-3",
+        "display" : "On schedule"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "2025-08-27T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "2025-08-27T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "2025-08-27T00:00:00.000-04:00"
+    }],
+    "series" : "COVID-19 start at 6mo-23mo shared clinical decision-making series",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "89",
+        "display" : "polio, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "398102009",
+        "display" : "Polio"
+      }],
+      "text" : "Polio"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Aged Out",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "agedout",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13424-9",
+        "display" : "Too old"
+      }]
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "188",
+        "display" : "zoster, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "4740000",
+        "display" : "Zoster"
+      }],
+      "text" : "Zoster"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "overdue",
+        "display" : "Overdue"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13423-1",
+        "display" : "Overdue"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "2005-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "2005-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "2005-08-12T00:00:00.000-04:00"
+    }],
+    "series" : "Zoster 2-dose series",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "85",
+        "display" : "Hep A, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "40468003",
+        "display" : "HepA"
+      }],
+      "text" : "HepA"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Aged Out",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "agedout",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13424-9",
+        "display" : "Too old"
+      }]
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "304",
+        "display" : "RSV, unspecified"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "55735004",
+        "display" : "RSV"
+      }],
+      "text" : "RSV"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Not Complete",
+        "display" : "Not Complete"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "due",
+        "display" : "Due"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13422-3",
+        "display" : "On schedule"
+      }]
+    },
+    "dateCriterion" : [{
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30981-5",
+          "display" : "Earliest date to give"
+        }]
+      },
+      "value" : "2030-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "30980-7",
+          "display" : "Date vaccine due"
+        }]
+      },
+      "value" : "2030-08-12T00:00:00.000-04:00"
+    },
+    {
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "59778-1",
+          "display" : "Date when overdue for immunization"
+        }]
+      },
+      "value" : "2030-08-12T00:00:00.000-04:00"
+    }],
+    "series" : "RSV 75 years+ 1-dose series",
+    "doseNumberString" : "1"
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "137",
+        "display" : "HPV, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "240532009",
+        "display" : "HPV"
+      }],
+      "text" : "HPV"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Aged Out",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "agedout",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13424-9",
+        "display" : "Too old"
+      }]
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "164",
+        "display" : "meningococcal B, unspecified"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "860805006",
+        "display" : "Meningococcal B"
+      }],
+      "text" : "Meningococcal B"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Aged Out",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "agedout",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13424-9",
+        "display" : "Too old"
+      }]
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+          "code" : "standard",
+          "display" : "Standard"
+        }]
+      }
+    }],
+    "vaccineCode" : [{
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "122",
+        "display" : "rotavirus, unspecified formulation"
+      }]
+    }],
+    "targetDisease" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "18624000",
+        "display" : "Rotavirus"
+      }],
+      "text" : "Rotavirus"
+    },
+    "forecastStatus" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "code" : "Aged Out",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "code" : "agedout",
+        "display" : "Aged Out"
+      },
+      {
+        "system" : "http://loinc.org",
+        "code" : "LA13424-9",
+        "display" : "Too old"
+      }]
+    }
+  }]
+}

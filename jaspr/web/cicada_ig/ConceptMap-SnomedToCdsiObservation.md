@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ConceptMap/SnomedToCdsiObservation | *Version*:0.1.0 |
-| Active as of 2026-02-11 | *Computable Name*: |
+| Active as of 2026-09-02 | *Computable Name*: |
 
  
 Maps SNOMED CT codes to CDSi observation codes used in immunization decision support. 
@@ -26,7 +26,7 @@ Maps SNOMED CT codes to CDSi observation codes used in immunization decision sup
   "version" : "0.1.0",
   "title" : "SNOMED CT to CDSi Observation Code Map",
   "status" : "active",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

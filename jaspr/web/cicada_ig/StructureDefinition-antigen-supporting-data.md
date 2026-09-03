@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-supporting-data | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:AntigenSupportingData |
+| Draft as of 2026-09-02 | *Computable Name*:AntigenSupportingData |
 
  
 A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-antigen-supporting-d
   "name" : "AntigenSupportingData",
   "title" : "Antigen Supporting Data",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

@@ -16,8 +16,8 @@
       "version" : "0.1.0",
       "status" : "draft",
       "name" : "EvalStatusCS",
-      "title" : "Evaluation Status",
-      "description" : "The status of the result of an evaluation.",
+      "title" : "Cicada Evaluation Status",
+      "description" : "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here.",
       "uses" : {
       },
       "ValueSet-eval-status.html" : "Evaluation Status Value Set"
@@ -65,6 +65,50 @@
       "uses" : {
       },
       "ValueSet-valid-age-reason.html" : "Valid Age Reason"
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "DataIntegrityCS",
+      "title" : "Cicada Data Integrity Code System",
+      "description" : "Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses.",
+      "uses" : {
+      },
+      "ValueSet-data-integrity-vs.html" : "Cicada Data Integrity Value Set"
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "CicadaForecastReasonCS",
+      "title" : "Cicada Forecast Reason Code System",
+      "description" : "Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped.",
+      "uses" : {
+      },
+      "ValueSet-forecast-reason-vs.html" : "Cicada Forecast Reason Value Set"
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "SeriesTypeCS",
+      "title" : "Series Type Code System",
+      "description" : "CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data.",
+      "uses" : {
+      },
+      "ValueSet-series-type-vs.html" : "Series Type Value Set"
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "TargetDoseStatusCS",
+      "title" : "Target Dose Status Code System",
+      "description" : "CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable.",
+      "uses" : {
+      },
+      "ValueSet-target-dose-status-vs.html" : "Target Dose Status Value Set"
     },
     {
       "url" : "http://hl7.org/fhir/CodeSystem/medication-statement-status",
@@ -243,7 +287,8 @@
       "description" : "CVX Codes for vaccines",
       "uses" : {
       },
-      "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
+      "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx",
+      "http://hl7.org/fhir/R4/valueset-vaccine-code.html" : "Vaccine Administered Value Set"
     },
     {
       "url" : "http://hl7.org/fhir/sid/mvx",
@@ -257,6 +302,28 @@
       "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
     },
     {
+      "url" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+      "version" : "1.0.0",
+      "status" : "active",
+      "name" : "ForecastStatus",
+      "title" : "Forecast Status",
+      "description" : "A set of forecast statuses.",
+      "uses" : {
+      },
+      "ValueSet-forecast-status.html" : "Forecast Status Value Set"
+    },
+    {
+      "url" : "http://hl7.org/fhir/us/immds/CodeSystem/StatusReason",
+      "version" : "1.0.0",
+      "status" : "active",
+      "name" : "StatusReason",
+      "title" : "Evaluation Status Reason",
+      "description" : "A set of reasons for the evaluation status.",
+      "uses" : {
+      },
+      "ValueSet-dose-status-reason.html" : "Dose Status Reason Value Set"
+    },
+    {
       "url" : "http://snomed.info/sct",
       "version" : null,
       "status" : "active",
@@ -266,35 +333,37 @@
       "oids" : ["2.16.840.1.113883.6.96"],
       "uses" : {
       },
-      "http://hl7.org/fhir/R4/valueset-approach-site-codes.html" : "SNOMED CT Anatomical Structure for Administration Site Codes",
-      "http://hl7.org/fhir/R4/valueset-route-codes.html" : "SNOMED CT Route Codes",
-      "http://hl7.org/fhir/R4/valueset-procedure-category.html" : "Procedure Category Codes (SNOMED CT)",
-      "http://hl7.org/fhir/R4/valueset-procedure-followup.html" : "Procedure Follow up Codes (SNOMED CT)",
-      "http://hl7.org/fhir/R4/valueset-referencerange-appliesto.html" : "Observation Reference Range Applies To Codes",
-      "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes",
+      "http://hl7.org/fhir/R4/valueset-procedure-reason.html" : "Procedure Reason Codes",
       "http://hl7.org/fhir/R4/valueset-body-site.html" : "SNOMED CT Body Structures",
-      "http://hl7.org/fhir/R4/valueset-condition-stage.html" : "Condition Stage",
-      "ValueSet-procedures.html" : "Procedures",
-      "http://hl7.org/fhir/R4/valueset-procedure-not-performed-reason.html" : "Procedure Not Performed Reason (SNOMED-CT)",
+      "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
+      "http://hl7.org/fhir/R4/valueset-device-kind.html" : "FHIR Device Types",
+      "http://hl7.org/fhir/R4/valueset-referencerange-appliesto.html" : "Observation Reference Range Applies To Codes",
+      "http://hl7.org/fhir/R4/valueset-condition-code.html" : "Condition/Problem/Diagnosis Codes",
+      "http://hl7.org/fhir/R4/valueset-procedure-followup.html" : "Procedure Follow up Codes (SNOMED CT)",
+      "http://hl7.org/fhir/R4/valueset-medication-form-codes.html" : "SNOMED CT Form Codes",
       "http://hl7.org/fhir/R4/valueset-clinical-findings.html" : "SNOMED CT Clinical Findings",
-      "http://hl7.org/fhir/R4/valueset-condition-stage-type.html" : "Condition Stage Type",
+      "http://hl7.org/fhir/R4/valueset-performer-role.html" : "Procedure Performer Role Codes",
+      "http://hl7.org/fhir/R4/valueset-reason-medication-not-given-codes.html" : "SNOMED CT Reason Medication Not Given Codes",
+      "http://hl7.org/fhir/R4/valueset-approach-site-codes.html" : "SNOMED CT Anatomical Structure for Administration Site Codes",
+      "http://hl7.org/fhir/R4/valueset-medication-codes.html" : "SNOMED CT Medication Codes",
+      "http://hl7.org/fhir/R4/valueset-condition-severity.html" : "Condition/Diagnosis Severity",
+      "http://hl7.org/fhir/R4/valueset-immunization-recommendation-reason.html" : "Immunization Recommendation Reason Codes",
+      "ValueSet-procedures.html" : "Procedures",
+      "http://hl7.org/fhir/R4/valueset-condition-stage.html" : "Condition Stage",
+      "http://hl7.org/fhir/R4/valueset-reason-medication-status-codes.html" : "SNOMED CT Drug Therapy Status codes ",
+      "http://hl7.org/fhir/R4/valueset-immunization-recommendation-target-disease.html" : "Immunization Recommendation Target Disease Codes",
       "ValueSet-vaccine-medication-codes-snomed.html" : "Medications",
       "http://hl7.org/fhir/R4/valueset-device-action.html" : "Procedure Device Action Codes",
-      "http://hl7.org/fhir/R4/valueset-reason-medication-status-codes.html" : "SNOMED CT Drug Therapy Status codes ",
-      "http://hl7.org/fhir/R4/valueset-procedure-reason.html" : "Procedure Reason Codes",
-      "http://hl7.org/fhir/R4/valueset-immunization-reason.html" : "Immunization Reason Codes",
-      "http://hl7.org/fhir/R4/valueset-medication-form-codes.html" : "SNOMED CT Form Codes",
-      "http://hl7.org/fhir/R4/valueset-observation-methods.html" : "Observation Methods",
-      "http://hl7.org/fhir/R4/valueset-reason-medication-not-given-codes.html" : "SNOMED CT Reason Medication Not Given Codes",
-      "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
-      "http://hl7.org/fhir/R4/valueset-performer-role.html" : "Procedure Performer Role Codes",
-      "http://hl7.org/fhir/R4/valueset-device-kind.html" : "FHIR Device Types",
-      "http://hl7.org/fhir/R4/valueset-condition-code.html" : "Condition/Problem/Diagnosis Codes",
+      "http://hl7.org/fhir/R4/valueset-route-codes.html" : "SNOMED CT Route Codes",
       "http://hl7.org/fhir/R4/valueset-manifestation-or-symptom.html" : "Manifestation and Symptom Codes",
-      "http://hl7.org/fhir/R4/valueset-medication-codes.html" : "SNOMED CT Medication Codes",
+      "http://hl7.org/fhir/R4/valueset-procedure-category.html" : "Procedure Category Codes (SNOMED CT)",
       "http://hl7.org/fhir/R4/valueset-administration-method-codes.html" : "SNOMED CT Administration Method Codes",
-      "http://hl7.org/fhir/R4/valueset-condition-severity.html" : "Condition/Diagnosis Severity",
-      "http://hl7.org/fhir/R4/valueset-procedure-outcome.html" : "Procedure Outcome Codes (SNOMED CT)"
+      "http://hl7.org/fhir/R4/valueset-immunization-reason.html" : "Immunization Reason Codes",
+      "http://hl7.org/fhir/R4/valueset-procedure-not-performed-reason.html" : "Procedure Not Performed Reason (SNOMED-CT)",
+      "http://hl7.org/fhir/R4/valueset-condition-stage-type.html" : "Condition Stage Type",
+      "http://hl7.org/fhir/R4/valueset-procedure-outcome.html" : "Procedure Outcome Codes (SNOMED CT)",
+      "http://hl7.org/fhir/R4/valueset-observation-methods.html" : "Observation Methods",
+      "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
@@ -358,7 +427,7 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/data-absent-reason",
-      "version" : "1.0.0",
+      "version" : "2.0.0",
       "status" : "active",
       "name" : "DataAbsentReason",
       "title" : "DataAbsentReason",
@@ -367,6 +436,18 @@
       "uses" : {
       },
       "http://hl7.org/fhir/R4/valueset-data-absent-reason.html" : "DataAbsentReason"
+    },
+    {
+      "url" : "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status",
+      "version" : "1.0.1",
+      "status" : "active",
+      "name" : "ImmunizationEvaluationDoseStatusCodes",
+      "title" : "Immunization Evaluation Dose Status codes",
+      "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the validity of a dose relative to a particular recommended schedule. This value set is provided as a suggestive example.",
+      "oids" : ["2.16.840.1.113883.4.642.1.1102"],
+      "uses" : {
+      },
+      "ValueSet-eval-status.html" : "Evaluation Status Value Set"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/immunization-funding-source",
@@ -403,6 +484,18 @@
       "uses" : {
       },
       "http://hl7.org/fhir/R4/valueset-immunization-program-eligibility.html" : "Immunization Program Eligibility"
+    },
+    {
+      "url" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+      "version" : "2.0.0",
+      "status" : "active",
+      "name" : "ImmunizationRecommendationStatusCodes",
+      "title" : "Immunization Recommendation Status Codes",
+      "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the status of the patient towards perceived immunity against a vaccine preventable disease. This value set is provided as a suggestive example.",
+      "oids" : ["2.16.840.1.113883.4.642.1.1104"],
+      "uses" : {
+      },
+      "ValueSet-forecast-status.html" : "Forecast Status Value Set"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason",
@@ -490,8 +583,8 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
-      "version" : "1.0.0",
-      "status" : "draft",
+      "version" : "2.0.0",
+      "status" : "active",
       "name" : "MedicationRequestCategoryCodes",
       "title" : "MedicationRequest Category Codes",
       "description" : "MedicationRequest Category Codes",
@@ -598,7 +691,7 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-      "version" : "9.0.0",
+      "version" : "11.0.0",
       "status" : "active",
       "name" : "ActCode",
       "title" : "ActCode",
@@ -606,11 +699,11 @@
       "oids" : ["2.16.840.1.113883.5.4"],
       "uses" : {
       },
-      "http://terminology.hl7.org/7.0.1/ValueSet-v3-ActPharmacySupplyType.html" : "ActPharmacySupplyType"
+      "http://terminology.hl7.org/7.3.0/ValueSet-v3-ActPharmacySupplyType.html" : "ActPharmacySupplyType"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-ActReason",
-      "version" : "3.1.0",
+      "version" : "4.0.0",
       "status" : "active",
       "name" : "ActReason",
       "title" : "ActReason",
@@ -618,11 +711,11 @@
       "oids" : ["2.16.840.1.113883.5.8"],
       "uses" : {
       },
-      "http://terminology.hl7.org/7.0.1/ValueSet-v3-SubstanceAdminSubstitutionReason.html" : "SubstanceAdminSubstitutionReason"
+      "http://terminology.hl7.org/7.3.0/ValueSet-v3-SubstanceAdminSubstitutionReason.html" : "SubstanceAdminSubstitutionReason"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-ActSite",
-      "version" : "3.0.0",
+      "version" : "5.0.0",
       "status" : "active",
       "name" : "ActSite",
       "title" : "ActSite",
@@ -634,7 +727,7 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
-      "version" : "3.0.0",
+      "version" : "5.0.0",
       "status" : "active",
       "name" : "MaritalStatus",
       "title" : "MaritalStatus",
@@ -646,7 +739,7 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
-      "version" : "3.0.0",
+      "version" : "4.0.0",
       "status" : "active",
       "name" : "NullFlavor",
       "title" : "NullFlavor",
@@ -658,7 +751,7 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
-      "version" : "3.0.0",
+      "version" : "4.0.0",
       "status" : "active",
       "name" : "ObservationInterpretation",
       "title" : "ObservationInterpretation",
@@ -670,7 +763,7 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
-      "version" : "3.0.0",
+      "version" : "4.0.0",
       "status" : "active",
       "name" : "RouteOfAdministration",
       "title" : "RouteOfAdministration",
@@ -682,7 +775,7 @@
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
-      "version" : "3.0.0",
+      "version" : "5.0.0",
       "status" : "active",
       "name" : "SubstanceAdminSubstitution",
       "title" : "Substance Admin Substitution",
@@ -690,7 +783,7 @@
       "oids" : ["2.16.840.1.113883.5.1070"],
       "uses" : {
       },
-      "http://terminology.hl7.org/7.0.1/ValueSet-v3-ActSubstanceAdminSubstitutionCode.html" : "ActSubstanceAdminSubstitutionCode"
+      "http://terminology.hl7.org/7.3.0/ValueSet-v3-ActSubstanceAdminSubstitutionCode.html" : "ActSubstanceAdminSubstitutionCode"
     },
     {
       "url" : "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-category",

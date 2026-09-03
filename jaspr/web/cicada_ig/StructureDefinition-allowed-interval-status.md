@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-status | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:AllowedIntervalStatus |
+| Draft as of 2026-09-02 | *Computable Name*:AllowedIntervalStatus |
 
 Captures the status of the allowed interval for vaccination.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-allowed-interval-sta
   "name" : "AllowedIntervalStatus",
   "title" : "Allowed Interval Status",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

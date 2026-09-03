@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:IntervalReasonCS |
+| Draft as of 2026-09-02 | *Computable Name*:IntervalReasonCS |
 
  
 This value set includes codes for the reason an interval is considered to be invalid. 
@@ -31,7 +31,7 @@ This value set includes codes for the reason an interval is considered to be inv
   "name" : "IntervalReasonCS",
   "title" : "Interval Reason",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {
