@@ -1,0 +1,52 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "data-integrity"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem data-integrity</b></p><a name=\"data-integrity\"> </a><a name=\"hcdata-integrity\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">dose-before-birth<a name=\"data-integrity-dose-before-birth\"> </a></td><td>Dose dated before the date of birth</td><td>The administration date precedes the patient's date of birth, so the dose was not given to this patient. Check the birth date, the administration date, and that the record belongs to this patient.</td></tr><tr><td style=\"white-space:nowrap\">dose-after-assessment<a name=\"data-integrity-dose-after-assessment\"> </a></td><td>Dose dated after the assessment date</td><td>The administration date is after the assessment date, so the administration has not happened. A planned dose belongs in an ImmunizationRecommendation.</td></tr><tr><td style=\"white-space:nowrap\">duplicate-same-day<a name=\"data-integrity-duplicate-same-day\"> </a></td><td>Two doses covering one antigen on one day</td><td>Two administered doses covering the same antigen carry the same date. Matched on the antigen, not the product, so it catches a combination given alongside a component — Pediarix and Pentacel are different CVX codes that both carry diphtheria, tetanus, pertussis and polio. Both doses are still evaluated on their own merits; the engine cannot tell a record entered twice from a second injection.</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity"^^xsd:anyURI ;
+     fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity>
+  ] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "DataIntegrityCS"] ; # 
+  fhir:title [ fhir:v "Cicada Data Integrity Code System"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "FHIR-FLI" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "http://fhirfli.dev" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses."] ; # 
+  fhir:caseSensitive [ fhir:v true] ; # 
+  fhir:content [ fhir:v "complete"] ; # 
+  fhir:count [ fhir:v "3"^^xsd:nonNegativeInteger] ; # 
+  fhir:concept ( [
+     fhir:code [ fhir:v "dose-before-birth" ] ;
+     fhir:display [ fhir:v "Dose dated before the date of birth" ] ;
+     fhir:definition [ fhir:v "The administration date precedes the patient's date of birth, so the dose was not given to this patient. Check the birth date, the administration date, and that the record belongs to this patient." ]
+  ] [
+     fhir:code [ fhir:v "dose-after-assessment" ] ;
+     fhir:display [ fhir:v "Dose dated after the assessment date" ] ;
+     fhir:definition [ fhir:v "The administration date is after the assessment date, so the administration has not happened. A planned dose belongs in an ImmunizationRecommendation." ]
+  ] [
+     fhir:code [ fhir:v "duplicate-same-day" ] ;
+     fhir:display [ fhir:v "Two doses covering one antigen on one day" ] ;
+     fhir:definition [ fhir:v "Two administered doses covering the same antigen carry the same date. Matched on the antigen, not the product, so it catches a combination given alongside a component — Pediarix and Pentacel are different CVX codes that both carry diphtheria, tetanus, pertussis and polio. Both doses are still evaluated on their own merits; the engine cannot tell a record entered twice from a second injection." ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

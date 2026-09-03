@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationDispenseProfile | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:MedicationDispenseProfile |
+| Draft as of 2026-09-02 | *Computable Name*:MedicationDispenseProfile |
 
  
 Profile for medication dispenses with vaccine codes from CVX or MVX. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-MedicationDispensePr
   "name" : "MedicationDispenseProfile",
   "title" : "Medication Dispense Profile with Vaccine Codes",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

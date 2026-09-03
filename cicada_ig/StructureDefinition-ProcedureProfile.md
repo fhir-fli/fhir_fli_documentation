@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ProcedureProfile | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:ProcedureProfile |
+| Draft as of 2026-09-02 | *Computable Name*:ProcedureProfile |
 
  
 Profile for medical procedures related to immunization based on SNOMED CT or CPT codes. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-ProcedureProfile.csv
   "name" : "ProcedureProfile",
   "title" : "Immunization Procedures Profile",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

@@ -63,6 +63,34 @@
     "name" : "CdsiObservationCodes"
   },
   {
+    "id" : "data-integrity",
+    "type" : "CodeSystem",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity",
+    "version" : "0.1.0",
+    "name" : "DataIntegrityCS"
+  },
+  {
+    "id" : "forecast-reason",
+    "type" : "CodeSystem",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason",
+    "version" : "0.1.0",
+    "name" : "CicadaForecastReasonCS"
+  },
+  {
+    "id" : "series-type",
+    "type" : "CodeSystem",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+    "version" : "0.1.0",
+    "name" : "SeriesTypeCS"
+  },
+  {
+    "id" : "target-dose-status",
+    "type" : "CodeSystem",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status",
+    "version" : "0.1.0",
+    "name" : "TargetDoseStatusCS"
+  },
+  {
     "id" : "Icd10ToCdsiObservation",
     "type" : "ConceptMap",
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ConceptMap/Icd10ToCdsiObservation",
@@ -166,6 +194,13 @@
     "name" : "AllowedVaccineStatus"
   },
   {
+    "id" : "antigen-needing-dose-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext",
+    "version" : "0.1.0",
+    "name" : "AntigenNeedingDose"
+  },
+  {
     "id" : "antigen-supporting-data",
     "type" : "StructureDefinition",
     "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-supporting-data",
@@ -187,11 +222,39 @@
     "name" : "BeginAge"
   },
   {
+    "id" : "cicada-immunization-recommendation",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation",
+    "version" : "0.1.0",
+    "name" : "CicadaImmunizationRecommendation"
+  },
+  {
+    "id" : "doses-remaining-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext",
+    "version" : "0.1.0",
+    "name" : "DosesRemaining"
+  },
+  {
     "id" : "end-age",
     "type" : "StructureDefinition",
     "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/end-age",
     "version" : "0.1.0",
     "name" : "EndAge"
+  },
+  {
+    "id" : "engine-version-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext",
+    "version" : "0.1.0",
+    "name" : "EngineVersion"
+  },
+  {
+    "id" : "evaluation-detail-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext",
+    "version" : "0.1.0",
+    "name" : "EvaluationDetail"
   },
   {
     "id" : "inadvertent-administration-status",
@@ -234,6 +297,34 @@
     "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/schedule-supporting-data",
     "version" : "0.1.0",
     "name" : "ScheduleSupportingData"
+  },
+  {
+    "id" : "series-detail-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext",
+    "version" : "0.1.0",
+    "name" : "SeriesDetail"
+  },
+  {
+    "id" : "series-group-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext",
+    "version" : "0.1.0",
+    "name" : "SeriesGroup"
+  },
+  {
+    "id" : "series-type-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
+    "version" : "0.1.0",
+    "name" : "SeriesType"
+  },
+  {
+    "id" : "target-dose-status-ext",
+    "type" : "StructureDefinition",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/target-dose-status-ext",
+    "version" : "0.1.0",
+    "name" : "TargetDoseStatus"
   },
   {
     "id" : "vaccination-conflict",
@@ -285,6 +376,20 @@
     "name" : "VaccineCodesCvxMvx"
   },
   {
+    "id" : "data-integrity-vs",
+    "type" : "ValueSet",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/data-integrity-vs",
+    "version" : "0.1.0",
+    "name" : "DataIntegrityVS"
+  },
+  {
+    "id" : "dose-status-reason",
+    "type" : "ValueSet",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/dose-status-reason",
+    "version" : "0.1.0",
+    "name" : "DoseStatusReasonVS"
+  },
+  {
     "id" : "eval-reason",
     "type" : "ValueSet",
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-reason",
@@ -297,6 +402,20 @@
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-status",
     "version" : "0.1.0",
     "name" : "EvalStatusVS"
+  },
+  {
+    "id" : "forecast-reason-vs",
+    "type" : "ValueSet",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-reason-vs",
+    "version" : "0.1.0",
+    "name" : "CicadaForecastReasonVS"
+  },
+  {
+    "id" : "forecast-status",
+    "type" : "ValueSet",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-status",
+    "version" : "0.1.0",
+    "name" : "ForecastStatusVS"
   },
   {
     "id" : "immunization-procedures-cpt",
@@ -325,6 +444,20 @@
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/procedures",
     "version" : "0.1.0",
     "name" : "ImmunizationProceduresSnomed"
+  },
+  {
+    "id" : "series-type-vs",
+    "type" : "ValueSet",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/series-type-vs",
+    "version" : "0.1.0",
+    "name" : "SeriesTypeVS"
+  },
+  {
+    "id" : "target-dose-status-vs",
+    "type" : "ValueSet",
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/target-dose-status-vs",
+    "version" : "0.1.0",
+    "name" : "TargetDoseStatusVS"
   },
   {
     "id" : "vaccine-condition-codes-icd10",

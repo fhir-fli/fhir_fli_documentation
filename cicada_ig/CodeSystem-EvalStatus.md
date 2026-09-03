@@ -1,18 +1,18 @@
-# Evaluation Status - The Cicada Vaccine Forecasting Engine and Guide v0.1.0
+# Cicada Evaluation Status - The Cicada Vaccine Forecasting Engine and Guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **Evaluation Status**
+* **Cicada Evaluation Status**
 
-## CodeSystem: Evaluation Status 
+## CodeSystem: Cicada Evaluation Status 
 
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:EvalStatusCS |
+| Draft as of 2026-09-02 | *Computable Name*:EvalStatusCS |
 
  
-The status of the result of an evaluation. 
+Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -29,9 +29,9 @@ The status of the result of an evaluation.
   "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus",
   "version" : "0.1.0",
   "name" : "EvalStatusCS",
-  "title" : "Evaluation Status",
+  "title" : "Cicada Evaluation Status",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {
@@ -44,29 +44,14 @@ The status of the result of an evaluation.
       ]
     }
   ],
-  "description" : "The status of the result of an evaluation.",
+  "description" : "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here.",
   "content" : "complete",
-  "count" : 4,
+  "count" : 1,
   "concept" : [
-    {
-      "code" : "valid",
-      "display" : "Valid",
-      "definition" : "Valid"
-    },
-    {
-      "code" : "not_valid",
-      "display" : "Not Valid",
-      "definition" : "Not Valid"
-    },
     {
       "code" : "extraneous",
       "display" : "Extraneous",
-      "definition" : "Extraneous"
-    },
-    {
-      "code" : "sub_standard",
-      "display" : "Substandard",
-      "definition" : "Substandard"
+      "definition" : "The dose was administered after the series was already complete. Every administered dose must be reported, so extraneous doses are tracked but do not affect the forecast."
     }
   ]
 }

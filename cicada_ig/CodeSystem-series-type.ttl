@@ -1,0 +1,52 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "series-type"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem series-type</b></p><a name=\"series-type\"> </a><a name=\"hcseries-type\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">standard<a name=\"series-type-standard\"> </a></td><td>Standard</td><td>The routine, age-based series.</td></tr><tr><td style=\"white-space:nowrap\">risk<a name=\"series-type-risk\"> </a></td><td>Risk</td><td>A series indicated by a patient risk condition, such as travel, occupation, pregnancy, or a chronic medical condition.</td></tr><tr><td style=\"white-space:nowrap\">evaluation-only<a name=\"series-type-evaluation-only\"> </a></td><td>Evaluation Only</td><td>A series used only to evaluate administered doses; it never produces a forecast.</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type"^^xsd:anyURI ;
+     fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type>
+  ] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "SeriesTypeCS"] ; # 
+  fhir:title [ fhir:v "Series Type Code System"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "FHIR-FLI" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "http://fhirfli.dev" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data."] ; # 
+  fhir:caseSensitive [ fhir:v true] ; # 
+  fhir:content [ fhir:v "complete"] ; # 
+  fhir:count [ fhir:v "3"^^xsd:nonNegativeInteger] ; # 
+  fhir:concept ( [
+     fhir:code [ fhir:v "standard" ] ;
+     fhir:display [ fhir:v "Standard" ] ;
+     fhir:definition [ fhir:v "The routine, age-based series." ]
+  ] [
+     fhir:code [ fhir:v "risk" ] ;
+     fhir:display [ fhir:v "Risk" ] ;
+     fhir:definition [ fhir:v "A series indicated by a patient risk condition, such as travel, occupation, pregnancy, or a chronic medical condition." ]
+  ] [
+     fhir:code [ fhir:v "evaluation-only" ] ;
+     fhir:display [ fhir:v "Evaluation Only" ] ;
+     fhir:definition [ fhir:v "A series used only to evaluate administered doses; it never produces a forecast." ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

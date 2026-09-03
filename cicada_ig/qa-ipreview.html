@@ -6,7 +6,16 @@
   </head>
   <body>
     <h2>Unattributed Code Systems</h2>
-    <ul></ul>
+    <ul>
+      <li>
+        <a href="ImmunizationRecommendation-cicada-forecast-example.html">
+<code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type</code>        </a>
+      </li>
+      <li>
+        <a href="ImmunizationRecommendation-cicada-forecast-example.html">
+<code>http://loinc.org</code>        </a>
+      </li>
+    </ul>
     <h2>Copyright Fragment</h2>
     <p style="color: maroon">
       <b>This fragment is not visible to the reader</b>
@@ -27,7 +36,10 @@ This material contains content from           <a href="http://loinc.org">LOINC</
             <ul>
 
               <li>
-LOINC:                 <a href="ValueSet-vaccine-lab-evidence-of-immunity-loinc.html">VaccineLabEvidenceOfImmunityLoinc</a>
+LOINC:                 <a href="StructureDefinition-cicada-immunization-recommendation.html">CicadaImmunizationRecommendation</a>
+,                 <a href="ValueSet-forecast-status.html">ForecastStatusVS</a>
+,                 <a href="ImmunizationRecommendation-cicada-forecast-example.html">ImmunizationRecommendation/cicada-forecast-example</a>
+ and                 <a href="ValueSet-vaccine-lab-evidence-of-immunity-loinc.html">VaccineLabEvidenceOfImmunityLoinc</a>
               </li>
 
 
@@ -50,11 +62,11 @@ This material contains content that is copyright of SNOMED International. Implem
               <li>
                 <a href="http://hl7.org/fhir/R4/codesystem-snomedct.html">SNOMED Clinical Terms&amp;reg; (SNOMED CT&amp;reg;)</a>
 :                 <a href="ValueSet-procedures.html">ImmunizationProceduresSnomed</a>
-,                 <a href="StructureDefinition-ProcedureProfile.html">ProcedureProfile</a>
+,                 <a href="ImmunizationRecommendation-cicada-forecast-example.html">ImmunizationRecommendation/cicada-forecast-example</a>
                 <span onClick="document.getElementById('ips_2').innerHTML = document.getElementById('ips2_2').innerHTML" id="ips_2">
-... <span style="cursor: pointer; border: 1px grey solid; background-color: #fcdcb3; padding-left: 3px; padding-right: 3px; color: black">Show 5 more</span>                </span>
+... <span style="cursor: pointer; border: 1px grey solid; background-color: #fcdcb3; padding-left: 3px; padding-right: 3px; color: black">Show 6 more</span>                </span>
                 <span style="display: none" id="ips2_2">
-, <a href="StructureDefinition-ReactionProfile.html">ReactionProfile</a>, <a href="ValueSet-vaccine-condition-codes-snomed.html">VaccineConditionCodesSnomed</a>, <a href="StructureDefinition-VaccineConditionFhir.html">VaccineConditionFhir</a>, <a href="ValueSet-vaccine-medication-codes-snomed.html">VaccineMedicationCodesSnomed</a> and <a href="StructureDefinition-VaccineObservationFhir.html">VaccineObservationFhir</a>                </span>
+, <a href="StructureDefinition-ProcedureProfile.html">ProcedureProfile</a>, <a href="StructureDefinition-ReactionProfile.html">ReactionProfile</a>, <a href="ValueSet-vaccine-condition-codes-snomed.html">VaccineConditionCodesSnomed</a>, <a href="StructureDefinition-VaccineConditionFhir.html">VaccineConditionFhir</a>, <a href="ValueSet-vaccine-medication-codes-snomed.html">VaccineMedicationCodesSnomed</a> and <a href="StructureDefinition-VaccineObservationFhir.html">VaccineObservationFhir</a>                </span>
               </li>
 
 
@@ -74,7 +86,20 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
             <ul>
 
               <li>
-                <a href="http://terminology.hl7.org/7.0.1/CodeSystem-immunization-subpotent-reason.html">Immunization Subpotent Reason</a>
+                <a href="http://terminology.hl7.org/7.3.0/CodeSystem-immunization-evaluation-dose-status.html">Immunization Evaluation Dose Status codes</a>
+:                 <a href="ValueSet-eval-status.html">EvalStatusVS</a>
+ and                 <a href="StructureDefinition-vax-dose.html">VaxDose</a>
+              </li>
+
+              <li>
+                <a href="http://terminology.hl7.org/7.3.0/CodeSystem-immunization-recommendation-status.html">Immunization Recommendation Status Codes</a>
+:                 <a href="StructureDefinition-cicada-immunization-recommendation.html">CicadaImmunizationRecommendation</a>
+,                 <a href="ValueSet-forecast-status.html">ForecastStatusVS</a>
+ and                 <a href="ImmunizationRecommendation-cicada-forecast-example.html">ImmunizationRecommendation/cicada-forecast-example</a>
+              </li>
+
+              <li>
+                <a href="http://terminology.hl7.org/7.3.0/CodeSystem-immunization-subpotent-reason.html">Immunization Subpotent Reason</a>
 :                 <a href="StructureDefinition-vax-dose.html">VaxDose</a>
               </li>
 
@@ -94,7 +119,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
     <ul>
       <li>
 
-          IG &copy; 2024+ FHIR-FLI.  Package cicada.ig#0.1.0 based on FHIR 4.0.1. Generated 2026-02-11 
+          IG &copy; 2024+ FHIR-FLI.  Package cicada.ig#0.1.0 based on FHIR 4.0.1. Generated 2026-09-02 
           
           
                       Links: Table of Contents |
@@ -157,7 +182,7 @@ The full           <a href="https://github.com/Dokotela/cicada">Github Repo is h
 
           IG &copy; 2024+           <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>
 .  Package cicada.ig#0.1.0 based on           <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>
-. Generated           <span title="Wed, Feb 11, 2026 14:37-0500">2026-02-11</span>
+. Generated           <span title="Wed, Sep 2, 2026 22:18-0400">2026-09-02</span>
 
                     <br/>
 

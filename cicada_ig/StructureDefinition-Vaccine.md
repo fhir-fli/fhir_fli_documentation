@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://example.org/fhir/StructureDefinition/Vaccine | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:Vaccine |
+| Draft as of 2026-09-02 | *Computable Name*:Vaccine |
 
  
 Simple vaccine to easily obtain needed information for forecasting 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-Vaccine.csv), [Excel
   "name" : "Vaccine",
   "title" : "Vaccine",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

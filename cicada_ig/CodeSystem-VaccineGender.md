@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:VaccineGenderCS |
+| Draft as of 2026-09-02 | *Computable Name*:VaccineGenderCS |
 
  
 Value set for gender categories relevant to vaccination data. 
@@ -31,7 +31,7 @@ Value set for gender categories relevant to vaccination data.
   "name" : "VaccineGenderCS",
   "title" : "Vaccine Gender",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

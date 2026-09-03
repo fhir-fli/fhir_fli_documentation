@@ -1,0 +1,41 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "series-type",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem series-type</b></p><a name=\"series-type\"> </a><a name=\"hcseries-type\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">standard<a name=\"series-type-standard\"> </a></td><td>Standard</td><td>The routine, age-based series.</td></tr><tr><td style=\"white-space:nowrap\">risk<a name=\"series-type-risk\"> </a></td><td>Risk</td><td>A series indicated by a patient risk condition, such as travel, occupation, pregnancy, or a chronic medical condition.</td></tr><tr><td style=\"white-space:nowrap\">evaluation-only<a name=\"series-type-evaluation-only\"> </a></td><td>Evaluation Only</td><td>A series used only to evaluate administered doses; it never produces a forecast.</td></tr></table></div>"
+  },
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+  "version" : "0.1.0",
+  "name" : "SeriesTypeCS",
+  "title" : "Series Type Code System",
+  "status" : "draft",
+  "date" : "2026-09-02T22:18:14-04:00",
+  "publisher" : "FHIR-FLI",
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
+  "description" : "CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data.",
+  "caseSensitive" : true,
+  "content" : "complete",
+  "count" : 3,
+  "concept" : [{
+    "code" : "standard",
+    "display" : "Standard",
+    "definition" : "The routine, age-based series."
+  },
+  {
+    "code" : "risk",
+    "display" : "Risk",
+    "definition" : "A series indicated by a patient risk condition, such as travel, occupation, pregnancy, or a chronic medical condition."
+  },
+  {
+    "code" : "evaluation-only",
+    "display" : "Evaluation Only",
+    "definition" : "A series used only to evaluate administered doses; it never produces a forecast."
+  }]
+}

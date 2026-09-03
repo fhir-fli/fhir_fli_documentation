@@ -4,6 +4,7 @@
 
 * [Cicada IG Home](index.md)
 * [Logical Specification Concepts](02_logical-specification-concepts.md)
+* [What Cicada Returns](07_response-extensions.md)
 * [Select Patient Series](06_select-patient-series.md)
 * [Forecast Dates and Reasons](05_forecast-dates-and-reasons.md)
 * [Evaluate Vaccine Dose Administered](04_evaluate-vaccine-dose-administered.md)
@@ -16,22 +17,32 @@
 ### CodeSystems
 
 * [Evaluation Reason](CodeSystem-EvalReason.md)
-* [Evaluation Status](CodeSystem-EvalStatus.md)
+* [Cicada Evaluation Status](CodeSystem-EvalStatus.md)
 * [Interval Reason](CodeSystem-IntervalReason.md)
 * [Reasons why certain doses are Preferred or Allowed doses](CodeSystem-PreferredAllowedReason.md)
 * [Vaccine Gender](CodeSystem-VaccineGender.md)
 * [Valid Age Reason](CodeSystem-ValidAgeReason.md)
 * [CDSI Observation Codes](CodeSystem-cdsi-observation-codes.md)
+* [Cicada Data Integrity Code System](CodeSystem-data-integrity.md)
+* [Cicada Forecast Reason Code System](CodeSystem-forecast-reason.md)
+* [Series Type Code System](CodeSystem-series-type.md)
+* [Target Dose Status Code System](CodeSystem-target-dose-status.md)
 
 ### ValueSets
 
 * [VaccineCodesCvxMvx](ValueSet-VaccineCodesCvxMvx.md)
+* [Cicada Data Integrity Value Set](ValueSet-data-integrity-vs.md)
+* [Dose Status Reason Value Set](ValueSet-dose-status-reason.md)
 * [Evaluation Reason](ValueSet-eval-reason.md)
 * [Evaluation Status Value Set](ValueSet-eval-status.md)
+* [Cicada Forecast Reason Value Set](ValueSet-forecast-reason-vs.md)
+* [Forecast Status Value Set](ValueSet-forecast-status.md)
 * [Immunization-Relevant Procedures (CPT)](ValueSet-immunization-procedures-cpt.md)
 * [Interval Reason](ValueSet-interval-reason.md)
 * [Reasons why certain doses are Preferred or Allowed doses](ValueSet-preferred-allowed-reason.md)
 * [Procedures](ValueSet-procedures.md)
+* [Series Type Value Set](ValueSet-series-type-vs.md)
+* [Target Dose Status Value Set](ValueSet-target-dose-status-vs.md)
 * [Vaccine Condition Codes (ICD-10-CM)](ValueSet-vaccine-condition-codes-icd10.md)
 * [Vaccine Condition Codes](ValueSet-vaccine-condition-codes-snomed.md)
 * [Vaccine Gender](ValueSet-vaccine-gender.md)
@@ -56,6 +67,7 @@
 * [Vaccine](StructureDefinition-Vaccine.md)
 * [Condition Profile with Vaccine Condition Codes](StructureDefinition-VaccineConditionFhir.md)
 * [Observation Profile for Immunization Decision Support](StructureDefinition-VaccineObservationFhir.md)
+* [Cicada Immunization Recommendation](StructureDefinition-cicada-immunization-recommendation.md)
 * [Dose of a Vaccine](StructureDefinition-vax-dose.md)
 * [Vaccination Patient](StructureDefinition-vax-patient.md)
 
@@ -65,14 +77,22 @@
 * [Allowed Interval Status](StructureDefinition-allowed-interval-status.md)
 * [Allowed Vaccine Reason](StructureDefinition-allowed-vaccine-reason.md)
 * [Allowed Vaccine Status](StructureDefinition-allowed-vaccine-status.md)
+* [Antigen Needing a Dose](StructureDefinition-antigen-needing-dose-ext.md)
 * [AssessmentDate](StructureDefinition-assessment-date.md)
 * [Begin Age](StructureDefinition-begin-age.md)
+* [Doses Remaining](StructureDefinition-doses-remaining-ext.md)
 * [End Age](StructureDefinition-end-age.md)
+* [Engine and Supporting Data Version](StructureDefinition-engine-version-ext.md)
+* [Evaluation Sub-step Detail](StructureDefinition-evaluation-detail-ext.md)
 * [Inadvertent Administration Status](StructureDefinition-inadvertent-administration-status.md)
 * [Preferred Interval Reason](StructureDefinition-preferred-interval-reason.md)
 * [Preferred Interval Status](StructureDefinition-preferred-interval-status.md)
 * [Preferred Vaccine Reason](StructureDefinition-preferred-vaccine-reason.md)
 * [Preferred Vaccine Status](StructureDefinition-preferred-vaccine-status.md)
+* [Contributing Series Detail](StructureDefinition-series-detail-ext.md)
+* [Series Group](StructureDefinition-series-group-ext.md)
+* [Series Type](StructureDefinition-series-type-ext.md)
+* [Target Dose Status](StructureDefinition-target-dose-status-ext.md)
 * [Vaccination Conflict](StructureDefinition-vaccination-conflict.md)
 * [Vaccine Type](StructureDefinition-vaccine-type.md)
 * [Valid Age Reason](StructureDefinition-valid-age-reason.md)
@@ -83,9 +103,17 @@
 * [ICD-10-CM to CDSi Observation Code Map](ConceptMap-Icd10ToCdsiObservation.md)
 * [SNOMED CT to CDSi Observation Code Map](ConceptMap-SnomedToCdsiObservation.md)
 
+### ImmunizationRecommendations
+
+* [cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md)
+
 ### ImplementationGuides
 
 * [The Cicada Vaccine Forecasting Engine and Guide](index.md)
+
+### Patients
+
+* [2016-UC-0032](Patient-2016-UC-0032.md)
 
 ### StructureMaps
 

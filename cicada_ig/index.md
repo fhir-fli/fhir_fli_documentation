@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ImplementationGuide/cicada.ig | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:CicadaIG |
+| Draft as of 2026-09-02 | *Computable Name*:CicadaIG |
 
 # Cicada IG
 
@@ -62,7 +62,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
   "name" : "CicadaIG",
   "title" : "The Cicada Vaccine Forecasting Engine and Guide",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {
@@ -90,7 +90,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.0.1"
+      "version" : "7.3.0"
     },
     {
       "id" : "hl7ext",
@@ -102,7 +102,13 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       ],
       "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
       "packageId" : "hl7.fhir.uv.extensions.r4",
-      "version" : "5.2.0"
+      "version" : "5.3.0"
+    },
+    {
+      "id" : "hl7_fhir_us_immds",
+      "uri" : "http://hl7.org/fhir/us/immds/ImplementationGuide/hl7.fhir.us.immds",
+      "packageId" : "hl7.fhir.us.immds",
+      "version" : "1.0.0"
     }
   ],
   "definition" : {
@@ -793,6 +799,19 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Patient"
+          }
+        ],
+        "reference" : {
+          "reference" : "Patient/2016-UC-0032"
+        },
+        "name" : "2016-UC-0032",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -867,6 +886,20 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
           }
         ],
         "reference" : {
+          "reference" : "StructureDefinition/antigen-needing-dose-ext"
+        },
+        "name" : "Antigen Needing a Dose",
+        "description" : "An antigen within this vaccine group that needs the forecast dose. A multi-antigen group forecasts as one recommendation, so without this a caller cannot tell whether all of MMR is due or only the measles component. Repeats, one per antigen.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
           "reference" : "StructureDefinition/assessment-date"
         },
         "name" : "AssessmentDate",
@@ -905,6 +938,103 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/data-integrity"
+        },
+        "name" : "Cicada Data Integrity Code System",
+        "description" : "Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/data-integrity-vs"
+        },
+        "name" : "Cicada Data Integrity Value Set",
+        "description" : "Reasons a dose was reported rather than evaluated.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/EvalStatus"
+        },
+        "name" : "Cicada Evaluation Status",
+        "description" : "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/forecast-reason"
+        },
+        "name" : "Cicada Forecast Reason Code System",
+        "description" : "Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/forecast-reason-vs"
+        },
+        "name" : "Cicada Forecast Reason Value Set",
+        "description" : "Forecast reasons the engine can report.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/cicada-immunization-recommendation"
+        },
+        "name" : "Cicada Immunization Recommendation",
+        "description" : "The forecast cicada returns. Constrains ImmunizationRecommendation to say which series group each recommendation belongs to, so that more than one recommendation for a single vaccine group can be told apart.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ImmunizationRecommendation"
+          }
+        ],
+        "reference" : {
+          "reference" : "ImmunizationRecommendation/cicada-forecast-example"
+        },
+        "name" : "cicada-forecast-example",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -913,6 +1043,20 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         },
         "name" : "Condition Profile with Vaccine Condition Codes",
         "description" : "Profile for conditions where the code must be from the Vaccine Condition Codes value set. Accepts SNOMED CT and ICD-10-CM coded conditions.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/series-detail-ext"
+        },
+        "name" : "Contributing Series Detail",
+        "description" : "One contributing series: its own status, its own four dates, and the component dates that produced them. A vaccine group forecast reports the aggregate over several series, so without this a group covered by more than one reports a single answer for all of them, and a due date arrives with no way to see whether age or interval produced it. Repeats, one per series.",
         "exampleBoolean" : false
       },
       {
@@ -933,6 +1077,34 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/dose-status-reason"
+        },
+        "name" : "Dose Status Reason Value Set",
+        "description" : "Value set for dose evaluation status reasons, referencing the published ImmDS IG StatusReason CodeSystem.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/doses-remaining-ext"
+        },
+        "name" : "Doses Remaining",
+        "description" : "How many doses remain in the series after the one being forecast, or 'Recurring' where the series ends in a recurring dose. seriesDoses and doseNumber allow a reader to subtract, but no arithmetic says the series never ends.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:extension"
           }
         ],
@@ -941,6 +1113,20 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         },
         "name" : "End Age",
         "description" : "The age at which the vaccine is no longer applicable.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/engine-version-ext"
+        },
+        "name" : "Engine and Supporting Data Version",
+        "description" : "The engine build and the CDSi supporting-data release that produced this resource. A forecast is a function of both, so a stored response naming neither cannot be traced to what produced it. Parameters is not a DomainResource and carries no extension, so the stamp sits on each evaluation and on each recommendation.",
         "exampleBoolean" : false
       },
       {
@@ -975,14 +1161,28 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "CodeSystem"
+            "valueString" : "ValueSet"
           }
         ],
         "reference" : {
-          "reference" : "CodeSystem/EvalStatus"
+          "reference" : "ValueSet/eval-status"
         },
-        "name" : "Evaluation Status",
-        "description" : "The status of the result of an evaluation.",
+        "name" : "Evaluation Status Value Set",
+        "description" : "Combined value set for dose evaluation status, including HL7 THO standard codes (valid, notvalid) and the Cicada extension code (extraneous).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/evaluation-detail-ext"
+        },
+        "name" : "Evaluation Sub-step Detail",
+        "description" : "The CDSi Chapter 6 sub-step outcomes behind a dose's evaluation: which of age, interval, conflict and vaccine choice passed, and for those that failed, which rule failed. doseStatusReason carries ten ImmDS codes; the engine knows more than that.",
         "exampleBoolean" : false
       },
       {
@@ -993,10 +1193,10 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
           }
         ],
         "reference" : {
-          "reference" : "ValueSet/eval-status"
+          "reference" : "ValueSet/forecast-status"
         },
-        "name" : "Evaluation Status Value Set",
-        "description" : "Value Set for the status of the result of an evaluation.",
+        "name" : "Forecast Status Value Set",
+        "description" : "Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8.",
         "exampleBoolean" : false
       },
       {
@@ -1311,6 +1511,62 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/series-group-ext"
+        },
+        "name" : "Series Group",
+        "description" : "The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/series-type-ext"
+        },
+        "name" : "Series Type",
+        "description" : "Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/series-type"
+        },
+        "name" : "Series Type Code System",
+        "description" : "CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/series-type-vs"
+        },
+        "name" : "Series Type Value Set",
+        "description" : "Series types a forecast can be scoped to. In practice a forecast carries standard or risk: CDSi Table 8-14 excludes Evaluation Only series from best patient series.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "ConceptMap"
           }
         ],
@@ -1319,6 +1575,48 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         },
         "name" : "SNOMED CT to CDSi Observation Code Map",
         "description" : "Maps SNOMED CT codes to CDSi observation codes used in immunization decision support.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/target-dose-status-ext"
+        },
+        "name" : "Target Dose Status",
+        "description" : "The CDSi target dose status this administered dose produced.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/target-dose-status"
+        },
+        "name" : "Target Dose Status Code System",
+        "description" : "CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/target-dose-status-vs"
+        },
+        "name" : "Target Dose Status Value Set",
+        "description" : "CDSi target dose statuses.",
         "exampleBoolean" : false
       },
       {
@@ -1615,6 +1913,17 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
           ],
           "nameUrl" : "06_select-patient-series.html",
           "title" : "Select Patient Series",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "07_response-extensions.html"
+            }
+          ],
+          "nameUrl" : "07_response-extensions.html",
+          "title" : "What Cicada Returns",
           "generation" : "markdown"
         }
       ]

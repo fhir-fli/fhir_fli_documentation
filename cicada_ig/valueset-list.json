@@ -10,6 +10,26 @@
       "systems" : ["http://hl7.org/fhir/sid/mvx", "http://hl7.org/fhir/sid/cvx"]
     },
     {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/data-integrity-vs",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "DataIntegrityVS",
+      "title" : "Cicada Data Integrity Value Set",
+      "description" : "Reasons a dose was reported rather than evaluated.",
+      "systems" : [
+        "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity"
+      ]
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/dose-status-reason",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "DoseStatusReasonVS",
+      "title" : "Dose Status Reason Value Set",
+      "description" : "Value set for dose evaluation status reasons, referencing the published ImmDS IG StatusReason CodeSystem.",
+      "systems" : ["http://hl7.org/fhir/us/immds/CodeSystem/StatusReason"]
+    },
+    {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-reason",
       "version" : "0.1.0",
       "status" : "draft",
@@ -24,8 +44,35 @@
       "status" : "draft",
       "name" : "EvalStatusVS",
       "title" : "Evaluation Status Value Set",
-      "description" : "Value Set for the status of the result of an evaluation.",
-      "systems" : ["http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus"]
+      "description" : "Combined value set for dose evaluation status, including HL7 THO standard codes (valid, notvalid) and the Cicada extension code (extraneous).",
+      "systems" : [
+        "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status",
+        "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus"
+      ]
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-reason-vs",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "CicadaForecastReasonVS",
+      "title" : "Cicada Forecast Reason Value Set",
+      "description" : "Forecast reasons the engine can report.",
+      "systems" : [
+        "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"
+      ]
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-status",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "ForecastStatusVS",
+      "title" : "Forecast Status Value Set",
+      "description" : "Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8.",
+      "systems" : [
+        "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+        "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+        "http://loinc.org"
+      ]
     },
     {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/immunization-procedures-cpt",
@@ -66,6 +113,26 @@
       "title" : "Procedures",
       "description" : "Comprehensive Value Set for medical procedures based on SNOMED CT codes.",
       "systems" : ["http://snomed.info/sct"]
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/series-type-vs",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "SeriesTypeVS",
+      "title" : "Series Type Value Set",
+      "description" : "Series types a forecast can be scoped to. In practice a forecast carries standard or risk: CDSi Table 8-14 excludes Evaluation Only series from best patient series.",
+      "systems" : ["http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type"]
+    },
+    {
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/target-dose-status-vs",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "TargetDoseStatusVS",
+      "title" : "Target Dose Status Value Set",
+      "description" : "CDSi target dose statuses.",
+      "systems" : [
+        "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status"
+      ]
     },
     {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10",

@@ -21,7 +21,7 @@
   fhir:name [ fhir:v "CicadaIG"] ; # 
   fhir:title [ fhir:v "The Cicada Vaccine Forecasting Engine and Guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-02-11T14:37:07-05:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "FHIR-FLI" ] ;
@@ -51,7 +51,7 @@
        fhir:l <http://terminology.hl7.org/ImplementationGuide/hl7.terminology>
      ] ;
      fhir:packageId [ fhir:v "hl7.terminology.r4" ] ;
-     fhir:version [ fhir:v "7.0.1" ]
+     fhir:version [ fhir:v "7.3.0" ]
   ] [
      fhir:id [ fhir:v "hl7ext" ] ;
      fhir:extension ( [
@@ -69,7 +69,15 @@
        fhir:l <http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions>
      ] ;
      fhir:packageId [ fhir:v "hl7.fhir.uv.extensions.r4" ] ;
-     fhir:version [ fhir:v "5.2.0" ]
+     fhir:version [ fhir:v "5.3.0" ]
+  ] [
+     fhir:id [ fhir:v "hl7_fhir_us_immds" ] ;
+     fhir:uri [
+       fhir:v "http://hl7.org/fhir/us/immds/ImplementationGuide/hl7.fhir.us.immds"^^xsd:anyURI ;
+       fhir:l <http://hl7.org/fhir/us/immds/ImplementationGuide/hl7.fhir.us.immds>
+     ] ;
+     fhir:packageId [ fhir:v "hl7.fhir.us.immds" ] ;
+     fhir:version [ fhir:v "1.0.0" ]
   ] ) ; # 
   fhir:definition [
      fhir:extension ( [
@@ -1338,6 +1346,26 @@
          ] ;
          fhir:value [
            a fhir:String ;
+           fhir:v "Patient"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/Patient/2016-UC-0032> ;
+         fhir:reference [ fhir:v "Patient/2016-UC-0032" ]
+       ] ;
+       fhir:name [ fhir:v "2016-UC-0032" ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
            fhir:v "StructureDefinition:resource"
          ]
        ] ) ;
@@ -1447,6 +1475,27 @@
          ]
        ] ) ;
        fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/antigen-needing-dose-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Antigen Needing a Dose" ] ;
+       fhir:description [ fhir:v "An antigen within this vaccine group that needs the forecast dose. A multi-antigen group forecasts as one recommendation, so without this a caller cannot tell whether all of MMR is due or only the measles component. Repeats, one per antigen." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
          fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date> ;
          fhir:reference [ fhir:v "StructureDefinition/assessment-date" ]
        ] ;
@@ -1506,6 +1555,152 @@
          ] ;
          fhir:value [
            a fhir:String ;
+           fhir:v "CodeSystem"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity> ;
+         fhir:reference [ fhir:v "CodeSystem/data-integrity" ]
+       ] ;
+       fhir:name [ fhir:v "Cicada Data Integrity Code System" ] ;
+       fhir:description [ fhir:v "Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ValueSet"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/data-integrity-vs> ;
+         fhir:reference [ fhir:v "ValueSet/data-integrity-vs" ]
+       ] ;
+       fhir:name [ fhir:v "Cicada Data Integrity Value Set" ] ;
+       fhir:description [ fhir:v "Reasons a dose was reported rather than evaluated." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "CodeSystem"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus> ;
+         fhir:reference [ fhir:v "CodeSystem/EvalStatus" ]
+       ] ;
+       fhir:name [ fhir:v "Cicada Evaluation Status" ] ;
+       fhir:description [ fhir:v "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "CodeSystem"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason> ;
+         fhir:reference [ fhir:v "CodeSystem/forecast-reason" ]
+       ] ;
+       fhir:name [ fhir:v "Cicada Forecast Reason Code System" ] ;
+       fhir:description [ fhir:v "Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ValueSet"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-reason-vs> ;
+         fhir:reference [ fhir:v "ValueSet/forecast-reason-vs" ]
+       ] ;
+       fhir:name [ fhir:v "Cicada Forecast Reason Value Set" ] ;
+       fhir:description [ fhir:v "Forecast reasons the engine can report." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:resource"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation> ;
+         fhir:reference [ fhir:v "StructureDefinition/cicada-immunization-recommendation" ]
+       ] ;
+       fhir:name [ fhir:v "Cicada Immunization Recommendation" ] ;
+       fhir:description [ fhir:v "The forecast cicada returns. Constrains ImmunizationRecommendation to say which series group each recommendation belongs to, so that more than one recommendation for a single vaccine group can be told apart." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ImmunizationRecommendation"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ImmunizationRecommendation/cicada-forecast-example> ;
+         fhir:reference [ fhir:v "ImmunizationRecommendation/cicada-forecast-example" ]
+       ] ;
+       fhir:name [ fhir:v "cicada-forecast-example" ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
            fhir:v "StructureDefinition:resource"
          ]
        ] ) ;
@@ -1515,6 +1710,27 @@
        ] ;
        fhir:name [ fhir:v "Condition Profile with Vaccine Condition Codes" ] ;
        fhir:description [ fhir:v "Profile for conditions where the code must be from the Vaccine Condition Codes value set. Accepts SNOMED CT and ICD-10-CM coded conditions." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/series-detail-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Contributing Series Detail" ] ;
+       fhir:description [ fhir:v "One contributing series: its own status, its own four dates, and the component dates that produced them. A vaccine group forecast reports the aggregate over several series, so without this a group covered by more than one reports a single answer for all of them, and a due date arrives with no way to see whether age or interval produced it. Repeats, one per series." ] ;
        fhir:example [
          a fhir:Boolean ;
          fhir:v false
@@ -1548,6 +1764,48 @@
          ] ;
          fhir:value [
            a fhir:String ;
+           fhir:v "ValueSet"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/dose-status-reason> ;
+         fhir:reference [ fhir:v "ValueSet/dose-status-reason" ]
+       ] ;
+       fhir:name [ fhir:v "Dose Status Reason Value Set" ] ;
+       fhir:description [ fhir:v "Value set for dose evaluation status reasons, referencing the published ImmDS IG StatusReason CodeSystem." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/doses-remaining-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Doses Remaining" ] ;
+       fhir:description [ fhir:v "How many doses remain in the series after the one being forecast, or 'Recurring' where the series ends in a recurring dose. seriesDoses and doseNumber allow a reader to subtract, but no arithmetic says the series never ends." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
            fhir:v "StructureDefinition:extension"
          ]
        ] ) ;
@@ -1557,6 +1815,27 @@
        ] ;
        fhir:name [ fhir:v "End Age" ] ;
        fhir:description [ fhir:v "The age at which the vaccine is no longer applicable." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/engine-version-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Engine and Supporting Data Version" ] ;
+       fhir:description [ fhir:v "The engine build and the CDSi supporting-data release that produced this resource. A forecast is a function of both, so a stored response naming neither cannot be traced to what produced it. Parameters is not a DomainResource and carries no extension, so the stamp sits on each evaluation and on each recommendation." ] ;
        fhir:example [
          a fhir:Boolean ;
          fhir:v false
@@ -1611,15 +1890,36 @@
          ] ;
          fhir:value [
            a fhir:String ;
-           fhir:v "CodeSystem"
+           fhir:v "ValueSet"
          ]
        ] ) ;
        fhir:reference [
-         fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus> ;
-         fhir:reference [ fhir:v "CodeSystem/EvalStatus" ]
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-status> ;
+         fhir:reference [ fhir:v "ValueSet/eval-status" ]
        ] ;
-       fhir:name [ fhir:v "Evaluation Status" ] ;
-       fhir:description [ fhir:v "The status of the result of an evaluation." ] ;
+       fhir:name [ fhir:v "Evaluation Status Value Set" ] ;
+       fhir:description [ fhir:v "Combined value set for dose evaluation status, including HL7 THO standard codes (valid, notvalid) and the Cicada extension code (extraneous)." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/evaluation-detail-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Evaluation Sub-step Detail" ] ;
+       fhir:description [ fhir:v "The CDSi Chapter 6 sub-step outcomes behind a dose's evaluation: which of age, interval, conflict and vaccine choice passed, and for those that failed, which rule failed. doseStatusReason carries ten ImmDS codes; the engine knows more than that." ] ;
        fhir:example [
          a fhir:Boolean ;
          fhir:v false
@@ -1636,11 +1936,11 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-status> ;
-         fhir:reference [ fhir:v "ValueSet/eval-status" ]
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-status> ;
+         fhir:reference [ fhir:v "ValueSet/forecast-status" ]
        ] ;
-       fhir:name [ fhir:v "Evaluation Status Value Set" ] ;
-       fhir:description [ fhir:v "Value Set for the status of the result of an evaluation." ] ;
+       fhir:name [ fhir:v "Forecast Status Value Set" ] ;
+       fhir:description [ fhir:v "Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8." ] ;
        fhir:example [
          a fhir:Boolean ;
          fhir:v false
@@ -2115,6 +2415,90 @@
          ] ;
          fhir:value [
            a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/series-group-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Series Group" ] ;
+       fhir:description [ fhir:v "The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/series-type-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Series Type" ] ;
+       fhir:description [ fhir:v "Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "CodeSystem"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type> ;
+         fhir:reference [ fhir:v "CodeSystem/series-type" ]
+       ] ;
+       fhir:name [ fhir:v "Series Type Code System" ] ;
+       fhir:description [ fhir:v "CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ValueSet"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/series-type-vs> ;
+         fhir:reference [ fhir:v "ValueSet/series-type-vs" ]
+       ] ;
+       fhir:name [ fhir:v "Series Type Value Set" ] ;
+       fhir:description [ fhir:v "Series types a forecast can be scoped to. In practice a forecast carries standard or risk: CDSi Table 8-14 excludes Evaluation Only series from best patient series." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
            fhir:v "ConceptMap"
          ]
        ] ) ;
@@ -2124,6 +2508,69 @@
        ] ;
        fhir:name [ fhir:v "SNOMED CT to CDSi Observation Code Map" ] ;
        fhir:description [ fhir:v "Maps SNOMED CT codes to CDSi observation codes used in immunization decision support." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "StructureDefinition:extension"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/target-dose-status-ext> ;
+         fhir:reference [ fhir:v "StructureDefinition/target-dose-status-ext" ]
+       ] ;
+       fhir:name [ fhir:v "Target Dose Status" ] ;
+       fhir:description [ fhir:v "The CDSi target dose status this administered dose produced." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "CodeSystem"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status> ;
+         fhir:reference [ fhir:v "CodeSystem/target-dose-status" ]
+       ] ;
+       fhir:name [ fhir:v "Target Dose Status Code System" ] ;
+       fhir:description [ fhir:v "CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable." ] ;
+       fhir:example [
+         a fhir:Boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/tools/StructureDefinition/resource-information>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "ValueSet"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/target-dose-status-vs> ;
+         fhir:reference [ fhir:v "ValueSet/target-dose-status-vs" ]
+       ] ;
+       fhir:name [ fhir:v "Target Dose Status Value Set" ] ;
+       fhir:description [ fhir:v "CDSi target dose statuses." ] ;
        fhir:example [
          a fhir:Boolean ;
          fhir:v false
@@ -2586,6 +3033,25 @@
            fhir:l fhir:06_select-patient-series.html
          ] ;
          fhir:title [ fhir:v "Select Patient Series" ] ;
+         fhir:generation [ fhir:v "markdown" ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-page-name>
+           ] ;
+           fhir:value [
+             a fhir:Url ;
+             fhir:v "07_response-extensions.html"^^xsd:anyURI ;
+             fhir:l fhir:07_response-extensions.html
+           ]
+         ] ) ;
+         fhir:name [
+           a fhir:Url ;
+           fhir:v "07_response-extensions.html"^^xsd:anyURI ;
+           fhir:l fhir:07_response-extensions.html
+         ] ;
+         fhir:title [ fhir:v "What Cicada Returns" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] )
      ] ;

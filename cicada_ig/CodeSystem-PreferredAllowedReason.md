@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:PreferredAllowedReasonCS |
+| Draft as of 2026-09-02 | *Computable Name*:PreferredAllowedReasonCS |
 
  
 Reasons why certain doses are Preferred or Allowed doses 
@@ -31,7 +31,7 @@ Reasons why certain doses are Preferred or Allowed doses
   "name" : "PreferredAllowedReasonCS",
   "title" : "Reasons why certain doses are Preferred or Allowed doses",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

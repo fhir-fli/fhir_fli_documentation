@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="series-type"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CodeSystem series-type</b></p><a name="series-type"> </a><a name="hcseries-type"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type</code> defines the following codes:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">standard<a name="series-type-standard"> </a></td><td>Standard</td><td>The routine, age-based series.</td></tr><tr><td style="white-space:nowrap">risk<a name="series-type-risk"> </a></td><td>Risk</td><td>A series indicated by a patient risk condition, such as travel, occupation, pregnancy, or a chronic medical condition.</td></tr><tr><td style="white-space:nowrap">evaluation-only<a name="series-type-evaluation-only"> </a></td><td>Evaluation Only</td><td>A series used only to evaluate administered doses; it never produces a forecast.</td></tr></table></div>
+  </text>
+  <url value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type"/>
+  <version value="0.1.0"/>
+  <name value="SeriesTypeCS"/>
+  <title value="Series Type Code System"/>
+  <status value="draft"/>
+  <date value="2026-09-02T22:18:14-04:00"/>
+  <publisher value="FHIR-FLI"/>
+  <contact>
+    <name value="FHIR-FLI"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://fhirfli.dev"/>
+    </telecom>
+  </contact>
+  <description value="CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data."/>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="3"/>
+  <concept>
+    <code value="standard"/>
+    <display value="Standard"/>
+    <definition value="The routine, age-based series."/>
+  </concept>
+  <concept>
+    <code value="risk"/>
+    <display value="Risk"/>
+    <definition value="A series indicated by a patient risk condition, such as travel, occupation, pregnancy, or a chronic medical condition."/>
+  </concept>
+  <concept>
+    <code value="evaluation-only"/>
+    <display value="Evaluation Only"/>
+    <definition value="A series used only to evaluate administered doses; it never produces a forecast."/>
+  </concept>
+</CodeSystem>

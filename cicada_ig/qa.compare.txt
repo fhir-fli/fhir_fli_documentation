@@ -1,10 +1,10 @@
 CicadaIG : Validation Results
 =========================================
 
-err = 83, warn = 360, info = 115
+err = 147, warn = 601, info = 88
 $--
 Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.dev/fhir/ig/cicada)
- Build Errors : 2 / 5 / 0
+ Build Errors : 2 / 7 / 0
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-EvalReason : 0 / 2 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-EvalStatus : 0 / 2 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-IntervalReason : 0 / 2 / 2
@@ -12,6 +12,10 @@ Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.de
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-VaccineGender : 0 / 2 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-ValidAgeReason : 0 / 2 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-cdsi-observation-codes : 0 / 3 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-data-integrity : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-forecast-reason : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-series-type : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/CodeSystem-target-dose-status : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ConceptMap-Icd10ToCdsiObservation : 0 / 4 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ConceptMap-SnomedToCdsiObservation : 1 / 4 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ImplementationGuide-cicada.ig : 0 / 0 / 1
@@ -28,42 +32,61 @@ Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.de
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-allowed-interval-status : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-allowed-vaccine-reason : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-allowed-vaccine-status : 0 / 2 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-antigen-needing-dose-ext : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-antigen-supporting-data : 1 / 157 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-assessment-date : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-begin-age : 0 / 2 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-cicada-immunization-recommendation : 0 / 0 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-doses-remaining-ext : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-end-age : 0 / 2 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-engine-version-ext : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-evaluation-detail-ext : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-inadvertent-administration-status : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-preferred-interval-reason : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-preferred-interval-status : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-preferred-vaccine-reason : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-preferred-vaccine-status : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-schedule-supporting-data : 1 / 98 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-series-detail-ext : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-series-group-ext : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-series-type-ext : 0 / 0 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-target-dose-status-ext : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vaccination-conflict : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vaccine-type : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-valid-age-reason : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-valid-age-status : 0 / 2 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vax-dose : 4 / 1 / 3
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vax-patient : 1 / 1 / 1
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-VaccineCodesCvxMvx : 0 / 3 / 1
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-eval-reason : 0 / 1 / 16
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-eval-status : 0 / 1 / 5
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-immunization-procedures-cpt : 0 / 1 / 4
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-interval-reason : 0 / 1 / 4
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-preferred-allowed-reason : 0 / 1 / 7
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-procedures : 0 / 2 / 1
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-condition-codes-icd10 : 1 / 1 / 15
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-condition-codes-snomed : 10 / 16 / 1
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-gender : 0 / 1 / 5
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-lab-evidence-of-immunity-loinc : 2 / 1 / 13
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-VaccineCodesCvxMvx : 0 / 3 / 3
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-data-integrity-vs : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-dose-status-reason : 1 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-eval-reason : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-eval-status : 0 / 1 / 3
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-forecast-reason-vs : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-forecast-status : 1 / 1 / 4
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-immunization-procedures-cpt : 1 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-interval-reason : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-preferred-allowed-reason : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-procedures : 0 / 14 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-series-type-vs : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-target-dose-status-vs : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-condition-codes-icd10 : 1 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-condition-codes-snomed : 10 / 217 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-gender : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-lab-evidence-of-immunity-loinc : 1 / 1 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-medication-codes-rxnorm : 1 / 1 / 2
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-medication-codes-snomed : 0 / 1 / 1
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-valid-age-reason : 0 / 1 / 4
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-medication-codes-snomed : 0 / 10 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-valid-age-reason : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/input/resources/ImmunizationRecommendation-cicada-forecast-example : 62 / 0 / 18
+ /home/grey/dev/fhir/cicada/cicada_ig/input/resources/Patient-2016-UC-0032 : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/input/resources/map_vaccine_codes : 59 / 0 / 37
 </table>
 == n/a ==
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource ValueSet/VaccineCodesCvxMvx.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
-ERROR: StructureDefinition-antigen-supporting-data.html#/html/body/div/div/div/div/div/p/a at Line 3306, column 178: The link 'StructureDefinition-antigen-supporting-data.sch' for "Schematron" cannot be resolved
-ERROR: StructureDefinition-schedule-supporting-data.html#/html/body/div/div/div/div/div/p/a at Line 2332, column 180: The link 'StructureDefinition-schedule-supporting-data.sch' for "Schematron" cannot be resolved
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/2016-UC-0032.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource ImmunizationRecommendation/cicada-forecast-example.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+ERROR: StructureDefinition-antigen-supporting-data.html#/html/body/div/div/div/div/div/p/a at Line 3309, column 178: The link 'StructureDefinition-antigen-supporting-data.sch' for "Schematron" cannot be resolved
+ERROR: StructureDefinition-schedule-supporting-data.html#/html/body/div/div/div/div/div/p/a at Line 2335, column 180: The link 'StructureDefinition-schedule-supporting-data.sch' for "Schematron" cannot be resolved
 WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
@@ -97,6 +120,14 @@ WARNING: CodeSystem/cdsi-observation-codes: CodeSystem.concept[122].definition: 
 INFORMATION: CodeSystem/cdsi-observation-codes: CodeSystem: CodeSystems SHOULD have a stated value for the caseSensitive element so that users know the status and meaning of the code system clearly
 WARNING: CodeSystem/cdsi-observation-codes: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
 WARNING: CodeSystem/cdsi-observation-codes: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.caseSensitive is mandatory, but it is not present
+== fsh-generated/resources/CodeSystem-data-integrity.json ==
+WARNING: CodeSystem/data-integrity: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
+== fsh-generated/resources/CodeSystem-forecast-reason.json ==
+WARNING: CodeSystem/forecast-reason: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
+== fsh-generated/resources/CodeSystem-series-type.json ==
+WARNING: CodeSystem/series-type: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
+== fsh-generated/resources/CodeSystem-target-dose-status.json ==
+WARNING: CodeSystem/target-dose-status: CodeSystem: Published code systems SHOULD conform to the ShareableCodeSystem profile, which says that the element CodeSystem.experimental is mandatory, but it is not present
 == fsh-generated/resources/ConceptMap-Icd10ToCdsiObservation.json ==
 WARNING: ConceptMap/Icd10ToCdsiObservation: ConceptMap.target.ofType(uri): No definition could be found for URL value 'https://www.cdc.gov/vaccines/programs/iis/cdsi'
 WARNING: ConceptMap/Icd10ToCdsiObservation: ConceptMap.group[0].target: No definition could be found for URL value 'https://www.cdc.gov/vaccines/programs/iis/cdsi'
@@ -111,7 +142,7 @@ WARNING: ConceptMap/SnomedToCdsiObservation: ConceptMap: Published concept maps 
 WARNING: ConceptMap/SnomedToCdsiObservation: ConceptMap: Published concept maps SHOULD conform to the ShareableConceptMap profile, which says that the element ConceptMap.experimental is mandatory, but it is not present
 == fsh-generated/resources/ImplementationGuide-cicada.ig.json ==
 == fsh-generated/resources/StructureDefinition-MedicationAdministrationProfile.json ==
-INFORMATION: StructureDefinition/MedicationAdministrationProfile: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
+INFORMATION: StructureDefinition/MedicationAdministrationProfile: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0 is deprecated with the note: 'Use additionalBinding extension or element instead'
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationAdministrationProfile'): The Implementation Guide contains no examples for this profile
 == fsh-generated/resources/StructureDefinition-MedicationDispenseProfile.json ==
 INFORMATION: StructureDefinition/MedicationDispenseProfile: StructureDefinition.snapshot.element[29].mapping[0].map: The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
@@ -148,6 +179,8 @@ WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/Stru
 == fsh-generated/resources/StructureDefinition-allowed-vaccine-status.json ==
 WARNING: StructureDefinition/allowed-vaccine-status: StructureDefinition.context[0]: Review the extension type for allowed-vaccine-status: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-antigen-needing-dose-ext.json ==
+WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext'): The Implementation Guide contains no examples for this extension
 == fsh-generated/resources/StructureDefinition-antigen-supporting-data.json ==
 ERROR: StructureDefinition/antigen-supporting-data: StructureDefinition.type: The type antigen-supporting-data is not legal because it is not defined in the FHIR specification. Other types must have a namespace on them
 WARNING: StructureDefinition/antigen-supporting-data: StructureDefinition.snapshot.element[0]: Constraint failed: eld-20: 'Element names should be simple alphanumerics with a max of 64 characters, or code generation tools may be broken (path.matches('[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*(\\[x])?)*'))'
@@ -313,9 +346,16 @@ WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/Stru
 == fsh-generated/resources/StructureDefinition-begin-age.json ==
 WARNING: StructureDefinition/begin-age: StructureDefinition.context[0]: Review the extension type for begin-age: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/begin-age'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-cicada-immunization-recommendation.json ==
+== fsh-generated/resources/StructureDefinition-doses-remaining-ext.json ==
+WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext'): The Implementation Guide contains no examples for this extension
 == fsh-generated/resources/StructureDefinition-end-age.json ==
 WARNING: StructureDefinition/end-age: StructureDefinition.context[0]: Review the extension type for end-age: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/end-age'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-engine-version-ext.json ==
+WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-evaluation-detail-ext.json ==
+WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext'): The Implementation Guide contains no examples for this extension
 == fsh-generated/resources/StructureDefinition-inadvertent-administration-status.json ==
 WARNING: StructureDefinition/inadvertent-administration-status: StructureDefinition.context[0]: Review the extension type for inadvertent-administration-status: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/inadvertent-administration-status'): The Implementation Guide contains no examples for this extension
@@ -431,6 +471,13 @@ WARNING: StructureDefinition/schedule-supporting-data: StructureDefinition.diffe
 WARNING: StructureDefinition/schedule-supporting-data: StructureDefinition.differential.element[32]: Constraint failed: eld-20: 'Element names should be simple alphanumerics with a max of 64 characters, or code generation tools may be broken (path.matches('[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*(\\[x])?)*'))'
 WARNING: StructureDefinition/schedule-supporting-data: StructureDefinition.differential.element[33]: Constraint failed: eld-20: 'Element names should be simple alphanumerics with a max of 64 characters, or code generation tools may be broken (path.matches('[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*(\\[x])?)*'))'
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/schedule-supporting-data'): The Implementation Guide contains no examples for this profile
+== fsh-generated/resources/StructureDefinition-series-detail-ext.json ==
+WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-series-group-ext.json ==
+WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext'): The Implementation Guide contains no examples for this extension
+== fsh-generated/resources/StructureDefinition-series-type-ext.json ==
+== fsh-generated/resources/StructureDefinition-target-dose-status-ext.json ==
+WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/target-dose-status-ext'): The Implementation Guide contains no examples for this extension
 == fsh-generated/resources/StructureDefinition-vaccination-conflict.json ==
 WARNING: StructureDefinition/vaccination-conflict: StructureDefinition.context[0]: Review the extension type for vaccination-conflict: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict'): The Implementation Guide contains no examples for this extension
@@ -445,7 +492,7 @@ WARNING: StructureDefinition/valid-age-status: StructureDefinition.context[0]: R
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-status'): The Implementation Guide contains no examples for this extension
 == fsh-generated/resources/StructureDefinition-vax-dose.json ==
 ERROR: StructureDefinition.where(url = 'http://example.org/fhir/StructureDefinition/vax-dose'): Conformance resource /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vax-dose.json - the canonical URL (http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vax-dose) does not match the URL (http://example.org/fhir/StructureDefinition/vax-dose). Use the special-url parameter if you really mean for it not to match
-ERROR: Dose of a Vaccine.Immunization.status: Binding http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-status is not a subset of binding http://hl7.org/fhir/ValueSet/immunization-status|4.0.1 because The codes 'valid,not_valid,extraneous,sub_standard' are not in the base valueset
+ERROR: Dose of a Vaccine.Immunization.status: Binding http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-status is not a subset of binding http://hl7.org/fhir/ValueSet/immunization-status|4.0.1 because The codes 'valid,extraneous,notvalid' are not in the base valueset
 INFORMATION: StructureDefinition/vax-dose: StructureDefinition.differential.element[21].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
 INFORMATION: StructureDefinition/vax-dose: StructureDefinition.snapshot.element[68].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
 ERROR: StructureDefinition/vax-dose: StructureDefinition.snapshot.element[68].slicing.discriminator[0]: The discriminator path 'doseNumberPositiveInt' does not appear to be valid for the element that is being sliced 'Immunization.protocolApplied'
@@ -455,130 +502,403 @@ ERROR: /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDef
 ERROR: Vaccination Patient.Patient.gender: Binding http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-gender is not a subset of binding http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1 because The codes 'female,transgender,male,unknown' are not in the base valueset
 WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vax-patient'): The Implementation Guide contains no examples for this profile
 == fsh-generated/resources/ValueSet-VaccineCodesCvxMvx.json ==
+INFORMATION: ValueSet/VaccineCodesCvxMvx: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+INFORMATION: ValueSet/VaccineCodesCvxMvx: ValueSet.compose.include[1]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/VaccineCodesCvxMvx: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.title is mandatory, but it is not present
 WARNING: ValueSet/VaccineCodesCvxMvx: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 WARNING: ValueSet/VaccineCodesCvxMvx: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.description is mandatory, but it is not present
+== fsh-generated/resources/ValueSet-data-integrity-vs.json ==
+INFORMATION: ValueSet/data-integrity-vs: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+WARNING: ValueSet/data-integrity-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+== fsh-generated/resources/ValueSet-dose-status-reason.json ==
+INFORMATION: ValueSet/dose-status-reason: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+WARNING: ValueSet/dose-status-reason: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+ERROR: ValueSet.where(id = 'dose-status-reason'): Error from https://tx.fhir.org/r4: Error: The cache '60a655d0-6f4b-44f0-9f58-1e51a1da076a' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
 == fsh-generated/resources/ValueSet-eval-reason.json ==
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[0]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[1]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[2]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[3]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[4]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[5]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[6]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[7]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[8]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[9]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[10]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[11]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[12]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[13]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
-INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0].concept[14]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason|0.1.0
+INFORMATION: ValueSet/eval-reason: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/eval-reason: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 == fsh-generated/resources/ValueSet-eval-status.json ==
-INFORMATION: ValueSet/eval-status: ValueSet.compose.include[0].concept[0]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus|0.1.0
-INFORMATION: ValueSet/eval-status: ValueSet.compose.include[0].concept[1]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus|0.1.0
-INFORMATION: ValueSet/eval-status: ValueSet.compose.include[0].concept[2]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus|0.1.0
-INFORMATION: ValueSet/eval-status: ValueSet.compose.include[0].concept[3]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus|0.1.0
+INFORMATION: ValueSet/eval-status: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+INFORMATION: ValueSet/eval-status: ValueSet.compose.include[1]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/eval-status: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+== fsh-generated/resources/ValueSet-forecast-reason-vs.json ==
+INFORMATION: ValueSet/forecast-reason-vs: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+WARNING: ValueSet/forecast-reason-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+== fsh-generated/resources/ValueSet-forecast-status.json ==
+INFORMATION: ValueSet/forecast-status: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+INFORMATION: ValueSet/forecast-status: ValueSet.compose.include[1]: The concepts in the value set include have not been validated because there is no terminology server
+INFORMATION: ValueSet/forecast-status: ValueSet.compose.include[2]: The concepts in the value set include have not been validated because there is no terminology server
+WARNING: ValueSet/forecast-status: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+ERROR: ValueSet.where(id = 'forecast-status'): Error from https://tx.fhir.org/r4: Error: The cache '60a655d0-6f4b-44f0-9f58-1e51a1da076a' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
 == fsh-generated/resources/ValueSet-immunization-procedures-cpt.json ==
-INFORMATION: ValueSet/immunization-procedures-cpt: ValueSet.compose.include[0].concept[1]: Wrong Display Name 'Splenectomy; total, en bloc' for http://www.ama-assn.org/go/cpt#38101. Valid display is one of 6 choices: 'Splenectomy; partial (separate procedure)' (en), 'SPLENECTOMY; PARTIAL (SEPARATE PROCEDURE)' (en), 'SPLENECTOMY PARTIAL SEPARATE PROCEDURE' (en), 'REMOVAL OF SPLEEN PARTIAL' (en), 'Partial removal of spleen' (en) or 'Partial splenectomy' (en) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/immunization-procedures-cpt: ValueSet.compose.include[0].concept[2]: Wrong Display Name 'Splenectomy; total, en bloc with other organs' for http://www.ama-assn.org/go/cpt#38102. Valid display is one of 6 choices: 'Splenectomy; total, en bloc for extensive disease, in conjunction with other procedure (List in addition to code for primary procedure)' (en), 'SPLENECTOMY; TOTAL, EN BLOC FOR EXTENSIVE DISEASE, IN CONJUNCTION WITH OTHER PROCEDURE (LIST IN ADDITION TO CODE FOR PRIMARY PROCEDURE)' (en), 'SPLENC TOT EN BLOC EXTNSV DS CONJUNCT W/OTH PX' (en), 'REMOVAL OF SPLEEN TOTAL' (en), 'Removal of spleen during other surgical procedure' (en) or 'Total en bloc splenectomy for extensive disease' (en) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/immunization-procedures-cpt: ValueSet.compose.include[0].concept[3]: Wrong Display Name 'Repair of ruptured spleen with splenorrhaphy' for http://www.ama-assn.org/go/cpt#38115. Valid display is one of 7 choices: 'Repair of ruptured spleen (splenorrhaphy) with or without partial splenectomy' (en), 'REPAIR OF RUPTURED SPLEEN (SPLENORRHAPHY) WITH OR WITHOUT PARTIAL SPLENECTOMY' (en), 'RPR RPTD SPLEEN SPLENORRHAPHY W/WO PRTL SPLENECT' (en), 'REPAIR OF RUPTURED SPLEEN' (en), 'Repair of ruptured spleen' (en), 'Repair of ruptured spleen with partial splenectomy' (en) or 'Repair of ruptured spleen' (en) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
+INFORMATION: ValueSet/immunization-procedures-cpt: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/immunization-procedures-cpt: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+ERROR: ValueSet.where(id = 'immunization-procedures-cpt'): A definition for CodeSystem 'http://www.ama-assn.org/go/cpt' could not be found, so the value set cannot be expanded
 == fsh-generated/resources/ValueSet-interval-reason.json ==
-INFORMATION: ValueSet/interval-reason: ValueSet.compose.include[0].concept[0]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason|0.1.0
-INFORMATION: ValueSet/interval-reason: ValueSet.compose.include[0].concept[1]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason|0.1.0
-INFORMATION: ValueSet/interval-reason: ValueSet.compose.include[0].concept[2]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason|0.1.0
+INFORMATION: ValueSet/interval-reason: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/interval-reason: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 == fsh-generated/resources/ValueSet-preferred-allowed-reason.json ==
-INFORMATION: ValueSet/preferred-allowed-reason: ValueSet.compose.include[0].concept[0]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason|0.1.0
-INFORMATION: ValueSet/preferred-allowed-reason: ValueSet.compose.include[0].concept[1]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason|0.1.0
-INFORMATION: ValueSet/preferred-allowed-reason: ValueSet.compose.include[0].concept[2]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason|0.1.0
-INFORMATION: ValueSet/preferred-allowed-reason: ValueSet.compose.include[0].concept[3]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason|0.1.0
-INFORMATION: ValueSet/preferred-allowed-reason: ValueSet.compose.include[0].concept[4]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason|0.1.0
-INFORMATION: ValueSet/preferred-allowed-reason: ValueSet.compose.include[0].concept[5]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason|0.1.0
+INFORMATION: ValueSet/preferred-allowed-reason: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/preferred-allowed-reason: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 == fsh-generated/resources/ValueSet-procedures.json ==
+WARNING: ValueSet/procedures: ValueSet.compose.include[0]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[1]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[2]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[3]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[4]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[5]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[6]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[7]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[8]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[9]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/procedures: ValueSet.compose.include[9].filter[0]: The code for the filter 'concept' is inactive ('53438000')
+WARNING: ValueSet/procedures: ValueSet.compose.include[10]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/procedures: ValueSet.compose.include[11]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/procedures: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+== fsh-generated/resources/ValueSet-series-type-vs.json ==
+INFORMATION: ValueSet/series-type-vs: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+WARNING: ValueSet/series-type-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+== fsh-generated/resources/ValueSet-target-dose-status-vs.json ==
+INFORMATION: ValueSet/target-dose-status-vs: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
+WARNING: ValueSet/target-dose-status-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 == fsh-generated/resources/ValueSet-vaccine-condition-codes-icd10.json ==
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[3]: Wrong Display Name 'Disorder involving immune mechanism, unspecified' for http://hl7.org/fhir/sid/icd-10-cm#D89.9. Valid display is 'Disorder involving the immune mechanism, unspecified' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[4]: Wrong Display Name 'Other specified immunodeficiency disorders' for http://hl7.org/fhir/sid/icd-10-cm#D84.8. Valid display is 'Other specified immunodeficiencies' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[5]: Wrong Display Name 'Bone marrow transplant status' for http://hl7.org/fhir/sid/icd-10-cm#Z94.84. Valid display is 'Stem cells transplant status' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[13]: Wrong Display Name 'Supervision of high risk pregnancy, unspecified trimester' for http://hl7.org/fhir/sid/icd-10-cm#O09.90. Valid display is 'Supervision of high risk pregnancy, unspecified, unspecified trimester' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[24]: Wrong Display Name 'SCID with reticular dysgenesis' for http://hl7.org/fhir/sid/icd-10-cm#D81.0. Valid display is 'Severe combined immunodeficiency [SCID] with reticular dysgenesis' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[25]: Wrong Display Name 'SCID with low T- and B-cell numbers' for http://hl7.org/fhir/sid/icd-10-cm#D81.1. Valid display is 'Severe combined immunodeficiency [SCID] with low T- and B-cell numbers' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[26]: Wrong Display Name 'SCID with low or normal B-cell numbers' for http://hl7.org/fhir/sid/icd-10-cm#D81.2. Valid display is 'Severe combined immunodeficiency [SCID] with low or normal B-cell numbers' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[27]: Wrong Display Name 'Adenosine deaminase deficiency' for http://hl7.org/fhir/sid/icd-10-cm#D81.3. Valid display is 'Adenosine deaminase [ADA] deficiency' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[28]: Wrong Display Name 'Purine nucleoside phosphorylase deficiency' for http://hl7.org/fhir/sid/icd-10-cm#D81.5. Valid display is 'Purine nucleoside phosphorylase [PNP] deficiency' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[44]: Wrong Display Name 'Fatty liver, not elsewhere classified' for http://hl7.org/fhir/sid/icd-10-cm#K76.0. Valid display is 'Fatty (change of) liver, not elsewhere classified' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[55]: Wrong Display Name 'Chronic obstructive pulmonary disease with acute exacerbation' for http://hl7.org/fhir/sid/icd-10-cm#J44.1. Valid display is 'Chronic obstructive pulmonary disease with (acute) exacerbation' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[66]: Wrong Display Name 'Chronic kidney disease, stage 2' for http://hl7.org/fhir/sid/icd-10-cm#N18.2. Valid display is 'Chronic kidney disease, stage 2 (mild)' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[68]: Wrong Display Name 'Chronic kidney disease, stage 4' for http://hl7.org/fhir/sid/icd-10-cm#N18.4. Valid display is 'Chronic kidney disease, stage 4 (severe)' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-ERROR: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[88]: The code 'A18.9' is not valid in the system http://hl7.org/fhir/sid/icd-10-cm (Unknown code 'A18.9' in the CodeSystem 'http://hl7.org/fhir/sid/icd-10-cm' version '2024')
-INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[95]: Wrong Display Name 'Contact with and exposure to infections with a predominantly sexual mode of transmission' for http://hl7.org/fhir/sid/icd-10-cm#Z20.2. Valid display is 'Contact with and (suspected) exposure to infections with a predominantly sexual mode of transmission' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
+INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/vaccine-condition-codes-icd10: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+ERROR: ValueSet.where(id = 'vaccine-condition-codes-icd10'): A definition for CodeSystem 'http://hl7.org/fhir/sid/icd-10-cm' could not be found, so the value set cannot be expanded
 == fsh-generated/resources/ValueSet-vaccine-condition-codes-snomed.json ==
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[0]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[1]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[2]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[3]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[3].filter[0]: The code for the filter 'concept' is inactive ('102874004')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[4]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[4].filter[0]: The code for the filter 'concept' is inactive ('255409004')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[5]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[6]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[7]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[8]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[9]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[10]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[11]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[12]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[13]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[14]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[15]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[16]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[17]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[18]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[19]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[20]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[21]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[22]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[23]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[24]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[25]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[26]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[27]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[28]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[29]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[30]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[31]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[31].filter[0]: The code for the filter 'concept' is inactive ('35327006')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[32]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[33]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[34]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[35]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[36]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[37]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[38]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[39]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[40]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[41]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[42]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[43]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[44]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[45]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[46]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[47]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[48]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[49]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[50]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[51]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[52]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[53]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[54]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[55]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[56]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[57]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[58]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[59]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[60]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[61]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[62]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[63]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[64]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[65]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[66]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[67]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[68]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[69]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[70]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[71]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[72]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[73]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[74]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[75]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[76]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[77]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[78]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[79]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[80]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[81]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[82]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[83]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[84]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[85]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[86]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[87]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[88]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[89]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[90]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[91]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[92]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[93]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[94]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[95]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[96]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[97]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[98]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[99]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[100]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[101]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[102]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[103]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[104]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[105]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[105].filter[0]: The code for the filter 'concept' is inactive ('410519009')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[106]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[107]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[108]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[109]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[110]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[110].filter[0]: The code for the filter 'concept' is inactive ('12271241000119109')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[111]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[112]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[113]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[114]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[115]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[116]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[117]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[117].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '451301000124103' is not (Unknown code '451301000124103' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[118]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[118].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '429301000124101' is not (Unknown code '429301000124101' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[119]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[120]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[121]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[122]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[123]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[124]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[124].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '451331000124106' is not (Unknown code '451331000124106' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[125]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[125].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '429311000124103' is not (Unknown code '429311000124103' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[126]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[127]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[128]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[129]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[130]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[130].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '2219088009' is not (Unknown code '2219088009' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[131]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[131].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '451111000124103' is not (Unknown code '451111000124103' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[132]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[133]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[134]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[135]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[136]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[136].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '451291000124104' is not (Unknown code '451291000124104' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[137]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[138]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[138].filter[0]: The code for the filter 'concept' is inactive ('91930004')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[139]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[140]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[141]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[141].filter[0]: The code for the filter 'concept' is inactive ('300916003')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[142]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[142].filter[0]: The code for the filter 'concept' is inactive ('441593005')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[143]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[143].filter[0]: The code for the filter 'concept' is inactive ('419522004')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[144]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[145]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[146]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[147]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[148]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[149]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[150]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[151]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[152]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[152].filter[0]: The code for the filter 'concept' is inactive ('703936006')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[153]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[154]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[155]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[156]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[156].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '451281000124102' is not (Unknown code '451281000124102' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[157]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[158]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[159]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[160]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[161]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[162]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[163]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[164]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[164].filter[0]: The code for the filter 'concept' is inactive ('77128003')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[165]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[165].filter[0]: The code for the filter 'concept' is inactive ('77128003')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[166]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[167]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[168]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[169]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[170]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[171]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[172]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[173]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[173].filter[0]: The code for the filter 'concept' is inactive ('77358003')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[174]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[175]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[176]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[177]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[178]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[179]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[180]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[181]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[181].filter[0]: The code for the filter 'concept' is inactive ('422608009')
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[182]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[183]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[184]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 ERROR: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[184].filter[0]: The value for a filter based on property 'concept' must be a valid code from the system 'http://snomed.info/sct', and '451291000124104' is not (Unknown code '451291000124104' in the CodeSystem 'http://snomed.info/sct' version 'http://snomed.info/sct/900000000000207008/version/20250201' (International Edition))
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[185]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[186]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[187]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[188]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[189]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[190]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[191]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[192]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[193]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[194]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[195]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[196]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[197]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[198]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[199]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[200]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet.compose.include[200].filter[0]: The code for the filter 'concept' is inactive ('413490006')
 WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 ERROR: ValueSet.where(id = 'vaccine-condition-codes-snomed'): Error from https://tx.fhir.org/r4: The SNOMED CT Concept 451301000124103 is not known
 == fsh-generated/resources/ValueSet-vaccine-gender.json ==
-INFORMATION: ValueSet/vaccine-gender: ValueSet.compose.include[0].concept[0]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender|0.1.0
-INFORMATION: ValueSet/vaccine-gender: ValueSet.compose.include[0].concept[1]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender|0.1.0
-INFORMATION: ValueSet/vaccine-gender: ValueSet.compose.include[0].concept[2]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender|0.1.0
-INFORMATION: ValueSet/vaccine-gender: ValueSet.compose.include[0].concept[3]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender|0.1.0
+INFORMATION: ValueSet/vaccine-gender: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/vaccine-gender: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 == fsh-generated/resources/ValueSet-vaccine-lab-evidence-of-immunity-loinc.json ==
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[0]: Wrong Display Name 'Measles virus IgG Ab [Units/volume] in Serum' for http://loinc.org#21500-4. Valid display is one of 4 choices: 'Measles virus IgG Ab [Titer] in Cerebral spinal fluid by Immunofluorescence' (en-US), 'Measles virus IgG Ab [Titer] in Cerebral spinal fluid by Immunofluorescence' (en-US), 'MeV IgG Titr CSF IF' (en-US) or 'Measles virus IgG antibody, Spinal fluid' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[1]: Wrong Display Name 'Measles virus IgG Ab [Presence] in Serum' for http://loinc.org#35275-7. Valid display is one of 4 choices: 'Measles virus IgG Ab [Presence] in Serum by Immunoassay' (en-US), 'Measles virus IgG Ab [Presence] in Serum by Immunoassay' (en-US), 'MeV IgG Ser Ql IA' (en-US) or 'Measles virus IgG antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[2]: Wrong Display Name 'Measles virus Ab [Presence] in Serum' for http://loinc.org#20479-2. Valid display is one of 4 choices: 'Measles virus IgG Ab [Presence] in Serum' (en-US), 'Measles virus IgG Ab [Presence] in Serum' (en-US), 'MeV IgG Ser Ql' (en-US) or 'Measles virus IgG antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-ERROR: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[3]: The code '6476-3' is not valid in the system http://loinc.org (Unknown code '6476-3' in the CodeSystem 'http://loinc.org' version '2.81')
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[4]: Wrong Display Name 'Mumps virus IgG Ab [Presence] in Serum' for http://loinc.org#39012-0. Valid display is one of 4 choices: 'Mycoplasma pneumoniae Ab [Presence] in Body fluid' (en-US), 'Mycoplasma pneumoniae Ab [Presence] in Body fluid' (en-US), 'M pneumo Ab Fld Ql' (en-US) or 'Mycoplasma pneumoniae antibody, Body fluid' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[5]: Wrong Display Name 'Mumps virus Ab [Presence] in Serum' for http://loinc.org#22416-2. Valid display is one of 4 choices: 'Mumps virus IgG Ab [Titer] in Cerebral spinal fluid' (en-US), 'Mumps virus IgG Ab [Titer] in Cerebral spinal fluid' (en-US), 'MuV IgG Titr CSF' (en-US) or 'Mumps virus IgG antibody, Spinal fluid' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[8]: Wrong Display Name 'Rubella virus Ab [Presence] in Serum' for http://loinc.org#20458-6. Valid display is one of 4 choices: 'Rubella virus IgG Ab [Interpretation] in Serum' (en-US), 'Rubella virus IgG Ab [Interpretation] in Serum' (en-US), 'RUBV IgG Ser-Imp' (en-US) or 'Rubella virus IgG antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[9]: Wrong Display Name 'Varicella zoster virus IgG Ab [Units/volume] in Serum' for http://loinc.org#19162-7. Valid display is one of 4 choices: 'Varicella zoster virus IgG Ab [Presence] in Serum' (en-US), 'Varicella zoster virus IgG Ab [Presence] in Serum' (en-US), 'VZV IgG Ser Ql' (en-US) or 'Varicella zoster virus (VZV; Chickenpox) IgG antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[10]: Wrong Display Name 'Varicella zoster virus IgG Ab [Presence] in Serum' for http://loinc.org#17763-4. Valid display is one of 4 choices: 'Varicella zoster virus IgG Ab [Units/volume] in Serum by Immunofluorescence' (en-US), 'Varicella zoster virus IgG Ab [Units/volume] in Serum by Immunofluorescence' (en-US), 'VZV IgG Ser IF-aCnc' (en-US) or 'Varicella zoster virus (VZV; Chickenpox) IgG antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-ERROR: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[11]: The code '5403-8' is not valid in the system http://loinc.org (Unknown code '5403-8' in the CodeSystem 'http://loinc.org' version '2.81')
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[14]: Wrong Display Name 'Hepatitis B virus surface Ab [Units/volume] in Serum by Immunoassay' for http://loinc.org#10900-9. Valid display is one of 4 choices: 'Hepatitis B virus surface Ab [Presence] in Serum by Immunoassay' (en-US), 'Hepatitis B virus surface Ab [Presence] in Serum by Immunoassay' (en-US), 'HBV surface Ab Ser Ql IA' (en-US) or 'Hepatitis B virus (HBV) Surface antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[15]: Wrong Display Name 'Hepatitis A virus Ab [Presence] in Serum' for http://loinc.org#32018-4. Valid display is one of 4 choices: 'Hepatitis A virus IgG Ab [Presence] in Serum' (en-US), 'Hepatitis A virus IgG Ab [Presence] in Serum' (en-US), 'HAV IgG Ser Ql' (en-US) or 'Hepatitis A virus (HAV) IgG antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[16]: Wrong Display Name 'Hepatitis A virus IgG Ab [Presence] in Serum' for http://loinc.org#40724-7. Valid display is one of 4 choices: 'Hepatitis A virus IgG Ab [Presence] in Serum by Immunoassay' (en-US), 'Hepatitis A virus IgG Ab [Presence] in Serum by Immunoassay' (en-US), 'HAV IgG Ser Ql IA' (en-US) or 'Hepatitis A virus (HAV) IgG antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
-INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0].concept[17]: Wrong Display Name 'Hepatitis A virus Ab [Units/volume] in Serum' for http://loinc.org#13950-1. Valid display is one of 4 choices: 'Hepatitis A virus IgM Ab [Presence] in Serum or Plasma by Immunoassay' (en-US), 'Hepatitis A virus IgM Ab [Presence] in Serum or Plasma by Immunoassay' (en-US), 'HAV IgM SerPl Ql IA' (en-US) or 'Hepatitis A virus (HAV) IgM antibody, Blood' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
+INFORMATION: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/vaccine-lab-evidence-of-immunity-loinc: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+ERROR: ValueSet.where(id = 'vaccine-lab-evidence-of-immunity-loinc'): A definition for CodeSystem 'http://loinc.org' could not be found, so the value set cannot be expanded
 == fsh-generated/resources/ValueSet-vaccine-medication-codes-rxnorm.json ==
-ERROR: ValueSet/vaccine-medication-codes-rxnorm: ValueSet.compose.include[0].concept[1]: The code '24811' is not valid in the system http://www.nlm.nih.gov/research/umls/rxnorm (Unknown code '24811' in the CodeSystem 'http://www.nlm.nih.gov/research/umls/rxnorm' version '??')
-INFORMATION: ValueSet/vaccine-medication-codes-rxnorm: ValueSet.compose.include[0].concept[2]: Wrong Display Name 'Valacyclovir' for http://www.nlm.nih.gov/research/umls/rxnorm#39786. Valid display is 'venlafaxine' (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
+INFORMATION: ValueSet/vaccine-medication-codes-rxnorm: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/vaccine-medication-codes-rxnorm: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+ERROR: ValueSet.where(id = 'vaccine-medication-codes-rxnorm'): A definition for CodeSystem 'http://www.nlm.nih.gov/research/umls/rxnorm' could not be found, so the value set cannot be expanded
 == fsh-generated/resources/ValueSet-vaccine-medication-codes-snomed.json ==
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[0]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[1]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[2]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[3]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[4]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[5]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[6]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[7]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
+WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet.compose.include[8]: The value set references CodeSystem 'http://snomed.info/sct' which has status 'not-present'
 WARNING: ValueSet/vaccine-medication-codes-snomed: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
 == fsh-generated/resources/ValueSet-valid-age-reason.json ==
-INFORMATION: ValueSet/valid-age-reason: ValueSet.compose.include[0].concept[0]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason|0.1.0
-INFORMATION: ValueSet/valid-age-reason: ValueSet.compose.include[0].concept[1]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason|0.1.0
-INFORMATION: ValueSet/valid-age-reason: ValueSet.compose.include[0].concept[2]: Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason|0.1.0
+INFORMATION: ValueSet/valid-age-reason: ValueSet.compose.include[0]: The concepts in the value set include have not been validated because there is no terminology server
 WARNING: ValueSet/valid-age-reason: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+== input/resources/ImmunizationRecommendation-cicada-forecast-example.json ==
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[0].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[0].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[0].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[0].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[0].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[0].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[0].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[1].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[1].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[1].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[1].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[4].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[4].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[4].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[4].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'f7221103-eb3c-4c09-aab6-aa2a8310ef88' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[5].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[5].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[5].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[5].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[5].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[5].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[5].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[6].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[6].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[6].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[6].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[6].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[6].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[6].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[7].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[7].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[7].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[7].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[7].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[7].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[7].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[8].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[8].vaccineCode[0]: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[8].targetDisease: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[8].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'f7221103-eb3c-4c09-aab6-aa2a8310ef88' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[9].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[9].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[9].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[9].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[9].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[10].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[10].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'f7221103-eb3c-4c09-aab6-aa2a8310ef88' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[11].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[11].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[11].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[11].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[11].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[12].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[12].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'f7221103-eb3c-4c09-aab6-aa2a8310ef88' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[13].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[13].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'dcd14846-dbf8-4a44-b6fb-ef0e8b820f42' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[13].dateCriterion[0].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[13].dateCriterion[1].code: java.net.SocketTimeoutException: timeout
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[13].dateCriterion[2].code: java.net.SocketTimeoutException: timeout
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[14].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[14].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'f7221103-eb3c-4c09-aab6-aa2a8310ef88' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[15].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[15].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'f7221103-eb3c-4c09-aab6-aa2a8310ef88' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[16].extension[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
+ERROR: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[16].forecastStatus: Error from https://tx.fhir.org/r4: Error: The cache 'f7221103-eb3c-4c09-aab6-aa2a8310ef88' was never issued by this server, and this server has no record of it ever existing. Caches are created with $cache-control?mode=start, and a cache-id is only valid on the server instance and endpoint that issued it - either it was issued somewhere else, or this server has restarted since it was issued
+== input/resources/Patient-2016-UC-0032.json ==
 == input/resources/map_vaccine_codes.json ==
 ERROR: StructureMap.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureMap/map-vaccine-codes'): Conformance resource /home/grey/dev/fhir/cicada/cicada_ig/input/resources/map_vaccine_codes.json - the canonical URL (http://fhirfli.dev/fhir/ig/cicada/StructureMap/MapVaccineCodes) does not match the URL (http://fhirfli.dev/fhir/ig/cicada/StructureMap/map-vaccine-codes). Use the special-url parameter if you really mean for it not to match
 ERROR: StructureMap.url: Resource id/url mismatch: MapVaccineCodes/http://fhirfli.dev/fhir/ig/cicada/StructureMap/map-vaccine-codes

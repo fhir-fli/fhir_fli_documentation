@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="data-integrity"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CodeSystem data-integrity</b></p><a name="data-integrity"> </a><a name="hcdata-integrity"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity</code> defines the following codes:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">dose-before-birth<a name="data-integrity-dose-before-birth"> </a></td><td>Dose dated before the date of birth</td><td>The administration date precedes the patient's date of birth, so the dose was not given to this patient. Check the birth date, the administration date, and that the record belongs to this patient.</td></tr><tr><td style="white-space:nowrap">dose-after-assessment<a name="data-integrity-dose-after-assessment"> </a></td><td>Dose dated after the assessment date</td><td>The administration date is after the assessment date, so the administration has not happened. A planned dose belongs in an ImmunizationRecommendation.</td></tr><tr><td style="white-space:nowrap">duplicate-same-day<a name="data-integrity-duplicate-same-day"> </a></td><td>Two doses covering one antigen on one day</td><td>Two administered doses covering the same antigen carry the same date. Matched on the antigen, not the product, so it catches a combination given alongside a component — Pediarix and Pentacel are different CVX codes that both carry diphtheria, tetanus, pertussis and polio. Both doses are still evaluated on their own merits; the engine cannot tell a record entered twice from a second injection.</td></tr></table></div>
+  </text>
+  <url value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity"/>
+  <version value="0.1.0"/>
+  <name value="DataIntegrityCS"/>
+  <title value="Cicada Data Integrity Code System"/>
+  <status value="draft"/>
+  <date value="2026-09-02T22:18:14-04:00"/>
+  <publisher value="FHIR-FLI"/>
+  <contact>
+    <name value="FHIR-FLI"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://fhirfli.dev"/>
+    </telecom>
+  </contact>
+  <description value="Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses."/>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="3"/>
+  <concept>
+    <code value="dose-before-birth"/>
+    <display value="Dose dated before the date of birth"/>
+    <definition value="The administration date precedes the patient's date of birth, so the dose was not given to this patient. Check the birth date, the administration date, and that the record belongs to this patient."/>
+  </concept>
+  <concept>
+    <code value="dose-after-assessment"/>
+    <display value="Dose dated after the assessment date"/>
+    <definition value="The administration date is after the assessment date, so the administration has not happened. A planned dose belongs in an ImmunizationRecommendation."/>
+  </concept>
+  <concept>
+    <code value="duplicate-same-day"/>
+    <display value="Two doses covering one antigen on one day"/>
+    <definition value="Two administered doses covering the same antigen carry the same date. Matched on the antigen, not the product, so it catches a combination given alongside a component — Pediarix and Pentacel are different CVX codes that both carry diphtheria, tetanus, pertussis and polio. Both doses are still evaluated on their own merits; the engine cannot tell a record entered twice from a second injection."/>
+  </concept>
+</CodeSystem>

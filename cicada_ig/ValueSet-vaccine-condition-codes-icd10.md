@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10 | *Version*:0.1.0 |
-| Active as of 2026-02-11 | *Computable Name*:VaccineConditionCodesIcd10 |
+| Active as of 2026-09-02 | *Computable Name*:VaccineConditionCodesIcd10 |
 
  
 Value set for conditions based on ICD-10-CM that may impact immunization decisions, mapped to CDSi observation codes. 
@@ -23,6 +23,8 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
  
 
 ### Expansion
+
+No Expansion for this valueset (not supported by Publication Tooling)
 
 -------
 
@@ -50,7 +52,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "name" : "VaccineConditionCodesIcd10",
   "title" : "Vaccine Condition Codes (ICD-10-CM)",
   "status" : "active",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

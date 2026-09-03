@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/schedule-supporting-data | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:ScheduleSupportingData |
+| Draft as of 2026-09-02 | *Computable Name*:ScheduleSupportingData |
 
  
 This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-schedule-supporting-
   "name" : "ScheduleSupportingData",
   "title" : "Schedule Supporting Data",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

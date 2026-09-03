@@ -41,8 +41,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"8"}
-    h3,h4,h5,h6{--heading-prefix:"8.0"}</style>
+    <style type="text/css">h2{--heading-prefix:"9"}
+    h3,h4,h5,h6{--heading-prefix:"9.0"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -104,6 +104,9 @@
       </li>
       <li>
         <a href="06_select-patient-series.html">Select Patient Series</a>
+      </li>
+      <li>
+        <a href="07_response-extensions.html">What Cicada Returns</a>
       </li>
     </ul>
   </li>
@@ -193,6 +196,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>Profile for allergy intolerances relevant to immunization. The code (allergen/substance) may use SNOMED CT or ICD-10-CM. Reaction substances may use CVX, MVX, SNOMED CT, or RxNorm.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-cicada-immunization-recommendation.html"
+                  title="StructureDefinition/cicada-immunization-recommendation">Cicada Immunization Recommendation</a>
+            </td>
+            <td>
+<p>The forecast cicada returns. Constrains ImmunizationRecommendation to say which series group each recommendation belongs to, so that more than one recommendation for a single vaccine group can be told apart.</p>
 </td>
          </tr>
          <tr>
@@ -331,6 +343,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="StructureDefinition-antigen-needing-dose-ext.html"
+                  title="StructureDefinition/antigen-needing-dose-ext">Antigen Needing a Dose</a>
+            </td>
+            <td>
+<p>An antigen within this vaccine group that needs the forecast dose. A multi-antigen group forecasts as one recommendation, so without this a caller cannot tell whether all of MMR is due or only the measles component. Repeats, one per antigen.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="StructureDefinition-assessment-date.html"
                   title="StructureDefinition/assessment-date">AssessmentDate</a>
             </td>
@@ -349,11 +370,47 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="StructureDefinition-series-detail-ext.html"
+                  title="StructureDefinition/series-detail-ext">Contributing Series Detail</a>
+            </td>
+            <td>
+<p>One contributing series: its own status, its own four dates, and the component dates that produced them. A vaccine group forecast reports the aggregate over several series, so without this a group covered by more than one reports a single answer for all of them, and a due date arrives with no way to see whether age or interval produced it. Repeats, one per series.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-doses-remaining-ext.html"
+                  title="StructureDefinition/doses-remaining-ext">Doses Remaining</a>
+            </td>
+            <td>
+<p>How many doses remain in the series after the one being forecast, or 'Recurring' where the series ends in a recurring dose. seriesDoses and doseNumber allow a reader to subtract, but no arithmetic says the series never ends.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="StructureDefinition-end-age.html"
                   title="StructureDefinition/end-age">End Age</a>
             </td>
             <td>
 <p>The age at which the vaccine is no longer applicable.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-engine-version-ext.html"
+                  title="StructureDefinition/engine-version-ext">Engine and Supporting Data Version</a>
+            </td>
+            <td>
+<p>The engine build and the CDSi supporting-data release that produced this resource. A forecast is a function of both, so a stored response naming neither cannot be traced to what produced it. Parameters is not a DomainResource and carries no extension, so the stamp sits on each evaluation and on each recommendation.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-evaluation-detail-ext.html"
+                  title="StructureDefinition/evaluation-detail-ext">Evaluation Sub-step Detail</a>
+            </td>
+            <td>
+<p>The CDSi Chapter 6 sub-step outcomes behind a dose's evaluation: which of age, interval, conflict and vaccine choice passed, and for those that failed, which rule failed. doseStatusReason carries ten ImmDS codes; the engine knows more than that.</p>
 </td>
          </tr>
          <tr>
@@ -403,6 +460,33 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="StructureDefinition-series-group-ext.html"
+                  title="StructureDefinition/series-group-ext">Series Group</a>
+            </td>
+            <td>
+<p>The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-series-type-ext.html"
+                  title="StructureDefinition/series-type-ext">Series Type</a>
+            </td>
+            <td>
+<p>Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-target-dose-status-ext.html"
+                  title="StructureDefinition/target-dose-status-ext">Target Dose Status</a>
+            </td>
+            <td>
+<p>The CDSi target dose status this administered dose produced.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="StructureDefinition-vaccination-conflict.html"
                   title="StructureDefinition/vaccination-conflict">Vaccination Conflict</a>
             </td>
@@ -447,6 +531,33 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <tbody>
          <tr>
             <td style="column-width:30%">
+               <a href="ValueSet-data-integrity-vs.html"
+                  title="ValueSet/data-integrity-vs">Cicada Data Integrity Value Set</a>
+            </td>
+            <td>
+<p>Reasons a dose was reported rather than evaluated.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-forecast-reason-vs.html"
+                  title="ValueSet/forecast-reason-vs">Cicada Forecast Reason Value Set</a>
+            </td>
+            <td>
+<p>Forecast reasons the engine can report.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-dose-status-reason.html"
+                  title="ValueSet/dose-status-reason">Dose Status Reason Value Set</a>
+            </td>
+            <td>
+<p>Value set for dose evaluation status reasons, referencing the published ImmDS IG StatusReason CodeSystem.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="ValueSet-eval-reason.html" title="ValueSet/eval-reason">Evaluation Reason</a>
             </td>
             <td>
@@ -458,7 +569,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                <a href="ValueSet-eval-status.html" title="ValueSet/eval-status">Evaluation Status Value Set</a>
             </td>
             <td>
-<p>Value Set for the status of the result of an evaluation.</p>
+<p>Combined value set for dose evaluation status, including HL7 THO standard codes (valid, notvalid) and the Cicada extension code (extraneous).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-forecast-status.html" title="ValueSet/forecast-status">Forecast Status Value Set</a>
+            </td>
+            <td>
+<p>Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8.</p>
 </td>
          </tr>
          <tr>
@@ -524,6 +643,23 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="ValueSet-series-type-vs.html" title="ValueSet/series-type-vs">Series Type Value Set</a>
+            </td>
+            <td>
+<p>Series types a forecast can be scoped to. In practice a forecast carries standard or risk: CDSi Table 8-14 excludes Evaluation Only series from best patient series.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-target-dose-status-vs.html"
+                  title="ValueSet/target-dose-status-vs">Target Dose Status Value Set</a>
+            </td>
+            <td>
+<p>CDSi target dose statuses.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="ValueSet-vaccine-condition-codes-snomed.html"
                   title="ValueSet/vaccine-condition-codes-snomed">Vaccine Condition Codes</a>
             </td>
@@ -584,18 +720,35 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="CodeSystem-EvalReason.html" title="CodeSystem/EvalReason">Evaluation Reason</a>
+               <a href="CodeSystem-data-integrity.html" title="CodeSystem/data-integrity">Cicada Data Integrity Code System</a>
             </td>
             <td>
-<p>The reason for the evaluation.</p>
+<p>Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses.</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="CodeSystem-EvalStatus.html" title="CodeSystem/EvalStatus">Evaluation Status</a>
+               <a href="CodeSystem-EvalStatus.html" title="CodeSystem/EvalStatus">Cicada Evaluation Status</a>
             </td>
             <td>
-<p>The status of the result of an evaluation.</p>
+<p>Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-forecast-reason.html"
+                  title="CodeSystem/forecast-reason">Cicada Forecast Reason Code System</a>
+            </td>
+            <td>
+<p>Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-EvalReason.html" title="CodeSystem/EvalReason">Evaluation Reason</a>
+            </td>
+            <td>
+<p>The reason for the evaluation.</p>
 </td>
          </tr>
          <tr>
@@ -613,6 +766,23 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>Reasons why certain doses are Preferred or Allowed doses</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-series-type.html" title="CodeSystem/series-type">Series Type Code System</a>
+            </td>
+            <td>
+<p>CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-target-dose-status.html"
+                  title="CodeSystem/target-dose-status">Target Dose Status Code System</a>
+            </td>
+            <td>
+<p>CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable.</p>
 </td>
          </tr>
          <tr>
@@ -684,6 +854,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <tbody>
          <tr>
             <td style="column-width:30%">
+               <a href="Patient-2016-UC-0032.html" title="Patient/2016-UC-0032">2016-UC-0032</a>
+            </td>
+            <td>
+
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="StructureDefinition-antigen-supporting-data.html"
                   title="StructureDefinition/antigen-supporting-data">Antigen Supporting Data</a>
             </td>
@@ -698,6 +876,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ImmunizationRecommendation-cicada-forecast-example.html"
+                  title="ImmunizationRecommendation/cicada-forecast-example">cicada-forecast-example</a>
+            </td>
+            <td>
+
 </td>
          </tr>
       </tbody>
@@ -720,7 +907,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Feb 11, 2026 14:37-0500">2026-02-11</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 2, 2026 22:18-0400">2026-09-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

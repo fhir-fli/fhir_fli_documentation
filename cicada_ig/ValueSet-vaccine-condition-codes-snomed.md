@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-snomed | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:VaccineConditionCodesSnomed |
+| Draft as of 2026-09-02 | *Computable Name*:VaccineConditionCodesSnomed |
 
  
 Value set for conditions based on SNOMED CT, that may impact immunization. 
@@ -54,7 +54,7 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "name" : "VaccineConditionCodesSnomed",
   "title" : "Vaccine Condition Codes",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

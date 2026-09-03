@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="data-integrity-vs"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ValueSet data-integrity-vs</b></p><a name="data-integrity-vs"> </a><a name="hcdata-integrity-vs"> </a><ul><li>Include all codes defined in <a href="CodeSystem-data-integrity.html"><code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity</code></a><span title="Version is not explicitly stated, which means it is fixed to the version provided in this specification"> version &#x1F4E6;0.1.0</span></li></ul></div>
+  </text>
+  <url value="http://fhirfli.dev/fhir/ig/cicada/ValueSet/data-integrity-vs"/>
+  <version value="0.1.0"/>
+  <name value="DataIntegrityVS"/>
+  <title value="Cicada Data Integrity Value Set"/>
+  <status value="draft"/>
+  <date value="2026-09-02T22:18:14-04:00"/>
+  <publisher value="FHIR-FLI"/>
+  <contact>
+    <name value="FHIR-FLI"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://fhirfli.dev"/>
+    </telecom>
+  </contact>
+  <description value="Reasons a dose was reported rather than evaluated."/>
+  <compose>
+    <include>
+      <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity"/>
+    </include>
+  </compose>
+</ValueSet>

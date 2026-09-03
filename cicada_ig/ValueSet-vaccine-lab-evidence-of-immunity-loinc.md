@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-lab-evidence-of-immunity-loinc | *Version*:0.1.0 |
-| Active as of 2026-02-11 | *Computable Name*:VaccineLabEvidenceOfImmunityLoinc |
+| Active as of 2026-09-02 | *Computable Name*:VaccineLabEvidenceOfImmunityLoinc |
 
  
 LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. 
@@ -23,6 +23,8 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
  
 
 ### Expansion
+
+No Expansion for this valueset (not supported by Publication Tooling)
 
 -------
 
@@ -50,7 +52,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "name" : "VaccineLabEvidenceOfImmunityLoinc",
   "title" : "Lab Evidence of Immunity (LOINC)",
   "status" : "active",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {

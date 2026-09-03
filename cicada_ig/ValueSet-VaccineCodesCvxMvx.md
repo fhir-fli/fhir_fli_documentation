@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx | *Version*:0.1.0 |
-| Draft as of 2026-02-11 | *Computable Name*:VaccineCodesCvxMvx |
+| Draft as of 2026-09-02 | *Computable Name*:VaccineCodesCvxMvx |
 
  **References** 
 
@@ -51,7 +51,7 @@
   "version" : "0.1.0",
   "name" : "VaccineCodesCvxMvx",
   "status" : "draft",
-  "date" : "2026-02-11T14:37:07-05:00",
+  "date" : "2026-09-02T22:18:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [
     {
