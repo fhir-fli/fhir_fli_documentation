@@ -3,6 +3,36 @@ id: migration
 title: Migration Guide
 ---
 
+## Upgrading fhir_r4 0.9.x → 0.12.0
+
+The resource APIs did not change. All three releases are about `fhir_r*_db`
+search, and two of them change what an existing call returns.
+
+**0.10.0 — modifiers and comparators moved to where FHIR puts them.** They used
+to be read off the end of the value (`family=Smith:exact`,
+`birthdate=1980-01-01:gt`), a syntax FHIR does not have. The modifier now comes
+from the parameter name (`family:exact=Smith`) and the comparator from the front
+of the value (`birthdate=gt1980-01-01`). Values are no longer split at a colon,
+and `\,`, `\|` and `\$` escapes are honoured. An unsupported modifier throws
+`UnsupportedSearchModifier` instead of being ignored. Accents fold for the
+default and `:contains` searches, and `:exact` is exact. **Schema 5 → 6**; the
+string index is rebuilt from the stored resources on first open.
+
+**0.11.0 — a repeated parameter is an AND, a comma is an OR.** Each element of a
+parameter's value list is now one repetition and the elements are intersected.
+Code that passed `['Anna', 'Beth']` to get *either* name must pass the single
+element `'Anna,Beth'` instead; the comma split happens inside the package, where
+escaping applies. This silently changed what subscription criteria matched in
+one server built on the package, so check every multi-value search you make.
+
+**0.12.0 — a save that cannot be indexed fails.** `saveResource` used to catch
+indexing errors, print them, and return the resource anyway, leaving a record
+that no search could find. It now throws, and writes the resource, its history
+row and its index rows in one transaction, so a failed update keeps the
+previous version.
+
+---
+
 ## Upgrading fhir_r4 0.8.x → 0.9.0
 
 Nothing in the resource APIs changed. Two things matter, both in
