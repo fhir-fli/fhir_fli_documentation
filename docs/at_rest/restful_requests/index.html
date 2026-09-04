@@ -3,8 +3,8 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>Requests | FHIR-FLI</title>
-    <meta property="og:title" content="Requests | FHIR-FLI"/>
+    <title>RESTful Requests | FHIR-FLI</title>
+    <meta property="og:title" content="RESTful Requests | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
     <style>
       .docs .header-container {
@@ -181,13 +181,16 @@
         align-items: center;
         column-gap: 0.75rem;
         flex-basis: 17rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
       .header .header-title img {
         width: auto;
-        height: 1.5rem;
+        height: 1.75rem;
       }
       .header .header-title span {
         font-weight: 700;
+        letter-spacing: 0.01em;
       }
       .header .header-content {
         display: flex;
@@ -196,7 +199,19 @@
       }
       .header .header-items {
         display: flex;
+        align-items: center;
         column-gap: 0.25rem;
+      }
+      @media all and (max-width: 767px) {
+        .header .header-title {
+          flex-basis: auto;
+        }
+        .header .header-items .nav-link {
+          display: none;
+        }
+        .header .github-button .github-info {
+          display: none;
+        }
       }
     </style>
     <style>
@@ -225,40 +240,161 @@
                 
     </script>
     <style>
+      .sidebar {
+        position: relative;
+        padding-top: 0.75rem;
+        padding-left: 0.5rem;
+        padding-bottom: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar {
+          padding-top: 0;
+        }
+      }
+      .sidebar .sidebar-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: inherit;
+        font-size: 1.5rem;
+        line-height: 1em;
+        background-color: transparent;
+      }
+      .sidebar .sidebar-close:hover {
+        background-color: #0000000d;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-close {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-mobile-nav {
+        padding-top: 3rem;
+        padding-right: 0.75rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .sidebar .sidebar-mobile-nav ul {
+        padding-bottom: 0.75rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-mobile-nav {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-group {
+        padding-top: 1rem;
+        padding-right: 0.75rem;
+      }
       .sidebar .sidebar-group.collapsible {
-        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+      .sidebar .sidebar-group.collapsible:first-of-type {
+        padding-top: 1rem;
       }
       .sidebar .sidebar-group.collapsible > summary {
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
+        display: flex;
+        padding: 0.45rem 0.75rem;
+        border-radius: 0.375rem;
+        opacity: 0.85;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
         list-style-type: none;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .sidebar .sidebar-group.collapsible > summary:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
       }
       .sidebar .sidebar-group.collapsible > summary::-webkit-details-marker {
         display: none;
       }
       .sidebar .sidebar-group.collapsible > summary::before {
+        content: "";
         display: inline-block;
-        margin-right: 0.4rem;
-        transition: transform 120ms;
-        font-size: 0.75em;
-        content: "▸";
+        width: 0.4em;
+        height: 0.4em;
+        margin-left: 0.1em;
+        margin-bottom: 0.15em;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-right-width: 1.5px;
+        border-bottom-width: 1.5px;
+        opacity: 0.7;
+        transition: transform 150ms ease-in-out;
+        transform: rotate(-45deg);
       }
       .sidebar .sidebar-group.collapsible[open] > summary::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg);
+      }
+      .sidebar .sidebar-group ul {
+        padding: 0;
+        margin-top: 0.125rem;
+        margin-left: 1rem;
+        border-left-style: solid;
+        border-left-color: var(--content-hr);
+        border-left-width: 1px;
+        list-style-type: none;
+      }
+      .sidebar .sidebar-group:not(.collapsible) ul {
+        margin: 0;
+        border: none;
+      }
+      .sidebar .sidebar-group li div {
+        display: flex;
+        margin-bottom: 1px;
+        border-radius: 0.375rem;
+        opacity: 0.75;
+        overflow: hidden;
+        transition: all 150ms ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar .sidebar-group li div:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
+      }
+      .sidebar .sidebar-group li div.active {
+        opacity: 1.0;
+        color: var(--primary);
+        font-weight: 700;
+        background-color: color-mix(in srgb, currentColor 15%, transparent);
+      }
+      .sidebar .sidebar-group li a {
+        display: inline-flex;
+        padding-top: 0.45rem;
+        padding-left: 12px;
+        padding-bottom: 0.45rem;
+        flex-grow: 1;
+        text-decoration: none;
       }
     </style>
     <style>
       :root {
-        --primary: oklch(0.623 0.214 259.815);
+        --primary: oklch(0.546 0.245 262.881);
         --background: oklch(0.984 0.003 247.858);
         --text: oklch(0.373 0.034 259.733);
         --content-headings: oklch(0.21 0.034 264.665);
         --content-lead: oklch(0.446 0.03 256.802);
-        --content-links: oklch(0.21 0.034 264.665);
+        --content-links: oklch(0.488 0.243 264.376);
         --content-bold: oklch(0.21 0.034 264.665);
         --content-counters: oklch(0.551 0.027 264.364);
         --content-bullets: oklch(0.872 0.01 258.338);
@@ -269,29 +405,30 @@
         --content-kbd: oklch(0.21 0.034 264.665);
         --content-kbd-shadows: oklch(0.21 0.034 264.665);
         --content-code: oklch(0.21 0.034 264.665);
-        --content-pre-code: oklch(0.928 0.006 264.531);
-        --content-pre-bg: oklch(0.278 0.033 256.848);
+        --content-pre-code: oklch(0.929 0.013 255.508);
+        --content-pre-bg: oklch(0.208 0.042 265.755);
         --content-th-borders: oklch(0.872 0.01 258.338);
         --content-td-borders: oklch(0.928 0.006 264.531);
       }
       :root[data-theme="dark"] {
-        --primary: oklch(0.809 0.105 251.813);
+        --primary: oklch(0.707 0.165 254.624);
         --background: oklch(0.141 0.005 285.823);
         --text: oklch(0.928 0.006 264.531);
         --content-headings: white;
         --content-lead: oklch(0.707 0.022 261.325);
-        --content-links: white;
+        --content-links: oklch(0.809 0.105 251.813);
         --content-bold: white;
         --content-counters: oklch(0.707 0.022 261.325);
         --content-bullets: oklch(0.446 0.03 256.802);
         --content-hr: oklch(0.373 0.034 259.733);
         --content-quotes: oklch(0.967 0.003 264.542);
+        --content-quote-borders: oklch(0.623 0.214 259.815);
         --content-captions: oklch(0.707 0.022 261.325);
         --content-kbd: white;
         --content-kbd-shadows: white;
         --content-code: white;
-        --content-pre-code: oklch(0.872 0.01 258.338);
-        --content-pre-bg: oklch(0.274 0.006 286.033);
+        --content-pre-code: oklch(0.92 0.004 286.32);
+        --content-pre-bg: oklch(0.21 0.006 285.885);
         --content-th-borders: oklch(0.446 0.03 256.802);
         --content-td-borders: oklch(0.373 0.034 259.733);
       }
@@ -872,68 +1009,311 @@
       }
     </style>
     <style>
-      .content-container p a, .content-container li a, .content-container td a {
-        text-decoration: underline;
+      .content-container .content-header h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15em;
       }
-      .content-container p a:hover, .content-container li a:hover, .content-container td a:hover {
-        opacity: 0.8;
+      .content-container .content-header p {
+        color: var(--content-lead);
+        line-height: 1.5em;
+      }
+      .content h2 {
+        padding-bottom: 0.3em;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .content a {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+      }
+      .content a:hover {
+        text-decoration-color: currentColor;
+      }
+      .content img {
+        border-radius: 0.5rem;
+      }
+      .content :not(pre) > code {
+        padding: 0.1em 0.3em;
+        border-radius: 0.3rem;
+        font-size: 0.85em;
+        font-weight: 500;
+        background-color: color-mix(in srgb, currentColor 9%, transparent);
+      }
+      .content code::before, .content code::after {
+        content: none;
       }
       .content-container table {
-        width: 100%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        border: solid var(--content-quote-borders) 1px;
-        border-collapse: collapse;
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: solid var(--content-td-borders) 1px;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        border-collapse: separate;
+        border-spacing: 0;
       }
       .content-container th, .content-container td {
         padding: 0.5rem 0.75rem;
-        border: solid var(--content-quote-borders) 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: var(--content-td-borders);
+        border-bottom-color: var(--content-td-borders);
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        vertical-align: top;
+      }
+      .content-container th:last-child, .content-container td:last-child {
+        border-right: none;
+      }
+      .content-container tbody tr:last-child td {
+        border-bottom: none;
       }
       .content-container th {
+        color: var(--content-headings);
         text-align: left;
+        font-size: 0.8rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+      }
+      .content-container tbody tr:nth-child(even) {
+        background-color: color-mix(in srgb, currentColor 2.5%, transparent);
+      }
+      .code-block {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        border: solid #ffffff14 1px;
+        border-radius: 0.5rem;
+        overflow: hidden;
         background-color: var(--content-pre-bg);
       }
-      .sidebar .sidebar-group.collapsible {
-        padding-bottom: 0.5rem;
+      .code-block .code-head {
+        display: flex;
+        height: 2rem;
+        padding-left: 1rem;
+        padding-right: 0.4rem;
         border-bottom-style: solid;
-        border-bottom-color: var(--content-quote-borders);
+        border-bottom-color: #ffffff14;
         border-bottom-width: 1px;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background-color: #ffffff08;
       }
-      .sidebar .sidebar-group.collapsible:last-of-type {
-        border-bottom: none;
+      .code-block .code-lang {
+        opacity: 0.55;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: var(--content-code-font);
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .code-block .code-copy {
+        display: inline-flex;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: none;
+        border-radius: 0.375rem;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 150ms ease-in-out;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: transparent;
+      }
+      .code-block .code-copy:hover, .code-copy:focus-visible {
+        opacity: 1.0;
+        background-color: #ffffff1f;
+      }
+      .code-block pre {
+        margin: 0;
+        border-radius: 0;
+        tab-size: 2;
+      }
+      .code-block .hljs-comment, .hljs-quote {
+        color: #8b949e;
+        font-style: italic;
+      }
+      .code-block .hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag {
+        color: #ff7b72;
+      }
+      .code-block .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-symbol, .hljs-bullet {
+        color: #79c0ff;
+      }
+      .code-block .hljs-string, .hljs-regexp, .hljs-addition {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-title, .hljs-section, .hljs-selector-id, .hljs-function .hljs-title {
+        color: #d2a8ff;
+        font-weight: 600;
+      }
+      .code-block .hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name {
+        color: #ffa657;
+      }
+      .code-block .hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class {
+        color: #7ee787;
+      }
+      .code-block .hljs-attr {
+        color: #79c0ff;
+      }
+      .code-block .hljs-meta, .hljs-meta-keyword {
+        color: #d2a8ff;
+      }
+      .code-block .hljs-meta-string {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-deletion {
+        color: #ffa198;
+      }
+      .code-block .hljs-emphasis {
+        font-style: italic;
+      }
+      .code-block .hljs-strong {
+        font-weight: 700;
+      }
+      .card-grid {
+        display: grid;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      }
+      .card-grid .card {
+        display: flex;
+        padding: 1.1rem;
+        border: solid var(--content-hr) 1px;
+        border-radius: 0.75rem;
+        transition: all 150ms ease-in-out;
+        flex-direction: column;
+        row-gap: 0.35rem;
+        color: var(--text);
+        text-decoration: none;
+        background-color: color-mix(in srgb, currentColor 3%, transparent);
+      }
+      .card-grid .card:hover {
+        border: solid var(--primary) 1px;
+        transform: translateY(-2px);
+        background-color: color-mix(in srgb, var(--primary) 6%, transparent);
+      }
+      .card-grid .card h3 {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--content-headings);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .card-grid .card h3 code {
+        padding: 0.1em 0.4em;
+        border-radius: 0.3rem;
+        color: var(--primary);
+        font-family: var(--content-code-font);
+        font-size: 0.85em;
+        font-weight: 600;
+        background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+      }
+      .card-grid .card p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.45em;
+      }
+      .card-grid .card .tag {
+        display: inline-block;
+        padding: 0.05em 0.5em;
+        margin-left: auto;
+        border-radius: 1rem;
+        opacity: 0.7;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: color-mix(in srgb, currentColor 10%, transparent);
+      }
+      .button-row {
+        display: flex;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .button-row a {
+        display: inline-flex;
+        padding: 0.6rem 1.1rem;
+        border: solid var(--primary) 1px;
+        border-radius: 0.5rem;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--primary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .button-row a.primary {
+        color: white;
+        background-color: var(--primary);
+      }
+      .button-row a:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      aside.toc a {
+        opacity: 0.7;
+        transition: opacity 150ms ease-in-out;
+        text-decoration: none;
+      }
+      aside.toc a:hover {
+        opacity: 1.0;
       }
       .header .nav-link {
         padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 150ms ease-in-out;
         font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
       }
       .header .nav-link:hover {
-        text-decoration: underline;
+        background-color: color-mix(in srgb, currentColor 6%, transparent);
       }
     </style>
     <style>
       .site-footer {
-        padding: 3rem 2rem;
+        padding-top: 2.5rem;
+        padding-bottom: 1rem;
+        margin-top: 4rem;
         border-top-style: solid;
-        border-top-color: #0000000d;
+        border-top-color: var(--content-hr);
         border-top-width: 1px;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
       .site-footer .footer-columns {
         display: flex;
-        max-width: 60rem;
-        margin-left: auto;
-        margin-right: auto;
         flex-wrap: wrap;
-        column-gap: 3rem;
+        gap: 2rem 4rem;
       }
       .site-footer .footer-column {
         min-width: 10rem;
       }
       .site-footer .footer-column h4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       .site-footer .footer-column ul {
         padding: 0;
@@ -941,10 +1321,24 @@
         list-style-type: none;
       }
       .site-footer .footer-column li {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.4rem;
       }
       .site-footer .footer-column a {
+        opacity: 0.75;
+        transition: opacity 150ms ease-in-out;
         text-decoration: none;
+      }
+      .site-footer .footer-column a:hover {
+        opacity: 1.0;
+      }
+      .site-footer .footer-note {
+        margin-top: 2.5rem;
+        opacity: 0.6;
+        font-size: 0.8rem;
+        line-height: 1.6em;
+      }
+      .site-footer .footer-note a {
+        color: inherit;
       }
     </style>
     <!--/-->
@@ -1136,8 +1530,16 @@
         <div class="sidebar-barrier" role="button"></div>
         <div class="sidebar-container">
           <nav class="sidebar">
-            <button class="sidebar-close">×</button>
+            <button class="sidebar-close" aria-label="Close navigation">×</button>
             <div>
+              <div class="sidebar-group sidebar-mobile-nav">
+                <ul>
+                  <li><div><a href="docs/">Getting Started</a></div></li>
+                  <li><div><a href="about">About</a></div></li>
+                  <li><div><a href="contact">Contact</a></div></li>
+                </ul>
+              </div>
+              <div class="sidebar-group"><ul><li><div><a href="docs/">Getting Started</a></div></li></ul></div>
               <details class="sidebar-group collapsible">
                 <summary>FHIR R4b Core</summary>
                 <ul>
@@ -1246,13 +1648,12 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header"><h1>Requests</h1></div>
+              <div class="content-header"><h1>RESTful Requests</h1></div>
               <section class="content">
-                <h2 id="restful-requests" anchor="true"><span>RESTful Requests</span><a href="/docs/at_rest/restful_requests#restful-requests">#</a></h2>
                 <p>
                   The <code>fhir_r4_at_rest</code> library provides a streamlined way to construct RESTful API calls for FHIR operations. Instead of dealing with the complexities of building URLs, handling HTTP methods, and managing headers, this library offers a type-safe approach through a collection of request classes.
                 </p>
-                <h3 id="basic-concepts" anchor="true"><span>Basic Concepts</span><a href="/docs/at_rest/restful_requests#basic-concepts">#</a></h3>
+                <h2 id="basic-concepts" anchor="true"><span>Basic Concepts</span><a href="/docs/at_rest/restful_requests#basic-concepts">#</a></h2>
                 <p>
                   All request classes in the library inherit from the abstract <code>FhirRequest</code> class, which provides common functionality:
                 </p>
@@ -1262,172 +1663,310 @@
                   <li>URI construction</li>
                   <li>Response handling</li>
                 </ul>
-                <h3 id="common-request-structure" anchor="true">
+                <h2 id="common-request-structure" anchor="true">
                   <span>Common Request Structure</span><a href="/docs/at_rest/restful_requests#common-request-structure">#</a>
-                </h3>
+                </h2>
                 <p>All request classes share a similar construction pattern:</p>
-                <pre><code class="language-dart">final request = FhirSomeRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'), // Base FHIR server URL
-  resourceType: 'Patient',                        // The FHIR resource type
-  id: '12345',                                   // Resource ID (when applicable)
-  headers: {'Authorization': 'Bearer token123'},  // Custom HTTP headers
-  parameters: RestfulParameters()                 // Optional request parameters
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirSomeRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>), <span class="hljs-comment">// Base FHIR server URL</span>
+  resourceType: <span class="hljs-string">'Patient'</span>,                        <span class="hljs-comment">// The FHIR resource type</span>
+  id: <span class="hljs-string">'12345'</span>,                                   <span class="hljs-comment">// Resource ID (when applicable)</span>
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},  <span class="hljs-comment">// Custom HTTP headers</span>
+  parameters: RestfulParameters()                 <span class="hljs-comment">// Optional request parameters</span>
     .requestPretty()
-    .add('_count', '10'),
+    .add(<span class="hljs-string">'_count'</span>, <span class="hljs-string">'10'</span>),
 );
 
-// Execute the request
-final response = await request.sendRequest();
-</code></pre>
-                <h3 id="request-types" anchor="true"><span>Request Types</span><a href="/docs/at_rest/restful_requests#request-types">#</a></h3>
+<span class="hljs-comment">// Execute the request</span>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();</code></pre>
+                </div>
+                <h2 id="request-types" anchor="true"><span>Request Types</span><a href="/docs/at_rest/restful_requests#request-types">#</a></h2>
                 <p>The library supports all standard FHIR RESTful operations:</p>
-                <h4 id="1-read-request">1. Read Request</h4>
+                <h3 id="1-read-request" anchor="true"><span>1. Read Request</span><a href="/docs/at_rest/restful_requests#1-read-request">#</a></h3>
                 <p>Retrieves a specific resource by its ID.</p>
-                <pre><code class="language-dart">final request = FhirReadRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
-  headers: {'Authorization': 'Bearer token123'},
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirReadRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// GET http://hapi.fhir.org/baseR4/Patient/12345?_format=json
-</code></pre>
-                <h4 id="2-vread-request">2. VRead Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/Patient/12345?_format=json</span></code></pre>
+                </div>
+                <h3 id="2-vread-request" anchor="true"><span>2. VRead Request</span><a href="/docs/at_rest/restful_requests#2-vread-request">#</a></h3>
                 <p>Retrieves a specific version of a resource.</p>
-                <pre><code class="language-dart">final request = FhirVReadRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
-  vid: '2',  // Version ID
-  headers: {'Authorization': 'Bearer token123'},
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirVReadRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
+  vid: <span class="hljs-string">'2'</span>,  <span class="hljs-comment">// Version ID</span>
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// GET http://hapi.fhir.org/baseR4/Patient/12345/_history/2?_format=json
-</code></pre>
-                <h4 id="3-update-request">3. Update Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/Patient/12345/_history/2?_format=json</span></code></pre>
+                </div>
+                <h3 id="3-update-request" anchor="true"><span>3. Update Request</span><a href="/docs/at_rest/restful_requests#3-update-request">#</a></h3>
                 <p>Updates an existing resource.</p>
-                <pre><code class="language-dart">final request = FhirUpdateRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirUpdateRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
   resource: {
-    'resourceType': 'Patient',
-    'id': '12345',
-    'name': [
+    <span class="hljs-string">'resourceType'</span>: <span class="hljs-string">'Patient'</span>,
+    <span class="hljs-string">'id'</span>: <span class="hljs-string">'12345'</span>,
+    <span class="hljs-string">'name'</span>: [
       {
-        'given': ['John'],
-        'family': 'Doe',
+        <span class="hljs-string">'given'</span>: [<span class="hljs-string">'John'</span>],
+        <span class="hljs-string">'family'</span>: <span class="hljs-string">'Doe'</span>,
       },
     ],
   },
-  headers: {'Authorization': 'Bearer token123'},
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// PUT http://hapi.fhir.org/baseR4/Patient/12345?_format=json
-</code></pre>
-                <h4 id="4-patch-request">4. Patch Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// PUT http://hapi.fhir.org/baseR4/Patient/12345?_format=json</span></code></pre>
+                </div>
+                <h3 id="4-patch-request" anchor="true"><span>4. Patch Request</span><a href="/docs/at_rest/restful_requests#4-patch-request">#</a></h3>
                 <p>Applies a partial update to a resource using JSON Patch.</p>
-                <pre><code class="language-dart">final patchBody = PatchBody()
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> patchBody = PatchBody()
   ..addOperation(
     PatchOps.replace,
-    '/name/0/family',
-    value: 'Smith',
+    <span class="hljs-string">'/name/0/family'</span>,
+    value: <span class="hljs-string">'Smith'</span>,
   );
 
-final request = FhirPatchRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
+<span class="hljs-keyword">final</span> request = FhirPatchRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
   patchBody: patchBody,
-  headers: {'Authorization': 'Bearer token123'},
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// PATCH http://hapi.fhir.org/baseR4/Patient/12345?_format=json
-</code></pre>
-                <h4 id="5-delete-request">5. Delete Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// PATCH http://hapi.fhir.org/baseR4/Patient/12345?_format=json</span></code></pre>
+                </div>
+                <h3 id="5-delete-request" anchor="true"><span>5. Delete Request</span><a href="/docs/at_rest/restful_requests#5-delete-request">#</a></h3>
                 <p>Deletes a resource by its ID.</p>
-                <pre><code class="language-dart">final request = FhirDeleteRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
-  headers: {'Authorization': 'Bearer token123'},
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirDeleteRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// DELETE http://hapi.fhir.org/baseR4/Patient/12345?_format=json
-</code></pre>
-                <h4 id="6-create-request">6. Create Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// DELETE http://hapi.fhir.org/baseR4/Patient/12345?_format=json</span></code></pre>
+                </div>
+                <h3 id="6-create-request" anchor="true"><span>6. Create Request</span><a href="/docs/at_rest/restful_requests#6-create-request">#</a></h3>
                 <p>Creates a new resource.</p>
-                <pre><code class="language-dart">final request = FhirCreateRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirCreateRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
   resource: {
-    'resourceType': 'Patient',
-    'name': [
+    <span class="hljs-string">'resourceType'</span>: <span class="hljs-string">'Patient'</span>,
+    <span class="hljs-string">'name'</span>: [
       {
-        'given': ['John'],
-        'family': 'Doe',
+        <span class="hljs-string">'given'</span>: [<span class="hljs-string">'John'</span>],
+        <span class="hljs-string">'family'</span>: <span class="hljs-string">'Doe'</span>,
       },
     ],
   },
-  headers: {'Authorization': 'Bearer token123'},
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// POST http://hapi.fhir.org/baseR4/Patient?_format=json
-</code></pre>
-                <h4 id="7-history-request">7. History Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// POST http://hapi.fhir.org/baseR4/Patient?_format=json</span></code></pre>
+                </div>
+                <h3 id="7-history-request" anchor="true"><span>7. History Request</span><a href="/docs/at_rest/restful_requests#7-history-request">#</a></h3>
                 <p>Retrieves the history of changes to a specific resource.</p>
-                <pre><code class="language-dart">final request = FhirHistoryRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
-  headers: {'Authorization': 'Bearer token123'},
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirHistoryRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// GET http://hapi.fhir.org/baseR4/Patient/12345/_history?_format=json
-</code></pre>
-                <h4 id="8-history-all-request">8. History All Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/Patient/12345/_history?_format=json</span></code></pre>
+                </div>
+                <h3 id="8-history-all-request" anchor="true">
+                  <span>8. History All Request</span><a href="/docs/at_rest/restful_requests#8-history-all-request">#</a>
+                </h3>
                 <p>Retrieves the history of changes to all resources.</p>
-                <pre><code class="language-dart">final request = FhirHistoryAllRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  headers: {'Authorization': 'Bearer token123'},
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirHistoryAllRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// GET http://hapi.fhir.org/baseR4/_history?_format=json
-</code></pre>
-                <h4 id="9-capabilities-request">9. Capabilities Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/_history?_format=json</span></code></pre>
+                </div>
+                <h3 id="9-capabilities-request" anchor="true">
+                  <span>9. Capabilities Request</span><a href="/docs/at_rest/restful_requests#9-capabilities-request">#</a>
+                </h3>
                 <p>Retrieves the server's capability statement.</p>
-                <pre><code class="language-dart">final request = FhirCapabilitiesRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  mode: Mode.normative,  // Optional: full, normative, or terminology
-  headers: {'Authorization': 'Bearer token123'},
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirCapabilitiesRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  mode: Mode.normative,  <span class="hljs-comment">// Optional: full, normative, or terminology</span>
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// GET http://hapi.fhir.org/baseR4/metadata?mode=normative&amp;_format=json
-</code></pre>
-                <h4 id="10-transaction-request">10. Transaction Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/metadata?mode=normative&amp;_format=json</span></code></pre>
+                </div>
+                <h3 id="10-transaction-request" anchor="true">
+                  <span>10. Transaction Request</span><a href="/docs/at_rest/restful_requests#10-transaction-request">#</a>
+                </h3>
                 <p>Submits a bundle of operations to be processed as a single transaction.</p>
-                <pre><code class="language-dart">final bundle = Bundle(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> bundle = Bundle(
   type: BundleType.transaction,
   entry: [
     BundleEntry(
       request: BundleRequest(
         method: HTTPVerb.pOST,
-        url: FhirUri('Patient'),
+        url: FhirUri(<span class="hljs-string">'Patient'</span>),
       ),
       resource: Patient(
         name: [
           HumanName(
-            family: FhirString('Doe'),
-            given: [FhirString('John')],
+            family: FhirString(<span class="hljs-string">'Doe'</span>),
+            given: [FhirString(<span class="hljs-string">'John'</span>)],
           ),
         ],
       ),
@@ -1435,38 +1974,50 @@ final response = await request.sendRequest();
   ],
 );
 
-final request = FhirTransactionRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+<span class="hljs-keyword">final</span> request = FhirTransactionRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
   bundle: bundle.toJson(),
-  headers: {'Authorization': 'Bearer token123'},
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// POST http://hapi.fhir.org/baseR4?_format=json
-</code></pre>
-                <h4 id="11-batch-request">11. Batch Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// POST http://hapi.fhir.org/baseR4?_format=json</span></code></pre>
+                </div>
+                <h3 id="11-batch-request" anchor="true"><span>11. Batch Request</span><a href="/docs/at_rest/restful_requests#11-batch-request">#</a></h3>
                 <p>Similar to Transaction but allows operations to be processed independently.</p>
-                <pre><code class="language-dart">final bundle = Bundle(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> bundle = Bundle(
   type: BundleType.batch,
   entry: [
     BundleEntry(
       request: BundleRequest(
         method: HTTPVerb.gET,
-        url: FhirUri('Patient/12345'),
+        url: FhirUri(<span class="hljs-string">'Patient/12345'</span>),
       ),
     ),
     BundleEntry(
       request: BundleRequest(
         method: HTTPVerb.pOST,
-        url: FhirUri('Observation'),
+        url: FhirUri(<span class="hljs-string">'Observation'</span>),
       ),
       resource: Observation(
         status: ObservationStatus.final_,
         code: CodeableConcept(
           coding: [
             Coding(
-              system: FhirUri('http://loinc.org'),
-              code: FhirCode('12345-6'),
+              system: FhirUri(<span class="hljs-string">'http://loinc.org'</span>),
+              code: FhirCode(<span class="hljs-string">'12345-6'</span>),
             ),
           ],
         ),
@@ -1475,136 +2026,198 @@ final response = await request.sendRequest();
   ],
 );
 
-final request = FhirBatchRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
+<span class="hljs-keyword">final</span> request = FhirBatchRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
   bundle: bundle.toJson(),
-  headers: {'Authorization': 'Bearer token123'},
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// POST http://hapi.fhir.org/baseR4?_format=json
-</code></pre>
-                <h4 id="12-operation-request">12. Operation Request</h4>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// POST http://hapi.fhir.org/baseR4?_format=json</span></code></pre>
+                </div>
+                <h3 id="12-operation-request" anchor="true">
+                  <span>12. Operation Request</span><a href="/docs/at_rest/restful_requests#12-operation-request">#</a>
+                </h3>
                 <p>Invokes a named operation on the server, resource type, or resource instance.</p>
-                <pre><code class="language-dart">// Server-level operation
-final request = FhirOperationRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  operation: 'everything',
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Server-level operation</span>
+<span class="hljs-keyword">final</span> request = FhirOperationRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  operation: <span class="hljs-string">'everything'</span>,
   parameters: RestfulParameters()
-    .add('start', '2020-01-01')
-    .add('end', '2020-12-31'),
-  headers: {'Authorization': 'Bearer token123'},
+    .add(<span class="hljs-string">'start'</span>, <span class="hljs-string">'2020-01-01'</span>)
+    .add(<span class="hljs-string">'end'</span>, <span class="hljs-string">'2020-12-31'</span>),
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-// Resource type operation
-final typeRequest = FhirOperationRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  operation: 'everything',
-  headers: {'Authorization': 'Bearer token123'},
+<span class="hljs-comment">// Resource type operation</span>
+<span class="hljs-keyword">final</span> typeRequest = FhirOperationRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  operation: <span class="hljs-string">'everything'</span>,
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-// Resource instance operation
-final instanceRequest = FhirOperationRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
-  operation: 'everything',
-  headers: {'Authorization': 'Bearer token123'},
+<span class="hljs-comment">// Resource instance operation</span>
+<span class="hljs-keyword">final</span> instanceRequest = FhirOperationRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
+  operation: <span class="hljs-string">'everything'</span>,
+  headers: {<span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'Bearer token123'</span>},
 );
 
-final response = await request.sendRequest();
-// GET http://hapi.fhir.org/baseR4/$everything?start=2020-01-01&amp;end=2020-12-31&amp;_format=json
-// GET http://hapi.fhir.org/baseR4/Patient/$everything?_format=json
-// GET http://hapi.fhir.org/baseR4/Patient/12345/$everything?_format=json
-</code></pre>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/$everything?start=2020-01-01&amp;end=2020-12-31&amp;_format=json</span>
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/Patient/$everything?_format=json</span>
+<span class="hljs-comment">// GET http://hapi.fhir.org/baseR4/Patient/12345/$everything?_format=json</span></code></pre>
+                </div>
                 <p>
                   Operations use GET by default. Pass <code>usePost: true</code> to send the operation as a POST with the parameters JSON-encoded in the request body instead of the URL.
                 </p>
-                <h3 id="request-parametersdocsat_restrestful_parameters" anchor="true">
+                <h2 id="request-parametersdocsat_restrestful_parameters" anchor="true">
                   <span><a href="docs/at_rest/restful_parameters">Request Parameters</a></span><a href="/docs/at_rest/restful_requests#request-parametersdocsat_restrestful_parameters">#</a>
-                </h3>
+                </h2>
                 <p>All request classes support optional parameters through the <code>RestfulParameters</code> class:</p>
-                <pre><code class="language-dart">final parameters = RestfulParameters()
-  .requestPretty()                     // Pretty-print the response
-  .requestSummary(Summary.true_)       // Request summary data only
-  .add('_count', '10')                 // Limit results to 10 items
-  .add('_since', '2020-01-01');        // Only include resources modified after this date
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> parameters = RestfulParameters()
+  .requestPretty()                     <span class="hljs-comment">// Pretty-print the response</span>
+  .requestSummary(Summary.true_)       <span class="hljs-comment">// Request summary data only</span>
+  .add(<span class="hljs-string">'_count'</span>, <span class="hljs-string">'10'</span>)                 <span class="hljs-comment">// Limit results to 10 items</span>
+  .add(<span class="hljs-string">'_since'</span>, <span class="hljs-string">'2020-01-01'</span>);        <span class="hljs-comment">// Only include resources modified after this date</span>
   
-final request = FhirReadRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
+<span class="hljs-keyword">final</span> request = FhirReadRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
   parameters: parameters,
-);
-</code></pre>
-                <h3 id="working-with-http-client" anchor="true">
+);</code></pre>
+                </div>
+                <h2 id="working-with-http-client" anchor="true">
                   <span>Working with HTTP Client</span><a href="/docs/at_rest/restful_requests#working-with-http-client">#</a>
-                </h3>
+                </h2>
                 <p>
                   By default, the library uses <code>http.Client()</code> to make requests. You can provide your own client for custom behavior:
                 </p>
-                <pre><code class="language-dart">final customClient = http.Client();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> customClient = http.Client();
 
-final request = FhirReadRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
+<span class="hljs-keyword">final</span> request = FhirReadRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
   client: customClient,
-);
-</code></pre>
-                <h3 id="handling-responses" anchor="true"><span>Handling Responses</span><a href="/docs/at_rest/restful_requests#handling-responses">#</a></h3>
+);</code></pre>
+                </div>
+                <h2 id="handling-responses" anchor="true"><span>Handling Responses</span><a href="/docs/at_rest/restful_requests#handling-responses">#</a></h2>
                 <p>The <code>sendRequest()</code> method returns a standard <code>http.Response</code> object:</p>
-                <pre><code class="language-dart">final request = FhirReadRequest(
-  base: Uri.parse('http://hapi.fhir.org/baseR4'),
-  resourceType: 'Patient',
-  id: '12345',
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirReadRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://hapi.fhir.org/baseR4'</span>),
+  resourceType: <span class="hljs-string">'Patient'</span>,
+  id: <span class="hljs-string">'12345'</span>,
 );
 
-try {
-  final response = await request.sendRequest();
+<span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
   
-  if (response.statusCode == 200) {
-    // Parse the response body
-    final patient = Patient.fromJson(
+  <span class="hljs-keyword">if</span> (response.statusCode == <span class="hljs-number">200</span>) {
+    <span class="hljs-comment">// Parse the response body</span>
+    <span class="hljs-keyword">final</span> patient = Patient.fromJson(
       jsonDecode(response.body),
     );
-    // Use the patient resource
-  } else {
-    // Handle error responses
-    print('Error: ${response.statusCode} - ${response.body}');
+    <span class="hljs-comment">// Use the patient resource</span>
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// Handle error responses</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Error: <span class="hljs-subst">${response.statusCode}</span> - <span class="hljs-subst">${response.body}</span>'</span>);
   }
-} catch (e) {
-  // Handle network or other exceptions
-  print('Exception: $e');
-}
-</code></pre>
-                <h3 id="structured-response-parsing" anchor="true">
+} <span class="hljs-keyword">catch</span> (e) {
+  <span class="hljs-comment">// Handle network or other exceptions</span>
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Exception: <span class="hljs-subst">$e</span>'</span>);
+}</code></pre>
+                </div>
+                <h2 id="structured-response-parsing" anchor="true">
                   <span>Structured Response Parsing</span><a href="/docs/at_rest/restful_requests#structured-response-parsing">#</a>
-                </h3>
+                </h2>
                 <p>
                   A FHIR server usually responds with a single resource, a Bundle, or an OperationOutcome. The <code>parseRequestResult</code>
                    function sorts whatever came back into a <code>ReturnResults</code> object with separate lists for resources, informational OperationOutcomes, and error OperationOutcomes:
                 </p>
-                <pre><code class="language-dart">final response = await request.sendRequest();
-final resource = Resource.fromJson(jsonDecode(response.body));
-final result = parseRequestResult(resource);
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.sendRequest();
+<span class="hljs-keyword">final</span> resource = Resource.fromJson(jsonDecode(response.body));
+<span class="hljs-keyword">final</span> result = parseRequestResult(resource);
 
-for (final resource in result.resources) {
-  print('Retrieved resource: ${resource.id}');
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> resource <span class="hljs-keyword">in</span> result.resources) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Retrieved resource: <span class="hljs-subst">${resource.id}</span>'</span>);
 }
-for (final error in result.errorOperationOutcomes) {
-  print('Error: ${error.issue.first.diagnostics}');
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> error <span class="hljs-keyword">in</span> result.errorOperationOutcomes) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Error: <span class="hljs-subst">${error.issue.first.diagnostics}</span>'</span>);
 }
-for (final info in result.informationOperationOutcomes) {
-  print('Info: ${info.issue.first.diagnostics}');
-}
-</code></pre>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> info <span class="hljs-keyword">in</span> result.informationOperationOutcomes) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Info: <span class="hljs-subst">${info.issue.first.diagnostics}</span>'</span>);
+}</code></pre>
+                </div>
                 <p>
                   If you expect a specific resource type, use <code>parseRequestResultForType&lt;T&gt;</code>. Resources of type 
                   <code>T</code> land in <code>result.resources</code>, while resources of any other type are wrapped in error OperationOutcomes for troubleshooting.
                 </p>
-                <h3 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/at_rest/restful_requests#conclusion">#</a></h3>
+                <h2 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/at_rest/restful_requests#conclusion">#</a></h2>
                 <p>
                   The <code>fhir_r4_at_rest</code> library simplifies interactions with FHIR servers by providing typed classes for each RESTful operation. This approach improves code readability and reduces the likelihood of errors when constructing FHIR API requests.
                 </p>
@@ -1612,16 +2225,41 @@ for (final info in result.informationOperationOutcomes) {
               <div class="content-footer">
                 <footer class="site-footer">
                   <div class="footer-columns">
-                    <div class="footer-column"><h4>Docs</h4><ul><li><a href="docs/">Getting Started</a></li></ul></div>
                     <div class="footer-column">
-                      <h4>Standalone Pages</h4>
-                      <ul><li><a href="about">About</a></li><li><a href="contact">Contact</a></li></ul>
+                      <h4>Packages</h4>
+                      <ul>
+                        <li><a href="https://pub.dev/packages/fhir_r4">fhir_r4</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r5">fhir_r5</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r6">fhir_r6</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_path">fhir_path</a></li>
+                        <li><a href="https://pub.dev/packages/cql">cql</a></li>
+                        <li><a href="https://pub.dev/publishers/fhirfli.dev/packages">All packages on pub.dev</a></li>
+                      </ul>
                     </div>
                     <div class="footer-column">
-                      <h4>More</h4>
-                      <ul><li><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></li></ul>
+                      <h4>Documentation</h4>
+                      <ul>
+                        <li><a href="docs/">Getting Started</a></li>
+                        <li><a href="docs/core/fhir_r4">Core package</a></li>
+                        <li><a href="docs/at_rest/fhir_r4_at_rest">REST client</a></li>
+                        <li><a href="docs/auth/fhir_r4_auth">SMART on FHIR auth</a></li>
+                        <li><a href="docs/fhir_r4_db">Local database</a></li>
+                        <li><a href="docs/demos/fhir_path_demo">FHIRPath demo</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-column">
+                      <h4>Project</h4>
+                      <ul>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="https://github.com/fhir-fli">GitHub</a></li>
+                        <li><a href="https://github.com/fhir-fli/fhir_fli_documentation">This site's source</a></li>
+                      </ul>
                     </div>
                   </div>
+                  <p class="footer-note">
+                    FHIR® is the registered trademark of HL7 and is used with the permission of HL7. Built with <a href="https://jaspr.site">Jaspr</a>.
+                  </p>
                 </footer>
               </div>
             </div>
@@ -1629,17 +2267,28 @@ for (final info in result.informationOperationOutcomes) {
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#restful-requests">RESTful Requests</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#basic-concepts">Basic Concepts</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#common-request-structure">Common Request Structure</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#request-types">Request Types</a></li>
-                  <li style="padding-left: 0.75em">
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#basic-concepts">Basic Concepts</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#common-request-structure">Common Request Structure</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#request-types">Request Types</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#1-read-request">1. Read Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#2-vread-request">2. VRead Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#3-update-request">3. Update Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#4-patch-request">4. Patch Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#5-delete-request">5. Delete Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#6-create-request">6. Create Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#7-history-request">7. History Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#8-history-all-request">8. History All Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#9-capabilities-request">9. Capabilities Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#10-transaction-request">10. Transaction Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#11-batch-request">11. Batch Request</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#12-operation-request">12. Operation Request</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/at_rest/restful_requests#request-parametersdocsat_restrestful_parameters">Request Parameters</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#working-with-http-client">Working with HTTP Client</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#handling-responses">Handling Responses</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#structured-response-parsing">Structured Response Parsing</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/at_rest/restful_requests#conclusion">Conclusion</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#working-with-http-client">Working with HTTP Client</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#handling-responses">Handling Responses</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#structured-response-parsing">Structured Response Parsing</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/at_rest/restful_requests#conclusion">Conclusion</a></li>
                 </ul>
               </div>
             </aside>

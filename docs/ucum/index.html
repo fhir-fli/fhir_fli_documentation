@@ -3,8 +3,8 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>UCUM Package | FHIR-FLI</title>
-    <meta property="og:title" content="UCUM Package | FHIR-FLI"/>
+    <title>UCUM: Units of Measure | FHIR-FLI</title>
+    <meta property="og:title" content="UCUM: Units of Measure | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
     <style>
       .docs .header-container {
@@ -181,13 +181,16 @@
         align-items: center;
         column-gap: 0.75rem;
         flex-basis: 17rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
       .header .header-title img {
         width: auto;
-        height: 1.5rem;
+        height: 1.75rem;
       }
       .header .header-title span {
         font-weight: 700;
+        letter-spacing: 0.01em;
       }
       .header .header-content {
         display: flex;
@@ -196,7 +199,19 @@
       }
       .header .header-items {
         display: flex;
+        align-items: center;
         column-gap: 0.25rem;
+      }
+      @media all and (max-width: 767px) {
+        .header .header-title {
+          flex-basis: auto;
+        }
+        .header .header-items .nav-link {
+          display: none;
+        }
+        .header .github-button .github-info {
+          display: none;
+        }
       }
     </style>
     <style>
@@ -225,40 +240,161 @@
                 
     </script>
     <style>
+      .sidebar {
+        position: relative;
+        padding-top: 0.75rem;
+        padding-left: 0.5rem;
+        padding-bottom: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar {
+          padding-top: 0;
+        }
+      }
+      .sidebar .sidebar-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: inherit;
+        font-size: 1.5rem;
+        line-height: 1em;
+        background-color: transparent;
+      }
+      .sidebar .sidebar-close:hover {
+        background-color: #0000000d;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-close {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-mobile-nav {
+        padding-top: 3rem;
+        padding-right: 0.75rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .sidebar .sidebar-mobile-nav ul {
+        padding-bottom: 0.75rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-mobile-nav {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-group {
+        padding-top: 1rem;
+        padding-right: 0.75rem;
+      }
       .sidebar .sidebar-group.collapsible {
-        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+      .sidebar .sidebar-group.collapsible:first-of-type {
+        padding-top: 1rem;
       }
       .sidebar .sidebar-group.collapsible > summary {
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
+        display: flex;
+        padding: 0.45rem 0.75rem;
+        border-radius: 0.375rem;
+        opacity: 0.85;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
         list-style-type: none;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .sidebar .sidebar-group.collapsible > summary:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
       }
       .sidebar .sidebar-group.collapsible > summary::-webkit-details-marker {
         display: none;
       }
       .sidebar .sidebar-group.collapsible > summary::before {
+        content: "";
         display: inline-block;
-        margin-right: 0.4rem;
-        transition: transform 120ms;
-        font-size: 0.75em;
-        content: "▸";
+        width: 0.4em;
+        height: 0.4em;
+        margin-left: 0.1em;
+        margin-bottom: 0.15em;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-right-width: 1.5px;
+        border-bottom-width: 1.5px;
+        opacity: 0.7;
+        transition: transform 150ms ease-in-out;
+        transform: rotate(-45deg);
       }
       .sidebar .sidebar-group.collapsible[open] > summary::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg);
+      }
+      .sidebar .sidebar-group ul {
+        padding: 0;
+        margin-top: 0.125rem;
+        margin-left: 1rem;
+        border-left-style: solid;
+        border-left-color: var(--content-hr);
+        border-left-width: 1px;
+        list-style-type: none;
+      }
+      .sidebar .sidebar-group:not(.collapsible) ul {
+        margin: 0;
+        border: none;
+      }
+      .sidebar .sidebar-group li div {
+        display: flex;
+        margin-bottom: 1px;
+        border-radius: 0.375rem;
+        opacity: 0.75;
+        overflow: hidden;
+        transition: all 150ms ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar .sidebar-group li div:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
+      }
+      .sidebar .sidebar-group li div.active {
+        opacity: 1.0;
+        color: var(--primary);
+        font-weight: 700;
+        background-color: color-mix(in srgb, currentColor 15%, transparent);
+      }
+      .sidebar .sidebar-group li a {
+        display: inline-flex;
+        padding-top: 0.45rem;
+        padding-left: 12px;
+        padding-bottom: 0.45rem;
+        flex-grow: 1;
+        text-decoration: none;
       }
     </style>
     <style>
       :root {
-        --primary: oklch(0.623 0.214 259.815);
+        --primary: oklch(0.546 0.245 262.881);
         --background: oklch(0.984 0.003 247.858);
         --text: oklch(0.373 0.034 259.733);
         --content-headings: oklch(0.21 0.034 264.665);
         --content-lead: oklch(0.446 0.03 256.802);
-        --content-links: oklch(0.21 0.034 264.665);
+        --content-links: oklch(0.488 0.243 264.376);
         --content-bold: oklch(0.21 0.034 264.665);
         --content-counters: oklch(0.551 0.027 264.364);
         --content-bullets: oklch(0.872 0.01 258.338);
@@ -269,29 +405,30 @@
         --content-kbd: oklch(0.21 0.034 264.665);
         --content-kbd-shadows: oklch(0.21 0.034 264.665);
         --content-code: oklch(0.21 0.034 264.665);
-        --content-pre-code: oklch(0.928 0.006 264.531);
-        --content-pre-bg: oklch(0.278 0.033 256.848);
+        --content-pre-code: oklch(0.929 0.013 255.508);
+        --content-pre-bg: oklch(0.208 0.042 265.755);
         --content-th-borders: oklch(0.872 0.01 258.338);
         --content-td-borders: oklch(0.928 0.006 264.531);
       }
       :root[data-theme="dark"] {
-        --primary: oklch(0.809 0.105 251.813);
+        --primary: oklch(0.707 0.165 254.624);
         --background: oklch(0.141 0.005 285.823);
         --text: oklch(0.928 0.006 264.531);
         --content-headings: white;
         --content-lead: oklch(0.707 0.022 261.325);
-        --content-links: white;
+        --content-links: oklch(0.809 0.105 251.813);
         --content-bold: white;
         --content-counters: oklch(0.707 0.022 261.325);
         --content-bullets: oklch(0.446 0.03 256.802);
         --content-hr: oklch(0.373 0.034 259.733);
         --content-quotes: oklch(0.967 0.003 264.542);
+        --content-quote-borders: oklch(0.623 0.214 259.815);
         --content-captions: oklch(0.707 0.022 261.325);
         --content-kbd: white;
         --content-kbd-shadows: white;
         --content-code: white;
-        --content-pre-code: oklch(0.872 0.01 258.338);
-        --content-pre-bg: oklch(0.274 0.006 286.033);
+        --content-pre-code: oklch(0.92 0.004 286.32);
+        --content-pre-bg: oklch(0.21 0.006 285.885);
         --content-th-borders: oklch(0.446 0.03 256.802);
         --content-td-borders: oklch(0.373 0.034 259.733);
       }
@@ -872,68 +1009,311 @@
       }
     </style>
     <style>
-      .content-container p a, .content-container li a, .content-container td a {
-        text-decoration: underline;
+      .content-container .content-header h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15em;
       }
-      .content-container p a:hover, .content-container li a:hover, .content-container td a:hover {
-        opacity: 0.8;
+      .content-container .content-header p {
+        color: var(--content-lead);
+        line-height: 1.5em;
+      }
+      .content h2 {
+        padding-bottom: 0.3em;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .content a {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+      }
+      .content a:hover {
+        text-decoration-color: currentColor;
+      }
+      .content img {
+        border-radius: 0.5rem;
+      }
+      .content :not(pre) > code {
+        padding: 0.1em 0.3em;
+        border-radius: 0.3rem;
+        font-size: 0.85em;
+        font-weight: 500;
+        background-color: color-mix(in srgb, currentColor 9%, transparent);
+      }
+      .content code::before, .content code::after {
+        content: none;
       }
       .content-container table {
-        width: 100%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        border: solid var(--content-quote-borders) 1px;
-        border-collapse: collapse;
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: solid var(--content-td-borders) 1px;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        border-collapse: separate;
+        border-spacing: 0;
       }
       .content-container th, .content-container td {
         padding: 0.5rem 0.75rem;
-        border: solid var(--content-quote-borders) 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: var(--content-td-borders);
+        border-bottom-color: var(--content-td-borders);
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        vertical-align: top;
+      }
+      .content-container th:last-child, .content-container td:last-child {
+        border-right: none;
+      }
+      .content-container tbody tr:last-child td {
+        border-bottom: none;
       }
       .content-container th {
+        color: var(--content-headings);
         text-align: left;
+        font-size: 0.8rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+      }
+      .content-container tbody tr:nth-child(even) {
+        background-color: color-mix(in srgb, currentColor 2.5%, transparent);
+      }
+      .code-block {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        border: solid #ffffff14 1px;
+        border-radius: 0.5rem;
+        overflow: hidden;
         background-color: var(--content-pre-bg);
       }
-      .sidebar .sidebar-group.collapsible {
-        padding-bottom: 0.5rem;
+      .code-block .code-head {
+        display: flex;
+        height: 2rem;
+        padding-left: 1rem;
+        padding-right: 0.4rem;
         border-bottom-style: solid;
-        border-bottom-color: var(--content-quote-borders);
+        border-bottom-color: #ffffff14;
         border-bottom-width: 1px;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background-color: #ffffff08;
       }
-      .sidebar .sidebar-group.collapsible:last-of-type {
-        border-bottom: none;
+      .code-block .code-lang {
+        opacity: 0.55;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: var(--content-code-font);
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .code-block .code-copy {
+        display: inline-flex;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: none;
+        border-radius: 0.375rem;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 150ms ease-in-out;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: transparent;
+      }
+      .code-block .code-copy:hover, .code-copy:focus-visible {
+        opacity: 1.0;
+        background-color: #ffffff1f;
+      }
+      .code-block pre {
+        margin: 0;
+        border-radius: 0;
+        tab-size: 2;
+      }
+      .code-block .hljs-comment, .hljs-quote {
+        color: #8b949e;
+        font-style: italic;
+      }
+      .code-block .hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag {
+        color: #ff7b72;
+      }
+      .code-block .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-symbol, .hljs-bullet {
+        color: #79c0ff;
+      }
+      .code-block .hljs-string, .hljs-regexp, .hljs-addition {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-title, .hljs-section, .hljs-selector-id, .hljs-function .hljs-title {
+        color: #d2a8ff;
+        font-weight: 600;
+      }
+      .code-block .hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name {
+        color: #ffa657;
+      }
+      .code-block .hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class {
+        color: #7ee787;
+      }
+      .code-block .hljs-attr {
+        color: #79c0ff;
+      }
+      .code-block .hljs-meta, .hljs-meta-keyword {
+        color: #d2a8ff;
+      }
+      .code-block .hljs-meta-string {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-deletion {
+        color: #ffa198;
+      }
+      .code-block .hljs-emphasis {
+        font-style: italic;
+      }
+      .code-block .hljs-strong {
+        font-weight: 700;
+      }
+      .card-grid {
+        display: grid;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      }
+      .card-grid .card {
+        display: flex;
+        padding: 1.1rem;
+        border: solid var(--content-hr) 1px;
+        border-radius: 0.75rem;
+        transition: all 150ms ease-in-out;
+        flex-direction: column;
+        row-gap: 0.35rem;
+        color: var(--text);
+        text-decoration: none;
+        background-color: color-mix(in srgb, currentColor 3%, transparent);
+      }
+      .card-grid .card:hover {
+        border: solid var(--primary) 1px;
+        transform: translateY(-2px);
+        background-color: color-mix(in srgb, var(--primary) 6%, transparent);
+      }
+      .card-grid .card h3 {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--content-headings);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .card-grid .card h3 code {
+        padding: 0.1em 0.4em;
+        border-radius: 0.3rem;
+        color: var(--primary);
+        font-family: var(--content-code-font);
+        font-size: 0.85em;
+        font-weight: 600;
+        background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+      }
+      .card-grid .card p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.45em;
+      }
+      .card-grid .card .tag {
+        display: inline-block;
+        padding: 0.05em 0.5em;
+        margin-left: auto;
+        border-radius: 1rem;
+        opacity: 0.7;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: color-mix(in srgb, currentColor 10%, transparent);
+      }
+      .button-row {
+        display: flex;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .button-row a {
+        display: inline-flex;
+        padding: 0.6rem 1.1rem;
+        border: solid var(--primary) 1px;
+        border-radius: 0.5rem;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--primary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .button-row a.primary {
+        color: white;
+        background-color: var(--primary);
+      }
+      .button-row a:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      aside.toc a {
+        opacity: 0.7;
+        transition: opacity 150ms ease-in-out;
+        text-decoration: none;
+      }
+      aside.toc a:hover {
+        opacity: 1.0;
       }
       .header .nav-link {
         padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 150ms ease-in-out;
         font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
       }
       .header .nav-link:hover {
-        text-decoration: underline;
+        background-color: color-mix(in srgb, currentColor 6%, transparent);
       }
     </style>
     <style>
       .site-footer {
-        padding: 3rem 2rem;
+        padding-top: 2.5rem;
+        padding-bottom: 1rem;
+        margin-top: 4rem;
         border-top-style: solid;
-        border-top-color: #0000000d;
+        border-top-color: var(--content-hr);
         border-top-width: 1px;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
       .site-footer .footer-columns {
         display: flex;
-        max-width: 60rem;
-        margin-left: auto;
-        margin-right: auto;
         flex-wrap: wrap;
-        column-gap: 3rem;
+        gap: 2rem 4rem;
       }
       .site-footer .footer-column {
         min-width: 10rem;
       }
       .site-footer .footer-column h4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       .site-footer .footer-column ul {
         padding: 0;
@@ -941,10 +1321,24 @@
         list-style-type: none;
       }
       .site-footer .footer-column li {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.4rem;
       }
       .site-footer .footer-column a {
+        opacity: 0.75;
+        transition: opacity 150ms ease-in-out;
         text-decoration: none;
+      }
+      .site-footer .footer-column a:hover {
+        opacity: 1.0;
+      }
+      .site-footer .footer-note {
+        margin-top: 2.5rem;
+        opacity: 0.6;
+        font-size: 0.8rem;
+        line-height: 1.6em;
+      }
+      .site-footer .footer-note a {
+        color: inherit;
       }
     </style>
     <!--/-->
@@ -1136,8 +1530,16 @@
         <div class="sidebar-barrier" role="button"></div>
         <div class="sidebar-container">
           <nav class="sidebar">
-            <button class="sidebar-close">×</button>
+            <button class="sidebar-close" aria-label="Close navigation">×</button>
             <div>
+              <div class="sidebar-group sidebar-mobile-nav">
+                <ul>
+                  <li><div><a href="docs/">Getting Started</a></div></li>
+                  <li><div><a href="about">About</a></div></li>
+                  <li><div><a href="contact">Contact</a></div></li>
+                </ul>
+              </div>
+              <div class="sidebar-group"><ul><li><div><a href="docs/">Getting Started</a></div></li></ul></div>
               <details class="sidebar-group collapsible">
                 <summary>FHIR R4b Core</summary>
                 <ul>
@@ -1246,11 +1648,8 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header"><h1>UCUM Package</h1></div>
+              <div class="content-header"><h1>UCUM: Units of Measure</h1></div>
               <section class="content">
-                <h2 id="ucum--unified-code-for-units-of-measure" anchor="true">
-                  <span>UCUM — Unified Code for Units of Measure</span><a href="/docs/ucum#ucum--unified-code-for-units-of-measure">#</a>
-                </h2>
                 <p>
                   The <code>ucum</code> package provides a Dart implementation of the <a href="https://unitsofmeasure.org/">UCUM</a>
                    standard, enabling unit validation, conversion, comparison, and arithmetic for healthcare and scientific measurements. It is a port of the reference 
@@ -1260,317 +1659,535 @@
                   It is a standalone, dependency-free foundation package used across the FHIR-FLI ecosystem (the FHIRPath and CQL engines rely on it for 
                   <code>Quantity</code> semantics) but has no dependency on any FHIR package.
                 </p>
-                <h4 id="installation">Installation</h4>
-                <pre><code class="language-yaml">dependencies:
-  ucum: ^0.9.0
-</code></pre>
-                <h3 id="quick-start" anchor="true"><span>Quick Start</span><a href="/docs/ucum#quick-start">#</a></h3>
-                <pre><code class="language-dart">import 'package:ucum/ucum.dart';
+                <h2 id="installation" anchor="true"><span>Installation</span><a href="/docs/ucum#installation">#</a></h2>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">yaml</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
+  <span class="hljs-attr">ucum:</span> <span class="hljs-string">^0.9.0</span></code></pre>
+                </div>
+                <h2 id="quick-start" anchor="true"><span>Quick Start</span><a href="/docs/ucum#quick-start">#</a></h2>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:ucum/ucum.dart'</span>;
 
-void main() {
-  final ucum = UcumService();
+<span class="hljs-keyword">void</span> main() {
+  <span class="hljs-keyword">final</span> ucum = UcumService();
 
-  // Which UCUM data is loaded?
-  print(ucum.ucumIdentification());
-  // UCUM specification 2.2, revision N/A (2024-06-17)
+  <span class="hljs-comment">// Which UCUM data is loaded?</span>
+  <span class="hljs-built_in">print</span>(ucum.ucumIdentification());
+  <span class="hljs-comment">// UCUM specification 2.2, revision N/A (2024-06-17)</span>
 
-  // Validate a unit string
-  final error = ucum.validate('mg/dL');
-  print(error); // null — unit is valid
+  <span class="hljs-comment">// Validate a unit string</span>
+  <span class="hljs-keyword">final</span> error = ucum.validate(<span class="hljs-string">'mg/dL'</span>);
+  <span class="hljs-built_in">print</span>(error); <span class="hljs-comment">// null — unit is valid</span>
 
-  // Convert 100 mg to grams
-  final result = ucum.convert(
-    UcumDecimal.fromString('100'),
-    'mg',
-    'g',
+  <span class="hljs-comment">// Convert 100 mg to grams</span>
+  <span class="hljs-keyword">final</span> result = ucum.convert(
+    UcumDecimal.fromString(<span class="hljs-string">'100'</span>),
+    <span class="hljs-string">'mg'</span>,
+    <span class="hljs-string">'g'</span>,
   );
-  print(result.asUcumDecimal()); // 0.10
+  <span class="hljs-built_in">print</span>(result.asUcumDecimal()); <span class="hljs-comment">// 0.10</span>
 
-  // Check if two units are comparable
-  print(ucum.isComparable('mg', 'g')); // true
-  print(ucum.isComparable('mg', 'mL')); // false
-}
-</code></pre>
-                <h3 id="ucumservice" anchor="true"><span>UcumService</span><a href="/docs/ucum#ucumservice">#</a></h3>
+  <span class="hljs-comment">// Check if two units are comparable</span>
+  <span class="hljs-built_in">print</span>(ucum.isComparable(<span class="hljs-string">'mg'</span>, <span class="hljs-string">'g'</span>)); <span class="hljs-comment">// true</span>
+  <span class="hljs-built_in">print</span>(ucum.isComparable(<span class="hljs-string">'mg'</span>, <span class="hljs-string">'mL'</span>)); <span class="hljs-comment">// false</span>
+}</code></pre>
+                </div>
+                <h2 id="ucumservice" anchor="true"><span>UcumService</span><a href="/docs/ucum#ucumservice">#</a></h2>
                 <p>
                   <code>UcumService</code> is the main public API. It is a singleton — calling <code>UcumService()</code>
                    always returns the same instance.
                 </p>
-                <h4 id="validation">Validation</h4>
+                <h3 id="validation" anchor="true"><span>Validation</span><a href="/docs/ucum#validation">#</a></h3>
                 <p><code>validate</code> is spec-strict: only real UCUM is accepted (matching Ucum-java).</p>
-                <pre><code class="language-dart">final ucum = UcumService();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> ucum = UcumService();
 
-// Returns null if the unit is valid, or an error message
-final error = ucum.validate('kg');
-print(error); // null
+<span class="hljs-comment">// Returns null if the unit is valid, or an error message</span>
+<span class="hljs-keyword">final</span> error = ucum.validate(<span class="hljs-string">'kg'</span>);
+<span class="hljs-built_in">print</span>(error); <span class="hljs-comment">// null</span>
 
-final bad = ucum.validate('not_a_unit');
-print(bad);
-// Error processing unit: 'not_a_unit' The unit 'not_a_unit' is unknown
-// at position 0
-</code></pre>
-                <h4 id="lenient-resolution-of-common-non-ucum-spellings">Lenient Resolution of Common Non-UCUM Spellings</h4>
+<span class="hljs-keyword">final</span> bad = ucum.validate(<span class="hljs-string">'not_a_unit'</span>);
+<span class="hljs-built_in">print</span>(bad);
+<span class="hljs-comment">// Error processing unit: 'not_a_unit' The unit 'not_a_unit' is unknown</span>
+<span class="hljs-comment">// at position 0</span></code></pre>
+                </div>
+                <h3 id="lenient-resolution-of-common-non-ucum-spellings" anchor="true">
+                  <span>Lenient Resolution of Common Non-UCUM Spellings</span><a href="/docs/ucum#lenient-resolution-of-common-non-ucum-spellings">#</a>
+                </h3>
                 <p>
                   <code>validate</code> stays strict, so common non-UCUM spellings like <code>mcg</code> or <code>hours</code>
                    fail validation. <code>resolveCommonUnit</code> is the explicit leniency layer (the approach used by NLM's ucum-lhc): input that is already valid UCUM is returned unchanged; otherwise known synonym tokens are substituted and the corrected code is returned, or null if no resolution exists.
                 </p>
-                <pre><code class="language-dart">final ucum = UcumService();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> ucum = UcumService();
 
-print(ucum.resolveCommonUnit('mcg'));    // ug
-print(ucum.resolveCommonUnit('mcg/mL')); // ug/mL
-print(ucum.resolveCommonUnit('hours'));  // h
-print(ucum.resolveCommonUnit('kg'));     // kg (already valid — unchanged)
-</code></pre>
+<span class="hljs-built_in">print</span>(ucum.resolveCommonUnit(<span class="hljs-string">'mcg'</span>));    <span class="hljs-comment">// ug</span>
+<span class="hljs-built_in">print</span>(ucum.resolveCommonUnit(<span class="hljs-string">'mcg/mL'</span>)); <span class="hljs-comment">// ug/mL</span>
+<span class="hljs-built_in">print</span>(ucum.resolveCommonUnit(<span class="hljs-string">'hours'</span>));  <span class="hljs-comment">// h</span>
+<span class="hljs-built_in">print</span>(ucum.resolveCommonUnit(<span class="hljs-string">'kg'</span>));     <span class="hljs-comment">// kg (already valid — unchanged)</span></code></pre>
+                </div>
                 <p>
                   Valid codes are never rewritten — <code>mph</code> stays milli-phot, because it <em>is</em> valid UCUM. 
                   <code>ValidatedQuantity</code> (below) uses this lenient layer automatically.
                 </p>
-                <h4 id="conversion">Conversion</h4>
-                <pre><code class="language-dart">final ucum = UcumService();
+                <h3 id="conversion" anchor="true"><span>Conversion</span><a href="/docs/ucum#conversion">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> ucum = UcumService();
 
-// Convert a value from one unit to another
-final grams = ucum.convert(
-  UcumDecimal.fromString('2.5'),
-  'kg',
-  'g',
+<span class="hljs-comment">// Convert a value from one unit to another</span>
+<span class="hljs-keyword">final</span> grams = ucum.convert(
+  UcumDecimal.fromString(<span class="hljs-string">'2.5'</span>),
+  <span class="hljs-string">'kg'</span>,
+  <span class="hljs-string">'g'</span>,
 );
-print(grams.asUcumDecimal()); // 2500
+<span class="hljs-built_in">print</span>(grams.asUcumDecimal()); <span class="hljs-comment">// 2500</span>
 
-// Convert temperature (affine scales handled correctly)
-final fahrenheit = ucum.convert(
-  UcumDecimal.fromString('37'),
-  'Cel',
-  '[degF]',
+<span class="hljs-comment">// Convert temperature (affine scales handled correctly)</span>
+<span class="hljs-keyword">final</span> fahrenheit = ucum.convert(
+  UcumDecimal.fromString(<span class="hljs-string">'37'</span>),
+  <span class="hljs-string">'Cel'</span>,
+  <span class="hljs-string">'[degF]'</span>,
 );
-print(fahrenheit.asUcumDecimal()); // 98.6000
+<span class="hljs-built_in">print</span>(fahrenheit.asUcumDecimal()); <span class="hljs-comment">// 98.6000</span>
 
-final kelvin = ucum.convert(
-  UcumDecimal.fromString('37'),
-  'Cel',
-  'K',
+<span class="hljs-keyword">final</span> kelvin = ucum.convert(
+  UcumDecimal.fromString(<span class="hljs-string">'37'</span>),
+  <span class="hljs-string">'Cel'</span>,
+  <span class="hljs-string">'K'</span>,
 );
-print(kelvin.asUcumDecimal()); // 310.15
-</code></pre>
-                <h5 id="a-note-on-affine-temperatures">A Note on Affine Temperatures</h5>
+<span class="hljs-built_in">print</span>(kelvin.asUcumDecimal()); <span class="hljs-comment">// 310.15</span></code></pre>
+                </div>
+                <h4 id="a-note-on-affine-temperatures">A Note on Affine Temperatures</h4>
                 <p>
                   Celsius and Fahrenheit are affine scales — they have no multiplicative canonical form, so unit-level canonicalization (<code>getCanonicalUnits('Cel')</code>) throws, exactly like Ucum-java. Conversions and quantity comparisons still work correctly (<code>convert</code>, 
                   <code>getCanonicalForm(Pair)</code>, <code>ValidatedQuantity</code>) by routing through the Kelvin ratio scale. Compound or prefixed affine units (<code>Cel/s</code>, 
                   <code>mCel</code>) throw rather than silently mis-convert.
                 </p>
-                <h4 id="multiplication-and-division">Multiplication and Division</h4>
+                <h3 id="multiplication-and-division" anchor="true"><span>Multiplication and Division</span><a href="/docs/ucum#multiplication-and-division">#</a></h3>
                 <p>
                   Multiply and divide quantities using <code>Pair</code> objects (value + unit). Both operations return the result in canonical (base-unit) form:
                 </p>
-                <pre><code class="language-dart">final ucum = UcumService();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> ucum = UcumService();
 
-// Multiply: 5 m * 3 m = 15 m2
-final area = ucum.multiply(
-  Pair(value: UcumDecimal.fromString('5'), unit: 'm'),
-  Pair(value: UcumDecimal.fromString('3'), unit: 'm'),
+<span class="hljs-comment">// Multiply: 5 m * 3 m = 15 m2</span>
+<span class="hljs-keyword">final</span> area = ucum.multiply(
+  Pair(value: UcumDecimal.fromString(<span class="hljs-string">'5'</span>), unit: <span class="hljs-string">'m'</span>),
+  Pair(value: UcumDecimal.fromString(<span class="hljs-string">'3'</span>), unit: <span class="hljs-string">'m'</span>),
 );
-print('${area.value.asUcumDecimal()} ${area.unit}'); // 15 m2
+<span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">${area.value.asUcumDecimal()}</span> <span class="hljs-subst">${area.unit}</span>'</span>); <span class="hljs-comment">// 15 m2</span>
 
-// Divide: 100 mg / 2 dL, canonicalized to base units
-final concentration = ucum.divideBy(
-  Pair(value: UcumDecimal.fromString('100'), unit: 'mg'),
-  Pair(value: UcumDecimal.fromString('2'), unit: 'dL'),
+<span class="hljs-comment">// Divide: 100 mg / 2 dL, canonicalized to base units</span>
+<span class="hljs-keyword">final</span> concentration = ucum.divideBy(
+  Pair(value: UcumDecimal.fromString(<span class="hljs-string">'100'</span>), unit: <span class="hljs-string">'mg'</span>),
+  Pair(value: UcumDecimal.fromString(<span class="hljs-string">'2'</span>), unit: <span class="hljs-string">'dL'</span>),
 );
-print('${concentration.value.asUcumDecimal()} ${concentration.unit}');
-// 500 g.m-3
-</code></pre>
-                <h4 id="analysis-and-canonical-forms">Analysis and Canonical Forms</h4>
-                <pre><code class="language-dart">final ucum = UcumService();
+<span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">${concentration.value.asUcumDecimal()}</span> <span class="hljs-subst">${concentration.unit}</span>'</span>);
+<span class="hljs-comment">// 500 g.m-3</span></code></pre>
+                </div>
+                <h3 id="analysis-and-canonical-forms" anchor="true"><span>Analysis and Canonical Forms</span><a href="/docs/ucum#analysis-and-canonical-forms">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> ucum = UcumService();
 
-// Get canonical (base) units
-print(ucum.getCanonicalUnits('km/h')); // m.s-1
-print(ucum.getCanonicalUnits('N'));    // g.m.s-2
+<span class="hljs-comment">// Get canonical (base) units</span>
+<span class="hljs-built_in">print</span>(ucum.getCanonicalUnits(<span class="hljs-string">'km/h'</span>)); <span class="hljs-comment">// m.s-1</span>
+<span class="hljs-built_in">print</span>(ucum.getCanonicalUnits(<span class="hljs-string">'N'</span>));    <span class="hljs-comment">// g.m.s-2</span>
 
-// Analyse a unit string (human-readable description)
-print(ucum.analyse('mg/dL')); // (milligram) / (deciliter)
+<span class="hljs-comment">// Analyse a unit string (human-readable description)</span>
+<span class="hljs-built_in">print</span>(ucum.analyse(<span class="hljs-string">'mg/dL'</span>)); <span class="hljs-comment">// (milligram) / (deciliter)</span>
 
-// Get canonical form with converted value
-final canonical = ucum.getCanonicalForm(
-  Pair(value: UcumDecimal.fromString('60'), unit: 'km/h'),
+<span class="hljs-comment">// Get canonical form with converted value</span>
+<span class="hljs-keyword">final</span> canonical = ucum.getCanonicalForm(
+  Pair(value: UcumDecimal.fromString(<span class="hljs-string">'60'</span>), unit: <span class="hljs-string">'km/h'</span>),
 );
-print('${canonical.value.asUcumDecimal()} ${canonical.unit}');
-// 16.66666666666666666666668 m.s-1
-</code></pre>
-                <h4 id="search">Search</h4>
-                <pre><code class="language-dart">final ucum = UcumService();
+<span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">${canonical.value.asUcumDecimal()}</span> <span class="hljs-subst">${canonical.unit}</span>'</span>);
+<span class="hljs-comment">// 16.66666666666666666666668 m.s-1</span></code></pre>
+                </div>
+                <h3 id="search" anchor="true"><span>Search</span><a href="/docs/ucum#search">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> ucum = UcumService();
 
-// Search for units by name (the last argument treats the text as a
-// regular expression when true)
-final results = ucum.search(ConceptKind.unit, 'gram', false);
-for (final concept in results) {
-  print('${concept.code} — ${concept.names.first}');
+<span class="hljs-comment">// Search for units by name (the last argument treats the text as a</span>
+<span class="hljs-comment">// regular expression when true)</span>
+<span class="hljs-keyword">final</span> results = ucum.search(ConceptKind.unit, <span class="hljs-string">'gram'</span>, <span class="hljs-keyword">false</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> concept <span class="hljs-keyword">in</span> results) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">${concept.code}</span> — <span class="hljs-subst">${concept.names.first}</span>'</span>);
 }
-// gf — gram-force
-// g% — gram percent
-</code></pre>
-                <h3 id="ucumdecimal" anchor="true"><span>UcumDecimal</span><a href="/docs/ucum#ucumdecimal">#</a></h3>
+<span class="hljs-comment">// gf — gram-force</span>
+<span class="hljs-comment">// g% — gram percent</span></code></pre>
+                </div>
+                <h2 id="ucumdecimal" anchor="true"><span>UcumDecimal</span><a href="/docs/ucum#ucumdecimal">#</a></h2>
                 <p>
                   <code>UcumDecimal</code> provides arbitrary-precision decimal arithmetic, avoiding floating-point rounding errors that are critical to avoid in healthcare calculations. It tracks precision (significant figures) through all operations.
                 </p>
-                <h4 id="constructors">Constructors</h4>
-                <pre><code class="language-dart">// From a string (preserves precision from the string representation)
-final a = UcumDecimal.fromString('1.50');  // precision = 3
-final b = UcumDecimal.fromString('100');   // precision = 3
+                <h3 id="constructors" anchor="true"><span>Constructors</span><a href="/docs/ucum#constructors">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// From a string (preserves precision from the string representation)</span>
+<span class="hljs-keyword">final</span> a = UcumDecimal.fromString(<span class="hljs-string">'1.50'</span>);  <span class="hljs-comment">// precision = 3</span>
+<span class="hljs-keyword">final</span> b = UcumDecimal.fromString(<span class="hljs-string">'100'</span>);   <span class="hljs-comment">// precision = 3</span>
 
-// From native numbers
-final c = UcumDecimal.fromInt(42);
-final d = UcumDecimal.fromDouble(3.14);
-final e = UcumDecimal.fromNum(100);
-final f = UcumDecimal.fromBigInt(BigInt.from(999));
+<span class="hljs-comment">// From native numbers</span>
+<span class="hljs-keyword">final</span> c = UcumDecimal.fromInt(<span class="hljs-number">42</span>);
+<span class="hljs-keyword">final</span> d = UcumDecimal.fromDouble(<span class="hljs-number">3.14</span>);
+<span class="hljs-keyword">final</span> e = UcumDecimal.fromNum(<span class="hljs-number">100</span>);
+<span class="hljs-keyword">final</span> f = UcumDecimal.fromBigInt(BigInt.from(<span class="hljs-number">999</span>));
 
-// Named constructors
-final zero = UcumDecimal.zero();
-final one = UcumDecimal.one();
-</code></pre>
-                <h4 id="arithmetic">Arithmetic</h4>
-                <pre><code class="language-dart">final a = UcumDecimal.fromString('10.5');
-final b = UcumDecimal.fromString('3.2');
+<span class="hljs-comment">// Named constructors</span>
+<span class="hljs-keyword">final</span> zero = UcumDecimal.zero();
+<span class="hljs-keyword">final</span> one = UcumDecimal.one();</code></pre>
+                </div>
+                <h3 id="arithmetic" anchor="true"><span>Arithmetic</span><a href="/docs/ucum#arithmetic">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> a = UcumDecimal.fromString(<span class="hljs-string">'10.5'</span>);
+<span class="hljs-keyword">final</span> b = UcumDecimal.fromString(<span class="hljs-string">'3.2'</span>);
 
-final sum = a.add(b);        // 13.7
-final diff = a.subtract(b);  // 7.3
-final prod = a.multiply(b);  // 33.6
-final quot = a.divide(b);    // 3.3
+<span class="hljs-keyword">final</span> sum = a.add(b);        <span class="hljs-comment">// 13.7</span>
+<span class="hljs-keyword">final</span> diff = a.subtract(b);  <span class="hljs-comment">// 7.3</span>
+<span class="hljs-keyword">final</span> prod = a.multiply(b);  <span class="hljs-comment">// 33.6</span>
+<span class="hljs-keyword">final</span> quot = a.divide(b);    <span class="hljs-comment">// 3.3</span>
 
-// Integer division and modulo
-final intDiv = a.divInt(b);  // 3
-final mod = a.modulo(b);     // 0.9
-</code></pre>
-                <h4 id="comparison">Comparison</h4>
-                <pre><code class="language-dart">final a = UcumDecimal.fromString('10.0');
-final b = UcumDecimal.fromString('10.00');
+<span class="hljs-comment">// Integer division and modulo</span>
+<span class="hljs-keyword">final</span> intDiv = a.divInt(b);  <span class="hljs-comment">// 3</span>
+<span class="hljs-keyword">final</span> mod = a.modulo(b);     <span class="hljs-comment">// 0.9</span></code></pre>
+                </div>
+                <h3 id="comparison" anchor="true"><span>Comparison</span><a href="/docs/ucum#comparison">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> a = UcumDecimal.fromString(<span class="hljs-string">'10.0'</span>);
+<span class="hljs-keyword">final</span> b = UcumDecimal.fromString(<span class="hljs-string">'10.00'</span>);
 
-// String equality (exact representation)
-a.equals(b);      // false — different precision
+<span class="hljs-comment">// String equality (exact representation)</span>
+a.equals(b);      <span class="hljs-comment">// false — different precision</span>
 
-// Numeric value equality
-a.equalsValue(b);  // true — same numeric value
+<span class="hljs-comment">// Numeric value equality</span>
+a.equalsValue(b);  <span class="hljs-comment">// true — same numeric value</span>
 
-// Comparison (-1, 0, 1)
-a.comparesTo(b);   // 0
-</code></pre>
-                <h3 id="validatedquantity" anchor="true"><span>ValidatedQuantity</span><a href="/docs/ucum#validatedquantity">#</a></h3>
+<span class="hljs-comment">// Comparison (-1, 0, 1)</span>
+a.comparesTo(b);   <span class="hljs-comment">// 0</span></code></pre>
+                </div>
+                <h2 id="validatedquantity" anchor="true"><span>ValidatedQuantity</span><a href="/docs/ucum#validatedquantity">#</a></h2>
                 <p>
                   <code>ValidatedQuantity</code> combines a <code>UcumDecimal</code> value with a unit string. It is the lenient, FHIR/CQL-facing value+unit type: it resolves common non-UCUM spellings through 
                   <code>resolveCommonUnit</code> for every comparison and arithmetic operation, while keeping the original unit string for display. It supports full arithmetic operators and unit conversion.
                 </p>
-                <h4 id="constructors">Constructors</h4>
-                <pre><code class="language-dart">// Standard constructor
-final q1 = ValidatedQuantity(
-  value: UcumDecimal.fromString('5.0'),
-  unit: 'mg',
+                <h3 id="constructors" anchor="true"><span>Constructors</span><a href="/docs/ucum#constructors">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Standard constructor</span>
+<span class="hljs-keyword">final</span> q1 = ValidatedQuantity(
+  value: UcumDecimal.fromString(<span class="hljs-string">'5.0'</span>),
+  unit: <span class="hljs-string">'mg'</span>,
 );
 
-// Parse from string ("value unit" format)
-final q2 = ValidatedQuantity.fromString('5.0 mg');
+<span class="hljs-comment">// Parse from string ("value unit" format)</span>
+<span class="hljs-keyword">final</span> q2 = ValidatedQuantity.fromString(<span class="hljs-string">'5.0 mg'</span>);
 
-// From native number
-final q3 = ValidatedQuantity.fromNumber(5.0, unit: 'mg');
-</code></pre>
-                <h4 id="arithmetic-operators">Arithmetic Operators</h4>
+<span class="hljs-comment">// From native number</span>
+<span class="hljs-keyword">final</span> q3 = ValidatedQuantity.fromNumber(<span class="hljs-number">5.0</span>, unit: <span class="hljs-string">'mg'</span>);</code></pre>
+                </div>
+                <h3 id="arithmetic-operators" anchor="true"><span>Arithmetic Operators</span><a href="/docs/ucum#arithmetic-operators">#</a></h3>
                 <p>
                   <code>ValidatedQuantity</code> supports <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, 
                   <code>~/</code>, and <code>%</code> with automatic unit handling. The right operand may be another quantity, a number, a 
                   <code>UcumDecimal</code>, or a quantity string; it is converted into the left operand's unit first. Addition and subtraction return null when the units are not comparable:
                 </p>
-                <pre><code class="language-dart">final weight1 = ValidatedQuantity.fromString('70 kg');
-final weight2 = ValidatedQuantity.fromString('5 kg');
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> weight1 = ValidatedQuantity.fromString(<span class="hljs-string">'70 kg'</span>);
+<span class="hljs-keyword">final</span> weight2 = ValidatedQuantity.fromString(<span class="hljs-string">'5 kg'</span>);
 
-final total = weight1 + weight2;   // 75 kg
-final diff = weight1 - weight2;    // 65 kg
+<span class="hljs-keyword">final</span> total = weight1 + weight2;   <span class="hljs-comment">// 75 kg</span>
+<span class="hljs-keyword">final</span> diff = weight1 - weight2;    <span class="hljs-comment">// 65 kg</span>
 
-// Cross-unit arithmetic converts automatically
-final mg = ValidatedQuantity.fromString('500 mg');
-final g = ValidatedQuantity.fromString('1 g');
-final sum = mg + g;  // 1500 mg (converts to left operand's unit)
-</code></pre>
-                <h4 id="comparison-operators">Comparison Operators</h4>
+<span class="hljs-comment">// Cross-unit arithmetic converts automatically</span>
+<span class="hljs-keyword">final</span> mg = ValidatedQuantity.fromString(<span class="hljs-string">'500 mg'</span>);
+<span class="hljs-keyword">final</span> g = ValidatedQuantity.fromString(<span class="hljs-string">'1 g'</span>);
+<span class="hljs-keyword">final</span> sum = mg + g;  <span class="hljs-comment">// 1500 mg (converts to left operand's unit)</span></code></pre>
+                </div>
+                <h3 id="comparison-operators" anchor="true"><span>Comparison Operators</span><a href="/docs/ucum#comparison-operators">#</a></h3>
                 <p>Equality and ordering are unit-converting (and resolve common spellings first):</p>
-                <pre><code class="language-dart">final a = ValidatedQuantity.fromString('1 kg');
-final b = ValidatedQuantity.fromString('500 g');
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> a = ValidatedQuantity.fromString(<span class="hljs-string">'1 kg'</span>);
+<span class="hljs-keyword">final</span> b = ValidatedQuantity.fromString(<span class="hljs-string">'500 g'</span>);
 
-print(a &gt; b);    // true (1 kg &gt; 500 g)
-print(a == b);   // false
-print(a &gt;= b);   // true
+<span class="hljs-built_in">print</span>(a &gt; b);    <span class="hljs-comment">// true (1 kg &gt; 500 g)</span>
+<span class="hljs-built_in">print</span>(a == b);   <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">print</span>(a &gt;= b);   <span class="hljs-comment">// true</span>
 
-print(a == ValidatedQuantity.fromString('1000 g'));  // true
-print(ValidatedQuantity.fromString('72 inch') ==
-    ValidatedQuantity.fromString('182.88 cm'));      // true
-</code></pre>
-                <h4 id="unit-conversion">Unit Conversion</h4>
-                <pre><code class="language-dart">final temp = ValidatedQuantity.fromString('100 Cel');
-final fahrenheit = temp.convertTo('[degF]');
-print(fahrenheit); // 212 '[degF]'
-</code></pre>
-                <h4 id="duration-support">Duration Support</h4>
+<span class="hljs-built_in">print</span>(a == ValidatedQuantity.fromString(<span class="hljs-string">'1000 g'</span>));  <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">print</span>(ValidatedQuantity.fromString(<span class="hljs-string">'72 inch'</span>) ==
+    ValidatedQuantity.fromString(<span class="hljs-string">'182.88 cm'</span>));      <span class="hljs-comment">// true</span></code></pre>
+                </div>
+                <h3 id="unit-conversion" anchor="true"><span>Unit Conversion</span><a href="/docs/ucum#unit-conversion">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> temp = ValidatedQuantity.fromString(<span class="hljs-string">'100 Cel'</span>);
+<span class="hljs-keyword">final</span> fahrenheit = temp.convertTo(<span class="hljs-string">'[degF]'</span>);
+<span class="hljs-built_in">print</span>(fahrenheit); <span class="hljs-comment">// 212 '[degF]'</span></code></pre>
+                </div>
+                <h3 id="duration-support" anchor="true"><span>Duration Support</span><a href="/docs/ucum#duration-support">#</a></h3>
                 <p>
                   <code>ValidatedQuantity</code> recognizes time units and provides convenient accessors. Each accessor (<code>years</code>, 
                   <code>months</code>, <code>weeks</code>, <code>days</code>, <code>hours</code>, <code>minutes</code>, 
                   <code>seconds</code>, <code>milliseconds</code>) returns the value when the quantity's unit matches that accessor, and null otherwise:
                 </p>
-                <pre><code class="language-dart">final duration = ValidatedQuantity.fromString('90 min');
-print(duration.isDuration);    // true
-print(duration.minutes);       // 90
-print(duration.hours);         // null (the unit is minutes, not hours)
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> duration = ValidatedQuantity.fromString(<span class="hljs-string">'90 min'</span>);
+<span class="hljs-built_in">print</span>(duration.isDuration);    <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">print</span>(duration.minutes);       <span class="hljs-comment">// 90</span>
+<span class="hljs-built_in">print</span>(duration.hours);         <span class="hljs-comment">// null (the unit is minutes, not hours)</span>
 
-print(duration.convertTo('h')); // 1.5 h
-</code></pre>
-                <h3 id="pair" anchor="true"><span>Pair</span><a href="/docs/ucum#pair">#</a></h3>
+<span class="hljs-built_in">print</span>(duration.convertTo(<span class="hljs-string">'h'</span>)); <span class="hljs-comment">// 1.5 h</span></code></pre>
+                </div>
+                <h2 id="pair" anchor="true"><span>Pair</span><a href="/docs/ucum#pair">#</a></h2>
                 <p>
                   <code>Pair</code> is a lightweight container holding a <code>UcumDecimal</code> value and a unit string. It is the input/output type for 
                   <code>UcumService.multiply()</code>, <code>UcumService.divideBy()</code>, and <code>UcumService.getCanonicalForm()</code>.
                 </p>
-                <pre><code class="language-dart">final pair = Pair(
-  value: UcumDecimal.fromString('100'),
-  unit: 'mg',
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> pair = Pair(
+  value: UcumDecimal.fromString(<span class="hljs-string">'100'</span>),
+  unit: <span class="hljs-string">'mg'</span>,
 );
 
-print(pair.value.asUcumDecimal()); // 100
-print(pair.unit);                  // mg
-</code></pre>
-                <h3 id="common-healthcare-unit-conversions" anchor="true">
+<span class="hljs-built_in">print</span>(pair.value.asUcumDecimal()); <span class="hljs-comment">// 100</span>
+<span class="hljs-built_in">print</span>(pair.unit);                  <span class="hljs-comment">// mg</span></code></pre>
+                </div>
+                <h2 id="common-healthcare-unit-conversions" anchor="true">
                   <span>Common Healthcare Unit Conversions</span><a href="/docs/ucum#common-healthcare-unit-conversions">#</a>
-                </h3>
-                <pre><code class="language-dart">final ucum = UcumService();
+                </h2>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> ucum = UcumService();
 
-// Weight
-ucum.convert(UcumDecimal.fromString('1'), '[lb_av]', 'kg');
-// 0.45359237 kg
+<span class="hljs-comment">// Weight</span>
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'1'</span>), <span class="hljs-string">'[lb_av]'</span>, <span class="hljs-string">'kg'</span>);
+<span class="hljs-comment">// 0.45359237 kg</span>
 
-ucum.convert(UcumDecimal.fromString('1'), 'kg', '[lb_av]');
-// 2.20462262184877580722974 lb
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'1'</span>), <span class="hljs-string">'kg'</span>, <span class="hljs-string">'[lb_av]'</span>);
+<span class="hljs-comment">// 2.20462262184877580722974 lb</span>
 
-// Volume
-ucum.convert(UcumDecimal.fromString('1'), 'L', 'mL');
-// 1000 mL
+<span class="hljs-comment">// Volume</span>
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'1'</span>), <span class="hljs-string">'L'</span>, <span class="hljs-string">'mL'</span>);
+<span class="hljs-comment">// 1000 mL</span>
 
-// Temperature
-ucum.convert(UcumDecimal.fromString('37'), 'Cel', '[degF]');
-// 98.6 degF
+<span class="hljs-comment">// Temperature</span>
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'37'</span>), <span class="hljs-string">'Cel'</span>, <span class="hljs-string">'[degF]'</span>);
+<span class="hljs-comment">// 98.6 degF</span>
 
-ucum.convert(UcumDecimal.fromString('98.6'), '[degF]', 'Cel');
-// 37 Cel
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'98.6'</span>), <span class="hljs-string">'[degF]'</span>, <span class="hljs-string">'Cel'</span>);
+<span class="hljs-comment">// 37 Cel</span>
 
-// Length
-ucum.convert(UcumDecimal.fromString('1'), '[in_i]', 'cm');
-// 2.54 cm
+<span class="hljs-comment">// Length</span>
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'1'</span>), <span class="hljs-string">'[in_i]'</span>, <span class="hljs-string">'cm'</span>);
+<span class="hljs-comment">// 2.54 cm</span>
 
-// Time
-ucum.convert(UcumDecimal.fromString('1'), 'h', 'min');
-// 60 min
+<span class="hljs-comment">// Time</span>
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'1'</span>), <span class="hljs-string">'h'</span>, <span class="hljs-string">'min'</span>);
+<span class="hljs-comment">// 60 min</span>
 
-// Rates
-ucum.convert(UcumDecimal.fromString('15'), '/min', '/h');
-// 900 /h
+<span class="hljs-comment">// Rates</span>
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'15'</span>), <span class="hljs-string">'/min'</span>, <span class="hljs-string">'/h'</span>);
+<span class="hljs-comment">// 900 /h</span>
 
-// Lab values
-ucum.convert(UcumDecimal.fromString('1'), 'mmol/L', 'mol/L');
-// 0.001 mol/L
-</code></pre>
-                <h3 id="integration-with-fhir" anchor="true"><span>Integration with FHIR</span><a href="/docs/ucum#integration-with-fhir">#</a></h3>
+<span class="hljs-comment">// Lab values</span>
+ucum.convert(UcumDecimal.fromString(<span class="hljs-string">'1'</span>), <span class="hljs-string">'mmol/L'</span>, <span class="hljs-string">'mol/L'</span>);
+<span class="hljs-comment">// 0.001 mol/L</span></code></pre>
+                </div>
+                <h2 id="integration-with-fhir" anchor="true"><span>Integration with FHIR</span><a href="/docs/ucum#integration-with-fhir">#</a></h2>
                 <p>The <code>ucum</code> package is used by other FHIR-FLI packages for unit-aware calculations:</p>
                 <ul>
                   <li>
@@ -1582,18 +2199,30 @@ ucum.convert(UcumDecimal.fromString('1'), 'mmol/L', 'mol/L');
                     <code>UcumService.validate()</code> to ensure codes are valid UCUM expressions.
                   </li>
                 </ul>
-                <pre><code class="language-dart">// Validate a FHIR Quantity's unit code
-final ucum = UcumService();
-final code = 'mg/dL';
-final error = ucum.validate(code);
-if (error != null) {
-  print('Invalid UCUM code: $error');
-}
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Validate a FHIR Quantity's unit code</span>
+<span class="hljs-keyword">final</span> ucum = UcumService();
+<span class="hljs-keyword">final</span> code = <span class="hljs-string">'mg/dL'</span>;
+<span class="hljs-keyword">final</span> error = ucum.validate(code);
+<span class="hljs-keyword">if</span> (error != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Invalid UCUM code: <span class="hljs-subst">$error</span>'</span>);
+}</code></pre>
+                </div>
                 <p>
                   The package has no dependency on any FHIR packages and can be used independently in any Dart application that needs unit handling.
                 </p>
-                <h3 id="ucum-specification-reference" anchor="true"><span>UCUM Specification Reference</span><a href="/docs/ucum#ucum-specification-reference">#</a></h3>
+                <h2 id="ucum-specification-reference" anchor="true"><span>UCUM Specification Reference</span><a href="/docs/ucum#ucum-specification-reference">#</a></h2>
                 <p>
                   For the complete UCUM specification, see <a href="https://unitsofmeasure.org/">unitsofmeasure.org</a>. The package implements the full specification including:
                 </p>
@@ -1605,7 +2234,7 @@ if (error != null) {
                   <li>Arbitrary-precision arithmetic preserving significant figures</li>
                 </ul>
                 <p>The full official UCUM functional test suite (575 cases) runs in CI.</p>
-                <h3 id="credits-and-license" anchor="true"><span>Credits and License</span><a href="/docs/ucum#credits-and-license">#</a></h3>
+                <h2 id="credits-and-license" anchor="true"><span>Credits and License</span><a href="/docs/ucum#credits-and-license">#</a></h2>
                 <p>
                   The package is ported from <a href="https://github.com/FHIR/Ucum-java">Ucum-java</a> (BSD-3-Clause, © Health Intersections Pty Ltd); the ported source files retain their original copyright headers. UCUM and the ucum-essence data are © Regenstrief Institute, Inc., used under the 
                   <a href="https://unitsofmeasure.org/license">UCUM license</a>. The package itself is MIT-licensed, © FHIR-FLI.
@@ -1614,16 +2243,41 @@ if (error != null) {
               <div class="content-footer">
                 <footer class="site-footer">
                   <div class="footer-columns">
-                    <div class="footer-column"><h4>Docs</h4><ul><li><a href="docs/">Getting Started</a></li></ul></div>
                     <div class="footer-column">
-                      <h4>Standalone Pages</h4>
-                      <ul><li><a href="about">About</a></li><li><a href="contact">Contact</a></li></ul>
+                      <h4>Packages</h4>
+                      <ul>
+                        <li><a href="https://pub.dev/packages/fhir_r4">fhir_r4</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r5">fhir_r5</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r6">fhir_r6</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_path">fhir_path</a></li>
+                        <li><a href="https://pub.dev/packages/cql">cql</a></li>
+                        <li><a href="https://pub.dev/publishers/fhirfli.dev/packages">All packages on pub.dev</a></li>
+                      </ul>
                     </div>
                     <div class="footer-column">
-                      <h4>More</h4>
-                      <ul><li><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></li></ul>
+                      <h4>Documentation</h4>
+                      <ul>
+                        <li><a href="docs/">Getting Started</a></li>
+                        <li><a href="docs/core/fhir_r4">Core package</a></li>
+                        <li><a href="docs/at_rest/fhir_r4_at_rest">REST client</a></li>
+                        <li><a href="docs/auth/fhir_r4_auth">SMART on FHIR auth</a></li>
+                        <li><a href="docs/fhir_r4_db">Local database</a></li>
+                        <li><a href="docs/demos/fhir_path_demo">FHIRPath demo</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-column">
+                      <h4>Project</h4>
+                      <ul>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="https://github.com/fhir-fli">GitHub</a></li>
+                        <li><a href="https://github.com/fhir-fli/fhir_fli_documentation">This site's source</a></li>
+                      </ul>
                     </div>
                   </div>
+                  <p class="footer-note">
+                    FHIR® is the registered trademark of HL7 and is used with the permission of HL7. Built with <a href="https://jaspr.site">Jaspr</a>.
+                  </p>
                 </footer>
               </div>
             </div>
@@ -1631,18 +2285,32 @@ if (error != null) {
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em">
-                    <a href="/docs/ucum#ucum--unified-code-for-units-of-measure">UCUM — Unified Code for Units of Measure</a>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#installation">Installation</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#quick-start">Quick Start</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#ucumservice">UcumService</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#validation">Validation</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/ucum#lenient-resolution-of-common-non-ucum-spellings">Lenient Resolution of Common Non-UCUM Spellings</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#quick-start">Quick Start</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#ucumservice">UcumService</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#ucumdecimal">UcumDecimal</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#validatedquantity">ValidatedQuantity</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#pair">Pair</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#common-healthcare-unit-conversions">Common Healthcare Unit Conversions</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#integration-with-fhir">Integration with FHIR</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#ucum-specification-reference">UCUM Specification Reference</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/ucum#credits-and-license">Credits and License</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#conversion">Conversion</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#multiplication-and-division">Multiplication and Division</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#analysis-and-canonical-forms">Analysis and Canonical Forms</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#search">Search</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#ucumdecimal">UcumDecimal</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#constructors">Constructors</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#arithmetic">Arithmetic</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#comparison">Comparison</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#validatedquantity">ValidatedQuantity</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#constructors">Constructors</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#arithmetic-operators">Arithmetic Operators</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#comparison-operators">Comparison Operators</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#unit-conversion">Unit Conversion</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/ucum#duration-support">Duration Support</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#pair">Pair</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#common-healthcare-unit-conversions">Common Healthcare Unit Conversions</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#integration-with-fhir">Integration with FHIR</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#ucum-specification-reference">UCUM Specification Reference</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/ucum#credits-and-license">Credits and License</a></li>
                 </ul>
               </div>
             </aside>

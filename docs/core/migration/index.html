@@ -3,8 +3,8 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>Migration | FHIR-FLI</title>
-    <meta property="og:title" content="Migration | FHIR-FLI"/>
+    <title>Migration Guide | FHIR-FLI</title>
+    <meta property="og:title" content="Migration Guide | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
     <style>
       .docs .header-container {
@@ -181,13 +181,16 @@
         align-items: center;
         column-gap: 0.75rem;
         flex-basis: 17rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
       .header .header-title img {
         width: auto;
-        height: 1.5rem;
+        height: 1.75rem;
       }
       .header .header-title span {
         font-weight: 700;
+        letter-spacing: 0.01em;
       }
       .header .header-content {
         display: flex;
@@ -196,7 +199,19 @@
       }
       .header .header-items {
         display: flex;
+        align-items: center;
         column-gap: 0.25rem;
+      }
+      @media all and (max-width: 767px) {
+        .header .header-title {
+          flex-basis: auto;
+        }
+        .header .header-items .nav-link {
+          display: none;
+        }
+        .header .github-button .github-info {
+          display: none;
+        }
       }
     </style>
     <style>
@@ -225,40 +240,161 @@
                 
     </script>
     <style>
+      .sidebar {
+        position: relative;
+        padding-top: 0.75rem;
+        padding-left: 0.5rem;
+        padding-bottom: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar {
+          padding-top: 0;
+        }
+      }
+      .sidebar .sidebar-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: inherit;
+        font-size: 1.5rem;
+        line-height: 1em;
+        background-color: transparent;
+      }
+      .sidebar .sidebar-close:hover {
+        background-color: #0000000d;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-close {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-mobile-nav {
+        padding-top: 3rem;
+        padding-right: 0.75rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .sidebar .sidebar-mobile-nav ul {
+        padding-bottom: 0.75rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-mobile-nav {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-group {
+        padding-top: 1rem;
+        padding-right: 0.75rem;
+      }
       .sidebar .sidebar-group.collapsible {
-        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+      .sidebar .sidebar-group.collapsible:first-of-type {
+        padding-top: 1rem;
       }
       .sidebar .sidebar-group.collapsible > summary {
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
+        display: flex;
+        padding: 0.45rem 0.75rem;
+        border-radius: 0.375rem;
+        opacity: 0.85;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
         list-style-type: none;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .sidebar .sidebar-group.collapsible > summary:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
       }
       .sidebar .sidebar-group.collapsible > summary::-webkit-details-marker {
         display: none;
       }
       .sidebar .sidebar-group.collapsible > summary::before {
+        content: "";
         display: inline-block;
-        margin-right: 0.4rem;
-        transition: transform 120ms;
-        font-size: 0.75em;
-        content: "▸";
+        width: 0.4em;
+        height: 0.4em;
+        margin-left: 0.1em;
+        margin-bottom: 0.15em;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-right-width: 1.5px;
+        border-bottom-width: 1.5px;
+        opacity: 0.7;
+        transition: transform 150ms ease-in-out;
+        transform: rotate(-45deg);
       }
       .sidebar .sidebar-group.collapsible[open] > summary::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg);
+      }
+      .sidebar .sidebar-group ul {
+        padding: 0;
+        margin-top: 0.125rem;
+        margin-left: 1rem;
+        border-left-style: solid;
+        border-left-color: var(--content-hr);
+        border-left-width: 1px;
+        list-style-type: none;
+      }
+      .sidebar .sidebar-group:not(.collapsible) ul {
+        margin: 0;
+        border: none;
+      }
+      .sidebar .sidebar-group li div {
+        display: flex;
+        margin-bottom: 1px;
+        border-radius: 0.375rem;
+        opacity: 0.75;
+        overflow: hidden;
+        transition: all 150ms ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar .sidebar-group li div:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
+      }
+      .sidebar .sidebar-group li div.active {
+        opacity: 1.0;
+        color: var(--primary);
+        font-weight: 700;
+        background-color: color-mix(in srgb, currentColor 15%, transparent);
+      }
+      .sidebar .sidebar-group li a {
+        display: inline-flex;
+        padding-top: 0.45rem;
+        padding-left: 12px;
+        padding-bottom: 0.45rem;
+        flex-grow: 1;
+        text-decoration: none;
       }
     </style>
     <style>
       :root {
-        --primary: oklch(0.623 0.214 259.815);
+        --primary: oklch(0.546 0.245 262.881);
         --background: oklch(0.984 0.003 247.858);
         --text: oklch(0.373 0.034 259.733);
         --content-headings: oklch(0.21 0.034 264.665);
         --content-lead: oklch(0.446 0.03 256.802);
-        --content-links: oklch(0.21 0.034 264.665);
+        --content-links: oklch(0.488 0.243 264.376);
         --content-bold: oklch(0.21 0.034 264.665);
         --content-counters: oklch(0.551 0.027 264.364);
         --content-bullets: oklch(0.872 0.01 258.338);
@@ -269,29 +405,30 @@
         --content-kbd: oklch(0.21 0.034 264.665);
         --content-kbd-shadows: oklch(0.21 0.034 264.665);
         --content-code: oklch(0.21 0.034 264.665);
-        --content-pre-code: oklch(0.928 0.006 264.531);
-        --content-pre-bg: oklch(0.278 0.033 256.848);
+        --content-pre-code: oklch(0.929 0.013 255.508);
+        --content-pre-bg: oklch(0.208 0.042 265.755);
         --content-th-borders: oklch(0.872 0.01 258.338);
         --content-td-borders: oklch(0.928 0.006 264.531);
       }
       :root[data-theme="dark"] {
-        --primary: oklch(0.809 0.105 251.813);
+        --primary: oklch(0.707 0.165 254.624);
         --background: oklch(0.141 0.005 285.823);
         --text: oklch(0.928 0.006 264.531);
         --content-headings: white;
         --content-lead: oklch(0.707 0.022 261.325);
-        --content-links: white;
+        --content-links: oklch(0.809 0.105 251.813);
         --content-bold: white;
         --content-counters: oklch(0.707 0.022 261.325);
         --content-bullets: oklch(0.446 0.03 256.802);
         --content-hr: oklch(0.373 0.034 259.733);
         --content-quotes: oklch(0.967 0.003 264.542);
+        --content-quote-borders: oklch(0.623 0.214 259.815);
         --content-captions: oklch(0.707 0.022 261.325);
         --content-kbd: white;
         --content-kbd-shadows: white;
         --content-code: white;
-        --content-pre-code: oklch(0.872 0.01 258.338);
-        --content-pre-bg: oklch(0.274 0.006 286.033);
+        --content-pre-code: oklch(0.92 0.004 286.32);
+        --content-pre-bg: oklch(0.21 0.006 285.885);
         --content-th-borders: oklch(0.446 0.03 256.802);
         --content-td-borders: oklch(0.373 0.034 259.733);
       }
@@ -872,68 +1009,311 @@
       }
     </style>
     <style>
-      .content-container p a, .content-container li a, .content-container td a {
-        text-decoration: underline;
+      .content-container .content-header h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15em;
       }
-      .content-container p a:hover, .content-container li a:hover, .content-container td a:hover {
-        opacity: 0.8;
+      .content-container .content-header p {
+        color: var(--content-lead);
+        line-height: 1.5em;
+      }
+      .content h2 {
+        padding-bottom: 0.3em;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .content a {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+      }
+      .content a:hover {
+        text-decoration-color: currentColor;
+      }
+      .content img {
+        border-radius: 0.5rem;
+      }
+      .content :not(pre) > code {
+        padding: 0.1em 0.3em;
+        border-radius: 0.3rem;
+        font-size: 0.85em;
+        font-weight: 500;
+        background-color: color-mix(in srgb, currentColor 9%, transparent);
+      }
+      .content code::before, .content code::after {
+        content: none;
       }
       .content-container table {
-        width: 100%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        border: solid var(--content-quote-borders) 1px;
-        border-collapse: collapse;
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: solid var(--content-td-borders) 1px;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        border-collapse: separate;
+        border-spacing: 0;
       }
       .content-container th, .content-container td {
         padding: 0.5rem 0.75rem;
-        border: solid var(--content-quote-borders) 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: var(--content-td-borders);
+        border-bottom-color: var(--content-td-borders);
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        vertical-align: top;
+      }
+      .content-container th:last-child, .content-container td:last-child {
+        border-right: none;
+      }
+      .content-container tbody tr:last-child td {
+        border-bottom: none;
       }
       .content-container th {
+        color: var(--content-headings);
         text-align: left;
+        font-size: 0.8rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+      }
+      .content-container tbody tr:nth-child(even) {
+        background-color: color-mix(in srgb, currentColor 2.5%, transparent);
+      }
+      .code-block {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        border: solid #ffffff14 1px;
+        border-radius: 0.5rem;
+        overflow: hidden;
         background-color: var(--content-pre-bg);
       }
-      .sidebar .sidebar-group.collapsible {
-        padding-bottom: 0.5rem;
+      .code-block .code-head {
+        display: flex;
+        height: 2rem;
+        padding-left: 1rem;
+        padding-right: 0.4rem;
         border-bottom-style: solid;
-        border-bottom-color: var(--content-quote-borders);
+        border-bottom-color: #ffffff14;
         border-bottom-width: 1px;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background-color: #ffffff08;
       }
-      .sidebar .sidebar-group.collapsible:last-of-type {
-        border-bottom: none;
+      .code-block .code-lang {
+        opacity: 0.55;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: var(--content-code-font);
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .code-block .code-copy {
+        display: inline-flex;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: none;
+        border-radius: 0.375rem;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 150ms ease-in-out;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: transparent;
+      }
+      .code-block .code-copy:hover, .code-copy:focus-visible {
+        opacity: 1.0;
+        background-color: #ffffff1f;
+      }
+      .code-block pre {
+        margin: 0;
+        border-radius: 0;
+        tab-size: 2;
+      }
+      .code-block .hljs-comment, .hljs-quote {
+        color: #8b949e;
+        font-style: italic;
+      }
+      .code-block .hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag {
+        color: #ff7b72;
+      }
+      .code-block .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-symbol, .hljs-bullet {
+        color: #79c0ff;
+      }
+      .code-block .hljs-string, .hljs-regexp, .hljs-addition {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-title, .hljs-section, .hljs-selector-id, .hljs-function .hljs-title {
+        color: #d2a8ff;
+        font-weight: 600;
+      }
+      .code-block .hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name {
+        color: #ffa657;
+      }
+      .code-block .hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class {
+        color: #7ee787;
+      }
+      .code-block .hljs-attr {
+        color: #79c0ff;
+      }
+      .code-block .hljs-meta, .hljs-meta-keyword {
+        color: #d2a8ff;
+      }
+      .code-block .hljs-meta-string {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-deletion {
+        color: #ffa198;
+      }
+      .code-block .hljs-emphasis {
+        font-style: italic;
+      }
+      .code-block .hljs-strong {
+        font-weight: 700;
+      }
+      .card-grid {
+        display: grid;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      }
+      .card-grid .card {
+        display: flex;
+        padding: 1.1rem;
+        border: solid var(--content-hr) 1px;
+        border-radius: 0.75rem;
+        transition: all 150ms ease-in-out;
+        flex-direction: column;
+        row-gap: 0.35rem;
+        color: var(--text);
+        text-decoration: none;
+        background-color: color-mix(in srgb, currentColor 3%, transparent);
+      }
+      .card-grid .card:hover {
+        border: solid var(--primary) 1px;
+        transform: translateY(-2px);
+        background-color: color-mix(in srgb, var(--primary) 6%, transparent);
+      }
+      .card-grid .card h3 {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--content-headings);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .card-grid .card h3 code {
+        padding: 0.1em 0.4em;
+        border-radius: 0.3rem;
+        color: var(--primary);
+        font-family: var(--content-code-font);
+        font-size: 0.85em;
+        font-weight: 600;
+        background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+      }
+      .card-grid .card p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.45em;
+      }
+      .card-grid .card .tag {
+        display: inline-block;
+        padding: 0.05em 0.5em;
+        margin-left: auto;
+        border-radius: 1rem;
+        opacity: 0.7;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: color-mix(in srgb, currentColor 10%, transparent);
+      }
+      .button-row {
+        display: flex;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .button-row a {
+        display: inline-flex;
+        padding: 0.6rem 1.1rem;
+        border: solid var(--primary) 1px;
+        border-radius: 0.5rem;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--primary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .button-row a.primary {
+        color: white;
+        background-color: var(--primary);
+      }
+      .button-row a:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      aside.toc a {
+        opacity: 0.7;
+        transition: opacity 150ms ease-in-out;
+        text-decoration: none;
+      }
+      aside.toc a:hover {
+        opacity: 1.0;
       }
       .header .nav-link {
         padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 150ms ease-in-out;
         font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
       }
       .header .nav-link:hover {
-        text-decoration: underline;
+        background-color: color-mix(in srgb, currentColor 6%, transparent);
       }
     </style>
     <style>
       .site-footer {
-        padding: 3rem 2rem;
+        padding-top: 2.5rem;
+        padding-bottom: 1rem;
+        margin-top: 4rem;
         border-top-style: solid;
-        border-top-color: #0000000d;
+        border-top-color: var(--content-hr);
         border-top-width: 1px;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
       .site-footer .footer-columns {
         display: flex;
-        max-width: 60rem;
-        margin-left: auto;
-        margin-right: auto;
         flex-wrap: wrap;
-        column-gap: 3rem;
+        gap: 2rem 4rem;
       }
       .site-footer .footer-column {
         min-width: 10rem;
       }
       .site-footer .footer-column h4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       .site-footer .footer-column ul {
         padding: 0;
@@ -941,10 +1321,24 @@
         list-style-type: none;
       }
       .site-footer .footer-column li {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.4rem;
       }
       .site-footer .footer-column a {
+        opacity: 0.75;
+        transition: opacity 150ms ease-in-out;
         text-decoration: none;
+      }
+      .site-footer .footer-column a:hover {
+        opacity: 1.0;
+      }
+      .site-footer .footer-note {
+        margin-top: 2.5rem;
+        opacity: 0.6;
+        font-size: 0.8rem;
+        line-height: 1.6em;
+      }
+      .site-footer .footer-note a {
+        color: inherit;
       }
     </style>
     <!--/-->
@@ -1136,8 +1530,16 @@
         <div class="sidebar-barrier" role="button"></div>
         <div class="sidebar-container">
           <nav class="sidebar">
-            <button class="sidebar-close">×</button>
+            <button class="sidebar-close" aria-label="Close navigation">×</button>
             <div>
+              <div class="sidebar-group sidebar-mobile-nav">
+                <ul>
+                  <li><div><a href="docs/">Getting Started</a></div></li>
+                  <li><div><a href="about">About</a></div></li>
+                  <li><div><a href="contact">Contact</a></div></li>
+                </ul>
+              </div>
+              <div class="sidebar-group"><ul><li><div><a href="docs/">Getting Started</a></div></li></ul></div>
               <details class="sidebar-group collapsible" open>
                 <summary>FHIR R4b Core</summary>
                 <ul>
@@ -1246,7 +1648,7 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header"><h1>Migration</h1></div>
+              <div class="content-header"><h1>Migration Guide</h1></div>
               <section class="content">
                 <h2 id="upgrading-fhir_r4-08x--090" anchor="true">
                   <span>Upgrading fhir_r4 0.8.x → 0.9.0</span><a href="/docs/core/migration#upgrading-fhir_r4-08x--090">#</a>
@@ -1368,24 +1770,72 @@
                 <hr/>
                 <h3 id="package-installation" anchor="true"><span>Package Installation</span><a href="/docs/core/migration#package-installation">#</a></h3>
                 <h4 id="old-package">Old Package</h4>
-                <pre><code class="language-yaml">dependencies:
-  fhir: ^0.x.x
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">yaml</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
+  <span class="hljs-attr">fhir:</span> <span class="hljs-string">^0.x.x</span></code></pre>
+                </div>
                 <h4 id="new-package">New Package</h4>
-                <pre><code class="language-yaml">dependencies:
-  fhir_r4: ^0.9.0
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">yaml</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
+  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.9.0</span></code></pre>
+                </div>
                 <p>
                   <strong>Action Required:</strong> Update your <code>pubspec.yaml</code> and run <code>flutter pub get</code>.
                 </p>
                 <hr/>
                 <h3 id="import-changes" anchor="true"><span>Import Changes</span><a href="/docs/core/migration#import-changes">#</a></h3>
                 <h4 id="old-package">Old Package</h4>
-                <pre><code class="language-dart">import 'package:fhir/fhir.dart';
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir/fhir.dart'</span>;</code></pre>
+                </div>
                 <h4 id="new-package">New Package</h4>
-                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;</code></pre>
+                </div>
                 <p><strong>Action Required:</strong> Find and replace all imports throughout your codebase.</p>
                 <hr/>
                 <h3 id="primitive-types---the-biggest-change" anchor="true">
@@ -1396,35 +1846,59 @@
                 </p>
                 <h4 id="the-old-way">The Old Way</h4>
                 <p>In the old package, primitive types were simpler wrapper classes:</p>
-                <pre><code class="language-dart">// Old package
-class FhirId {
-  final String? _value;
-  final bool _isValid;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old package</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FhirId</span> </span>{
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">String</span>? _value;
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">bool</span> _isValid;
   
-  String? get value =&gt; _value;
-  bool get isValid =&gt; _isValid;
+  <span class="hljs-built_in">String</span>? <span class="hljs-keyword">get</span> value =&gt; _value;
+  <span class="hljs-built_in">bool</span> <span class="hljs-keyword">get</span> isValid =&gt; _isValid;
 }
 
-// Usage
-final id = FhirId('patient-123');
-final idValue = id.value;  // Just the string
-</code></pre>
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
+<span class="hljs-keyword">final</span> idValue = id.value;  <span class="hljs-comment">// Just the string</span></code></pre>
+                </div>
                 <h4 id="the-new-way">The New Way</h4>
                 <p>
                   In the new package, ALL primitive types extend <code>PrimitiveType</code> and have a more structured approach:
                 </p>
-                <pre><code class="language-dart">// New package
-class FhirId extends PrimitiveType {
-  final String? valueString;  // The actual value
-  final Element? element;     // Metadata/extensions
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// New package</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FhirId</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PrimitiveType</span> </span>{
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">String</span>? valueString;  <span class="hljs-comment">// The actual value</span>
+  <span class="hljs-keyword">final</span> <span class="hljs-built_in">Element</span>? element;     <span class="hljs-comment">// Metadata/extensions</span>
   
-  // Note: No more .value getter in new package!
+  <span class="hljs-comment">// Note: No more .value getter in new package!</span>
 }
 
-// Usage
-final id = FhirId('patient-123');
-final idValue = id.valueString;  // Note: .valueString, not .value
-</code></pre>
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
+<span class="hljs-keyword">final</span> idValue = id.valueString;  <span class="hljs-comment">// Note: .valueString, not .value</span></code></pre>
+                </div>
                 <h4 id="key-differences">Key Differences</h4>
                 <table>
                   <thead><tr><th>Old Package</th><th>New Package</th><th>Notes</th></tr></thead>
@@ -1442,85 +1916,121 @@ final idValue = id.valueString;  // Note: .valueString, not .value
                 <h4 id="migration-actions">Migration Actions</h4>
                 <p><strong>1. Find and Replace <code>.value</code> with <code>.valueString</code></strong></p>
                 <p>This is the most common change you'll need to make:</p>
-                <pre><code class="language-dart">// Old
-if (patient.id?.value == '123') { ... }
-final name = patient.name?.first.given?.first.value;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">if</span> (patient.id?.value == <span class="hljs-string">'123'</span>) { ... }
+<span class="hljs-keyword">final</span> name = patient.name?.first.given?.first.value;
 
-// New
-if (patient.id?.valueString == '123') { ... }
-final name = patient.name?.first.given?.first.valueString;
-</code></pre>
+<span class="hljs-comment">// New</span>
+<span class="hljs-keyword">if</span> (patient.id?.valueString == <span class="hljs-string">'123'</span>) { ... }
+<span class="hljs-keyword">final</span> name = patient.name?.first.given?.first.valueString;</code></pre>
+                </div>
                 <p><strong>2. Update Primitive Type Constructors</strong></p>
                 <p>The new package has more ways to create primitives:</p>
-                <pre><code class="language-dart">// Old
-final str = FhirString('Hello');
-final date = FhirDate('2024-01-01');
-final id = FhirId('patient-123');
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">final</span> str = FhirString(<span class="hljs-string">'Hello'</span>);
+<span class="hljs-keyword">final</span> date = FhirDate(<span class="hljs-string">'2024-01-01'</span>);
+<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
 
-// New - FhirString and FhirId still work the same way
-final str = FhirString('Hello');
-final id = FhirId('patient-123');
+<span class="hljs-comment">// New - FhirString and FhirId still work the same way</span>
+<span class="hljs-keyword">final</span> str = FhirString(<span class="hljs-string">'Hello'</span>);
+<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
 
-// New - Date/time types now use named constructors
-final date = FhirDate.fromString('2024-01-01');
-final dateTime = FhirDateTime.fromString('2024-01-01T12:00:00Z');
+<span class="hljs-comment">// New - Date/time types now use named constructors</span>
+<span class="hljs-keyword">final</span> date = FhirDate.fromString(<span class="hljs-string">'2024-01-01'</span>);
+<span class="hljs-keyword">final</span> dateTime = FhirDateTime.fromString(<span class="hljs-string">'2024-01-01T12:00:00Z'</span>);
 
-// New - Extension methods (recommended)
-final str2 = 'Hello'.toFhirString;
-final date2 = '2024-01-01'.toFhirDate;
+<span class="hljs-comment">// New - Extension methods (recommended)</span>
+<span class="hljs-keyword">final</span> str2 = <span class="hljs-string">'Hello'</span>.toFhirString;
+<span class="hljs-keyword">final</span> date2 = <span class="hljs-string">'2024-01-01'</span>.toFhirDate;
 
-// New - With element/extensions
-// (note: FhirExtension's url field is a FhirString)
-final str3 = FhirString(
-  'Hello',
-  element: Element(
+<span class="hljs-comment">// New - With element/extensions</span>
+<span class="hljs-comment">// (note: FhirExtension's url field is a FhirString)</span>
+<span class="hljs-keyword">final</span> str3 = FhirString(
+  <span class="hljs-string">'Hello'</span>,
+  element: <span class="hljs-built_in">Element</span>(
     extension_: [
       FhirExtension(
-        url: 'http://example.org/ext'.toFhirString,
-        valueString: FhirString('metadata'),
+        url: <span class="hljs-string">'http://example.org/ext'</span>.toFhirString,
+        valueString: FhirString(<span class="hljs-string">'metadata'</span>),
       ),
     ],
   ),
-);
-</code></pre>
+);</code></pre>
+                </div>
                 <p><strong>3. Specific Primitive Type Changes</strong></p>
                 <p>Different primitive types have different getter names in the new package:</p>
-                <pre><code class="language-dart">// Boolean
-// Old: myBool.value  (bool?)
-// New: myBool.valueBoolean  (bool?)
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Boolean</span>
+<span class="hljs-comment">// Old: myBool.value  (bool?)</span>
+<span class="hljs-comment">// New: myBool.valueBoolean  (bool?)</span>
 
-// Integer  
-// Old: myInt.value  (int?)
-// New: myInt.valueInt  (int?)
+<span class="hljs-comment">// Integer  </span>
+<span class="hljs-comment">// Old: myInt.value  (int?)</span>
+<span class="hljs-comment">// New: myInt.valueInt  (int?)</span>
 
-// Decimal
-// Old: myDecimal.value  (double?)
-// New: myDecimal.valueDouble  (double?) or myDecimal.valueNum  (num?)
+<span class="hljs-comment">// Decimal</span>
+<span class="hljs-comment">// Old: myDecimal.value  (double?)</span>
+<span class="hljs-comment">// New: myDecimal.valueDouble  (double?) or myDecimal.valueNum  (num?)</span>
 
-// DateTime
-// Old: myDateTime.value  (DateTime?)
-// New: myDateTime.valueDateTime  (DateTime?)
+<span class="hljs-comment">// DateTime</span>
+<span class="hljs-comment">// Old: myDateTime.value  (DateTime?)</span>
+<span class="hljs-comment">// New: myDateTime.valueDateTime  (DateTime?)</span>
 
-// Date
-// Old: myDate.value  (DateTime?)
-// New: myDate.valueDateTime  (DateTime?)
+<span class="hljs-comment">// Date</span>
+<span class="hljs-comment">// Old: myDate.value  (DateTime?)</span>
+<span class="hljs-comment">// New: myDate.valueDateTime  (DateTime?)</span>
 
-// String types (FhirString, FhirMarkdown, etc.)
-// Old: myString.value  (String?)
-// New: myString.valueString  (String?)
+<span class="hljs-comment">// String types (FhirString, FhirMarkdown, etc.)</span>
+<span class="hljs-comment">// Old: myString.value  (String?)</span>
+<span class="hljs-comment">// New: myString.valueString  (String?)</span>
 
-// Uri types (FhirUri, FhirUrl, FhirCanonical, FhirOid, FhirUuid)
-// Old: myUri.value  (String?)
-// New: myUri.valueString  (String?) OR myUri.valueUri  (Uri?)
+<span class="hljs-comment">// Uri types (FhirUri, FhirUrl, FhirCanonical, FhirOid, FhirUuid)</span>
+<span class="hljs-comment">// Old: myUri.value  (String?)</span>
+<span class="hljs-comment">// New: myUri.valueString  (String?) OR myUri.valueUri  (Uri?)</span>
 
-// Id
-// Old: myId.value  (String?)
-// New: myId.valueString  (String?)
+<span class="hljs-comment">// Id</span>
+<span class="hljs-comment">// Old: myId.value  (String?)</span>
+<span class="hljs-comment">// New: myId.valueString  (String?)</span>
 
-// Code
-// Old: myCode.value  (String?)
-// New: myCode.valueString  (String?)
-</code></pre>
+<span class="hljs-comment">// Code</span>
+<span class="hljs-comment">// Old: myCode.value  (String?)</span>
+<span class="hljs-comment">// New: myCode.valueString  (String?)</span></code></pre>
+                </div>
                 <h4 id="search-and-replace-strategy">Search and Replace Strategy</h4>
                 <p>Here's a systematic approach:</p>
                 <ol>
@@ -1531,8 +2041,20 @@ final str3 = FhirString(
                   <li><strong>Use your IDE's type inference</strong> to help identify what needs changing</li>
                 </ol>
                 <p><strong>Tip:</strong> You can do a regex search for common patterns:</p>
-                <pre><code class="language-regex">\.value(?!\w)
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">regex</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">\.value(?!\w)</code></pre>
+                </div>
                 <p>
                   This will find <code>.value</code> but not <code>.valueString</code>, <code>.valueBoolean</code>, etc.
                 </p>
@@ -1540,42 +2062,66 @@ final str3 = FhirString(
                 <h3 id="resource-construction" anchor="true"><span>Resource Construction</span><a href="/docs/core/migration#resource-construction">#</a></h3>
                 <p>Resource construction is largely unchanged, but with improved primitive type handling:</p>
                 <h4 id="old-package">Old Package</h4>
-                <pre><code class="language-dart">final patient = Patient(
-  id: FhirId('123'),
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> patient = Patient(
+  id: FhirId(<span class="hljs-string">'123'</span>),
   name: [
     HumanName(
-      family: FhirString('Doe'),
-      given: [FhirString('John')],
+      family: FhirString(<span class="hljs-string">'Doe'</span>),
+      given: [FhirString(<span class="hljs-string">'John'</span>)],
     ),
   ],
-  birthDate: FhirDate('1990-01-01'),
-);
-</code></pre>
+  birthDate: FhirDate(<span class="hljs-string">'1990-01-01'</span>),
+);</code></pre>
+                </div>
                 <h4 id="new-package">New Package</h4>
-                <pre><code class="language-dart">// Option 1: Direct constructors
-final patient = Patient(
-  id: FhirString('123'),  // Note: Resource.id is a FhirString now, not FhirId
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Option 1: Direct constructors</span>
+<span class="hljs-keyword">final</span> patient = Patient(
+  id: FhirString(<span class="hljs-string">'123'</span>),  <span class="hljs-comment">// Note: Resource.id is a FhirString now, not FhirId</span>
   name: [
     HumanName(
-      family: FhirString('Doe'),
-      given: [FhirString('John')],
+      family: FhirString(<span class="hljs-string">'Doe'</span>),
+      given: [FhirString(<span class="hljs-string">'John'</span>)],
     ),
   ],
-  birthDate: FhirDate.fromString('1990-01-01'),
+  birthDate: FhirDate.fromString(<span class="hljs-string">'1990-01-01'</span>),
 );
 
-// Option 2: Using extension methods (recommended)
-final patient = Patient(
-  id: '123'.toFhirString,
+<span class="hljs-comment">// Option 2: Using extension methods (recommended)</span>
+<span class="hljs-keyword">final</span> patient = Patient(
+  id: <span class="hljs-string">'123'</span>.toFhirString,
   name: [
     HumanName(
-      family: 'Doe'.toFhirString,
-      given: ['John'.toFhirString],
+      family: <span class="hljs-string">'Doe'</span>.toFhirString,
+      given: [<span class="hljs-string">'John'</span>.toFhirString],
     ),
   ],
-  birthDate: '1990-01-01'.toFhirDate,
-);
-</code></pre>
+  birthDate: <span class="hljs-string">'1990-01-01'</span>.toFhirDate,
+);</code></pre>
+                </div>
                 <p>
                   <strong>Migration Impact:</strong> Small. Most construction code works as-is, with two notable exceptions: 
                   <code>Resource.id</code> is now a <code>FhirString</code> (not a <code>FhirId</code>), and the date/time types (<code>FhirDate</code>, 
@@ -1588,158 +2134,254 @@ final patient = Patient(
                   This is another significant change. The old package used simpler enum handling, while the new package has a sophisticated dual-enum system.
                 </p>
                 <h4 id="old-package-approach">Old Package Approach</h4>
-                <pre><code class="language-dart">// Old package likely used string values or simple enums
-final status = 'active';  // or
-final status = AppointmentStatus.active;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old package likely used string values or simple enums</span>
+<span class="hljs-keyword">final</span> status = <span class="hljs-string">'active'</span>;  <span class="hljs-comment">// or</span>
+<span class="hljs-keyword">final</span> status = AppointmentStatus.active;
 
-// In resources
-final appointment = Appointment(
+<span class="hljs-comment">// In resources</span>
+<span class="hljs-keyword">final</span> appointment = Appointment(
   status: status,
-  // ...
+  <span class="hljs-comment">// ...</span>
 );
 
-// Checking values
-if (appointment.status == 'active') { ... }
-</code></pre>
+<span class="hljs-comment">// Checking values</span>
+<span class="hljs-keyword">if</span> (appointment.status == <span class="hljs-string">'active'</span>) { ... }</code></pre>
+                </div>
                 <h4 id="new-package-approach">New Package Approach</h4>
                 <p>
                   The new package uses <code>FhirCodeEnum</code> classes that wrap FHIR codes AND provides native Dart enums:
                 </p>
-                <pre><code class="language-dart">// New package - Using the FhirCodeEnum class
-final status = AppointmentStatus.booked;  // FhirCodeEnum
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// New package - Using the FhirCodeEnum class</span>
+<span class="hljs-keyword">final</span> status = AppointmentStatus.booked;  <span class="hljs-comment">// FhirCodeEnum</span>
 
-// In resources
-final appointment = Appointment(
+<span class="hljs-comment">// In resources</span>
+<span class="hljs-keyword">final</span> appointment = Appointment(
   status: AppointmentStatus.booked,
-  // ...
+  <span class="hljs-comment">// ...</span>
 );
 
-// Checking values - Multiple ways:
+<span class="hljs-comment">// Checking values - Multiple ways:</span>
 
-// 1. Direct equality
-if (appointment.status == AppointmentStatus.booked) { ... }
+<span class="hljs-comment">// 1. Direct equality</span>
+<span class="hljs-keyword">if</span> (appointment.status == AppointmentStatus.booked) { ... }
 
-// 2. Using the native enum (recommended for switch statements)
-switch (appointment.status?.valueEnum) {
-  case AppointmentStatusEnum.booked:
-    // Handle booked
-    break;
-  case AppointmentStatusEnum.cancelled:
-    // Handle cancelled
-    break;
-  case AppointmentStatusEnum.pending:
-    // Handle pending
-    break;
-  case null:
-    // Handle null or custom values
-    break;
+<span class="hljs-comment">// 2. Using the native enum (recommended for switch statements)</span>
+<span class="hljs-keyword">switch</span> (appointment.status?.valueEnum) {
+  <span class="hljs-keyword">case</span> AppointmentStatusEnum.booked:
+    <span class="hljs-comment">// Handle booked</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> AppointmentStatusEnum.cancelled:
+    <span class="hljs-comment">// Handle cancelled</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> AppointmentStatusEnum.pending:
+    <span class="hljs-comment">// Handle pending</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
+    <span class="hljs-comment">// Handle null or custom values</span>
+    <span class="hljs-keyword">break</span>;
 }
 
-// 3. String comparison
-if (appointment.status?.valueString == 'booked') { ... }
+<span class="hljs-comment">// 3. String comparison</span>
+<span class="hljs-keyword">if</span> (appointment.status?.valueString == <span class="hljs-string">'booked'</span>) { ... }
 
-// Accessing metadata
-final system = AppointmentStatus.booked.system;  // FhirUri
-final display = AppointmentStatus.booked.display;  // FhirString
-</code></pre>
+<span class="hljs-comment">// Accessing metadata</span>
+<span class="hljs-keyword">final</span> system = AppointmentStatus.booked.system;  <span class="hljs-comment">// FhirUri</span>
+<span class="hljs-keyword">final</span> display = AppointmentStatus.booked.display;  <span class="hljs-comment">// FhirString</span></code></pre>
+                </div>
                 <h4 id="migration-steps-for-enums">Migration Steps for Enums</h4>
                 <ol><li><strong>Replace string literals</strong> with enum values:</li></ol>
-                <pre><code class="language-dart">// Old
-final status = 'booked';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">final</span> status = <span class="hljs-string">'booked'</span>;
 
-// New
-final status = AppointmentStatus.booked;
-</code></pre>
+<span class="hljs-comment">// New</span>
+<span class="hljs-keyword">final</span> status = AppointmentStatus.booked;</code></pre>
+                </div>
                 <ol start="2"><li><strong>Update equality checks</strong>:</li></ol>
-                <pre><code class="language-dart">// Old
-if (status == 'booked') { ... }
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">if</span> (status == <span class="hljs-string">'booked'</span>) { ... }
 
-// New - Recommended
-if (status == AppointmentStatus.booked) { ... }
-// OR
-if (status?.valueEnum == AppointmentStatusEnum.booked) { ... }
-</code></pre>
+<span class="hljs-comment">// New - Recommended</span>
+<span class="hljs-keyword">if</span> (status == AppointmentStatus.booked) { ... }
+<span class="hljs-comment">// OR</span>
+<span class="hljs-keyword">if</span> (status?.valueEnum == AppointmentStatusEnum.booked) { ... }</code></pre>
+                </div>
                 <ol start="3"><li><strong>Convert switch statements</strong> to use the new enum:</li></ol>
-                <pre><code class="language-dart">// Old
-switch (status) {
-  case 'booked':
-    // ...
-  case 'cancelled':
-    // ...
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">switch</span> (status) {
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'booked'</span>:
+    <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'cancelled'</span>:
+    <span class="hljs-comment">// ...</span>
 }
 
-// New - Much better with native enums!
-switch (status?.valueEnum) {
-  case AppointmentStatusEnum.booked:
-    // ...
-  case AppointmentStatusEnum.cancelled:
-    // ...
-  case null:
-    // Handle custom or null values
-}
-</code></pre>
+<span class="hljs-comment">// New - Much better with native enums!</span>
+<span class="hljs-keyword">switch</span> (status?.valueEnum) {
+  <span class="hljs-keyword">case</span> AppointmentStatusEnum.booked:
+    <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">case</span> AppointmentStatusEnum.cancelled:
+    <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
+    <span class="hljs-comment">// Handle custom or null values</span>
+}</code></pre>
+                </div>
                 <h4 id="important-custom-enum-values">Important: Custom Enum Values</h4>
                 <p>The new package supports custom/extended enum values:</p>
-                <pre><code class="language-dart">// Create a custom status not in the standard set
-final customStatus = AppointmentStatus('custom-value');
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Create a custom status not in the standard set</span>
+<span class="hljs-keyword">final</span> customStatus = AppointmentStatus(<span class="hljs-string">'custom-value'</span>);
 
-// Note: customStatus.valueEnum will be null
-// But customStatus.valueString will be 'custom-value'
+<span class="hljs-comment">// Note: customStatus.valueEnum will be null</span>
+<span class="hljs-comment">// But customStatus.valueString will be 'custom-value'</span>
 
-// Handling in code:
-switch (appointment.status?.valueEnum) {
-  case AppointmentStatusEnum.booked:
-    // Standard value
-    break;
-  case null:
-    // Could be custom or null
-    if (appointment.status?.valueString == 'custom-value') {
-      // Handle custom
+<span class="hljs-comment">// Handling in code:</span>
+<span class="hljs-keyword">switch</span> (appointment.status?.valueEnum) {
+  <span class="hljs-keyword">case</span> AppointmentStatusEnum.booked:
+    <span class="hljs-comment">// Standard value</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
+    <span class="hljs-comment">// Could be custom or null</span>
+    <span class="hljs-keyword">if</span> (appointment.status?.valueString == <span class="hljs-string">'custom-value'</span>) {
+      <span class="hljs-comment">// Handle custom</span>
     }
-    break;
-}
-</code></pre>
+    <span class="hljs-keyword">break</span>;
+}</code></pre>
+                </div>
                 <hr/>
                 <h3 id="polymorphic-types" anchor="true"><span>Polymorphic Types</span><a href="/docs/core/migration#polymorphic-types">#</a></h3>
                 <p>Polymorphic fields (those that can contain multiple types) are handled differently.</p>
                 <h4 id="old-package">Old Package</h4>
-                <pre><code class="language-dart">// Old package - Less type-safe approach
-// Likely used dynamic or Object types
-final extension = FhirExtension(
-  url: FhirUri('http://example.org/ext'),
-  value: FhirString('some value'),  // Could be various types
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old package - Less type-safe approach</span>
+<span class="hljs-comment">// Likely used dynamic or Object types</span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
+  url: FhirUri(<span class="hljs-string">'http://example.org/ext'</span>),
+  value: FhirString(<span class="hljs-string">'some value'</span>),  <span class="hljs-comment">// Could be various types</span>
 );
 
-// Accessing required casting
-final value = extension.value;
-if (value is FhirString) {
-  final stringValue = value.value;
-}
-</code></pre>
+<span class="hljs-comment">// Accessing required casting</span>
+<span class="hljs-keyword">final</span> value = <span class="hljs-keyword">extension</span>.value;
+<span class="hljs-keyword">if</span> (value <span class="hljs-keyword">is</span> FhirString) {
+  <span class="hljs-keyword">final</span> stringValue = value.value;
+}</code></pre>
+                </div>
                 <h4 id="new-package">New Package</h4>
-                <pre><code class="language-dart">// New package - Type-safe with abstract classes
-final extension = FhirExtension(
-  url: 'http://example.org/ext'.toFhirString,
-  valueX: FhirString('some value'),  // Note: valueX, not value
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// New package - Type-safe with abstract classes</span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
+  url: <span class="hljs-string">'http://example.org/ext'</span>.toFhirString,
+  valueX: FhirString(<span class="hljs-string">'some value'</span>),  <span class="hljs-comment">// Note: valueX, not value</span>
 );
 
-// Accessing with type-specific getters
-final stringValue = extension.valueString;  // FhirString?
-final boolValue = extension.valueBoolean;   // FhirBoolean?
-final codeValue = extension.valueCode;       // FhirCode?
+<span class="hljs-comment">// Accessing with type-specific getters</span>
+<span class="hljs-keyword">final</span> stringValue = <span class="hljs-keyword">extension</span>.valueString;  <span class="hljs-comment">// FhirString?</span>
+<span class="hljs-keyword">final</span> boolValue = <span class="hljs-keyword">extension</span>.valueBoolean;   <span class="hljs-comment">// FhirBoolean?</span>
+<span class="hljs-keyword">final</span> codeValue = <span class="hljs-keyword">extension</span>.valueCode;       <span class="hljs-comment">// FhirCode?</span>
 
-// Using the generic accessor
-if (extension.valueX is FhirString) {
-  final str = extension.valueX as FhirString;
-  // Use str
+<span class="hljs-comment">// Using the generic accessor</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueX <span class="hljs-keyword">is</span> FhirString) {
+  <span class="hljs-keyword">final</span> str = <span class="hljs-keyword">extension</span>.valueX <span class="hljs-keyword">as</span> FhirString;
+  <span class="hljs-comment">// Use str</span>
 }
 
-// Or using the helper method
-final str = extension.valueX?.isAs&lt;FhirString&gt;();
-if (str != null) {
-  // Use str
-}
-</code></pre>
+<span class="hljs-comment">// Or using the helper method</span>
+<span class="hljs-keyword">final</span> str = <span class="hljs-keyword">extension</span>.valueX?.isAs&lt;FhirString&gt;();
+<span class="hljs-keyword">if</span> (str != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-comment">// Use str</span>
+}</code></pre>
+                </div>
                 <h4 id="naming-convention-change">Naming Convention Change</h4>
                 <p>
                   <strong>Old:</strong> Polymorphic fields might have been named <code>value</code>, <code>product</code>, 
@@ -1756,43 +2398,79 @@ if (str != null) {
                   </li>
                   <li><p><strong>Rename the field access</strong> to add <code>X</code> suffix:</p></li>
                 </ol>
-                <pre><code class="language-dart">// Old
-final value = extension.value;
-final product = carePlanDetail.product;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">final</span> value = <span class="hljs-keyword">extension</span>.value;
+<span class="hljs-keyword">final</span> product = carePlanDetail.product;
 
-// New
-final value = extension.valueX;
-final product = carePlanDetail.productX;
-</code></pre>
+<span class="hljs-comment">// New</span>
+<span class="hljs-keyword">final</span> value = <span class="hljs-keyword">extension</span>.valueX;
+<span class="hljs-keyword">final</span> product = carePlanDetail.productX;</code></pre>
+                </div>
                 <ol start="3"><li><strong>Use type-specific getters</strong> instead of casting:</li></ol>
-                <pre><code class="language-dart">// Old
-if (extension.value is FhirString) {
-  final str = (extension.value as FhirString).value;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">is</span> FhirString) {
+  <span class="hljs-keyword">final</span> str = (<span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">as</span> FhirString).value;
 }
 
-// New - Much cleaner!
-if (extension.valueString != null) {
-  final str = extension.valueString!.valueString;
-}
-</code></pre>
+<span class="hljs-comment">// New - Much cleaner!</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueString != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-keyword">final</span> str = <span class="hljs-keyword">extension</span>.valueString!.valueString;
+}</code></pre>
+                </div>
                 <ol start="4"><li><strong>Update type checking</strong>:</li></ol>
-                <pre><code class="language-dart">// Old
-switch (value.runtimeType) {
-  case FhirString:
-    // ...
-  case FhirBoolean:
-    // ...
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">switch</span> (value.runtimeType) {
+  <span class="hljs-keyword">case</span> FhirString:
+    <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">case</span> FhirBoolean:
+    <span class="hljs-comment">// ...</span>
 }
 
-// New - Use getters
-if (extension.valueString != null) {
-  // It's a string
-} else if (extension.valueBoolean != null) {
-  // It's a boolean
-} else if (extension.valueInteger != null) {
-  // It's an integer
-}
-</code></pre>
+<span class="hljs-comment">// New - Use getters</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueString != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-comment">// It's a string</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueBoolean != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-comment">// It's a boolean</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueInteger != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-comment">// It's an integer</span>
+}</code></pre>
+                </div>
                 <hr/>
                 <h3 id="serialization-and-deserialization" anchor="true">
                   <span>Serialization and Deserialization</span><a href="/docs/core/migration#serialization-and-deserialization">#</a>
@@ -1800,56 +2478,116 @@ if (extension.valueString != null) {
                 <p>Both packages support JSON, but the new package adds YAML and convenience methods.</p>
                 <h4 id="json-serialization">JSON Serialization</h4>
                 <p><strong>Old Package:</strong></p>
-                <pre><code class="language-dart">// To JSON Map
-final json = patient.toJson();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// To JSON Map</span>
+<span class="hljs-keyword">final</span> json = patient.toJson();
 
-// To JSON String (two steps)
-final jsonString = jsonEncode(patient.toJson());
+<span class="hljs-comment">// To JSON String (two steps)</span>
+<span class="hljs-keyword">final</span> jsonString = jsonEncode(patient.toJson());
 
-// From JSON
-final patient = Patient.fromJson(jsonMap);
+<span class="hljs-comment">// From JSON</span>
+<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonMap);
 
-// From JSON String (two steps)
-final jsonMap = jsonDecode(jsonString);
-final patient = Patient.fromJson(jsonMap);
-</code></pre>
+<span class="hljs-comment">// From JSON String (two steps)</span>
+<span class="hljs-keyword">final</span> jsonMap = jsonDecode(jsonString);
+<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonMap);</code></pre>
+                </div>
                 <p><strong>New Package:</strong></p>
-                <pre><code class="language-dart">// To JSON Map (same)
-final json = patient.toJson();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// To JSON Map (same)</span>
+<span class="hljs-keyword">final</span> json = patient.toJson();
 
-// To JSON String (one step!)
-final jsonString = patient.toJsonString();
+<span class="hljs-comment">// To JSON String (one step!)</span>
+<span class="hljs-keyword">final</span> jsonString = patient.toJsonString();
 
-// From JSON (same)
-final patient = Patient.fromJson(jsonMap);
+<span class="hljs-comment">// From JSON (same)</span>
+<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonMap);
 
-// From JSON String (one step!)
-final patient = Patient.fromJsonString(jsonString);
-</code></pre>
+<span class="hljs-comment">// From JSON String (one step!)</span>
+<span class="hljs-keyword">final</span> patient = Patient.fromJsonString(jsonString);</code></pre>
+                </div>
                 <h4 id="yaml-support-new">YAML Support (New!)</h4>
-                <pre><code class="language-dart">// To YAML String
-final yamlString = patient.toYaml();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// To YAML String</span>
+<span class="hljs-keyword">final</span> yamlString = patient.toYaml();
 
-// From YAML
-final patient = Patient.fromYaml(yamlString);
-// OR
-final patient = Patient.fromYaml(yamlMap);  // YamlMap
-</code></pre>
+<span class="hljs-comment">// From YAML</span>
+<span class="hljs-keyword">final</span> patient = Patient.fromYaml(yamlString);
+<span class="hljs-comment">// OR</span>
+<span class="hljs-keyword">final</span> patient = Patient.fromYaml(yamlMap);  <span class="hljs-comment">// YamlMap</span></code></pre>
+                </div>
                 <h4 id="migration-steps">Migration Steps</h4>
                 <ol><li><strong>Replace two-step JSON string serialization</strong>:</li></ol>
-                <pre><code class="language-dart">// Old
-final jsonString = jsonEncode(patient.toJson());
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">final</span> jsonString = jsonEncode(patient.toJson());
 
-// New
-final jsonString = patient.toJsonString();
-</code></pre>
+<span class="hljs-comment">// New</span>
+<span class="hljs-keyword">final</span> jsonString = patient.toJsonString();</code></pre>
+                </div>
                 <ol start="2"><li><strong>Replace two-step JSON string deserialization</strong>:</li></ol>
-                <pre><code class="language-dart">// Old
-final patient = Patient.fromJson(jsonDecode(jsonString));
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
+<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonDecode(jsonString));
 
-// New
-final patient = Patient.fromJsonString(jsonString);
-</code></pre>
+<span class="hljs-comment">// New</span>
+<span class="hljs-keyword">final</span> patient = Patient.fromJsonString(jsonString);</code></pre>
+                </div>
                 <ol start="3">
                   <li><strong>Consider adding YAML support</strong> where it makes sense (debugging, configuration, etc.)</li>
                 </ol>
@@ -1858,173 +2596,365 @@ final patient = Patient.fromJsonString(jsonString);
                 <p>The new package includes powerful reflection-like utilities that weren't in the old package.</p>
                 <h4 id="new-utility-methods">New Utility Methods</h4>
                 <h5 id="1-listchildrennames">1. <code>listChildrenNames()</code></h5>
-                <pre><code class="language-dart">// Get all field names
-final fieldNames = patient.listChildrenNames();
-// Returns: ['id', 'meta', 'implicitRules', 'language', 'text', 'contained', ...]
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Get all field names</span>
+<span class="hljs-keyword">final</span> fieldNames = patient.listChildrenNames();
+<span class="hljs-comment">// Returns: ['id', 'meta', 'implicitRules', 'language', 'text', 'contained', ...]</span></code></pre>
+                </div>
                 <h5 id="2-getchildrenbynamestring-name">2. <code>getChildrenByName(String name)</code></h5>
-                <pre><code class="language-dart">// Get specific fields by name
-final names = patient.getChildrenByName('name');
-// Returns: List&lt;FhirBase&gt; containing all name values
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Get specific fields by name</span>
+<span class="hljs-keyword">final</span> names = patient.getChildrenByName(<span class="hljs-string">'name'</span>);
+<span class="hljs-comment">// Returns: List&lt;FhirBase&gt; containing all name values</span></code></pre>
+                </div>
                 <h5 id="3-getchildbynamestring-name">3. <code>getChildByName(String name)</code></h5>
-                <pre><code class="language-dart">// Get a single field by name
-final id = patient.getChildByName('id');
-// Returns: FhirBase? (the id field)
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Get a single field by name</span>
+<span class="hljs-keyword">final</span> id = patient.getChildByName(<span class="hljs-string">'id'</span>);
+<span class="hljs-comment">// Returns: FhirBase? (the id field)</span></code></pre>
+                </div>
                 <h5 id="4-copywith">4. <code>copyWith()</code></h5>
-                <pre><code class="language-dart">// Create modified copies (improved from old package)
-final updatedPatient = patient.copyWith(
-  id: '456'.toFhirString,
-  active: true.toFhirBoolean,
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Create modified copies (improved from old package)</span>
+<span class="hljs-keyword">final</span> updatedPatient = patient.copyWith(
+  id: <span class="hljs-string">'456'</span>.toFhirString,
+  active: <span class="hljs-keyword">true</span>.toFhirBoolean,
 );
 
-// New: Can now pass null to clear fields!
-final patientWithoutName = patient.copyWith(
-  name: null,  // This now works!
-);
-</code></pre>
+<span class="hljs-comment">// New: Can now pass null to clear fields!</span>
+<span class="hljs-keyword">final</span> patientWithoutName = patient.copyWith(
+  name: <span class="hljs-keyword">null</span>,  <span class="hljs-comment">// This now works!</span>
+);</code></pre>
+                </div>
                 <h5 id="5-equalsdeep">5. <code>equalsDeep()</code></h5>
-                <pre><code class="language-dart">// Deep equality comparison
-final areEqual = patient1.equalsDeep(patient2);
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Deep equality comparison</span>
+<span class="hljs-keyword">final</span> areEqual = patient1.equalsDeep(patient2);</code></pre>
+                </div>
                 <h4 id="migration-benefit">Migration Benefit</h4>
                 <p>
                   These new methods can simplify a lot of dynamic field access code you might have written in the old package.
                 </p>
                 <p><strong>Example - Dynamic Field Access:</strong></p>
-                <pre><code class="language-dart">// Old package - Had to know exact structure
-String? getPatientName(Patient patient) {
-  if (patient.name != null &amp;&amp; patient.name!.isNotEmpty) {
-    return patient.name!.first.family?.value;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Old package - Had to know exact structure</span>
+<span class="hljs-built_in">String</span>? getPatientName(Patient patient) {
+  <span class="hljs-keyword">if</span> (patient.name != <span class="hljs-keyword">null</span> &amp;&amp; patient.name!.isNotEmpty) {
+    <span class="hljs-keyword">return</span> patient.name!.first.family?.value;
   }
-  return null;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
 }
 
-// New package - Can use reflection-like methods
-List&lt;FhirBase&gt; getFieldByName(Patient patient, String fieldName) {
-  return patient.getChildrenByName(fieldName);
+<span class="hljs-comment">// New package - Can use reflection-like methods</span>
+<span class="hljs-built_in">List</span>&lt;FhirBase&gt; getFieldByName(Patient patient, <span class="hljs-built_in">String</span> fieldName) {
+  <span class="hljs-keyword">return</span> patient.getChildrenByName(fieldName);
 }
 
-// Get all field names for introspection
-void printAllFields(Patient patient) {
-  for (final fieldName in patient.listChildrenNames()) {
-    print('$fieldName: ${patient.getChildrenByName(fieldName)}');
+<span class="hljs-comment">// Get all field names for introspection</span>
+<span class="hljs-keyword">void</span> printAllFields(Patient patient) {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> fieldName <span class="hljs-keyword">in</span> patient.listChildrenNames()) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">$fieldName</span>: <span class="hljs-subst">${patient.getChildrenByName(fieldName)}</span>'</span>);
   }
-}
-</code></pre>
+}</code></pre>
+                </div>
                 <hr/>
                 <h3 id="common-migration-patterns" anchor="true"><span>Common Migration Patterns</span><a href="/docs/core/migration#common-migration-patterns">#</a></h3>
                 <h4 id="pattern-1-accessing-nested-primitive-values">Pattern 1: Accessing Nested Primitive Values</h4>
                 <p><strong>Old:</strong></p>
-                <pre><code class="language-dart">final patientName = patient.name?.first.given?.first.value;
-final birthDate = patient.birthDate?.value;
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> patientName = patient.name?.first.given?.first.value;
+<span class="hljs-keyword">final</span> birthDate = patient.birthDate?.value;</code></pre>
+                </div>
                 <p><strong>New:</strong></p>
-                <pre><code class="language-dart">final patientName = patient.name?.first.given?.first.valueString;
-final birthDate = patient.birthDate?.valueDateTime;
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> patientName = patient.name?.first.given?.first.valueString;
+<span class="hljs-keyword">final</span> birthDate = patient.birthDate?.valueDateTime;</code></pre>
+                </div>
                 <h4 id="pattern-2-creating-resources-with-primitives">Pattern 2: Creating Resources with Primitives</h4>
                 <p><strong>Old:</strong></p>
-                <pre><code class="language-dart">final observation = Observation(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> observation = Observation(
   status: ObservationStatus.final_,
   code: CodeableConcept(
     coding: [
       Coding(
-        system: FhirUri('http://loinc.org'),
-        code: FhirCode('8480-6'),
-        display: FhirString('Systolic blood pressure'),
+        system: FhirUri(<span class="hljs-string">'http://loinc.org'</span>),
+        code: FhirCode(<span class="hljs-string">'8480-6'</span>),
+        display: FhirString(<span class="hljs-string">'Systolic blood pressure'</span>),
       ),
     ],
   ),
   valueQuantity: Quantity(
-    value: FhirDecimal(120),
-    unit: FhirString('mmHg'),
-    system: FhirUri('http://unitsofmeasure.org'),
-    code: FhirCode('mm[Hg]'),
+    value: FhirDecimal(<span class="hljs-number">120</span>),
+    unit: FhirString(<span class="hljs-string">'mmHg'</span>),
+    system: FhirUri(<span class="hljs-string">'http://unitsofmeasure.org'</span>),
+    code: FhirCode(<span class="hljs-string">'mm[Hg]'</span>),
   ),
-);
-</code></pre>
+);</code></pre>
+                </div>
                 <p><strong>New (same structure, but consider extension methods):</strong></p>
-                <pre><code class="language-dart">final observation = Observation(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> observation = Observation(
   status: ObservationStatus.final_,
   code: CodeableConcept(
     coding: [
       Coding(
-        system: 'http://loinc.org'.toFhirUri,
-        code: '8480-6'.toFhirCode,
-        display: 'Systolic blood pressure'.toFhirString,
+        system: <span class="hljs-string">'http://loinc.org'</span>.toFhirUri,
+        code: <span class="hljs-string">'8480-6'</span>.toFhirCode,
+        display: <span class="hljs-string">'Systolic blood pressure'</span>.toFhirString,
       ),
     ],
   ),
   valueQuantity: Quantity(
-    value: 120.0.toFhirDecimal,
-    unit: 'mmHg'.toFhirString,
-    system: 'http://unitsofmeasure.org'.toFhirUri,
-    code: 'mm[Hg]'.toFhirCode,
+    value: <span class="hljs-number">120.0</span>.toFhirDecimal,
+    unit: <span class="hljs-string">'mmHg'</span>.toFhirString,
+    system: <span class="hljs-string">'http://unitsofmeasure.org'</span>.toFhirUri,
+    code: <span class="hljs-string">'mm[Hg]'</span>.toFhirCode,
   ),
-);
-</code></pre>
+);</code></pre>
+                </div>
                 <h4 id="pattern-3-checking-for-null-values">Pattern 3: Checking for Null Values</h4>
                 <p><strong>Old:</strong></p>
-                <pre><code class="language-dart">if (patient.name != null &amp;&amp; 
-    patient.name!.first.family != null &amp;&amp; 
-    patient.name!.first.family!.value != null) {
-  print(patient.name!.first.family!.value);
-}
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">if</span> (patient.name != <span class="hljs-keyword">null</span> &amp;&amp; 
+    patient.name!.first.family != <span class="hljs-keyword">null</span> &amp;&amp; 
+    patient.name!.first.family!.value != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-built_in">print</span>(patient.name!.first.family!.value);
+}</code></pre>
+                </div>
                 <p><strong>New:</strong></p>
-                <pre><code class="language-dart">// Same null checking needed
-if (patient.name != null &amp;&amp; 
-    patient.name!.first.family != null &amp;&amp; 
-    patient.name!.first.family!.valueString != null) {
-  print(patient.name!.first.family!.valueString);
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Same null checking needed</span>
+<span class="hljs-keyword">if</span> (patient.name != <span class="hljs-keyword">null</span> &amp;&amp; 
+    patient.name!.first.family != <span class="hljs-keyword">null</span> &amp;&amp; 
+    patient.name!.first.family!.valueString != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-built_in">print</span>(patient.name!.first.family!.valueString);
 }
 
-// OR use null-aware operators
-final familyName = patient.name?.first.family?.valueString;
-if (familyName != null) {
-  print(familyName);
-}
-</code></pre>
+<span class="hljs-comment">// OR use null-aware operators</span>
+<span class="hljs-keyword">final</span> familyName = patient.name?.first.family?.valueString;
+<span class="hljs-keyword">if</span> (familyName != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-built_in">print</span>(familyName);
+}</code></pre>
+                </div>
                 <h4 id="pattern-4-working-with-lists">Pattern 4: Working with Lists</h4>
                 <p><strong>Old:</strong></p>
-                <pre><code class="language-dart">final identifiers = patient.identifier?.map((id) =&gt; id.value?.value).toList();
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> identifiers = patient.identifier?.map((id) =&gt; id.value?.value).toList();</code></pre>
+                </div>
                 <p><strong>New:</strong></p>
-                <pre><code class="language-dart">final identifiers = patient.identifier?.map((id) =&gt; id.value?.valueString).toList();
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> identifiers = patient.identifier?.map((id) =&gt; id.value?.valueString).toList();</code></pre>
+                </div>
                 <h4 id="pattern-5-polymorphic-extensions">Pattern 5: Polymorphic Extensions</h4>
                 <p><strong>Old:</strong></p>
-                <pre><code class="language-dart">final extension = FhirExtension(
-  url: FhirUri('http://example.org/height'),
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
+  url: FhirUri(<span class="hljs-string">'http://example.org/height'</span>),
   value: Quantity(
-    value: FhirDecimal(175),
-    unit: FhirString('cm'),
+    value: FhirDecimal(<span class="hljs-number">175</span>),
+    unit: FhirString(<span class="hljs-string">'cm'</span>),
   ),
 );
 
-// Accessing
-if (extension.value is Quantity) {
-  final quantity = extension.value as Quantity;
-  final value = quantity.value?.value;
-}
-</code></pre>
+<span class="hljs-comment">// Accessing</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">is</span> Quantity) {
+  <span class="hljs-keyword">final</span> quantity = <span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">as</span> Quantity;
+  <span class="hljs-keyword">final</span> value = quantity.value?.value;
+}</code></pre>
+                </div>
                 <p><strong>New:</strong></p>
-                <pre><code class="language-dart">final extension = FhirExtension(
-  url: 'http://example.org/height'.toFhirString,
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
+  url: <span class="hljs-string">'http://example.org/height'</span>.toFhirString,
   valueX: Quantity(
-    value: 175.0.toFhirDecimal,
-    unit: 'cm'.toFhirString,
+    value: <span class="hljs-number">175.0</span>.toFhirDecimal,
+    unit: <span class="hljs-string">'cm'</span>.toFhirString,
   ),
 );
 
-// Accessing - Much cleaner!
-final quantity = extension.valueQuantity;
-if (quantity != null) {
-  final value = quantity.value?.valueDouble;
-}
-</code></pre>
+<span class="hljs-comment">// Accessing - Much cleaner!</span>
+<span class="hljs-keyword">final</span> quantity = <span class="hljs-keyword">extension</span>.valueQuantity;
+<span class="hljs-keyword">if</span> (quantity != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-keyword">final</span> value = quantity.value?.valueDouble;
+}</code></pre>
+                </div>
                 <hr/>
                 <h3 id="breaking-changes-checklist" anchor="true">
                   <span>Breaking Changes Checklist</span><a href="/docs/core/migration#breaking-changes-checklist">#</a>
@@ -2183,136 +3113,208 @@ if (quantity != null) {
                 <h4 id="error-the-getter-value-isnt-defined">Error: "The getter 'value' isn't defined"</h4>
                 <p><strong>Cause:</strong> Using old <code>.value</code> accessor on primitive type.</p>
                 <p><strong>Solution:</strong> Replace with typed getter:</p>
-                <pre><code class="language-dart">// Error
-final name = patient.name?.first.family?.value;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Error</span>
+<span class="hljs-keyword">final</span> name = patient.name?.first.family?.value;
 
-// Fix
-final name = patient.name?.first.family?.valueString;
-</code></pre>
+<span class="hljs-comment">// Fix</span>
+<span class="hljs-keyword">final</span> name = patient.name?.first.family?.valueString;</code></pre>
+                </div>
                 <h4 id="error-the-argument-type-string-cant-be-assigned-to-the-parameter-type-appointmentstatus">Error: "The argument type 'String' can't be assigned to the parameter type 'AppointmentStatus'"</h4>
                 <p><strong>Cause:</strong> Trying to use string literal where enum is expected.</p>
                 <p><strong>Solution:</strong> Use the enum value:</p>
-                <pre><code class="language-dart">// Error
-final appointment = Appointment(status: 'booked');
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Error</span>
+<span class="hljs-keyword">final</span> appointment = Appointment(status: <span class="hljs-string">'booked'</span>);
 
-// Fix
-final appointment = Appointment(status: AppointmentStatus.booked);
-</code></pre>
+<span class="hljs-comment">// Fix</span>
+<span class="hljs-keyword">final</span> appointment = Appointment(status: AppointmentStatus.booked);</code></pre>
+                </div>
                 <h4 id="error-the-getter-product-isnt-defined">Error: "The getter 'product' isn't defined"</h4>
                 <p><strong>Cause:</strong> Polymorphic field name changed.</p>
                 <p><strong>Solution:</strong> Add <code>X</code> suffix:</p>
-                <pre><code class="language-dart">// Error
-final product = carePlan.activity?.first.detail?.product;
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Error</span>
+<span class="hljs-keyword">final</span> product = carePlan.activity?.first.detail?.product;
 
-// Fix
-final product = carePlan.activity?.first.detail?.productX;
-</code></pre>
+<span class="hljs-comment">// Fix</span>
+<span class="hljs-keyword">final</span> product = carePlan.activity?.first.detail?.productX;</code></pre>
+                </div>
                 <h4 id="error-the-operator--isnt-defined-for-the-type">Error: "The operator '==' isn't defined for the type"</h4>
                 <p><strong>Cause:</strong> Enum comparison issue.</p>
                 <p><strong>Solution:</strong> Use proper enum comparison:</p>
-                <pre><code class="language-dart">// Error (comparing incompatible types)
-if (status == 'active') { }
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Error (comparing incompatible types)</span>
+<span class="hljs-keyword">if</span> (status == <span class="hljs-string">'active'</span>) { }
 
-// Fix
-if (status == AppointmentStatus.booked) { }
-// OR
-if (status?.valueEnum == AppointmentStatusEnum.booked) { }
-</code></pre>
+<span class="hljs-comment">// Fix</span>
+<span class="hljs-keyword">if</span> (status == AppointmentStatus.booked) { }
+<span class="hljs-comment">// OR</span>
+<span class="hljs-keyword">if</span> (status?.valueEnum == AppointmentStatusEnum.booked) { }</code></pre>
+                </div>
                 <hr/>
                 <h3 id="example-complete-migration" anchor="true">
                   <span>Example: Complete Migration</span><a href="/docs/core/migration#example-complete-migration">#</a>
                 </h3>
                 <h4 id="before-old-package">Before (Old Package)</h4>
-                <pre><code class="language-dart">import 'package:fhir/fhir.dart';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir/fhir.dart'</span>;
 
-void createPatient() {
-  final patient = Patient(
-    id: FhirId('patient-123'),
+<span class="hljs-keyword">void</span> createPatient() {
+  <span class="hljs-keyword">final</span> patient = Patient(
+    id: FhirId(<span class="hljs-string">'patient-123'</span>),
     name: [
       HumanName(
-        family: FhirString('Smith'),
-        given: [FhirString('John')],
+        family: FhirString(<span class="hljs-string">'Smith'</span>),
+        given: [FhirString(<span class="hljs-string">'John'</span>)],
       ),
     ],
-    gender: 'male',
-    birthDate: FhirDate('1980-05-15'),
-    active: FhirBoolean(true),
+    gender: <span class="hljs-string">'male'</span>,
+    birthDate: FhirDate(<span class="hljs-string">'1980-05-15'</span>),
+    active: FhirBoolean(<span class="hljs-keyword">true</span>),
   );
 
-  // Accessing values
-  final id = patient.id?.value;
-  final lastName = patient.name?.first.family?.value;
-  final firstName = patient.name?.first.given?.first.value;
-  final birthDate = patient.birthDate?.value;
-  final isActive = patient.active?.value;
+  <span class="hljs-comment">// Accessing values</span>
+  <span class="hljs-keyword">final</span> id = patient.id?.value;
+  <span class="hljs-keyword">final</span> lastName = patient.name?.first.family?.value;
+  <span class="hljs-keyword">final</span> firstName = patient.name?.first.given?.first.value;
+  <span class="hljs-keyword">final</span> birthDate = patient.birthDate?.value;
+  <span class="hljs-keyword">final</span> isActive = patient.active?.value;
   
-  // Gender check
-  if (patient.gender == 'male') {
-    print('Male patient');
+  <span class="hljs-comment">// Gender check</span>
+  <span class="hljs-keyword">if</span> (patient.gender == <span class="hljs-string">'male'</span>) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Male patient'</span>);
   }
 
-  // Serialization
-  final jsonString = jsonEncode(patient.toJson());
+  <span class="hljs-comment">// Serialization</span>
+  <span class="hljs-keyword">final</span> jsonString = jsonEncode(patient.toJson());
   
-  // Deserialization
-  final patientCopy = Patient.fromJson(jsonDecode(jsonString));
-}
-</code></pre>
+  <span class="hljs-comment">// Deserialization</span>
+  <span class="hljs-keyword">final</span> patientCopy = Patient.fromJson(jsonDecode(jsonString));
+}</code></pre>
+                </div>
                 <h4 id="after-new-package">After (New Package)</h4>
-                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;
 
-void createPatient() {
-  final patient = Patient(
-    id: '123'.toFhirString,  // Resource.id is a FhirString in the new package
+<span class="hljs-keyword">void</span> createPatient() {
+  <span class="hljs-keyword">final</span> patient = Patient(
+    id: <span class="hljs-string">'123'</span>.toFhirString,  <span class="hljs-comment">// Resource.id is a FhirString in the new package</span>
     name: [
       HumanName(
-        family: 'Smith'.toFhirString,
-        given: ['John'.toFhirString],
+        family: <span class="hljs-string">'Smith'</span>.toFhirString,
+        given: [<span class="hljs-string">'John'</span>.toFhirString],
       ),
     ],
-    gender: AdministrativeGender.male,  // Using enum
-    birthDate: '1980-05-15'.toFhirDate,
-    active: true.toFhirBoolean,
+    gender: AdministrativeGender.male,  <span class="hljs-comment">// Using enum</span>
+    birthDate: <span class="hljs-string">'1980-05-15'</span>.toFhirDate,
+    active: <span class="hljs-keyword">true</span>.toFhirBoolean,
   );
 
-  // Accessing values - Note the different getters!
-  final id = patient.id?.valueString;  // Changed!
-  final lastName = patient.name?.first.family?.valueString;  // Changed!
-  final firstName = patient.name?.first.given?.first.valueString;  // Changed!
-  final birthDate = patient.birthDate?.valueDateTime;  // Changed!
-  final isActive = patient.active?.valueBoolean;  // Changed!
+  <span class="hljs-comment">// Accessing values - Note the different getters!</span>
+  <span class="hljs-keyword">final</span> id = patient.id?.valueString;  <span class="hljs-comment">// Changed!</span>
+  <span class="hljs-keyword">final</span> lastName = patient.name?.first.family?.valueString;  <span class="hljs-comment">// Changed!</span>
+  <span class="hljs-keyword">final</span> firstName = patient.name?.first.given?.first.valueString;  <span class="hljs-comment">// Changed!</span>
+  <span class="hljs-keyword">final</span> birthDate = patient.birthDate?.valueDateTime;  <span class="hljs-comment">// Changed!</span>
+  <span class="hljs-keyword">final</span> isActive = patient.active?.valueBoolean;  <span class="hljs-comment">// Changed!</span>
   
-  // Gender check using enum
-  if (patient.gender == AdministrativeGender.male) {
-    print('Male patient');
+  <span class="hljs-comment">// Gender check using enum</span>
+  <span class="hljs-keyword">if</span> (patient.gender == AdministrativeGender.male) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Male patient'</span>);
   }
   
-  // OR using native enum for switch
-  switch (patient.gender?.valueEnum) {
-    case AdministrativeGenderEnum.male:
-      print('Male patient');
-      break;
-    case AdministrativeGenderEnum.female:
-      print('Female patient');
-      break;
-    case AdministrativeGenderEnum.other:
-    case AdministrativeGenderEnum.unknown:
-    case null:
-      print('Other/Unknown gender');
-      break;
+  <span class="hljs-comment">// OR using native enum for switch</span>
+  <span class="hljs-keyword">switch</span> (patient.gender?.valueEnum) {
+    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.male:
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Male patient'</span>);
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.female:
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Female patient'</span>);
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.other:
+    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.unknown:
+    <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Other/Unknown gender'</span>);
+      <span class="hljs-keyword">break</span>;
   }
 
-  // Serialization - One step!
-  final jsonString = patient.toJsonString();
+  <span class="hljs-comment">// Serialization - One step!</span>
+  <span class="hljs-keyword">final</span> jsonString = patient.toJsonString();
   
-  // Deserialization - One step!
-  final patientCopy = Patient.fromJsonString(jsonString);
+  <span class="hljs-comment">// Deserialization - One step!</span>
+  <span class="hljs-keyword">final</span> patientCopy = Patient.fromJsonString(jsonString);
   
-  // New: YAML support
-  final yamlString = patient.toYaml();
-  print(yamlString);  // Pretty-printed YAML
-}
-</code></pre>
+  <span class="hljs-comment">// New: YAML support</span>
+  <span class="hljs-keyword">final</span> yamlString = patient.toYaml();
+  <span class="hljs-built_in">print</span>(yamlString);  <span class="hljs-comment">// Pretty-printed YAML</span>
+}</code></pre>
+                </div>
                 <hr/>
                 <h3 id="getting-help" anchor="true"><span>Getting Help</span><a href="/docs/core/migration#getting-help">#</a></h3>
                 <p>If you run into issues during migration:</p>
@@ -2368,16 +3370,41 @@ void createPatient() {
               <div class="content-footer">
                 <footer class="site-footer">
                   <div class="footer-columns">
-                    <div class="footer-column"><h4>Docs</h4><ul><li><a href="docs/">Getting Started</a></li></ul></div>
                     <div class="footer-column">
-                      <h4>Standalone Pages</h4>
-                      <ul><li><a href="about">About</a></li><li><a href="contact">Contact</a></li></ul>
+                      <h4>Packages</h4>
+                      <ul>
+                        <li><a href="https://pub.dev/packages/fhir_r4">fhir_r4</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r5">fhir_r5</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r6">fhir_r6</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_path">fhir_path</a></li>
+                        <li><a href="https://pub.dev/packages/cql">cql</a></li>
+                        <li><a href="https://pub.dev/publishers/fhirfli.dev/packages">All packages on pub.dev</a></li>
+                      </ul>
                     </div>
                     <div class="footer-column">
-                      <h4>More</h4>
-                      <ul><li><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></li></ul>
+                      <h4>Documentation</h4>
+                      <ul>
+                        <li><a href="docs/">Getting Started</a></li>
+                        <li><a href="docs/core/fhir_r4">Core package</a></li>
+                        <li><a href="docs/at_rest/fhir_r4_at_rest">REST client</a></li>
+                        <li><a href="docs/auth/fhir_r4_auth">SMART on FHIR auth</a></li>
+                        <li><a href="docs/fhir_r4_db">Local database</a></li>
+                        <li><a href="docs/demos/fhir_path_demo">FHIRPath demo</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-column">
+                      <h4>Project</h4>
+                      <ul>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="https://github.com/fhir-fli">GitHub</a></li>
+                        <li><a href="https://github.com/fhir-fli/fhir_fli_documentation">This site's source</a></li>
+                      </ul>
                     </div>
                   </div>
+                  <p class="footer-note">
+                    FHIR® is the registered trademark of HL7 and is used with the permission of HL7. Built with <a href="https://jaspr.site">Jaspr</a>.
+                  </p>
                 </footer>
               </div>
             </div>

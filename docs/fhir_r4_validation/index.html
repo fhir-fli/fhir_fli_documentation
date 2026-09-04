@@ -3,8 +3,8 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>Validation Package | FHIR-FLI</title>
-    <meta property="og:title" content="Validation Package | FHIR-FLI"/>
+    <title>Resource Validation | FHIR-FLI</title>
+    <meta property="og:title" content="Resource Validation | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
     <style>
       .docs .header-container {
@@ -181,13 +181,16 @@
         align-items: center;
         column-gap: 0.75rem;
         flex-basis: 17rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
       .header .header-title img {
         width: auto;
-        height: 1.5rem;
+        height: 1.75rem;
       }
       .header .header-title span {
         font-weight: 700;
+        letter-spacing: 0.01em;
       }
       .header .header-content {
         display: flex;
@@ -196,7 +199,19 @@
       }
       .header .header-items {
         display: flex;
+        align-items: center;
         column-gap: 0.25rem;
+      }
+      @media all and (max-width: 767px) {
+        .header .header-title {
+          flex-basis: auto;
+        }
+        .header .header-items .nav-link {
+          display: none;
+        }
+        .header .github-button .github-info {
+          display: none;
+        }
       }
     </style>
     <style>
@@ -225,40 +240,161 @@
                 
     </script>
     <style>
+      .sidebar {
+        position: relative;
+        padding-top: 0.75rem;
+        padding-left: 0.5rem;
+        padding-bottom: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar {
+          padding-top: 0;
+        }
+      }
+      .sidebar .sidebar-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: inherit;
+        font-size: 1.5rem;
+        line-height: 1em;
+        background-color: transparent;
+      }
+      .sidebar .sidebar-close:hover {
+        background-color: #0000000d;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-close {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-mobile-nav {
+        padding-top: 3rem;
+        padding-right: 0.75rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .sidebar .sidebar-mobile-nav ul {
+        padding-bottom: 0.75rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-mobile-nav {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-group {
+        padding-top: 1rem;
+        padding-right: 0.75rem;
+      }
       .sidebar .sidebar-group.collapsible {
-        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+      .sidebar .sidebar-group.collapsible:first-of-type {
+        padding-top: 1rem;
       }
       .sidebar .sidebar-group.collapsible > summary {
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
+        display: flex;
+        padding: 0.45rem 0.75rem;
+        border-radius: 0.375rem;
+        opacity: 0.85;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
         list-style-type: none;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .sidebar .sidebar-group.collapsible > summary:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
       }
       .sidebar .sidebar-group.collapsible > summary::-webkit-details-marker {
         display: none;
       }
       .sidebar .sidebar-group.collapsible > summary::before {
+        content: "";
         display: inline-block;
-        margin-right: 0.4rem;
-        transition: transform 120ms;
-        font-size: 0.75em;
-        content: "▸";
+        width: 0.4em;
+        height: 0.4em;
+        margin-left: 0.1em;
+        margin-bottom: 0.15em;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-right-width: 1.5px;
+        border-bottom-width: 1.5px;
+        opacity: 0.7;
+        transition: transform 150ms ease-in-out;
+        transform: rotate(-45deg);
       }
       .sidebar .sidebar-group.collapsible[open] > summary::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg);
+      }
+      .sidebar .sidebar-group ul {
+        padding: 0;
+        margin-top: 0.125rem;
+        margin-left: 1rem;
+        border-left-style: solid;
+        border-left-color: var(--content-hr);
+        border-left-width: 1px;
+        list-style-type: none;
+      }
+      .sidebar .sidebar-group:not(.collapsible) ul {
+        margin: 0;
+        border: none;
+      }
+      .sidebar .sidebar-group li div {
+        display: flex;
+        margin-bottom: 1px;
+        border-radius: 0.375rem;
+        opacity: 0.75;
+        overflow: hidden;
+        transition: all 150ms ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar .sidebar-group li div:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
+      }
+      .sidebar .sidebar-group li div.active {
+        opacity: 1.0;
+        color: var(--primary);
+        font-weight: 700;
+        background-color: color-mix(in srgb, currentColor 15%, transparent);
+      }
+      .sidebar .sidebar-group li a {
+        display: inline-flex;
+        padding-top: 0.45rem;
+        padding-left: 12px;
+        padding-bottom: 0.45rem;
+        flex-grow: 1;
+        text-decoration: none;
       }
     </style>
     <style>
       :root {
-        --primary: oklch(0.623 0.214 259.815);
+        --primary: oklch(0.546 0.245 262.881);
         --background: oklch(0.984 0.003 247.858);
         --text: oklch(0.373 0.034 259.733);
         --content-headings: oklch(0.21 0.034 264.665);
         --content-lead: oklch(0.446 0.03 256.802);
-        --content-links: oklch(0.21 0.034 264.665);
+        --content-links: oklch(0.488 0.243 264.376);
         --content-bold: oklch(0.21 0.034 264.665);
         --content-counters: oklch(0.551 0.027 264.364);
         --content-bullets: oklch(0.872 0.01 258.338);
@@ -269,29 +405,30 @@
         --content-kbd: oklch(0.21 0.034 264.665);
         --content-kbd-shadows: oklch(0.21 0.034 264.665);
         --content-code: oklch(0.21 0.034 264.665);
-        --content-pre-code: oklch(0.928 0.006 264.531);
-        --content-pre-bg: oklch(0.278 0.033 256.848);
+        --content-pre-code: oklch(0.929 0.013 255.508);
+        --content-pre-bg: oklch(0.208 0.042 265.755);
         --content-th-borders: oklch(0.872 0.01 258.338);
         --content-td-borders: oklch(0.928 0.006 264.531);
       }
       :root[data-theme="dark"] {
-        --primary: oklch(0.809 0.105 251.813);
+        --primary: oklch(0.707 0.165 254.624);
         --background: oklch(0.141 0.005 285.823);
         --text: oklch(0.928 0.006 264.531);
         --content-headings: white;
         --content-lead: oklch(0.707 0.022 261.325);
-        --content-links: white;
+        --content-links: oklch(0.809 0.105 251.813);
         --content-bold: white;
         --content-counters: oklch(0.707 0.022 261.325);
         --content-bullets: oklch(0.446 0.03 256.802);
         --content-hr: oklch(0.373 0.034 259.733);
         --content-quotes: oklch(0.967 0.003 264.542);
+        --content-quote-borders: oklch(0.623 0.214 259.815);
         --content-captions: oklch(0.707 0.022 261.325);
         --content-kbd: white;
         --content-kbd-shadows: white;
         --content-code: white;
-        --content-pre-code: oklch(0.872 0.01 258.338);
-        --content-pre-bg: oklch(0.274 0.006 286.033);
+        --content-pre-code: oklch(0.92 0.004 286.32);
+        --content-pre-bg: oklch(0.21 0.006 285.885);
         --content-th-borders: oklch(0.446 0.03 256.802);
         --content-td-borders: oklch(0.373 0.034 259.733);
       }
@@ -872,68 +1009,311 @@
       }
     </style>
     <style>
-      .content-container p a, .content-container li a, .content-container td a {
-        text-decoration: underline;
+      .content-container .content-header h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15em;
       }
-      .content-container p a:hover, .content-container li a:hover, .content-container td a:hover {
-        opacity: 0.8;
+      .content-container .content-header p {
+        color: var(--content-lead);
+        line-height: 1.5em;
+      }
+      .content h2 {
+        padding-bottom: 0.3em;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .content a {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+      }
+      .content a:hover {
+        text-decoration-color: currentColor;
+      }
+      .content img {
+        border-radius: 0.5rem;
+      }
+      .content :not(pre) > code {
+        padding: 0.1em 0.3em;
+        border-radius: 0.3rem;
+        font-size: 0.85em;
+        font-weight: 500;
+        background-color: color-mix(in srgb, currentColor 9%, transparent);
+      }
+      .content code::before, .content code::after {
+        content: none;
       }
       .content-container table {
-        width: 100%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        border: solid var(--content-quote-borders) 1px;
-        border-collapse: collapse;
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: solid var(--content-td-borders) 1px;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        border-collapse: separate;
+        border-spacing: 0;
       }
       .content-container th, .content-container td {
         padding: 0.5rem 0.75rem;
-        border: solid var(--content-quote-borders) 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: var(--content-td-borders);
+        border-bottom-color: var(--content-td-borders);
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        vertical-align: top;
+      }
+      .content-container th:last-child, .content-container td:last-child {
+        border-right: none;
+      }
+      .content-container tbody tr:last-child td {
+        border-bottom: none;
       }
       .content-container th {
+        color: var(--content-headings);
         text-align: left;
+        font-size: 0.8rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+      }
+      .content-container tbody tr:nth-child(even) {
+        background-color: color-mix(in srgb, currentColor 2.5%, transparent);
+      }
+      .code-block {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        border: solid #ffffff14 1px;
+        border-radius: 0.5rem;
+        overflow: hidden;
         background-color: var(--content-pre-bg);
       }
-      .sidebar .sidebar-group.collapsible {
-        padding-bottom: 0.5rem;
+      .code-block .code-head {
+        display: flex;
+        height: 2rem;
+        padding-left: 1rem;
+        padding-right: 0.4rem;
         border-bottom-style: solid;
-        border-bottom-color: var(--content-quote-borders);
+        border-bottom-color: #ffffff14;
         border-bottom-width: 1px;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background-color: #ffffff08;
       }
-      .sidebar .sidebar-group.collapsible:last-of-type {
-        border-bottom: none;
+      .code-block .code-lang {
+        opacity: 0.55;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: var(--content-code-font);
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .code-block .code-copy {
+        display: inline-flex;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: none;
+        border-radius: 0.375rem;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 150ms ease-in-out;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: transparent;
+      }
+      .code-block .code-copy:hover, .code-copy:focus-visible {
+        opacity: 1.0;
+        background-color: #ffffff1f;
+      }
+      .code-block pre {
+        margin: 0;
+        border-radius: 0;
+        tab-size: 2;
+      }
+      .code-block .hljs-comment, .hljs-quote {
+        color: #8b949e;
+        font-style: italic;
+      }
+      .code-block .hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag {
+        color: #ff7b72;
+      }
+      .code-block .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-symbol, .hljs-bullet {
+        color: #79c0ff;
+      }
+      .code-block .hljs-string, .hljs-regexp, .hljs-addition {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-title, .hljs-section, .hljs-selector-id, .hljs-function .hljs-title {
+        color: #d2a8ff;
+        font-weight: 600;
+      }
+      .code-block .hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name {
+        color: #ffa657;
+      }
+      .code-block .hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class {
+        color: #7ee787;
+      }
+      .code-block .hljs-attr {
+        color: #79c0ff;
+      }
+      .code-block .hljs-meta, .hljs-meta-keyword {
+        color: #d2a8ff;
+      }
+      .code-block .hljs-meta-string {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-deletion {
+        color: #ffa198;
+      }
+      .code-block .hljs-emphasis {
+        font-style: italic;
+      }
+      .code-block .hljs-strong {
+        font-weight: 700;
+      }
+      .card-grid {
+        display: grid;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      }
+      .card-grid .card {
+        display: flex;
+        padding: 1.1rem;
+        border: solid var(--content-hr) 1px;
+        border-radius: 0.75rem;
+        transition: all 150ms ease-in-out;
+        flex-direction: column;
+        row-gap: 0.35rem;
+        color: var(--text);
+        text-decoration: none;
+        background-color: color-mix(in srgb, currentColor 3%, transparent);
+      }
+      .card-grid .card:hover {
+        border: solid var(--primary) 1px;
+        transform: translateY(-2px);
+        background-color: color-mix(in srgb, var(--primary) 6%, transparent);
+      }
+      .card-grid .card h3 {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--content-headings);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .card-grid .card h3 code {
+        padding: 0.1em 0.4em;
+        border-radius: 0.3rem;
+        color: var(--primary);
+        font-family: var(--content-code-font);
+        font-size: 0.85em;
+        font-weight: 600;
+        background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+      }
+      .card-grid .card p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.45em;
+      }
+      .card-grid .card .tag {
+        display: inline-block;
+        padding: 0.05em 0.5em;
+        margin-left: auto;
+        border-radius: 1rem;
+        opacity: 0.7;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: color-mix(in srgb, currentColor 10%, transparent);
+      }
+      .button-row {
+        display: flex;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .button-row a {
+        display: inline-flex;
+        padding: 0.6rem 1.1rem;
+        border: solid var(--primary) 1px;
+        border-radius: 0.5rem;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--primary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .button-row a.primary {
+        color: white;
+        background-color: var(--primary);
+      }
+      .button-row a:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      aside.toc a {
+        opacity: 0.7;
+        transition: opacity 150ms ease-in-out;
+        text-decoration: none;
+      }
+      aside.toc a:hover {
+        opacity: 1.0;
       }
       .header .nav-link {
         padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 150ms ease-in-out;
         font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
       }
       .header .nav-link:hover {
-        text-decoration: underline;
+        background-color: color-mix(in srgb, currentColor 6%, transparent);
       }
     </style>
     <style>
       .site-footer {
-        padding: 3rem 2rem;
+        padding-top: 2.5rem;
+        padding-bottom: 1rem;
+        margin-top: 4rem;
         border-top-style: solid;
-        border-top-color: #0000000d;
+        border-top-color: var(--content-hr);
         border-top-width: 1px;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
       .site-footer .footer-columns {
         display: flex;
-        max-width: 60rem;
-        margin-left: auto;
-        margin-right: auto;
         flex-wrap: wrap;
-        column-gap: 3rem;
+        gap: 2rem 4rem;
       }
       .site-footer .footer-column {
         min-width: 10rem;
       }
       .site-footer .footer-column h4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       .site-footer .footer-column ul {
         padding: 0;
@@ -941,10 +1321,24 @@
         list-style-type: none;
       }
       .site-footer .footer-column li {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.4rem;
       }
       .site-footer .footer-column a {
+        opacity: 0.75;
+        transition: opacity 150ms ease-in-out;
         text-decoration: none;
+      }
+      .site-footer .footer-column a:hover {
+        opacity: 1.0;
+      }
+      .site-footer .footer-note {
+        margin-top: 2.5rem;
+        opacity: 0.6;
+        font-size: 0.8rem;
+        line-height: 1.6em;
+      }
+      .site-footer .footer-note a {
+        color: inherit;
       }
     </style>
     <!--/-->
@@ -1136,8 +1530,16 @@
         <div class="sidebar-barrier" role="button"></div>
         <div class="sidebar-container">
           <nav class="sidebar">
-            <button class="sidebar-close">×</button>
+            <button class="sidebar-close" aria-label="Close navigation">×</button>
             <div>
+              <div class="sidebar-group sidebar-mobile-nav">
+                <ul>
+                  <li><div><a href="docs/">Getting Started</a></div></li>
+                  <li><div><a href="about">About</a></div></li>
+                  <li><div><a href="contact">Contact</a></div></li>
+                </ul>
+              </div>
+              <div class="sidebar-group"><ul><li><div><a href="docs/">Getting Started</a></div></li></ul></div>
               <details class="sidebar-group collapsible">
                 <summary>FHIR R4b Core</summary>
                 <ul>
@@ -1246,19 +1648,30 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header"><h1>Validation Package</h1></div>
+              <div class="content-header"><h1>Resource Validation</h1></div>
               <section class="content">
-                <h2 id="fhir-r4-validation" anchor="true"><span>FHIR R4 Validation</span><a href="/docs/fhir_r4_validation#fhir-r4-validation">#</a></h2>
                 <p>
                   The <code>fhir_r4_validation</code> library provides comprehensive validation functionality for FHIR R4 resources. It validates resources against their StructureDefinitions, checking structure, cardinality, bindings, extensions, and invariants to ensure compliance with the FHIR specification.
                 </p>
-                <h3 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_validation#installation">#</a></h3>
-                <pre><code class="language-yaml">dependencies:
-  fhir_r4_validation: ^0.9.0
-  fhir_r4: ^0.9.0
-  fhir_r4_path: ^0.9.0
-</code></pre>
-                <h3 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_validation#key-features">#</a></h3>
+                <h2 id="installation" anchor="true"><span>Installation</span><a href="/docs/fhir_r4_validation#installation">#</a></h2>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">yaml</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
+  <span class="hljs-attr">fhir_r4_validation:</span> <span class="hljs-string">^0.12.0</span>
+  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.12.0</span>
+  <span class="hljs-attr">fhir_r4_path:</span> <span class="hljs-string">^0.12.0</span></code></pre>
+                </div>
+                <h2 id="key-features" anchor="true"><span>Key Features</span><a href="/docs/fhir_r4_validation#key-features">#</a></h2>
                 <ul>
                   <li><strong>Structure Validation</strong>: Validates that resources conform to their StructureDefinition</li>
                   <li>
@@ -1274,46 +1687,72 @@
                     <strong>Questionnaire Response Validation</strong>: Specialized validation for QuestionnaireResponse resources
                   </li>
                 </ul>
-                <h3 id="basic-usage" anchor="true"><span>Basic Usage</span><a href="/docs/fhir_r4_validation#basic-usage">#</a></h3>
-                <h4 id="validating-a-fhir-resource">Validating a FHIR Resource</h4>
+                <h2 id="basic-usage" anchor="true"><span>Basic Usage</span><a href="/docs/fhir_r4_validation#basic-usage">#</a></h2>
+                <h3 id="validating-a-fhir-resource" anchor="true">
+                  <span>Validating a FHIR Resource</span><a href="/docs/fhir_r4_validation#validating-a-fhir-resource">#</a>
+                </h3>
                 <p>The simplest way to validate a FHIR resource is using the <code>FhirValidationEngine</code>:</p>
-                <pre><code class="language-dart">import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4_validation/fhir_r4_validation.dart';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4_validation/fhir_r4_validation.dart'</span>;
 
-void main() async {
-  // Create a patient resource
-  final patient = Patient(
+<span class="hljs-keyword">void</span> main() <span class="hljs-keyword">async</span> {
+  <span class="hljs-comment">// Create a patient resource</span>
+  <span class="hljs-keyword">final</span> patient = Patient(
     name: [
       HumanName(
-        family: 'Doe'.toFhirString,
-        given: ['John'.toFhirString],
+        family: <span class="hljs-string">'Doe'</span>.toFhirString,
+        given: [<span class="hljs-string">'John'</span>.toFhirString],
       ),
     ],
   );
 
-  // Create validation engine
-  final validator = FhirValidationEngine();
+  <span class="hljs-comment">// Create validation engine</span>
+  <span class="hljs-keyword">final</span> validator = FhirValidationEngine();
 
-  // Validate the resource
-  final results = await validator.validateFhirResource(
+  <span class="hljs-comment">// Validate the resource</span>
+  <span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirResource(
     structureToValidate: patient,
   );
 
-  // Check for errors
-  if (results.hasErrors) {
-    print('Validation errors found:');
-    for (final error in results.results.where((r) =&gt; r.severity == Severity.error)) {
-      print('  ${error.path}: ${error.diagnostics}');
+  <span class="hljs-comment">// Check for errors</span>
+  <span class="hljs-keyword">if</span> (results.hasErrors) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Validation errors found:'</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> error <span class="hljs-keyword">in</span> results.results.where((r) =&gt; r.severity == Severity.error)) {
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'  <span class="hljs-subst">${error.path}</span>: <span class="hljs-subst">${error.diagnostics}</span>'</span>);
     }
-  } else {
-    print('Resource is valid!');
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Resource is valid!'</span>);
   }
-}
-</code></pre>
-                <h4 id="validating-from-json">Validating from JSON</h4>
+}</code></pre>
+                </div>
+                <h3 id="validating-from-json" anchor="true"><span>Validating from JSON</span><a href="/docs/fhir_r4_validation#validating-from-json">#</a></h3>
                 <p>You can also validate resources from JSON strings or maps:</p>
-                <pre><code class="language-dart">// From JSON string
-final jsonString = '''
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// From JSON string</span>
+<span class="hljs-keyword">final</span> jsonString = <span class="hljs-string">'''
 {
   "resourceType": "Patient",
   "name": [{
@@ -1321,52 +1760,64 @@ final jsonString = '''
     "given": ["John"]
   }]
 }
-''';
+'''</span>;
 
-final results = await validator.validateFhirString(
+<span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirString(
   structureToValidate: jsonString,
 );
 
-// From JSON map
-final jsonMap = {
-  'resourceType': 'Patient',
-  'name': [
+<span class="hljs-comment">// From JSON map</span>
+<span class="hljs-keyword">final</span> jsonMap = {
+  <span class="hljs-string">'resourceType'</span>: <span class="hljs-string">'Patient'</span>,
+  <span class="hljs-string">'name'</span>: [
     {
-      'family': 'Doe',
-      'given': ['John']
+      <span class="hljs-string">'family'</span>: <span class="hljs-string">'Doe'</span>,
+      <span class="hljs-string">'given'</span>: [<span class="hljs-string">'John'</span>]
     }
   ]
 };
 
-final results = await validator.validateFhirMap(
+<span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirMap(
   structureToValidate: jsonMap,
-);
-</code></pre>
-                <h3 id="validation-results" anchor="true"><span>Validation Results</span><a href="/docs/fhir_r4_validation#validation-results">#</a></h3>
+);</code></pre>
+                </div>
+                <h2 id="validation-results" anchor="true"><span>Validation Results</span><a href="/docs/fhir_r4_validation#validation-results">#</a></h2>
                 <p>The <code>ValidationResults</code> class provides detailed information about validation outcomes:</p>
-                <pre><code class="language-dart">final results = await validator.validateFhirResource(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirResource(
   structureToValidate: patient,
 );
 
-// Check if there are any errors
-if (results.hasErrors) {
-  // Handle errors
+<span class="hljs-comment">// Check if there are any errors</span>
+<span class="hljs-keyword">if</span> (results.hasErrors) {
+  <span class="hljs-comment">// Handle errors</span>
 }
 
-// Access all results
-for (final result in results.results) {
-  print('${result.severity}: ${result.path} - ${result.diagnostics}');
+<span class="hljs-comment">// Access all results</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> result <span class="hljs-keyword">in</span> results.results) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">${result.severity}</span>: <span class="hljs-subst">${result.path}</span> - <span class="hljs-subst">${result.diagnostics}</span>'</span>);
 }
 
-// Get results by severity
-final errors = results.results.where((r) =&gt; r.severity == Severity.error);
-final warnings = results.results.where((r) =&gt; r.severity == Severity.warning);
-final info = results.results.where((r) =&gt; r.severity == Severity.information);
+<span class="hljs-comment">// Get results by severity</span>
+<span class="hljs-keyword">final</span> errors = results.results.where((r) =&gt; r.severity == Severity.error);
+<span class="hljs-keyword">final</span> warnings = results.results.where((r) =&gt; r.severity == Severity.warning);
+<span class="hljs-keyword">final</span> info = results.results.where((r) =&gt; r.severity == Severity.information);
 
-// Convert to JSON
-final jsonResults = results.toJson();
-</code></pre>
-                <h4 id="validationdiagnostics">ValidationDiagnostics</h4>
+<span class="hljs-comment">// Convert to JSON</span>
+<span class="hljs-keyword">final</span> jsonResults = results.toJson();</code></pre>
+                </div>
+                <h3 id="validationdiagnostics" anchor="true"><span>ValidationDiagnostics</span><a href="/docs/fhir_r4_validation#validationdiagnostics">#</a></h3>
                 <p>Each validation result contains:</p>
                 <ul>
                   <li><code>path</code>: The path to the element that failed validation</li>
@@ -1374,162 +1825,296 @@ final jsonResults = results.toJson();
                   <li><code>severity</code>: The severity level (error, warning, or information)</li>
                   <li><code>line</code> and <code>column</code>: Location information (if available)</li>
                 </ul>
-                <h3 id="validation-types" anchor="true"><span>Validation Types</span><a href="/docs/fhir_r4_validation#validation-types">#</a></h3>
+                <h2 id="validation-types" anchor="true"><span>Validation Types</span><a href="/docs/fhir_r4_validation#validation-types">#</a></h2>
                 <p>The validation engine performs several types of validation:</p>
-                <h4 id="1-structure-validation">1. Structure Validation</h4>
+                <h3 id="1-structure-validation" anchor="true"><span>1. Structure Validation</span><a href="/docs/fhir_r4_validation#1-structure-validation">#</a></h3>
                 <p>Validates that the resource structure matches its StructureDefinition:</p>
-                <pre><code class="language-dart">// Validates:
-// - All elements are defined in the StructureDefinition
-// - Element types are correct
-// - Nested structures are valid
-</code></pre>
-                <h4 id="2-cardinality-validation">2. Cardinality Validation</h4>
-                <p>Ensures that required fields are present and cardinality constraints are met:</p>
-                <pre><code class="language-dart">// Validates:
-// - Required elements (min &gt; 0) are present
-// - Maximum cardinality is not exceeded
-// - Array sizes are within bounds
-</code></pre>
-                <h4 id="3-binding-validation">3. Binding Validation</h4>
-                <p>Validates code bindings against ValueSets and CodeSystems:</p>
-                <pre><code class="language-dart">// Validates:
-// - Code values are valid according to the binding
-// - CodeSystem references are correct
-// - ValueSet expansions are valid
-</code></pre>
-                <h4 id="4-extension-validation">4. Extension Validation</h4>
-                <p>Validates extensions and their structure:</p>
-                <pre><code class="language-dart">// Validates:
-// - Extension URLs are valid
-// - Extension structures match their definitions
-// - Required extension elements are present
-</code></pre>
-                <h4 id="5-invariant-validation">5. Invariant Validation</h4>
-                <p>Validates FHIRPath invariants defined in StructureDefinitions:</p>
-                <pre><code class="language-dart">// Validates:
-// - FHIRPath expressions evaluate correctly
-// - Invariant conditions are met
-</code></pre>
-                <h3 id="providing-structuredefinitions" anchor="true">
-                  <span>Providing StructureDefinitions</span><a href="/docs/fhir_r4_validation#providing-structuredefinitions">#</a>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Validates:</span>
+<span class="hljs-comment">// - All elements are defined in the StructureDefinition</span>
+<span class="hljs-comment">// - Element types are correct</span>
+<span class="hljs-comment">// - Nested structures are valid</span></code></pre>
+                </div>
+                <h3 id="2-cardinality-validation" anchor="true">
+                  <span>2. Cardinality Validation</span><a href="/docs/fhir_r4_validation#2-cardinality-validation">#</a>
                 </h3>
+                <p>Ensures that required fields are present and cardinality constraints are met:</p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Validates:</span>
+<span class="hljs-comment">// - Required elements (min &gt; 0) are present</span>
+<span class="hljs-comment">// - Maximum cardinality is not exceeded</span>
+<span class="hljs-comment">// - Array sizes are within bounds</span></code></pre>
+                </div>
+                <h3 id="3-binding-validation" anchor="true"><span>3. Binding Validation</span><a href="/docs/fhir_r4_validation#3-binding-validation">#</a></h3>
+                <p>Validates code bindings against ValueSets and CodeSystems:</p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Validates:</span>
+<span class="hljs-comment">// - Code values are valid according to the binding</span>
+<span class="hljs-comment">// - CodeSystem references are correct</span>
+<span class="hljs-comment">// - ValueSet expansions are valid</span></code></pre>
+                </div>
+                <h3 id="4-extension-validation" anchor="true"><span>4. Extension Validation</span><a href="/docs/fhir_r4_validation#4-extension-validation">#</a></h3>
+                <p>Validates extensions and their structure:</p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Validates:</span>
+<span class="hljs-comment">// - Extension URLs are valid</span>
+<span class="hljs-comment">// - Extension structures match their definitions</span>
+<span class="hljs-comment">// - Required extension elements are present</span></code></pre>
+                </div>
+                <h3 id="5-invariant-validation" anchor="true"><span>5. Invariant Validation</span><a href="/docs/fhir_r4_validation#5-invariant-validation">#</a></h3>
+                <p>Validates FHIRPath invariants defined in StructureDefinitions:</p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Validates:</span>
+<span class="hljs-comment">// - FHIRPath expressions evaluate correctly</span>
+<span class="hljs-comment">// - Invariant conditions are met</span></code></pre>
+                </div>
+                <h2 id="providing-structuredefinitions" anchor="true">
+                  <span>Providing StructureDefinitions</span><a href="/docs/fhir_r4_validation#providing-structuredefinitions">#</a>
+                </h2>
                 <p>
                   By default, the validator will attempt to fetch StructureDefinitions automatically. However, you can provide your own:
                 </p>
-                <pre><code class="language-dart">// Provide a StructureDefinition
-final structureDef = StructureDefinition(
-  url: 'http://hl7.org/fhir/StructureDefinition/Patient'.toFhirUri,
-  // ... structure definition content
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Provide a StructureDefinition</span>
+<span class="hljs-keyword">final</span> structureDef = StructureDefinition(
+  url: <span class="hljs-string">'http://hl7.org/fhir/StructureDefinition/Patient'</span>.toFhirUri,
+  <span class="hljs-comment">// ... structure definition content</span>
 );
 
-final results = await validator.validateFhirResource(
+<span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirResource(
   structureToValidate: patient,
   structureDefinition: structureDef,
-);
-</code></pre>
-                <h3 id="questionnaire-response-validation" anchor="true">
+);</code></pre>
+                </div>
+                <h2 id="questionnaire-response-validation" anchor="true">
                   <span>Questionnaire Response Validation</span><a href="/docs/fhir_r4_validation#questionnaire-response-validation">#</a>
-                </h3>
+                </h2>
                 <p>The package includes specialized validation for QuestionnaireResponse resources:</p>
-                <pre><code class="language-dart">import 'package:fhir_r4_validation/fhir_r4_validation.dart';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4_validation/fhir_r4_validation.dart'</span>;
 
-// Validate a QuestionnaireResponse against its referenced Questionnaire.
-// The Questionnaire is resolved through the provided ResourceCache.
-final results = await validateQuestionnaireResponse(
+<span class="hljs-comment">// Validate a QuestionnaireResponse against its referenced Questionnaire.</span>
+<span class="hljs-comment">// The Questionnaire is resolved through the provided ResourceCache.</span>
+<span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validateQuestionnaireResponse(
   questionnaireResponse: questionnaireResponse,
   resourceCache: resourceCache,
-);
-</code></pre>
-                <h3 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/fhir_r4_validation#error-handling">#</a></h3>
+);</code></pre>
+                </div>
+                <h2 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/fhir_r4_validation#error-handling">#</a></h2>
                 <p>The validator provides detailed error information:</p>
-                <pre><code class="language-dart">try {
-  final results = await validator.validateFhirResource(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirResource(
     structureToValidate: patient,
   );
   
-  if (results.hasErrors) {
-    // Process errors
-    for (final error in results.results.where((r) =&gt; r.severity == Severity.error)) {
-      print('Error at ${error.path}: ${error.diagnostics}');
+  <span class="hljs-keyword">if</span> (results.hasErrors) {
+    <span class="hljs-comment">// Process errors</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> error <span class="hljs-keyword">in</span> results.results.where((r) =&gt; r.severity == Severity.error)) {
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Error at <span class="hljs-subst">${error.path}</span>: <span class="hljs-subst">${error.diagnostics}</span>'</span>);
     }
   }
-} catch (e) {
-  print('Validation failed: $e');
-}
-</code></pre>
-                <h3 id="advanced-usage" anchor="true"><span>Advanced Usage</span><a href="/docs/fhir_r4_validation#advanced-usage">#</a></h3>
-                <h4 id="custom-http-client">Custom HTTP Client</h4>
+} <span class="hljs-keyword">catch</span> (e) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Validation failed: <span class="hljs-subst">$e</span>'</span>);
+}</code></pre>
+                </div>
+                <h2 id="advanced-usage" anchor="true"><span>Advanced Usage</span><a href="/docs/fhir_r4_validation#advanced-usage">#</a></h2>
+                <h3 id="custom-http-client" anchor="true"><span>Custom HTTP Client</span><a href="/docs/fhir_r4_validation#custom-http-client">#</a></h3>
                 <p>You can provide a custom HTTP client for fetching StructureDefinitions:</p>
-                <pre><code class="language-dart">import 'package:http/http.dart';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:http/http.dart'</span>;
 
-final client = Client();
-final results = await validator.validateFhirResource(
+<span class="hljs-keyword">final</span> client = Client();
+<span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirResource(
   structureToValidate: patient,
   client: client,
-);
-</code></pre>
-                <h4 id="resource-cache">Resource Cache</h4>
+);</code></pre>
+                </div>
+                <h3 id="resource-cache" anchor="true"><span>Resource Cache</span><a href="/docs/fhir_r4_validation#resource-cache">#</a></h3>
                 <p>For better performance when validating multiple resources, you can use a resource cache:</p>
-                <pre><code class="language-dart">import 'package:fhir_r4_path/fhir_r4_path.dart';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4_path/fhir_r4_path.dart'</span>;
 
-final resourceCache = CanonicalResourceCache();
+<span class="hljs-keyword">final</span> resourceCache = CanonicalResourceCache();
 
-// The validator will use the cache to avoid re-fetching StructureDefinitions
-</code></pre>
-                <h3 id="example-complete-validation-workflow" anchor="true">
+<span class="hljs-comment">// The validator will use the cache to avoid re-fetching StructureDefinitions</span></code></pre>
+                </div>
+                <h2 id="example-complete-validation-workflow" anchor="true">
                   <span>Example: Complete Validation Workflow</span><a href="/docs/fhir_r4_validation#example-complete-validation-workflow">#</a>
-                </h3>
-                <pre><code class="language-dart">import 'dart:convert';
+                </h2>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'dart:convert'</span>;
 
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4_validation/fhir_r4_validation.dart';
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4_validation/fhir_r4_validation.dart'</span>;
 
-Future&lt;void&gt; validatePatient(Patient patient) async {
-  final validator = FhirValidationEngine();
+Future&lt;<span class="hljs-keyword">void</span>&gt; validatePatient(Patient patient) <span class="hljs-keyword">async</span> {
+  <span class="hljs-keyword">final</span> validator = FhirValidationEngine();
   
-  final results = await validator.validateFhirResource(
+  <span class="hljs-keyword">final</span> results = <span class="hljs-keyword">await</span> validator.validateFhirResource(
     structureToValidate: patient,
   );
   
-  if (results.hasErrors) {
-    print('Validation failed with ${results.results.where((r) =&gt; r.severity == Severity.error).length} errors:');
+  <span class="hljs-keyword">if</span> (results.hasErrors) {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Validation failed with <span class="hljs-subst">${results.results.where((r) =&gt; r.severity == Severity.error).length}</span> errors:'</span>);
     
-    for (final error in results.results.where((r) =&gt; r.severity == Severity.error)) {
-      print('  ❌ ${error.path}: ${error.diagnostics}');
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> error <span class="hljs-keyword">in</span> results.results.where((r) =&gt; r.severity == Severity.error)) {
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'  ❌ <span class="hljs-subst">${error.path}</span>: <span class="hljs-subst">${error.diagnostics}</span>'</span>);
     }
     
-    for (final warning in results.results.where((r) =&gt; r.severity == Severity.warning)) {
-      print('  ⚠️  ${warning.path}: ${warning.diagnostics}');
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> warning <span class="hljs-keyword">in</span> results.results.where((r) =&gt; r.severity == Severity.warning)) {
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'  ⚠️  <span class="hljs-subst">${warning.path}</span>: <span class="hljs-subst">${warning.diagnostics}</span>'</span>);
     }
-  } else {
-    print('✅ Patient resource is valid!');
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">'✅ Patient resource is valid!'</span>);
     
-    if (results.results.any((r) =&gt; r.severity == Severity.warning)) {
-      print('Warnings:');
-      for (final warning in results.results.where((r) =&gt; r.severity == Severity.warning)) {
-        print('  ⚠️  ${warning.path}: ${warning.diagnostics}');
+    <span class="hljs-keyword">if</span> (results.results.any((r) =&gt; r.severity == Severity.warning)) {
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Warnings:'</span>);
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> warning <span class="hljs-keyword">in</span> results.results.where((r) =&gt; r.severity == Severity.warning)) {
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">'  ⚠️  <span class="hljs-subst">${warning.path}</span>: <span class="hljs-subst">${warning.diagnostics}</span>'</span>);
       }
     }
   }
   
-  // Export results as JSON
-  final jsonResults = results.toJson();
-  print('\nValidation results (JSON):');
-  print(jsonEncode(jsonResults));
-}
-</code></pre>
-                <h3 id="performance-considerations" anchor="true">
+  <span class="hljs-comment">// Export results as JSON</span>
+  <span class="hljs-keyword">final</span> jsonResults = results.toJson();
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'\nValidation results (JSON):'</span>);
+  <span class="hljs-built_in">print</span>(jsonEncode(jsonResults));
+}</code></pre>
+                </div>
+                <h2 id="performance-considerations" anchor="true">
                   <span>Performance Considerations</span><a href="/docs/fhir_r4_validation#performance-considerations">#</a>
-                </h3>
+                </h2>
                 <ul>
                   <li>StructureDefinitions are cached automatically to avoid redundant fetching</li>
                   <li>For batch validation, reuse the <code>FhirValidationEngine</code> instance</li>
                   <li>Consider providing StructureDefinitions directly if you have them available</li>
                   <li>Use a <code>ResourceCache</code> for better performance with multiple validations</li>
                 </ul>
-                <h3 id="integration-with-other-packages" anchor="true">
+                <h2 id="integration-with-other-packages" anchor="true">
                   <span>Integration with Other Packages</span><a href="/docs/fhir_r4_validation#integration-with-other-packages">#</a>
-                </h3>
+                </h2>
                 <p>The validation package integrates seamlessly with other FHIR-FLI packages:</p>
                 <ul>
                   <li><strong>fhir_r4</strong>: Uses FHIR resource models</li>
@@ -1539,7 +2124,7 @@ Future&lt;void&gt; validatePatient(Patient patient) async {
                   <li><strong>fhir_r4_db</strong>: Can validate resources before saving to the database</li>
                   <li><strong>fhir_r4_at_rest</strong>: Can validate resources before sending to a FHIR server</li>
                 </ul>
-                <h3 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/fhir_r4_validation#conclusion">#</a></h3>
+                <h2 id="conclusion" anchor="true"><span>Conclusion</span><a href="/docs/fhir_r4_validation#conclusion">#</a></h2>
                 <p>
                   The <code>fhir_r4_validation</code> package provides comprehensive validation capabilities for FHIR resources, ensuring they conform to the FHIR specification. Whether you're validating resources before saving them, before sending them to a server, or as part of a data quality pipeline, this package provides the tools you need to ensure FHIR compliance.
                 </p>
@@ -1547,16 +2132,41 @@ Future&lt;void&gt; validatePatient(Patient patient) async {
               <div class="content-footer">
                 <footer class="site-footer">
                   <div class="footer-columns">
-                    <div class="footer-column"><h4>Docs</h4><ul><li><a href="docs/">Getting Started</a></li></ul></div>
                     <div class="footer-column">
-                      <h4>Standalone Pages</h4>
-                      <ul><li><a href="about">About</a></li><li><a href="contact">Contact</a></li></ul>
+                      <h4>Packages</h4>
+                      <ul>
+                        <li><a href="https://pub.dev/packages/fhir_r4">fhir_r4</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r5">fhir_r5</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r6">fhir_r6</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_path">fhir_path</a></li>
+                        <li><a href="https://pub.dev/packages/cql">cql</a></li>
+                        <li><a href="https://pub.dev/publishers/fhirfli.dev/packages">All packages on pub.dev</a></li>
+                      </ul>
                     </div>
                     <div class="footer-column">
-                      <h4>More</h4>
-                      <ul><li><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></li></ul>
+                      <h4>Documentation</h4>
+                      <ul>
+                        <li><a href="docs/">Getting Started</a></li>
+                        <li><a href="docs/core/fhir_r4">Core package</a></li>
+                        <li><a href="docs/at_rest/fhir_r4_at_rest">REST client</a></li>
+                        <li><a href="docs/auth/fhir_r4_auth">SMART on FHIR auth</a></li>
+                        <li><a href="docs/fhir_r4_db">Local database</a></li>
+                        <li><a href="docs/demos/fhir_path_demo">FHIRPath demo</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-column">
+                      <h4>Project</h4>
+                      <ul>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="https://github.com/fhir-fli">GitHub</a></li>
+                        <li><a href="https://github.com/fhir-fli/fhir_fli_documentation">This site's source</a></li>
+                      </ul>
                     </div>
                   </div>
+                  <p class="footer-note">
+                    FHIR® is the registered trademark of HL7 and is used with the permission of HL7. Built with <a href="https://jaspr.site">Jaspr</a>.
+                  </p>
                 </footer>
               </div>
             </div>
@@ -1564,26 +2174,35 @@ Future&lt;void&gt; validatePatient(Patient patient) async {
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#fhir-r4-validation">FHIR R4 Validation</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#installation">Installation</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#key-features">Key Features</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#basic-usage">Basic Usage</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#validation-results">Validation Results</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#validation-types">Validation Types</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#providing-structuredefinitions">Providing StructureDefinitions</a></li>
-                  <li style="padding-left: 0.75em">
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#installation">Installation</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#key-features">Key Features</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#basic-usage">Basic Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#validating-a-fhir-resource">Validating a FHIR Resource</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#validating-from-json">Validating from JSON</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#validation-results">Validation Results</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#validationdiagnostics">ValidationDiagnostics</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#validation-types">Validation Types</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#1-structure-validation">1. Structure Validation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#2-cardinality-validation">2. Cardinality Validation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#3-binding-validation">3. Binding Validation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#4-extension-validation">4. Extension Validation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#5-invariant-validation">5. Invariant Validation</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#providing-structuredefinitions">Providing StructureDefinitions</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/fhir_r4_validation#questionnaire-response-validation">Questionnaire Response Validation</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#error-handling">Error Handling</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#advanced-usage">Advanced Usage</a></li>
-                  <li style="padding-left: 0.75em">
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#error-handling">Error Handling</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#advanced-usage">Advanced Usage</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#custom-http-client">Custom HTTP Client</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#resource-cache">Resource Cache</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/fhir_r4_validation#example-complete-validation-workflow">Example: Complete Validation Workflow</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#performance-considerations">Performance Considerations</a></li>
-                  <li style="padding-left: 0.75em">
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#performance-considerations">Performance Considerations</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/fhir_r4_validation#integration-with-other-packages">Integration with Other Packages</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_validation#conclusion">Conclusion</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhir_r4_validation#conclusion">Conclusion</a></li>
                 </ul>
               </div>
             </aside>

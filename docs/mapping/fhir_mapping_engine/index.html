@@ -181,13 +181,16 @@
         align-items: center;
         column-gap: 0.75rem;
         flex-basis: 17rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
       .header .header-title img {
         width: auto;
-        height: 1.5rem;
+        height: 1.75rem;
       }
       .header .header-title span {
         font-weight: 700;
+        letter-spacing: 0.01em;
       }
       .header .header-content {
         display: flex;
@@ -196,7 +199,19 @@
       }
       .header .header-items {
         display: flex;
+        align-items: center;
         column-gap: 0.25rem;
+      }
+      @media all and (max-width: 767px) {
+        .header .header-title {
+          flex-basis: auto;
+        }
+        .header .header-items .nav-link {
+          display: none;
+        }
+        .header .github-button .github-info {
+          display: none;
+        }
       }
     </style>
     <style>
@@ -225,40 +240,161 @@
                 
     </script>
     <style>
+      .sidebar {
+        position: relative;
+        padding-top: 0.75rem;
+        padding-left: 0.5rem;
+        padding-bottom: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar {
+          padding-top: 0;
+        }
+      }
+      .sidebar .sidebar-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: inherit;
+        font-size: 1.5rem;
+        line-height: 1em;
+        background-color: transparent;
+      }
+      .sidebar .sidebar-close:hover {
+        background-color: #0000000d;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-close {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-mobile-nav {
+        padding-top: 3rem;
+        padding-right: 0.75rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .sidebar .sidebar-mobile-nav ul {
+        padding-bottom: 0.75rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-mobile-nav {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-group {
+        padding-top: 1rem;
+        padding-right: 0.75rem;
+      }
       .sidebar .sidebar-group.collapsible {
-        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+      .sidebar .sidebar-group.collapsible:first-of-type {
+        padding-top: 1rem;
       }
       .sidebar .sidebar-group.collapsible > summary {
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
+        display: flex;
+        padding: 0.45rem 0.75rem;
+        border-radius: 0.375rem;
+        opacity: 0.85;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
         list-style-type: none;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .sidebar .sidebar-group.collapsible > summary:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
       }
       .sidebar .sidebar-group.collapsible > summary::-webkit-details-marker {
         display: none;
       }
       .sidebar .sidebar-group.collapsible > summary::before {
+        content: "";
         display: inline-block;
-        margin-right: 0.4rem;
-        transition: transform 120ms;
-        font-size: 0.75em;
-        content: "▸";
+        width: 0.4em;
+        height: 0.4em;
+        margin-left: 0.1em;
+        margin-bottom: 0.15em;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-right-width: 1.5px;
+        border-bottom-width: 1.5px;
+        opacity: 0.7;
+        transition: transform 150ms ease-in-out;
+        transform: rotate(-45deg);
       }
       .sidebar .sidebar-group.collapsible[open] > summary::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg);
+      }
+      .sidebar .sidebar-group ul {
+        padding: 0;
+        margin-top: 0.125rem;
+        margin-left: 1rem;
+        border-left-style: solid;
+        border-left-color: var(--content-hr);
+        border-left-width: 1px;
+        list-style-type: none;
+      }
+      .sidebar .sidebar-group:not(.collapsible) ul {
+        margin: 0;
+        border: none;
+      }
+      .sidebar .sidebar-group li div {
+        display: flex;
+        margin-bottom: 1px;
+        border-radius: 0.375rem;
+        opacity: 0.75;
+        overflow: hidden;
+        transition: all 150ms ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar .sidebar-group li div:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
+      }
+      .sidebar .sidebar-group li div.active {
+        opacity: 1.0;
+        color: var(--primary);
+        font-weight: 700;
+        background-color: color-mix(in srgb, currentColor 15%, transparent);
+      }
+      .sidebar .sidebar-group li a {
+        display: inline-flex;
+        padding-top: 0.45rem;
+        padding-left: 12px;
+        padding-bottom: 0.45rem;
+        flex-grow: 1;
+        text-decoration: none;
       }
     </style>
     <style>
       :root {
-        --primary: oklch(0.623 0.214 259.815);
+        --primary: oklch(0.546 0.245 262.881);
         --background: oklch(0.984 0.003 247.858);
         --text: oklch(0.373 0.034 259.733);
         --content-headings: oklch(0.21 0.034 264.665);
         --content-lead: oklch(0.446 0.03 256.802);
-        --content-links: oklch(0.21 0.034 264.665);
+        --content-links: oklch(0.488 0.243 264.376);
         --content-bold: oklch(0.21 0.034 264.665);
         --content-counters: oklch(0.551 0.027 264.364);
         --content-bullets: oklch(0.872 0.01 258.338);
@@ -269,29 +405,30 @@
         --content-kbd: oklch(0.21 0.034 264.665);
         --content-kbd-shadows: oklch(0.21 0.034 264.665);
         --content-code: oklch(0.21 0.034 264.665);
-        --content-pre-code: oklch(0.928 0.006 264.531);
-        --content-pre-bg: oklch(0.278 0.033 256.848);
+        --content-pre-code: oklch(0.929 0.013 255.508);
+        --content-pre-bg: oklch(0.208 0.042 265.755);
         --content-th-borders: oklch(0.872 0.01 258.338);
         --content-td-borders: oklch(0.928 0.006 264.531);
       }
       :root[data-theme="dark"] {
-        --primary: oklch(0.809 0.105 251.813);
+        --primary: oklch(0.707 0.165 254.624);
         --background: oklch(0.141 0.005 285.823);
         --text: oklch(0.928 0.006 264.531);
         --content-headings: white;
         --content-lead: oklch(0.707 0.022 261.325);
-        --content-links: white;
+        --content-links: oklch(0.809 0.105 251.813);
         --content-bold: white;
         --content-counters: oklch(0.707 0.022 261.325);
         --content-bullets: oklch(0.446 0.03 256.802);
         --content-hr: oklch(0.373 0.034 259.733);
         --content-quotes: oklch(0.967 0.003 264.542);
+        --content-quote-borders: oklch(0.623 0.214 259.815);
         --content-captions: oklch(0.707 0.022 261.325);
         --content-kbd: white;
         --content-kbd-shadows: white;
         --content-code: white;
-        --content-pre-code: oklch(0.872 0.01 258.338);
-        --content-pre-bg: oklch(0.274 0.006 286.033);
+        --content-pre-code: oklch(0.92 0.004 286.32);
+        --content-pre-bg: oklch(0.21 0.006 285.885);
         --content-th-borders: oklch(0.446 0.03 256.802);
         --content-td-borders: oklch(0.373 0.034 259.733);
       }
@@ -872,68 +1009,311 @@
       }
     </style>
     <style>
-      .content-container p a, .content-container li a, .content-container td a {
-        text-decoration: underline;
+      .content-container .content-header h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15em;
       }
-      .content-container p a:hover, .content-container li a:hover, .content-container td a:hover {
-        opacity: 0.8;
+      .content-container .content-header p {
+        color: var(--content-lead);
+        line-height: 1.5em;
+      }
+      .content h2 {
+        padding-bottom: 0.3em;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .content a {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+      }
+      .content a:hover {
+        text-decoration-color: currentColor;
+      }
+      .content img {
+        border-radius: 0.5rem;
+      }
+      .content :not(pre) > code {
+        padding: 0.1em 0.3em;
+        border-radius: 0.3rem;
+        font-size: 0.85em;
+        font-weight: 500;
+        background-color: color-mix(in srgb, currentColor 9%, transparent);
+      }
+      .content code::before, .content code::after {
+        content: none;
       }
       .content-container table {
-        width: 100%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        border: solid var(--content-quote-borders) 1px;
-        border-collapse: collapse;
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: solid var(--content-td-borders) 1px;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        border-collapse: separate;
+        border-spacing: 0;
       }
       .content-container th, .content-container td {
         padding: 0.5rem 0.75rem;
-        border: solid var(--content-quote-borders) 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: var(--content-td-borders);
+        border-bottom-color: var(--content-td-borders);
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        vertical-align: top;
+      }
+      .content-container th:last-child, .content-container td:last-child {
+        border-right: none;
+      }
+      .content-container tbody tr:last-child td {
+        border-bottom: none;
       }
       .content-container th {
+        color: var(--content-headings);
         text-align: left;
+        font-size: 0.8rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+      }
+      .content-container tbody tr:nth-child(even) {
+        background-color: color-mix(in srgb, currentColor 2.5%, transparent);
+      }
+      .code-block {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        border: solid #ffffff14 1px;
+        border-radius: 0.5rem;
+        overflow: hidden;
         background-color: var(--content-pre-bg);
       }
-      .sidebar .sidebar-group.collapsible {
-        padding-bottom: 0.5rem;
+      .code-block .code-head {
+        display: flex;
+        height: 2rem;
+        padding-left: 1rem;
+        padding-right: 0.4rem;
         border-bottom-style: solid;
-        border-bottom-color: var(--content-quote-borders);
+        border-bottom-color: #ffffff14;
         border-bottom-width: 1px;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background-color: #ffffff08;
       }
-      .sidebar .sidebar-group.collapsible:last-of-type {
-        border-bottom: none;
+      .code-block .code-lang {
+        opacity: 0.55;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: var(--content-code-font);
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .code-block .code-copy {
+        display: inline-flex;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: none;
+        border-radius: 0.375rem;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 150ms ease-in-out;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: transparent;
+      }
+      .code-block .code-copy:hover, .code-copy:focus-visible {
+        opacity: 1.0;
+        background-color: #ffffff1f;
+      }
+      .code-block pre {
+        margin: 0;
+        border-radius: 0;
+        tab-size: 2;
+      }
+      .code-block .hljs-comment, .hljs-quote {
+        color: #8b949e;
+        font-style: italic;
+      }
+      .code-block .hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag {
+        color: #ff7b72;
+      }
+      .code-block .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-symbol, .hljs-bullet {
+        color: #79c0ff;
+      }
+      .code-block .hljs-string, .hljs-regexp, .hljs-addition {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-title, .hljs-section, .hljs-selector-id, .hljs-function .hljs-title {
+        color: #d2a8ff;
+        font-weight: 600;
+      }
+      .code-block .hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name {
+        color: #ffa657;
+      }
+      .code-block .hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class {
+        color: #7ee787;
+      }
+      .code-block .hljs-attr {
+        color: #79c0ff;
+      }
+      .code-block .hljs-meta, .hljs-meta-keyword {
+        color: #d2a8ff;
+      }
+      .code-block .hljs-meta-string {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-deletion {
+        color: #ffa198;
+      }
+      .code-block .hljs-emphasis {
+        font-style: italic;
+      }
+      .code-block .hljs-strong {
+        font-weight: 700;
+      }
+      .card-grid {
+        display: grid;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      }
+      .card-grid .card {
+        display: flex;
+        padding: 1.1rem;
+        border: solid var(--content-hr) 1px;
+        border-radius: 0.75rem;
+        transition: all 150ms ease-in-out;
+        flex-direction: column;
+        row-gap: 0.35rem;
+        color: var(--text);
+        text-decoration: none;
+        background-color: color-mix(in srgb, currentColor 3%, transparent);
+      }
+      .card-grid .card:hover {
+        border: solid var(--primary) 1px;
+        transform: translateY(-2px);
+        background-color: color-mix(in srgb, var(--primary) 6%, transparent);
+      }
+      .card-grid .card h3 {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--content-headings);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .card-grid .card h3 code {
+        padding: 0.1em 0.4em;
+        border-radius: 0.3rem;
+        color: var(--primary);
+        font-family: var(--content-code-font);
+        font-size: 0.85em;
+        font-weight: 600;
+        background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+      }
+      .card-grid .card p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.45em;
+      }
+      .card-grid .card .tag {
+        display: inline-block;
+        padding: 0.05em 0.5em;
+        margin-left: auto;
+        border-radius: 1rem;
+        opacity: 0.7;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: color-mix(in srgb, currentColor 10%, transparent);
+      }
+      .button-row {
+        display: flex;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .button-row a {
+        display: inline-flex;
+        padding: 0.6rem 1.1rem;
+        border: solid var(--primary) 1px;
+        border-radius: 0.5rem;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--primary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .button-row a.primary {
+        color: white;
+        background-color: var(--primary);
+      }
+      .button-row a:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      aside.toc a {
+        opacity: 0.7;
+        transition: opacity 150ms ease-in-out;
+        text-decoration: none;
+      }
+      aside.toc a:hover {
+        opacity: 1.0;
       }
       .header .nav-link {
         padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 150ms ease-in-out;
         font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
       }
       .header .nav-link:hover {
-        text-decoration: underline;
+        background-color: color-mix(in srgb, currentColor 6%, transparent);
       }
     </style>
     <style>
       .site-footer {
-        padding: 3rem 2rem;
+        padding-top: 2.5rem;
+        padding-bottom: 1rem;
+        margin-top: 4rem;
         border-top-style: solid;
-        border-top-color: #0000000d;
+        border-top-color: var(--content-hr);
         border-top-width: 1px;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
       .site-footer .footer-columns {
         display: flex;
-        max-width: 60rem;
-        margin-left: auto;
-        margin-right: auto;
         flex-wrap: wrap;
-        column-gap: 3rem;
+        gap: 2rem 4rem;
       }
       .site-footer .footer-column {
         min-width: 10rem;
       }
       .site-footer .footer-column h4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       .site-footer .footer-column ul {
         padding: 0;
@@ -941,10 +1321,24 @@
         list-style-type: none;
       }
       .site-footer .footer-column li {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.4rem;
       }
       .site-footer .footer-column a {
+        opacity: 0.75;
+        transition: opacity 150ms ease-in-out;
         text-decoration: none;
+      }
+      .site-footer .footer-column a:hover {
+        opacity: 1.0;
+      }
+      .site-footer .footer-note {
+        margin-top: 2.5rem;
+        opacity: 0.6;
+        font-size: 0.8rem;
+        line-height: 1.6em;
+      }
+      .site-footer .footer-note a {
+        color: inherit;
       }
     </style>
     <!--/-->
@@ -1136,8 +1530,16 @@
         <div class="sidebar-barrier" role="button"></div>
         <div class="sidebar-container">
           <nav class="sidebar">
-            <button class="sidebar-close">×</button>
+            <button class="sidebar-close" aria-label="Close navigation">×</button>
             <div>
+              <div class="sidebar-group sidebar-mobile-nav">
+                <ul>
+                  <li><div><a href="docs/">Getting Started</a></div></li>
+                  <li><div><a href="about">About</a></div></li>
+                  <li><div><a href="contact">Contact</a></div></li>
+                </ul>
+              </div>
+              <div class="sidebar-group"><ul><li><div><a href="docs/">Getting Started</a></div></li></ul></div>
               <details class="sidebar-group collapsible">
                 <summary>FHIR R4b Core</summary>
                 <ul>
@@ -1248,65 +1650,100 @@
             <div class="content-container">
               <div class="content-header"><h1>FHIR Mapping Engine</h1></div>
               <section class="content">
-                <h2 id="fhir-mapping-engine-in-fhir-fli" anchor="true">
-                  <span>FHIR Mapping Engine in FHIR-FLI</span><a href="/docs/mapping/fhir_mapping_engine#fhir-mapping-engine-in-fhir-fli">#</a>
-                </h2>
-                <h3 id="understanding-the-mapping-engine" anchor="true">
+                <h2 id="understanding-the-mapping-engine" anchor="true">
                   <span>Understanding the Mapping Engine</span><a href="/docs/mapping/fhir_mapping_engine#understanding-the-mapping-engine">#</a>
-                </h3>
+                </h2>
                 <p>
                   The FHIR Mapping Engine is the component that executes StructureMap resources to transform data from one format to another. It implements the FHIR mapping standard, handling complex transformations while ensuring type safety and correctness.
                 </p>
-                <h3 id="key-components-of-the-mapping-system" anchor="true">
+                <h2 id="key-components-of-the-mapping-system" anchor="true">
                   <span>Key Components of the Mapping System</span><a href="/docs/mapping/fhir_mapping_engine#key-components-of-the-mapping-system">#</a>
+                </h2>
+                <h3 id="resource-cache-hierarchy" anchor="true">
+                  <span>Resource Cache Hierarchy</span><a href="/docs/mapping/fhir_mapping_engine#resource-cache-hierarchy">#</a>
                 </h3>
-                <h4 id="resource-cache-hierarchy">Resource Cache Hierarchy</h4>
                 <p>
                   The mapping engine relies on a cache system to efficiently access and store canonical resources. The cache classes are provided by the 
                   <code>fhir_r4_path</code> package (a dependency of <code>fhir_r4_mapping</code>) and come in three levels:
                 </p>
-                <h5 id="1-resourcecache-base-abstract-class">1. ResourceCache (Base Abstract Class)</h5>
-                <pre><code class="language-dart">abstract class ResourceCache {
-  // Fetches a CanonicalResource (StructureDefinition, ValueSet, etc.)
-  // by canonical URL, optionally by version
-  Future&lt;T?&gt; getCanonicalResource&lt;T extends CanonicalResource&gt;(
-    String url, [
-    String? version,
+                <h4 id="1-resourcecache-base-abstract-class">1. ResourceCache (Base Abstract Class)</h4>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResourceCache</span> </span>{
+  <span class="hljs-comment">// Fetches a CanonicalResource (StructureDefinition, ValueSet, etc.)</span>
+  <span class="hljs-comment">// by canonical URL, optionally by version</span>
+  Future&lt;T?&gt; getCanonicalResource&lt;T <span class="hljs-keyword">extends</span> CanonicalResource&gt;(
+    <span class="hljs-built_in">String</span> url, [
+    <span class="hljs-built_in">String</span>? version,
   ]);
 
-  // Saves a CanonicalResource to the cache
-  Future&lt;void&gt; saveCanonicalResource(CanonicalResource resource);
+  <span class="hljs-comment">// Saves a CanonicalResource to the cache</span>
+  Future&lt;<span class="hljs-keyword">void</span>&gt; saveCanonicalResource(CanonicalResource resource);
 
-  // Convenience lookups
-  Future&lt;StructureDefinition?&gt; getStructureDefinition(String url);
-  Future&lt;List&lt;StructureDefinition&gt;&gt; getStructureDefinitions();
-  Future&lt;CodeSystem?&gt; getCodeSystem(String url, [String? version]);
-  Future&lt;Map&lt;String, dynamic&gt;?&gt; getResourceMap(String url);
-  Future&lt;List&lt;String&gt;&gt; getResourceNames();
-}
-</code></pre>
+  <span class="hljs-comment">// Convenience lookups</span>
+  Future&lt;StructureDefinition?&gt; getStructureDefinition(<span class="hljs-built_in">String</span> url);
+  Future&lt;<span class="hljs-built_in">List</span>&lt;StructureDefinition&gt;&gt; getStructureDefinitions();
+  Future&lt;CodeSystem?&gt; getCodeSystem(<span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]);
+  Future&lt;<span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt;?&gt; getResourceMap(<span class="hljs-built_in">String</span> url);
+  Future&lt;<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt;&gt; getResourceNames();
+}</code></pre>
+                </div>
                 <p>
                   The base <code>ResourceCache</code> defines the interface for canonical resource lookup operations. As an abstract class, it can't be instantiated directly.
                 </p>
-                <h5 id="2-canonicalresourcecache">2. CanonicalResourceCache</h5>
+                <h4 id="2-canonicalresourcecache">2. CanonicalResourceCache</h4>
                 <p>
                   This implementation provides local, in-memory caching of canonical resources. It only returns resources that have been explicitly stored in the cache:
                 </p>
-                <pre><code class="language-dart">final cache = CanonicalResourceCache();
-await cache.saveCanonicalResource(myStructureDefinition);
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> cache = CanonicalResourceCache();
+<span class="hljs-keyword">await</span> cache.saveCanonicalResource(myStructureDefinition);
 
-final sd = await cache.getStructureDefinition(
-  'http://hl7.org/fhir/StructureDefinition/Patient',
-);
-</code></pre>
-                <h5 id="3-onlineresourcecache">3. OnlineResourceCache</h5>
-                <pre><code class="language-dart">final cache = OnlineResourceCache();
-</code></pre>
+<span class="hljs-keyword">final</span> sd = <span class="hljs-keyword">await</span> cache.getStructureDefinition(
+  <span class="hljs-string">'http://hl7.org/fhir/StructureDefinition/Patient'</span>,
+);</code></pre>
+                </div>
+                <h4 id="3-onlineresourcecache">3. OnlineResourceCache</h4>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> cache = OnlineResourceCache();</code></pre>
+                </div>
                 <p>
                   This extends <code>CanonicalResourceCache</code> to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it over HTTP from its canonical URL, caching the result for subsequent lookups. You can optionally pass your own 
                   <code>http</code> <code>Client</code>.
                 </p>
-                <h4 id="resource-builders">Resource Builders</h4>
+                <h3 id="resource-builders" anchor="true"><span>Resource Builders</span><a href="/docs/mapping/fhir_mapping_engine#resource-builders">#</a></h3>
                 <p>
                   FHIR resources are typically immutable and often have required fields. During mapping, resources need to be built incrementally, which creates challenges:
                 </p>
@@ -1319,18 +1756,30 @@ final sd = await cache.getStructureDefinition(
                   <code>fhir_r4</code> has a mutable <code>Builder</code> counterpart (e.g. <code>PatientBuilder</code>
                    for <code>Patient</code>):
                 </p>
-                <pre><code class="language-dart">// Create an empty builder and fill it in incrementally
-final builder = PatientBuilder.empty();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Create an empty builder and fill it in incrementally</span>
+<span class="hljs-keyword">final</span> builder = PatientBuilder.empty();
 builder.name = [
-  HumanNameBuilder.empty()..family = FhirStringBuilder('Doe'),
+  HumanNameBuilder.empty()..family = FhirStringBuilder(<span class="hljs-string">'Doe'</span>),
 ];
 
-// Convert to the immutable FHIR class when complete
-final Patient patient = builder.build();
+<span class="hljs-comment">// Convert to the immutable FHIR class when complete</span>
+<span class="hljs-keyword">final</span> Patient patient = builder.build();
 
-// Convert an immutable resource back into a builder
-final builderAgain = patient.toBuilder;
-</code></pre>
+<span class="hljs-comment">// Convert an immutable resource back into a builder</span>
+<span class="hljs-keyword">final</span> builderAgain = patient.toBuilder;</code></pre>
+                </div>
                 <p>Key characteristics of builders:</p>
                 <ul>
                   <li>No required fields — all fields are nullable and mutable</li>
@@ -1341,189 +1790,307 @@ final builderAgain = patient.toBuilder;
                     <em>reads</em> via <code>getChildrenByName</code>)
                   </li>
                 </ul>
-                <h3 id="creating-and-using-the-mapping-engine" anchor="true">
+                <h2 id="creating-and-using-the-mapping-engine" anchor="true">
                   <span>Creating and Using the Mapping Engine</span><a href="/docs/mapping/fhir_mapping_engine#creating-and-using-the-mapping-engine">#</a>
-                </h3>
-                <h4 id="engine-creation">Engine Creation</h4>
+                </h2>
+                <h3 id="engine-creation" anchor="true"><span>Engine Creation</span><a href="/docs/mapping/fhir_mapping_engine#engine-creation">#</a></h3>
                 <p>
                   Like the parser, the mapping engine must be created asynchronously. It takes a single argument — the resource cache; the StructureMap itself is passed to each transform call:
                 </p>
-                <pre><code class="language-dart">// Create a resource cache
-final resourceCache = CanonicalResourceCache();
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Create a resource cache</span>
+<span class="hljs-keyword">final</span> resourceCache = CanonicalResourceCache();
 
-// Create the mapping engine
-final mapEngine = await FhirMapEngine.create(resourceCache);
-</code></pre>
-                <h4 id="basic-transformation">Basic Transformation</h4>
+<span class="hljs-comment">// Create the mapping engine</span>
+<span class="hljs-keyword">final</span> mapEngine = <span class="hljs-keyword">await</span> FhirMapEngine.create(resourceCache);</code></pre>
+                </div>
+                <h3 id="basic-transformation" anchor="true">
+                  <span>Basic Transformation</span><a href="/docs/mapping/fhir_mapping_engine#basic-transformation">#</a>
+                </h3>
                 <p>The simplest way to transform data is with the <code>transformFromFhir</code> method:</p>
-                <pre><code class="language-dart">// Transform a source resource to a target using a StructureMap
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Transform a source resource to a target using a StructureMap</span>
 Future&lt;Person&gt; transformPatientToPerson(
   Patient patient,
   StructureMap structureMap,
-) async {
-  // If no target is provided, one will be created based on the map's
-  // target type
-  final result = await mapEngine.transformFromFhir(
-    patient,          // Source resource
-    structureMap,     // The StructureMap to use
-    null,             // Optional target resource (null means create new)
+) <span class="hljs-keyword">async</span> {
+  <span class="hljs-comment">// If no target is provided, one will be created based on the map's</span>
+  <span class="hljs-comment">// target type</span>
+  <span class="hljs-keyword">final</span> result = <span class="hljs-keyword">await</span> mapEngine.transformFromFhir(
+    patient,          <span class="hljs-comment">// Source resource</span>
+    structureMap,     <span class="hljs-comment">// The StructureMap to use</span>
+    <span class="hljs-keyword">null</span>,             <span class="hljs-comment">// Optional target resource (null means create new)</span>
   );
   
-  // Cast the result to the expected type
-  return result as Person;
-}
-</code></pre>
+  <span class="hljs-comment">// Cast the result to the expected type</span>
+  <span class="hljs-keyword">return</span> result <span class="hljs-keyword">as</span> Person;
+}</code></pre>
+                </div>
                 <p>
                   Note that on failure the engine does not throw: it returns an <code>OperationOutcome</code> describing the error, so check the runtime type of the result before casting.
                 </p>
-                <h4 id="working-with-builders">Working with Builders</h4>
+                <h3 id="working-with-builders" anchor="true">
+                  <span>Working with Builders</span><a href="/docs/mapping/fhir_mapping_engine#working-with-builders">#</a>
+                </h3>
                 <p>
                   For more control or when dealing with partially constructed resources, you can work directly with builders. 
                   <code>transformBuilder</code> accepts builders for source and target and returns the already-built (immutable) result:
                 </p>
-                <pre><code class="language-dart">Future&lt;FhirBase&gt; transformWithBuilders(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">Future&lt;FhirBase&gt; transformWithBuilders(
   FhirBaseBuilder source,
   StructureMap map,
   FhirBaseBuilder? target,
-) async {
-  // Create the engine
-  final mapEngine = await FhirMapEngine.create(resourceCache);
+) <span class="hljs-keyword">async</span> {
+  <span class="hljs-comment">// Create the engine</span>
+  <span class="hljs-keyword">final</span> mapEngine = <span class="hljs-keyword">await</span> FhirMapEngine.create(resourceCache);
   
-  // Transform using builders
-  final result = await mapEngine.transformBuilder(
-    '',        // appInfo (application context; pass '' if unused)
-    source,    // Source resource builder
-    map,       // The StructureMap to use
-    target,    // Target resource builder (can be null)
+  <span class="hljs-comment">// Transform using builders</span>
+  <span class="hljs-keyword">final</span> result = <span class="hljs-keyword">await</span> mapEngine.transformBuilder(
+    <span class="hljs-string">''</span>,        <span class="hljs-comment">// appInfo (application context; pass '' if unused)</span>
+    source,    <span class="hljs-comment">// Source resource builder</span>
+    map,       <span class="hljs-comment">// The StructureMap to use</span>
+    target,    <span class="hljs-comment">// Target resource builder (can be null)</span>
   );
   
-  // result is the built FHIR object (or an OperationOutcome on failure)
-  return result;
-}
-</code></pre>
-                <h4 id="extended-type-creation">Extended Type Creation</h4>
+  <span class="hljs-comment">// result is the built FHIR object (or an OperationOutcome on failure)</span>
+  <span class="hljs-keyword">return</span> result;
+}</code></pre>
+                </div>
+                <h3 id="extended-type-creation" anchor="true">
+                  <span>Extended Type Creation</span><a href="/docs/mapping/fhir_mapping_engine#extended-type-creation">#</a>
+                </h3>
                 <p>
                   Sometimes mapping needs to create resources dynamically based on type names. You can provide a callback to handle custom resource creation:
                 </p>
-                <pre><code class="language-dart">// Define a function to create empty builders for custom types
-FhirBaseBuilder? customEmptyFromType(String type) {
-  final fhirType = type.toLowerCase();
-  switch (fhirType) {
-    case 'mycustomtype':
-      return MyCustomTypeBuilder.empty();
-    case 'anothercustomtype':
-      return AnotherCustomTypeBuilder.empty();
-    default:
-      return null;  // Let the default handler try
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Define a function to create empty builders for custom types</span>
+FhirBaseBuilder? customEmptyFromType(<span class="hljs-built_in">String</span> type) {
+  <span class="hljs-keyword">final</span> fhirType = type.toLowerCase();
+  <span class="hljs-keyword">switch</span> (fhirType) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'mycustomtype'</span>:
+      <span class="hljs-keyword">return</span> MyCustomTypeBuilder.empty();
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'anothercustomtype'</span>:
+      <span class="hljs-keyword">return</span> AnotherCustomTypeBuilder.empty();
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;  <span class="hljs-comment">// Let the default handler try</span>
   }
 }
 
-// Set the callback on the engine
-mapEngine.extendedEmptyFromType = customEmptyFromType;
-</code></pre>
-                <h3 id="advanced-mapping-features" anchor="true">
+<span class="hljs-comment">// Set the callback on the engine</span>
+mapEngine.extendedEmptyFromType = customEmptyFromType;</code></pre>
+                </div>
+                <h2 id="advanced-mapping-features" anchor="true">
                   <span>Advanced Mapping Features</span><a href="/docs/mapping/fhir_mapping_engine#advanced-mapping-features">#</a>
+                </h2>
+                <h3 id="working-with-different-resource-caches" anchor="true">
+                  <span>Working with Different Resource Caches</span><a href="/docs/mapping/fhir_mapping_engine#working-with-different-resource-caches">#</a>
                 </h3>
-                <h4 id="working-with-different-resource-caches">Working with Different Resource Caches</h4>
                 <p>You can select the appropriate resource cache based on your needs:</p>
-                <pre><code class="language-dart">// For local-only operation
-final localCache = CanonicalResourceCache();
-await localCache.saveCanonicalResource(structureDefinitionA);
-await localCache.saveCanonicalResource(valueSetB);
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// For local-only operation</span>
+<span class="hljs-keyword">final</span> localCache = CanonicalResourceCache();
+<span class="hljs-keyword">await</span> localCache.saveCanonicalResource(structureDefinitionA);
+<span class="hljs-keyword">await</span> localCache.saveCanonicalResource(valueSetB);
 
-// For mixed local/online operation
-final onlineCache = OnlineResourceCache();
-await onlineCache.saveCanonicalResource(structureDefinitionA);  // Priority local cache
-// Other resources will be fetched from online sources if needed
-</code></pre>
-                <h4 id="pre-loading-required-resources">Pre-loading Required Resources</h4>
+<span class="hljs-comment">// For mixed local/online operation</span>
+<span class="hljs-keyword">final</span> onlineCache = OnlineResourceCache();
+<span class="hljs-keyword">await</span> onlineCache.saveCanonicalResource(structureDefinitionA);  <span class="hljs-comment">// Priority local cache</span>
+<span class="hljs-comment">// Other resources will be fetched from online sources if needed</span></code></pre>
+                </div>
+                <h3 id="pre-loading-required-resources" anchor="true">
+                  <span>Pre-loading Required Resources</span><a href="/docs/mapping/fhir_mapping_engine#pre-loading-required-resources">#</a>
+                </h3>
                 <p>For optimal performance (and for offline operation), pre-load resources the mapping will need:</p>
-                <pre><code class="language-dart">// Pre-load structure definitions
-final resourceCache = CanonicalResourceCache();
-await resourceCache.saveCanonicalResource(structureDefinitionA);
-await resourceCache.saveCanonicalResource(structureDefinitionB);
-await resourceCache.saveCanonicalResource(valueSetC);
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// Pre-load structure definitions</span>
+<span class="hljs-keyword">final</span> resourceCache = CanonicalResourceCache();
+<span class="hljs-keyword">await</span> resourceCache.saveCanonicalResource(structureDefinitionA);
+<span class="hljs-keyword">await</span> resourceCache.saveCanonicalResource(structureDefinitionB);
+<span class="hljs-keyword">await</span> resourceCache.saveCanonicalResource(valueSetC);
 
-// Create the engine with the pre-loaded cache
-final mapEngine = await FhirMapEngine.create(resourceCache);
-</code></pre>
-                <h3 id="complete-example" anchor="true"><span>Complete Example</span><a href="/docs/mapping/fhir_mapping_engine#complete-example">#</a></h3>
+<span class="hljs-comment">// Create the engine with the pre-loaded cache</span>
+<span class="hljs-keyword">final</span> mapEngine = <span class="hljs-keyword">await</span> FhirMapEngine.create(resourceCache);</code></pre>
+                </div>
+                <h2 id="complete-example" anchor="true"><span>Complete Example</span><a href="/docs/mapping/fhir_mapping_engine#complete-example">#</a></h2>
                 <p>Here's a complete example that demonstrates the mapping process:</p>
-                <pre><code class="language-dart">import 'dart:convert';
-import 'dart:io';
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'dart:convert'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'dart:io'</span>;
 
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4_mapping/fhir_r4_mapping.dart'</span>;
 
-Future&lt;void&gt; main() async {
-  // Step 1: Set up resource cache
-  final resourceCache = OnlineResourceCache();
+Future&lt;<span class="hljs-keyword">void</span>&gt; main() <span class="hljs-keyword">async</span> {
+  <span class="hljs-comment">// Step 1: Set up resource cache</span>
+  <span class="hljs-keyword">final</span> resourceCache = OnlineResourceCache();
   
-  // Step 2: Pre-load any local resources
-  await resourceCache
-      .saveCanonicalResource(await loadStructureDefinition('patient.json'));
-  await resourceCache
-      .saveCanonicalResource(await loadStructureDefinition('person.json'));
+  <span class="hljs-comment">// Step 2: Pre-load any local resources</span>
+  <span class="hljs-keyword">await</span> resourceCache
+      .saveCanonicalResource(<span class="hljs-keyword">await</span> loadStructureDefinition(<span class="hljs-string">'patient.json'</span>));
+  <span class="hljs-keyword">await</span> resourceCache
+      .saveCanonicalResource(<span class="hljs-keyword">await</span> loadStructureDefinition(<span class="hljs-string">'person.json'</span>));
   
-  // Step 3: Create or load the StructureMap
-  final parser = await StructureMapParser.create();
-  final mapContent = await File('patient_to_person.map').readAsString();
-  final structureMap = parser.parse(mapContent, 'fhirmap');
+  <span class="hljs-comment">// Step 3: Create or load the StructureMap</span>
+  <span class="hljs-keyword">final</span> parser = <span class="hljs-keyword">await</span> StructureMapParser.create();
+  <span class="hljs-keyword">final</span> mapContent = <span class="hljs-keyword">await</span> File(<span class="hljs-string">'patient_to_person.map'</span>).readAsString();
+  <span class="hljs-keyword">final</span> structureMap = parser.parse(mapContent, <span class="hljs-string">'fhirmap'</span>);
   
-  // Step 4: Create the mapping engine
-  final mapEngine = await FhirMapEngine.create(resourceCache);
+  <span class="hljs-comment">// Step 4: Create the mapping engine</span>
+  <span class="hljs-keyword">final</span> mapEngine = <span class="hljs-keyword">await</span> FhirMapEngine.create(resourceCache);
   
-  // Step 5: Load source data
-  final patientJson = jsonDecode(await File('sample_patient.json').readAsString());
-  final patient = Patient.fromJson(patientJson as Map&lt;String, dynamic&gt;);
+  <span class="hljs-comment">// Step 5: Load source data</span>
+  <span class="hljs-keyword">final</span> patientJson = jsonDecode(<span class="hljs-keyword">await</span> File(<span class="hljs-string">'sample_patient.json'</span>).readAsString());
+  <span class="hljs-keyword">final</span> patient = Patient.fromJson(patientJson <span class="hljs-keyword">as</span> <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt;);
   
-  // Step 6: Define custom builder handler (if needed)
-  mapEngine.extendedEmptyFromType = (String type) {
-    // Custom builder creation logic
-    return null;  // Return null for default handling
+  <span class="hljs-comment">// Step 6: Define custom builder handler (if needed)</span>
+  mapEngine.extendedEmptyFromType = (<span class="hljs-built_in">String</span> type) {
+    <span class="hljs-comment">// Custom builder creation logic</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;  <span class="hljs-comment">// Return null for default handling</span>
   };
   
-  // Step 7: Perform the transformation
-  final result = await mapEngine.transformFromFhir(
+  <span class="hljs-comment">// Step 7: Perform the transformation</span>
+  <span class="hljs-keyword">final</span> result = <span class="hljs-keyword">await</span> mapEngine.transformFromFhir(
     patient,
     structureMap,
-    null,  // No existing target, create new
+    <span class="hljs-keyword">null</span>,  <span class="hljs-comment">// No existing target, create new</span>
   );
   
-  // Step 8: Use the transformed data
-  // (on failure the engine returns an OperationOutcome instead)
-  final person = result as Person;
-  print('Transformed patient to person: ${person.name?.first.family}');
+  <span class="hljs-comment">// Step 8: Use the transformed data</span>
+  <span class="hljs-comment">// (on failure the engine returns an OperationOutcome instead)</span>
+  <span class="hljs-keyword">final</span> person = result <span class="hljs-keyword">as</span> Person;
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Transformed patient to person: <span class="hljs-subst">${person.name?.first.family}</span>'</span>);
   
-  // Step 9: Serialize the result if needed
-  final personJson = person.toJson();
-  await File('transformed_person.json').writeAsString(jsonEncode(personJson));
+  <span class="hljs-comment">// Step 9: Serialize the result if needed</span>
+  <span class="hljs-keyword">final</span> personJson = person.toJson();
+  <span class="hljs-keyword">await</span> File(<span class="hljs-string">'transformed_person.json'</span>).writeAsString(jsonEncode(personJson));
 }
 
-// Helper function to load structure definitions
-Future&lt;StructureDefinition&gt; loadStructureDefinition(String filename) async {
-  final json = jsonDecode(await File(filename).readAsString());
-  return StructureDefinition.fromJson(json as Map&lt;String, dynamic&gt;);
-}
-</code></pre>
-                <h3 id="testing-mappings" anchor="true"><span>Testing Mappings</span><a href="/docs/mapping/fhir_mapping_engine#testing-mappings">#</a></h3>
+<span class="hljs-comment">// Helper function to load structure definitions</span>
+Future&lt;StructureDefinition&gt; loadStructureDefinition(<span class="hljs-built_in">String</span> filename) <span class="hljs-keyword">async</span> {
+  <span class="hljs-keyword">final</span> json = jsonDecode(<span class="hljs-keyword">await</span> File(filename).readAsString());
+  <span class="hljs-keyword">return</span> StructureDefinition.fromJson(json <span class="hljs-keyword">as</span> <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt;);
+}</code></pre>
+                </div>
+                <h2 id="testing-mappings" anchor="true"><span>Testing Mappings</span><a href="/docs/mapping/fhir_mapping_engine#testing-mappings">#</a></h2>
                 <p>For testing purposes, FHIR-FLI provides a convenience function:</p>
-                <pre><code class="language-dart">Future&lt;FhirBase?&gt; fhirMappingEngine(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">Future&lt;FhirBase?&gt; fhirMappingEngine(
   FhirBaseBuilder source,
   StructureMap map,
   ResourceCache cache,
   FhirBaseBuilder? target, [
-  FhirBaseBuilder? Function(String)? extendedEmptyFromType,
-]) async {
-  final mapEngine = await FhirMapEngine.create(cache)
+  FhirBaseBuilder? <span class="hljs-built_in">Function</span>(<span class="hljs-built_in">String</span>)? extendedEmptyFromType,
+]) <span class="hljs-keyword">async</span> {
+  <span class="hljs-keyword">final</span> mapEngine = <span class="hljs-keyword">await</span> FhirMapEngine.create(cache)
     ..extendedEmptyFromType = extendedEmptyFromType;
-  final transform = await mapEngine.transformBuilder('', source, map, target);
-  return transform;
-}
-</code></pre>
+  <span class="hljs-keyword">final</span> transform = <span class="hljs-keyword">await</span> mapEngine.transformBuilder(<span class="hljs-string">''</span>, source, map, target);
+  <span class="hljs-keyword">return</span> transform;
+}</code></pre>
+                </div>
                 <p>This simplifies testing by encapsulating the engine creation and transformation:</p>
-                <pre><code class="language-dart">test('Patient to Person mapping', () async {
-  final result = await fhirMappingEngine(
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">test(<span class="hljs-string">'Patient to Person mapping'</span>, () <span class="hljs-keyword">async</span> {
+  <span class="hljs-keyword">final</span> result = <span class="hljs-keyword">await</span> fhirMappingEngine(
     PatientBuilder.fromJson(sourceData),
     structureMapPatientToPerson,
     resourceCache,
@@ -1531,9 +2098,9 @@ Future&lt;StructureDefinition&gt; loadStructureDefinition(String filename) async
   );
   
   expect(result?.toJson(), equals(expectedResult));
-});
-</code></pre>
-                <h3 id="best-practices" anchor="true"><span>Best Practices</span><a href="/docs/mapping/fhir_mapping_engine#best-practices">#</a></h3>
+});</code></pre>
+                </div>
+                <h2 id="best-practices" anchor="true"><span>Best Practices</span><a href="/docs/mapping/fhir_mapping_engine#best-practices">#</a></h2>
                 <ol>
                   <li><strong>Reuse engines</strong> for repeated transformations of the same map</li>
                   <li><strong>Pre-load resources</strong> in the cache for performance</li>
@@ -1542,16 +2109,16 @@ Future&lt;StructureDefinition&gt; loadStructureDefinition(String filename) async
                   <li><strong>Implement custom type handlers</strong> for domain-specific resource types</li>
                   <li><strong>Test maps thoroughly</strong> with representative data</li>
                 </ol>
-                <h3 id="limitations-and-considerations" anchor="true">
+                <h2 id="limitations-and-considerations" anchor="true">
                   <span>Limitations and Considerations</span><a href="/docs/mapping/fhir_mapping_engine#limitations-and-considerations">#</a>
-                </h3>
+                </h2>
                 <ul>
                   <li>Mapping complex nested structures may require multiple passes</li>
                   <li>Some complex FHIR mapping features might have performance implications</li>
                   <li>Resource resolution from online sources introduces latency</li>
                   <li>Circular references in maps should be handled carefully</li>
                 </ul>
-                <h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/mapping/fhir_mapping_engine#next-steps">#</a></h3>
+                <h2 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/mapping/fhir_mapping_engine#next-steps">#</a></h2>
                 <p>
                   With a solid understanding of the FHIR Mapping engine, you're ready to implement complex data transformations in your FHIR-FLI applications. Consider exploring the following:
                 </p>
@@ -1565,16 +2132,41 @@ Future&lt;StructureDefinition&gt; loadStructureDefinition(String filename) async
               <div class="content-footer">
                 <footer class="site-footer">
                   <div class="footer-columns">
-                    <div class="footer-column"><h4>Docs</h4><ul><li><a href="docs/">Getting Started</a></li></ul></div>
                     <div class="footer-column">
-                      <h4>Standalone Pages</h4>
-                      <ul><li><a href="about">About</a></li><li><a href="contact">Contact</a></li></ul>
+                      <h4>Packages</h4>
+                      <ul>
+                        <li><a href="https://pub.dev/packages/fhir_r4">fhir_r4</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r5">fhir_r5</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r6">fhir_r6</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_path">fhir_path</a></li>
+                        <li><a href="https://pub.dev/packages/cql">cql</a></li>
+                        <li><a href="https://pub.dev/publishers/fhirfli.dev/packages">All packages on pub.dev</a></li>
+                      </ul>
                     </div>
                     <div class="footer-column">
-                      <h4>More</h4>
-                      <ul><li><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></li></ul>
+                      <h4>Documentation</h4>
+                      <ul>
+                        <li><a href="docs/">Getting Started</a></li>
+                        <li><a href="docs/core/fhir_r4">Core package</a></li>
+                        <li><a href="docs/at_rest/fhir_r4_at_rest">REST client</a></li>
+                        <li><a href="docs/auth/fhir_r4_auth">SMART on FHIR auth</a></li>
+                        <li><a href="docs/fhir_r4_db">Local database</a></li>
+                        <li><a href="docs/demos/fhir_path_demo">FHIRPath demo</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-column">
+                      <h4>Project</h4>
+                      <ul>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="https://github.com/fhir-fli">GitHub</a></li>
+                        <li><a href="https://github.com/fhir-fli/fhir_fli_documentation">This site's source</a></li>
+                      </ul>
                     </div>
                   </div>
+                  <p class="footer-note">
+                    FHIR® is the registered trademark of HL7 and is used with the permission of HL7. Built with <a href="https://jaspr.site">Jaspr</a>.
+                  </p>
                 </footer>
               </div>
             </div>
@@ -1583,25 +2175,34 @@ Future&lt;StructureDefinition&gt; loadStructureDefinition(String filename) async
                 <h3>On this page</h3>
                 <ul>
                   <li style="padding-left: 0em">
-                    <a href="/docs/mapping/fhir_mapping_engine#fhir-mapping-engine-in-fhir-fli">FHIR Mapping Engine in FHIR-FLI</a>
-                  </li>
-                  <li style="padding-left: 0.75em">
                     <a href="/docs/mapping/fhir_mapping_engine#understanding-the-mapping-engine">Understanding the Mapping Engine</a>
                   </li>
-                  <li style="padding-left: 0.75em">
+                  <li style="padding-left: 0em">
                     <a href="/docs/mapping/fhir_mapping_engine#key-components-of-the-mapping-system">Key Components of the Mapping System</a>
                   </li>
-                  <li style="padding-left: 0.75em">
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#resource-cache-hierarchy">Resource Cache Hierarchy</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#resource-builders">Resource Builders</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/mapping/fhir_mapping_engine#creating-and-using-the-mapping-engine">Creating and Using the Mapping Engine</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#advanced-mapping-features">Advanced Mapping Features</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#complete-example">Complete Example</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#testing-mappings">Testing Mappings</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#best-practices">Best Practices</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#engine-creation">Engine Creation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#basic-transformation">Basic Transformation</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#working-with-builders">Working with Builders</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#extended-type-creation">Extended Type Creation</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/mapping/fhir_mapping_engine#advanced-mapping-features">Advanced Mapping Features</a></li>
                   <li style="padding-left: 0.75em">
+                    <a href="/docs/mapping/fhir_mapping_engine#working-with-different-resource-caches">Working with Different Resource Caches</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/mapping/fhir_mapping_engine#pre-loading-required-resources">Pre-loading Required Resources</a>
+                  </li>
+                  <li style="padding-left: 0em"><a href="/docs/mapping/fhir_mapping_engine#complete-example">Complete Example</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/mapping/fhir_mapping_engine#testing-mappings">Testing Mappings</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/mapping/fhir_mapping_engine#best-practices">Best Practices</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/mapping/fhir_mapping_engine#limitations-and-considerations">Limitations and Considerations</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/mapping/fhir_mapping_engine#next-steps">Next Steps</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/mapping/fhir_mapping_engine#next-steps">Next Steps</a></li>
                 </ul>
               </div>
             </aside>

@@ -3,8 +3,8 @@
   <head>
     <base href="/fhir_fli_documentation/"/>
     <meta charset="utf-8"/>
-    <title>Getting Started | FHIR-FLI</title>
-    <meta property="og:title" content="Getting Started | FHIR-FLI"/>
+    <title>FHIR ANT Getting Started | FHIR-FLI</title>
+    <meta property="og:title" content="FHIR ANT Getting Started | FHIR-FLI"/>
     <link href="images/fhir-fli-logo.png" rel="icon" type="image/png"/>
     <style>
       .docs .header-container {
@@ -181,13 +181,16 @@
         align-items: center;
         column-gap: 0.75rem;
         flex-basis: 17rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
       .header .header-title img {
         width: auto;
-        height: 1.5rem;
+        height: 1.75rem;
       }
       .header .header-title span {
         font-weight: 700;
+        letter-spacing: 0.01em;
       }
       .header .header-content {
         display: flex;
@@ -196,7 +199,19 @@
       }
       .header .header-items {
         display: flex;
+        align-items: center;
         column-gap: 0.25rem;
+      }
+      @media all and (max-width: 767px) {
+        .header .header-title {
+          flex-basis: auto;
+        }
+        .header .header-items .nav-link {
+          display: none;
+        }
+        .header .github-button .github-info {
+          display: none;
+        }
       }
     </style>
     <style>
@@ -225,40 +240,161 @@
                 
     </script>
     <style>
+      .sidebar {
+        position: relative;
+        padding-top: 0.75rem;
+        padding-left: 0.5rem;
+        padding-bottom: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar {
+          padding-top: 0;
+        }
+      }
+      .sidebar .sidebar-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: inherit;
+        font-size: 1.5rem;
+        line-height: 1em;
+        background-color: transparent;
+      }
+      .sidebar .sidebar-close:hover {
+        background-color: #0000000d;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-close {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-mobile-nav {
+        padding-top: 3rem;
+        padding-right: 0.75rem;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .sidebar .sidebar-mobile-nav ul {
+        padding-bottom: 0.75rem;
+      }
+      @media all and (min-width: 1024px) {
+        .sidebar .sidebar-mobile-nav {
+          display: none;
+        }
+      }
+      .sidebar .sidebar-group {
+        padding-top: 1rem;
+        padding-right: 0.75rem;
+      }
       .sidebar .sidebar-group.collapsible {
-        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+      .sidebar .sidebar-group.collapsible:first-of-type {
+        padding-top: 1rem;
       }
       .sidebar .sidebar-group.collapsible > summary {
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
+        display: flex;
+        padding: 0.45rem 0.75rem;
+        border-radius: 0.375rem;
+        opacity: 0.85;
         cursor: pointer;
         user-select: none;
         -webkit-user-select: none;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
         list-style-type: none;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .sidebar .sidebar-group.collapsible > summary:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
       }
       .sidebar .sidebar-group.collapsible > summary::-webkit-details-marker {
         display: none;
       }
       .sidebar .sidebar-group.collapsible > summary::before {
+        content: "";
         display: inline-block;
-        margin-right: 0.4rem;
-        transition: transform 120ms;
-        font-size: 0.75em;
-        content: "▸";
+        width: 0.4em;
+        height: 0.4em;
+        margin-left: 0.1em;
+        margin-bottom: 0.15em;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-right-width: 1.5px;
+        border-bottom-width: 1.5px;
+        opacity: 0.7;
+        transition: transform 150ms ease-in-out;
+        transform: rotate(-45deg);
       }
       .sidebar .sidebar-group.collapsible[open] > summary::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg);
+      }
+      .sidebar .sidebar-group ul {
+        padding: 0;
+        margin-top: 0.125rem;
+        margin-left: 1rem;
+        border-left-style: solid;
+        border-left-color: var(--content-hr);
+        border-left-width: 1px;
+        list-style-type: none;
+      }
+      .sidebar .sidebar-group:not(.collapsible) ul {
+        margin: 0;
+        border: none;
+      }
+      .sidebar .sidebar-group li div {
+        display: flex;
+        margin-bottom: 1px;
+        border-radius: 0.375rem;
+        opacity: 0.75;
+        overflow: hidden;
+        transition: all 150ms ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar .sidebar-group li div:hover {
+        opacity: 1.0;
+        background-color: #0000000d;
+      }
+      .sidebar .sidebar-group li div.active {
+        opacity: 1.0;
+        color: var(--primary);
+        font-weight: 700;
+        background-color: color-mix(in srgb, currentColor 15%, transparent);
+      }
+      .sidebar .sidebar-group li a {
+        display: inline-flex;
+        padding-top: 0.45rem;
+        padding-left: 12px;
+        padding-bottom: 0.45rem;
+        flex-grow: 1;
+        text-decoration: none;
       }
     </style>
     <style>
       :root {
-        --primary: oklch(0.623 0.214 259.815);
+        --primary: oklch(0.546 0.245 262.881);
         --background: oklch(0.984 0.003 247.858);
         --text: oklch(0.373 0.034 259.733);
         --content-headings: oklch(0.21 0.034 264.665);
         --content-lead: oklch(0.446 0.03 256.802);
-        --content-links: oklch(0.21 0.034 264.665);
+        --content-links: oklch(0.488 0.243 264.376);
         --content-bold: oklch(0.21 0.034 264.665);
         --content-counters: oklch(0.551 0.027 264.364);
         --content-bullets: oklch(0.872 0.01 258.338);
@@ -269,29 +405,30 @@
         --content-kbd: oklch(0.21 0.034 264.665);
         --content-kbd-shadows: oklch(0.21 0.034 264.665);
         --content-code: oklch(0.21 0.034 264.665);
-        --content-pre-code: oklch(0.928 0.006 264.531);
-        --content-pre-bg: oklch(0.278 0.033 256.848);
+        --content-pre-code: oklch(0.929 0.013 255.508);
+        --content-pre-bg: oklch(0.208 0.042 265.755);
         --content-th-borders: oklch(0.872 0.01 258.338);
         --content-td-borders: oklch(0.928 0.006 264.531);
       }
       :root[data-theme="dark"] {
-        --primary: oklch(0.809 0.105 251.813);
+        --primary: oklch(0.707 0.165 254.624);
         --background: oklch(0.141 0.005 285.823);
         --text: oklch(0.928 0.006 264.531);
         --content-headings: white;
         --content-lead: oklch(0.707 0.022 261.325);
-        --content-links: white;
+        --content-links: oklch(0.809 0.105 251.813);
         --content-bold: white;
         --content-counters: oklch(0.707 0.022 261.325);
         --content-bullets: oklch(0.446 0.03 256.802);
         --content-hr: oklch(0.373 0.034 259.733);
         --content-quotes: oklch(0.967 0.003 264.542);
+        --content-quote-borders: oklch(0.623 0.214 259.815);
         --content-captions: oklch(0.707 0.022 261.325);
         --content-kbd: white;
         --content-kbd-shadows: white;
         --content-code: white;
-        --content-pre-code: oklch(0.872 0.01 258.338);
-        --content-pre-bg: oklch(0.274 0.006 286.033);
+        --content-pre-code: oklch(0.92 0.004 286.32);
+        --content-pre-bg: oklch(0.21 0.006 285.885);
         --content-th-borders: oklch(0.446 0.03 256.802);
         --content-td-borders: oklch(0.373 0.034 259.733);
       }
@@ -872,68 +1009,311 @@
       }
     </style>
     <style>
-      .content-container p a, .content-container li a, .content-container td a {
-        text-decoration: underline;
+      .content-container .content-header h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15em;
       }
-      .content-container p a:hover, .content-container li a:hover, .content-container td a:hover {
-        opacity: 0.8;
+      .content-container .content-header p {
+        color: var(--content-lead);
+        line-height: 1.5em;
+      }
+      .content h2 {
+        padding-bottom: 0.3em;
+        border-bottom-style: solid;
+        border-bottom-color: var(--content-hr);
+        border-bottom-width: 1px;
+      }
+      .content a {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+      }
+      .content a:hover {
+        text-decoration-color: currentColor;
+      }
+      .content img {
+        border-radius: 0.5rem;
+      }
+      .content :not(pre) > code {
+        padding: 0.1em 0.3em;
+        border-radius: 0.3rem;
+        font-size: 0.85em;
+        font-weight: 500;
+        background-color: color-mix(in srgb, currentColor 9%, transparent);
+      }
+      .content code::before, .content code::after {
+        content: none;
       }
       .content-container table {
-        width: 100%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        border: solid var(--content-quote-borders) 1px;
-        border-collapse: collapse;
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: solid var(--content-td-borders) 1px;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        border-collapse: separate;
+        border-spacing: 0;
       }
       .content-container th, .content-container td {
         padding: 0.5rem 0.75rem;
-        border: solid var(--content-quote-borders) 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: var(--content-td-borders);
+        border-bottom-color: var(--content-td-borders);
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        vertical-align: top;
+      }
+      .content-container th:last-child, .content-container td:last-child {
+        border-right: none;
+      }
+      .content-container tbody tr:last-child td {
+        border-bottom: none;
       }
       .content-container th {
+        color: var(--content-headings);
         text-align: left;
+        font-size: 0.8rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+      }
+      .content-container tbody tr:nth-child(even) {
+        background-color: color-mix(in srgb, currentColor 2.5%, transparent);
+      }
+      .code-block {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        border: solid #ffffff14 1px;
+        border-radius: 0.5rem;
+        overflow: hidden;
         background-color: var(--content-pre-bg);
       }
-      .sidebar .sidebar-group.collapsible {
-        padding-bottom: 0.5rem;
+      .code-block .code-head {
+        display: flex;
+        height: 2rem;
+        padding-left: 1rem;
+        padding-right: 0.4rem;
         border-bottom-style: solid;
-        border-bottom-color: var(--content-quote-borders);
+        border-bottom-color: #ffffff14;
         border-bottom-width: 1px;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background-color: #ffffff08;
       }
-      .sidebar .sidebar-group.collapsible:last-of-type {
-        border-bottom: none;
+      .code-block .code-lang {
+        opacity: 0.55;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: var(--content-code-font);
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .code-block .code-copy {
+        display: inline-flex;
+        width: 1.6rem;
+        height: 1.6rem;
+        padding: 0;
+        border: none;
+        border-radius: 0.375rem;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 150ms ease-in-out;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: transparent;
+      }
+      .code-block .code-copy:hover, .code-copy:focus-visible {
+        opacity: 1.0;
+        background-color: #ffffff1f;
+      }
+      .code-block pre {
+        margin: 0;
+        border-radius: 0;
+        tab-size: 2;
+      }
+      .code-block .hljs-comment, .hljs-quote {
+        color: #8b949e;
+        font-style: italic;
+      }
+      .code-block .hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag {
+        color: #ff7b72;
+      }
+      .code-block .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-symbol, .hljs-bullet {
+        color: #79c0ff;
+      }
+      .code-block .hljs-string, .hljs-regexp, .hljs-addition {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-title, .hljs-section, .hljs-selector-id, .hljs-function .hljs-title {
+        color: #d2a8ff;
+        font-weight: 600;
+      }
+      .code-block .hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name {
+        color: #ffa657;
+      }
+      .code-block .hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class {
+        color: #7ee787;
+      }
+      .code-block .hljs-attr {
+        color: #79c0ff;
+      }
+      .code-block .hljs-meta, .hljs-meta-keyword {
+        color: #d2a8ff;
+      }
+      .code-block .hljs-meta-string {
+        color: #a5d6ff;
+      }
+      .code-block .hljs-deletion {
+        color: #ffa198;
+      }
+      .code-block .hljs-emphasis {
+        font-style: italic;
+      }
+      .code-block .hljs-strong {
+        font-weight: 700;
+      }
+      .card-grid {
+        display: grid;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      }
+      .card-grid .card {
+        display: flex;
+        padding: 1.1rem;
+        border: solid var(--content-hr) 1px;
+        border-radius: 0.75rem;
+        transition: all 150ms ease-in-out;
+        flex-direction: column;
+        row-gap: 0.35rem;
+        color: var(--text);
+        text-decoration: none;
+        background-color: color-mix(in srgb, currentColor 3%, transparent);
+      }
+      .card-grid .card:hover {
+        border: solid var(--primary) 1px;
+        transform: translateY(-2px);
+        background-color: color-mix(in srgb, var(--primary) 6%, transparent);
+      }
+      .card-grid .card h3 {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--content-headings);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .card-grid .card h3 code {
+        padding: 0.1em 0.4em;
+        border-radius: 0.3rem;
+        color: var(--primary);
+        font-family: var(--content-code-font);
+        font-size: 0.85em;
+        font-weight: 600;
+        background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+      }
+      .card-grid .card p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.45em;
+      }
+      .card-grid .card .tag {
+        display: inline-block;
+        padding: 0.05em 0.5em;
+        margin-left: auto;
+        border-radius: 1rem;
+        opacity: 0.7;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: color-mix(in srgb, currentColor 10%, transparent);
+      }
+      .button-row {
+        display: flex;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .button-row a {
+        display: inline-flex;
+        padding: 0.6rem 1.1rem;
+        border: solid var(--primary) 1px;
+        border-radius: 0.5rem;
+        transition: all 150ms ease-in-out;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--primary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .button-row a.primary {
+        color: white;
+        background-color: var(--primary);
+      }
+      .button-row a:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      aside.toc a {
+        opacity: 0.7;
+        transition: opacity 150ms ease-in-out;
+        text-decoration: none;
+      }
+      aside.toc a:hover {
+        opacity: 1.0;
       }
       .header .nav-link {
         padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 150ms ease-in-out;
         font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
       }
       .header .nav-link:hover {
-        text-decoration: underline;
+        background-color: color-mix(in srgb, currentColor 6%, transparent);
       }
     </style>
     <style>
       .site-footer {
-        padding: 3rem 2rem;
+        padding-top: 2.5rem;
+        padding-bottom: 1rem;
+        margin-top: 4rem;
         border-top-style: solid;
-        border-top-color: #0000000d;
+        border-top-color: var(--content-hr);
         border-top-width: 1px;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
       .site-footer .footer-columns {
         display: flex;
-        max-width: 60rem;
-        margin-left: auto;
-        margin-right: auto;
         flex-wrap: wrap;
-        column-gap: 3rem;
+        gap: 2rem 4rem;
       }
       .site-footer .footer-column {
         min-width: 10rem;
       }
       .site-footer .footer-column h4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--content-headings);
+        font-size: 0.75rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       .site-footer .footer-column ul {
         padding: 0;
@@ -941,10 +1321,24 @@
         list-style-type: none;
       }
       .site-footer .footer-column li {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.4rem;
       }
       .site-footer .footer-column a {
+        opacity: 0.75;
+        transition: opacity 150ms ease-in-out;
         text-decoration: none;
+      }
+      .site-footer .footer-column a:hover {
+        opacity: 1.0;
+      }
+      .site-footer .footer-note {
+        margin-top: 2.5rem;
+        opacity: 0.6;
+        font-size: 0.8rem;
+        line-height: 1.6em;
+      }
+      .site-footer .footer-note a {
+        color: inherit;
       }
     </style>
     <!--/-->
@@ -1136,8 +1530,16 @@
         <div class="sidebar-barrier" role="button"></div>
         <div class="sidebar-container">
           <nav class="sidebar">
-            <button class="sidebar-close">×</button>
+            <button class="sidebar-close" aria-label="Close navigation">×</button>
             <div>
+              <div class="sidebar-group sidebar-mobile-nav">
+                <ul>
+                  <li><div><a href="docs/">Getting Started</a></div></li>
+                  <li><div><a href="about">About</a></div></li>
+                  <li><div><a href="contact">Contact</a></div></li>
+                </ul>
+              </div>
+              <div class="sidebar-group"><ul><li><div><a href="docs/">Getting Started</a></div></li></ul></div>
               <details class="sidebar-group collapsible">
                 <summary>FHIR R4b Core</summary>
                 <ul>
@@ -1246,18 +1648,17 @@
         <main>
           <div>
             <div class="content-container">
-              <div class="content-header"><h1>Getting Started</h1></div>
+              <div class="content-header"><h1>FHIR ANT Getting Started</h1></div>
               <section class="content">
-                <h2 id="getting-started" anchor="true"><span>Getting Started</span><a href="/docs/fhirant/fhirant_getting_started#getting-started">#</a></h2>
                 <p>
                   This guide walks you through your first session with FHIR ANT — from installation to making authenticated API calls.
                 </p>
-                <h3 id="install" anchor="true"><span>Install</span><a href="/docs/fhirant/fhirant_getting_started#install">#</a></h3>
+                <h2 id="install" anchor="true"><span>Install</span><a href="/docs/fhirant/fhirant_getting_started#install">#</a></h2>
                 <p>
                   Download FHIR ANT from the <a href="https://play.google.com/store/apps/details?id=com.fhirfli.fhirant">Google Play Store</a>. It also runs as a Linux desktop app or a standalone CLI server (see 
                   <a href="docs/fhirant/fhirant_cli">CLI Usage</a>).
                 </p>
-                <h3 id="first-launch" anchor="true"><span>First Launch</span><a href="/docs/fhirant/fhirant_getting_started#first-launch">#</a></h3>
+                <h2 id="first-launch" anchor="true"><span>First Launch</span><a href="/docs/fhirant/fhirant_getting_started#first-launch">#</a></h2>
                 <p>When you open the app for the first time, you'll see a three-page onboarding:</p>
                 <ol>
                   <li><strong>Welcome</strong> — what FHIR ANT is</li>
@@ -1269,7 +1670,7 @@
                 <p>
                   You can always load or clear sample data later. Tap <strong>Get Started</strong> to reach the dashboard.
                 </p>
-                <h3 id="the-dashboard" anchor="true"><span>The Dashboard</span><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">#</a></h3>
+                <h2 id="the-dashboard" anchor="true"><span>The Dashboard</span><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">#</a></h2>
                 <p>The dashboard has four sections:</p>
                 <ul>
                   <li><strong>Server Control</strong> — start/stop the server, toggle Dev Mode, set the port</li>
@@ -1279,171 +1680,261 @@
                   <li><strong>Resource Counts</strong> — how many FHIR resources are stored, by type</li>
                   <li><strong>Request Log</strong> — live feed of incoming HTTP requests</li>
                 </ul>
-                <h3 id="starting-the-server" anchor="true">
+                <h2 id="starting-the-server" anchor="true">
                   <span>Starting the Server</span><a href="/docs/fhirant/fhirant_getting_started#starting-the-server">#</a>
-                </h3>
+                </h2>
                 <p>
                   Tap <strong>Start</strong> on the Server Control card. The server binds to all network interfaces on the configured port (default 8080). The URL will look something like:
                 </p>
-                <pre><code>http://192.168.1.42:8080
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang"></span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">http://192.168.1.42:8080</code></pre>
+                </div>
                 <p>Any device on the same Wi-Fi network can reach this URL.</p>
-                <h4 id="dev-mode-vs-authenticated-mode">Dev Mode vs Authenticated Mode</h4>
+                <h3 id="dev-mode-vs-authenticated-mode" anchor="true">
+                  <span>Dev Mode vs Authenticated Mode</span><a href="/docs/fhirant/fhirant_getting_started#dev-mode-vs-authenticated-mode">#</a>
+                </h3>
                 <p>
                   By default, the server starts in <strong>Dev Mode</strong> — authentication is disabled and all requests are accepted. This is useful for quick testing.
                 </p>
                 <p>
                   To require authentication, toggle Dev Mode <strong>off</strong> before starting the server. When Dev Mode is off, all non-public endpoints require a valid JWT token.
                 </p>
-                <h3 id="using-dev-mode" anchor="true"><span>Using Dev Mode</span><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">#</a></h3>
+                <h2 id="using-dev-mode" anchor="true"><span>Using Dev Mode</span><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">#</a></h2>
                 <p>With Dev Mode on, you can immediately start making requests:</p>
-                <pre><code class="language-bash"># Server capabilities
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">bash</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment"># Server capabilities</span>
 curl http://192.168.1.42:8080/metadata
 
-# Search for all patients
+<span class="hljs-comment"># Search for all patients</span>
 curl http://192.168.1.42:8080/Patient
 
-# Create a patient
+<span class="hljs-comment"># Create a patient</span>
 curl -X POST http://192.168.1.42:8080/Patient \
-  -H "Content-Type: application/fhir+json" \
-  -d '{"resourceType":"Patient","name":[{"family":"Smith","given":["John"]}]}'
-</code></pre>
+  -H <span class="hljs-string">"Content-Type: application/fhir+json"</span> \
+  -d <span class="hljs-string">'{"resourceType":"Patient","name":[{"family":"Smith","given":["John"]}]}'</span></code></pre>
+                </div>
                 <p>No tokens or credentials needed — every request is treated as an admin.</p>
-                <h3 id="setting-up-authentication" anchor="true">
+                <h2 id="setting-up-authentication" anchor="true">
                   <span>Setting Up Authentication</span><a href="/docs/fhirant/fhirant_getting_started#setting-up-authentication">#</a>
-                </h3>
+                </h2>
                 <p>When you're ready to use auth, stop the server, toggle Dev Mode off, and start it again.</p>
-                <h4 id="step-1-check-server-status">Step 1: Check Server Status</h4>
+                <h3 id="step-1-check-server-status" anchor="true">
+                  <span>Step 1: Check Server Status</span><a href="/docs/fhirant/fhirant_getting_started#step-1-check-server-status">#</a>
+                </h3>
                 <p>The <code>/auth/status</code> endpoint is public and tells you whether any users exist:</p>
-                <pre><code class="language-bash">curl http://192.168.1.42:8080/auth/status
-</code></pre>
-                <pre><code class="language-json">{"firstUser": true}
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">bash</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">curl http://192.168.1.42:8080/auth/status</code></pre>
+                </div>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">json</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">{<span class="hljs-attr">"firstUser"</span>: <span class="hljs-literal">true</span>}</code></pre>
+                </div>
                 <p><code>"firstUser": true</code> means no users have been created yet.</p>
-                <h4 id="step-2-create-the-admin-account">Step 2: Create the Admin Account</h4>
+                <h3 id="step-2-create-the-admin-account" anchor="true">
+                  <span>Step 2: Create the Admin Account</span><a href="/docs/fhirant/fhirant_getting_started#step-2-create-the-admin-account">#</a>
+                </h3>
                 <p>
                   When no users exist, anyone can register — this is the bootstrap mechanism. The first user is <strong>automatically promoted to admin</strong>
                    regardless of what role you request:
                 </p>
-                <pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"username": "admin", "password": "mysecurepassword"}'
-</code></pre>
-                <pre><code class="language-json">{
-  "id": 1,
-  "token": "eyJ...",
-  "refresh_token": "eyJ...",
-  "token_type": "Bearer",
-  "username": "admin",
-  "role": "admin",
-  "scopes": ["system/*.*"]
-}
-</code></pre>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">bash</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/register \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username": "admin", "password": "mysecurepassword"}'</span></code></pre>
+                </div>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">json</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"eyJ..."</span>,
+  <span class="hljs-attr">"refresh_token"</span>: <span class="hljs-string">"eyJ..."</span>,
+  <span class="hljs-attr">"token_type"</span>: <span class="hljs-string">"Bearer"</span>,
+  <span class="hljs-attr">"username"</span>: <span class="hljs-string">"admin"</span>,
+  <span class="hljs-attr">"role"</span>: <span class="hljs-string">"admin"</span>,
+  <span class="hljs-attr">"scopes"</span>: [<span class="hljs-string">"system/*.*"</span>]
+}</code></pre>
+                </div>
                 <p>Registration returns a JWT immediately — you're logged in.</p>
                 <div class="callout callout-info">
                   <span><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="20px" height="20px"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></span>
                   <span>
 **Password Requirements**<p>Passwords must be 12-128 characters. There are no complexity rules (no required uppercase, numbers, or symbols), but common passwords like <code>password123456</code> are blocked. This follows <a href="https://pages.nist.gov/800-63-3/sp800-63b.html">NIST 800-63B</a> guidelines — length matters more than complexity.
-</p><h4 id="step-3-make-authenticated-requests">Step 3: Make Authenticated Requests</h4><p>Use the <code>token</code> from registration or login in the <code>Authorization</code> header:</p><pre><code class="language-bash">TOKEN="eyJ..."
+</p><h3 id="step-3-make-authenticated-requests" anchor="true"><span>Step 3: Make Authenticated Requests</span><a href="/docs/fhirant/fhirant_getting_started#step-3-make-authenticated-requests">#</a></h3><p>Use the <code>token</code> from registration or login in the <code>Authorization</code> header:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">TOKEN=<span class="hljs-string">"eyJ..."</span>
 
-# Search patients
-curl -H "Authorization: Bearer $TOKEN" \
+<span class="hljs-comment"># Search patients</span>
+curl -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
   http://192.168.1.42:8080/Patient
 
-# Create a resource
+<span class="hljs-comment"># Create a resource</span>
 curl -X POST http://192.168.1.42:8080/Observation \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/fhir+json" \
-  -d '{
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/fhir+json"</span> \
+  -d <span class="hljs-string">'{
     "resourceType": "Observation",
     "status": "final",
     "code": {"text": "Heart rate"},
     "valueQuantity": {"value": 72, "unit": "bpm"}
-  }'
-</code></pre><h4 id="step-4-register-additional-users">Step 4: Register Additional Users</h4><p>Once the admin account exists, only admins can create new users. Use the admin token and optionally specify a role:</p><pre><code class="language-bash"># Create a clinician (default role)
+  }'</span></code></pre></div><h3 id="step-4-register-additional-users" anchor="true"><span>Step 4: Register Additional Users</span><a href="/docs/fhirant/fhirant_getting_started#step-4-register-additional-users">#</a></h3><p>Once the admin account exists, only admins can create new users. Use the admin token and optionally specify a role:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs"><span class="hljs-comment"># Create a clinician (default role)</span>
 curl -X POST http://192.168.1.42:8080/auth/register \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"username": "drjones", "password": "anothersecurepassword"}'
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username": "drjones", "password": "anothersecurepassword"}'</span>
 
-# Create a read-only user
+<span class="hljs-comment"># Create a read-only user</span>
 curl -X POST http://192.168.1.42:8080/auth/register \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"username": "viewer", "password": "viewersecurepassword", "role": "readonly"}'
-</code></pre><p>Available roles and their default SMART scopes:</p><table><thead><tr><th>Role</th><th>Default Scopes</th><th>Can Do</th></tr></thead><tbody><tr><td><code>admin</code></td><td><code>system/*.*</code></td><td>Everything, including registering users</td></tr><tr><td><code>clinician</code></td><td><code>user/*.*</code></td><td>Full CRUD on all resource types</td></tr><tr><td><code>readonly</code></td><td><code>user/*.rs</code></td><td>Read and search only</td></tr></tbody></table><p>You can also assign custom SMART scopes per user:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/register \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username": "viewer", "password": "viewersecurepassword", "role": "readonly"}'</span></code></pre></div><p>Available roles and their default SMART scopes:</p><table><thead><tr><th>Role</th><th>Default Scopes</th><th>Can Do</th></tr></thead><tbody><tr><td><code>admin</code></td><td><code>system/*.*</code></td><td>Everything, including registering users</td></tr><tr><td><code>clinician</code></td><td><code>user/*.*</code></td><td>Full CRUD on all resource types</td></tr><tr><td><code>readonly</code></td><td><code>user/*.rs</code></td><td>Read and search only</td></tr></tbody></table><p>You can also assign custom SMART scopes per user:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/register \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{
     "username": "labtech",
     "password": "labsecurepassword",
     "role": "clinician",
     "scopes": ["user/Observation.cruds", "user/DiagnosticReport.cruds", "user/Patient.rs"]
-  }'
-</code></pre><h4 id="step-5-logging-in">Step 5: Logging In</h4><p>Other users log in with their credentials:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"username": "drjones", "password": "anothersecurepassword"}'
-</code></pre><pre><code class="language-json">{
-  "token": "eyJ...",
-  "refresh_token": "eyJ...",
-  "token_type": "Bearer",
-  "username": "drjones",
-  "role": "clinician",
-  "scopes": ["user/*.*"]
-}
-</code></pre><h4 id="step-6-refreshing-tokens">Step 6: Refreshing Tokens</h4><p>Access tokens expire after 8 hours. Use the refresh token (valid for 7 days) to get a new one:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/token \
-  -H "Content-Type: application/json" \
-  -d '{"grant_type": "refresh_token", "refresh_token": "eyJ..."}'
-</code></pre><h4 id="step-7-logging-out">Step 7: Logging Out</h4><p>Revoke your current token:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/logout \
-  -H "Authorization: Bearer $TOKEN"
-</code></pre><p>Or revoke a specific token:</p><pre><code class="language-bash">curl -X POST http://192.168.1.42:8080/auth/revoke \
-  -H "Content-Type: application/json" \
-  -d '{"token": "eyJ..."}'
-</code></pre><h3 id="common-workflows" anchor="true"><span>Common Workflows</span><a href="/docs/fhirant/fhirant_getting_started#common-workflows">#</a></h3><h4 id="browse-resources-in-the-app">Browse Resources in the App</h4><p>Tap on any resource type in the Resource Counts card to open the resource browser. You can view resources as JSON or YAML, and tap on FHIR references (like <code>Patient/123</code>) to navigate to the referenced resource.</p><h4 id="search-with-parameters">Search with Parameters</h4><p>FHIR ANT supports the full range of FHIR search parameters:</p><pre><code class="language-bash"># Search by name
-curl "$BASE/Patient?name=smith"
+  }'</span></code></pre></div><h3 id="step-5-logging-in" anchor="true"><span>Step 5: Logging In</span><a href="/docs/fhirant/fhirant_getting_started#step-5-logging-in">#</a></h3><p>Other users log in with their credentials:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/login \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"username": "drjones", "password": "anothersecurepassword"}'</span></code></pre></div><div class="code-block"><div class="code-head"><span class="code-lang">json</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">{
+  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"eyJ..."</span>,
+  <span class="hljs-attr">"refresh_token"</span>: <span class="hljs-string">"eyJ..."</span>,
+  <span class="hljs-attr">"token_type"</span>: <span class="hljs-string">"Bearer"</span>,
+  <span class="hljs-attr">"username"</span>: <span class="hljs-string">"drjones"</span>,
+  <span class="hljs-attr">"role"</span>: <span class="hljs-string">"clinician"</span>,
+  <span class="hljs-attr">"scopes"</span>: [<span class="hljs-string">"user/*.*"</span>]
+}</code></pre></div><h3 id="step-6-refreshing-tokens" anchor="true"><span>Step 6: Refreshing Tokens</span><a href="/docs/fhirant/fhirant_getting_started#step-6-refreshing-tokens">#</a></h3><p>Access tokens expire after 8 hours. Use the refresh token (valid for 7 days) to get a new one:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/token \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"grant_type": "refresh_token", "refresh_token": "eyJ..."}'</span></code></pre></div><h3 id="step-7-logging-out" anchor="true"><span>Step 7: Logging Out</span><a href="/docs/fhirant/fhirant_getting_started#step-7-logging-out">#</a></h3><p>Revoke your current token:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/<span class="hljs-built_in">logout</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span></code></pre></div><p>Or revoke a specific token:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/revoke \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"token": "eyJ..."}'</span></code></pre></div><h2 id="common-workflows" anchor="true"><span>Common Workflows</span><a href="/docs/fhirant/fhirant_getting_started#common-workflows">#</a></h2><h3 id="browse-resources-in-the-app" anchor="true"><span>Browse Resources in the App</span><a href="/docs/fhirant/fhirant_getting_started#browse-resources-in-the-app">#</a></h3><p>Tap on any resource type in the Resource Counts card to open the resource browser. You can view resources as JSON or YAML, and tap on FHIR references (like <code>Patient/123</code>) to navigate to the referenced resource.</p><h3 id="search-with-parameters" anchor="true"><span>Search with Parameters</span><a href="/docs/fhirant/fhirant_getting_started#search-with-parameters">#</a></h3><p>FHIR ANT supports the full range of FHIR search parameters:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs"><span class="hljs-comment"># Search by name</span>
+curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Patient?name=smith"</span>
 
-# Search by date range
-curl "$BASE/Observation?date=gt2024-01-01&amp;date=lt2024-12-31"
+<span class="hljs-comment"># Search by date range</span>
+curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observation?date=gt2024-01-01&amp;date=lt2024-12-31"</span>
 
-# Include referenced resources
-curl "$BASE/Observation?patient=Patient/123&amp;_include=Observation:patient"
+<span class="hljs-comment"># Include referenced resources</span>
+curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observation?patient=Patient/123&amp;_include=Observation:patient"</span>
 
-# Chain through references
-curl "$BASE/Observation?patient.name=smith"
-</code></pre><h4 id="backup-and-restore">Backup and Restore</h4><p>Export all data as a FHIR Bundle:</p><pre><code class="language-bash">curl -X POST "$BASE/\$backup" -H "Authorization: Bearer $TOKEN" &gt; backup.json
-</code></pre><p>Restore from a backup:</p><pre><code class="language-bash">curl -X POST "$BASE/\$restore" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/fhir+json" \
-  -d @backup.json
-</code></pre><h3 id="connecting-from-a-fhir-client" anchor="true"><span>Connecting from a FHIR Client</span><a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">#</a></h3><p>FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the <a href="docs/at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a> Dart package:</p><pre><code class="language-dart">final request = FhirSearchRequest(
-  base: Uri.parse('http://192.168.1.42:8080'),
+<span class="hljs-comment"># Chain through references</span>
+curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observation?patient.name=smith"</span></code></pre></div><h3 id="backup-and-restore" anchor="true"><span>Backup and Restore</span><a href="/docs/fhirant/fhirant_getting_started#backup-and-restore">#</a></h3><p>Export all data as a FHIR Bundle:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/\$backup"</span> -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> &gt; backup.json</code></pre></div><p>Restore from a backup:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/\$restore"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"Content-Type: application/fhir+json"</span> \
+  -d @backup.json</code></pre></div><h2 id="connecting-from-a-fhir-client" anchor="true"><span>Connecting from a FHIR Client</span><a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">#</a></h2><p>FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the <a href="docs/at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a> Dart package:</p><div class="code-block"><div class="code-head"><span class="code-lang">dart</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirSearchRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://192.168.1.42:8080'</span>),
   type: R4ResourceType.Patient,
   parameters: FhirSearchParams(params: [
-    SearchString(FhirSearchParamDefinition.familyParam, ['Smith']),
+    SearchString(FhirSearchParamDefinition.familyParam, [<span class="hljs-string">'Smith'</span>]),
   ]),
 );
-final response = await request.request();
-</code></pre><h3 id="troubleshooting" anchor="true"><span>Troubleshooting</span><a href="/docs/fhirant/fhirant_getting_started#troubleshooting">#</a></h3><p><strong>App shows a loading spinner that never finishes</strong>
+<span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.request();</code></pre></div><h2 id="troubleshooting" anchor="true"><span>Troubleshooting</span><a href="/docs/fhirant/fhirant_getting_started#troubleshooting">#</a></h2><p><strong>App shows a loading spinner that never finishes</strong>
 Try clearing the app cache in Android Settings &gt; Apps &gt; FHIR ANT &gt; Clear Cache, then relaunch.</p><p><strong>Can't connect from another device</strong>
 Make sure both devices are on the same Wi-Fi network. Some networks (especially guest networks) isolate devices from each other.</p><p><strong>"Account is locked" error</strong>
-After 5 failed login attempts, the account locks for 15 minutes. Wait for it to expire, or have an admin unlock it:</p><pre><code class="language-bash">curl -X POST "$BASE/admin/unlock/2" -H "Authorization: Bearer $ADMIN_TOKEN"
-</code></pre><p><strong>Token expired</strong>
-Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see Step 6 above). Refresh tokens last 7 days.</p><h3 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/fhirant/fhirant_getting_started#next-steps">#</a></h3><ul><li><a href="docs/fhirant/fhirant_capabilities">Capabilities</a> — full feature matrix</li><li><a href="docs/fhirant/fhirant_api_reference">API Reference</a> — every endpoint</li><li><a href="docs/fhirant/fhirant_security">Security &amp; Auth</a> — OAuth 2.0, SMART scopes, password policy</li><li><a href="docs/fhirant/fhirant_cli">CLI Usage</a> — run the server from the command line</li></ul></span>
+After 5 failed login attempts, the account locks for 15 minutes. Wait for it to expire, or have an admin unlock it:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/admin/unlock/2"</span> -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$ADMIN_TOKEN</span>"</span></code></pre></div><p><strong>Token expired</strong>
+Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see Step 6 above). Refresh tokens last 7 days.</p><h2 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/fhirant/fhirant_getting_started#next-steps">#</a></h2><ul><li><a href="docs/fhirant/fhirant_capabilities">Capabilities</a> — full feature matrix</li><li><a href="docs/fhirant/fhirant_api_reference">API Reference</a> — every endpoint</li><li><a href="docs/fhirant/fhirant_security">Security &amp; Auth</a> — OAuth 2.0, SMART scopes, password policy</li><li><a href="docs/fhirant/fhirant_cli">CLI Usage</a> — run the server from the command line</li></ul></span>
                 </div>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
                   <div class="footer-columns">
-                    <div class="footer-column"><h4>Docs</h4><ul><li><a href="docs/">Getting Started</a></li></ul></div>
                     <div class="footer-column">
-                      <h4>Standalone Pages</h4>
-                      <ul><li><a href="about">About</a></li><li><a href="contact">Contact</a></li></ul>
+                      <h4>Packages</h4>
+                      <ul>
+                        <li><a href="https://pub.dev/packages/fhir_r4">fhir_r4</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r5">fhir_r5</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_r6">fhir_r6</a></li>
+                        <li><a href="https://pub.dev/packages/fhir_path">fhir_path</a></li>
+                        <li><a href="https://pub.dev/packages/cql">cql</a></li>
+                        <li><a href="https://pub.dev/publishers/fhirfli.dev/packages">All packages on pub.dev</a></li>
+                      </ul>
                     </div>
                     <div class="footer-column">
-                      <h4>More</h4>
-                      <ul><li><a href="https://github.com/fhir-fli/fhir_fli_documentation">GitHub</a></li></ul>
+                      <h4>Documentation</h4>
+                      <ul>
+                        <li><a href="docs/">Getting Started</a></li>
+                        <li><a href="docs/core/fhir_r4">Core package</a></li>
+                        <li><a href="docs/at_rest/fhir_r4_at_rest">REST client</a></li>
+                        <li><a href="docs/auth/fhir_r4_auth">SMART on FHIR auth</a></li>
+                        <li><a href="docs/fhir_r4_db">Local database</a></li>
+                        <li><a href="docs/demos/fhir_path_demo">FHIRPath demo</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-column">
+                      <h4>Project</h4>
+                      <ul>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="https://github.com/fhir-fli">GitHub</a></li>
+                        <li><a href="https://github.com/fhir-fli/fhir_fli_documentation">This site's source</a></li>
+                      </ul>
                     </div>
                   </div>
+                  <p class="footer-note">
+                    FHIR® is the registered trademark of HL7 and is used with the permission of HL7. Built with <a href="https://jaspr.site">Jaspr</a>.
+                  </p>
                 </footer>
               </div>
             </div>
@@ -1451,21 +1942,45 @@ Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#getting-started">Getting Started</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#install">Install</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#first-launch">First Launch</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">The Dashboard</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#starting-the-server">Starting the Server</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">Using Dev Mode</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#install">Install</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#first-launch">First Launch</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">The Dashboard</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#starting-the-server">Starting the Server</a></li>
                   <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#dev-mode-vs-authenticated-mode">Dev Mode vs Authenticated Mode</a>
+                  </li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">Using Dev Mode</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/fhirant/fhirant_getting_started#setting-up-authentication">Setting Up Authentication</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#common-workflows">Common Workflows</a></li>
                   <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#step-1-check-server-status">Step 1: Check Server Status</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#step-2-create-the-admin-account">Step 2: Create the Admin Account</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#step-3-make-authenticated-requests">Step 3: Make Authenticated Requests</a>
+                  </li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#step-4-register-additional-users">Step 4: Register Additional Users</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#step-5-logging-in">Step 5: Logging In</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#step-6-refreshing-tokens">Step 6: Refreshing Tokens</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#step-7-logging-out">Step 7: Logging Out</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#common-workflows">Common Workflows</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/fhirant/fhirant_getting_started#browse-resources-in-the-app">Browse Resources in the App</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#search-with-parameters">Search with Parameters</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#backup-and-restore">Backup and Restore</a></li>
+                  <li style="padding-left: 0em">
                     <a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">Connecting from a FHIR Client</a>
                   </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#troubleshooting">Troubleshooting</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_getting_started#next-steps">Next Steps</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#troubleshooting">Troubleshooting</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#next-steps">Next Steps</a></li>
                 </ul>
               </div>
             </aside>
