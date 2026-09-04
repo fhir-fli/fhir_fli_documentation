@@ -1650,6 +1650,40 @@
             <div class="content-container">
               <div class="content-header"><h1>Migration Guide</h1></div>
               <section class="content">
+                <h2 id="upgrading-fhir_r4-09x--0120" anchor="true">
+                  <span>Upgrading fhir_r4 0.9.x → 0.12.0</span><a href="/docs/core/migration#upgrading-fhir_r4-09x--0120">#</a>
+                </h2>
+                <p>
+                  The resource APIs did not change. All three releases are about <code>fhir_r*_db</code>
+                  search, and two of them change what an existing call returns.
+                </p>
+                <p>
+                  <strong>0.10.0 — modifiers and comparators moved to where FHIR puts them.</strong> They used
+                  to be read off the end of the value (<code>family=Smith:exact</code>,
+                  <code>birthdate=1980-01-01:gt</code>), a syntax FHIR does not have. The modifier now comes
+                  from the parameter name (<code>family:exact=Smith</code>) and the comparator from the front
+                  of the value (<code>birthdate=gt1980-01-01</code>). Values are no longer split at a colon,
+                  and <code>\,</code>, <code>\|</code> and <code>\$</code> escapes are honoured. An unsupported modifier throws
+                  <code>UnsupportedSearchModifier</code> instead of being ignored. Accents fold for the
+                  default and <code>:contains</code> searches, and <code>:exact</code> is exact. <strong>Schema 5 → 6</strong>; the
+                  string index is rebuilt from the stored resources on first open.
+                </p>
+                <p>
+                  <strong>0.11.0 — a repeated parameter is an AND, a comma is an OR.</strong> Each element of a
+                  parameter's value list is now one repetition and the elements are intersected.
+                  Code that passed <code>['Anna', 'Beth']</code> to get <em>either</em> name must pass the single
+                  element <code>'Anna,Beth'</code> instead; the comma split happens inside the package, where
+                  escaping applies. This silently changed what subscription criteria matched in
+                  one server built on the package, so check every multi-value search you make.
+                </p>
+                <p>
+                  <strong>0.12.0 — a save that cannot be indexed fails.</strong> <code>saveResource</code> used to catch
+                  indexing errors, print them, and return the resource anyway, leaving a record
+                  that no search could find. It now throws, and writes the resource, its history
+                  row and its index rows in one transaction, so a failed update keeps the
+                  previous version.
+                </p>
+                <hr/>
                 <h2 id="upgrading-fhir_r4-08x--090" anchor="true">
                   <span>Upgrading fhir_r4 0.8.x → 0.9.0</span><a href="/docs/core/migration#upgrading-fhir_r4-08x--090">#</a>
                 </h2>
@@ -3412,6 +3446,7 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
+                  <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-09x--0120">Upgrading fhir_r4 0.9.x → 0.12.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-08x--090">Upgrading fhir_r4 0.8.x → 0.9.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-07x--080">Upgrading fhir_r4 0.7.x → 0.8.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-06x--070">Upgrading fhir_r4 0.6.x → 0.7.0</a></li>
