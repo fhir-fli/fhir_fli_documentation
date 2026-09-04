@@ -1,23 +1,21 @@
 ---
 id: fhir_r4_path
-title: FHIRPath Package
+title: FHIRPath Engine
 ---
-
-## FHIRPath Engine
 
 The `fhir_r4_path` library provides a Dart implementation of the [FHIRPath](https://hl7.org/fhirpath/) specification, allowing you to query and manipulate FHIR resources using standardized expressions.
 
 As of version 0.6.0, the FHIRPath engine itself lives in the standalone, model-independent [`fhir_path`](https://pub.dev/packages/fhir_path) package ([github.com/fhir-fli/fhir_path](https://github.com/fhir-fli/fhir_path)). The engine has zero FHIR-version coupling — it navigates any model through the `FhirNode` contract from `package:fhir_node`. `fhir_r4_path` is the **R4 binding** over that engine: it supplies the R4 `WorkerContext`, the R4 value factory, and the terminology/validation plumbing, then re-exports the engine. Depend on this one package and you get both the engine and its R4 model bindings. (Identical bindings exist for R5 and R6 as `fhir_r5_path` and `fhir_r6_path`.)
 
-#### Installation
+## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_path: ^0.9.0
-  fhir_r4: ^0.9.0
+  fhir_r4_path: ^0.12.0
+  fhir_r4: ^0.12.0
 ```
 
-### Basic Usage
+## Basic Usage
 
 The API is `FHIRPathEngine`. Create the engine once (creation is async — it initializes its worker context), **parse each expression once**, then **evaluate it against as many resources as you like**. Parsing is the expensive step, so the recommended pattern is parse-once / evaluate-many.
 
@@ -62,7 +60,7 @@ void main() async {
 }
 ```
 
-#### The Core API
+### The Core API
 
 Once you have a `FHIRPathEngine` instance:
 
@@ -72,7 +70,7 @@ Once you have a `FHIRPathEngine` instance:
 - `evaluateWithContext(...)`: Like `evaluate`, but lets you supply the app context, `%resource` / `%rootResource`, and user-defined environment variables.
 - `evaluateFromPath(FhirNode? base, String path)`: Convenience that parses and evaluates in one call — only for genuinely one-off expressions.
 
-#### Working with Results
+### Working with Results
 
 Evaluation returns `List<FhirNode>` — the model-independent node contract the engine works in. In an R4 context every node the engine produces is a `FhirBase`, so when you need the typed R4 classes, narrow the list back:
 
@@ -83,7 +81,7 @@ final typed = results.cast<FhirBase>();
 
 For display purposes, `toString()` on primitive results gives you the value directly (as in the `[Smith]` output above).
 
-#### evaluateWithContext and Environment Variables
+### evaluateWithContext and Environment Variables
 
 `evaluateWithContext` takes the full set of FHIRPath evaluation inputs as positional parameters, plus a named `environment` map:
 
@@ -110,11 +108,11 @@ Notes on the `environment` map:
 
 The built-in variables `%resource`, `%rootResource`, and `%context` come from the positional parameters, and the standard constants (`%sct`, `%loinc`, `%ucum`, plus the `` %`vs-...` `` / `` %`cs-...` `` / `` %`ext-...` `` URL shorthands) are always available.
 
-### Common FHIRPath Expressions
+## Common FHIRPath Expressions
 
 Here are some examples of common FHIRPath expressions:
 
-#### Basic Navigation
+### Basic Navigation
 
 ```fhirpath
 // Access a field
@@ -130,7 +128,7 @@ Patient.name.family
 Patient.name.where(use = 'official')
 ```
 
-#### Functions
+### Functions
 
 ```fhirpath
 // Count elements
@@ -147,7 +145,7 @@ Patient.name.first()
 Patient.name.last()
 ```
 
-#### Operators
+### Operators
 
 ```fhirpath
 // Equality
@@ -160,9 +158,9 @@ Patient.name.count() > 1
 Patient.active = true and Patient.deceased = false
 ```
 
-### Advanced Features
+## Advanced Features
 
-#### Resource Cache
+### Resource Cache
 
 For advanced scenarios, the library provides a `ResourceCache` abstract class for caching canonical resources (like `CodeSystem`, `ValueSet`, `StructureDefinition`), saving time on repeated lookups:
 
@@ -181,7 +179,7 @@ abstract class ResourceCache {
 }
 ```
 
-#### Canonical Resource Cache
+### Canonical Resource Cache
 
 `CanonicalResourceCache` is the standard in-memory implementation, with version-aware storage and retrieval:
 
@@ -220,7 +218,7 @@ final engine = await FHIRPathEngine.create(
 );
 ```
 
-### Error Handling
+## Error Handling
 
 Parsing errors are thrown synchronously by `parse` (as `FHIRLexerException`, a subclass of `PathEngineException`); evaluation problems surface as `PathEngineException` or `PathEngineError`:
 
@@ -238,28 +236,28 @@ try {
 }
 ```
 
-### Performance Considerations
+## Performance Considerations
 
 For optimal performance in large-scale or batch operations:
 
-#### Reuse the Engine
+### Reuse the Engine
 `FHIRPathEngine.create(...)` does real initialization work — create one engine and share it.
 
-#### Reuse Parsed Expressions
+### Reuse Parsed Expressions
 Parse each expression once with `engine.parse()` and then evaluate repeatedly on different resources.
 
-#### Leverage the Resource Cache
+### Leverage the Resource Cache
 If your workflow requires repeated lookups of canonical resources, use `CanonicalResourceCache` (or `OnlineResourceCache`) to avoid redundant fetching or parsing.
 
-### Integration with FHIR Mapping
+## Integration with FHIR Mapping
 
 The FHIRPath engine is also used by the FHIR Mapping engine (`fhir_r4_mapping`), which implements the FHIR Mapping Language for transforming FHIR resources or converting between FHIR and other data formats. `FhirMapEngine` creates its own `FHIRPathEngine` internally, wired up with host services for the mapping language's FHIRPath evaluation.
 
-### Legacy API
+## Legacy API
 
 Earlier versions of this package were built around a `walkFhirPath()` convenience function. It still exists for backwards compatibility but is **deprecated**: it re-creates an engine and re-parses the expression on every call. Migrate any remaining `walkFhirPath` (or `parseFhirPath` / `executeFhirPath`) call sites to the `FHIRPathEngine` API shown above.
 
-### FHIRPath Specification Reference
+## FHIRPath Specification Reference
 
 For a complete reference of the FHIRPath language, see the [official specification](https://hl7.org/fhirpath/).
 

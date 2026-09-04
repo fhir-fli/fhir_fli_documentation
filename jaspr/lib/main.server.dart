@@ -14,12 +14,21 @@ import 'package:jaspr_content/components/theme_toggle.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
 
+import 'components/code_block.dart';
 import 'components/collapsible_sidebar.dart';
 import 'components/footer.dart';
 import 'components/site_header.dart';
 
 // This file is generated automatically by Jaspr, do not remove or edit.
 import 'main.server.options.dart';
+
+/// Text links shown in the header on wide screens and repeated at the top of
+/// the sidebar on narrow ones, where the header has no room for them.
+const _navLinks = [
+  SidebarLink(text: 'Getting Started', href: 'docs/'),
+  SidebarLink(text: 'About', href: 'about'),
+  SidebarLink(text: 'Contact', href: 'contact'),
+];
 
 void main() {
   Jaspr.initializeApp(options: defaultServerOptions);
@@ -32,6 +41,7 @@ void main() {
         TableOfContentsExtension(),
       ],
       components: [
+        HighlightedCodeBlock(),
         Callout(),
         Image(zoom: true),
       ],
@@ -41,15 +51,19 @@ void main() {
             title: 'FHIR-FLI',
             logo: 'images/fhir-fli-logo.svg',
             items: [
-              a(classes: 'nav-link', href: 'docs/', [Component.text('Getting Started')]),
-              a(classes: 'nav-link', href: 'about', [Component.text('About')]),
-              a(classes: 'nav-link', href: 'contact', [Component.text('Contact')]),
+              for (final link in _navLinks) a(classes: 'nav-link', href: link.href, [Component.text(link.text)]),
               ThemeToggle(),
               GitHubButton(repo: 'fhir-fli/fhir_fli_documentation'),
             ],
           ),
           sidebar: CollapsibleSidebar(
+            mobileNav: _navLinks,
             groups: [
+              SidebarGroup(
+                links: [
+                  SidebarLink(text: 'Getting Started', href: 'docs/'),
+                ],
+              ),
               SidebarGroup(
                 title: 'FHIR R4b Core',
                 links: [
@@ -118,10 +132,7 @@ void main() {
               SidebarGroup(
                 title: 'Bumblebee',
                 links: [
-                  SidebarLink(
-                    text: 'Overview',
-                    href: 'docs/bumblebee/bumblebee_overview',
-                  ),
+                  SidebarLink(text: 'Overview', href: 'docs/bumblebee/bumblebee_overview'),
                   SidebarLink(text: 'Published IG', href: 'docs/bumblebee_ig'),
                 ],
               ),
@@ -161,13 +172,13 @@ void main() {
         ),
       ],
       theme: ContentTheme(
-        primary: ThemeColor(ThemeColors.blue.$500, dark: ThemeColors.blue.$300),
+        primary: ThemeColor(ThemeColors.blue.$600, dark: ThemeColors.blue.$400),
         background: ThemeColor(ThemeColors.slate.$50, dark: ThemeColors.zinc.$950),
         colors: [
-          ContentColors.quoteBorders.apply(ThemeColors.blue.$400),
-          ContentColors.preBg.apply(
-            ThemeColor(ThemeColors.gray.$800, dark: ThemeColors.zinc.$800),
-          ),
+          ContentColors.links.apply(ThemeColor(ThemeColors.blue.$700, dark: ThemeColors.blue.$300)),
+          ContentColors.quoteBorders.apply(ThemeColor(ThemeColors.blue.$400, dark: ThemeColors.blue.$500)),
+          ContentColors.preBg.apply(ThemeColor(ThemeColors.slate.$900, dark: ThemeColors.zinc.$900)),
+          ContentColors.preCode.apply(ThemeColor(ThemeColors.slate.$200, dark: ThemeColors.zinc.$200)),
         ],
       ),
     ),

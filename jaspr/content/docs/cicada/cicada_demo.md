@@ -3,8 +3,6 @@ id: cicada_demo
 title: Cicada Demo
 ---
 
-## Live Demo
-
 Try the Cicada immunization forecasting engine. Enter vaccine history or select a sample patient to see a CDC schedule forecast.
 
 [Open full screen](https://fhir-fli.github.io/fhir_fli_documentation/cicada_demo/)
@@ -15,7 +13,7 @@ Try the Cicada immunization forecasting engine. Enter vaccine history or select 
   style="width: 100%; height: 800px; border: none;">
 </iframe>
 
-### Sample Patients
+## Sample Patients
 
 The demo includes three sample patients:
 
@@ -25,14 +23,14 @@ The demo includes three sample patients:
 | **Mia Chen** | 5 years | Child with incomplete series — missed some doses, needs catch-up vaccines. |
 | **Alex Rivera** | 30 years | Adult with childhood vaccines, needs routine boosters and annual vaccines. |
 
-### What You're Seeing
+## What You're Seeing
 
 - **Action Needed** — vaccines that are due now or overdue based on the CDC immunization schedule
 - **Upcoming** — vaccines the patient will need in the future but aren't due yet
 - **Complete** — vaccine series that have been fully completed
 - **Dose Evaluations** — how each administered dose was evaluated (valid, not valid, extraneous) with reasons
 
-### How It Works
+## How It Works
 
 1. Enter a date of birth and sex, or select a sample patient
 2. Add vaccines from the searchable picker (supports abbreviations, disease names, and brand names)

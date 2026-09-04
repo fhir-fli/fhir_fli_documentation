@@ -1,15 +1,13 @@
 ---
 id: drosophila_overview
-title: Drosophila Overview
+title: Drosophila
 ---
-
-## Drosophila
 
 **Clinical trial matching for oncology, powered by SMART on FHIR.**
 
 Drosophila automatically identifies clinical trials a patient may be eligible for by extracting structured data from the EHR and comparing it against trial eligibility criteria from [ClinicalTrials.gov](https://clinicaltrials.gov).
 
-### How It Works
+## How It Works
 
 Drosophila follows a two-stage EHR integration pattern:
 
@@ -45,7 +43,7 @@ SMART on FHIR Launch
     └─► Display ranked results
 ```
 
-### Architecture
+## Architecture
 
 Drosophila is split into two packages:
 
@@ -54,7 +52,7 @@ Drosophila is split into two packages:
 | **drosophila_core** | Pure Dart. Criteria parsing, patient matching, trial ingestion. No Flutter dependency. |
 | **drosophila_flutter** | Flutter UI. Screens, widgets, SMART launch service, CDS Hooks service, theme. |
 
-#### Patient Data Extraction
+### Patient Data Extraction
 
 On SMART launch, Drosophila requests these scopes and extracts:
 
@@ -68,7 +66,7 @@ On SMART launch, Drosophila requests these scopes and extracts:
 
 Cancer detection uses ICD-10-CM ranges (C00-C96, D00-D09, D37-D48) and a curated set of ~200 mCODE SNOMED codes covering all major cancer types.
 
-#### Eligibility Criteria Pipeline
+### Eligibility Criteria Pipeline
 
 ClinicalTrials.gov returns eligibility criteria as free text. Drosophila parses this into structured, matchable criteria:
 
@@ -80,7 +78,7 @@ ClinicalTrials.gov returns eligibility criteria as free text. Drosophila parses 
    - **Not Met** &mdash; Patient data contradicts the criterion
    - **Indeterminate** &mdash; Insufficient data to determine
 
-#### Scoring
+### Scoring
 
 Each trial receives a match score (0&ndash;100%) based on the proportion of criteria met, with exclusion criteria weighted more heavily. Trials are ranked by score and categorized:
 
@@ -88,7 +86,7 @@ Each trial receives a match score (0&ndash;100%) based on the proportion of crit
 - **Needs Review** &mdash; Some criteria indeterminate (missing data)
 - **Not Eligible** &mdash; One or more exclusion criteria met (hidden by default)
 
-### Trial Data
+## Trial Data
 
 Drosophila fetches from the [ClinicalTrials.gov API v2](https://clinicaltrials.gov/data-api/api) using `format=json`. For each trial it extracts:
 
@@ -101,7 +99,7 @@ Drosophila fetches from the [ClinicalTrials.gov API v2](https://clinicaltrials.g
 - Study locations
 - Eligibility criteria (free text, parsed into structured form)
 
-### Dependencies
+## Dependencies
 
 Drosophila builds on several FHIR-FLI packages:
 

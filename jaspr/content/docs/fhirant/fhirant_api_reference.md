@@ -1,13 +1,11 @@
 ---
 id: fhirant_api_reference
-title: API Reference
+title: FHIR ANT API Reference
 ---
-
-## API Reference
 
 Complete list of all endpoints available on the FHIR ANT server.
 
-### Public Endpoints
+## Public Endpoints
 
 These endpoints do not require authentication even when Dev Mode is off.
 
@@ -19,7 +17,7 @@ These endpoints do not require authentication even when Dev Mode is off.
 | `GET` | `/.well-known/smart-configuration` | SMART discovery |
 | `GET` | `/favicon.ico` | Favicon |
 
-### Authentication Endpoints
+## Authentication Endpoints
 
 | Method | Path | Description |
 |---|---|---|
@@ -31,13 +29,13 @@ These endpoints do not require authentication even when Dev Mode is off.
 | `GET` | `/auth/authorize` | OAuth authorization (show form) |
 | `POST` | `/auth/authorize` | OAuth authorization (submit) |
 
-### Admin Endpoints
+## Admin Endpoints
 
 | Method | Path | Description |
 |---|---|---|
 | `POST` | `/admin/unlock/<userId>` | Unlock locked account |
 
-### Resource CRUD
+## Resource CRUD
 
 | Method | Path | Description |
 |---|---|---|
@@ -48,7 +46,7 @@ These endpoints do not require authentication even when Dev Mode is off.
 | `DELETE` | `/<type>/<id>` | Delete resource |
 | `DELETE` | `/<type>` | Conditional delete |
 
-### Search
+## Search
 
 | Method | Path | Description |
 |---|---|---|
@@ -56,7 +54,7 @@ These endpoints do not require authentication even when Dev Mode is off.
 | `POST` | `/<type>/_search` | POST-based search |
 | `POST` | `/_search` | System-level search (requires `_type`) |
 
-### History
+## History
 
 | Method | Path | Description |
 |---|---|---|
@@ -65,13 +63,13 @@ These endpoints do not require authentication even when Dev Mode is off.
 | `GET` | `/<type>/_history` | Type history |
 | `GET` | `/_history` | System history |
 
-### Bundles
+## Bundles
 
 | Method | Path | Description |
 |---|---|---|
 | `POST` | `/` | Transaction or batch Bundle |
 
-### Compartments
+## Compartments
 
 | Method | Path | Description |
 |---|---|---|
@@ -80,7 +78,7 @@ These endpoints do not require authentication even when Dev Mode is off.
 
 Supported compartment types: Patient, Encounter, Practitioner, RelatedPerson, Device.
 
-### Operations
+## Operations
 
 | Method | Path | Description |
 |---|---|---|
@@ -95,7 +93,7 @@ Supported compartment types: Patient, Encounter, Practitioner, RelatedPerson, De
 | `POST` | `/$backup` | Export all data |
 | `POST` | `/$restore` | Import data |
 
-### Terminology
+## Terminology
 
 | Method | Path | Description |
 |---|---|---|
@@ -108,7 +106,7 @@ Supported compartment types: Patient, Encounter, Practitioner, RelatedPerson, De
 | `GET/POST` | `/ValueSet/<id>/$expand` | Expand ValueSet |
 | `GET/POST` | `/ValueSet/$expand` | Expand (type-level) |
 
-### Bulk Data Export
+## Bulk Data Export
 
 | Method | Path | Description |
 |---|---|---|

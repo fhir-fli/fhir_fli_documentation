@@ -1,20 +1,18 @@
 ---
 id: fhir_mapping
-title: FHIR Mapping Package
+title: FHIR Mapping
 ---
 
-## Introduction to FHIR Mapping in FHIR-FLI
-
-### Installation
+## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_mapping: ^0.9.0
-  fhir_r4: ^0.9.0
-  fhir_r4_path: ^0.9.0
+  fhir_r4_mapping: ^0.12.0
+  fhir_r4: ^0.12.0
+  fhir_r4_path: ^0.12.0
 ```
 
-### What is FHIR Mapping?
+## What is FHIR Mapping?
 
 FHIR Mapping is a standardized approach to transforming data between different formats or structures within the FHIR ecosystem. At its core, FHIR Mapping uses a specialized language and the StructureMap resource to define how data should be transformed from one structure to another.
 
@@ -24,7 +22,7 @@ This capability is essential for interoperability, allowing systems to translate
 - FHIR and external data formats
 - Various business requirements in healthcare systems
 
-### The FHIR Mapping Language
+## The FHIR Mapping Language
 
 The FHIR Mapping Language (sometimes called FHIRMap or FHIR Map) is a domain-specific language designed for expressing transformations. It has a syntax that describes:
 
@@ -46,7 +44,7 @@ group PatientToPerson(source src : Patient, target tgt : Person) {
 }
 ```
 
-### The FHIR-FLI Implementation
+## The FHIR-FLI Implementation
 
 FHIR-FLI provides a comprehensive implementation of FHIR Mapping with two key components:
 
@@ -60,27 +58,27 @@ Our implementation brings several advantages:
 - **Integration** - Seamlessly works with the rest of the FHIR-FLI ecosystem
 - **Flexibility** - Supports complex transformation patterns
 
-### Key Concepts
+## Key Concepts
 
 Understanding a few key concepts will help you work effectively with FHIR Mapping in FHIR-FLI:
 
-#### StructureMap
+### StructureMap
 
 A FHIR resource that formally defines mapping rules between different structures. It is typically authored using the FHIR mapping language and then parsed into a StructureMap resource.
 
-#### Resource Cache
+### Resource Cache
 
 A hierarchical system for managing canonical resources needed during mapping operations. It allows the mapping engine to resolve references to structure definitions, value sets, and other resources.
 
-#### Builders
+### Builders
 
 Special mutable versions of FHIR resources that facilitate incremental construction during mapping. The Builder tree ships with this package: every class in `fhir_r4` has a `Builder` counterpart (e.g. `PatientBuilder`), convertible in both directions via `toBuilder` and `build()`. Builders also support dynamic writes via `FhirBaseBuilder.setChildByName`, which the mapping engine uses internally.
 
-#### Transformation Context
+### Transformation Context
 
 The environment in which a mapping operation executes, keeping track of resources generated during mapping and other state information.
 
-### When to Use FHIR Mapping
+## When to Use FHIR Mapping
 
 FHIR Mapping is particularly useful when:
 
@@ -89,7 +87,7 @@ FHIR Mapping is particularly useful when:
 - You need to customize data flows between different parts of your application
 - You're implementing complex validation or business rules during data transformation
 
-### Next Steps
+## Next Steps
 
 The following pages will dive deeper into:
 

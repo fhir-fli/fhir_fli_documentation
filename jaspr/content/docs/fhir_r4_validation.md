@@ -1,22 +1,20 @@
 ---
 id: fhir_r4_validation
-title: Validation Package
+title: Resource Validation
 ---
-
-## FHIR R4 Validation
 
 The `fhir_r4_validation` library provides comprehensive validation functionality for FHIR R4 resources. It validates resources against their StructureDefinitions, checking structure, cardinality, bindings, extensions, and invariants to ensure compliance with the FHIR specification.
 
-### Installation
+## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_validation: ^0.9.0
-  fhir_r4: ^0.9.0
-  fhir_r4_path: ^0.9.0
+  fhir_r4_validation: ^0.12.0
+  fhir_r4: ^0.12.0
+  fhir_r4_path: ^0.12.0
 ```
 
-### Key Features
+## Key Features
 
 - **Structure Validation**: Validates that resources conform to their StructureDefinition
 - **Cardinality Validation**: Ensures required fields are present and cardinality constraints are met
@@ -25,9 +23,9 @@ dependencies:
 - **Invariant Validation**: Validates FHIRPath invariants defined in StructureDefinitions, evaluated with the model-independent FHIRPath engine (via `fhir_r4_path`)
 - **Questionnaire Response Validation**: Specialized validation for QuestionnaireResponse resources
 
-### Basic Usage
+## Basic Usage
 
-#### Validating a FHIR Resource
+### Validating a FHIR Resource
 
 The simplest way to validate a FHIR resource is using the `FhirValidationEngine`:
 
@@ -66,7 +64,7 @@ void main() async {
 }
 ```
 
-#### Validating from JSON
+### Validating from JSON
 
 You can also validate resources from JSON strings or maps:
 
@@ -102,7 +100,7 @@ final results = await validator.validateFhirMap(
 );
 ```
 
-### Validation Results
+## Validation Results
 
 The `ValidationResults` class provides detailed information about validation outcomes:
 
@@ -130,7 +128,7 @@ final info = results.results.where((r) => r.severity == Severity.information);
 final jsonResults = results.toJson();
 ```
 
-#### ValidationDiagnostics
+### ValidationDiagnostics
 
 Each validation result contains:
 
@@ -139,11 +137,11 @@ Each validation result contains:
 - `severity`: The severity level (error, warning, or information)
 - `line` and `column`: Location information (if available)
 
-### Validation Types
+## Validation Types
 
 The validation engine performs several types of validation:
 
-#### 1. Structure Validation
+### 1. Structure Validation
 
 Validates that the resource structure matches its StructureDefinition:
 
@@ -154,7 +152,7 @@ Validates that the resource structure matches its StructureDefinition:
 // - Nested structures are valid
 ```
 
-#### 2. Cardinality Validation
+### 2. Cardinality Validation
 
 Ensures that required fields are present and cardinality constraints are met:
 
@@ -165,7 +163,7 @@ Ensures that required fields are present and cardinality constraints are met:
 // - Array sizes are within bounds
 ```
 
-#### 3. Binding Validation
+### 3. Binding Validation
 
 Validates code bindings against ValueSets and CodeSystems:
 
@@ -176,7 +174,7 @@ Validates code bindings against ValueSets and CodeSystems:
 // - ValueSet expansions are valid
 ```
 
-#### 4. Extension Validation
+### 4. Extension Validation
 
 Validates extensions and their structure:
 
@@ -187,7 +185,7 @@ Validates extensions and their structure:
 // - Required extension elements are present
 ```
 
-#### 5. Invariant Validation
+### 5. Invariant Validation
 
 Validates FHIRPath invariants defined in StructureDefinitions:
 
@@ -197,7 +195,7 @@ Validates FHIRPath invariants defined in StructureDefinitions:
 // - Invariant conditions are met
 ```
 
-### Providing StructureDefinitions
+## Providing StructureDefinitions
 
 By default, the validator will attempt to fetch StructureDefinitions automatically. However, you can provide your own:
 
@@ -214,7 +212,7 @@ final results = await validator.validateFhirResource(
 );
 ```
 
-### Questionnaire Response Validation
+## Questionnaire Response Validation
 
 The package includes specialized validation for QuestionnaireResponse resources:
 
@@ -229,7 +227,7 @@ final results = await validateQuestionnaireResponse(
 );
 ```
 
-### Error Handling
+## Error Handling
 
 The validator provides detailed error information:
 
@@ -250,9 +248,9 @@ try {
 }
 ```
 
-### Advanced Usage
+## Advanced Usage
 
-#### Custom HTTP Client
+### Custom HTTP Client
 
 You can provide a custom HTTP client for fetching StructureDefinitions:
 
@@ -266,7 +264,7 @@ final results = await validator.validateFhirResource(
 );
 ```
 
-#### Resource Cache
+### Resource Cache
 
 For better performance when validating multiple resources, you can use a resource cache:
 
@@ -278,7 +276,7 @@ final resourceCache = CanonicalResourceCache();
 // The validator will use the cache to avoid re-fetching StructureDefinitions
 ```
 
-### Example: Complete Validation Workflow
+## Example: Complete Validation Workflow
 
 ```dart
 import 'dart:convert';
@@ -321,14 +319,14 @@ Future<void> validatePatient(Patient patient) async {
 }
 ```
 
-### Performance Considerations
+## Performance Considerations
 
 - StructureDefinitions are cached automatically to avoid redundant fetching
 - For batch validation, reuse the `FhirValidationEngine` instance
 - Consider providing StructureDefinitions directly if you have them available
 - Use a `ResourceCache` for better performance with multiple validations
 
-### Integration with Other Packages
+## Integration with Other Packages
 
 The validation package integrates seamlessly with other FHIR-FLI packages:
 
@@ -337,7 +335,7 @@ The validation package integrates seamlessly with other FHIR-FLI packages:
 - **fhir_r4_db**: Can validate resources before saving to the database
 - **fhir_r4_at_rest**: Can validate resources before sending to a FHIR server
 
-### Conclusion
+## Conclusion
 
 The `fhir_r4_validation` package provides comprehensive validation capabilities for FHIR resources, ensuring they conform to the FHIR specification. Whether you're validating resources before saving them, before sending them to a server, or as part of a data quality pipeline, this package provides the tools you need to ensure FHIR compliance.
 

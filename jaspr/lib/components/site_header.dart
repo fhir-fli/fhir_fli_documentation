@@ -13,8 +13,8 @@ import 'package:jaspr_content/components/sidebar_toggle_button.dart';
 /// `build()` via `Document.head` — there is no global header stylesheet.
 /// Because this component replaces `Header`, the upstream `Header` is never
 /// mounted and that CSS would never reach the page. So [SiteHeader] carries
-/// an identical copy of those style rules itself, making it a fully
-/// self-contained drop-in replacement whose styling cannot silently vanish.
+/// a copy of those style rules itself, making it a fully self-contained
+/// drop-in replacement whose styling cannot silently vanish.
 class SiteHeader extends StatelessComponent {
   const SiteHeader({
     required this.logo,
@@ -60,20 +60,22 @@ class SiteHeader extends StatelessComponent {
     ]);
   }
 
-  /// Verbatim copy of jaspr_content `Header`'s own `_styles`. Kept identical
-  /// so this component renders pixel-for-pixel like the upstream header.
+  /// The upstream `Header._styles`, plus rules for narrow screens: the title
+  /// gives up its fixed 17rem basis, the text nav links disappear (they are
+  /// repeated in the sidebar's mobile group), and the GitHub button keeps
+  /// only its icon.
   static List<StyleRule> get _styles => [
     css('.header', [
       css('&').styles(
-        height: 4.rem,
         display: Display.flex,
-        alignItems: AlignItems.center,
-        gap: Gap.column(1.rem),
+        height: 4.rem,
         padding: Padding.symmetric(horizontal: 1.rem, vertical: .25.rem),
         margin: Margin.symmetric(horizontal: Unit.auto),
         border: Border.only(
           bottom: BorderSide(color: Color('#0000000d'), width: 1.px),
         ),
+        alignItems: AlignItems.center,
+        gap: Gap.column(1.rem),
       ),
       css.media(MediaQuery.all(minWidth: 768.px), [
         css('&').styles(padding: Padding.symmetric(horizontal: 2.5.rem)),
@@ -81,25 +83,33 @@ class SiteHeader extends StatelessComponent {
       css('.header-title', [
         css('&').styles(
           display: Display.inlineFlex,
-          flex: Flex(basis: 17.rem),
           alignItems: AlignItems.center,
           gap: Gap.column(.75.rem),
+          flex: Flex(basis: 17.rem),
+          textDecoration: TextDecoration.none,
+          whiteSpace: WhiteSpace.noWrap,
         ),
-        css('img').styles(height: 1.5.rem, width: Unit.auto),
-        css('span').styles(fontWeight: FontWeight.w700),
+        css('img').styles(width: Unit.auto, height: 1.75.rem),
+        css('span').styles(fontWeight: FontWeight.w700, letterSpacing: 0.01.em),
       ]),
       css('.header-content', [
         css('&').styles(
           display: Display.flex,
-          flex: Flex(grow: 1),
           justifyContent: JustifyContent.end,
+          flex: Flex(grow: 1),
         ),
       ]),
       css('.header-items', [
         css('&').styles(
           display: Display.flex,
+          alignItems: AlignItems.center,
           gap: Gap.column(0.25.rem),
         ),
+      ]),
+      css.media(MediaQuery.all(maxWidth: 767.px), [
+        css('.header-title').styles(flex: Flex(basis: Unit.auto)),
+        css('.header-items .nav-link').styles(display: Display.none),
+        css('.github-button .github-info').styles(display: Display.none),
       ]),
     ]),
   ];

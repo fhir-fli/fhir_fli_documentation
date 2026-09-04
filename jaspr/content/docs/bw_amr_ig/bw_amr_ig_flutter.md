@@ -1,13 +1,11 @@
 ---
 id: bw_amr_ig_flutter
-title: Flutter Application
+title: Flutter Data Capture App
 ---
-
-## Flutter Data Capture Application
 
 The Botswana AMR platform includes a Flutter/Dart application for capturing AMR culture and susceptibility data at the point of care.
 
-### Architecture
+## Architecture
 
 The Flutter app captures structured data and stores it as FHIR resources on a FHIR R4 server:
 
@@ -28,7 +26,7 @@ The Flutter app captures structured data and stores it as FHIR resources on a FH
 └─────────────────────────┘
 ```
 
-### Model Classes
+## Model Classes
 
 The app includes builder classes that construct FHIR resources from form data:
 
@@ -45,7 +43,7 @@ The app includes builder classes that construct FHIR resources from form data:
 
 Each builder class has a `buildResource()` method that returns a fully conformant FHIR resource using the [fhir_r4](docs/core/fhir_r4) package.
 
-### ValueSets in Dart
+## ValueSets in Dart
 
 Pre-generated Dart files provide ValueSet coding constants for dropdowns and validation:
 
@@ -56,7 +54,7 @@ Pre-generated Dart files provide ValueSet coding constants for dropdowns and val
 - AST methods (disk diffusion, MIC, Etest, automated)
 - Ward types (inpatient, outpatient, emergency, ICU)
 
-### Packages
+## Packages
 
 The repository contains two Dart packages:
 
@@ -67,7 +65,7 @@ The repository contains two Dart packages:
 
 The export package is intentionally separate — it's used server-side or from a web interface where someone can log in, run the export, and produce a file for WHONET or GLASS upload. See [WHONET Export](docs/bw_amr_ig/bw_amr_ig_whonet) for usage details.
 
-### Installation
+## Installation
 
 ```yaml
 # For the data capture app

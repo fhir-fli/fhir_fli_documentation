@@ -1,6 +1,6 @@
 ---
 id: migration
-title: Migration
+title: Migration Guide
 ---
 
 ## Upgrading fhir_r4 0.8.x → 0.9.0

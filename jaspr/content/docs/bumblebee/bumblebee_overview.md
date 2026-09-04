@@ -1,9 +1,7 @@
 ---
 id: bumblebee_overview
-title: Overview
+title: Bumblebee
 ---
-
-## Bumblebee
 
 **A clinical record for emergency medical teams.** It exists to help a volunteer
 clinician take care of a patient in a disaster — offline, on a cheap phone, with

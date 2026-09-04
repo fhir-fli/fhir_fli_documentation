@@ -6,6 +6,8 @@
 
 import 'package:jaspr/client.dart';
 
+import 'package:fhir_fli_docs/components/code_copy_button.dart'
+    deferred as _code_copy_button;
 import 'package:jaspr_content/components/_internal/zoomable_image.dart'
     deferred as _zoomable_image;
 import 'package:jaspr_content/components/github_button.dart'
@@ -33,6 +35,10 @@ import 'package:jaspr_content/components/theme_toggle.dart'
 /// ```
 ClientOptions get defaultClientOptions => ClientOptions(
   clients: {
+    'code_copy_button': ClientLoader(
+      (p) => _code_copy_button.CodeCopyButton(),
+      loader: _code_copy_button.loadLibrary,
+    ),
     'jaspr_content:zoomable_image': ClientLoader(
       (p) => _zoomable_image.ZoomableImage(
         src: p['src'] as String,

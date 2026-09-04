@@ -1,23 +1,21 @@
 ---
 id: bw_amr_ig_whonet
-title: WHONET Export
+title: WHONET and GLASS Export
 ---
 
-## WHONET and GLASS Export
-
-### Overview
+## Overview
 
 Laboratory data stored as FHIR resources can be exported to flat-file formats for use with [WHONET](https://whonet.org/) or submission to WHO [GLASS](https://www.who.int/initiatives/glass) (Global Antimicrobial Resistance and Use Surveillance System).
 
 The `$export-whonet` operation on DiagnosticReport flattens the FHIR resource hierarchy into one row per isolate, with a column per antibiotic for S/I/R interpretation and MIC values.
 
-### Operation
+## Operation
 
 ```
 POST [base]/DiagnosticReport/$export-whonet
 ```
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -26,11 +24,11 @@ POST [base]/DiagnosticReport/$export-whonet
 | `facility` | string | Filter by facility name |
 | `format` | code | `whonet` (pipe-delimited) or `glass` (GLASS CSV) |
 
-#### Output
+### Output
 
 A `Binary` resource with `contentType: text/csv` containing the flattened data.
 
-### How It Works
+## How It Works
 
 1. Query DiagnosticReports matching the date range and facility filters
 2. For each report, resolve the Encounter (ward type, admission date), Patient (demographics), and Specimen (type, collection date)
@@ -38,7 +36,7 @@ A `Binary` resource with `contentType: text/csv` containing the flattened data.
 4. Pivot each SusceptibilityObservation under that organism into columns
 5. Output as pipe-delimited text or GLASS batch CSV
 
-### GLASS Classification
+## GLASS Classification
 
 The Encounter profile captures data needed for GLASS origin classification:
 
@@ -46,7 +44,7 @@ The Encounter profile captures data needed for GLASS origin classification:
 - **Admission date** (`Encounter.period.start`): A specimen collected ≥ 2 calendar days after admission is classified as hospital-acquired
 - **Facility** (`Encounter.serviceProvider`): Maps to the GLASS laboratory/institution identifier
 
-### Workflow
+## Workflow
 
 ```
 Flutter app → FHIR server → $export-whonet → WHONET / GLASS
@@ -58,11 +56,11 @@ Flutter app → FHIR server → $export-whonet → WHONET / GLASS
 
 ConceptMaps are used server-side during export to translate FHIR terminology codes to WHONET-native codes. The Flutter application does not need the ConceptMaps — it works with standard FHIR terminologies.
 
-### `bw_amr_export` Dart Package
+## `bw_amr_export` Dart Package
 
 The export logic is implemented as a standalone Dart package (`export/` in the [bw-amr-ig repository](https://github.com/Dokotela/bw-amr-ig/tree/main/export)). It can be used from a FHIR server, a web application, or a CLI tool.
 
-#### Components
+### Components
 
 | Class | Purpose |
 |-------|---------|
@@ -72,7 +70,7 @@ The export logic is implemented as a standalone Dart package (`export/` in the [
 | `GlassExporter` | Generates WHO GLASS CSV with ATC codes and HA/CO origin classification |
 | `IsolateRow` | Data model for a single flattened isolate row |
 
-#### Usage
+### Usage
 
 ```dart
 import 'dart:io';
@@ -95,7 +93,7 @@ final whonetOutput = WhonetExporter().export(rows);
 final glassOutput = GlassExporter(index: index).export(rows);
 ```
 
-#### Installation
+### Installation
 
 ```yaml
 dependencies:

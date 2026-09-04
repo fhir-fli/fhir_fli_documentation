@@ -1,13 +1,11 @@
 ---
 id: restful_requests
-title: Requests
+title: RESTful Requests
 ---
-
-## RESTful Requests
 
 The `fhir_r4_at_rest` library provides a streamlined way to construct RESTful API calls for FHIR operations. Instead of dealing with the complexities of building URLs, handling HTTP methods, and managing headers, this library offers a type-safe approach through a collection of request classes.
 
-### Basic Concepts
+## Basic Concepts
 
 All request classes in the library inherit from the abstract `FhirRequest` class, which provides common functionality:
 
@@ -16,7 +14,7 @@ All request classes in the library inherit from the abstract `FhirRequest` class
 - URI construction
 - Response handling
 
-### Common Request Structure
+## Common Request Structure
 
 All request classes share a similar construction pattern:
 
@@ -35,11 +33,11 @@ final request = FhirSomeRequest(
 final response = await request.sendRequest();
 ```
 
-### Request Types
+## Request Types
 
 The library supports all standard FHIR RESTful operations:
 
-#### 1. Read Request
+### 1. Read Request
 
 Retrieves a specific resource by its ID.
 
@@ -55,7 +53,7 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/Patient/12345?_format=json
 ```
 
-#### 2. VRead Request
+### 2. VRead Request
 
 Retrieves a specific version of a resource.
 
@@ -72,7 +70,7 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/Patient/12345/_history/2?_format=json
 ```
 
-#### 3. Update Request
+### 3. Update Request
 
 Updates an existing resource.
 
@@ -98,7 +96,7 @@ final response = await request.sendRequest();
 // PUT http://hapi.fhir.org/baseR4/Patient/12345?_format=json
 ```
 
-#### 4. Patch Request
+### 4. Patch Request
 
 Applies a partial update to a resource using JSON Patch.
 
@@ -122,7 +120,7 @@ final response = await request.sendRequest();
 // PATCH http://hapi.fhir.org/baseR4/Patient/12345?_format=json
 ```
 
-#### 5. Delete Request
+### 5. Delete Request
 
 Deletes a resource by its ID.
 
@@ -138,7 +136,7 @@ final response = await request.sendRequest();
 // DELETE http://hapi.fhir.org/baseR4/Patient/12345?_format=json
 ```
 
-#### 6. Create Request
+### 6. Create Request
 
 Creates a new resource.
 
@@ -162,7 +160,7 @@ final response = await request.sendRequest();
 // POST http://hapi.fhir.org/baseR4/Patient?_format=json
 ```
 
-#### 7. History Request
+### 7. History Request
 
 Retrieves the history of changes to a specific resource.
 
@@ -178,7 +176,7 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/Patient/12345/_history?_format=json
 ```
 
-#### 8. History All Request
+### 8. History All Request
 
 Retrieves the history of changes to all resources.
 
@@ -192,7 +190,7 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/_history?_format=json
 ```
 
-#### 9. Capabilities Request
+### 9. Capabilities Request
 
 Retrieves the server's capability statement.
 
@@ -207,7 +205,7 @@ final response = await request.sendRequest();
 // GET http://hapi.fhir.org/baseR4/metadata?mode=normative&_format=json
 ```
 
-#### 10. Transaction Request
+### 10. Transaction Request
 
 Submits a bundle of operations to be processed as a single transaction.
 
@@ -242,7 +240,7 @@ final response = await request.sendRequest();
 // POST http://hapi.fhir.org/baseR4?_format=json
 ```
 
-#### 11. Batch Request
+### 11. Batch Request
 
 Similar to Transaction but allows operations to be processed independently.
 
@@ -286,7 +284,7 @@ final response = await request.sendRequest();
 // POST http://hapi.fhir.org/baseR4?_format=json
 ```
 
-#### 12. Operation Request
+### 12. Operation Request
 
 Invokes a named operation on the server, resource type, or resource instance.
 
@@ -326,7 +324,7 @@ final response = await request.sendRequest();
 
 Operations use GET by default. Pass `usePost: true` to send the operation as a POST with the parameters JSON-encoded in the request body instead of the URL.
 
-### [Request Parameters](docs/at_rest/restful_parameters)
+## [Request Parameters](docs/at_rest/restful_parameters)
 
 All request classes support optional parameters through the `RestfulParameters` class:
 
@@ -345,7 +343,7 @@ final request = FhirReadRequest(
 );
 ```
 
-### Working with HTTP Client
+## Working with HTTP Client
 
 By default, the library uses `http.Client()` to make requests. You can provide your own client for custom behavior:
 
@@ -360,7 +358,7 @@ final request = FhirReadRequest(
 );
 ```
 
-### Handling Responses
+## Handling Responses
 
 The `sendRequest()` method returns a standard `http.Response` object:
 
@@ -390,7 +388,7 @@ try {
 }
 ```
 
-### Structured Response Parsing
+## Structured Response Parsing
 
 A FHIR server usually responds with a single resource, a Bundle, or an OperationOutcome. The `parseRequestResult` function sorts whatever came back into a `ReturnResults` object with separate lists for resources, informational OperationOutcomes, and error OperationOutcomes:
 
@@ -412,6 +410,6 @@ for (final info in result.informationOperationOutcomes) {
 
 If you expect a specific resource type, use `parseRequestResultForType<T>`. Resources of type `T` land in `result.resources`, while resources of any other type are wrapped in error OperationOutcomes for troubleshooting.
 
-### Conclusion
+## Conclusion
 
 The `fhir_r4_at_rest` library simplifies interactions with FHIR servers by providing typed classes for each RESTful operation. This approach improves code readability and reduces the likelihood of errors when constructing FHIR API requests.

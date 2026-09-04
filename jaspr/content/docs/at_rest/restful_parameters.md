@@ -1,15 +1,13 @@
 ---
 id: restful_parameters
-title: Parameters
+title: RESTful Parameters
 ---
 
-## RESTful Parameters
-
-### Introduction
+## Introduction
 
 The `fhir_r4_at_rest` library provides a streamlined approach to constructing FHIR query parameters through the `RestfulParameters` class and resource-specific search classes. This system allows for type-safe, fluent construction of complex queries without having to manually build query strings.
 
-### Basic Usage
+## Basic Usage
 
 The base `RestfulParameters` class provides a flexible way to add common parameters to any FHIR request:
 
@@ -32,11 +30,11 @@ final request = FhirReadRequest(
 );
 ```
 
-### Common Parameter Methods
+## Common Parameter Methods
 
 The `RestfulParameters` class includes several convenience methods for commonly used parameters:
 
-#### General Parameters
+### General Parameters
 
 ```dart
 // Limit results count
@@ -56,7 +54,7 @@ parameters.requestSummary(Summary.true_);
 // Other summary options: false_, text, count, data, none
 ```
 
-#### Custom Parameters
+### Custom Parameters
 
 For any parameter not covered by the convenience methods, you can use the generic `add` method:
 
@@ -74,7 +72,7 @@ parameters.add('_include', 'Patient:organization');
 parameters.add('_elements', 'name,birthDate,gender');
 ```
 
-### Resource-Specific Search Classes
+## Resource-Specific Search Classes
 
 For more precise control over resource-specific search parameters, the library provides generated search classes for each resource type:
 
@@ -98,7 +96,7 @@ final request = FhirSearchRequest(
 
 The search classes provide type-safe methods for all valid search parameters defined in the FHIR specification for each resource type.
 
-### Search Prefixes
+## Search Prefixes
 
 Per the FHIR specification, value prefixes (`eq`, `ne`, `gt`, `lt`, `ge`,
 `le`, `sa`, `eb`, `ap`) apply only to the ordered parameter types — **date,
@@ -133,7 +131,7 @@ have no `modifier` argument (FHIR name modifiers such as `:exact`,
 
 Reference search parameters do not have dedicated methods in the generated search classes; use the generic `add()` method for those (e.g. `parameters.add('subject', 'Patient/12345')`).
 
-### Chaining Multiple Conditions
+## Chaining Multiple Conditions
 
 The fluent API allows for building complex queries by chaining multiple conditions:
 
@@ -151,7 +149,7 @@ final search = SearchPatient()
 // Patient?gender=female&birthdate=gt1980-01-01&family=Smith
 ```
 
-### Token Parameters
+## Token Parameters
 
 Token parameters (like identifiers) allow for system and value pairs:
 
@@ -167,7 +165,7 @@ final search = SearchPatient()
 // Patient?identifier=http://hospital.example.org/identifiers/mrn|12345
 ```
 
-### Quantity Parameters
+## Quantity Parameters
 
 Quantity parameters include value, unit, and system:
 
@@ -186,7 +184,7 @@ final search = SearchObservation()
   );
 ```
 
-### Missing Values
+## Missing Values
 
 You can search for resources where a parameter is missing using the special `:missing` modifier:
 
@@ -199,7 +197,7 @@ parameters.add('gender:missing', 'true');
 // RestfulParameters
 ```
 
-### Combined Searches
+## Combined Searches
 
 For complex searches across multiple resources, you can use the `FhirSearchRequest` with type "All":
 
@@ -218,7 +216,7 @@ final request = FhirSearchRequest(
 );
 ```
 
-### POST Search
+## POST Search
 
 For very long or complex queries, you can use POST instead of GET:
 
@@ -233,7 +231,7 @@ final request = FhirSearchRequest(
 
 This will send the search parameters in the request body instead of the URL.
 
-### Building the Query String
+## Building the Query String
 
 When you need to access the raw query string for debugging or other purposes:
 
@@ -242,9 +240,9 @@ final queryString = parameters.buildQuery();
 print(queryString); // _count=20&_pretty=true&_sort=date
 ```
 
-### Examples of Common Searches
+## Examples of Common Searches
 
-#### Patient Search Examples
+### Patient Search Examples
 
 ```dart
 // Find patients with a specific MRN
@@ -272,7 +270,7 @@ final search = SearchPatient()
   .addressState(FhirString('MA'));
 ```
 
-#### Observation Search Examples
+### Observation Search Examples
 
 ```dart
 // Find blood pressure observations
@@ -299,6 +297,6 @@ final search = SearchObservation()
   );
 ```
 
-### Conclusion
+## Conclusion
 
 The RESTful parameters system in `fhir_r4_at_rest` provides a powerful, type-safe approach to constructing FHIR query parameters. By using the fluent API and resource-specific search classes, you can build complex queries with confidence, knowing that the parameter names and types are validated against the FHIR specification.

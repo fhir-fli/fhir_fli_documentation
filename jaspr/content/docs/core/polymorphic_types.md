@@ -3,17 +3,15 @@ id: polymorphic_types
 title: Polymorphic Types
 ---
 
-## Polymorphic Types in FHIR-FLI
-
-### Understanding Polymorphic Fields
+## Understanding Polymorphic Fields
 
 FHIR resources often include polymorphic fields - fields that can contain different types of data depending on the context. For example, a field might accept a date, a datetime, a period, or even a string in different scenarios. This flexibility is powerful but creates implementation challenges, especially in strongly-typed languages like Dart.
 
-### How FHIR-FLI Handles Polymorphism
+## How FHIR-FLI Handles Polymorphism
 
 FHIR-FLI uses a consistent approach to handle polymorphic fields through abstract classes and clear naming conventions:
 
-#### 1. The "X" Naming Convention
+### 1. The "X" Naming Convention
 
 Polymorphic fields in FHIR-FLI are typically named with an "X" suffix (e.g., `scheduledX`, `productX`, `subjectX`). This naming convention clearly indicates that the field can contain multiple possible types.
 
@@ -23,7 +21,7 @@ final ScheduledXCarePlanDetail? scheduledX;
 final ProductXCarePlanDetail? productX;
 ```
 
-#### 2. Abstract Base Classes
+### 2. Abstract Base Classes
 
 For each polymorphic field, FHIR-FLI defines an abstract class that all potential types for that field will implement:
 
@@ -40,7 +38,7 @@ class FhirString extends PrimitiveType implements ScheduledXCarePlanDetail { ...
 
 This approach allows the compiler to verify type safety while maintaining flexibility.
 
-#### 3. Type-Specific Getters
+### 3. Type-Specific Getters
 
 To make working with polymorphic fields more intuitive, FHIR-FLI includes type-specific getter methods that return the value only if it matches the requested type:
 
@@ -53,9 +51,9 @@ FhirString? get scheduledString => scheduledX?.isAs<FhirString>();
 
 These getters make it easy to access the field in its correct type without worrying about type casting or runtime errors.
 
-### Working with Polymorphic Fields
+## Working with Polymorphic Fields
 
-#### Setting Values
+### Setting Values
 
 When creating or updating a FHIR resource, you can directly use any valid type for a polymorphic field:
 
@@ -86,11 +84,11 @@ final anotherCarePlanDetail = CarePlanDetail(
 
 The library handles the proper serialization and deserialization based on the type provided.
 
-#### Checking and Accessing Types
+### Checking and Accessing Types
 
 You can check the specific type of a polymorphic field and access it in several ways:
 
-##### 1. Using type-specific getters:
+#### 1. Using type-specific getters:
 
 ```dart
 // Check if scheduledX is a Timing and access it
@@ -100,7 +98,7 @@ if (carePlanDetail.scheduledTiming != null) {
 }
 ```
 
-##### 2. Using the isAs\<T\>() method:
+#### 2. Using the isAs\<T\>() method:
 
 ```dart
 // Check if productX is a CodeableConcept
@@ -110,7 +108,7 @@ if (carePlanDetail.productX?.isAs<CodeableConcept>() != null) {
 }
 ```
 
-##### 3. Using type checking:
+#### 3. Using type checking:
 
 ```dart
 if (carePlanDetail.productX is CodeableConcept) {
@@ -119,7 +117,7 @@ if (carePlanDetail.productX is CodeableConcept) {
 }
 ```
 
-### Important Considerations
+## Important Considerations
 
 1. **Single Type Limitation**: A polymorphic field can only contain one type at a time. For example, if `scheduledX` contains a `Timing`, it cannot simultaneously contain a `Period` or `FhirString`.
 
@@ -132,7 +130,7 @@ if (carePlanDetail.productX is CodeableConcept) {
 
 4. **Serialization**: When serialized to JSON, the field will be appropriately labeled based on its type, following the FHIR specification.
 
-### Example with Polymorphic Types
+## Example with Polymorphic Types
 
 Here's a complete example showing how to work with the polymorphic `scheduledX` field in `CarePlanDetail`:
 

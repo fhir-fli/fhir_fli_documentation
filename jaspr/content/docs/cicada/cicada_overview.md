@@ -1,13 +1,11 @@
 ---
 id: cicada_overview
-title: Cicada Overview
+title: Cicada Immunization Forecasting
 ---
-
-## Cicada Immunization Forecasting Engine
 
 Cicada is a Dart immunization forecasting engine that evaluates past vaccine doses and recommends future immunizations. It implements the CDC's [Clinical Decision Support for Immunization (CDSi)](https://www.cdc.gov/iis/cdsi/) specification and WHO Expanded Programme on Immunization (EPI) recommendations.
 
-### What It Does
+## What It Does
 
 Given a patient's demographics, immunization history, and clinical conditions, Cicada:
 
@@ -16,7 +14,7 @@ Given a patient's demographics, immunization history, and clinical conditions, C
 3. **Recommends** specific vaccines by vaccine group with a forecast status (Complete, Not Complete, Immune, Contraindicated, Not Recommended, Aged Out)
 4. **Serves** forecasts over HTTP via `$immds-forecast` (CDC) and `$immds-forecast-who` (WHO) endpoints
 
-### FHIR R4 Interface
+## FHIR R4 Interface
 
 Cicada uses FHIR R4 resources for both input and output:
 
@@ -32,7 +30,7 @@ Cicada uses FHIR R4 resources for both input and output:
 - `ImmunizationEvaluation` resources (one per evaluated dose per antigen, with valid/not valid status and reason)
 - `ImmunizationRecommendation` resources (one per vaccine group with forecast dates and status)
 
-### Dual Schedule Support
+## Dual Schedule Support
 
 Cicada supports two immunization schedules:
 
@@ -46,7 +44,7 @@ Cicada supports two immunization schedules:
 
 Switch between modes at runtime with `ForecastMode.cdc` or `ForecastMode.who`.
 
-### Test Results
+## Test Results
 
 Cicada has been extensively validated:
 
@@ -56,7 +54,7 @@ Cicada has been extensively validated:
 
 All remaining failures are verified as version mismatch issues between test data versions and engine version, not engine bugs.
 
-### Installation
+## Installation
 
 ```yaml
 dependencies:
@@ -70,7 +68,7 @@ dependencies:
 cd cicada && dart pub get
 ```
 
-### Source Code
+## Source Code
 
 - **Repository**: [github.com/fhir-fli/cicada](https://github.com/fhir-fli/cicada)
 - **Implementation Guide**: [Cicada Vaccination IG](https://fhir-fli.github.io/fhir_fli_documentation/cicada_ig/index.html)

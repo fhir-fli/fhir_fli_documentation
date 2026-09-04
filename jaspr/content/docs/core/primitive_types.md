@@ -3,9 +3,7 @@ id: primitive_types
 title: Primitive Types
 ---
 
-## Primitive Types in FHIR-FLI
-
-### Understanding FHIR Primitive Types
+## Understanding FHIR Primitive Types
 
 Primitive types are the fundamental building blocks of FHIR resources. While they appear simple (booleans, strings, numbers, etc.), FHIR defines specific validation rules and formats for each primitive type that differ from standard Dart types. FHIR-FLI implements these with strong typing and additional functionality.
 
@@ -17,9 +15,9 @@ In FHIR-FLI, all primitive types:
 - Provide appropriate getters to access values in their natural Dart types
 - Support polymorphism and can be used in various resource fields
 
-### Core Architecture
+## Core Architecture
 
-#### Internal Representation
+### Internal Representation
 
 All FHIR primitive types in FHIR-FLI store their primary value as a string:
 
@@ -30,7 +28,7 @@ final String? valueString;
 
 This approach ensures consistent serialization and supports FHIR's extensibility model. When you create a primitive type instance, your input value is validated and converted to a string representation.
 
-#### Element Metadata
+### Element Metadata
 
 FHIR primitive types can include an `Element` instance that contains metadata like extensions:
 
@@ -41,7 +39,7 @@ final Element? element;
 
 This allows primitives to carry extensions and other metadata alongside their core value.
 
-### Common Primitive Type Structure
+## Common Primitive Type Structure
 
 All primitive types follow a consistent pattern:
 
@@ -79,9 +77,9 @@ FhirBase
             ...
 ```
 
-### Working with Primitive Types
+## Working with Primitive Types
 
-#### Creating Primitive Types
+### Creating Primitive Types
 
 You can create primitive types in several ways:
 
@@ -98,7 +96,7 @@ final boolFromNative = true.toFhirBoolean;
 final uriFromNative = 'http://example.org'.toFhirUri;
 ```
 
-#### Reading Values
+### Reading Values
 
 Each primitive type provides typed getters to access its value in the appropriate Dart type:
 
@@ -119,7 +117,7 @@ final DateTime? dateTimeValue = myFhirDateTime.valueDateTime;
 final Uri? uriValue = myUri.valueUri;
 ```
 
-#### Value-only vs Element-only vs Both
+### Value-only vs Element-only vs Both
 
 FHIR primitives can exist in three states:
 
@@ -143,9 +141,9 @@ if (myBoolean.hasValueAndElement) {
 }
 ```
 
-### Specific Primitive Types
+## Specific Primitive Types
 
-#### Boolean (FhirBoolean)
+### Boolean (FhirBoolean)
 
 Represents FHIR `boolean` type:
 
@@ -160,7 +158,7 @@ final myBoolean2 = true.toFhirBoolean;
 final bool? value = myBoolean.valueBoolean;
 ```
 
-#### String Types (FhirString, FhirCode, FhirId, FhirMarkdown, etc.)
+### String Types (FhirString, FhirCode, FhirId, FhirMarkdown, etc.)
 
 Various string-based types with different validation rules:
 
@@ -177,7 +175,7 @@ final myString2 = 'Hello, FHIR!'.toFhirString;
 final String? stringValue = myString.valueString;
 ```
 
-#### URI Types (FhirUri, FhirUrl, FhirCanonical, FhirOid)
+### URI Types (FhirUri, FhirUrl, FhirCanonical, FhirOid)
 
 URI-based types with different validation rules:
 
@@ -202,7 +200,7 @@ final host = myUri.host;         // 'example.org'
 final pathSegments = myUri.pathSegments;
 ```
 
-#### Numeric Types (FhirInteger, FhirDecimal, etc.)
+### Numeric Types (FhirInteger, FhirDecimal, etc.)
 
 Various numeric types with different validation rules:
 
@@ -222,7 +220,7 @@ final double? decimalValue = myDecimal.valueDouble;
 final num? numValue = myDecimal.valueNum;
 ```
 
-#### Date and Time Types
+### Date and Time Types
 
 FHIR has multiple date/time types, all inherited from a common base:
 
@@ -260,7 +258,7 @@ final oneWeekLater = myDateTime + ExtendedDuration(weeks: 1);
 final oneDayEarlier = myDateTime - ExtendedDuration(days: 1);
 ```
 
-### Date/Time Precision and Comparisons
+## Date/Time Precision and Comparisons
 
 FHIR date/time types follow FHIRPath rules for precision when comparing values. For example:
 
@@ -278,11 +276,11 @@ dateTimeWithHour == dateOnly; // returns false (== must return bool, so an
                               // incomparable result is reported as false)
 ```
 
-### JSON Serialization: The FHIR Element Pattern
+## JSON Serialization: The FHIR Element Pattern
 
 FHIR primitive types have a unique serialization pattern that stems from FHIR's XML origins. In XML, primitives can have attributes (like extensions), but JSON doesn't have a native way to attach metadata to primitives. FHIR solves this with a special pattern:
 
-#### The "_value" Pattern
+### The "_value" Pattern
 
 For every primitive field in FHIR JSON, there can be a corresponding metadata field with the same name prefixed by an underscore:
 
@@ -298,7 +296,7 @@ For every primitive field in FHIR JSON, there can be a corresponding metadata fi
 }
 ```
 
-#### How FHIR-FLI Implements This Pattern
+### How FHIR-FLI Implements This Pattern
 
 FHIR-FLI's primitive types implement special JSON handling to support this pattern:
 
@@ -345,7 +343,7 @@ final myBooleanFromJson = FhirBoolean.fromJson({
 });
 ```
 
-#### Special Handling in Resources
+### Special Handling in Resources
 
 When primitive types are used within FHIR resources, the resource's `toJson()` and `fromJson()` methods automatically handle the field name transformation:
 
@@ -369,7 +367,7 @@ patient.toJson();
 // }
 ```
 
-#### List Handling
+### List Handling
 
 For lists of primitives, FHIR uses parallel arrays:
 
@@ -411,7 +409,7 @@ final parsedNames = FhirString.fromJsonList(
 );
 ```
 
-#### Important Considerations
+### Important Considerations
 
 1. **Different from Other Classes**: Primitive types have special JSON handling that differs from other FHIR classes to accommodate the FHIR JSON specification.
 
@@ -422,7 +420,7 @@ final parsedNames = FhirString.fromJsonList(
 4. **Complete Serialization**: This approach ensures all metadata (extensions, etc.) is properly preserved when serializing/deserializing FHIR resources.
 
 
-### Polymorphic Usage
+## Polymorphic Usage
 
 Primitive types implement various interfaces to support polymorphic fields:
 
@@ -438,7 +436,7 @@ final extension = FhirExtension(
 final boolValue = extension.valueBoolean?.valueBoolean;
 ```
 
-### Utility Methods
+## Utility Methods
 
 All primitive types include utility methods for common operations:
 
@@ -455,7 +453,7 @@ final clonedBoolean = myBoolean.clone();
 final updatedBoolean = myBoolean.copyWith(newValue: false);
 ```
 
-### Best Practices
+## Best Practices
 
 1. **Use extension methods** for cleaner code when converting from native types:
    ```dart
@@ -507,7 +505,7 @@ final updatedBoolean = myBoolean.copyWith(newValue: false);
    );
    ```
 
-### Common Pitfalls and Solutions
+## Common Pitfalls and Solutions
 
 1. **Problem**: Comparison across different date/time types
    **Solution**: Use the appropriate comparison methods or convert to consistent precision

@@ -1,20 +1,18 @@
 ---
 id: fhirant_cli
-title: CLI Usage
+title: FHIR ANT CLI
 ---
-
-## CLI Server
 
 FHIR ANT can also run as a standalone command-line server on any platform that supports Dart (Linux, macOS, Windows). This is useful for development, CI/CD, and server deployments.
 
-### Running
+## Running
 
 ```bash
 cd packages/fhirant_server
 dart run bin/server.dart
 ```
 
-### Options
+## Options
 
 | Flag | Default | Description |
 |---|---|---|
@@ -28,14 +26,14 @@ dart run bin/server.dart
 | `--dev-mode` | `false` | Disable authentication |
 | `--help`, `-h` | — | Show usage |
 
-### Environment Variables
+## Environment Variables
 
 | Variable | Description |
 |---|---|
 | `FHIRANT_ENCRYPTION_KEY` | Database encryption key |
 | `FHIRANT_JWT_SECRET` | JWT signing secret |
 
-### Examples
+## Examples
 
 ```bash
 # Basic server on port 3000
@@ -51,7 +49,7 @@ dart run bin/server.dart --https --cert-path cert.pem --key-path key.pem
 FHIRANT_ENCRYPTION_KEY=my-secret-key dart run bin/server.dart
 ```
 
-### Docker
+## Docker
 
 A Dockerfile is included for containerized deployments:
 
@@ -60,7 +58,7 @@ docker build -t fhirant .
 docker run -p 8080:8080 -e FHIRANT_ENCRYPTION_KEY=my-key fhirant
 ```
 
-### Testing
+## Testing
 
 ```bash
 # Run all server tests

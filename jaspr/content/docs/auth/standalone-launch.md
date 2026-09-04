@@ -3,11 +3,9 @@ id: standalone-launch
 title: Standalone Launch
 ---
 
-## Standalone Launch
-
 Standalone launch is used when your app launches independently (not embedded in an EHR) and needs to authenticate a user to access their health data.
 
-### When to Use Standalone Launch
+## When to Use Standalone Launch
 
 Use standalone launch for:
 - **Patient-facing mobile apps** - Apps patients download and use independently
@@ -15,7 +13,7 @@ Use standalone launch for:
 - **Consumer health apps** - Fitness, wellness, or health tracking applications
 - **Research apps** - Apps for clinical studies or data collection
 
-### How It Works
+## How It Works
 
 ```
 ┌─────────────┐                    ┌──────────────┐                    ┌─────────────┐
@@ -45,9 +43,9 @@ Use standalone launch for:
        │                                  │                                   │
 ```
 
-### Basic Implementation
+## Basic Implementation
 
-#### Step 1: Create the Client
+### Step 1: Create the Client
 
 ```dart
 import 'package:fhir_r4_auth/fhir_r4_auth.dart';
@@ -82,7 +80,7 @@ final client = SmartFhirClient(
 );
 ```
 
-#### Step 2: Authenticate
+### Step 2: Authenticate
 
 ```dart
 try {
@@ -99,7 +97,7 @@ try {
 }
 ```
 
-#### Step 3: Make FHIR Requests
+### Step 3: Make FHIR Requests
 
 `SmartFhirClient` is an authenticated `http.Client`. Once logged in, pass it to the typed request builders from the [`fhir_r4_at_rest`](docs/at_rest/fhir_r4_at_rest) package (or use it with any HTTP code) and it will attach the access token for you:
 
@@ -142,7 +140,7 @@ final createRequest = FhirCreateRequest(
 final created = await createRequest.sendRequest();
 ```
 
-### Complete Example
+## Complete Example
 
 Here's a complete Flutter app with standalone launch:
 
@@ -326,9 +324,9 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-### Configuration Options
+## Configuration Options
 
-#### Scopes
+### Scopes
 
 Scopes control what data your app can access:
 
@@ -353,7 +351,7 @@ scopes: [
 
 [Learn more about scopes →](https://www.hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html)
 
-#### Custom Parameters
+### Custom Parameters
 
 Add custom parameters to the authorization request:
 
@@ -367,7 +365,7 @@ config: SmartConfig(
 ),
 ```
 
-### Session Management
+## Session Management
 
 Add session management to handle timeouts:
 
@@ -398,7 +396,7 @@ client.onSessionTimeout?.listen((reason) {
 await client.recordActivity();
 ```
 
-### Error Handling
+## Error Handling
 
 Handle common error scenarios:
 
@@ -425,7 +423,7 @@ try {
 }
 ```
 
-### Testing
+## Testing
 
 Test standalone launch in your app:
 
@@ -435,7 +433,7 @@ Test standalone launch in your app:
 4. **Test token refresh** - Ensure tokens refresh automatically
 5. **Test logout** - Verify tokens are revoked on logout
 
-### Next Steps
+## Next Steps
 
 - **[Installation guide](docs/auth/installation)** - Platform-specific setup
 - **[Auth overview](docs/auth/fhir_r4_auth)** - Full API reference and feature overview

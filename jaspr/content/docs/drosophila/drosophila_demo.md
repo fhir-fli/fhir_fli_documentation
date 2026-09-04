@@ -3,8 +3,6 @@ id: drosophila_demo
 title: Drosophila Demo
 ---
 
-## Live Demo
-
 Try Drosophila with sample patient data. Select a patient to see matched clinical trials from ClinicalTrials.gov.
 
 [Open full screen](https://fhir-fli.github.io/fhir_fli_documentation/drosophila/)
@@ -15,7 +13,7 @@ Try Drosophila with sample patient data. Select a patient to see matched clinica
   style="width: 100%; height: 800px; border: none;">
 </iframe>
 
-### Sample Patients
+## Sample Patients
 
 The demo includes three sample oncology patients:
 
@@ -27,7 +25,7 @@ The demo includes three sample oncology patients:
 
 Each patient has a complete profile including demographics, staging, biomarkers, labs, medications, and procedures. The demo searches ClinicalTrials.gov in real time and matches the patient against actual trial eligibility criteria.
 
-### What You're Seeing
+## What You're Seeing
 
 - **Trial cards** show a match score (0&ndash;100%), verdict badge, phase, and summary counts of met/not-met/indeterminate criteria
 - **Filter chips** let you toggle between all trials, likely eligible, and needs review

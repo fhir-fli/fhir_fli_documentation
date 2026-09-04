@@ -5,6 +5,8 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/server.dart';
+import 'package:fhir_fli_docs/components/code_copy_button.dart'
+    as _code_copy_button;
 import 'package:jaspr_content/components/_internal/zoomable_image.dart'
     as _zoomable_image;
 import 'package:jaspr_content/components/callout.dart' as _callout;
@@ -33,6 +35,8 @@ import 'package:jaspr_content/components/theme_toggle.dart' as _theme_toggle;
 ServerOptions get defaultServerOptions => ServerOptions(
   clientId: 'main.client.dart.js',
   clients: {
+    _code_copy_button.CodeCopyButton:
+        ClientTarget<_code_copy_button.CodeCopyButton>('code_copy_button'),
     _zoomable_image.ZoomableImage: ClientTarget<_zoomable_image.ZoomableImage>(
       'jaspr_content:zoomable_image',
       params: __zoomable_imageZoomableImage,

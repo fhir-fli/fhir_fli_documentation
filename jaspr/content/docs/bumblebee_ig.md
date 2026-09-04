@@ -1,9 +1,7 @@
 ---
 id: bumblebee_ig
-title: Implementation Guide
+title: Bumblebee Implementation Guide
 ---
-
-## Bumblebee Implementation Guide
 
 The Bumblebee IG defines the FHIR R4 clinical record for an emergency medical
 team working offline in a disaster: what a clinician records to take care of a

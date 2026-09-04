@@ -3,8 +3,6 @@ id: basic_object
 title: Basics of FHIR Classes
 ---
 
-## FHIR Classes
-
 These classes don't differ much from any other object oriented classes. If you want to create a patient for instance, you do it just like this:
 
 ```dart

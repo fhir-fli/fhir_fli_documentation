@@ -3,19 +3,17 @@ id: fhir_mapping_engine
 title: FHIR Mapping Engine
 ---
 
-## FHIR Mapping Engine in FHIR-FLI
-
-### Understanding the Mapping Engine
+## Understanding the Mapping Engine
 
 The FHIR Mapping Engine is the component that executes StructureMap resources to transform data from one format to another. It implements the FHIR mapping standard, handling complex transformations while ensuring type safety and correctness.
 
-### Key Components of the Mapping System
+## Key Components of the Mapping System
 
-#### Resource Cache Hierarchy
+### Resource Cache Hierarchy
 
 The mapping engine relies on a cache system to efficiently access and store canonical resources. The cache classes are provided by the `fhir_r4_path` package (a dependency of `fhir_r4_mapping`) and come in three levels:
 
-##### 1. ResourceCache (Base Abstract Class)
+#### 1. ResourceCache (Base Abstract Class)
 
 ```dart
 abstract class ResourceCache {
@@ -40,7 +38,7 @@ abstract class ResourceCache {
 
 The base `ResourceCache` defines the interface for canonical resource lookup operations. As an abstract class, it can't be instantiated directly.
 
-##### 2. CanonicalResourceCache
+#### 2. CanonicalResourceCache
 
 This implementation provides local, in-memory caching of canonical resources. It only returns resources that have been explicitly stored in the cache:
 
@@ -53,7 +51,7 @@ final sd = await cache.getStructureDefinition(
 );
 ```
 
-##### 3. OnlineResourceCache
+#### 3. OnlineResourceCache
 
 ```dart
 final cache = OnlineResourceCache();
@@ -61,7 +59,7 @@ final cache = OnlineResourceCache();
 
 This extends `CanonicalResourceCache` to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it over HTTP from its canonical URL, caching the result for subsequent lookups. You can optionally pass your own `http` `Client`.
 
-#### Resource Builders
+### Resource Builders
 
 FHIR resources are typically immutable and often have required fields. During mapping, resources need to be built incrementally, which creates challenges:
 
@@ -90,9 +88,9 @@ Key characteristics of builders:
 - Every immutable class exposes `toBuilder` for the reverse direction
 - `FhirBaseBuilder.setChildByName` allows dynamic, name-based writes — this is what the mapping engine uses to set fields while executing rules (the immutable classes only support dynamic *reads* via `getChildrenByName`)
 
-### Creating and Using the Mapping Engine
+## Creating and Using the Mapping Engine
 
-#### Engine Creation
+### Engine Creation
 
 Like the parser, the mapping engine must be created asynchronously. It takes a single argument — the resource cache; the StructureMap itself is passed to each transform call:
 
@@ -104,7 +102,7 @@ final resourceCache = CanonicalResourceCache();
 final mapEngine = await FhirMapEngine.create(resourceCache);
 ```
 
-#### Basic Transformation
+### Basic Transformation
 
 The simplest way to transform data is with the `transformFromFhir` method:
 
@@ -129,7 +127,7 @@ Future<Person> transformPatientToPerson(
 
 Note that on failure the engine does not throw: it returns an `OperationOutcome` describing the error, so check the runtime type of the result before casting.
 
-#### Working with Builders
+### Working with Builders
 
 For more control or when dealing with partially constructed resources, you can work directly with builders. `transformBuilder` accepts builders for source and target and returns the already-built (immutable) result:
 
@@ -155,7 +153,7 @@ Future<FhirBase> transformWithBuilders(
 }
 ```
 
-#### Extended Type Creation
+### Extended Type Creation
 
 Sometimes mapping needs to create resources dynamically based on type names. You can provide a callback to handle custom resource creation:
 
@@ -177,9 +175,9 @@ FhirBaseBuilder? customEmptyFromType(String type) {
 mapEngine.extendedEmptyFromType = customEmptyFromType;
 ```
 
-### Advanced Mapping Features
+## Advanced Mapping Features
 
-#### Working with Different Resource Caches
+### Working with Different Resource Caches
 
 You can select the appropriate resource cache based on your needs:
 
@@ -195,7 +193,7 @@ await onlineCache.saveCanonicalResource(structureDefinitionA);  // Priority loca
 // Other resources will be fetched from online sources if needed
 ```
 
-#### Pre-loading Required Resources
+### Pre-loading Required Resources
 
 For optimal performance (and for offline operation), pre-load resources the mapping will need:
 
@@ -210,7 +208,7 @@ await resourceCache.saveCanonicalResource(valueSetC);
 final mapEngine = await FhirMapEngine.create(resourceCache);
 ```
 
-### Complete Example
+## Complete Example
 
 Here's a complete example that demonstrates the mapping process:
 
@@ -273,7 +271,7 @@ Future<StructureDefinition> loadStructureDefinition(String filename) async {
 }
 ```
 
-### Testing Mappings
+## Testing Mappings
 
 For testing purposes, FHIR-FLI provides a convenience function:
 
@@ -307,7 +305,7 @@ test('Patient to Person mapping', () async {
 });
 ```
 
-### Best Practices
+## Best Practices
 
 1. **Reuse engines** for repeated transformations of the same map
 2. **Pre-load resources** in the cache for performance
@@ -316,14 +314,14 @@ test('Patient to Person mapping', () async {
 5. **Implement custom type handlers** for domain-specific resource types
 6. **Test maps thoroughly** with representative data
 
-### Limitations and Considerations
+## Limitations and Considerations
 
 - Mapping complex nested structures may require multiple passes
 - Some complex FHIR mapping features might have performance implications
 - Resource resolution from online sources introduces latency
 - Circular references in maps should be handled carefully
 
-### Next Steps
+## Next Steps
 
 With a solid understanding of the FHIR Mapping engine, you're ready to implement complex data transformations in your FHIR-FLI applications. Consider exploring the following:
 

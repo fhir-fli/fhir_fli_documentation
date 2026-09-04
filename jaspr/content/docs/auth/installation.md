@@ -1,43 +1,41 @@
 ---
 id: installation
-title: Installation
+title: Auth Installation
 ---
-
-## Installation
 
 This guide walks through installing and configuring `fhir_r4_auth` in your Flutter project.
 
-### Requirements
+## Requirements
 
 - **Flutter**: >= 3.10.0
 - **Dart**: >= 3.0.0
 - **Platforms**: iOS, Android, Web, macOS, Windows, Linux
 
-### Add to Your Project
+## Add to Your Project
 
-#### 1. Update pubspec.yaml
+### 1. Update pubspec.yaml
 
 Add the dependencies to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.9.0
-  fhir_r4: ^0.9.0
+  fhir_r4_auth: ^0.12.0
+  fhir_r4: ^0.12.0
 ```
 
 For R5 or R6, use `fhir_r5_auth`/`fhir_r6_auth` and `fhir_r5`/`fhir_r6` instead.
 
-#### 2. Install Packages
+### 2. Install Packages
 
 ```bash
 flutter pub get
 ```
 
-### Platform Configuration
+## Platform Configuration
 
 Different platforms require specific setup for OAuth authentication to work properly.
 
-#### iOS Configuration
+### iOS Configuration
 
 Add the following to `ios/Runner/Info.plist`:
 
@@ -55,7 +53,7 @@ Add the following to `ios/Runner/Info.plist`:
 
 Replace `com.yourcompany.yourapp` with your app's bundle ID or custom scheme.
 
-#### Android Configuration
+### Android Configuration
 
 In `android/app/build.gradle.kts`, add the redirect scheme:
 
@@ -77,7 +75,7 @@ If you use `flutter_web_auth_2` alongside `flutter_appauth` (transitive dependen
     tools:node="remove" />
 ```
 
-#### Web Configuration
+### Web Configuration
 
 Create a file `web/callback.html`:
 
@@ -98,7 +96,7 @@ Create a file `web/callback.html`:
 </html>
 ```
 
-#### Desktop (Linux/Windows)
+### Desktop (Linux/Windows)
 
 Install required system dependencies:
 
@@ -109,7 +107,7 @@ sudo apt-get install -y libwebkit2gtk-4.1-dev libsecret-1-dev
 
 Desktop platforms use `flutter_web_auth_2` which starts a temporary HTTP server on the callback port.
 
-### Verify Installation
+## Verify Installation
 
 Create a simple test to verify everything is installed correctly:
 
@@ -130,7 +128,7 @@ void main() {
 }
 ```
 
-### Next Steps
+## Next Steps
 
 1. **[Choose your launch type](docs/auth/standalone-launch)** - Standalone or EHR
 2. **[Overview and API reference](docs/auth/fhir_r4_auth)** - Full feature overview

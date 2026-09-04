@@ -1,17 +1,15 @@
 ---
 id: fhirant_getting_started
-title: Getting Started
+title: FHIR ANT Getting Started
 ---
-
-## Getting Started
 
 This guide walks you through your first session with FHIR ANT — from installation to making authenticated API calls.
 
-### Install
+## Install
 
 Download FHIR ANT from the [Google Play Store](https://play.google.com/store/apps/details?id=com.fhirfli.fhirant). It also runs as a Linux desktop app or a standalone CLI server (see [CLI Usage](docs/fhirant/fhirant_cli)).
 
-### First Launch
+## First Launch
 
 When you open the app for the first time, you'll see a three-page onboarding:
 
@@ -21,7 +19,7 @@ When you open the app for the first time, you'll see a three-page onboarding:
 
 You can always load or clear sample data later. Tap **Get Started** to reach the dashboard.
 
-### The Dashboard
+## The Dashboard
 
 The dashboard has four sections:
 
@@ -30,7 +28,7 @@ The dashboard has four sections:
 - **Resource Counts** — how many FHIR resources are stored, by type
 - **Request Log** — live feed of incoming HTTP requests
 
-### Starting the Server
+## Starting the Server
 
 Tap **Start** on the Server Control card. The server binds to all network interfaces on the configured port (default 8080). The URL will look something like:
 
@@ -40,13 +38,13 @@ http://192.168.1.42:8080
 
 Any device on the same Wi-Fi network can reach this URL.
 
-#### Dev Mode vs Authenticated Mode
+### Dev Mode vs Authenticated Mode
 
 By default, the server starts in **Dev Mode** — authentication is disabled and all requests are accepted. This is useful for quick testing.
 
 To require authentication, toggle Dev Mode **off** before starting the server. When Dev Mode is off, all non-public endpoints require a valid JWT token.
 
-### Using Dev Mode
+## Using Dev Mode
 
 With Dev Mode on, you can immediately start making requests:
 
@@ -65,11 +63,11 @@ curl -X POST http://192.168.1.42:8080/Patient \
 
 No tokens or credentials needed — every request is treated as an admin.
 
-### Setting Up Authentication
+## Setting Up Authentication
 
 When you're ready to use auth, stop the server, toggle Dev Mode off, and start it again.
 
-#### Step 1: Check Server Status
+### Step 1: Check Server Status
 
 The `/auth/status` endpoint is public and tells you whether any users exist:
 
@@ -83,7 +81,7 @@ curl http://192.168.1.42:8080/auth/status
 
 `"firstUser": true` means no users have been created yet.
 
-#### Step 2: Create the Admin Account
+### Step 2: Create the Admin Account
 
 When no users exist, anyone can register — this is the bootstrap mechanism. The first user is **automatically promoted to admin** regardless of what role you request:
 
@@ -113,7 +111,7 @@ Registration returns a JWT immediately — you're logged in.
 Passwords must be 12-128 characters. There are no complexity rules (no required uppercase, numbers, or symbols), but common passwords like `password123456` are blocked. This follows [NIST 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html) guidelines — length matters more than complexity.
 </Info>
 
-#### Step 3: Make Authenticated Requests
+### Step 3: Make Authenticated Requests
 
 Use the `token` from registration or login in the `Authorization` header:
 
@@ -136,7 +134,7 @@ curl -X POST http://192.168.1.42:8080/Observation \
   }'
 ```
 
-#### Step 4: Register Additional Users
+### Step 4: Register Additional Users
 
 Once the admin account exists, only admins can create new users. Use the admin token and optionally specify a role:
 
@@ -176,7 +174,7 @@ curl -X POST http://192.168.1.42:8080/auth/register \
   }'
 ```
 
-#### Step 5: Logging In
+### Step 5: Logging In
 
 Other users log in with their credentials:
 
@@ -197,7 +195,7 @@ curl -X POST http://192.168.1.42:8080/auth/login \
 }
 ```
 
-#### Step 6: Refreshing Tokens
+### Step 6: Refreshing Tokens
 
 Access tokens expire after 8 hours. Use the refresh token (valid for 7 days) to get a new one:
 
@@ -207,7 +205,7 @@ curl -X POST http://192.168.1.42:8080/auth/token \
   -d '{"grant_type": "refresh_token", "refresh_token": "eyJ..."}'
 ```
 
-#### Step 7: Logging Out
+### Step 7: Logging Out
 
 Revoke your current token:
 
@@ -224,13 +222,13 @@ curl -X POST http://192.168.1.42:8080/auth/revoke \
   -d '{"token": "eyJ..."}'
 ```
 
-### Common Workflows
+## Common Workflows
 
-#### Browse Resources in the App
+### Browse Resources in the App
 
 Tap on any resource type in the Resource Counts card to open the resource browser. You can view resources as JSON or YAML, and tap on FHIR references (like `Patient/123`) to navigate to the referenced resource.
 
-#### Search with Parameters
+### Search with Parameters
 
 FHIR ANT supports the full range of FHIR search parameters:
 
@@ -248,7 +246,7 @@ curl "$BASE/Observation?patient=Patient/123&_include=Observation:patient"
 curl "$BASE/Observation?patient.name=smith"
 ```
 
-#### Backup and Restore
+### Backup and Restore
 
 Export all data as a FHIR Bundle:
 
@@ -265,7 +263,7 @@ curl -X POST "$BASE/\$restore" \
   -d @backup.json
 ```
 
-### Connecting from a FHIR Client
+## Connecting from a FHIR Client
 
 FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the [fhir_r4_at_rest](docs/at_rest/fhir_r4_at_rest) Dart package:
 
@@ -280,7 +278,7 @@ final request = FhirSearchRequest(
 final response = await request.request();
 ```
 
-### Troubleshooting
+## Troubleshooting
 
 **App shows a loading spinner that never finishes**
 Try clearing the app cache in Android Settings > Apps > FHIR ANT > Clear Cache, then relaunch.
@@ -298,7 +296,7 @@ curl -X POST "$BASE/admin/unlock/2" -H "Authorization: Bearer $ADMIN_TOKEN"
 **Token expired**
 Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see Step 6 above). Refresh tokens last 7 days.
 
-### Next Steps
+## Next Steps
 
 - [Capabilities](docs/fhirant/fhirant_capabilities) — full feature matrix
 - [API Reference](docs/fhirant/fhirant_api_reference) — every endpoint

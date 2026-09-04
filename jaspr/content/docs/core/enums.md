@@ -3,9 +3,7 @@ id: enums
 title: Enums
 ---
 
-## Enums
-
-### Understanding FHIR Code Enums
+## Understanding FHIR Code Enums
 
 In FHIR, many resources and data types include fields that are restricted to specific coded values (enumerations). FHIR-FLI implements these as "code enums" - specialized `FhirCode` subclasses that combine the flexibility of FHIR's coded values with the type safety of Dart's enum pattern.
 
@@ -16,7 +14,7 @@ FHIR-FLI provides two complementary approaches to enums:
 
 This dual approach gives you both the rich metadata of FHIR coded values and the convenience of Dart's native enum pattern, including full support for switch statements.
 
-### Core Architecture
+## Core Architecture
 
 FHIR code enums extend the `FhirCodeEnum` class, which itself extends `FhirCode`. This gives them all the capabilities of primitive types while adding enum-like behavior.
 
@@ -30,9 +28,9 @@ class ActionGroupingBehavior extends FhirCodeEnum {
 }
 ```
 
-### Using FHIR Code Enums
+## Using FHIR Code Enums
 
-#### Accessing Predefined Values
+### Accessing Predefined Values
 
 Each code enum class provides static values that correspond to the codes defined in the FHIR specification:
 
@@ -49,7 +47,7 @@ print(groupingBehavior.display?.valueString);  // 'Visual Group'
 print(groupingBehavior.system?.valueString);   // 'http://hl7.org/fhir/ValueSet/action-grouping-behavior'
 ```
 
-#### Using Native Dart Enums
+### Using Native Dart Enums
 
 Each FHIR code enum class is now paired with a native Dart enum, accessible via the `valueEnum` property:
 
@@ -71,7 +69,7 @@ switch (nativeEnum) {
 }
 ```
 
-#### Creating Custom Instances
+### Creating Custom Instances
 
 You can still create custom instances when needed:
 
@@ -86,7 +84,7 @@ final customBehavior = ActionGroupingBehavior(
 // Note: Custom instances will have valueEnum == null since they don't match predefined enums
 ```
 
-#### Working with Resources
+### Working with Resources
 
 Code enums can be directly assigned to appropriate resource fields:
 
@@ -97,7 +95,7 @@ final appointment = Appointment(
 );
 ```
 
-#### Comparing Values
+### Comparing Values
 
 When comparing code enums, you can use the equality operator to check for value equality:
 
@@ -107,7 +105,7 @@ if (appointment.status == AppointmentStatus.booked) {
 }
 ```
 
-#### Enhanced Conditional Logic
+### Enhanced Conditional Logic
 
 The native enum integration enables more idiomatic Dart patterns:
 
@@ -148,7 +146,7 @@ switch (behavior.valueEnum) {
 }
 ```
 
-### Structure of a FHIR Code Enum Class
+## Structure of a FHIR Code Enum Class
 
 Each FHIR code enum class now follows an enhanced pattern that includes a native Dart enum:
 
@@ -258,7 +256,7 @@ class ActionGroupingBehavior extends FhirCodeEnum {
 }
 ```
 
-### Serialization and Deserialization
+## Serialization and Deserialization
 
 FHIR code enums are serialized and deserialized like other FHIR primitives, with support for element extensions:
 
@@ -280,9 +278,9 @@ final fromJson = ActionGroupingBehavior.fromJson({
 final enumValue = fromJson.valueEnum;  // ActionGroupingBehaviorEnum.visualGroup
 ```
 
-### Advanced Usage
+## Advanced Usage
 
-#### Element-Only Instances
+### Element-Only Instances
 
 Like other primitive types, code enums support element-only instances for carrying extensions without a value:
 
@@ -303,7 +301,7 @@ final withExtensions = elementOnly.withElement(
 );
 ```
 
-#### Dynamic Creation
+### Dynamic Creation
 
 In some cases, you might need to create a code enum value dynamically based on user input or other sources:
 
@@ -320,7 +318,7 @@ if (userBehavior.valueEnum != null) {
 }
 ```
 
-#### Value Validation
+### Value Validation
 
 When creating a custom instance, the input is validated according to FHIR's code validation rules:
 
@@ -336,7 +334,7 @@ try {
 }
 ```
 
-### Best Practices
+## Best Practices
 
 1. **Use Predefined Values** whenever possible:
    ```dart
@@ -387,7 +385,7 @@ try {
    final extensions = behavior.element?.extension_;
    ```
 
-### Comparison with Previous FHIR-FLI Approach
+## Comparison with Previous FHIR-FLI Approach
 
 | Feature | Current Approach | Previous Approach |
 |---------|----------------|-------------------|
@@ -398,7 +396,7 @@ try {
 | Extension support | Yes | Yes |
 | Memory efficiency | Similar | Similar |
 
-### Comparison with Standard Dart Enums
+## Comparison with Standard Dart Enums
 
 | Feature | FHIR Code Enums | Dart Native Enums Only |
 |---------|----------------|-------------------|
@@ -408,7 +406,7 @@ try {
 | Use in `switch` | Yes, via `valueEnum` | Yes |
 | Memory footprint | Higher | Lower |
 
-### Working with Unknown or Extended Codes
+## Working with Unknown or Extended Codes
 
 In some cases, you might encounter codes not defined in the standard FHIR value sets. FHIR-FLI allows you to handle these situations:
 
@@ -448,6 +446,6 @@ switch (behavior.valueEnum) {
 }
 ```
 
-### Conclusion
+## Conclusion
 
 FHIR-FLI's enhanced enum approach provides the best of both worlds: the rich metadata and flexibility of FHIR's coded values, combined with the type safety and convenience of Dart's native enum pattern. By pairing each `FhirCodeEnum` class with a corresponding native Dart enum and exposing it via the `valueEnum` property, you can write more idiomatic and maintainable Dart code while still fully supporting the FHIR standard.

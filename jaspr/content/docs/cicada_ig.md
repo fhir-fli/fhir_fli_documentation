@@ -1,9 +1,7 @@
 ---
 id: cicada_ig
-title: Implementation Guide
+title: Cicada Vaccination Implementation Guide
 ---
-
-## Cicada Vaccination Implementation Guide
 
 The Cicada Vaccination IG defines FHIR profiles, code systems, value sets, and concept maps for immunization forecasting based on the CDC's Clinical Decision Support for Immunization (CDSi) logic specification.
 

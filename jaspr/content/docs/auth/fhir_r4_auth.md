@@ -1,20 +1,18 @@
 ---
 id: fhir_r4_auth
-title: FHIR R4 Auth
+title: SMART on FHIR Auth
 slug: /auth
 ---
 
-## FHIR R4 Auth
-
 Production-ready SMART on FHIR authentication and authorization for Flutter applications.
 
-### What is FHIR R4 Auth?
+## What is FHIR R4 Auth?
 
 `fhir_r4_auth` is a comprehensive authentication library that implements the [SMART App Launch Framework](http://hl7.org/fhir/smart-app-launch/) specification. It provides everything needed to build secure, compliant FHIR applications that integrate with Electronic Health Record (EHR) systems.
 
 Also available as `fhir_r5_auth` and `fhir_r6_auth` for FHIR R5 and R6 with identical APIs.
 
-### Key Features
+## Key Features
 
 - **Complete SMART Implementation** - Supports standalone launch, EHR launch, and backend services (server-to-server) launch types
 - **Enterprise Security** - PKCE, secure token storage, JWT validation, audit logging
@@ -22,19 +20,19 @@ Also available as `fhir_r5_auth` and `fhir_r6_auth` for FHIR R5 and R6 with iden
 - **Developer Friendly** - Type-safe API, comprehensive error handling
 - **Session Management** - Idle and absolute timeouts, token refresh
 
-### Quick Start
+## Quick Start
 
-#### Installation
+### Installation
 
 Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.9.0
-  fhir_r4: ^0.9.0
+  fhir_r4_auth: ^0.12.0
+  fhir_r4: ^0.12.0
 ```
 
-#### Basic Example
+### Basic Example
 
 ```dart
 import 'package:fhir_r4_auth/fhir_r4_auth.dart';
@@ -57,23 +55,23 @@ await client.login();
 // FhirReadRequest(..., client: client).sendRequest();
 ```
 
-### Launch Types
+## Launch Types
 
-#### Standalone Launch
+### Standalone Launch
 Your app launches independently and asks the user to authorize access.
 
 **Use when:** Building patient-facing mobile apps, personal health record apps.
 
 [Learn more →](docs/auth/standalone-launch)
 
-#### EHR Launch
+### EHR Launch
 Your app is embedded within an EHR system and launched from the provider's workflow.
 
 **Use when:** Building clinician-facing apps, clinical decision support tools.
 
-### Core Concepts
+## Core Concepts
 
-#### Security
+### Security
 
 - **PKCE** (Proof Key for Code Exchange) - Enabled by default (can be disabled for servers that don't support it)
 - **Secure Token Storage** - Platform-specific secure storage
@@ -81,16 +79,16 @@ Your app is embedded within an EHR system and launched from the provider's workf
 - **Audit Logging** - Complete audit trail
 - **Session Management** - Idle and absolute timeouts
 
-#### Token Management
+### Token Management
 
 - Automatic token refresh before expiry (manual refresh via `refreshToken()`)
 - Token revocation support (`logout()`, `revokeAccessToken()`, `revokeRefreshToken()`)
 - Token introspection (when supported by server)
 - Secure encrypted storage
 
-### Platform Notes
+## Platform Notes
 
-#### Web
+### Web
 Create a `web/callback.html` that stores the redirect URL in localStorage and posts it via `window.postMessage`:
 
 ```html
@@ -103,13 +101,13 @@ Create a `web/callback.html` that stores the redirect URL in localStorage and po
 </script></body></html>
 ```
 
-#### Android
+### Android
 Add `manifestPlaceholders["appAuthRedirectScheme"]` in `android/app/build.gradle.kts`. URI schemes cannot have underscores (RFC 3986) - use hyphens instead.
 
-#### Desktop (Linux/Windows)
+### Desktop (Linux/Windows)
 `flutter_web_auth_2` starts a temporary HTTP server on the callback port. Set `callbackUrlScheme` to the full origin (e.g., `http://localhost:8080`).
 
-### Epic Integration Notes
+## Epic Integration Notes
 
 When integrating with Epic's FHIR sandbox:
 
@@ -117,12 +115,12 @@ When integrating with Epic's FHIR sandbox:
 - **Disable OpenID** (`enableOpenId: false`) - Epic rejects the `nonce` parameter
 - **EHR launch scopes:** Use `['launch']` only - wider scopes may cause OAuth errors
 
-### Next Steps
+## Next Steps
 
 1. **[Install the library](docs/auth/installation)** - Add to your project
 2. **[Standalone launch guide](docs/auth/standalone-launch)** - Step-by-step standalone launch
 
-### Resources
+## Resources
 
 - [GitHub Repository](https://github.com/fhir-fli/fhir_r4)
 - [SMART App Launch Specification](http://hl7.org/fhir/smart-app-launch/)

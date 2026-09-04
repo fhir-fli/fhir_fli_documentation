@@ -1,28 +1,26 @@
 ---
 id: fhir_r4_bulk
-title: Bulk Data
+title: FHIR Bulk Data
 ---
-
-## FHIR Bulk Operations
 
 The `fhir_r4_bulk` library provides tools for working with FHIR bulk data operations, including import, export, and NDJSON file handling. This library is particularly useful for working with large datasets in FHIR, supporting the standard FHIR bulk operations ([$export](https://hl7.org/fhir/uv/bulkdata/export.html) and [$import](https://hl7.org/fhir/uv/bulkdata/import/index.html)).
 
-### Installation
+## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_bulk: ^0.9.0
-  fhir_r4: ^0.9.0
+  fhir_r4_bulk: ^0.12.0
+  fhir_r4: ^0.12.0
 ```
 
-### Key Features
+## Key Features
 
 - Convert between FHIR resources and NDJSON format
 - Handle compressed files (zip, tar.gz, gzip)
 - Execute FHIR Bulk Data Export operations ($export)
 - Execute FHIR Bulk Data Import operations ($import)
 
-### NDJSON Operations
+## NDJSON Operations
 
 NDJSON (Newline Delimited JSON) is the standard format for FHIR bulk data. The `FhirBulk` class provides utilities for converting between FHIR resources and NDJSON:
 
@@ -38,7 +36,7 @@ final ndjsonString = FhirBulk.toNdJson(resources);
 final parsedResources = FhirBulk.fromNdJson(ndjsonString);
 ```
 
-#### Working with Files
+### Working with Files
 
 The library supports reading and writing NDJSON files:
 
@@ -52,7 +50,7 @@ final resourcesFromGz = await FhirBulk.fromCompressedFile('/path/to/data.gz');
 final resourcesFromTarGz = await FhirBulk.fromCompressedFile('/path/to/data.tar.gz');
 ```
 
-#### Creating Compressed Files
+### Creating Compressed Files
 
 You can also create compressed NDJSON files:
 
@@ -76,7 +74,7 @@ final tarGzBytes = await FhirBulk.toTarGzFile(ndJsonMap);
 await File('export.zip').writeAsBytes(zipBytes!);
 ```
 
-### Bulk Export
+## Bulk Export
 
 The FHIR Bulk Data Export operation (`$export`) allows you to retrieve large amounts of data from a FHIR server. The library supports three types of export:
 
@@ -122,7 +120,7 @@ final patientRequest = BulkRequestPatient(
 final resources = await systemRequest.request();
 ```
 
-#### Export Options
+### Export Options
 
 The export operation supports several options:
 
@@ -145,7 +143,7 @@ final request = BulkRequestSystem(
 );
 ```
 
-#### Handling Results
+### Handling Results
 
 The request follows the FHIR async pattern: the library kicks off the export, polls the server's status endpoint (`Content-Location`) until the job completes, then downloads and parses the output files. It throws a `TimeoutException` if polling exceeds the default timeout (1 hour) or maximum attempts (1000). The result is a list of FHIR resources:
 
@@ -167,7 +165,7 @@ print('Exported ${patients.length} patients');
 print('Exported ${observations.length} observations');
 ```
 
-### Bulk Import
+## Bulk Import
 
 The FHIR Bulk Data Import operation (`$import`) allows you to load large amounts of data into a FHIR server:
 
@@ -212,14 +210,14 @@ if (outcome.issue.isNotEmpty) {
 
 The server typically responds with an `OperationOutcome` containing a job ID that you can use to poll for status.
 
-### Performance Considerations
+## Performance Considerations
 
 - Bulk operations are designed for large datasets
 - The NDJSON processing is memory-efficient, handling resources one at a time
 - For very large files, consider streaming approaches when possible
 - Export requests handle the async kick-off / status-polling / file-download cycle for you
 
-### Error Handling
+## Error Handling
 
 Both import and export operations return FHIR `OperationOutcome` resources in case of errors:
 
@@ -239,6 +237,6 @@ for (final resource in resources) {
 }
 ```
 
-### Conclusion
+## Conclusion
 
 The `fhir_r4_bulk` library provides comprehensive support for FHIR bulk data operations, making it easier to work with large FHIR datasets in Dart and Flutter applications. Whether you're extracting data from a server or loading data into one, this library provides the tools you need to work efficiently with FHIR bulk data.

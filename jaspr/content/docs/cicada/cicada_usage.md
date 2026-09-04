@@ -1,11 +1,9 @@
 ---
 id: cicada_usage
-title: Usage & API
+title: Cicada Usage & API
 ---
 
-## Usage & API
-
-### Basic Forecasting
+## Basic Forecasting
 
 The primary entry point is `forecastFromParameters()`:
 
@@ -23,7 +21,7 @@ final Parameters whoResult = forecastFromParameters(
 );
 ```
 
-### Building Input Parameters
+## Building Input Parameters
 
 The input is a FHIR R4 `Parameters` resource. Each parameter has a `name` and either a `resource` or a value:
 
@@ -73,11 +71,11 @@ final input = Parameters(parameter: [
 ]);
 ```
 
-#### Assessment Date
+### Assessment Date
 
 The assessment date is encoded as a parameter whose `name` is the date string (e.g., `"2024-06-15"`). This is the date against which all age calculations and interval checks are performed.
 
-#### Supported Resource Types
+### Supported Resource Types
 
 | Resource | Parameter Name | Purpose |
 |----------|---------------|---------|
@@ -91,11 +89,11 @@ The assessment date is encoded as a parameter whose `name` is the date string (e
 | `MedicationRequest` | `medicationRequest` | Active prescriptions |
 | `MedicationAdministration` | `medicationAdministration` | Administered medications |
 
-#### CVX Codes
+### CVX Codes
 
 Vaccine doses are identified by [CVX (Vaccine Administered)](https://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx) codes. The engine maps each CVX code to one or more target diseases using the schedule supporting data.
 
-### Reading the Output
+## Reading the Output
 
 The output `Parameters` contains `ImmunizationEvaluation` and `ImmunizationRecommendation` resources:
 
@@ -124,7 +122,7 @@ for (final param in result.parameter ?? []) {
 }
 ```
 
-#### Forecast Statuses
+### Forecast Statuses
 
 | Status | Meaning |
 |--------|---------|
@@ -135,7 +133,7 @@ for (final param in result.parameter ?? []) {
 | Not Recommended | Vaccine is not recommended (e.g., aged out) |
 | Aged Out | Patient has exceeded the maximum age for the series |
 
-#### Dose Statuses
+### Dose Statuses
 
 | Status | Meaning |
 |--------|---------|
@@ -144,7 +142,7 @@ for (final param in result.parameter ?? []) {
 | Sub-standard | Dose partially meets requirements |
 | Extraneous | Dose is not needed by the series |
 
-### Lower-Level API
+## Lower-Level API
 
 For more control, use `evaluateForForecast()` which returns the full model hierarchy:
 
@@ -176,7 +174,7 @@ for (final entry in result.vaccineGroupForecasts.entries) {
 }
 ```
 
-### ForecastMode
+## ForecastMode
 
 The `ForecastMode` enum controls which supporting data is used:
 
@@ -196,7 +194,7 @@ The mode selects between:
 - `activeScheduleData` — CDC's `scheduleSupportingData` or WHO's `whoScheduleSupportingData`
 - `activeMultiAntigenGroups` — Derived from the active schedule's vaccine-group-to-antigen map
 
-### ImmDS Server
+## ImmDS Server
 
 Cicada includes an HTTP server for the FHIR `$immds-forecast` operation:
 
@@ -230,7 +228,7 @@ The server:
 - Logs requests to stdout
 - Serves a metadata endpoint at `GET /metadata`
 
-#### FITS Testing
+### FITS Testing
 
 The server is compatible with [NIST FITS](https://fits.nist.gov) (Forecasting and Immunization Testing Standard). To test:
 
@@ -241,7 +239,7 @@ The server is compatible with [NIST FITS](https://fits.nist.gov) (Forecasting an
 
 FITS sends XML with `Content-Type: application/xml; charset=utf8` and `Accept: application/xml`.
 
-### From JSON Map
+## From JSON Map
 
 If you have the input as a raw JSON map:
 

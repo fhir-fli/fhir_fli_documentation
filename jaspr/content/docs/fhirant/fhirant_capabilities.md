@@ -1,15 +1,13 @@
 ---
 id: fhirant_capabilities
-title: Capabilities
+title: FHIR ANT Capabilities
 ---
-
-## Capabilities
 
 FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supported.
 
-### FHIR REST API
+## FHIR REST API
 
-#### CRUD Operations
+### CRUD Operations
 | Operation | Method | Endpoint | Notes |
 |---|---|---|---|
 | Create | `POST` | `/<type>` | Auto-generates ID if not provided |
@@ -21,7 +19,7 @@ FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supp
 | Conditional Update | `PUT` | `/<type>/<id>` | Via `If-Match` header |
 | Conditional Delete | `DELETE` | `/<type>` | Via query parameters |
 
-#### Search
+### Search
 | Feature | Details |
 |---|---|
 | GET search | `GET /<type>?param=value` |
@@ -43,7 +41,7 @@ FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supp
 | `_summary` | `true`, `false`, `text`, `data`, `count` |
 | `_elements` | Return only specified fields (adds SUBSETTED tag) |
 
-#### History
+### History
 | Endpoint | Description |
 |---|---|
 | `GET /<type>/<id>/_history` | Instance history |
@@ -52,12 +50,12 @@ FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supp
 | `GET /_history` | System history |
 | `_since` / `_at` parameters | Filter by date |
 
-#### Bundles
+### Bundles
 - **Transaction** bundles — atomic, all-or-nothing with `urn:uuid` resolution
 - **Batch** bundles — independent operations
 - Full `urn:uuid` cross-reference resolution within transactions
 
-#### Compartments
+### Compartments
 | Compartment | `$everything` | Compartment Search |
 |---|---|---|
 | Patient | Yes | Yes |
@@ -66,7 +64,7 @@ FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supp
 | RelatedPerson | Yes | Yes |
 | Device | Yes | Yes |
 
-### Operations
+## Operations
 
 | Operation | Endpoint | Description |
 |---|---|---|
@@ -81,7 +79,7 @@ FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supp
 | `$backup` | `POST /$backup` | Export all data as FHIR Bundle |
 | `$restore` | `POST /$restore` | Import data from FHIR Bundle |
 
-### Terminology
+## Terminology
 
 | Operation | Endpoint |
 |---|---|
@@ -92,7 +90,7 @@ FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supp
 
 Instance-level and type-level variants are both supported.
 
-### Bulk Data Export
+## Bulk Data Export
 
 | Endpoint | Description |
 |---|---|
@@ -105,7 +103,7 @@ Instance-level and type-level variants are both supported.
 
 Supports `_type`, `_since`, `_typeFilter`, and `_outputFormat` parameters.
 
-### Content Negotiation
+## Content Negotiation
 
 - `Accept: application/fhir+json` (default)
 - `_format` parameter
@@ -113,7 +111,7 @@ Supports `_type`, `_since`, `_typeFilter`, and `_outputFormat` parameters.
 - `Prefer: return=minimal`, `return=representation`, `return=OperationOutcome`, `respond-async`
 - `If-Modified-Since`, `If-None-Match`, `If-Match` headers
 
-### Metadata
+## Metadata
 
 - `GET /metadata` — Full CapabilityStatement with all supported resources, search parameters, operations, and security information
 - `GET /.well-known/smart-configuration` — SMART on FHIR discovery document

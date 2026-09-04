@@ -1,25 +1,23 @@
 ---
 id: fhir_r4_db
-title: Database Package
+title: Local Database
 ---
-
-## FHIR R4 Database
 
 The `fhir_r4_db` library provides a local database solution for storing and managing FHIR resources in Dart and Flutter applications. Built on [Drift](https://drift.simonbinder.eu/) (SQLite), it offers type-safe CRUD operations, FHIR search parameter indexing, resource versioning, sync tracking, and optional encryption via SQLCipher.
 
-### Installation
+## Installation
 
 ```yaml
 dependencies:
-  fhir_r4_db: ^0.9.0
-  fhir_r4: ^0.9.0
+  fhir_r4_db: ^0.12.0
+  fhir_r4: ^0.12.0
   drift: ^2.33.0
   sqlite3: ^3.1.5
 ```
 
 `sqlite3` 3.x loads its native SQLite library through Dart build hooks, so no separate platform-specific SQLite opener package is required. See [Encrypted Database](#encrypted-database) below for how the same mechanism provides SQLCipher-compatible encryption.
 
-### Key Features
+## Key Features
 
 - **SQLite-backed**: Persistent, file-based storage with excellent performance, plus in-memory mode for tests
 - **Search parameter indexing**: Automatic indexing of FHIR search parameters into typed search tables (string, token, reference, date, number, quantity, URI, composite, special)
@@ -30,14 +28,14 @@ dependencies:
 - **Optional encryption**: SQLCipher (AES-256) with a PBKDF2-HMAC-SHA256 derived key
 - **Cross-platform**: Works on all platforms supported by Drift (Android, iOS, macOS, Windows, Linux, Web)
 
-### Architecture
+## Architecture
 
 The database uses Drift's DAO (Data Access Object) pattern:
 
 - **`FhirDb`** — The Drift database class. You create it by passing a `QueryExecutor` (e.g., `NativeDatabase`).
 - **`FhirDao`** — The DAO that provides all FHIR operations (CRUD, search, history, sync, canonical resources, general storage), accessed via `db.fhirDao`.
 
-#### Initialization
+### Initialization
 
 ```dart
 import 'dart:io';
@@ -57,7 +55,7 @@ final testDb = FhirDb(NativeDatabase.memory());
 final testDao = testDb.fhirDao;
 ```
 
-#### Encrypted Database
+### Encrypted Database
 
 Encryption is provided by SQLCipher. First, tell the `sqlite3` build hooks to compile the SQLCipher-compatible [SQLite3MultipleCiphers](https://utelle.github.io/SQLite3MultipleCiphers/) library instead of plain SQLite by declaring this in **your app's** `pubspec.yaml`:
 
@@ -88,9 +86,9 @@ final db = FhirDb(
 
 `deriveDbKey` returns `null` (and `cipherSetup(null)` is a no-op) when no password is supplied, so the same code path works with and without encryption.
 
-### Basic Operations
+## Basic Operations
 
-#### Saving Resources
+### Saving Resources
 
 ```dart
 import 'package:fhir_r4/fhir_r4.dart';
@@ -114,7 +112,7 @@ final resources = [patient1, observation1, condition1];
 final success = await dao.saveResources(resources);
 ```
 
-#### Reading Resources
+### Reading Resources
 
 ```dart
 // Retrieve a resource by type and ID
@@ -148,7 +146,7 @@ final count = await dao.getResourceCount(R4ResourceType.Patient);
 final types = await dao.getResourceTypes();
 ```
 
-#### Searching Resources
+### Searching Resources
 
 Saved resources are indexed into typed search tables, so you can query by FHIR search parameters. Each parameter maps to a *list* of values:
 
@@ -204,7 +202,7 @@ Supported search parameter types:
 - **Composite** — combined parameter searches
 - **Special** (`_id`, `_lastUpdated`, `_tag`, `_profile`, `_security`, `_source`, `:missing`, `_has`) — special FHIR parameters
 
-#### Deleting Resources
+### Deleting Resources
 
 ```dart
 // Delete a resource by type and ID.
@@ -215,9 +213,9 @@ final deleted = await dao.deleteResource(
 );
 ```
 
-### Advanced Features
+## Advanced Features
 
-#### Resource Versioning and History
+### Resource Versioning and History
 
 The database automatically manages resource versions on each save:
 
@@ -244,7 +242,7 @@ Use timestamp-based versioning instead of incrementing integers:
 dao.versionIdAsTime = true;
 ```
 
-#### Resolving a Resource to its Patient
+### Resolving a Resource to its Patient
 
 `subjectOfCare` answers "whose record is this?" for any resource. Added in
 0.9.0.
@@ -285,7 +283,7 @@ This is what an audit trail needs: ISO 27789 requires the record to identify
 the subject of care, and the resource in a request usually is not that
 person.
 
-#### Sync Support
+### Sync Support
 
 Track resources that need syncing to a remote server:
 
@@ -308,7 +306,7 @@ final subscription = dao.watchSync().listen((resources) {
 });
 ```
 
-#### Canonical Resource Cache
+### Canonical Resource Cache
 
 Store canonical resources (ValueSet, StructureDefinition, etc.) indexed by URL:
 
@@ -334,7 +332,7 @@ final valueSets =
     await dao.getAllCanonicalByType<ValueSet>(R4ResourceType.ValueSet);
 ```
 
-#### General Storage
+### General Storage
 
 Store arbitrary (non-FHIR) data in the database. Values are stored as strings, so serialize structured data yourself:
 
@@ -357,7 +355,7 @@ await dao.deleteFromGeneral(key);
 await dao.clearGeneral();
 ```
 
-### Example
+## Example
 
 A complete example using the database in a Dart application:
 
@@ -406,6 +404,6 @@ Future<void> main() async {
 }
 ```
 
-#### Performance
+### Performance
 
 The SQLite backend provides excellent performance. On a test machine (AMD Ryzen 7 PRO, 64 GB RAM, Linux), loading the [MIMIC-IV Clinical Database Demo on FHIR](https://physionet.org/content/mimic-iv-fhir-demo/2.0/) (876 MB, ~899,000 resources) takes about 4 minutes, and searching for individual resources completes in under 10ms.

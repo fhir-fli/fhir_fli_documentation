@@ -1,9 +1,7 @@
 ---
 id: bw_amr_ig_ig
-title: Implementation Guide
+title: Botswana AMR Implementation Guide
 ---
-
-## Botswana AMR Implementation Guide
 
 The Botswana AMR IG defines FHIR R4 profiles, value sets, code systems, concept maps, and operations for antimicrobial resistance surveillance in Botswana. It covers the full AMR culture workflow from specimen collection through organism identification, susceptibility testing, and WHONET/GLASS export.
 

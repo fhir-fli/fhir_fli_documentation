@@ -3,15 +3,13 @@ id: class_structure
 title: Class Structure
 ---
 
-## Class Utility Methods
-
 This document explains the structure and utility methods available in FHIR-FLI classes that allow for flexible manipulation and access to FHIR data.
 
-### Class Structure
+## Class Structure
 
 Each FHIR resource in the FHIR-FLI libraries is implemented as a Dart class with a consistent structure. Let's examine the key components:
 
-#### Constructor and Fields
+### Constructor and Fields
 
 FHIR classes have a primary constructor with named parameters for all fields defined in the FHIR specification. Fields may be required or optional, and follow the FHIR data model.
 
@@ -30,9 +28,9 @@ const Age({
 
 All of these classes are immutable. If you need mutable objects (for example, to build up a resource incrementally during a FHIR mapping operation), the [fhir_r4_mapping](docs/mapping/fhir_mapping) package provides a parallel set of mutable Builder classes for that purpose.
 
-### Common Utility Methods and Properties
+## Common Utility Methods and Properties
 
-#### fhirType Property
+### fhirType Property
 
 The `fhirType` getter returns a string representation of the FHIR type as defined in the FHIR specification:
 
@@ -43,11 +41,11 @@ String get fhirType => 'Age';
 
 It's important to note that the `fhirType` is not always identical to the Dart class name. In cases where a FHIR type name conflicts with Dart keywords or common types (e.g., "List"), the Dart class is named differently (e.g., "FhirList"), but the `fhirType` property still returns the correct FHIR type name ("List").
 
-#### Reflection-Like Functionality
+### Reflection-Like Functionality
 
 Since Flutter doesn't fully support Dart reflection, FHIR-FLI implements several methods to enable reflection-like capabilities. These methods (`fhirType`, `listChildrenNames`, `getChildrenByName`, `getChildByName`, and friends) make up the `FhirNode` contract from [`package:fhir_node`](https://pub.dev/packages/fhir_node), which `FhirBase` implements - it's the same contract the model-independent `fhir_path` and `cql` engines use to navigate resources.
 
-##### listChildrenNames()
+#### listChildrenNames()
 
 Returns a list of all available field names in the FHIR resource:
 
@@ -57,7 +55,7 @@ final fieldNames = age.listChildrenNames();
 // Result: ['id', 'extension', 'value', 'comparator', 'unit', 'system', 'code']
 ```
 
-##### getChildrenByName()
+#### getChildrenByName()
 
 Retrieves all matching fields by name. It returns a list of objects, regardless of whether the underlying field is a single value or a list:
 
@@ -71,7 +69,7 @@ Important notes about `getChildrenByName()`:
 - For polymorphic types, you can use the base name, the base name with an "X", or a specific type name
 - The optional `checkValid` parameter will throw an error if the field name is invalid
 
-##### getChildByName()
+#### getChildByName()
 
 Retrieves a single field value by name:
 
@@ -84,9 +82,9 @@ This method will throw an error if the field contains multiple values.
 
 For polymorphic fields, this method may return multiple possible types.
 
-#### Object Manipulation Methods
+### Object Manipulation Methods
 
-##### copyWith()
+#### copyWith()
 
 Creates a new instance with specific fields updated:
 
@@ -100,7 +98,7 @@ final updatedAge = age.copyWith(
 
 Importantly, similar to freezed, you CAN now pass a null value to clear a field if you so wish. (If the field is required by the FHIR specification, passing null keeps the current value instead of clearing it.)
 
-##### equalsDeep()
+#### equalsDeep()
 
 Performs a deep comparison between two instances, checking if all field values are equal:
 
@@ -119,7 +117,7 @@ final sameValue = FhirBase.equalsDeepWithNull(age1.value, age2.value);
 final sameNames = FhirBase.listEquals(patient1.name, patient2.name);
 ```
 
-### Usage Example
+## Usage Example
 
 Here's how these utility methods might be used together:
 

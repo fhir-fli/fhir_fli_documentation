@@ -1,11 +1,9 @@
 ---
 id: bw_amr_ig_architecture
-title: Architecture
+title: Resource Architecture
 ---
 
-## Resource Architecture
-
-### FHIR Resource Hierarchy
+## FHIR Resource Hierarchy
 
 AMR culture results are modeled as a tree rooted at DiagnosticReport:
 
@@ -31,7 +29,7 @@ DiagnosticReport (BotswanaAMRDiagnosticReport)
 
 Each OrganismObservation represents one isolate. Susceptibility results are linked as `hasMember` references, keeping antibiotic results grouped per organism. This pattern aligns with the [German MII Microbiology Module](https://samply.github.io/bbmri-fhir-ig/).
 
-### Design Decisions
+## Design Decisions
 
 **hasMember grouping (not derivedFrom)**
 Susceptibility results are children of their organism via `OrganismObservation.hasMember`, not via `SusceptibilityObservation.derivedFrom`. This keeps the parent→child direction consistent with how labs think about results and avoids orphaned susceptibility observations when querying.
@@ -45,7 +43,7 @@ Ward type and admission date live on a dedicated Encounter profile rather than e
 **Intensional organism ValueSet**
 The organism ValueSet uses `include codes from system SCT where concept is-a #410607006 "Organism"` rather than listing individual codes. This keeps the ValueSet current as SNOMED CT is updated. Local codes for organism combinations (e.g., "Acinetobacter baumannii complex") are maintained in `BotswanaAMRLocalOrganismCS`.
 
-### Terminology Strategy
+## Terminology Strategy
 
 | Domain | CodeSystem | Example |
 |--------|-----------|---------|
@@ -56,7 +54,7 @@ The organism ValueSet uses `include codes from system SCT where concept is-a #41
 | S/I/R | HL7 ObservationInterpretation | `S`, `I`, `R`, `SDD`, `NS` |
 | Local codes | BotswanaAMRLocalOrganismCS | Organism combinations not in SNOMED |
 
-#### ConceptMaps
+### ConceptMaps
 
 Four ConceptMaps bridge WHONET codes to standard terminologies:
 

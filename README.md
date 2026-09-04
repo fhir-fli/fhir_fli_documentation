@@ -40,11 +40,11 @@ jaspr/
 ├── lib/
 │   ├── main.server.dart       # ContentApp wiring: header, sidebar groups, theme
 │   ├── main.client.dart
-│   └── components/            # CollapsibleSidebar, SiteFooter
+│   └── components/            # SiteHeader, CollapsibleSidebar, SiteFooter, SiteStyles,
+│                              # HighlightedCodeBlock (+ CodeCopyButton)
 └── web/
     ├── images/                # FHIR-FLI logos
-    └── <demo>                 # Symlinks → ../../static/<demo> (Flutter web bundles)
+    └── <demo>/                # Pre-built Flutter web apps and IGs embedded as iframes
 
-static/                        # Pre-built Flutter web apps embedded as iframes
 .github/workflows/             # deploy.yml (push → main) and main.yaml (PR check)
 ```
