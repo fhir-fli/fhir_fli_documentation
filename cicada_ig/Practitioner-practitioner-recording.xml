@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Practitioner xmlns="http://hl7.org/fhir">
+  <id value="practitioner-recording"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Practitioner practitioner-recording</b></p><a name="practitioner-recording"> </a><a name="hcpractitioner-recording"> </a><p><b>name</b>: Grace Okello </p></div>
+  </text>
+  <name>
+    <family value="Okello"/>
+    <given value="Grace"/>
+  </name>
+</Practitioner>

@@ -26,8 +26,6 @@ Value set for conditions based on SNOMED CT, that may impact immunization.
 
 ### Expansion
 
-No Expansion for this valueset (Unknown Code System)
-
 -------
 
  Explanation of the columns that may appear on this page: 
@@ -55,7 +53,7 @@ No Expansion for this valueset (Unknown Code System)
   "title" : "Vaccine Condition Codes",
   "status" : "draft",
   "experimental" : false,
-  "date" : "2026-09-07T19:28:06-04:00",
+  "date" : "2026-09-07T19:51:55-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

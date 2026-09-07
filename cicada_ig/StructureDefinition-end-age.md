@@ -20,6 +20,7 @@ The age at which the vaccine is no longer applicable.
 **Usages:**
 
 * Use this Extension: [Vaccine](StructureDefinition-Vaccine.md)
+* Examples for this Extension: [Medication/vaccine-dtap](Medication-vaccine-dtap.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-end-age.json)
 
@@ -46,7 +47,7 @@ Other representations of profile: [CSV](StructureDefinition-end-age.csv), [Excel
   "name" : "EndAge",
   "title" : "End Age",
   "status" : "draft",
-  "date" : "2026-09-07T19:28:06-04:00",
+  "date" : "2026-09-07T19:51:55-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -66,7 +67,7 @@ Other representations of profile: [CSV](StructureDefinition-end-age.csv), [Excel
   "abstract" : false,
   "context" : [{
     "type" : "element",
-    "expression" : "Element"
+    "expression" : "Medication"
   }],
   "type" : "Extension",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",

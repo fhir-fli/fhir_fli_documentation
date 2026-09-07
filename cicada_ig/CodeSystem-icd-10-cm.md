@@ -32,7 +32,7 @@ Placeholder for the International Classification of Diseases, Tenth Revision, Cl
   "title" : "ICD-10-CM (external, content not present)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-09-07T19:28:06-04:00",
+  "date" : "2026-09-07T19:51:55-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

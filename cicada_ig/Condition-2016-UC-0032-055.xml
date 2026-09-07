@@ -6,7 +6,7 @@
     <profile value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineConditionFhir"/>
   </meta>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Condition 2016-UC-0032-055</b></p><a name="2016-UC-0032-055"> </a><a name="hc2016-UC-0032-055"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-VaccineConditionFhir.html">Condition Profile with Vaccine Condition Codes</a></p></div><p><b>clinicalStatus</b>: <span title="Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}">Active</span></p><p><b>code</b>: <span title="Codes:{https://www.cdc.gov/vaccines/programs/iis/cdsi.html 055}, {http://snomed.info/sct 223366009}">Health care personnel</span></p><p><b>subject</b>: <a href="Patient-2016-UC-0032.html">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p></div>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Condition 2016-UC-0032-055</b></p><a name="2016-UC-0032-055"> </a><a name="hc2016-UC-0032-055"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-VaccineConditionFhir.html">Condition Profile with Vaccine Condition Codes</a></p></div><p><b>clinicalStatus</b>: <span title="Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}">Active</span></p><p><b>code</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/cdsi-observation-codes 055}, {http://snomed.info/sct 223366009}">Health care personnel</span></p><p><b>subject</b>: <a href="Patient-2016-UC-0032.html">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p></div>
   </text>
   <clinicalStatus>
     <coding>
@@ -16,7 +16,7 @@
   </clinicalStatus>
   <code>
     <coding>
-      <system value="https://www.cdc.gov/vaccines/programs/iis/cdsi.html"/>
+      <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/cdsi-observation-codes"/>
       <code value="055"/>
       <display value="Health care personnel"/>
     </coding>

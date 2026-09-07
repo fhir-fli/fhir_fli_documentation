@@ -822,11 +822,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="Medication-vaccine-hepb-adult.html"
-                  title="Medication/vaccine-hepb-adult">Medication: Hep B, adult</a>
+               <a href="Medication-vaccine-dtap.html" title="Medication/vaccine-dtap">Medication: DTaP</a>
             </td>
             <td>
-<p>A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1).</p>
+<p>A vaccine product as a Medication: CVX 20 with a trade name, the ages between which CDC's Diphtheria standard series lists it as a preferable vaccine (6 weeks to 7 years), and its vaccine type. CDC's "0 days" begin ages cannot be examples here: FHIR's Age datatype requires a positive value (age-1).</p>
 </td>
          </tr>
          <tr>
@@ -872,6 +871,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Practitioner-practitioner-recording.html"
+                  title="Practitioner/practitioner-recording">Practitioner: the recorder of the example observation</a>
+            </td>
+            <td>
+<p>The performer of observation-immunocompromised. Practitioner is not profiled by this IG; the example exists so that the observation can carry a performer, as the base specification recommends.</p>
 </td>
          </tr>
          <tr>
@@ -981,7 +989,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 7, 2026 19:28-0400">2026-09-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 7, 2026 19:51-0400">2026-09-07</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

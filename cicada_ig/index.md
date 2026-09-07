@@ -104,7 +104,7 @@ This publication includes IP covered under the following statements.
   "name" : "CicadaIG",
   "title" : "The Cicada Vaccine Forecasting Engine and Guide",
   "status" : "draft",
-  "date" : "2026-09-07T19:28:06-04:00",
+  "date" : "2026-09-07T19:51:55-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -1475,13 +1475,13 @@ This publication includes IP covered under the following statements.
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "Medication-vaccine-hepb-adult.html"
+        "valueUri" : "Medication-vaccine-dtap.html"
       }],
       "reference" : {
-        "reference" : "Medication/vaccine-hepb-adult"
+        "reference" : "Medication/vaccine-dtap"
       },
-      "name" : "Medication: Hep B, adult",
-      "description" : "A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1).",
+      "name" : "Medication: DTaP",
+      "description" : "A vaccine product as a Medication: CVX 20 with a trade name, the ages between which CDC's Diphtheria standard series lists it as a preferable vaccine (6 weeks to 7 years), and its vaccine type. CDC's \"0 days\" begin ages cannot be examples here: FHIR's Age datatype requires a positive value (age-1).",
       "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/Vaccine"
     },
     {
@@ -1595,6 +1595,22 @@ This publication includes IP covered under the following statements.
       "name" : "Observation: patient immunocompromised",
       "description" : "A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006.",
       "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "Practitioner-practitioner-recording.html"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/practitioner-recording"
+      },
+      "name" : "Practitioner: the recorder of the example observation",
+      "description" : "The performer of observation-immunocompromised. Practitioner is not profiled by this IG; the example exists so that the observation can carry a performer, as the base specification recommends.",
+      "exampleBoolean" : true
     },
     {
       "extension" : [{
