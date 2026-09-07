@@ -1,0 +1,78 @@
+# ============================================================
+# WHO IMCI Annex 1 §A1.7 — Measuring blood glucose. Pocket Book 2nd ed
+# (2013), pp.350–351.
+# OpenEvidence-reviewed 2026-07 — substantial rewrite:
+#   - The 2013 visual-read strip method (Dextrostix — discontinued) is
+#     replaced by modern glucometers with electronic strip readers (now
+#     standard even in many LMIC settings; WHO Essential Diagnostics List).
+#     Capillary-fill strips need no wiping; digital result in ~5–10 s.
+#   - Added accuracy caveats (haematocrit/temp/altitude/meds; ISO 15197)
+#     and the capillary-vs-plasma ~10–15% difference.
+#   - Added the WHO hypoglycaemia threshold (<2.5 mmol/L; <3.0 in SAM) with
+#     a cross-link to Chart 10; act immediately, don't wait for a lab.
+#   - Storage advice retained + expiry / extreme-temperature caveat.
+# ============================================================
+
+topic:
+  id: "who-imci-a1-7-blood-glucose"
+  title: "Measuring Blood Glucose"
+  list_subtitle: "A1.7 · reagent strips at the bedside"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · WHO PB 2013 + glucometer / WHO EDL"
+  tags: ["procedures", "blood glucose", "glucometer", "reagent strip", "hypoglycaemia", "annex 1", "pediatric"]
+  aliases:
+    - "Blood glucose"
+    - "Glucometer"
+  category: "medical"
+
+  page_number: 350
+
+  blocks:
+
+    - type: "prose"
+      title: "Bedside glucometer"
+      highlight: true
+      markdown: |
+        Measure blood glucose at the bedside with a **glucometer and its test
+        strips** — now the standard method, widely available even in
+        resource-limited settings (on the WHO Essential Diagnostics List).
+        Brands differ slightly — **follow the box and leaflet**. (Old
+        **visual-read** colour-scale strips still exist but are **much less
+        accurate** — prefer a meter.)
+
+    - type: "prose"
+      title: "Technique"
+      markdown: |
+        - Insert the test strip into the meter and switch it on.
+        - Do a **heel prick** (neonate/infant) or **finger prick** (older
+          child) with a lancet.
+        - Touch the **drop of blood** to the strip — the strip **fills
+          automatically** (no wiping needed).
+        - Read the **digital result** in **~5–10 s**.
+        - **Capillary glucose** can differ from **venous/plasma** glucose by
+          about **10–15%**.
+
+    - type: "prose"
+      title: "Accuracy — read with care"
+      callout: true
+      markdown: |
+        Meter readings can be thrown off by **a high or low haematocrit**
+        (relevant in neonatal polycythaemia or anaemia), **temperature
+        extremes**, **altitude**, and some **medications**. Professional
+        meters should meet **ISO 15197** accuracy. Treat a **low or borderline
+        reading in a sick child as real** — **act immediately** and confirm
+        with a **laboratory** glucose where possible; do not wait.
+
+    - type: "prose"
+      title: "What counts as hypoglycaemia"
+      markdown: |
+        **Blood glucose < 2.5 mmol/L (< 45 mg/dL)** — or **< 3.0 mmol/L
+        (< 54 mg/dL) in severe malnutrition** — is **hypoglycaemia**: treat at
+        once ([Chart 10](topic:who-imci-chart10-glucose)).
+
+    - type: "prose"
+      title: "Storage"
+      markdown: |
+        Reagent strips **deteriorate with humidity** — keep them in a **closed
+        box** and **close it again immediately** after taking one out. Use
+        strips **before their expiry date** and keep them out of **extreme
+        temperatures**.

@@ -1,0 +1,220 @@
+# ============================================================
+# ProtocolBook pp.64–65 — SAM: Admission & Acute Complications.
+# Second SAM topic (two pages). Admission criteria + the 10-item
+# "check for all after admission" complication checklist → titled
+# prose, with a red-alert callout for the shock criteria and a
+# dehydration sign list.
+#
+# Faithful-rendering calls:
+#   - Outline numbering 1–10 is a semantic checklist → kept as bold
+#     "N." leads; sub-steps as nested bullets.
+#   - The dehydration ">2 of the following signs" printed 2-column
+#     grid has no column headers (just space-saving) → flattened to
+#     a single bullet list of all 9 signs.
+#   - The shock criteria box ("Both AVPU <A AND cold extremities plus
+#     one of…") is a callout.
+#   - "chloramphenical" (p.65) kept as printed (minor spelling).
+#
+# This is WHO "10 steps" SAM inpatient care (the ProtocolBook condenses
+# it), cross-checked against WHO Pocket Book ch.7 and UCG 2023 §19.2.2.
+#
+# ✅ SAM GROUP AUDIT APPLIED 2026-07-28 — all nine findings from §F of
+#   tool/protocolbook_needs_oe_rereview.md, each confirmed by OE:
+#   - §F1 GENTAMICIN 5 → 7.5 mg/kg/day. WHO ch.7 and UCG 2023 both
+#     print 7.5 mg/kg once daily for 7 days; the duration already
+#     matched, only the mg/kg differed. 5 mg/kg is the book's GENERAL
+#     paediatric dose — SAM has its own higher figure, so a note now
+#     says so to stop it being "corrected" back.
+#   - §F2 AMOXICILLIN STEP-DOWN gained its dose and duration
+#     (25–40 mg/kg/dose q8h x 5 days, WHO). The ampicillin half of the
+#     sentence was fully specified; the half the child goes home on
+#     was not.
+#   - §F3 TRANSFUSION gained furosemide 1 mg/kg IV at the start,
+#     15-minute monitoring with the slow-down and stop rules, and the
+#     no-repeat-within-4-days rule. Trigger widened from "Hgb <6 with
+#     heart failure" to WHO's "Hgb 4–6 with RESPIRATORY DISTRESS" (an
+#     earlier, broader sign). This page names blood transfusion as a
+#     cause of cardiac failure in item 6 and previously gave the
+#     transfusion order without the precautions that exist because of
+#     it.
+#   - §F4 VITAMIN A gained its doses (50,000 / 100,000 / 200,000 IU by
+#     age) and moved day 15 → day 14, plus the WHO restriction that
+#     high-dose vitamin A is only for eye signs or recent measles.
+#     ⚠️ SUPERSEDED 2026-08-29: OE ruled the third dose is DAY 15, not
+#     14, for the SAM population, and that day 15 is a fixed day rather
+#     than "at least 2 weeks later". The 15 → 14 move above was wrong
+#     and is reverted; both books printed 14 and both are source errors.
+#     The trigger also widened to eye signs, measles, OR severe/
+#     persistent diarrhoea. The formulary qualifier this note asked for
+#     is DONE — the routine 1-month and "<6 months not recommended"
+#     rules are now explicitly scoped out of the treatment course.
+#   - §F5 ReSoMal gained the cholera / profuse-watery-diarrhoea
+#     exception (use standard ORS) and WHO's hard stop rule. ReSoMal
+#     is deliberately low-sodium, which is exactly wrong in
+#     high-output sodium-losing diarrhoea.
+#   - §F8 "Do not use digoxin in newborns" DELETED. Digoxin appeared
+#     nowhere else in the block, nowhere else in the topic, and WHO's
+#     SAM chapter never mentions it — the line warned against a
+#     treatment the page never offered while implying it was fine in
+#     older children. Digoxin is especially hazardous in SAM, where
+#     hypokalaemia, hypomagnesaemia and hypocalcaemia are universal
+#     and all lower the toxicity threshold.
+#   - §F9 EYE CARE gained drop frequencies and durations, and the
+#     saline-soaked pads and bandage — the mechanical steps that
+#     prevent corneal rupture, which need no supply chain. Gentamicin
+#     drops replaced by chloramphenicol/tetracycline per WHO.
+#   - §F10 the 24-HOUR FAST narrowed to "during the transfusion only",
+#     with D10% maintenance continued. WHO has no 24-hour fast; it
+#     appears to be a garbling of "transfuse in the first 24 h", and
+#     as printed it starved a child whose item-1 emergency is
+#     hypoglycaemia. Kwashiorkor skin gained the barrier cream, the
+#     no-nappies advice and the zinc fallback. Uncomplicated SAM now
+#     says it still gets oral amoxicillin.
+#   Grey should carry all of these into the source PDF.
+# 2026-08-29: D10 5 -> 2 mL/kg. MISSED BY THE 2026-08-28 SWEEP, which matched
+#   "5 ml/kg" and not "5mls/kg", and worked from a fixed file list rather than
+#   re-grepping afterwards. Found by diffing the formulary against the pages.
+# ============================================================
+
+topic:
+  id: "pb-sam-management"
+  title: "SAM — Admission & Acute Complications"
+  list_subtitle: "pp.64–65 · the 10-step checklist"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["malnutrition", "SAM", "hypoglycemia", "hypothermia", "shock", "dehydration", "ReSoMal", "anemia", "F-75", "infection", "vitamin A", "paediatric", "nutrition"]
+  category: "medical"
+
+  pages:
+
+    # ═══════════════════════ PAGE 64 ═══════════════════════
+    - page_number: 64
+      blocks:
+
+        - type: "prose"
+          title: "Criteria for admission with SAM (any)"
+          markdown: |
+            - Patients with SAM & severe oedema
+            - Children <6 months with SAM
+            - Patients with complicated SAM
+
+            **Uncomplicated SAM** (no admission criteria): manage from outpatient therapeutic care (OTC) with ready-to-use therapeutic feeds (RUTF), **plus oral amoxicillin** — uncomplicated SAM still gets an antibiotic.
+
+        - type: "prose"
+          markdown: |
+            **After admission, check for ALL of the following:**
+
+        - type: "prose"
+          title: "1. Hypoglycemia"
+          markdown: |
+            Blood glucose <3mmol/L (54mg/dL). Treatment:
+
+            - Can drink: 50mls of 10% dextrose or sugar water (1 spoon of sugar + 50mls of water)
+            - Can't drink: Dextrose 10% IV 2mls/kg, followed by Dextrose 10% 50mLs or sugar water by NGT
+
+        - type: "prose"
+          title: "2. Hypothermia"
+          markdown: |
+            Axillary temperature <35 or rectal <35.5. Treatment:
+
+            - Actively warm (kangaroo, cover head, no water bottles as skin is already fragile, away from windows or draughts, keep room warm, change wet clothes, keep covered all time & at night)
+            - Must also treat for hypoglycemia and infection
+
+        - type: "prose"
+          callout: true
+          palette:
+            alert: "0xFFD32F2F"
+            alert_fill: "0xFFFDECEA"
+            alert_text: "0xFFB71C1C"
+          title: "3. Shock — criteria"
+          markdown: |
+            Both AVPU <A **AND** cold extremities **plus one of**: Capillary refill >3 secs OR weak/fast/absent pulse.
+
+        - type: "prose"
+          title: "3. Shock — treatment"
+          markdown: |
+            - Oxygen
+            - Keep warm
+            - IV fluids: 15mls/kg/hour (may repeat once)
+            - Choice of fluids: RL+D5% or ½NS+D5%, add 20mmol/L KCL
+            - If no improvement after first bolus, assume septic shock, give whole blood 10mL/kg
+
+        - type: "prose"
+          title: "4. Dehydration — >2 of the following signs"
+          markdown: |
+            - AVPU <A
+            - Capillary refill ≥2 seconds
+            - Unable to drink
+            - Sunken eyes
+            - Slow skin pinch ≥2 seconds
+            - Absent tears
+            - Dry mucus membranes
+            - Recent/frequent diarrhea
+            - Vomiting
+
+            **Treatment — use rehydration solution for malnutrition (ReSoMal):**
+
+            - 5mls/kg PO q30min x 2 hrs THEN
+            - 5–10mls/kg/hr, alternate ReSoMal one hour then F-75 the next x 10 hrs
+            - If improved, give ReSoMal only after each loose stool
+            - ⚠️ **If cholera or profuse watery diarrhoea — use STANDARD ORS, not ReSoMal.** ReSoMal is deliberately low-sodium (45 mmol/L) for the oedematous, sodium-overloaded SAM child; in high-output sodium-losing diarrhoea it worsens hyponatraemia
+            - 🛑 **Stop ReSoMal immediately if the respiratory rate rises by 5/min AND the pulse by 25/min** — reassess for fluid overload
+
+        - type: "prose"
+          title: "5. Severe Anemia"
+          markdown: |
+            Hgb <4g/dl, **Hgb 4–6g/dl with respiratory distress**, or (if no Hgb) pallor with heart failure symptoms (tachypnea, tachycardia, engorged neck veins, cold extremities, cyanosis of fingertips or tongue).
+
+            - **Withhold feeds during the transfusion only** (about 3 hours), then resume immediately. Keep D10% maintenance running — this child's other emergency is hypoglycaemia
+            - Check for heart failure before starting
+            - No heart failure: 10mls/kg whole blood **slowly over 3hrs**
+            - Heart failure: 5–7mls/kg of packed RBCS
+            - ⚠️ **Give furosemide 1mg/kg IV at the START of the transfusion.** In SAM the transfusion must be slower and smaller than for a well-nourished child — transfusion is itself a leading cause of the cardiac failure in item 6
+            - **Monitor every 15 minutes** — pulse, breathing, lung fields, liver size. If breathing rises by 5/min or pulse by 25/min, **transfuse more slowly**. If basal crepitations appear or the liver enlarges, **stop and give furosemide 1mg/kg IV**
+            - 🛑 **Do not repeat the transfusion** even if the Hgb is still low, or within 4 days of the last one
+
+    # ═══════════════════════ PAGE 65 ═══════════════════════
+    - page_number: 65
+      blocks:
+
+        - type: "prose"
+          title: "6. Cardiac Failure"
+          markdown: |
+            - **Common causes:** over-hydration, overfeeding, blood transfusion, high sodium diet, severe anemia, severe pneumonia
+            - **Signs:** deterioration with weight gain, reappearance of edema, sudden DIB, prominent neck veins, cold extremities, tender liver, cyanosis
+            - Oxygen
+            - Stop all IV fluids & feeds
+            - Lasix 1mg/kg IV
+
+        - type: "prose"
+          title: "7. Eye signs — Vitamin A deficiency / corneal ulceration / purulent ocular discharge"
+          markdown: |
+            - **Vitamin A on days 1, 2 and 15** — <6 months **50,000 IU** · 6–12 months **100,000 IU** · >12 months **200,000 IU**. Only for **eye signs, measles, or severe/persistent diarrhoea** — a child with no deficiency signs on F-75/F-100/RUTF gets the low daily dose only. If the first dose was given at the referring centre, give **days 2 and 15**
+            - **Only give high-dose vitamin A if there are eye signs or a recent history of measles.** F-75, F-100 and RUTF already contain enough for everyone else
+            - **Chloramphenicol or tetracycline eyedrops, 4 times a day for 7–10 days**
+            - **1% atropine eyedrops, one drop 3 times a day for 3–5 days** — to relax the eye
+            - 🛑 **Cover with saline-soaked eye pads and bandage the eye(s)** — this is what prevents corneal rupture and extrusion of the lens
+
+        - type: "prose"
+          title: "8. Severe dermatosis"
+          markdown: |
+            Peeling with cracking and ulceration of the skin. Zinc deficiency is usual in kwashiorkor and the skin improves quickly once it is corrected.
+
+            - Sponge or soak affected areas for 10 minutes daily in 0.01% potassium permanganate, or apply gentian violet to skin sores
+            - **Apply a barrier cream** — zinc and castor oil ointment, petroleum jelly or tulle gras — to the raw areas
+            - **Avoid nappies** so the perineum stays dry and open to the air
+            - Ensure the child is getting full F-75/F-100 or RUTF feeds, which supply the zinc. If not yet feeding, give **zinc 2mg/kg/day orally**
+
+        - type: "prose"
+          title: "9. Infection Control (for complicated SAM)"
+          markdown: |
+            - Ampicillin 50mg/kg IV q6hrs x 2 days
+            - Then switch to **oral amoxicillin 25–40mg/kg/dose q8hrs x 5 days** if improved after 2 days
+            - **Gentamicin 7.5mg/kg/day x 7 days** — SAM has its own higher gentamicin dose; do not use the general paediatric 5mg/kg here
+            - Check mom for HIV if <18 months, otherwise check patient
+
+        - type: "prose"
+          title: "10. Micronutrient deficiency"
+          markdown: |
+            - No supplements necessary (all micronutrients already included in F-75, F-100)
+            - Add CMV (Combined Mineral and Vitamin) mix to the milk if making own feeds
+            - If no formula feeds or CMV, supplement with multivitamin drops for all stages of management. However, start iron in the rehabilitation phase

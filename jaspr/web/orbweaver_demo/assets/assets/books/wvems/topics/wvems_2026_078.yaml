@@ -1,0 +1,177 @@
+# ============================================================
+# WVEMS 2026 Protocol 78 — Intubation / RSI
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# Critical Care. `severity` variant with pre-decision Paramedic
+# actions (Induce / Paralyze) before the Attempt diamond.
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-078"
+  version: "v260101"
+  title: "Intubation / RSI"
+  list_subtitle: "2026-078 · Induce / Paralyze / Cric"
+  last_reviewed: "Jun 2025"
+  tags:
+    - "intubation"
+    - "rsi"
+    - "dsi"
+    - "airway"
+    - "etomidate"
+    - "ketamine"
+    - "rocuronium"
+    - "cric"
+  aliases:
+    - "RSA"
+    - "DSI"
+    - "Advanced Airway"
+    - "Difficult Airway"
+    - "Failed Airway"
+  category: "critical_care"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 78
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 3 branches)
+    #   entry → Induce / Paralyze → Attempt → Primary / Backup / Rescue
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      warnings:
+        - type: "safety"
+          text: "Need TWO RSI Medics"
+
+      entry:
+        text: "Can’t Oxygenate\nCan’t Ventilate"
+        shape: "stadium"
+
+      pre_decision_actions:
+        - provider_level: "P(CC)"
+          text: "Induce"
+          kind: "medication_administration"
+        - provider_level: "P(CC)"
+          text: "Paralyze"
+          kind: "medication_administration"
+
+      decision:
+        text: "Attempt"
+        shape: "diamond"
+
+      branches:
+
+        - id: "primary"
+          label: "Primary"
+          criteria:
+            - "Have suction ready"
+            - "Max 3 attempts"
+          actions:
+            - provider_level: "P(CC)"
+              text: "Intubate"
+              kind: "procedure"
+              condition: "Adult"
+
+        - id: "backup"
+          label: "Backup"
+          criteria:
+            - "BIAD may work better after meds"
+          actions:
+            - provider_level: "P(CC)"
+              text: "BIAD"
+              kind: "procedure"
+
+        - id: "rescue"
+          label: "Rescue"
+          criteria:
+            - "Be prepared for bleeding"
+          actions:
+            - provider_level: "P(CC)"
+              text: "Bougie Cric"
+              kind: "procedure"
+              condition: "Adult"
+            - provider_level: "P(CC)"
+              text: "Needle Cric"
+              kind: "procedure"
+              peds_only: true
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "[Airway](topic:wvems-2026-004), [Breathing](topic:wvems-2026-006)"
+          - text: "[Sedation / Vent](topic:wvems-2026-080)"
+
+      dose_table:
+        - drug: "[Etomidate](topic:wvems-2026-drug-reference#etomidate)"
+          dose: "0.3 mg/kg"
+          route: "IV/IO"
+          frequency: "x1"
+          population: "adult"
+        - drug: "[Ketamine](topic:wvems-2026-drug-reference#ketamine)"
+          dose: "2 mg/kg"
+          route: "IV/IO"
+          frequency: "x1"
+          population: "adult"
+        - drug: "[Rocuronium](topic:wvems-2026-drug-reference#rocuronium)"
+          dose: "1 mg/kg"
+          route: "IV/IO"
+          frequency: "x1"
+          population: "adult"
+
+  - page_number: 79
+    blocks:
+
+    - type: "prose"
+      title: "RSI Mandatory Prerequisites"
+      markdown: |
+        - In the last 12 months: pass a critical care in-service training.
+          - Including **12 high fidelity** (or human) airway sims.
+        - In the last three months: practice **three low fidelity** airway sims.
+        - Ongoing **physician quality review** of all training & live attempts.
+        - At least two years of experience as cleared and **active ALS**.
+
+    - type: "prose"
+      title: "Imperatives"
+      highlight: true
+      markdown: |
+        - **Two (2) CC/RSI Medics** must be on scene and work together.
+          - **Maximum** of two (2) attempts per provider & max three (3) **total**.
+        - Monitor BP, SpO₂ and EtCO₂ with waveform. Try to maintain:
+          - SpO₂ **above 90%**, EtCO₂ of **35-45** mmHg, SBP above 90 mmHg
+        - [Preoxygenate](topic:wvems-2026-006) while predicting airway difficulty. Utilize **apneic O₂**.
+        - Utilize an **[RSI Prep Checklist](topic:wvems-2026-096#rsi-prep-checklist)** and drug/vent reference materials.
+        - May use adjunct meds (e.g. push [pressors](topic:wvems-2026-082) if [shock index](topic:wvems-2026-082) > 0.8).
+        - **Video Laryngoscopy** is the standard of care; **record every case**.
+          - Record the monitor/vitals and your face prior to each attempt.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Etomidate](topic:wvems-2026-drug-reference#etomidate)** (Amidate®) or **[Ketamine](topic:wvems-2026-drug-reference#ketamine)** (Ketalar®): Choose one.
+          - Beware (uncommon) laryngospasm with **[Ketamine](topic:wvems-2026-drug-reference#ketamine)**.
+          - May give **[Ketamine](topic:wvems-2026-drug-reference#ketamine)** & then pause for more oxygenation (**DSI**).
+        - **[Etomidate](topic:wvems-2026-drug-reference#etomidate)** is not appropriate for patients under 10 y/o.
+        - **[Rocuronium](topic:wvems-2026-drug-reference#rocuronium)** (Zemuron®): Onset - 1 min; Duration - 30 min
+          - Consider a detailed **neuro exam** before paralysis
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Induction & paralytics w/ a BIAD (**RSA**) is superior to ETI for peds.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - ACLS — https://www.ahajournals.org/doi/10.1161/CIR.0000000000001376 [Ver: 2025]
+        - PALS — https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000001368 [Ver: 2025]
+        - NAEMSO Prehospital Airway — https://naemso.org/docs.ashx?id=1444270 [Ver: 5/23]
+        - NAEMSP Compendium — https://www.tandfonline.com/toc/ipec20/26/sup1 [Ver: 2022]
+        - Limmer D, O’Keefe MF. **Emergency Care** 15th ed. Chapter 9, 10

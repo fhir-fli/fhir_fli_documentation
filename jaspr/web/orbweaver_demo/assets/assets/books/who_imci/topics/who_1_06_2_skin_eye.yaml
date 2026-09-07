@@ -1,0 +1,49 @@
+# ============================================================
+# WHO IMCI §1.6.2 — Poisons in contact with skin or eyes.
+# Pocket Book 2nd ed (2013), p.29.
+# OpenEvidence review applied 2026-06-22:
+#   - Eye irrigation: ≥15 min minimum; continue until ocular pH 7.0–7.5;
+#     alkali burns may need 30–60 min+; "impossible to over-irrigate"
+#     (2024 AHA/Red Cross; Dua 2020). Skin decontamination unchanged.
+# OpenEvidence-reviewed 2026-07: reviewer confirmed accurate — no change.
+# ============================================================
+
+topic:
+  id: "who-imci-1-6-2-skin-eye"
+  title: "Skin & Eye Contamination"
+  list_subtitle: "1.6.2 · decontaminate skin & irrigate eyes"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · WHO PB 2013 (no change)"
+  tags: ["poisoning", "skin decontamination", "eye irrigation", "corrosive", "imci"]
+  aliases:
+    - "Eye Irrigation"
+  category: "medical"
+
+  page_number: 29
+
+  blocks:
+
+    - type: "prose"
+      title: "Skin contamination"
+      markdown: |
+        - **Remove all clothing and personal effects** and wash exposed
+          areas with **copious tepid water** — use **soap and water** for
+          oily substances.
+        - Staff: wear **gloves and aprons** to avoid secondary
+          contamination.
+        - Store removed clothing in a **sealable see-through plastic bag**.
+
+    - type: "prose"
+      title: "Eye contamination"
+      markdown: |
+        - **Rinse for at least 15 min** with clean running water, normal
+          saline or Ringer's lactate. Keep run-off **away from the other
+          eye**. **It is impossible to over-irrigate a chemically burned
+          eye.**
+        - For **alkali** burns (penetrate deeply) irrigation may need
+          **30–60 min or longer**. If pH paper is available, **continue
+          until the ocular surface pH is 7.0–7.5**.
+        - **Anaesthetic eye drops** ease irrigation. **Evert the eyelids**
+          and rinse all surfaces.
+        - Examine under **fluorescein** for corneal damage; refer urgently
+          to **ophthalmology** if there is significant conjunctival/corneal
+          damage.

@@ -1,0 +1,91 @@
+# ============================================================
+# WHO IMCI §8.2.4 — When to change treatment (substitution, switching,
+# treatment failure, Table 27). Pocket Book 2nd ed (2013), pp.238–240.
+# ⚠️ OpenEvidence-reviewed 2026-07: VIRAL LOAD is the preferred criterion
+# for failure (clinical/immunological only where VL unavailable). Table 27
+# replaced for the DTG era — after DTG failure switch to a boosted PI
+# (DRV/r ≥ 3 yr); after legacy NNRTI/PI failure switch to DTG + optimized
+# NRTI backbone (TAF/FTC preferred, per CHAPAS-4). Substitute-vs-switch
+# distinction unchanged. Refs: DHHS/OARAC 2024; CHAPAS-4 (NEJM 2025).
+# ============================================================
+
+topic:
+  id: "who-imci-8-2-4-when-to-change"
+  title: "When to Change Treatment"
+  list_subtitle: "8.2.4 · substitute vs switch · VL failure · second-line"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["HIV", "ART", "treatment failure", "second-line", "viral load", "pediatric"]
+  aliases:
+    - "ART treatment failure"
+    - "Second-line ART"
+  category: "medical"
+
+  page_number: 238
+
+  blocks:
+
+    - type: "prose"
+      title: "Substitute vs switch — two different things"
+      highlight: true
+      markdown: |
+        - **Substitute** = replace a **toxic drug** with another in the **same
+          class** (regimen still working).
+        - **Switch** = change the **whole regimen** to second-line because of
+          **treatment failure**.
+
+    - type: "prose"
+      title: "When to substitute (for toxicity)"
+      markdown: |
+        Substitute when a toxic effect can be tied to an identifiable drug — limit
+        substitutions to:
+        - **severe or life-threatening toxicity** — Stevens-Johnson syndrome,
+          severe liver toxicity, severe haematological effects.
+        - **drug interaction** (e.g. TB rifampicin interfering with the regimen).
+        - **potential non-adherence** if the child cannot tolerate the regimen.
+
+    - type: "prose"
+      title: "When to switch (treatment failure)"
+      markdown: |
+        ART failure may be due to **poor adherence**, **inadequate drug level**,
+        **resistance**, or **inadequate potency**. Before deciding a regimen is
+        failing, ensure: **≥ 24 weeks** on the regimen, **optimal adherence**, any
+        opportunistic infections treated, **IRIS excluded**, and the child
+        **adequately nourished**.
+
+    - type: "prose"
+      title: "Defining failure — viral load first"
+      callout: true
+      markdown: |
+        **Viral load is the preferred criterion.** Use clinical/immunological
+        criteria only where VL is unavailable.
+        - **Virological failure:** persistent **VL > 1000 copies/ml** after ≥ 24
+          weeks, on two consecutive measurements within 3 months, with adherence.
+        - **Clinical failure:** new/recurrent **WHO Stage 4** event after ≥ 24
+          weeks on ART.
+        - **Immunological failure:** CD4 **< 200** or **< 10%** (child < 5 yr); or
+          persistent CD4 **< 100/mm³** (child > 5 yr).
+
+    - type: "prose"
+      title: "Second-line — the DTG era"
+      markdown: |
+        Change the **whole regimen**, keeping an **optimized NRTI backbone**. The
+        **CHAPAS-4** trial (919 children) found **TAF/FTC superior** to the
+        standard ABC- or ZDV-based backbone (adjusted difference **+6.3 pp** for
+        viral suppression), and confirmed DTG as an effective second-line anchor.
+
+    - type: "table"
+      title: "Table 27 · Second-line regimens (updated)"
+      columns: ["Failing first-line", "Switch to"]
+      column_flex: [5, 5]
+      rows:
+        - cells: ["DTG-based", "Boosted PI (DRV/r preferred ≥ 3 yr; LPV/r or ATV/r if younger) + optimized NRTI backbone"]
+        - cells: ["NNRTI-based (legacy)", "DTG + optimized NRTI backbone (TAF/FTC preferred)"]
+        - cells: ["PI-based (legacy)", "DTG + optimized NRTI backbone (TAF/FTC preferred)"]
+
+    - type: "prose"
+      title: "Note"
+      markdown: |
+        Where DTG was the failing anchor, resistance is possible — a **boosted PI
+        (DRV/r)** is the durable second-line anchor. Always pair the new anchor with
+        an **optimized NRTI backbone** (TAF/FTC preferred per CHAPAS-4), guided by
+        resistance testing where available.

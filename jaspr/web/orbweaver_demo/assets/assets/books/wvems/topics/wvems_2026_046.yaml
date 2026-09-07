@@ -1,0 +1,154 @@
+# ============================================================
+# WVEMS 2026 Protocol 46 — Behavioral (Psych)
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-046"
+  version: "v260101"
+  title: "Behavioral"
+  list_subtitle: "2026-046 · Versed / Haldol"
+  last_reviewed: "Oct 2025"
+  tags: ["behavioral", "psych", "anxiety", "agitation", "si", "hi", "delirium", "versed", "haldol"]
+  aliases:
+    - "Psych"
+    - "Anxiety"
+    - "Agitation"
+    - "SI/HI"
+    - "Delirium"
+    - "Restraint"
+  category: "medical"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 46
+    blocks:
+
+    - type: "flowchart"
+      variant: "severity"
+
+      warnings:
+        - type: "safety"
+          text: "Ensure Provider SAFETY"
+        - type: "caution"
+          text: "[Use Caution if Patient Refusal](topic:wvems-2026-109#patient-refusals)"
+
+      entry:
+        text: "Overt Psychosis, Anxiety or SI / HI"
+        shape: "stadium"
+
+      decision:
+        text: "Severity?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "mild"
+          label: "Mild"
+          criteria:
+            - "Mostly Calm"
+            - "Mostly Agreeable"
+          actions:
+            - text: "Position of Comfort"
+              kind: "procedure"
+
+        - id: "moderate"
+          label: "Moderate"
+          criteria:
+            - "Moderate Agitation"
+            - "Will Listen to You"
+          actions:
+            - provider_level: "I"
+              text: "Versed"
+              kind: "medication_administration"
+
+        - id: "severe"
+          label: "Severe"
+          criteria:
+            - "Delirious, Irrational"
+            - "Fighting, Agitated"
+          actions:
+            - text: "Call Police"
+              kind: "communication"
+            - provider_level: "I"
+              text: "Versed"
+              kind: "medication_administration"
+            - provider_level: "I"
+              text: "Haldol"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "[Circulation (shock)](topic:wvems-2026-008)"
+          - text: "[Altered LOC](topic:wvems-2026-036)"
+
+      dose_table:
+        - drug: "[Versed](topic:wvems-2026-drug-reference#versed)"
+          dose: "2.5–5 mg"
+          route: "IV/IO, IM/IN"
+          frequency: "Q 2 min (max 10)"
+          population: "adult"
+        - drug: "[Haldol](topic:wvems-2026-drug-reference#haldol)"
+          dose: "5 mg"
+          route: "IM"
+          frequency: "x1"
+          population: "adult"
+
+  - page_number: 47
+    blocks:
+
+    - type: "prose"
+      title: "Behavioral Imperatives"
+      highlight: true
+      markdown: |
+        - **Do not assume** psychosis. Evaluate and treat for other causes.
+        - Behavioral patients may not have the [capacity to refuse](topic:wvems-2026-109#patient-refusals).
+          - Involve Police and call **Medical Control** for any SI / HI refusal.
+        - Use of any restraint presents significant medical (and legal) risk.
+          - **Attempt de-escalation first**. Restraint should be a **last resort**.
+          - Use **only to ensure safety** of patient and providers.
+          - Use only when risk of harm is greater than risk of restraint.
+          - Peds, elderly or frail patients are **unlikely** to need restraint.
+        - Physical restraint should only be used in conjunction **with Police**.
+          - **Ask for Police** help if the patient is physically combative.
+          - Beware any physical or verbal threats, aggression, or agitation.
+          - Never use hobble restraints. Never restrain a patient prone.
+        - **Use caution with needles** - increased risk of provider injury.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Versed®](topic:wvems-2026-drug-reference#versed)** (Midazolam): Use with caution with peds and elderly.
+          - Start lower if IV and/or smaller patient. Total dose: **10 mg max**.
+        - **[Haldol®](topic:wvems-2026-drug-reference#haldol)** (Haloperidol): Requires transport and **ALS** monitoring.
+          - May potentiate dystonic muscle jerking & spasms (not seizure).
+          - Consider treatment with **[Benadryl](topic:wvems-2026-drug-reference#benadryl)** if spasms are severe.
+          - {I} **[Benadryl®](topic:wvems-2026-drug-reference#benadryl)** (diphenhydramine): 25 mg PO, IV/IO, IM x1
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - SI / HI: Suicidal or Homicidal Ideation (any recent thoughts or acts)
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+          - {I} **[Versed](topic:wvems-2026-drug-reference#versed)**: max peds dose is Q 2 min **x4 doses**
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape Suicide — https://emedicine.medscape.com/article/2013085 [Ver: 1/24]
+        - Medscape Aggression — https://emedicine.medscape.com/article/288689 [Ver: 11/22]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 27
+
+        NEMSIS: 9914053

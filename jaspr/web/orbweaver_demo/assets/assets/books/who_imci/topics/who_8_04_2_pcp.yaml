@@ -1,0 +1,79 @@
+# ============================================================
+# WHO IMCI §8.4.2 — Pneumocystis jirovecii pneumonia (PCP). Pocket Book
+# 2nd ed (2013), pp.244–245.
+# ✅ OpenEvidence-reviewed 2026-07: "jiroveci"→"jirovecii"; added
+# atovaquone (and dapsone/TMP) as alternatives; corticosteroids for
+# moderate/severe PCP within 72 h; secondary prophylaxis after treatment.
+# Refs: DHHS/OARAC Pediatric OI 2025.
+# OpenEvidence-applied 2026-08-28 (WHO full advance pass):
+#   PCP co-trimoxazole: 8 mg/kg TMP TDS (= 24 mg/kg/day) was above the ceiling;
+#   now 15-20 mg/kg/day, max 960 mg/day, 3-4 divided doses, + IV->oral step-down
+#   and the monitoring schedule (flag 4-1).
+# ============================================================
+
+topic:
+  id: "who-imci-8-4-2-pcp"
+  title: "Pneumocystis Pneumonia (PCP)"
+  list_subtitle: "8.4.2 · suspect early · high-dose co-trimoxazole"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07"
+  tags: ["HIV", "PCP", "pneumocystis", "pneumonia", "co-trimoxazole", "pediatric"]
+  aliases:
+    - "PCP"
+    - "Pneumocystis jirovecii pneumonia"
+
+  page_number: 244
+
+  blocks:
+
+    - type: "prose"
+      title: "Suspect early — mortality is high"
+      highlight: true
+      markdown: |
+        Suspect **PCP** in any HIV-positive infant with **severe pneumonia**. If
+        untreated, mortality is **very high** — treat as **early as possible**.
+
+    - type: "prose"
+      title: "Diagnosis"
+      markdown: |
+        - most likely in a child **< 12 months** (peak 4–6 months)
+        - **subacute or acute** onset of non-productive cough and difficulty
+          breathing
+        - **no or low-grade fever**
+        - **cyanosis or persistent hypoxia**
+        - **poor response** to 48 h of first-line antibiotics for pneumonia
+        - **elevated lactate dehydrogenase**.
+
+        Typical picture: **severe respiratory distress** (tachypnoea, indrawing,
+        cyanosis) with a **disproportionately clear chest** or diffuse signs on
+        auscultation and **low oxygen saturation**. Chest X-ray is falsely
+        negative in 10–20%, but typically shows a **bilateral diffuse interstitial
+        'ground glass'** pattern, no hilar nodes/effusion. PCP may present with
+        **pneumothorax**. Induced sputum and nasopharyngeal aspiration help obtain
+        sputum.
+
+    - type: "prose"
+      title: "Treatment"
+      callout: true
+      markdown: |
+        - **High-dose co-trimoxazole — trimethoprim 15–20 mg/kg/day** (with
+          sulfamethoxazole 75–100 mg/kg/day in the fixed combination),
+          **in 3–4 divided doses (q6–8h) for 3 weeks** (first-line).
+          **Maximum 960 mg trimethoprim per day.** The 2013 print's 8 mg/kg
+          every 8 h is **24 mg/kg/day, above the 20 mg/kg/day ceiling** — it
+          adds marrow, renal and hypersensitivity toxicity without benefit.
+        - **Same total daily dose IV or oral.** Start **IV** in severe disease
+          or malabsorption and **step down to oral at the same mg/kg** as the
+          pneumonitis settles, completing 21 days.
+        - **Monitor through the course:** full blood count (marrow
+          suppression), creatinine and potassium (hyperkalaemia), liver
+          enzymes, and for rash or hypersensitivity — weekly, or more often if
+          abnormal. **Withhold for any significant reaction.**
+        - **Alternatives:** **pentamidine** (4 mg/kg once daily IV) for a severe
+          drug reaction; **atovaquone**, or **dapsone + TMP**, for
+          mild-to-moderate PCP.
+        - **Corticosteroids** for **moderate/severe** PCP (PaO₂ < 70 mmHg or
+          A–a gradient > 35 mmHg) — start **within 72 h**: prednisolone
+          **1–2 mg/kg/day**, then taper.
+        - After treatment, continue **secondary prophylaxis** (co-trimoxazole)
+          until CD4 exceeds the age-specific threshold, and ensure **ART** is
+          given.

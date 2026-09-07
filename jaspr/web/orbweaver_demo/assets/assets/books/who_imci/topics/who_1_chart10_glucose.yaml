@@ -1,0 +1,165 @@
+# ============================================================
+# WHO IMCI Chart 10 — How to give glucose intravenously (hypoglycaemia)
+# Pocket Book of Hospital Care for Children (2nd ed, 2013), p.16
+# OpenEvidence review applied 2026-06-18:
+#   - Dilution formula #2 corrected: WHO's "1 part 50% in 9 parts 5%" yields
+#     ~9.5%, not 10%. Changed to 1:8 (50%:5%) → exact 10% (90/9).
+#   - Added 50% dextrose safety callout: never give undiluted D50 to
+#     neonates/young children (osmotic injury, hyperglycaemia, ICH; FDA
+#     label) — dilute to ≤ 12.5% for peripheral IV.
+#   - Added dose-discrepancy note: WHO 5 ml/kg (0.5 g/kg) is ~2.5× the
+#     PES/AAP/APLS standard 2 ml/kg (0.2 g/kg); higher WHO dose suits
+#     settings where monitoring/repeat dosing may be delayed.
+#   - Added maintenance-infusion guidance (GIR 5–8 mg/kg/min) to prevent
+#     rebound hypoglycaemia (Luo 2024 review; CHI management).
+#   - Threshold context: 2.5 mmol/L cutoff supported by SugarFACT RCT
+#     (Baker 2020, Malawi) — raising it did not reduce mortality.
+#   - Volume table & sublingual first-aid confirmed correct (sublingual
+#     supported by 2024 AHA/Red Cross + Cochrane 2019). No change.
+#   - Added 40% buccal dextrose gel as an evidence-based bridge when IV is
+#     impossible/delayed (Cochrane 2019; Sugar Babies) — 0.5 ml/kg (0.2
+#     g/kg) of 40% gel rubbed into the buccal mucosa. (Per Grey 2026-06-18.)
+# OpenEvidence-reviewed 2026-07: reviewer confirmed the 10% dose, dilution-
+#   formula correction, D50 safety callout, buccal-gel bridge, SugarFACT
+#   threshold, and GIR maintenance all accurate — no change.
+# OpenEvidence-applied 2026-08-28 (WHO full advance pass):
+#   Glucose bolus 5 -> 2 ml/kg (0.2 g/kg) at every age, weight table rebuilt
+#   (flag 1-2); new neonatal-threshold block, 2.6 mmol/L operational (flag 3-3).
+# ============================================================
+
+topic:
+  id: "who-imci-chart10-glucose"
+  title: "IV Glucose (Hypoglycaemia)"
+  list_subtitle: "IMCI Chart 10 · 2 ml/kg of 10% glucose"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · SugarFACT / PES / Luo 2024 / WHO (no change)"
+  tags: ["hypoglycaemia", "glucose", "dextrose", "iv", "d10", "imci", "pediatric"]
+  aliases:
+    - "Hypoglycemia"
+    - "Dextrose"
+  category: "medical"
+
+  page_number: 16
+
+  blocks:
+
+    - type: "prose"
+      title: "When & what to give"
+      highlight: true
+      markdown: |
+        - **Insert an IV line** and draw blood for emergency labs.
+        - **Treat as hypoglycaemia** if glucose is **< 2.5 mmol/L
+          (45 mg/dL)**, or **< 3 mmol/L (54 mg/dL)** in a severely
+          malnourished child, **or** if it **cannot be measured**.
+        - Give **2 ml/kg of 10% glucose (0.2 g/kg)** by IV injection —
+          over about **15 min** in a neonate.
+
+    - type: "table"
+      title: "10% glucose bolus — 2 ml/kg"
+      columns: ["Age (weight)", "Volume (2 ml/kg)"]
+      column_flex: [3, 2]
+      rows:
+        - cells: ["< 2 months (< 4 kg)", "6 ml"]
+        - cells: ["2–< 4 months (4–< 6 kg)", "10 ml"]
+        - cells: ["4–< 12 months (6–< 10 kg)", "16 ml"]
+        - cells: ["1–< 3 years (10–< 14 kg)", "24 ml"]
+        - cells: ["3–< 5 years (14–< 19 kg)", "32 ml"]
+
+    - type: "prose"
+      title: "Dose & threshold context"
+      markdown: |
+        - **2 ml/kg (0.2 g/kg) is the dose at every age** — neonate,
+          infant, older child, and in **severe acute malnutrition**, where
+          the smaller volume matters because these children tolerate fluid
+          poorly.
+        - The 2013 print instructs **5 ml/kg (0.5 g/kg)**. That is **2.5×
+          the PES / AAP / APLS standard and is not supported** — the larger
+          osmotic and glucose load can provoke **rebound hyperinsulinaemic
+          hypoglycaemia**, and there is no evidence 2 ml/kg under-treats.
+          The safeguard against under-treatment is **repeat measurement and
+          a maintenance infusion**, not a bigger bolus.
+        - A **milder, asymptomatic** case can be managed with oral or
+          buccal glucose and feeding first; the IV bolus is for the
+          symptomatic or fitting child.
+        - **The 2.5 mmol/L cutoff is what the one randomised trial supports.**
+          **SugarFACT** (Malawi) randomised 322 severely ill children aged
+          1 month to 5 years whose glucose was **2.5–5.0 mmol/L** to either
+          immediate IV 10% dextrose — a 5 ml/kg bolus then a 24-hour
+          maintenance infusion — or to observation and standard care, testing
+          whether raising the treatment cutoff from 2.5 to 5.0 saved lives. It
+          measured all-cause in-hospital mortality and found **no difference,
+          15% against 16%**, and was stopped for futility. Treating the
+          2.5–5.0 band does not help.
+        - ⚠️ **It says nothing about how hard to treat a child already below
+          2.5.** Those children were excluded. A glucose below 2.5 in a sick
+          child carries a case fatality up to about **26%** and demands
+          immediate dextrose.
+        - ⚠️ **Quinine-induced hyperinsulinaemic hypoglycaemia is real**, and
+          the answer to it is **anticipation, repeat measurement and
+          dextrose-containing infusion fluid** — not a higher universal
+          treatment threshold.
+
+    - type: "prose"
+      title: "Neonatal thresholds"
+      markdown: |
+        In a **neonate** the operational treatment threshold is
+        **2.6 mmol/L (47 mg/dL)**, not the 2013 print's 2.2 mmol/L, which is
+        lower than current guidance.
+        - **Symptomatic, any age — treat promptly at < 2.2 mmol/L
+          (40 mg/dL).**
+        - **Asymptomatic, at risk, first 48 h:** maintain **> 2.8 mmol/L
+          (50 mg/dL)** (PES). An infant who cannot hold that in the first
+          48 h **may have a disorder causing persistent hypoglycaemia**.
+          - AAP is staged more loosely over the same window: **> 2.2 mmol/L
+            (40 mg/dL) in the first 4 h** before a feed, **> 2.5 mmol/L
+            (45 mg/dL) from 4–24 h**.
+        - **After 48 h:** target **> 3.3 mmol/L (60 mg/dL)**.
+        - **Suspected or confirmed persistent hypoglycaemia disorder**
+          (e.g. hyperinsulinism): target **> 3.9 mmol/L (70 mg/dL)**.
+
+    - type: "prose"
+      title: "After the bolus"
+      markdown: |
+        - **Recheck glucose within 20–30 min.** If still low, **repeat
+          2 ml/kg** of 10% glucose.
+        - **Start a maintenance 10% glucose infusion** (≈ 5–8 mg/kg/min;
+          use 5% if 10% is unavailable) to prevent **rebound hypoglycaemia**.
+        - If hypoglycaemia **recurs**, titrate up to **10–13 mg/kg/min**
+          (central access and a higher concentration may be needed) and
+          **suspect hyperinsulinism**.
+        - **Feed as soon as the child is conscious.**
+        - If the child **cannot feed safely** (aspiration risk):
+          - **milk or sugar water by NG tube** — 4 level teaspoons sugar
+            (20 g) in a 200 ml cup of clean water, or
+          - **IV fluids containing 5–10% glucose**.
+
+    - type: "prose"
+      title: "If only 50% glucose is available"
+      markdown: |
+        50% glucose = 50% dextrose. To make ~10%:
+        - **1 part 50% in 4 parts sterile water**, or
+        - **1 part 50% in 8 parts 5% glucose** (e.g. 10 ml 50% + 80 ml 5%
+          → 90 ml = 10%).
+
+    - type: "prose"
+      title: "⚠ Never give undiluted 50% dextrose"
+      callout: true
+      # Per-block palette: this danger callout reads red, while the
+      # sublingual first-aid tip below keeps the default amber.
+      palette:
+        alert: "0xFFD32F2F"
+        alert_fill: "0xFFFDECEA"
+        alert_text: "0xFFB71C1C"
+      markdown: |
+        Never give **undiluted 50% dextrose** to neonates or young children
+        — risk of **osmotic injury, hyperglycaemia, and intracerebral
+        haemorrhage**. Always **dilute to ≤ 12.5%** for a peripheral IV.
+
+    - type: "prose"
+      title: "Buccal glucose — first aid"
+      callout: true
+      markdown: |
+        If IV access is impossible or delayed:
+        - Where available, **40% dextrose gel 0.5 ml/kg (0.2 g/kg)** rubbed
+          into the **buccal mucosa**, or
+        - **1 level teaspoon of sugar, moistened with water, under the
+          tongue every 10–20 min**.

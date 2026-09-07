@@ -1,0 +1,158 @@
+# ============================================================
+# WVEMS 2026 Protocol 6 — Breathing (Hypoxia)
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-006"
+  version: "v260101"
+  title: "Breathing"
+  list_subtitle: "2026-006 · 3-branch severity"
+  last_reviewed: "Dec 2025"
+  tags: ["breathing", "hypoxia", "oxygen", "bvm", "nippv", "ptx", "pneumothorax", "dyspnea"]
+  aliases:
+    - "Hypoxia"
+    - "Oxygen"
+    - "Pneumothorax"
+    - "PTX"
+    - "PE"
+    - "Drowning"
+  category: "universal"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 6
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 3 branches)
+    # Entry chain: trigger → "Provide O₂" → decision
+    # Asymmetric actions: Mild 1, Moderate 2, Severe 3
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      entry_chain:
+        - text: "Dyspnea or SpO₂ under 95%"
+          shape: "stadium"
+        - text: "Provide O₂"
+          shape: "stadium"
+
+      decision:
+        text: "Severity?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "mild"
+          label: "Mild"
+          criteria:
+            - "Awake & Oriented"
+            - "Subjective Dyspnea"
+          actions:
+            - text: "Position of Comfort"
+              kind: "procedure"
+
+        - id: "moderate"
+          label: "Moderate"
+          criteria:
+            - "Resps. Inadequate"
+            - "Cyanosis, Gasping"
+          actions:
+            - text: "BVM Assist"
+              kind: "procedure"
+            - provider_level: "E"
+              text: "NIPPV"
+              kind: "procedure"
+
+        - id: "severe"
+          label: "Severe"
+          criteria:
+            - "Respiratory Failure"
+            - "Penetrating Injury"
+          actions:
+            - text: "BVM Ventilate"
+              kind: "procedure"
+            - text: "Chest Seal"
+              kind: "procedure"
+            - provider_level: "I"
+              text: "Pleural Decompress"
+              kind: "procedure"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "[Airway](topic:wvems-2026-004), [Dyspnea](topic:wvems-2026-030)"
+          - text: "[Ventilator](topic:wvems-2026-080)"
+
+  - page_number: 7
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Prose blocks (notes page)
+    # ────────────────────────────────────────────────
+
+    - type: "prose"
+
+      critical_care_link:
+        text: "[Ventilator](topic:wvems-2026-080)"
+      title: "Breathing Imperatives"
+      highlight: true
+      markdown: |
+        - **Dyspnea with penetrating trauma** is a severe problem.
+          - Apply a **chest seal** over any penetrating injury to neck or [trunk](topic:wvems-2026-064).
+          - Remove chest seal if using positive pressure (e.g. BVM, NIPPV).
+        - Spontaneous or traumatic **PTX** can be a severe problem.
+          - **[Pleural Decompress](topic:wvems-2026-096#pleural-decompress)** for [Hypotension](topic:wvems-2026-008) or persistent hypoxia.
+        - **[BVM](topic:wvems-2026-096#bvm)**: use two providers and two-handed technique if able.
+          - Use **EtCO₂** and target **35–45 mmHg**. Avoid hyperventilation.
+          - During CPR: alternate **30 : 2** until BIAD (or ETT) is placed.
+        - **[NIPPV](topic:wvems-2026-096#nippv)**: contraindicated with agitation, vomiting, or hypotension.
+          - May use if altered or unresponsive, but monitor closely.
+          - May place EtCO₂ cannula under NIPPV mask to get waveform.
+
+    - type: "prose"
+      title: "BVM Rate"
+      highlight: true
+      markdown: |
+        - **Adult**: Q 6 sec (10 /min)
+        - **Peds**: Q 2 sec (20–30 /min)
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Provide O₂ at appropriate doses. May decrease if SpO₂ above 98%.
+          - **Nasal Cannula (NC)**: 1–6 L/min; **Non-Rebreather (NRB)**: 10–15 L/min.
+          - **Hyperoxia** can make some conditions worse, especially COPD.
+          - Target SpO₂ of **88–92%** for adults with isolated COPD.
+        - If SpO₂ unavailable or machine fails: use good clinical judgment.
+        - **Drowning** (or SCUBA) may cause hypoxia — treatment is the same.
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider [Ventilator](topic:wvems-2026-080) if indicated and credentialed for Critical Care.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Refer to [Neonate](topic:wvems-2026-050) for any peds under 1 month (≤ 30 days) old.
+          - Consider a **T-piece resuscitator** (instead of BVM) for [Neonates](topic:wvems-2026-050).
+        - Use caution and appropriately sized BVM to prevent **barotrauma**.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - ACLS — https://www.ahajournals.org/doi/10.1161/CIR.0000000000001376 [Ver: 2025]
+        - PALS — https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000001368 [Ver: 2025]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 10.
+
+        NEMSIS: 9914001, 9914211

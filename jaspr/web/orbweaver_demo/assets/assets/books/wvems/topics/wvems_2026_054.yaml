@@ -1,0 +1,166 @@
+# ============================================================
+# WVEMS 2026 Protocol 54 — Trauma ROSC
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# Uses the `linear` flowchart variant.
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-054"
+  version: "v260101"
+  title: "Trauma ROSC"
+  list_subtitle: "2026-054 · Return of Pulse / Post-Resuscitation"
+  last_reviewed: "Dec 2025"
+  tags:
+    - "rosc"
+    - "trauma"
+    - "post resuscitation"
+    - "ketamine"
+  aliases:
+    - "Return of Pulse"
+    - "Post-Resuscitation after Trauma"
+  category: "trauma"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 54
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (linear variant)
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "linear"
+
+      entry_chain:
+        - text: "Return of Pulse"
+          shape: "stadium"
+
+      steps:
+        - type: "content"
+          title: "Stabilize"
+          bullets:
+            - "Control Bleeding"
+            - "Treat [Circulation](topic:wvems-2026-008)"
+            - "[Airway](topic:wvems-2026-004) / [Breathing](topic:wvems-2026-006)"
+        - type: "action"
+          provider_level: "E"
+          text: "Emergent Transport"
+          kind: "referral"
+        - type: "action"
+          text: "Tourniquet"
+          kind: "procedure"
+        - type: "action"
+          provider_level: "I"
+          text: "Pleural Decompress"
+          kind: "procedure"
+        - type: "action"
+          provider_level: "E"
+          text: "12-Lead"
+          kind: "diagnostic"
+        - type: "action"
+          provider_level: "A"
+          text: "Saline Lock"
+          kind: "procedure"
+        - type: "action"
+          provider_level: "I"
+          text: "Ketamine"
+          condition: "If Agitated"
+          kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        warnings:
+          - type: "caution"
+            text: "[Consider Destination Triage](topic:wvems-2026-109#destination-triage)"
+        bullets:
+          - text: "Bleeding"
+            link_id: "wvems-2026-058"
+          - text: "[Shock](topic:wvems-2026-008)"
+          - text: "[Medical ROSC](topic:wvems-2026-026)"
+          - text: "[Intubation](topic:wvems-2026-078), [Vent](topic:wvems-2026-080)"
+
+      critical_care_link:
+        text: "[Intubation](topic:wvems-2026-078), [Vent](topic:wvems-2026-080)"
+
+      dose_table:
+        - drug: "[Ketamine](topic:wvems-2026-drug-reference#ketamine)"
+          dose: "20 mg"
+          route: "IV/IO"
+          frequency: "Q 5 min x2"
+          population: "adult"
+
+  - page_number: 55
+    blocks:
+
+    - type: "prose"
+      title: "Trauma ROSC Imperatives"
+      highlight: true
+      markdown: |
+        - Most important aspect is to prioritize emergent transport.
+          - **Get the patient to the hospital.**
+        - Reassess and repeat **[Pleural Decompression](topic:wvems-2026-096#pleural-decompress)** as needed.
+          - Repeat immediately if decompression after initial success.
+        - Reassess and apply additional **[Tourniquets](topic:wvems-2026-096#tourniquet)** as needed.
+          - Apply pressure and **[pack wounds](topic:wvems-2026-096#wound-packing)** for junctional bleeding.
+        - Consider a concurrent medical cause preceding the trauma.
+
+    - type: "row"
+      blocks:
+        - type: "prose"
+          flex: 6
+          title: "TRAUMA Alert"
+          callout: true
+          dashed: true
+          call_er: true
+          markdown: |
+            - If Any Trauma CPR
+            - Or Unstable Vitals
+            - Call a **TRAUMA** Alert
+        - type: "prose"
+          flex: 5
+          title: "Poor Perfusion"
+          callout: true
+          markdown: |
+            Suspect if **several** of these:
+            - **Altered Mental Status**
+            - Skin Pale, Cool, Diaphoretic
+            - Tachycardia, Hypotension
+            - Dyspnea, Tachypnea
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Ketamine](topic:wvems-2026-drug-reference#ketamine)** (Ketalar®): Dilute in NS and **give slowly over 10 min**.
+          - Use [weight-based peds dosing](topic:wvems-2026-144) for adults under 110 lbs (50 kg).
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Keep **normothermic** (hypothermia causes coagulopathy & bleeding).
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider [Intubation](topic:wvems-2026-078) and/or [Vent](topic:wvems-2026-080) if indicated and credentialed for CC.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - ACLS — https://www.ahajournals.org/doi/10.1161/CIR.0000000000001376 [Ver: 2025]
+        - ATLS® — https://www.facs.org/quality-programs/trauma/education/advanced-trauma-life-support [Ver: 11th]
+        - Limmer D, O’Keefe MF. **Emergency Care** 15th ed. Chapter 29, 34
+
+        NEMSIS: 9914165

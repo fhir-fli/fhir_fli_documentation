@@ -1,0 +1,96 @@
+book:
+  id: "calculators"
+  title: "Calculators"
+  subtitle: "Bedside clinical calculators"
+  cover: "cover.png"      # "Calculators" cover; title renders below on the shelf
+  spine_color: "0xFF00695C"
+  # Calculators: evidence-vetted bedside clinical calculators. Three kinds:
+  #   - conversion  (equivalence/tiers dose converters — opioid/benzo/statin/steroid)
+  #   - formula     (numbers in → number out — CrCl, MAP, corrected Na, …)
+  #   - score       (criteria → summed points → risk band — CHA₂DS₂-VASc, Wells, …)
+  # Every calculator is guideline-backed; formula math lives in a unit-tested
+  # Dart registry (formula_registry.dart) and score sums in score_engine.dart.
+  # Book-level palette: a teal "tools" accent inherited by all calculators.
+  palette:
+    accent: "0xFF00695C"
+  contents:
+    - title: "Dose Conversions"
+      children:
+        - topic: "topics/conv_opioids.yaml"
+        - topic: "topics/conv_benzodiazepines.yaml"
+        - topic: "topics/conv_steroids.yaml"
+        - topic: "topics/conv_statins.yaml"
+    - title: "Renal & Fluids"
+      children:
+        - topic: "topics/calc_creatinine_clearance.yaml"
+        - topic: "topics/calc_urinary_indices.yaml"
+        - topic: "topics/calc_holliday_segar.yaml"
+        - topic: "topics/calc_parkland.yaml"
+    - title: "Electrolytes & Acid–Base"
+      children:
+        - topic: "topics/calc_corrected_sodium.yaml"
+        - topic: "topics/calc_free_water_deficit.yaml"
+        - topic: "topics/calc_adrogue_madias.yaml"
+        - topic: "topics/calc_anion_gap.yaml"
+        - topic: "topics/calc_osmolal_gap.yaml"
+        - topic: "topics/calc_winters.yaml"
+        - topic: "topics/calc_aa_gradient.yaml"
+        - topic: "topics/calc_hba1c_eag.yaml"
+    - title: "Cardiac & Body Size"
+      children:
+        - topic: "topics/calc_map.yaml"
+        - topic: "topics/calc_qtc.yaml"
+        - topic: "topics/calc_prevent_ascvd.yaml"
+        - topic: "topics/calc_ideal_body_weight.yaml"
+        - topic: "topics/calc_anthropometrics.yaml"
+    - title: "Hepatology & GI"
+      children:
+        - topic: "topics/calc_meld.yaml"
+        - topic: "topics/calc_child_pugh.yaml"
+        - topic: "topics/calc_fib4.yaml"
+        - topic: "topics/calc_maddrey.yaml"
+        - topic: "topics/calc_lille.yaml"
+        - topic: "topics/calc_glasgow_blatchford.yaml"
+    - title: "Hematology & Pulmonary"
+      children:
+        - topic: "topics/calc_anc.yaml"
+        - topic: "topics/calc_reticulocyte.yaml"
+        - topic: "topics/calc_dday_age.yaml"
+        - topic: "topics/calc_lights.yaml"
+        - topic: "topics/calc_oxygenation.yaml"
+    - title: "Risk & Severity Scores"
+      children:
+        - topic: "topics/calc_cha2ds2_vasc.yaml"
+        - topic: "topics/calc_hasbled.yaml"
+        - topic: "topics/calc_heart.yaml"
+        - topic: "topics/calc_wells_dvt.yaml"
+        - topic: "topics/calc_wells_pe.yaml"
+        - topic: "topics/calc_perc.yaml"
+        - topic: "topics/calc_curb65.yaml"
+        - topic: "topics/calc_news2.yaml"
+        - topic: "topics/calc_qsofa.yaml"
+        - topic: "topics/calc_sirs.yaml"
+        - topic: "topics/calc_centor.yaml"
+        - topic: "topics/calc_sgarbossa.yaml"
+        - topic: "topics/calc_ich_score.yaml"
+        - topic: "topics/calc_nihss.yaml"
+        - topic: "topics/calc_sofa.yaml"
+        - topic: "topics/calc_4ts.yaml"
+        - topic: "topics/calc_gcs.yaml"
+        - topic: "topics/calc_canadian_ct_head.yaml"
+        - topic: "topics/calc_rcri.yaml"
+        - topic: "topics/calc_bisap.yaml"
+    - title: "Withdrawal Scales"
+      children:
+        - topic: "topics/calc_ciwa_ar.yaml"
+        - topic: "topics/calc_cows.yaml"
+    - title: "Orthopedics & Obstetrics"
+      children:
+        - topic: "topics/calc_ottawa_ankle.yaml"
+        - topic: "topics/calc_ottawa_knee.yaml"
+        - topic: "topics/calc_bishop.yaml"
+    - title: "Mental Health & Alcohol"
+      children:
+        - topic: "topics/calc_phq9.yaml"
+        - topic: "topics/calc_gad7.yaml"
+        - topic: "topics/calc_auditc.yaml"

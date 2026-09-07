@@ -1,0 +1,199 @@
+# ============================================================
+# ProtocolBook pp.94–95 — Adult Heart Failure. OPENS the new "Internal
+# Medicine Protocols" section (p.93 is a pure divider → skipped;
+# content runs pp.94 onward). First leaf of the new group (accent deep
+# blue 0xFF0D47A1).
+#
+# Two-page topic (`pages:`): p.94 = presenting complaints / risk
+# factors / initial management / the Stevenson 2×2 classification;
+# p.95 = treatment by category + NYHA classes.
+#
+# Faithful-rendering calls:
+#   - The 2×2 "warm/cold × wet/dry" classification (Low Perfusion ×
+#     Congestion) → four titled prose blocks (Cold & Wet / Cold & Dry /
+#     Warm & Wet / Warm & Dry), each with its findings; the axes are
+#     named in the intro. A literal 2×2 bullet-cell table is too
+#     cramped for a phone.
+#   - Treatment (p.95) mirrors the same four categories → four prose
+#     blocks with Roman-step drug bullets. "ONLY IF PROVEN" (digoxin
+#     only for proven SVT/AF) kept bold as printed.
+#   - NYHA classes I–IV → a `table`.
+#   - Citation superscripts (73, 96) dropped.
+#
+# CONTENT FLAGS for the later OE / content pass (rendered faithfully):
+#   - The Stevenson profiles + category-directed therapy (diuretic for
+#     wet, inotrope/dopamine for cold, ACE-I/beta-blocker/spironolactone
+#     for the stable warm-and-dry chronic patient) are standard. Digoxin
+#     restricted to proven AF/flutter is appropriate. Morphine in acute
+#     pulmonary oedema is now controversial (kept as printed — flag).
+# Cross-book pass 2026-08-28: oxygen trigger 94% -> 90%. A routine 94%
+#   trigger commits oxygen to a much larger group without mortality benefit,
+#   and oxygen is the most rationed resource in this setting. Discharge and
+#   target criteria are NOT this figure and were left alone.
+# ============================================================
+
+topic:
+  id: "pb-im-heart-failure"
+  title: "Adult Heart Failure"
+  list_subtitle: "pp.94–95 · warm/cold × wet/dry · treatment"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["heart failure", "CHF", "adult", "internal medicine", "stevenson", "cold wet dry warm", "furosemide", "dopamine", "digoxin", "ACE inhibitor", "NYHA", "cardiology"]
+  category: "medical"
+
+  pages:
+
+    # ═══════════════════════ PAGE 94 ═══════════════════════
+    - page_number: 94
+      blocks:
+
+        # 2026-08-24 — the print draws p.94 as a flowchart: two parallel intake
+        # boxes (presenting complaints ‖ risk factors) converging into the
+        # assessment box, then down into the Stevenson 2×2. The app had all of
+        # it as seven prose blocks, and the 2×2 as four separate lists, which
+        # loses the grid that makes the classification usable at the bedside.
+        - type: "flowchart"
+          variant: "severity"
+          entry_chain:
+            - text: "Adult heart failure"
+              shape: "stadium"
+          branches:
+            - id: "complaints"
+              label: "Common presenting complaints"
+              criteria:
+                - "Paroxysmal nocturnal dyspnoea (PND)"
+                - "Orthopnoea"
+                - "Dyspnoea on exertion (DOE)"
+                - "Fatigue and weight gain"
+                - "Cough"
+                - "Exercise intolerance"
+                - "Increasing abdominal girth"
+                - "Lower-extremity oedema"
+                - "Shortness of breath when bending forward (\"bendopnoea\")"
+            - id: "risk"
+              label: "Risk factors"
+              criteria:
+                - "Known heart failure, coronary artery disease, myocardial infarction, or hypertension"
+                - "Diabetes mellitus or dyslipidaemia"
+                - "COPD or other lung disease"
+                - "Cardiac valve disease"
+                - "Pulmonary embolism or pulmonary hypertension"
+                - "Sleep apnoea"
+                - "Infection"
+                - "Recent surgery or trauma"
+                - "Family history of heart failure"
+                - "Significant smoking or alcohol use"
+          convergence:
+            text: "Initial management"
+            shape: "rounded_rectangle"
+            bullets:
+              - text: "Monitor, support ABCs"
+              - text: "Check vital signs (PR, RR, SpO₂, temp, weight)"
+              - text: "Start oxygen if SpO₂ < 90%"
+              - text: "Place a large-bore IV"
+              - text: "Assess AVPU/GCS and hydration status"
+              - text: "Perform a brief, targeted history and physical exam"
+              - text: "12-lead ECG"
+          post_convergence:
+            text: "Classify on physical exam — congestion × perfusion (grid below)"
+            shape: "rectangle"
+
+        - type: "table"
+          title: "Classify by physical exam"
+          column_flex: [3, 5, 5]
+          # An empty first-column header leaves the two congestion labels
+          # running together across the header bar, out of line with the body
+          # columns (seen on device). Label the axis instead.
+          columns: ["Perfusion ↓ / Congestion →", "YES — wet", "NO — dry"]
+          rows:
+            - cells:
+                - "**Low perfusion — YES (cold)**"
+                - |
+                  **Cold & Wet**
+                  - SBP < 90 / narrow pulse pressure
+                  - Cool / pale extremities
+                  - Decreased urine output
+                  - Elevated JVP
+                  - Crackles in lung bases
+                  - Peripheral oedema
+                  - Hepatomegaly / ascites
+                - |
+                  **Cold & Dry**
+                  - SBP < 90 / narrow pulse pressure
+                  - Cool / pale extremities
+                  - Decreased urine output
+                  - Normal / low JVP
+                  - Clear lungs
+                  - Minimal peripheral oedema
+            - cells:
+                - "**Low perfusion — NO (warm)**"
+                - |
+                  **Warm & Wet**
+                  - SBP > 90
+                  - Good peripheral pulse
+                  - Normal urine output
+                  - Elevated JVP
+                  - Crackles in lung bases
+                  - Peripheral oedema
+                  - Hepatomegaly / ascites
+                - |
+                  **Warm & Dry**
+                  - SBP > 90
+                  - Good peripheral pulse
+                  - Normal urine output
+                  - Normal JVP
+                  - Clear lungs
+                  - Minimal peripheral oedema
+
+    # ═══════════════════════ PAGE 95 ═══════════════════════
+    - page_number: 95
+      blocks:
+
+        - type: "prose"
+          title: "Treatment — for all exacerbations"
+          markdown: |
+            - Monitor intake/output, consider a Foley, get daily weights
+            - Consider electrolytes, BUN, Cr
+            - ECHO if a new diagnosis; repeat once stable if possibly worsening baseline disease
+
+        - type: "prose"
+          title: "Cold & Wet — treatment"
+          markdown: |
+            - Vasopressor to maintain SBP > 90 — **norepinephrine 0.05–0.5 mcg/kg/min is first choice where available** (it can be run peripherally on a drop counter if there is no central line). If it is not stocked, dopamine 3–10 mcg/kg/min — effective, but with markedly more arrhythmia and higher mortality
+            - Furosemide — start once BP is sustained; 40–80 mg IV 2-hourly according to clinical evaluation. **Reassess before every repeat dose** (urine output, JVP, chest, BP) and **check potassium and creatinine daily** — repeated 2-hourly dosing depletes potassium fast
+            - Digoxin — **ONLY IF PROVEN** supraventricular tachycardia (atrial fibrillation, atrial flutter, etc.). **Digitalise:** 0.25–0.5 mg IV, then 0.25 mg every 6–8 hours for up to 2 further doses (total ≤1–1.5 mg). **Then maintenance 0.125–0.25 mg PO ONCE DAILY.** 🛑 **Do not continue 6–8-hourly dosing** — that is ~0.75–1 mg/day and reliably reaches toxic levels. Target 0.5–0.9 ng/mL; reduce in renal impairment and in the elderly
+
+        - type: "prose"
+          title: "Cold & Dry — treatment"
+          markdown: |
+            - Vasopressor to maintain SBP > 90 — **norepinephrine 0.05–0.5 mcg/kg/min is first choice where available** (it can be run peripherally on a drop counter if there is no central line). If it is not stocked, dopamine 3–10 mcg/kg/min — effective, but with markedly more arrhythmia and higher mortality
+            - Digoxin — **ONLY IF PROVEN** supraventricular tachycardia (atrial fibrillation, atrial flutter, etc.). **Digitalise:** 0.25–0.5 mg IV, then 0.25 mg every 6–8 hours for up to 2 further doses (total ≤1–1.5 mg). **Then maintenance 0.125–0.25 mg PO ONCE DAILY.** 🛑 **Do not continue 6–8-hourly dosing** — that is ~0.75–1 mg/day and reliably reaches toxic levels. Target 0.5–0.9 ng/mL; reduce in renal impairment and in the elderly
+
+        - type: "prose"
+          title: "Warm & Wet — treatment"
+          markdown: |
+            - Furosemide — initial IV dose should equal or exceed the chronic daily PO dose, OR 40–80 mg IV bolus (double the dose if no effect in 30 minutes); consider a 2nd diuretic if no response; continue 2-hourly as needed
+            - 🛑 **Do not give morphine for breathlessness in acute heart failure.** It is associated with increased mortality, more mechanical ventilation and more ICU admission, and it does not improve the breathlessness. Treat the oedema — oxygen, sitting upright, furosemide, nitrates
+            - If hypertensive: ACE inhibitor
+            - Continue home dose of beta-blocker or ACEI if haemodynamically stable, but do not titrate until the exacerbation is resolved
+
+        - type: "prose"
+          title: "Warm & Dry — treatment"
+          markdown: |
+            Stable, chronic heart failure — treatment should also be started in hospital after an acute exacerbation is stabilised, prior to discharge:
+            - ACE inhibitor — titrate to the highest dose tolerated; periodically monitor Cr and K+
+            - Beta-blocker — start low, titrate up every two weeks to the maximum tolerated dose
+            - Furosemide — for chronic volume overload
+            - Spironolactone — for NYHA class II–IV; serum Cr < 2.5 / 2 (men/women); potassium < 5
+            - **SGLT2 inhibitor — where available:** dapagliflozin 10 mg OD or empagliflozin 10 mg OD. Now a fourth pillar alongside ACE-inhibitor, beta-blocker and spironolactone; it reduces hospitalisation and cardiovascular death **whether or not the patient has diabetes**
+
+        - type: "table"
+          title: "New York Heart Association (NYHA) classes"
+          zebra: true
+          columns: ["Class", "Description"]
+          column_flex: [2, 8]
+          column_align: ["center", "left"]
+          rows:
+            - cells: ["I", "No limitation of physical activity. Ordinary physical activity does not cause undue fatigue, palpitation, or dyspnoea."]
+            - cells: ["II", "Slight limitation of physical activity. Comfortable at rest. Ordinary physical activity results in fatigue, palpitation, or dyspnoea."]
+            - cells: ["III", "Marked limitation of physical activity. Comfortable at rest. Less than ordinary activity causes fatigue, palpitation, or dyspnoea."]
+            - cells: ["IV", "Unable to carry on any physical activity without discomfort. Symptoms of heart failure at rest. Any physical activity increases discomfort."]

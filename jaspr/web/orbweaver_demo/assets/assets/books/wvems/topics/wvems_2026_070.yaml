@@ -1,0 +1,162 @@
+# ============================================================
+# WVEMS 2026 Protocol 70 — Burns
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-070"
+  version: "v260101"
+  title: "Burns"
+  list_subtitle: "2026-070 · Heat / Chemical / Electric"
+  last_reviewed: "Oct 2025"
+  tags:
+    - "burns"
+    - "hazmat"
+    - "chemical"
+    - "electrical"
+    - "sunburn"
+    - "trauma"
+  aliases:
+    - "Hazmat"
+    - "Heat / Chemical / Electrical Burn"
+    - "Sunburn"
+  category: "trauma"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 70
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 2 branches)
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      warnings:
+        - type: "safety"
+          text: "Ensure Provider SAFETY"
+
+      entry_chain:
+        - text: "Heat, Chemical, or Electric Injury"
+          shape: "stadium"
+        - text: "Stop the Burning"
+          shape: "rounded_rectangle"
+
+      decision:
+        text: "Severity?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "minor"
+          label: "Minor"
+          criteria:
+            - "Superficial"
+            - "Less than 5% BSA"
+          actions:
+            - text: "Position of Comfort"
+              kind: "procedure"
+
+        - id: "major"
+          label: "Major"
+          criteria:
+            - "Deep or Blistering"
+            - "Face or Airway"
+          actions:
+            - text: "Wound Care"
+              kind: "procedure"
+            - provider_level: "A"
+              text: "NS Bolus"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        warnings:
+          - type: "safety"
+            text: "Ensure Patient DECON"
+          - type: "caution"
+            text: "[Consider Destination Triage](topic:wvems-2026-109#destination-triage)"
+        bullets:
+          - text: "[Breathing](topic:wvems-2026-006)"
+          - text: "Circulation / [Shock](topic:wvems-2026-008)"
+          - text: "[Pain](topic:wvems-2026-020)"
+          - text: "[Antidote](topic:wvems-2026-096#administer-antidote)"
+
+      dose_table:
+        - drug: "[NS Bolus](topic:wvems-2026-drug-reference#ns-bolus)"
+          dose: "500 mL"
+          route: "IV/IO"
+          frequency: "per hour"
+          population: "adult"
+
+  - page_number: 71
+    blocks:
+
+    - type: "prose"
+      title: "Burn Imperatives"
+      highlight: true
+      markdown: |
+        - Use **ABLS fluid rate** (may use **NS** or **LR**). Watch for [Hypothermia](topic:wvems-2026-068).
+        - Monitor [Airway](topic:wvems-2026-004) closely with any facial, nasal or oral burns.
+        - Some chemical burns (e.g. **HF acid**) may benefit from an **[Antidote](topic:wvems-2026-096#administer-antidote)**.
+        - Monitor **[EKG](topic:wvems-2026-096#12-lead)** for electrical burns > **1,000 v**.
+        - Remove adjacent and distal jewelry if able.
+
+    - type: "row"
+      blocks:
+        - type: "prose"
+          title: "ABLS rate"
+          callout: true
+          markdown: |
+            - 14+ y/o: **500 mL/hr**
+            - 6–13 y/o: **250 mL/hr**
+            - 0–5 y/o: **125 mL/hr**
+        - type: "image"
+          path: "assets/books/wvems/images/bsa_rule_of_nines.png"
+          size: "full"
+          caption: "Rule of 9's (adult BSA) — palm (with fingers) ≈ 1%, perineum 1%."
+
+    - type: "prose"
+      title: "TRAUMA Alert"
+      callout: true
+      dashed: true
+      call_er: true
+      markdown: |
+        - If Major Intervention
+        - Or Major Mechanism
+        - Call a **TRAUMA** Alert
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - **Rule of 9's** can estimate BSA in adults.
+          - Patient’s palm (**with fingers**) is about 1% BSA.
+          - Consider only partial and full thickness when calculating BSA.
+        - This protocol includes **chemical burns** and skin exposures.
+          - For **gasses** and smoke [inhalation](topic:wvems-2026-072), refer to [Inhalation](topic:wvems-2026-072).
+          - For **poisoning** and toxic ingestions, refer to [OD / Tox](topic:wvems-2026-040).
+        - If chemical is known, consider calling **CHEMTREC**: 800-424-9300.
+        - This does **not** include **radiation** exposure (call **Medical Control**).
+        - Consider aeromedical [Destination Triage](topic:wvems-2026-109#destination-triage) if major burn > 20% BSA.
+          - There are no ABA-verified burn centers near the WVEMS region.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape Burns — https://emedicine.medscape.com/article/1278244 [Ver: 10/23]
+        - Limmer D, O’Keefe MF. **Emergency Care** 15th ed. Chapter 30
+
+        NEMSIS: 9914085, 9914095, 9914209, 9914213

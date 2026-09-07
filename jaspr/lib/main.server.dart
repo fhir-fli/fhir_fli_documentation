@@ -117,6 +117,7 @@ void main() {
                 links: [
                   SidebarLink(text: 'FHIRPath Demo', href: 'docs/demos/fhir_path_demo'),
                   SidebarLink(text: 'FHIR Mapping Demo', href: 'docs/demos/fhir_mapping_demo'),
+                  SidebarLink(text: 'Orbweaver Playground', href: 'docs/demos/orbweaver_demo'),
                 ],
               ),
               SidebarGroup(
@@ -152,6 +153,13 @@ void main() {
                 links: [
                   SidebarLink(text: 'Overview', href: 'docs/drosophila/drosophila_overview'),
                   SidebarLink(text: 'Demo', href: 'docs/drosophila/drosophila_demo'),
+                ],
+              ),
+              SidebarGroup(
+                title: 'Orbweaver',
+                links: [
+                  SidebarLink(text: 'YAML Authoring', href: 'docs/orbweaver/orbweaver_authoring'),
+                  SidebarLink(text: 'Playground', href: 'docs/demos/orbweaver_demo'),
                 ],
               ),
               SidebarGroup(

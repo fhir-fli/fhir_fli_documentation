@@ -1,0 +1,159 @@
+# ============================================================
+# WVEMS 2026 Protocol 38 — Diabetic
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-038"
+  version: "v260101"
+  title: "Diabetic"
+  list_subtitle: "2026-038 · Glucose / D10 / Glucagon"
+  last_reviewed: "Aug 2025"
+  tags: ["diabetic", "diabetes", "hypoglycemia", "hyperglycemia", "dka", "glucose", "d10", "glucagon"]
+  aliases:
+    - "Hypoglycemia"
+    - "Hyperglycemia"
+    - "Blood Sugar"
+    - "Glucose"
+    - "DKA"
+  category: "medical"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 38
+    blocks:
+
+    - type: "flowchart"
+      variant: "severity"
+
+      warnings:
+        - type: "caution"
+          text: "[Use Caution if Patient Refusal](topic:wvems-2026-109#patient-refusals)"
+
+      entry:
+        text: "Abnormal Blood Glucose"
+        shape: "stadium"
+
+      decision:
+        text: "Level?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "low"
+          label: "Low"
+          criteria:
+            - "Below 60 mg/dL"
+            - "Confusion"
+          actions:
+            - provider_level: "E"
+              text: "Oral Glucose"
+              kind: "medication_administration"
+            - provider_level: "A"
+              text: "D10"
+              kind: "medication_administration"
+            - provider_level: "E"
+              text: "Glucagon"
+              kind: "medication_administration"
+            - provider_level: "E"
+              text: "12-Lead"
+              kind: "diagnostic"
+
+        - id: "high"
+          label: "High"
+          criteria:
+            - "Above 400 mg/dL"
+            - "Polyuria, Thirst"
+          actions:
+            - provider_level: "A"
+              text: "NS Bolus"
+              kind: "medication_administration"
+            - provider_level: "E"
+              text: "12-Lead"
+              kind: "diagnostic"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "[Altered LOC](topic:wvems-2026-036)"
+          - text: "[Seizure](topic:wvems-2026-042), [OD / Tox](topic:wvems-2026-040)"
+      dose_table:
+        - drug: "[Oral Glucose](topic:wvems-2026-drug-reference#glucose)"
+          dose: "15 grams"
+          route: "PO"
+          frequency: "Q 5 min x3"
+          population: "adult"
+        - drug: "[D10](topic:wvems-2026-drug-reference#d10)"
+          dose: "100 mL"
+          route: "IV/IO"
+          frequency: "Q 5 min x5"
+          population: "adult"
+        - drug: "[Glucagon](topic:wvems-2026-drug-reference#glucagon)"
+          dose: "1 mg"
+          route: "IM"
+          frequency: "x1"
+          population: "adult"
+        - drug: "[NS Bolus](topic:wvems-2026-drug-reference#ns-bolus)"
+          dose: "500 mL"
+          route: "IV/IO"
+          frequency: "x4"
+          population: "adult"
+
+  - page_number: 39
+    blocks:
+
+    - type: "prose"
+      title: "Diabetic Imperatives"
+      highlight: true
+      markdown: |
+        - EMS intervention is not required for mild asymptomatic patients.
+        - Consider a concurrent [Cardiac](topic:wvems-2026-028) emergency in the elderly.
+          - Many diabetic emergencies benefit from a **12-Lead if able**.
+        - Consider other causes of [Altered LOC](topic:wvems-2026-036) even with hypoglycemia.
+        - Hypoglycemia from **sulfonylureas** can be refractory & profound.
+          - E.g. glipizide (Glucotrol®), glyburide, glimepiride (Amaryl®)
+          - **Call Medical Control** for any refusal if taking **sulfonylureas**.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Oral Glucose](topic:wvems-2026-drug-reference#glucose)** (Glutose 15™): Avoid if patient cannot swallow.
+          - Consider **regular food** as an alternative if available.
+          - Prioritize food & drink with **simple sugar** (like juice & candy).
+          - Also provide complex carbs/protein (like **peanut butter**).
+        - **[D10](topic:wvems-2026-drug-reference#d10)** (Dextrose 10%): Recheck glucose prior to repeat dosing.
+          - May attempt without glucometer if hypoglycemia is likely.
+        - **[Glucagon](topic:wvems-2026-drug-reference#glucagon)** (Glucagen®): Caution - improvement is temporary!
+          - **Must provide additional glucose** or **[D10](topic:wvems-2026-drug-reference#d10)** after admin.
+          - **Call Medical Control** for any refusal after **[Glucagon](topic:wvems-2026-drug-reference#glucagon)**.
+          - Can substitute intranasal prefill device (instead of IM dosing):
+          - † {E} **[Baqsimi®](topic:wvems-2026-drug-reference#glucagon)** (Glucagon IN prefill): **3** mg IN x1 for **≥ 1 y/o**
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Avoid starting an IV in the **legs or feet** of a diabetic patient.
+        - Hyperglycemia with fruity odor may be **DKA** - emphasize IV fluids.
+        - Look for an **insulin pump**. May unplug the tube if **hypoglycemic**.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Only use **NS Bolus** for [shock](topic:wvems-2026-008). Hypervolemia can **cause harm**.
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape Hypoglycemia — https://emedicine.medscape.com/article/122122 [Ver: 5/25]
+        - Medscape DKA — https://emedicine.medscape.com/article/118361 [Ver: 3/24]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 22
+
+        NEMSIS: 9914121, 9914125

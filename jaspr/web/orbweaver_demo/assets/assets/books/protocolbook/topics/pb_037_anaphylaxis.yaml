@@ -1,0 +1,162 @@
+# ============================================================
+# ProtocolBook p.37 — Anaphylaxis.
+#
+# Hybrid-rule split: everything above "Wheezing?" on the printed
+# chart is a LINEAR flow with no branch points (symptoms → 3
+# diagnostic-criteria boxes feeding "any of the 3" → epinephrine →
+# 5-item management box), so that half is titled prose with the
+# epinephrine action as a red-alert callout.  The true decision
+# tail (Wheezing? → treat as asthma; Hypotension? → IV fluids;
+# → adjunctive treatment) is an `algorithm` flowchart; the
+# adjunctive box is the spine terminal (every path receives it).
+#
+# Faithful-rendering calls:
+#   - Criteria 1 ends with a stray unmatched ")" in the source —
+#     dropped (typo, no content).
+#   - "Treat as asthma exacerbation" is plain text for now; becomes a
+#     topic: cross-link once the Wheezing/Asthma pages (~p.53) are
+#     authored (same deferral as p.30's convulsion pointer).
+#
+# ✅ EVIDENCE-CURRENCY UPDATES APPLIED (audit pass 2026-07-26) — the
+# two items below were pre-designated CLEAR-CUT and are now applied:
+#   - RANITIDINE → FAMOTIDINE → **DELETED ENTIRELY (2026-07-27)**.
+#     Ranitidine was withdrawn worldwide in April 2020 (NDMA), so it
+#     was first swapped for famotidine. On re-review the H2 blocker
+#     was removed altogether: no H2 blocker appears in RCUK 2021, the
+#     AAAAI/ACAAI 2020 or 2023 parameters, WHO EML §3, or Uganda
+#     Clinical Guidelines 2023 §1.1.1 — and Nurmatov's systematic
+#     review "failed to identify any eligible studies for inclusion",
+#     i.e. zero RCTs have ever been done. It consumed page space and
+#     pharmacy stock while offering nothing, and risked reading as
+#     "treatment" of an anaphylaxis. H1 blocker and steroid kept, but
+#     now explicitly labelled as not treating airway, breathing or
+#     circulation.
+#   - EPINEPHRINE MAX 0.3 mL → "max 0.3 mL (child), up to 0.5 mL
+#     (adolescent / adult)". 0.01 mg/kg IM with a 0.5 mg adult ceiling
+#     and a 0.3 mg prepubertal ceiling is the current AAAAI/ACAAI +
+#     WAO parameter; 0.3 mg is the paediatric cap only, so the printed
+#     blanket 0.3 mL under-doses adults.
+#
+# ✅ RESOLVED 2026-07-27 (both were open flags, now closed):
+#   - The "Adjunctive treatment" terminal is now explicitly labelled as
+#     NOT treating airway, breathing or circulation, and never to
+#     delay or replace epinephrine — matching the practice parameters,
+#     which recommend against routine steroids/antihistamines and note
+#     they do not prevent biphasic reactions.
+#   - OBSERVATION PERIOD added, and set LONGER than the international
+#     default deliberately. NICE NG258's short-observation route
+#     requires the patient to already hold two in-date adrenaline
+#     auto-injectors and to have ready access to emergency care —
+#     neither is true here, so no patient in this setting qualifies.
+#     NICE's 12-hour criteria, by contrast, explicitly include
+#     "presents out-of-hours" and "would be discharged to an area
+#     where access to emergency care is difficult" — routinely true
+#     for a rural catchment. Hence 6 h minimum / 12 h if severe /
+#     admit every child under 16. This is a case where the right
+#     answer is set by logistics rather than biology.
+#
+# CONTENT FLAG still open (optional):
+#   - Diagnostic criteria are the classic 2006 NIAID/FAAN set — still
+#     widely taught; WAO 2020 simplified to 2 criteria.
+# Cross-book pass 2026-08-28: hydrocortisone 5 -> 2-4 mg/kg with a 100 mg
+#   paediatric cap (NIAID/FAAN); benefit is unproven in anaphylaxis.
+# Cross-book pass 2026-08-28: oxygen trigger 94% -> 90%. A routine 94%
+#   trigger commits oxygen to a much larger group without mortality benefit,
+#   and oxygen is the most rationed resource in this setting. The other book
+#   used 90% throughout and this book already used 90% on its paediatric
+#   pneumonia page. Discharge/target criteria on other pages are NOT this
+#   figure and were left alone.
+# ============================================================
+
+topic:
+  id: "pb-anaphylaxis"
+  title: "Anaphylaxis"
+  list_subtitle: "p.37 · criteria + epinephrine"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["anaphylaxis", "allergy", "allergic reaction", "epinephrine", "adrenaline", "angioedema", "hives", "hypotension"]
+  category: "medical"
+  page_number: 37
+
+  blocks:
+
+    - type: "prose"
+      title: "Common symptoms"
+      markdown: |
+        - **Mucocutaneous:** angioedema, hives, pruritis, flushing
+        - **Respiratory:** dyspnea, wheezing, stridor, hypoxia
+        - **GI:** nausea/vomiting/diarrhea/abdominal cramping
+        - **End-organ dysfunction:** syncope, hypotonia
+
+    - type: "prose"
+      title: "Diagnostic criteria — any of the 3 → epinephrine"
+      markdown: |
+        - **Criteria 1:** Acute skin/mucosal tissue signs + 1 of the following: Respiratory compromise, Hypotension, OR Signs of end-organ dysfunction
+        - **Criteria 2:** Rapid onset after likely antigen exposure of 2 of the following: Mucocutaneous signs, Respiratory symptoms, Hypotension, OR GI symptoms
+        - **Criteria 3:** Hypotension after exposure to known allergen
+          - Adults SBP <90
+          - Children age 11–17: SBP <90
+          - Children age 1–10: SBP <(70 + [age x 2])
+          - Children age 1 month to 1 year: SBP <70
+          - Term neonate: SBP <60
+
+    - type: "prose"
+      callout: true
+      palette:
+        alert: "0xFFD32F2F"
+        alert_fill: "0xFFFDECEA"
+        alert_text: "0xFFB71C1C"
+      title: "Epinephrine 1 mg/mL (1:1,000)"
+      markdown: |
+        - 0.01mL/kg — max 0.3mL (child), up to 0.5mL (adolescent / adult)
+        - IM anterolateral thigh
+        - Repeat q5–15 minutes if no improvement
+        - 🛑 **Use 1 mg/mL (1:1,000) for IM injection ONLY. Do NOT give it IV** — it is **10× the IV concentration** and can cause fatal arrhythmia. For IV use (cardiac arrest only), dilute to **0.1 mg/mL (1:10,000)**
+
+    - type: "prose"
+      title: "Initial management"
+      markdown: |
+        - Monitor, support ABCs
+        - Check vital signs (BP, PR, RR, spO2, Temp, Weight)
+        - Assess GCS, hydration status
+        - Insert 2 IVs, Start Oxygen if spO2 <90%
+        - Draw CBC, malaria, and blood glucose
+
+    - type: "flowchart"
+      variant: "algorithm"
+      stages:
+        - decision: "Wheezing and/or shortness of breath?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Treat as asthma exacerbation"
+              continue: true
+            - label: "No"
+              continue: true
+        - decision: "Hypotension?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "IV fluids — NS or RL"
+                bullets:
+                  - "Children: 30mL/kg in first hour"
+                  - "Adults: 1–2L, 5–10mL/kg in first 5 min"
+                  - "May try recumbent positioning or vasopressors prn"
+                severity: "priority"
+              continue: true
+            - label: "No"
+              continue: true
+      terminal:
+        title: "Adjunctive treatment"
+        bullets:
+          - "These do NOT treat airway, breathing or circulation. Never let them delay or replace epinephrine"
+          - "H1 receptor blocker: Diphenhydramine 1mg/kg IV or PO, max dose 50mg"
+          - "Steroids: Hydrocortisone 2–4mg/kg IM/slow IV (max 100mg in a child, 200mg adult). An adjunct of unproven benefit — it does not treat airway, breathing or circulation and must never delay epinephrine"
+
+    - type: "prose"
+      title: "Observation before discharge"
+      markdown: |
+        - **Observe at least 6 hours** after all symptoms have resolved — for every patient who needed epinephrine
+        - **Keep overnight (12 hours minimum, admit) if any of:** more than one dose of epinephrine needed · any hypotension or collapse · stridor, wheeze or other severe breathing problem · known severe asthma · previous biphasic reaction · arrives at night · lives far away or transport back is difficult · no adult at home to watch them
+        - **Admit every child under 16.** Do not discharge a child the same day after true anaphylaxis
+        - Before discharge, sit or stand the patient up and check for dizziness
+        - **Warn every patient and carer that symptoms can return** hours after they settle — a second (biphasic) reaction occurs in roughly 5–20% of cases, usually within 4–12 hours. Tell them to come straight back

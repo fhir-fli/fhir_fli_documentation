@@ -1,0 +1,58 @@
+# ============================================================
+# WHO IMCI §3.3 — Routine care for all newborns after delivery.
+# Pocket Book 2nd ed (2013), p.50.
+# ✅ OpenEvidence review applied (2026-07): weight-based vitamin K
+#    (≤1500 g), chlorhexidine cord-care nuance (2022 WHO), eye-prophylaxis
+#    alternatives.
+# ============================================================
+
+topic:
+  id: "who-imci-3-3-routine-care"
+  title: "Routine Newborn Care"
+  list_subtitle: "3.3 · warmth, feeding, vitamin K, cord & eye care, vaccines"
+  last_reviewed: "WHO Pocket Book 2nd ed (2013) · OpenEvidence-reviewed 2026-07 (2022 WHO cord care)"
+  tags: ["routine care", "newborn", "vitamin k", "breastfeeding", "immunisation", "cord care", "pediatric"]
+  aliases:
+    - "Routine Care"
+  category: "medical"
+
+  page_number: 50
+
+  blocks:
+
+    - type: "prose"
+      title: "Applies to every newborn"
+      highlight: true
+      markdown: |
+        This routine care applies to **all newborns** — whether born in
+        hospital or born outside and brought in.
+
+    - type: "prose"
+      title: "The first hour"
+      markdown: |
+        - Keep the baby **skin-to-skin** on the mother's chest (or at her side)
+          in a **warm, draught-free** room.
+        - **Start breastfeeding within the first hour**, as soon as the baby
+          shows readiness to feed.
+        - Let the infant **breastfeed on demand** if able to suck.
+
+    - type: "prose"
+      title: "Vitamin K, cord & eye care"
+      markdown: |
+        - Give **IM vitamin K (phytomenadione)** to all newborns **once**:
+          - **1 mg** (1 mg/0.5 ml or 1 mg/ml ampoule) — **do not** use a
+            10 mg/ml ampoule.
+          - Infants **≤ 1500 g: 0.3–0.5 mg/kg IM** (a single **IV** dose is
+            **not** recommended in preterm infants).
+        - Keep the **umbilical cord clean and dry**. Where harmful substances
+          are traditionally applied to the stump, use **4% chlorhexidine**
+          (7.1% chlorhexidine digluconate) instead.
+        - **Antiseptic eye drops or ointment** to **both eyes**, according to
+          national guidelines — e.g. **tetracycline 1%**, **erythromycin
+          0.5%**, or **povidone-iodine 2.5%**.
+
+    - type: "prose"
+      title: "Immunisation"
+      markdown: |
+        Give **oral polio, hepatitis B, and BCG** vaccines, depending on
+        national guidelines.

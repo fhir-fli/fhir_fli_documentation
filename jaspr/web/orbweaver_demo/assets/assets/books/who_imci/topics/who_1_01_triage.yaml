@@ -1,0 +1,75 @@
+# ============================================================
+# WHO IMCI 1.1 — Triage
+# Pocket Book of Hospital Care for Children (2nd ed, 2013), p.2
+# OpenEvidence review applied (2026-06-18):
+#   - Emergency signs: add severe hypoxemia SpO2 < 90% (where pulse
+#     oximetry available) alongside central cyanosis (SSC peds 2026).
+#   - "Act now": fluid resuscitation is cautious, not reflexive,
+#     post-FEAST — cross-reference Chart 7.
+#   - Severe-dehydration criteria unchanged (2024 Cochrane: sign
+#     combinations perform reasonably).
+# OpenEvidence-reviewed 2026-07 — no content change:
+#   - Reviewer suggested adding "severe palmar pallor (severe anaemia)"
+#     to the emergency-signs list. REJECTED per source structure: in WHO
+#     ETAT, severe pallor is a PRIORITY sign (the "P" in 3TPR MOB), not an
+#     emergency sign — already carried in §1.2, and severe anaemia is in
+#     §1.4's screen-&-treat list. Adding it here would misstate WHO's own
+#     triage categorization.
+#   - §1.1 emergency-signs list, severe-dehydration criteria, and "Act now"
+#     callout confirmed accurate vs WHO 2013 / SSC peds 2026; unchanged.
+# ============================================================
+
+topic:
+  id: "who-imci-1-1-triage"
+  title: "Triage"
+  list_subtitle: "1.1 · emergency / priority / non-urgent"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · WHO PB 2013 + SpO2/FEAST"
+  tags: ["triage", "emergency signs", "priority signs", "etat", "imci", "pediatric"]
+  aliases:
+    - "ETAT"
+    - "Emergency Signs"
+  category: "medical"
+
+  page_number: 2
+
+  blocks:
+
+    - type: "prose"
+      title: "What triage is"
+      highlight: true
+      markdown: |
+        **Triage** is the process of rapidly screening sick children
+        soon after arrival, to sort them into three groups:
+
+        - **Emergency** — have emergency signs; need
+          **immediate treatment**.
+        - **Priority** — have priority signs; move to the
+          **front of the queue** to be assessed without delay.
+        - **Non-urgent** — neither emergency nor priority signs;
+          wait their turn.
+
+    - type: "prose"
+      title: "Emergency signs"
+      markdown: |
+        - **Obstructed or absent breathing**
+        - **Severe respiratory distress**
+        - **Central cyanosis** — or **SpO₂ < 90%** where pulse oximetry
+          is available
+        - **Signs of shock** — cold hands, capillary refill > 3 s,
+          fast heart rate with weak pulse, low/unmeasurable BP
+        - **Coma** (or seriously reduced consciousness)
+        - **Convulsions**
+        - **Severe dehydration** in a child with diarrhoea — lethargy,
+          sunken eyes, very slow skin pinch return (any two)
+
+    - type: "prose"
+      title: "Act now"
+      callout: true
+      markdown: |
+        - Children with **any** emergency sign need
+          **immediate treatment to avert death**.
+        - If a child has **one or more emergency signs**, do **not**
+          spend time looking for priority signs — treat first.
+        - For shock, fluids are **cautious, not reflexive** (post-FEAST)
+          — see [Chart 7](topic:who-imci-chart7-iv-fluids-shock).
+        - Priority signs are on the next page (1.2).

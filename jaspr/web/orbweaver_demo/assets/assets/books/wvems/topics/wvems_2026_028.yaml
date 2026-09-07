@@ -1,0 +1,181 @@
+# ============================================================
+# WVEMS 2026 Protocol 28 — Chest Pain
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-028"
+  version: "v260101"
+  title: "Chest Pain"
+  list_subtitle: "2026-028 · Aspirin / Nitro"
+  last_reviewed: "Feb 2025"
+  tags: ["chest pain", "acs", "stemi", "mi", "aspirin", "nitro", "cardiac"]
+  aliases:
+    - "ACS"
+    - "Heart Attack"
+    - "Acute MI"
+    - "Cardiac"
+    - "Coronary"
+  category: "medical"
+  # Sticky presentation: the flowchart page and the prose page each snap to a
+  # full screen (protocol + prose).
+  layout: "paged"
+
+  pages:
+
+  - page_number: 28
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 2 branches)
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      entry:
+        text: "Cardiac Chest Discomfort"
+        shape: "stadium"
+
+      decision:
+        text: "Severity?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "minor"
+          label: "Minor"
+          criteria:
+            - "Mild Discomfort"
+            - "Cardiac History"
+          actions:
+            - provider_level: "E"
+              text: "12-Lead"
+              kind: "diagnostic"
+            - provider_level: "E"
+              text: "Aspirin"
+              kind: "medication_administration"
+            - provider_level: "A"
+              text: "Saline Lock"
+              kind: "procedure"
+
+        - id: "major"
+          label: "Major"
+          criteria:
+            - "Nausea, Sweaty"
+            - "Pain that Radiates"
+          actions:
+            - provider_level: "E"
+              text: "12-Lead"
+              kind: "diagnostic"
+            - provider_level: "E"
+              text: "Aspirin"
+              kind: "medication_administration"
+            - provider_level: "A"
+              text: "Saline Lock"
+              kind: "procedure"
+            - provider_level: "E"
+              text: "Nitro"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        warnings:
+          - type: "caution"
+            text: "[Consider Destination Triage](topic:wvems-2026-109#destination-triage)"
+        bullets:
+          - text: "[Breathing](topic:wvems-2026-006), [Tachycardia](topic:wvems-2026-014)"
+          - text: "[Pain](topic:wvems-2026-020), [Trunk Injury](topic:wvems-2026-064)"
+          - text: "[STEMI](topic:wvems-2026-088)"
+
+      critical_care_link:
+        text: "[STEMI](topic:wvems-2026-088)"
+
+      dose_table:
+        - drug: "[Aspirin](topic:wvems-2026-drug-reference#aspirin)"
+          dose: "4 × 81 mg"
+          route: "PO"
+          frequency: "x1 (chewed)"
+          population: "adult"
+        - drug: "[Nitro](topic:wvems-2026-drug-reference#nitro-nitro-drip)"
+          dose: "0.4 mg"
+          route: "SL"
+          frequency: "Q 5 min x3"
+          population: "adult"
+
+  - page_number: 29
+    blocks:
+
+    - type: "prose"
+      title: "Chest Pain Imperatives"
+      highlight: true
+      markdown: |
+        - This protocol is for suspected **cardiac** (ACS) emergencies only.
+          - For pain resulting from chest trauma, refer to [Trunk Injury](topic:wvems-2026-064).
+          - For palpitations refer to [Tachycardia](topic:wvems-2026-014) or [Bradycardia](topic:wvems-2026-012).
+        - For all patients with an identified **STEMI**: place **defib pads** on.
+          - Also expose and shave groin during transport if time allows.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Aspirin](topic:wvems-2026-drug-reference#aspirin)** (Baby ASA): Contraindicated with **active** GI bleeding
+          - Have patient **chew four** (4) 81 mg tabs (not enteric coated).
+        - **[Nitro](topic:wvems-2026-drug-reference#nitro-nitro-drip)** (Nitroglycerin): May cause [Hypotension](topic:wvems-2026-008).
+          - Use caution if [Hypotensive](topic:wvems-2026-008) or suspected inferior/right STEMI.
+          - Contraindicated if SBP under 110 mmHg **without IV/IO** access.
+          - Contraindicated if recent (36 h) use of any **PDE5 inhibitors**:
+
+    - type: "row"
+      blocks:
+        - type: "prose"
+          flex: 6
+          title: "STEMI Alert"
+          callout: true
+          dashed: true
+          call_er: true
+          markdown: |
+            - If you see a [STEMI](topic:wvems-2026-088)
+            - Or EKG says \*\***AMI**\*\*
+            - Call a **STEMI** Alert
+        - type: "prose"
+          flex: 5
+          title: "PDE5 Inhibitors"
+          callout: true
+          markdown: |
+            - Sildenafil (Viagra®)
+            - Tadalafil (Cialis®)
+            - Vardenafil (Levitra®)
+            - Avanafil (Stendra®)
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Consider an atypical cardiac presentation in **diabetics** & **elderly**.
+          - Actual chest pain is not always present. Ask about cardiac hx.
+          - May have SOB or "discomfort" or nausea or be weak & sweaty.
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider advanced [STEMI](topic:wvems-2026-088) care if indicated & credentialed for CC.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Cardiac chest pain is unlikely in peds. Consider other causes.
+        - **[Aspirin](topic:wvems-2026-drug-reference#aspirin)** and **[Nitro](topic:wvems-2026-drug-reference#nitro-nitro-drip)** are contraindicated in peds chest pain.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - ACLS — https://www.ahajournals.org/doi/10.1161/CIR.0000000000001376 [Ver: 2025]
+        - PALS — https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000001368 [Ver: 2025]
+        - Medscape ACS — https://emedicine.medscape.com/article/1910735 [Ver: 9/25]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 20
+
+        NEMSIS: 9914117, 9914143

@@ -1,0 +1,103 @@
+# ============================================================
+# ProtocolBook p.61 — Sickle Cell Stroke. A linear flow (presentation
+# → initial management → concurrent-issue management table →
+# monitoring → discharge) with no decision points.
+#
+# 2026-08-24 — RENDERED AS A FLOWCHART. It was previously titled prose
+# plus one table, "per the hybrid rule" (linear flow, no decisions →
+# prose). Grey's rule of 2026-08-24 overrides that: if it is a
+# flowchart in the print, it is a flowchart in the app. The print draws
+# this page as a boxed spine with arrows, so the spine is now a
+# `linear` block. The concurrent-issue table stays a table below it —
+# `LinearContentStep` carries a title and bullets but not a table, so
+# the step names the six issues and the table below holds the detail.
+#
+# Faithful-rendering calls:
+#   - Citation superscripts (Hgb 156,162; hydration 163,164) dropped.
+#   - The concurrent-management table's Fever/Hypoglycemia rows have
+#     Children-vs-Adults values; the other rows span both ages. To
+#     avoid empty cells, rendered as a 2-column Issue|Management
+#     table with the age split inlined for those two rows.
+#
+# ⚠️ GENUINE SOURCE ERROR corrected (surfaced to Grey 2026-07-16):
+#   - The management table is titled "Does the patient have any
+#     contraindication?:" in the source — a template/copy-paste
+#     error: the table below it is concurrent-issue MANAGEMENT
+#     (fever, hypoglycemia, convulsions, anemia, infection,
+#     hydration), NOT a contraindication check. Retitled "Manage
+#     concurrent issues" to match its content. Grey should fix the
+#     source PDF header.
+# OpenEvidence-applied 2026-08-28 (WHO full advance pass):
+#   D10% 5 -> 2 mL/kg, children (WHO pass flag 1-2).
+# Cross-book pass 2026-08-28: oxygen trigger 94% -> 90%. A routine 94%
+#   trigger commits oxygen to a much larger group without mortality benefit,
+#   and oxygen is the most rationed resource in this setting. The other book
+#   used 90% throughout and this book already used 90% on its paediatric
+#   pneumonia page. Discharge/target criteria on other pages are NOT this
+#   figure and were left alone.
+# ============================================================
+
+topic:
+  id: "pb-sickle-cell-stroke"
+  title: "Sickle Cell Stroke"
+  list_subtitle: "p.61 · acute stroke protocol"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["sickle cell", "SCD", "stroke", "hemiparesis", "transfusion", "cefotaxime", "hydroxyurea", "paediatric", "haematology", "neurology"]
+  category: "medical"
+  page_number: 61
+
+  blocks:
+
+    - type: "flowchart"
+      variant: "linear"
+      entry_chain:
+        - text: "New neurologic findings — hemiparesis, focal neurologic deficit, speech disorder — OR high clinical suspicion"
+          shape: "stadium"
+      steps:
+        - type: "content"
+          title: "Initial management"
+          bullets:
+            - "Monitor, support ABCs"
+            - "Check vital signs (BP, PR, RR, spO2, Temp, Weight)"
+            - "Start oxygen if spO2 < 90%"
+            - "Assess GCS"
+            - "Assess hydration status"
+            - "Insert IV, draw CBC, malaria, RBS"
+            - "Perform brief, targeted history and physical exam"
+        - type: "content"
+          title: "Manage concurrent issues (table below)"
+          bullets:
+            - "Fever · Hypoglycaemia · Convulsions"
+            - "Anaemia — exchange transfusion preferred"
+            - "Infection · Hydration"
+        - type: "content"
+          title: "Monitoring"
+          bullets:
+            - "Daily neuro checks"
+            - "Physiotherapy as soon as acute issues resolve"
+      convergence:
+        text: "Discharge plan"
+        shape: "rounded_rectangle"
+        bullets:
+          - text: "Hydroxyurea"
+          - text: "Follow-up in Sickle Cell Clinic"
+
+    - type: "table"
+      title: "Manage concurrent issues"
+      columns: ["Issue", "Management"]
+      column_flex: [3, 7]
+      rows:
+        - cells: ["**Fever: Paracetamol**", "Children: 15mg/kg PO q6hrs · Adults: 650mg PO q6hrs"]
+        - cells: ["**Hypoglycemia**", "Children: Dextrose 10% 2ml/kg (mix 8ml NS with 2ml Dextrose 50%) · Adults: 1 amp (50ml) of Dextrose 50%"]
+        - cells: ["**Convulsions**", "See Convulsion Protocol"]
+        - cells: ["**Anemia: Transfusion**", "**Exchange transfusion is preferred** — target post-procedure **HbS 15–20%**. Start within **2 hours** of presentation. If exchange is not available: simple transfusion, PRBCs, to Hgb >9 — **but DO NOT exceed Hgb 10**. Raising the haematocrit without lowering HbS raises viscosity and can extend the infarct"]
+        - cells: ["**Infection: Antibiotics**", "Cefotaxime IV 50mg/kg every 8 hours (max dose 2g). May substitute Ceftriaxone 80mg/kg IV daily (max dose 2g)"]
+        - cells: ["**Hydration**", "Dehydrated: see dehydration recommendations. MIVF if hydrated. Encourage feeding"]
+
+    - type: "prose"
+      title: "Refer for imaging"
+      callout: true
+      markdown: |
+        **Refer for neuroimaging and advanced management.** Adults with sickle
+        cell disease have a substantial rate of **haemorrhagic** stroke, which
+        transfusion does not treat.

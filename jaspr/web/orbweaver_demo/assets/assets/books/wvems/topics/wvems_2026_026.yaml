@@ -1,0 +1,138 @@
+# ============================================================
+# WVEMS 2026 Protocol 26 — Medical ROSC
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# Uses the `linear` flowchart variant.
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-026"
+  version: "v260101"
+  title: "Medical ROSC"
+  list_subtitle: "2026-026 · Return of Pulse / Post-Resuscitation"
+  last_reviewed: "Dec 2025"
+  tags:
+    - "rosc"
+    - "post resuscitation"
+    - "ketamine"
+    - "amiodarone"
+    - "medical"
+  aliases:
+    - "Return of Pulse"
+    - "Post-Resuscitation Care"
+  category: "medical"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 26
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (linear variant)
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "linear"
+
+      entry_chain:
+        - text: "Return of Pulse"
+          shape: "stadium"
+
+      steps:
+        - type: "content"
+          title: "Stabilize"
+          bullets:
+            - "Establish [Airway](topic:wvems-2026-004)"
+            - "Provide [Breathing](topic:wvems-2026-006)"
+            - "Treat [Circulation](topic:wvems-2026-008)"
+        - type: "action"
+          provider_level: "E"
+          text: "12-Lead"
+          kind: "diagnostic"
+        - type: "action"
+          provider_level: "A"
+          text: "Saline Lock"
+          kind: "procedure"
+        - type: "action"
+          text: "Glucometer"
+          kind: "diagnostic"
+        - type: "action"
+          provider_level: "I"
+          text: "Ketamine"
+          condition: "If Agitated"
+          kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        warnings:
+          - type: "caution"
+            text: "[Consider Destination Triage](topic:wvems-2026-109#destination-triage)"
+        bullets:
+          - text: "[Fever](topic:wvems-2026-016), [Altered LOC](topic:wvems-2026-036)"
+          - text: "[Diabetic](topic:wvems-2026-038), [Overdose](topic:wvems-2026-040)"
+          - text: "[Intubation](topic:wvems-2026-078), [Vent](topic:wvems-2026-080)"
+
+      critical_care_link:
+        text: "[Intubation](topic:wvems-2026-078), [Vent](topic:wvems-2026-080)"
+
+      dose_table:
+        - drug: "[Ketamine](topic:wvems-2026-drug-reference#ketamine)"
+          dose: "20 mg"
+          route: "IV/IO"
+          frequency: "Q 5 min x2"
+          population: "adult"
+
+  - page_number: 27
+    blocks:
+
+    - type: "prose"
+      title: "Medical ROSC Imperatives"
+      highlight: true
+      markdown: |
+        - Ensure adequate resuscitation **before** attempting transport.
+          - Move expeditiously but with caution. **Don’t sacrifice stability.**
+        - Monitor closely for [Hypotension](topic:wvems-2026-008). Be ready with fluids & pressors.
+        - Avoid hyperventilation. It can cause [Hypotension](topic:wvems-2026-008) & repeat arrest.
+        - Monitor body temp and treat any [Fever](topic:wvems-2026-016) aggressively with meds.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Ketamine](topic:wvems-2026-drug-reference#ketamine)** (Ketalar®): Dilute in NS and **give slowly over 10 min**.
+          - Use [weight-based peds dosing](topic:wvems-2026-144) for adults under 110 lbs (50 kg).
+        - Consider maintenance drip if **prior VT/VF** & **transport > 30 min**:
+          - {I} **[Amiodarone](topic:wvems-2026-drug-reference#amiodarone)** (Pacerone®): 1 mg/min IV/IO, adult only.
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - **EtCO₂** can help identify ROSC. Monitor during resuscitation.
+        - Therapeutic hypothermia is **not included** in this protocol.
+          - Also known as "targeted temperature management".
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider [Intubation](topic:wvems-2026-078) and/or [Vent](topic:wvems-2026-080) if indicated and credentialed for CC.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Arrhythmias are common after ROSC, but are usually self-limited.
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - ACLS — https://www.ahajournals.org/doi/10.1161/CIR.0000000000001376 [Ver: 2025]
+        - PALS — https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000001368 [Ver: 2025]
+        - Medscape ROSC — https://www.medscape.com/viewarticle/762373 [Ver: 2012]
+        - Limmer D, O’Keefe MF. **Emergency Care** 15th ed. Chapter 20, 21
+
+        NEMSIS: 9914019

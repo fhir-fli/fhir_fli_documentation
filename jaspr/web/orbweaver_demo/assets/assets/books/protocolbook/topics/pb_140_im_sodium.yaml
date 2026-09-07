@@ -1,0 +1,194 @@
+# ============================================================
+# ProtocolBook pp.140–141 — Sodium (Na⁺) abnormalities. First leaf of the
+# new "Electrolytes" group (p.139 is a section divider, p.144 blank).
+#
+# Two-page leaf: p.140 = sodium calculations + hyponatremia emergent
+# management algorithm; p.141 = hyponatremia evaluation algorithm +
+# hypernatremia.
+#
+# Rendering calls (hybrid rule):
+#   - Calculations / hypernatremia → prose. Formulas rendered as inline
+#     text ([Na] notation; MiniMarkdown has no math/subscripts).
+#   - Emergent management + evaluation → `algorithm` flowcharts. The
+#     emergent chart's nested "hypotensive? → volume overloaded?" branch is
+#     linearised into one decision with three outcomes (not overloaded →
+#     NS bolus; overloaded → dopamine; not hypotensive → continue).
+#
+# CONTENT FLAGS for the later OE / content pass (rendered faithfully):
+#   - Correction-rate limits (≤ 8 mEq/L/day, 0.5 mEq/L/hr), 3% saline for
+#     symptomatic hyponatremia, and the volume-status (hyper/hypo/eu) work-up
+#     with U_osm/U_Na and glucose correction are all standard.
+# Cross-book pass 2026-08-28: oxygen trigger 94% -> 90%. A routine 94%
+#   trigger commits oxygen to a much larger group without mortality benefit,
+#   and oxygen is the most rationed resource in this setting. The other book
+#   used 90% throughout and this book already used 90% on its paediatric
+#   pneumonia page. Discharge/target criteria on other pages are NOT this
+#   figure and were left alone.
+# ============================================================
+
+topic:
+  id: "pb-im-sodium"
+  title: "Sodium (Na⁺) Abnormalities"
+  list_subtitle: "pp.140–141 · hypo/hypernatremia · formulas"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["sodium", "Na", "hyponatremia", "hypernatremia", "SIADH", "hypertonic saline", "3% saline", "free water deficit", "TBW", "FENa", "electrolyte", "internal medicine"]
+  category: "medical"
+
+  pages:
+
+    # ═══════════════════════ PAGE 140 ═══════════════════════
+    - page_number: 140
+      blocks:
+
+        - type: "prose"
+          title: "Calculations with sodium"
+          markdown: |
+            - **TBW (total body water)** = weight (kg) × fraction of water
+            - **Fraction of water:**
+              - Children: 0.65 (< 6 yo), 0.6 until adulthood
+              - Adult: 0.5 females, 0.6 males
+              - Elderly: 0.45 females, 0.5 males
+            - **Change in serum [Na] per L infusate** = (infusate [Na] − serum [Na]) ÷ (TBW + 1)
+            - **Rate of infusion to raise Na by a chosen amount per hour** (L/h) = desired rise (mEq/L/h) ÷ (change in serum [Na] per L infusate, from the line above), then × 1000 for mL/h
+              - Worked example — serum Na 120, TBW 42 L, 3% saline (513 mEq/L): change per L = (513 − 120) ÷ (42 + 1) ≈ **9.1 mEq/L per litre**. To raise Na 0.5 mEq/L/h → 0.5 ÷ 9.1 ≈ 0.055 L/h ≈ **55 mL/h**
+              - ⚠️ The book previously printed "1000 ÷ (2 × serum [Na])" here. That has **no infusate term and no body-water term**, so it gives the same answer for 3% and 0.9% saline. It is not a valid formula
+            - **Free H₂O deficit (L)** = (serum [Na] − 140) ÷ 140 × TBW
+            - **FENa (fractional excretion of sodium)** = 100 × (urine Na × serum Cr) ÷ (serum Na × urine Cr)
+
+        - type: "prose"
+          title: "🛑 The formulas under-predict — measure, do not calculate"
+          callout: true
+          palette:
+            alert: "0xFFD32F2F"
+            alert_fill: "0xFFFDECEA"
+            alert_text: "0xFFB71C1C"
+          markdown: |
+            These predictive formulas **systematically underestimate the rise** and must
+            never replace serial sodium measurement.
+
+            For **severely symptomatic** hyponatraemia, practice has moved to **bolused 3%
+            saline** rather than a calculated infusion: **100 mL over 10 min, up to 3
+            times**, or **150 mL over 20 min** — targeting a **4–6 mEq/L rise in 1–2 h**,
+            with sodium checked **after each bolus** and then every 4–6 h.
+
+            **Correction limits: ≤ 10 mEq/L in 24 h and ≤ 18 mEq/L in 48 h** — and
+            **≤ 8 mEq/L in 24 h if the risk of osmotic demyelination is high**
+            (malnutrition, alcohol use, liver disease, hypokalaemia, Na < 105).
+
+        - type: "prose"
+          title: "Hyponatremia (Na < 135) — emergent management"
+          markdown: |
+            - Monitor, support ABCs
+            - Check vital signs (BP, PR, RR, spO₂, Temp, Wt)
+            - Start oxygen if spO₂ < 90%
+            - Serum labs: CBC, RFT, electrolytes
+            - Urine labs: creatinine, sodium, osmolarity
+            - 12-lead ECG
+            - Perform brief, targeted history, physical exam
+
+        - type: "flowchart"
+          variant: "algorithm"
+          entry:
+            text: "Acute hyponatremia"
+            shape: "stadium"
+          stages:
+            - decision: "Hypotensive / shock?"
+              outcomes:
+                - label: "Yes — not volume overloaded"
+                  box:
+                    title: "NS 20 mL/kg bolus"
+                - label: "Yes — volume overloaded"
+                  box:
+                    title: "Vasopressor / inotrope — NOT dopamine"
+                    severity: "emergency"
+                    bullets:
+                      - "**Vasodilatory / distributive hypotension: norepinephrine 0.05–0.5 mcg/kg/min IV**, titrated to MAP (up to 1.0 mcg/kg/min if needed). It can run peripherally on a drop counter if there is no central line"
+                      - "**Pump failure with volume overload: dobutamine 2–20 mcg/kg/min**, ± norepinephrine"
+                      - "⚠️ The book printed **\"dopamine 2–5 mcg/min\"** here. That is missing its **/kg** — and even at 2–5 mcg/**kg**/min it is the discredited \"renal dose\", not a pressor dose. Dopamine also causes markedly more arrhythmia and higher mortality than norepinephrine, which is why this book prefers norepinephrine everywhere else"
+                - label: "No"
+                  continue: true
+            - decision: "Neurologic symptoms? (somnolence, convulsions, GCS < 9)"
+              outcomes:
+                - label: "Yes"
+                  box:
+                    title: "3% saline, run over 20 minutes"
+                    bullets:
+                      - "Children: 4 mL/kg (max 100 mL)"
+                      - "Adults: 100 mL"
+                      - "Repeat until symptoms improve"
+                - label: "No"
+                  continue: true
+          terminal:
+            title: "Correction limits"
+            bullets:
+              - "≤ 10 mEq/L in 24 h and ≤ 18 mEq/L in 48 h"
+              - "≤ 8 mEq/L in 24 h if osmotic-demyelination risk is high"
+              - "≤ 0.5 mEq/L/hr as a running rate"
+
+    # ═══════════════════════ PAGE 141 ═══════════════════════
+    - page_number: 141
+      blocks:
+
+        - type: "prose"
+          title: "Hyponatremia — evaluation"
+          markdown: |
+            Low serum sodium (< 135 mEq/L). First exclude factors that affect measurement:
+
+            - Other factors: mannitol, hyperlipidemia, hyperproteinemia (e.g. cancer)
+            - Hyperglycemia? Add 1 mEq/L to the serum sodium for every 2 points glucose above 10
+            - If no other explanation, assume hypotonic hyponatremia
+
+        - type: "flowchart"
+          variant: "algorithm"
+          entry:
+            text: "Hypotonic hyponatremia — assess volume status"
+            shape: "stadium"
+          stages:
+            - decision: "Signs of volume overload? (peripheral or pulmonary edema, or ascites)"
+              outcomes:
+                - label: "Yes — hypervolemic"
+                  box:
+                    title: "Hypervolemic (FENa > 1% suggests renal failure)"
+                    bullets:
+                      - "Furosemide"
+                      - "Vasodilator in CHF"
+                      - "Colloid infusion in cirrhosis"
+                - label: "No"
+                  continue: true
+            - decision: "Signs of hypovolemia? (low BP or hypotension)"
+              outcomes:
+                - label: "Yes — hypovolemic"
+                  box:
+                    title: "Hypovolemic"
+                    bullets:
+                      - "Urine Na < 20: extrarenal losses (most common: diarrhea; also 3rd spacing or diuretics)"
+                      - "Urine Na > 30: renal losses"
+                      - "Treatment: volume repletion using NS"
+                - label: "No — euvolemic"
+                  continue: true
+            - decision: "Urine osmolality > 100?"
+              outcomes:
+                - label: "Yes"
+                  box:
+                    title: "SIADH (most common)"
+                    bullets:
+                      - "Less common: hypothyroidism"
+                      - "Fluid restrict ≤ 1 L/day"
+                      - "Treat underlying cause"
+                - label: "No"
+                  box:
+                    title: "Low solute"
+                    bullets:
+                      - "Poor intake (malnourished, alcoholism)"
+                      - "Water intoxication (psychogenic polydipsia)"
+                      - "Treatment: improve intake"
+
+        - type: "prose"
+          title: "Hypernatremia (Na > 145)"
+          markdown: |
+            - Most common renal causes: osmotic diuresis, loop diuretics, diabetes insipidus
+            - Most common extrarenal causes: vomiting, diarrhea
+            - Treatment:
+              - Restore access to PO water (> 1 L/day)
+              - Correct Na no faster than 10 mEq/L/day and 0.5 mEq/L/hr
+            - ⚠️ Two lines that used to sit here — "assess if clinically logical" and "assume hypotonic hyponatremia" — belonged to the **hyponatraemia** evaluation above and were a copy-paste carryover. Removed

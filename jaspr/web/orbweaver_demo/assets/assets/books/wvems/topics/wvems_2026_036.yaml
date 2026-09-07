@@ -1,0 +1,178 @@
+# ============================================================
+# WVEMS 2026 Protocol 36 — Altered LOC / Syncope
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# `differential` variant with pre-decision action tiles
+# (Glucometer / 12-Lead / Saline Lock before the Cause? diamond).
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-036"
+  version: "v260101"
+  title: "Altered LOC / Syncope"
+  list_subtitle: "2026-036 · GCS / Differential / Cause"
+  last_reviewed: "Aug 2025"
+  tags:
+    - "altered loc"
+    - "syncope"
+    - "unresponsive"
+    - "confused"
+    - "fainting"
+    - "dizzy"
+    - "collapse"
+  aliases:
+    - "Dizzy"
+    - "Fainting"
+    - "Collapse"
+    - "Orthostatic"
+    - "POTS"
+  category: "medical"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 36
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (differential variant)
+    #   entry → pre-decision actions → Cause? → card grid
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "differential"
+
+      warnings:
+        - type: "caution"
+          text: "[Use Caution if Patient Refusal](topic:wvems-2026-109#patient-refusals)"
+
+      entry_chain:
+        - text: "Confused or Unresponsive\n(but breathing)"
+          shape: "stadium"
+
+      pre_decision_actions:
+        - text: "Glucometer"
+        - provider_level: "E"
+          text: "12-Lead"
+        - provider_level: "A"
+          text: "Saline Lock"
+
+      decision:
+        text: "Cause?"
+        shape: "diamond"
+
+      cards:
+        - title: "[Diabetic](topic:wvems-2026-038)"
+          bullets:
+            - "Hx: Diabetes"
+            - "Abnormal Glucose"
+        - title: "[Behavioral](topic:wvems-2026-046)"
+          bullets:
+            - "Suicidal, Homicidal"
+            - "Delusions, Psychosis"
+        - title: "[Overdose / Tox](topic:wvems-2026-040)"
+          bullets:
+            - "Hx: Ingestion/Exposure"
+            - "Obvious Drugs/Alcohol"
+        - title: "Injury"
+          bullets:
+            - "[Head Injury](topic:wvems-2026-062), [Bleeding](topic:wvems-2026-058)"
+            - "[Cold / Heat Exposure](topic:wvems-2026-068)"
+        - title: "[Seizure](topic:wvems-2026-042)"
+          bullets:
+            - "Hx: Epilepsy"
+            - "Shaking, Confused"
+        - title: "[Stroke](topic:wvems-2026-044)"
+          bullets:
+            - "Facial Droop, Weakness"
+            - "Slurred Speech"
+        - title: "[Fever](topic:wvems-2026-016)"
+          bullets:
+            - "Hx: Illness or Malaise"
+            - "Skin Flushed, Hot"
+        - title: "Cardiac"
+          bullets:
+            - "[Brady](topic:wvems-2026-012), [Tachy](topic:wvems-2026-014)"
+            - "[Shock](topic:wvems-2026-008), [Chest Pain](topic:wvems-2026-028)"
+
+      critical_care_link:
+        text: "Sepsis"
+        link_id: "wvems-2026-094"
+
+  - page_number: 37
+    blocks:
+
+    - type: "prose"
+      title: "Altered LOC Imperatives"
+      highlight: true
+      markdown: |
+        - Altered LOC and syncope are **complex** problems.
+          - Most important step is to consider and **search for the cause**.
+          - Investigate the case and take a **careful history**.
+        - Unstable patients should be treated aggressively.
+          - Be prepared for a [Medical CODE](topic:wvems-2026-024).
+        - Alcohol and drugs can mask other causes of altered LOC.
+          - **Don’t assume [Intoxication](topic:wvems-2026-040)** is the only problem.
+        - Syncope may be caused by or result in **trauma**.
+          - Maintain a high index of suspicion.
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Consider an atypical [Cardiac](topic:wvems-2026-028) cause in diabetics and the elderly.
+        - Check for **medical jewelry**.
+
+    # Print p.37 sets the GCS scoring bullets to the LEFT of the GCS table
+    # rather than above it. Both halves are narrow (longest bullet 22 chars,
+    # and the same table already lives in a row on p.87), so the pairing
+    # survives a 181 px slot.
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider [Sepsis](topic:wvems-2026-094) if indicated and credentialed for Critical Care.
+    - type: "row"
+      blocks:
+        - type: "prose"
+          flex: 4
+          markdown: |
+            May investigate pt’s GCS:
+            - Check each response
+            - Repeat **as needed**
+            - Record the **best effort**
+            - Add the three numbers
+            - Normal score is **15**
+            - Worst score is **3**
+        - type: "table"
+          # 6:4 against the prose beside it — at 1:1 the four columns are too
+          # narrow and "confused" / "withdraw" / "localizes" break mid-word.
+          flex: 6
+          title: "Glasgow Coma Scale"
+          columns: ["Eyes", "Verbal", "Motor", ""]
+          column_flex: [3, 3, 3, 1]
+          rows:
+            - cells: ["none", "none", "none", "1"]
+            - cells: ["pain", "moaning", "extensor", "2"]
+            - cells: ["verbal", "words", "flexor", "3"]
+            - cells: ["normal", "confused", "withdraw", "4"]
+            - cells: ["", "normal", "localizes", "5"]
+            - cells: ["", "", "normal", "6"]
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Many causes of transient syncope are benign, but:
+          - Prolonged altered LOC indicates potentially serious pathology.
+          - Syncope **during exertion** can be a true cardiac emergency.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape Syncope — https://emedicine.medscape.com/article/811669 [Ver: 9/24]
+        - Medscape Delirium — https://emedicine.medscape.com/article/793247 [Ver: 4/24]
+        - Medscape Hypoglycemia — https://emedicine.medscape.com/article/122122 [Ver: 5/25]
+        - Limmer D, O’Keefe MF. **Emergency Care** 15th ed. Chapter 22
