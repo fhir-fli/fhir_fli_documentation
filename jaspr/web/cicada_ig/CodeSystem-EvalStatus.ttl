@@ -1,6 +1,5 @@
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -8,36 +7,41 @@
 
 <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus> a fhir:CodeSystem ;
   fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "EvalStatus"] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem EvalStatus</b></p><a name=\"EvalStatus\"> </a><a name=\"hcEvalStatus\"> </a><p>This  code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus</code> defines the following code:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">extraneous<a name=\"EvalStatus-extraneous\"> </a></td><td>Extraneous</td><td>The dose was administered after the series was already complete. Every administered dose must be reported, so extraneous doses are tracked but do not affect the forecast.</td></tr></table></div>"^^rdf:XMLLiteral ]
-  ] ; # 
-  fhir:url [
-     fhir:v "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus"^^xsd:anyURI ;
-     fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus>
-  ] ; # 
-  fhir:version [ fhir:v "0.1.0"] ; # 
-  fhir:name [ fhir:v "EvalStatusCS"] ; # 
-  fhir:title [ fhir:v "Cicada Evaluation Status"] ; # 
-  fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
-  fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
-  fhir:contact ( [
-     fhir:name [ fhir:v "FHIR-FLI" ] ;
-     fhir:telecom ( [
-       fhir:system [ fhir:v "url" ] ;
-       fhir:value [ fhir:v "http://fhirfli.dev" ]
-     ] )
-  ] ) ; # 
-  fhir:description [ fhir:v "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here."] ; # 
-  fhir:content [ fhir:v "complete"] ; # 
-  fhir:count [ fhir:v "1"^^xsd:nonNegativeInteger] ; # 
-  fhir:concept ( [
-     fhir:code [ fhir:v "extraneous" ] ;
-     fhir:display [ fhir:v "Extraneous" ] ;
-     fhir:definition [ fhir:v "The dose was administered after the series was already complete. Every administered dose must be reported, so extraneous doses are tracked but do not affect the forecast." ]
-  ] ) . # 
+  fhir:Resource.id [ fhir:value "EvalStatus"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem EvalStatus</b></p><a name=\"EvalStatus\"> </a><a name=\"hcEvalStatus\"> </a><p>This  code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus</code> defines the following code:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">extraneous<a name=\"EvalStatus-extraneous\"> </a></td><td>Extraneous</td><td>The dose was administered after the series was already complete. Every administered dose must be reported, so extraneous doses are tracked but do not affect the forecast.</td></tr></table></div>"
+  ] ;
+  fhir:CodeSystem.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus"] ;
+  fhir:CodeSystem.version [ fhir:value "0.1.0"] ;
+  fhir:CodeSystem.name [ fhir:value "EvalStatusCS"] ;
+  fhir:CodeSystem.title [ fhir:value "Cicada Evaluation Status"] ;
+  fhir:CodeSystem.status [ fhir:value "draft"] ;
+  fhir:CodeSystem.date [ fhir:value "2026-09-06T20:44:07-04:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.publisher [ fhir:value "FHIR-FLI"] ;
+  fhir:CodeSystem.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "FHIR-FLI" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "http://fhirfli.dev" ]
+     ]
+  ] ;
+  fhir:CodeSystem.description [ fhir:value "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here."] ;
+  fhir:CodeSystem.content [ fhir:value "complete"] ;
+  fhir:CodeSystem.count [ fhir:value "1"^^xsd:nonNegativeInteger] ;
+  fhir:CodeSystem.concept [
+     fhir:index 0 ;
+     fhir:CodeSystem.concept.code [ fhir:value "extraneous" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Extraneous" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "The dose was administered after the series was already complete. Every administered dose must be reported, so extraneous doses are tracked but do not affect the forecast." ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

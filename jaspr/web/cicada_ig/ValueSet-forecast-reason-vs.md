@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-reason-vs | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:CicadaForecastReasonVS |
+| Draft as of 2026-09-06 | *Computable Name*:CicadaForecastReasonVS |
 
  
 Forecast reasons the engine can report. 
@@ -50,26 +50,20 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "name" : "CicadaForecastReasonVS",
   "title" : "Cicada Forecast Reason Value Set",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Forecast reasons the engine can report.",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"
-      }
-    ]
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"
+    }]
   }
 }
 

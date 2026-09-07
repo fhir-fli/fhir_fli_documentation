@@ -1,0 +1,28 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "cdsi-observation-codes-vs",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet cdsi-observation-codes-vs</b></p><a name=\"cdsi-observation-codes-vs\"> </a><a name=\"hccdsi-observation-codes-vs\"> </a><ul><li>Include all codes defined in <a href=\"CodeSystem-cdsi-observation-codes.html\"><code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/cdsi-observation-codes</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version &#x1F4E6;0.1.0</span></li></ul></div>"
+  },
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/cdsi-observation-codes-vs",
+  "version" : "0.1.0",
+  "name" : "CdsiObservationCodesVS",
+  "title" : "CDSI Observation Codes Value Set",
+  "status" : "draft",
+  "date" : "2026-09-06T20:44:07-04:00",
+  "publisher" : "FHIR-FLI",
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
+  "description" : "Every CDSi observation code, as published in the supporting data.",
+  "compose" : {
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/cdsi-observation-codes"
+    }]
+  }
+}

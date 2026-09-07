@@ -10,7 +10,7 @@
   "name" : "AntigenSupportingData",
   "title" : "Antigen Supporting Data",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -26,9 +26,9 @@
     "uri" : "http://hl7.org/v3",
     "name" : "RIM Mapping"
   }],
-  "kind" : "resource",
+  "kind" : "logical",
   "abstract" : false,
-  "type" : "antigen-supporting-data",
+  "type" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-supporting-data",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Element",
   "derivation" : "specialization",
   "snapshot" : {

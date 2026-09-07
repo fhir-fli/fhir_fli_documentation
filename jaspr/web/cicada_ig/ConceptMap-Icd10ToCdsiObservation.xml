@@ -3,13 +3,14 @@
 <ConceptMap xmlns="http://hl7.org/fhir">
   <id value="Icd10ToCdsiObservation"/>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ConceptMap Icd10ToCdsiObservation</b></p><a name="Icd10ToCdsiObservation"> </a><a name="hcIcd10ToCdsiObservation"> </a><p>Mapping from http://hl7.org/fhir/sid/icd-10-cm to https://www.cdc.gov/vaccines/programs/iis/cdsi</p><br/><p><b>Group 1 </b>Mapping from <code>http://hl7.org/fhir/sid/icd-10-cm</code> (International Classification of Diseases, 10th Revision, Clinical Modification (ICD-10-CM)) to <code>https://www.cdc.gov/vaccines/programs/iis/cdsi</code></p><table class="grid"><tr><td><b>Source Code</b></td><td><b>Relationship</b></td><td><b>Target Code</b></td></tr><tr><td>D84.9 (Immunodeficiency, unspecified)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>003 (Immunocompromised)</td></tr><tr><td>B18.2 (Chronic viral hepatitis C)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>005 (Hepatitis C virus infection)</td></tr><tr><td>Z33.1 (Pregnant state, incidental)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>007 (Pregnant)</td></tr><tr><td>D81.9 (Combined immunodeficiency, unspecified)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>E11.9 (Type 2 diabetes mellitus without complications)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>014 (Diabetes)</td></tr><tr><td>K74.60 (Unspecified cirrhosis of liver)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>I50.9 (Heart failure, unspecified)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>J44.9 (Chronic obstructive pulmonary disease, unspecified)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>D73.0 (Hyposplenism)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>018 (Asplenia)</td></tr><tr><td>Z90.81 (Acquired absence of spleen)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>018 (Asplenia)</td></tr><tr><td>N18.6 (End stage renal disease)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>019 (Chronic renal failure)</td></tr><tr><td>B20 (Human immunodeficiency virus [HIV] disease)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>026 (HIV/AIDS - immunocompromised)</td></tr><tr><td>Z21 (Asymptomatic human immunodeficiency virus [HIV] infection status)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>026 (HIV/AIDS - immunocompromised)</td></tr><tr><td>J45.909 (Unspecified asthma, uncomplicated)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>027 (Asthma)</td></tr><tr><td>K56.1 (Intussusception)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>028 (Intussusception)</td></tr><tr><td>A15.0 (Tuberculosis of lung)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#wider" title="wider">maps to wider concept</a></td><td>031 (Tuberculosis)</td></tr><tr><td>Z79.82 (Long term (current) use of aspirin)</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>034 (Receiving long-term aspirin therapy)</td></tr></table></div>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ConceptMap Icd10ToCdsiObservation</b></p><a name="Icd10ToCdsiObservation"> </a><a name="hcIcd10ToCdsiObservation"> </a><p>Mapping from <a href="ValueSet-vaccine-condition-codes-icd10.html">Vaccine Condition Codes (ICD-10-CM)</a> to <a href="ValueSet-cdsi-observation-codes-vs.html">CDSI Observation Codes Value Set</a></p><br/><p>Mapping from <a href="CodeSystem-icd-10-cm.html">ICD-10-CM (external, content not present)</a> to <a href="CodeSystem-cdsi-observation-codes.html">CDSI Observation Codes</a></p><table class="grid"><tr><td><b>Source Code</b></td><td><b>Relationship</b></td><td><b>Target Code</b></td></tr><tr><td>D84.9 (Immunodeficiency, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>003 (Immunocompromised)</td></tr><tr><td>D83.9 (Common variable immunodeficiency, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>003 (Immunocompromised)</td></tr><tr><td>D80.9 (Immunodeficiency with predominantly antibody defects, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>003 (Immunocompromised)</td></tr><tr><td>D89.9 (Disorder involving the immune mechanism, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>003 (Immunocompromised)</td></tr><tr><td>D84.8 (Other specified immunodeficiencies)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>003 (Immunocompromised)</td></tr><tr><td>Z94.84 (Stem cells transplant status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>004 (Recipient of a hematopoietic stem cell transplant)</td></tr><tr><td>T86.00 (Unspecified complication of bone marrow transplant)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>004 (Recipient of a hematopoietic stem cell transplant)</td></tr><tr><td>T86.09 (Other complications of bone marrow transplant)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>004 (Recipient of a hematopoietic stem cell transplant)</td></tr><tr><td>B18.2 (Chronic viral hepatitis C)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>005 (Hepatitis C virus infection)</td></tr><tr><td>B17.10 (Acute hepatitis C without hepatic coma)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>005 (Hepatitis C virus infection)</td></tr><tr><td>B17.11 (Acute hepatitis C with hepatic coma)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>005 (Hepatitis C virus infection)</td></tr><tr><td>B19.20 (Unspecified viral hepatitis C without hepatic coma)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>005 (Hepatitis C virus infection)</td></tr><tr><td>D66 (Hereditary factor VIII deficiency)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>006 (Receives clotting factor concentrates)</td></tr><tr><td>D67 (Hereditary factor IX deficiency)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>006 (Receives clotting factor concentrates)</td></tr><tr><td>D68.2 (Hereditary deficiency of other clotting factors)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>006 (Receives clotting factor concentrates)</td></tr><tr><td>Z33.1 (Pregnant state, incidental)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>007 (Pregnant)</td></tr><tr><td>O09.90 (Supervision of high risk pregnancy, unspecified, unspecified trimester)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>007 (Pregnant)</td></tr><tr><td>Z34.00 (Encounter for supervision of normal first pregnancy, unspecified trimester)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>007 (Pregnant)</td></tr><tr><td>Z34.80 (Encounter for supervision of other normal pregnancy, unspecified trimester)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>007 (Pregnant)</td></tr><tr><td>Z39.1 (Encounter for care and examination of lactating mother)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>009 (Breastfeeding)</td></tr><tr><td>G96.00 (Cerebrospinal fluid leak, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>010 (Cerebrospinal fluid leaks)</td></tr><tr><td>G96.01 (Cranial cerebrospinal fluid leak, spontaneous)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>010 (Cerebrospinal fluid leaks)</td></tr><tr><td>G96.02 (Spinal cerebrospinal fluid leak, spontaneous)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>010 (Cerebrospinal fluid leaks)</td></tr><tr><td>G96.08 (Other cranial cerebrospinal fluid leak)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>010 (Cerebrospinal fluid leaks)</td></tr><tr><td>G96.09 (Other spinal cerebrospinal fluid leak)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>010 (Cerebrospinal fluid leaks)</td></tr><tr><td>Z96.21 (Cochlear implant status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>011 (Cochlear implants)</td></tr><tr><td>Z83.2 (Family history of diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>012 (Family history of altered immunocompetence)</td></tr><tr><td>D81.9 (Combined immunodeficiency, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>D81.0 (Severe combined immunodeficiency [SCID] with reticular dysgenesis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>D81.1 (Severe combined immunodeficiency [SCID] with low T- and B-cell numbers)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>D81.2 (Severe combined immunodeficiency [SCID] with low or normal B-cell numbers)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>D81.3 (Adenosine deaminase [ADA] deficiency)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>D81.5 (Purine nucleoside phosphorylase [PNP] deficiency)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>D81.6 (Major histocompatibility complex class I deficiency)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>D81.7 (Major histocompatibility complex class II deficiency)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>013 (Severe Combined Immunodeficiency [SCID])</td></tr><tr><td>E10.9 (Type 1 diabetes mellitus without complications)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>014 (Diabetes)</td></tr><tr><td>E10.65 (Type 1 diabetes mellitus with hyperglycemia)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>014 (Diabetes)</td></tr><tr><td>E11.9 (Type 2 diabetes mellitus without complications)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>014 (Diabetes)</td></tr><tr><td>E11.65 (Type 2 diabetes mellitus with hyperglycemia)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>014 (Diabetes)</td></tr><tr><td>E13.9 (Other specified diabetes mellitus without complications)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>014 (Diabetes)</td></tr><tr><td>E08.9 (Diabetes mellitus due to underlying condition without complications)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>014 (Diabetes)</td></tr><tr><td>E09.9 (Drug or chemical induced diabetes mellitus without complications)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>014 (Diabetes)</td></tr><tr><td>K70.30 (Alcoholic cirrhosis of liver without ascites)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>K70.31 (Alcoholic cirrhosis of liver with ascites)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>K73.9 (Chronic hepatitis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>K74.0 (Hepatic fibrosis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>K74.60 (Unspecified cirrhosis of liver)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>K74.69 (Other cirrhosis of liver)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>K76.0 (Fatty (change of) liver, not elsewhere classified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>K76.9 (Liver disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>015 (Chronic liver disease)</td></tr><tr><td>I25.10 (Atherosclerotic heart disease of native coronary artery without angina pectoris)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>I25.9 (Chronic ischemic heart disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>I50.9 (Heart failure, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>I50.20 (Unspecified systolic (congestive) heart failure)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>I50.30 (Unspecified diastolic (congestive) heart failure)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>I42.9 (Cardiomyopathy, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>I42.0 (Dilated cardiomyopathy)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>Q24.9 (Congenital malformation of heart, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>016 (Chronic heart disease)</td></tr><tr><td>J44.9 (Chronic obstructive pulmonary disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>J44.1 (Chronic obstructive pulmonary disease with (acute) exacerbation)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>J43.9 (Emphysema, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>J84.9 (Interstitial pulmonary disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>J84.10 (Pulmonary fibrosis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>J47.9 (Bronchiectasis, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>P27.1 (Bronchopulmonary dysplasia originating in the perinatal period)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>017 (Chronic lung disease)</td></tr><tr><td>D73.0 (Hyposplenism)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>018 (Laboratory Evidence of Immunity or confirmation of Hepatitis A disease)</td></tr><tr><td>Q89.01 (Asplenia (congenital))</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>018 (Laboratory Evidence of Immunity or confirmation of Hepatitis A disease)</td></tr><tr><td>D73.89 (Other diseases of spleen)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>018 (Laboratory Evidence of Immunity or confirmation of Hepatitis A disease)</td></tr><tr><td>Z90.81 (Acquired absence of spleen)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>018 (Laboratory Evidence of Immunity or confirmation of Hepatitis A disease)</td></tr><tr><td>N18.1 (Chronic kidney disease, stage 1)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>N18.2 (Chronic kidney disease, stage 2 (mild))</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>N18.30 (Chronic kidney disease, stage 3 unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>N18.4 (Chronic kidney disease, stage 4 (severe))</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>N18.5 (Chronic kidney disease, stage 5)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>N18.6 (End stage renal disease)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>N18.9 (Chronic kidney disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>Z99.2 (Dependence on renal dialysis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>019 (Laboratory Evidence of Immunity or confirmation of Hepatitis B disease)</td></tr><tr><td>B20 (Human immunodeficiency virus [HIV] disease)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>026 (Persons with perinatal HIV infection who do not have evidence of severe immunosuppression and who were vaccinated with MMR before establishment of antiviral therapy [ART])</td></tr><tr><td>Z21 (Asymptomatic human immunodeficiency virus [HIV] infection status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>026 (Persons with perinatal HIV infection who do not have evidence of severe immunosuppression and who were vaccinated with MMR before establishment of antiviral therapy [ART])</td></tr><tr><td>J45.20 (Mild intermittent asthma, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>027 (Asthma)</td></tr><tr><td>J45.30 (Mild persistent asthma, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>027 (Asthma)</td></tr><tr><td>J45.40 (Moderate persistent asthma, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>027 (Asthma)</td></tr><tr><td>J45.50 (Severe persistent asthma, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>027 (Asthma)</td></tr><tr><td>J45.909 (Unspecified asthma, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>027 (Asthma)</td></tr><tr><td>J45.998 (Other asthma)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>027 (Asthma)</td></tr><tr><td>K56.1 (Intussusception)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>028 (Intussusception)</td></tr><tr><td>K52.9 (Noninfective gastroenteritis and colitis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>029 (Acute gastroenteritis)</td></tr><tr><td>A09 (Infectious gastroenteritis and colitis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>029 (Acute gastroenteritis)</td></tr><tr><td>A08.0 (Rotaviral enteritis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>029 (Acute gastroenteritis)</td></tr><tr><td>A08.39 (Other viral enteritis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>029 (Acute gastroenteritis)</td></tr><tr><td>R50.9 (Fever, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>030 (Acute febrile illness)</td></tr><tr><td>A15.0 (Tuberculosis of lung)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>031 (Tuberculosis)</td></tr><tr><td>A15.9 (Respiratory tuberculosis unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>031 (Tuberculosis)</td></tr><tr><td>A18.89 (Tuberculosis of other sites)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>031 (Tuberculosis)</td></tr><tr><td>A19.9 (Miliary tuberculosis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>031 (Tuberculosis)</td></tr><tr><td>R76.11 (Nonspecific reaction to tuberculin skin test without active tuberculosis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>031 (Tuberculosis)</td></tr><tr><td>Z86.11 (Personal history of tuberculosis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>031 (Tuberculosis)</td></tr><tr><td>Z79.82 (Long term (current) use of aspirin)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>034 (Receiving long-term aspirin therapy)</td></tr><tr><td>Z11.3 (Encounter for screening for infections with a predominantly sexual mode of transmission)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>039 (Receives treatment for STD)</td></tr><tr><td>Z11.4 (Encounter for screening for human immunodeficiency virus [HIV])</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>039 (Receives treatment for STD)</td></tr><tr><td>Z20.2 (Contact with and (suspected) exposure to infections with a predominantly sexual mode of transmission)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>039 (Receives treatment for STD)</td></tr><tr><td>F19.10 (Other psychoactive substance abuse, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>040 (Illicit drug use)</td></tr><tr><td>F14.10 (Cocaine abuse, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>040 (Illicit drug use)</td></tr><tr><td>F11.10 (Opioid abuse, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>040 (Illicit drug use)</td></tr><tr><td>F16.10 (Hallucinogen abuse, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>040 (Illicit drug use)</td></tr><tr><td>F17.210 (Nicotine dependence, cigarettes, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>042 (Smoke cigarettes)</td></tr><tr><td>Z72.0 (Tobacco use)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>042 (Smoke cigarettes)</td></tr><tr><td>F10.20 (Alcohol dependence, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>043 (Alcoholism)</td></tr><tr><td>F10.10 (Alcohol abuse, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>043 (Alcoholism)</td></tr><tr><td>Z11.59 (Encounter for screening for other viral diseases)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>071 (Household contact with hepatitis B surface antigen-positive persons)</td></tr><tr><td>G31.9 (Degenerative disease of nervous system, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>076 (Progressive neurologic disorder)</td></tr><tr><td>T50.B95A (Adverse effect of other viral vaccines, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>077 (Received inactivated or unknown measles vaccine between 1963-1967)</td></tr><tr><td>Z88.9 (Allergy status to unspecified drugs, medicaments and biological substances)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>077 (Received inactivated or unknown measles vaccine between 1963-1967)</td></tr><tr><td>Z91.012 (Allergy to eggs)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>081 (Severe allergic reaction after previous dose of Polio)</td></tr><tr><td>T50.A15A (Adverse effect of pertussis vaccine, including combinations with a pertussis component, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>086 (Severe allergic reaction after previous dose of Pertussis)</td></tr><tr><td>T50.A95A (Adverse effect of other bacterial vaccines, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>087 (Severe allergic reaction after previous dose of Diphtheria)</td></tr><tr><td>T78.1 (Other adverse food reactions, not elsewhere classified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>101 (Allergic reaction to egg protein)</td></tr><tr><td>Z91.018 (Allergy to other foods)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>102 (Severe allergic reaction to gelatin)</td></tr><tr><td>T78.40XA (Allergy, unspecified, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>103 (Severe allergic reaction to arginine)</td></tr><tr><td>Z91.040 (Latex allergy status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>104 (Allergic reaction to latex)</td></tr><tr><td>Z88.1 (Allergy status to other antibiotic agents)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>106 (Severe allergic reaction to gentamicin)</td></tr><tr><td>T36.5X5A (Adverse effect of aminoglycosides, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>106 (Severe allergic reaction to gentamicin)</td></tr><tr><td>T36.8X5A (Adverse effect of other systemic antibiotics, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>109 (Severe allergic reaction to polymyxin B)</td></tr><tr><td>T78.49XA (Other allergy, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>111 (Hypersensitivity to the preservative 2-phenoxyethanol)</td></tr><tr><td>T45.7X5A (Adverse effect of anticoagulant antagonists, vitamin K and other coagulants, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>115 (Severe allergic reaction to protamine sulfate)</td></tr><tr><td>Z88.8 (Allergy status to other drugs, medicaments and biological substances)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>115 (Severe allergic reaction to protamine sulfate)</td></tr><tr><td>Z59.00 (Homelessness unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>121 (Homelessness)</td></tr><tr><td>D84.821 (Immunodeficiency due to drugs)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>142 (Travel to or working in countries that have high or intermediate endemicity of Hepatitis A)</td></tr><tr><td>C80.0 (Disseminated malignant neoplasm, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>156 (Generalized malignant neoplasm)</td></tr><tr><td>C80.1 (Malignant (primary) neoplasm, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>156 (Generalized malignant neoplasm)</td></tr><tr><td>Z94.0 (Kidney transplant status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>157 (Solid organ transplantation)</td></tr><tr><td>Z94.1 (Heart transplant status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>157 (Solid organ transplantation)</td></tr><tr><td>Z94.2 (Lung transplant status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>157 (Solid organ transplantation)</td></tr><tr><td>Z94.4 (Liver transplant status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>157 (Solid organ transplantation)</td></tr><tr><td>Z94.9 (Transplanted organ and tissue status, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>157 (Solid organ transplantation)</td></tr><tr><td>Z79.52 (Long term (current) use of systemic steroids)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>158 (Immunosuppressive therapy)</td></tr><tr><td>Z79.899 (Other long term (current) drug therapy)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>158 (Immunosuppressive therapy)</td></tr><tr><td>Z51.0 (Encounter for antineoplastic radiation therapy)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>159 (Radiation therapy)</td></tr><tr><td>N18.3 (Chronic kidney disease, stage 3 (moderate))</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>161 (Chronic kidney disease)</td></tr><tr><td>N04.9 (Nephrotic syndrome with unspecified morphologic changes)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>162 (Travel to areas at risk for Yellow Fever transmission)</td></tr><tr><td>Z51.11 (Encounter for antineoplastic chemotherapy)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>168 (Chemotherapy)</td></tr><tr><td>Z51.12 (Encounter for antineoplastic immunotherapy)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>168 (Chemotherapy)</td></tr><tr><td>Z04.81 (Encounter for examination and observation of victim following forced sexual exploitation)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>169 (History of sexual abuse or assault)</td></tr><tr><td>T74.21XA (Adult sexual abuse, confirmed, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>169 (History of sexual abuse or assault)</td></tr><tr><td>T74.22XA (Child sexual abuse, confirmed, initial encounter)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>169 (History of sexual abuse or assault)</td></tr><tr><td>Z34.90 (Encounter for supervision of normal pregnancy, unspecified, unspecified trimester)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>170 (Onset of pregnancy)</td></tr><tr><td>C95.90 (Leukemia, unspecified not having achieved remission)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>178 (Leukemia)</td></tr><tr><td>C91.00 (Acute lymphoblastic leukemia not having achieved remission)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>178 (Leukemia)</td></tr><tr><td>C92.00 (Acute myeloblastic leukemia, not having achieved remission)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>178 (Leukemia)</td></tr><tr><td>C85.90 (Non-Hodgkin lymphoma, unspecified, unspecified site)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>179 (Lymphoma)</td></tr><tr><td>C84.40 (Peripheral T-cell lymphoma, not elsewhere classified, unspecified site)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>179 (Lymphoma)</td></tr><tr><td>C81.90 (Hodgkin lymphoma, unspecified, unspecified site)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>180 (Hodgkin's disease)</td></tr><tr><td>C90.00 (Multiple myeloma not having achieved remission)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>181 (Multiple myeloma)</td></tr><tr><td>C96.9 (Malignant neoplasm of lymphoid, hematopoietic and related tissue, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>190 (Active treatment for hematologic malignancies)</td></tr><tr><td>Z59.3 (Problems related to living in residential institution)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>192 (Severe allergic reaction after previous dose of any egg-based IIV or LAIV influenza vaccine)</td></tr><tr><td>J84.89 (Other specified interstitial pulmonary diseases)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>199 (Interstitial lung disease)</td></tr><tr><td>E84.0 (Cystic fibrosis with pulmonary manifestations)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>200 (Cystic fibrosis)</td></tr><tr><td>E84.9 (Cystic fibrosis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>200 (Cystic fibrosis)</td></tr><tr><td>I27.0 (Primary pulmonary hypertension)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>201 (Pulmonary hypertension)</td></tr><tr><td>I27.20 (Pulmonary hypertension, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>201 (Pulmonary hypertension)</td></tr><tr><td>I27.9 (Pulmonary heart disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>201 (Pulmonary hypertension)</td></tr><tr><td>F03.90 (Unspecified dementia, unspecified severity, without behavioral disturbance, psychotic disturbance, mood disturbance, and anxiety)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>202 (Dementia)</td></tr><tr><td>G30.9 (Alzheimer's disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>202 (Dementia)</td></tr><tr><td>Q90.9 (Down syndrome, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>203 (Down syndrome)</td></tr><tr><td>E66.9 (Obesity, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>204 (Obesity)</td></tr><tr><td>E66.01 (Morbid (severe) obesity due to excess calories)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>204 (Obesity)</td></tr><tr><td>D56.9 (Thalassemia, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>205 (Thalassemia)</td></tr><tr><td>D56.0 (Alpha thalassemia)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>205 (Thalassemia)</td></tr><tr><td>D56.1 (Beta thalassemia)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>205 (Thalassemia)</td></tr><tr><td>I67.9 (Cerebrovascular disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>206 (Cerebrovascular disease)</td></tr><tr><td>I63.9 (Cerebral infarction, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>206 (Cerebrovascular disease)</td></tr><tr><td>F19.20 (Other psychoactive substance dependence, uncomplicated)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>207 (Substance use disorder)</td></tr><tr><td>F99 (Mental disorder, not otherwise specified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>208 (Mental Health conditions)</td></tr><tr><td>L20.9 (Atopic dermatitis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>223 (Severe allergic reaction after previous dose of orthopoxvirus vaccine)</td></tr><tr><td>L20.89 (Other atopic dermatitis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>223 (Severe allergic reaction after previous dose of orthopoxvirus vaccine)</td></tr><tr><td>L26 (Exfoliative dermatitis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>225 (Household contact with history or presence of atopic dermatitis)</td></tr><tr><td>L10.9 (Pemphigus, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>225 (Household contact with history or presence of atopic dermatitis)</td></tr><tr><td>Z20.828 (Contact with and (suspected) exposure to other viral communicable diseases)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>240 (Healthcare personnel who care for patients infected with less virulent orthopoxviruses (e.g., Vaccinia virus or Cowpox virus))</td></tr><tr><td>I51.9 (Heart disease, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>254 (Chronic cardiovascular disease)</td></tr><tr><td>E66.2 (Morbid (severe) obesity with alveolar hypoventilation)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>256 (Diabetes mellitus complicated by chronic kidney disease)</td></tr><tr><td>D75.9 (Disease of blood and blood-forming organs, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>258 (Chronic hematologic disorders)</td></tr><tr><td>D57.1 (Sickle-cell disease without crisis)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>259 (Sickle cell disease)</td></tr><tr><td>D57.00 (Hb-SS disease with crisis, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>259 (Sickle cell disease)</td></tr><tr><td>R54 (Age-related physical debility)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>262 (Frailty)</td></tr><tr><td>E11.40 (Type 2 diabetes mellitus with diabetic neuropathy, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>263 (Diabetes mellitus complicated by neuropathy)</td></tr><tr><td>E10.40 (Type 1 diabetes mellitus with diabetic neuropathy, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>263 (Diabetes mellitus complicated by neuropathy)</td></tr><tr><td>E13.40 (Other specified diabetes mellitus with diabetic neuropathy, unspecified)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>263 (Diabetes mellitus complicated by neuropathy)</td></tr><tr><td>E11.319 (Type 2 diabetes mellitus with unspecified diabetic retinopathy without macular edema)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>264 (Diabetes mellitus complicated by retinopathy)</td></tr><tr><td>E10.319 (Type 1 diabetes mellitus with unspecified diabetic retinopathy without macular edema)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>264 (Diabetes mellitus complicated by retinopathy)</td></tr><tr><td>E11.69 (Type 2 diabetes mellitus with other specified complication)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>265 (Diabetes mellitus complicated by end-organ damage)</td></tr><tr><td>E10.69 (Type 1 diabetes mellitus with other specified complication)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>265 (Diabetes mellitus complicated by end-organ damage)</td></tr><tr><td>E13.69 (Other specified diabetes mellitus with other specified complication)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>265 (Diabetes mellitus complicated by end-organ damage)</td></tr><tr><td>Z79.4 (Long term (current) use of insulin)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>266 (Diabetes requiring treatment with insulin)</td></tr><tr><td>Z94.83 (Pancreas transplant status)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>267 (Diabetes requiring treatment with sodium-glucose cotransporter-2 (SGLT2) inhibitor)</td></tr><tr><td>D80.1 (Nonfamilial hypogammaglobulinemia)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>270 (Severe allergic reaction after previous dose of Chikungunya vaccine)</td></tr><tr><td>D80.0 (Hereditary hypogammaglobulinemia)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>270 (Severe allergic reaction after previous dose of Chikungunya vaccine)</td></tr><tr><td>D84.1 (Defects in the complement system)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>274 (Early component complement inhibitor use)</td></tr><tr><td>D58.2 (Other hemoglobinopathies)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>277 (Laboratory worker with potential for exposure to chikungunya virus)</td></tr><tr><td>D57.3 (Sickle-cell trait)</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#concept-map-equivalence-equivalent" title="equivalent">is equivalent to</a></td><td>277 (Laboratory worker with potential for exposure to chikungunya virus)</td></tr></table></div>
   </text>
   <url value="http://fhirfli.dev/fhir/ig/cicada/ConceptMap/Icd10ToCdsiObservation"/>
   <version value="0.1.0"/>
   <title value="ICD-10-CM to CDSi Observation Code Map"/>
   <status value="active"/>
-  <date value="2026-09-02T22:18:14-04:00"/>
+  <experimental value="false"/>
+  <date value="2026-09-06T20:44:07-04:00"/>
   <publisher value="FHIR-FLI"/>
   <contact>
     <name value="FHIR-FLI"/>
@@ -18,19 +19,82 @@
       <value value="http://fhirfli.dev"/>
     </telecom>
   </contact>
-  <description value="Maps ICD-10-CM diagnosis codes to CDSi observation codes used in immunization decision support."/>
-  <sourceUri value="http://hl7.org/fhir/sid/icd-10-cm"/>
-  <targetUri value="https://www.cdc.gov/vaccines/programs/iis/cdsi"/>
+  <description value="Maps ICD-10-CM codes to CDSi observation codes used in immunization decision support. Generated from the cicada crosswalk."/>
+  <sourceCanonical value="http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10"/>
+  <targetCanonical value="http://fhirfli.dev/fhir/ig/cicada/ValueSet/cdsi-observation-codes-vs"/>
   <group>
     <source value="http://hl7.org/fhir/sid/icd-10-cm"/>
-    <target value="https://www.cdc.gov/vaccines/programs/iis/cdsi"/>
+    <target value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/cdsi-observation-codes"/>
     <element>
       <code value="D84.9"/>
       <display value="Immunodeficiency, unspecified"/>
       <target>
         <code value="003"/>
         <display value="Immunocompromised"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D83.9"/>
+      <display value="Common variable immunodeficiency, unspecified"/>
+      <target>
+        <code value="003"/>
+        <display value="Immunocompromised"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D80.9"/>
+      <display value="Immunodeficiency with predominantly antibody defects, unspecified"/>
+      <target>
+        <code value="003"/>
+        <display value="Immunocompromised"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D89.9"/>
+      <display value="Disorder involving the immune mechanism, unspecified"/>
+      <target>
+        <code value="003"/>
+        <display value="Immunocompromised"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D84.8"/>
+      <display value="Other specified immunodeficiencies"/>
+      <target>
+        <code value="003"/>
+        <display value="Immunocompromised"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z94.84"/>
+      <display value="Stem cells transplant status"/>
+      <target>
+        <code value="004"/>
+        <display value="Recipient of a hematopoietic stem cell transplant"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T86.00"/>
+      <display value="Unspecified complication of bone marrow transplant"/>
+      <target>
+        <code value="004"/>
+        <display value="Recipient of a hematopoietic stem cell transplant"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T86.09"/>
+      <display value="Other complications of bone marrow transplant"/>
+      <target>
+        <code value="004"/>
+        <display value="Recipient of a hematopoietic stem cell transplant"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -39,6 +103,60 @@
       <target>
         <code value="005"/>
         <display value="Hepatitis C virus infection"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="B17.10"/>
+      <display value="Acute hepatitis C without hepatic coma"/>
+      <target>
+        <code value="005"/>
+        <display value="Hepatitis C virus infection"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="B17.11"/>
+      <display value="Acute hepatitis C with hepatic coma"/>
+      <target>
+        <code value="005"/>
+        <display value="Hepatitis C virus infection"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="B19.20"/>
+      <display value="Unspecified viral hepatitis C without hepatic coma"/>
+      <target>
+        <code value="005"/>
+        <display value="Hepatitis C virus infection"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D66"/>
+      <display value="Hereditary factor VIII deficiency"/>
+      <target>
+        <code value="006"/>
+        <display value="Receives clotting factor concentrates"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D67"/>
+      <display value="Hereditary factor IX deficiency"/>
+      <target>
+        <code value="006"/>
+        <display value="Receives clotting factor concentrates"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D68.2"/>
+      <display value="Hereditary deficiency of other clotting factors"/>
+      <target>
+        <code value="006"/>
+        <display value="Receives clotting factor concentrates"/>
         <equivalence value="equivalent"/>
       </target>
     </element>
@@ -52,12 +170,192 @@
       </target>
     </element>
     <element>
+      <code value="O09.90"/>
+      <display value="Supervision of high risk pregnancy, unspecified, unspecified trimester"/>
+      <target>
+        <code value="007"/>
+        <display value="Pregnant"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z34.00"/>
+      <display value="Encounter for supervision of normal first pregnancy, unspecified trimester"/>
+      <target>
+        <code value="007"/>
+        <display value="Pregnant"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z34.80"/>
+      <display value="Encounter for supervision of other normal pregnancy, unspecified trimester"/>
+      <target>
+        <code value="007"/>
+        <display value="Pregnant"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z39.1"/>
+      <display value="Encounter for care and examination of lactating mother"/>
+      <target>
+        <code value="009"/>
+        <display value="Breastfeeding"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="G96.00"/>
+      <display value="Cerebrospinal fluid leak, unspecified"/>
+      <target>
+        <code value="010"/>
+        <display value="Cerebrospinal fluid leaks"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="G96.01"/>
+      <display value="Cranial cerebrospinal fluid leak, spontaneous"/>
+      <target>
+        <code value="010"/>
+        <display value="Cerebrospinal fluid leaks"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="G96.02"/>
+      <display value="Spinal cerebrospinal fluid leak, spontaneous"/>
+      <target>
+        <code value="010"/>
+        <display value="Cerebrospinal fluid leaks"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="G96.08"/>
+      <display value="Other cranial cerebrospinal fluid leak"/>
+      <target>
+        <code value="010"/>
+        <display value="Cerebrospinal fluid leaks"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="G96.09"/>
+      <display value="Other spinal cerebrospinal fluid leak"/>
+      <target>
+        <code value="010"/>
+        <display value="Cerebrospinal fluid leaks"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z96.21"/>
+      <display value="Cochlear implant status"/>
+      <target>
+        <code value="011"/>
+        <display value="Cochlear implants"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z83.2"/>
+      <display value="Family history of diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism"/>
+      <target>
+        <code value="012"/>
+        <display value="Family history of altered immunocompetence"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
       <code value="D81.9"/>
       <display value="Combined immunodeficiency, unspecified"/>
       <target>
         <code value="013"/>
         <display value="Severe Combined Immunodeficiency [SCID]"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D81.0"/>
+      <display value="Severe combined immunodeficiency [SCID] with reticular dysgenesis"/>
+      <target>
+        <code value="013"/>
+        <display value="Severe Combined Immunodeficiency [SCID]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D81.1"/>
+      <display value="Severe combined immunodeficiency [SCID] with low T- and B-cell numbers"/>
+      <target>
+        <code value="013"/>
+        <display value="Severe Combined Immunodeficiency [SCID]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D81.2"/>
+      <display value="Severe combined immunodeficiency [SCID] with low or normal B-cell numbers"/>
+      <target>
+        <code value="013"/>
+        <display value="Severe Combined Immunodeficiency [SCID]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D81.3"/>
+      <display value="Adenosine deaminase [ADA] deficiency"/>
+      <target>
+        <code value="013"/>
+        <display value="Severe Combined Immunodeficiency [SCID]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D81.5"/>
+      <display value="Purine nucleoside phosphorylase [PNP] deficiency"/>
+      <target>
+        <code value="013"/>
+        <display value="Severe Combined Immunodeficiency [SCID]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D81.6"/>
+      <display value="Major histocompatibility complex class I deficiency"/>
+      <target>
+        <code value="013"/>
+        <display value="Severe Combined Immunodeficiency [SCID]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D81.7"/>
+      <display value="Major histocompatibility complex class II deficiency"/>
+      <target>
+        <code value="013"/>
+        <display value="Severe Combined Immunodeficiency [SCID]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E10.9"/>
+      <display value="Type 1 diabetes mellitus without complications"/>
+      <target>
+        <code value="014"/>
+        <display value="Diabetes"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E10.65"/>
+      <display value="Type 1 diabetes mellitus with hyperglycemia"/>
+      <target>
+        <code value="014"/>
+        <display value="Diabetes"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -66,7 +364,79 @@
       <target>
         <code value="014"/>
         <display value="Diabetes"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E11.65"/>
+      <display value="Type 2 diabetes mellitus with hyperglycemia"/>
+      <target>
+        <code value="014"/>
+        <display value="Diabetes"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E13.9"/>
+      <display value="Other specified diabetes mellitus without complications"/>
+      <target>
+        <code value="014"/>
+        <display value="Diabetes"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E08.9"/>
+      <display value="Diabetes mellitus due to underlying condition without complications"/>
+      <target>
+        <code value="014"/>
+        <display value="Diabetes"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E09.9"/>
+      <display value="Drug or chemical induced diabetes mellitus without complications"/>
+      <target>
+        <code value="014"/>
+        <display value="Diabetes"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="K70.30"/>
+      <display value="Alcoholic cirrhosis of liver without ascites"/>
+      <target>
+        <code value="015"/>
+        <display value="Chronic liver disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="K70.31"/>
+      <display value="Alcoholic cirrhosis of liver with ascites"/>
+      <target>
+        <code value="015"/>
+        <display value="Chronic liver disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="K73.9"/>
+      <display value="Chronic hepatitis, unspecified"/>
+      <target>
+        <code value="015"/>
+        <display value="Chronic liver disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="K74.0"/>
+      <display value="Hepatic fibrosis"/>
+      <target>
+        <code value="015"/>
+        <display value="Chronic liver disease"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -75,7 +445,52 @@
       <target>
         <code value="015"/>
         <display value="Chronic liver disease"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="K74.69"/>
+      <display value="Other cirrhosis of liver"/>
+      <target>
+        <code value="015"/>
+        <display value="Chronic liver disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="K76.0"/>
+      <display value="Fatty (change of) liver, not elsewhere classified"/>
+      <target>
+        <code value="015"/>
+        <display value="Chronic liver disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="K76.9"/>
+      <display value="Liver disease, unspecified"/>
+      <target>
+        <code value="015"/>
+        <display value="Chronic liver disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I25.10"/>
+      <display value="Atherosclerotic heart disease of native coronary artery without angina pectoris"/>
+      <target>
+        <code value="016"/>
+        <display value="Chronic heart disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I25.9"/>
+      <display value="Chronic ischemic heart disease, unspecified"/>
+      <target>
+        <code value="016"/>
+        <display value="Chronic heart disease"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -84,7 +499,52 @@
       <target>
         <code value="016"/>
         <display value="Chronic heart disease"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I50.20"/>
+      <display value="Unspecified systolic (congestive) heart failure"/>
+      <target>
+        <code value="016"/>
+        <display value="Chronic heart disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I50.30"/>
+      <display value="Unspecified diastolic (congestive) heart failure"/>
+      <target>
+        <code value="016"/>
+        <display value="Chronic heart disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I42.9"/>
+      <display value="Cardiomyopathy, unspecified"/>
+      <target>
+        <code value="016"/>
+        <display value="Chronic heart disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I42.0"/>
+      <display value="Dilated cardiomyopathy"/>
+      <target>
+        <code value="016"/>
+        <display value="Chronic heart disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Q24.9"/>
+      <display value="Congenital malformation of heart, unspecified"/>
+      <target>
+        <code value="016"/>
+        <display value="Chronic heart disease"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -93,7 +553,61 @@
       <target>
         <code value="017"/>
         <display value="Chronic lung disease"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J44.1"/>
+      <display value="Chronic obstructive pulmonary disease with (acute) exacerbation"/>
+      <target>
+        <code value="017"/>
+        <display value="Chronic lung disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J43.9"/>
+      <display value="Emphysema, unspecified"/>
+      <target>
+        <code value="017"/>
+        <display value="Chronic lung disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J84.9"/>
+      <display value="Interstitial pulmonary disease, unspecified"/>
+      <target>
+        <code value="017"/>
+        <display value="Chronic lung disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J84.10"/>
+      <display value="Pulmonary fibrosis, unspecified"/>
+      <target>
+        <code value="017"/>
+        <display value="Chronic lung disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J47.9"/>
+      <display value="Bronchiectasis, uncomplicated"/>
+      <target>
+        <code value="017"/>
+        <display value="Chronic lung disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="P27.1"/>
+      <display value="Bronchopulmonary dysplasia originating in the perinatal period"/>
+      <target>
+        <code value="017"/>
+        <display value="Chronic lung disease"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -101,7 +615,25 @@
       <display value="Hyposplenism"/>
       <target>
         <code value="018"/>
-        <display value="Asplenia"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis A disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Q89.01"/>
+      <display value="Asplenia (congenital)"/>
+      <target>
+        <code value="018"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis A disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D73.89"/>
+      <display value="Other diseases of spleen"/>
+      <target>
+        <code value="018"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis A disease"/>
         <equivalence value="equivalent"/>
       </target>
     </element>
@@ -110,7 +642,52 @@
       <display value="Acquired absence of spleen"/>
       <target>
         <code value="018"/>
-        <display value="Asplenia"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis A disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N18.1"/>
+      <display value="Chronic kidney disease, stage 1"/>
+      <target>
+        <code value="019"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N18.2"/>
+      <display value="Chronic kidney disease, stage 2 (mild)"/>
+      <target>
+        <code value="019"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N18.30"/>
+      <display value="Chronic kidney disease, stage 3 unspecified"/>
+      <target>
+        <code value="019"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N18.4"/>
+      <display value="Chronic kidney disease, stage 4 (severe)"/>
+      <target>
+        <code value="019"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N18.5"/>
+      <display value="Chronic kidney disease, stage 5"/>
+      <target>
+        <code value="019"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
         <equivalence value="equivalent"/>
       </target>
     </element>
@@ -119,8 +696,26 @@
       <display value="End stage renal disease"/>
       <target>
         <code value="019"/>
-        <display value="Chronic renal failure"/>
-        <equivalence value="wider"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N18.9"/>
+      <display value="Chronic kidney disease, unspecified"/>
+      <target>
+        <code value="019"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z99.2"/>
+      <display value="Dependence on renal dialysis"/>
+      <target>
+        <code value="019"/>
+        <display value="Laboratory Evidence of Immunity or confirmation of Hepatitis B disease"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -128,7 +723,7 @@
       <display value="Human immunodeficiency virus [HIV] disease"/>
       <target>
         <code value="026"/>
-        <display value="HIV/AIDS - immunocompromised"/>
+        <display value="Persons with perinatal HIV infection who do not have evidence of severe immunosuppression and who were vaccinated with MMR before establishment of antiviral therapy [ART]"/>
         <equivalence value="equivalent"/>
       </target>
     </element>
@@ -137,8 +732,44 @@
       <display value="Asymptomatic human immunodeficiency virus [HIV] infection status"/>
       <target>
         <code value="026"/>
-        <display value="HIV/AIDS - immunocompromised"/>
-        <equivalence value="wider"/>
+        <display value="Persons with perinatal HIV infection who do not have evidence of severe immunosuppression and who were vaccinated with MMR before establishment of antiviral therapy [ART]"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J45.20"/>
+      <display value="Mild intermittent asthma, uncomplicated"/>
+      <target>
+        <code value="027"/>
+        <display value="Asthma"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J45.30"/>
+      <display value="Mild persistent asthma, uncomplicated"/>
+      <target>
+        <code value="027"/>
+        <display value="Asthma"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J45.40"/>
+      <display value="Moderate persistent asthma, uncomplicated"/>
+      <target>
+        <code value="027"/>
+        <display value="Asthma"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J45.50"/>
+      <display value="Severe persistent asthma, uncomplicated"/>
+      <target>
+        <code value="027"/>
+        <display value="Asthma"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -147,7 +778,16 @@
       <target>
         <code value="027"/>
         <display value="Asthma"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J45.998"/>
+      <display value="Other asthma"/>
+      <target>
+        <code value="027"/>
+        <display value="Asthma"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -160,12 +800,102 @@
       </target>
     </element>
     <element>
+      <code value="K52.9"/>
+      <display value="Noninfective gastroenteritis and colitis, unspecified"/>
+      <target>
+        <code value="029"/>
+        <display value="Acute gastroenteritis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="A09"/>
+      <display value="Infectious gastroenteritis and colitis, unspecified"/>
+      <target>
+        <code value="029"/>
+        <display value="Acute gastroenteritis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="A08.0"/>
+      <display value="Rotaviral enteritis"/>
+      <target>
+        <code value="029"/>
+        <display value="Acute gastroenteritis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="A08.39"/>
+      <display value="Other viral enteritis"/>
+      <target>
+        <code value="029"/>
+        <display value="Acute gastroenteritis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="R50.9"/>
+      <display value="Fever, unspecified"/>
+      <target>
+        <code value="030"/>
+        <display value="Acute febrile illness"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
       <code value="A15.0"/>
       <display value="Tuberculosis of lung"/>
       <target>
         <code value="031"/>
         <display value="Tuberculosis"/>
-        <equivalence value="wider"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="A15.9"/>
+      <display value="Respiratory tuberculosis unspecified"/>
+      <target>
+        <code value="031"/>
+        <display value="Tuberculosis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="A18.89"/>
+      <display value="Tuberculosis of other sites"/>
+      <target>
+        <code value="031"/>
+        <display value="Tuberculosis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="A19.9"/>
+      <display value="Miliary tuberculosis, unspecified"/>
+      <target>
+        <code value="031"/>
+        <display value="Tuberculosis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="R76.11"/>
+      <display value="Nonspecific reaction to tuberculin skin test without active tuberculosis"/>
+      <target>
+        <code value="031"/>
+        <display value="Tuberculosis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z86.11"/>
+      <display value="Personal history of tuberculosis"/>
+      <target>
+        <code value="031"/>
+        <display value="Tuberculosis"/>
+        <equivalence value="equivalent"/>
       </target>
     </element>
     <element>
@@ -174,6 +904,915 @@
       <target>
         <code value="034"/>
         <display value="Receiving long-term aspirin therapy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z11.3"/>
+      <display value="Encounter for screening for infections with a predominantly sexual mode of transmission"/>
+      <target>
+        <code value="039"/>
+        <display value="Receives treatment for STD"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z11.4"/>
+      <display value="Encounter for screening for human immunodeficiency virus [HIV]"/>
+      <target>
+        <code value="039"/>
+        <display value="Receives treatment for STD"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z20.2"/>
+      <display value="Contact with and (suspected) exposure to infections with a predominantly sexual mode of transmission"/>
+      <target>
+        <code value="039"/>
+        <display value="Receives treatment for STD"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F19.10"/>
+      <display value="Other psychoactive substance abuse, uncomplicated"/>
+      <target>
+        <code value="040"/>
+        <display value="Illicit drug use"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F14.10"/>
+      <display value="Cocaine abuse, uncomplicated"/>
+      <target>
+        <code value="040"/>
+        <display value="Illicit drug use"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F11.10"/>
+      <display value="Opioid abuse, uncomplicated"/>
+      <target>
+        <code value="040"/>
+        <display value="Illicit drug use"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F16.10"/>
+      <display value="Hallucinogen abuse, uncomplicated"/>
+      <target>
+        <code value="040"/>
+        <display value="Illicit drug use"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F17.210"/>
+      <display value="Nicotine dependence, cigarettes, uncomplicated"/>
+      <target>
+        <code value="042"/>
+        <display value="Smoke cigarettes"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z72.0"/>
+      <display value="Tobacco use"/>
+      <target>
+        <code value="042"/>
+        <display value="Smoke cigarettes"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F10.20"/>
+      <display value="Alcohol dependence, uncomplicated"/>
+      <target>
+        <code value="043"/>
+        <display value="Alcoholism"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F10.10"/>
+      <display value="Alcohol abuse, uncomplicated"/>
+      <target>
+        <code value="043"/>
+        <display value="Alcoholism"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z11.59"/>
+      <display value="Encounter for screening for other viral diseases"/>
+      <target>
+        <code value="071"/>
+        <display value="Household contact with hepatitis B surface antigen-positive persons"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="G31.9"/>
+      <display value="Degenerative disease of nervous system, unspecified"/>
+      <target>
+        <code value="076"/>
+        <display value="Progressive neurologic disorder"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T50.B95A"/>
+      <display value="Adverse effect of other viral vaccines, initial encounter"/>
+      <target>
+        <code value="077"/>
+        <display value="Received inactivated or unknown measles vaccine between 1963-1967"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z88.9"/>
+      <display value="Allergy status to unspecified drugs, medicaments and biological substances"/>
+      <target>
+        <code value="077"/>
+        <display value="Received inactivated or unknown measles vaccine between 1963-1967"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z91.012"/>
+      <display value="Allergy to eggs"/>
+      <target>
+        <code value="081"/>
+        <display value="Severe allergic reaction after previous dose of Polio"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T50.A15A"/>
+      <display value="Adverse effect of pertussis vaccine, including combinations with a pertussis component, initial encounter"/>
+      <target>
+        <code value="086"/>
+        <display value="Severe allergic reaction after previous dose of Pertussis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T50.A95A"/>
+      <display value="Adverse effect of other bacterial vaccines, initial encounter"/>
+      <target>
+        <code value="087"/>
+        <display value="Severe allergic reaction after previous dose of Diphtheria"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T78.1"/>
+      <display value="Other adverse food reactions, not elsewhere classified"/>
+      <target>
+        <code value="101"/>
+        <display value="Allergic reaction to egg protein"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z91.018"/>
+      <display value="Allergy to other foods"/>
+      <target>
+        <code value="102"/>
+        <display value="Severe allergic reaction to gelatin"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T78.40XA"/>
+      <display value="Allergy, unspecified, initial encounter"/>
+      <target>
+        <code value="103"/>
+        <display value="Severe allergic reaction to arginine"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z91.040"/>
+      <display value="Latex allergy status"/>
+      <target>
+        <code value="104"/>
+        <display value="Allergic reaction to latex"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z88.1"/>
+      <display value="Allergy status to other antibiotic agents"/>
+      <target>
+        <code value="106"/>
+        <display value="Severe allergic reaction to gentamicin"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T36.5X5A"/>
+      <display value="Adverse effect of aminoglycosides, initial encounter"/>
+      <target>
+        <code value="106"/>
+        <display value="Severe allergic reaction to gentamicin"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T36.8X5A"/>
+      <display value="Adverse effect of other systemic antibiotics, initial encounter"/>
+      <target>
+        <code value="109"/>
+        <display value="Severe allergic reaction to polymyxin B"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T78.49XA"/>
+      <display value="Other allergy, initial encounter"/>
+      <target>
+        <code value="111"/>
+        <display value="Hypersensitivity to the preservative 2-phenoxyethanol"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T45.7X5A"/>
+      <display value="Adverse effect of anticoagulant antagonists, vitamin K and other coagulants, initial encounter"/>
+      <target>
+        <code value="115"/>
+        <display value="Severe allergic reaction to protamine sulfate"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z88.8"/>
+      <display value="Allergy status to other drugs, medicaments and biological substances"/>
+      <target>
+        <code value="115"/>
+        <display value="Severe allergic reaction to protamine sulfate"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z59.00"/>
+      <display value="Homelessness unspecified"/>
+      <target>
+        <code value="121"/>
+        <display value="Homelessness"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D84.821"/>
+      <display value="Immunodeficiency due to drugs"/>
+      <target>
+        <code value="142"/>
+        <display value="Travel to or working in countries that have high or intermediate endemicity of Hepatitis A"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C80.0"/>
+      <display value="Disseminated malignant neoplasm, unspecified"/>
+      <target>
+        <code value="156"/>
+        <display value="Generalized malignant neoplasm"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C80.1"/>
+      <display value="Malignant (primary) neoplasm, unspecified"/>
+      <target>
+        <code value="156"/>
+        <display value="Generalized malignant neoplasm"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z94.0"/>
+      <display value="Kidney transplant status"/>
+      <target>
+        <code value="157"/>
+        <display value="Solid organ transplantation"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z94.1"/>
+      <display value="Heart transplant status"/>
+      <target>
+        <code value="157"/>
+        <display value="Solid organ transplantation"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z94.2"/>
+      <display value="Lung transplant status"/>
+      <target>
+        <code value="157"/>
+        <display value="Solid organ transplantation"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z94.4"/>
+      <display value="Liver transplant status"/>
+      <target>
+        <code value="157"/>
+        <display value="Solid organ transplantation"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z94.9"/>
+      <display value="Transplanted organ and tissue status, unspecified"/>
+      <target>
+        <code value="157"/>
+        <display value="Solid organ transplantation"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z79.52"/>
+      <display value="Long term (current) use of systemic steroids"/>
+      <target>
+        <code value="158"/>
+        <display value="Immunosuppressive therapy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z79.899"/>
+      <display value="Other long term (current) drug therapy"/>
+      <target>
+        <code value="158"/>
+        <display value="Immunosuppressive therapy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z51.0"/>
+      <display value="Encounter for antineoplastic radiation therapy"/>
+      <target>
+        <code value="159"/>
+        <display value="Radiation therapy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N18.3"/>
+      <display value="Chronic kidney disease, stage 3 (moderate)"/>
+      <target>
+        <code value="161"/>
+        <display value="Chronic kidney disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="N04.9"/>
+      <display value="Nephrotic syndrome with unspecified morphologic changes"/>
+      <target>
+        <code value="162"/>
+        <display value="Travel to areas at risk for Yellow Fever transmission"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z51.11"/>
+      <display value="Encounter for antineoplastic chemotherapy"/>
+      <target>
+        <code value="168"/>
+        <display value="Chemotherapy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z51.12"/>
+      <display value="Encounter for antineoplastic immunotherapy"/>
+      <target>
+        <code value="168"/>
+        <display value="Chemotherapy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z04.81"/>
+      <display value="Encounter for examination and observation of victim following forced sexual exploitation"/>
+      <target>
+        <code value="169"/>
+        <display value="History of sexual abuse or assault"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T74.21XA"/>
+      <display value="Adult sexual abuse, confirmed, initial encounter"/>
+      <target>
+        <code value="169"/>
+        <display value="History of sexual abuse or assault"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="T74.22XA"/>
+      <display value="Child sexual abuse, confirmed, initial encounter"/>
+      <target>
+        <code value="169"/>
+        <display value="History of sexual abuse or assault"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z34.90"/>
+      <display value="Encounter for supervision of normal pregnancy, unspecified, unspecified trimester"/>
+      <target>
+        <code value="170"/>
+        <display value="Onset of pregnancy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C95.90"/>
+      <display value="Leukemia, unspecified not having achieved remission"/>
+      <target>
+        <code value="178"/>
+        <display value="Leukemia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C91.00"/>
+      <display value="Acute lymphoblastic leukemia not having achieved remission"/>
+      <target>
+        <code value="178"/>
+        <display value="Leukemia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C92.00"/>
+      <display value="Acute myeloblastic leukemia, not having achieved remission"/>
+      <target>
+        <code value="178"/>
+        <display value="Leukemia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C85.90"/>
+      <display value="Non-Hodgkin lymphoma, unspecified, unspecified site"/>
+      <target>
+        <code value="179"/>
+        <display value="Lymphoma"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C84.40"/>
+      <display value="Peripheral T-cell lymphoma, not elsewhere classified, unspecified site"/>
+      <target>
+        <code value="179"/>
+        <display value="Lymphoma"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C81.90"/>
+      <display value="Hodgkin lymphoma, unspecified, unspecified site"/>
+      <target>
+        <code value="180"/>
+        <display value="Hodgkin's disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C90.00"/>
+      <display value="Multiple myeloma not having achieved remission"/>
+      <target>
+        <code value="181"/>
+        <display value="Multiple myeloma"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="C96.9"/>
+      <display value="Malignant neoplasm of lymphoid, hematopoietic and related tissue, unspecified"/>
+      <target>
+        <code value="190"/>
+        <display value="Active treatment for hematologic malignancies"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z59.3"/>
+      <display value="Problems related to living in residential institution"/>
+      <target>
+        <code value="192"/>
+        <display value="Severe allergic reaction after previous dose of any egg-based IIV or LAIV influenza vaccine"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="J84.89"/>
+      <display value="Other specified interstitial pulmonary diseases"/>
+      <target>
+        <code value="199"/>
+        <display value="Interstitial lung disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E84.0"/>
+      <display value="Cystic fibrosis with pulmonary manifestations"/>
+      <target>
+        <code value="200"/>
+        <display value="Cystic fibrosis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E84.9"/>
+      <display value="Cystic fibrosis, unspecified"/>
+      <target>
+        <code value="200"/>
+        <display value="Cystic fibrosis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I27.0"/>
+      <display value="Primary pulmonary hypertension"/>
+      <target>
+        <code value="201"/>
+        <display value="Pulmonary hypertension"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I27.20"/>
+      <display value="Pulmonary hypertension, unspecified"/>
+      <target>
+        <code value="201"/>
+        <display value="Pulmonary hypertension"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I27.9"/>
+      <display value="Pulmonary heart disease, unspecified"/>
+      <target>
+        <code value="201"/>
+        <display value="Pulmonary hypertension"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F03.90"/>
+      <display value="Unspecified dementia, unspecified severity, without behavioral disturbance, psychotic disturbance, mood disturbance, and anxiety"/>
+      <target>
+        <code value="202"/>
+        <display value="Dementia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="G30.9"/>
+      <display value="Alzheimer's disease, unspecified"/>
+      <target>
+        <code value="202"/>
+        <display value="Dementia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Q90.9"/>
+      <display value="Down syndrome, unspecified"/>
+      <target>
+        <code value="203"/>
+        <display value="Down syndrome"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E66.9"/>
+      <display value="Obesity, unspecified"/>
+      <target>
+        <code value="204"/>
+        <display value="Obesity"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E66.01"/>
+      <display value="Morbid (severe) obesity due to excess calories"/>
+      <target>
+        <code value="204"/>
+        <display value="Obesity"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D56.9"/>
+      <display value="Thalassemia, unspecified"/>
+      <target>
+        <code value="205"/>
+        <display value="Thalassemia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D56.0"/>
+      <display value="Alpha thalassemia"/>
+      <target>
+        <code value="205"/>
+        <display value="Thalassemia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D56.1"/>
+      <display value="Beta thalassemia"/>
+      <target>
+        <code value="205"/>
+        <display value="Thalassemia"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I67.9"/>
+      <display value="Cerebrovascular disease, unspecified"/>
+      <target>
+        <code value="206"/>
+        <display value="Cerebrovascular disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I63.9"/>
+      <display value="Cerebral infarction, unspecified"/>
+      <target>
+        <code value="206"/>
+        <display value="Cerebrovascular disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F19.20"/>
+      <display value="Other psychoactive substance dependence, uncomplicated"/>
+      <target>
+        <code value="207"/>
+        <display value="Substance use disorder"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="F99"/>
+      <display value="Mental disorder, not otherwise specified"/>
+      <target>
+        <code value="208"/>
+        <display value="Mental Health conditions"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="L20.9"/>
+      <display value="Atopic dermatitis, unspecified"/>
+      <target>
+        <code value="223"/>
+        <display value="Severe allergic reaction after previous dose of orthopoxvirus vaccine"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="L20.89"/>
+      <display value="Other atopic dermatitis"/>
+      <target>
+        <code value="223"/>
+        <display value="Severe allergic reaction after previous dose of orthopoxvirus vaccine"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="L26"/>
+      <display value="Exfoliative dermatitis"/>
+      <target>
+        <code value="225"/>
+        <display value="Household contact with history or presence of atopic dermatitis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="L10.9"/>
+      <display value="Pemphigus, unspecified"/>
+      <target>
+        <code value="225"/>
+        <display value="Household contact with history or presence of atopic dermatitis"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z20.828"/>
+      <display value="Contact with and (suspected) exposure to other viral communicable diseases"/>
+      <target>
+        <code value="240"/>
+        <display value="Healthcare personnel who care for patients infected with less virulent orthopoxviruses (e.g., Vaccinia virus or Cowpox virus)"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="I51.9"/>
+      <display value="Heart disease, unspecified"/>
+      <target>
+        <code value="254"/>
+        <display value="Chronic cardiovascular disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E66.2"/>
+      <display value="Morbid (severe) obesity with alveolar hypoventilation"/>
+      <target>
+        <code value="256"/>
+        <display value="Diabetes mellitus complicated by chronic kidney disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D75.9"/>
+      <display value="Disease of blood and blood-forming organs, unspecified"/>
+      <target>
+        <code value="258"/>
+        <display value="Chronic hematologic disorders"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D57.1"/>
+      <display value="Sickle-cell disease without crisis"/>
+      <target>
+        <code value="259"/>
+        <display value="Sickle cell disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D57.00"/>
+      <display value="Hb-SS disease with crisis, unspecified"/>
+      <target>
+        <code value="259"/>
+        <display value="Sickle cell disease"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="R54"/>
+      <display value="Age-related physical debility"/>
+      <target>
+        <code value="262"/>
+        <display value="Frailty"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E11.40"/>
+      <display value="Type 2 diabetes mellitus with diabetic neuropathy, unspecified"/>
+      <target>
+        <code value="263"/>
+        <display value="Diabetes mellitus complicated by neuropathy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E10.40"/>
+      <display value="Type 1 diabetes mellitus with diabetic neuropathy, unspecified"/>
+      <target>
+        <code value="263"/>
+        <display value="Diabetes mellitus complicated by neuropathy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E13.40"/>
+      <display value="Other specified diabetes mellitus with diabetic neuropathy, unspecified"/>
+      <target>
+        <code value="263"/>
+        <display value="Diabetes mellitus complicated by neuropathy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E11.319"/>
+      <display value="Type 2 diabetes mellitus with unspecified diabetic retinopathy without macular edema"/>
+      <target>
+        <code value="264"/>
+        <display value="Diabetes mellitus complicated by retinopathy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E10.319"/>
+      <display value="Type 1 diabetes mellitus with unspecified diabetic retinopathy without macular edema"/>
+      <target>
+        <code value="264"/>
+        <display value="Diabetes mellitus complicated by retinopathy"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E11.69"/>
+      <display value="Type 2 diabetes mellitus with other specified complication"/>
+      <target>
+        <code value="265"/>
+        <display value="Diabetes mellitus complicated by end-organ damage"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E10.69"/>
+      <display value="Type 1 diabetes mellitus with other specified complication"/>
+      <target>
+        <code value="265"/>
+        <display value="Diabetes mellitus complicated by end-organ damage"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="E13.69"/>
+      <display value="Other specified diabetes mellitus with other specified complication"/>
+      <target>
+        <code value="265"/>
+        <display value="Diabetes mellitus complicated by end-organ damage"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z79.4"/>
+      <display value="Long term (current) use of insulin"/>
+      <target>
+        <code value="266"/>
+        <display value="Diabetes requiring treatment with insulin"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Z94.83"/>
+      <display value="Pancreas transplant status"/>
+      <target>
+        <code value="267"/>
+        <display value="Diabetes requiring treatment with sodium-glucose cotransporter-2 (SGLT2) inhibitor"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D80.1"/>
+      <display value="Nonfamilial hypogammaglobulinemia"/>
+      <target>
+        <code value="270"/>
+        <display value="Severe allergic reaction after previous dose of Chikungunya vaccine"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D80.0"/>
+      <display value="Hereditary hypogammaglobulinemia"/>
+      <target>
+        <code value="270"/>
+        <display value="Severe allergic reaction after previous dose of Chikungunya vaccine"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D84.1"/>
+      <display value="Defects in the complement system"/>
+      <target>
+        <code value="274"/>
+        <display value="Early component complement inhibitor use"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D58.2"/>
+      <display value="Other hemoglobinopathies"/>
+      <target>
+        <code value="277"/>
+        <display value="Laboratory worker with potential for exposure to chikungunya virus"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="D57.3"/>
+      <display value="Sickle-cell trait"/>
+      <target>
+        <code value="277"/>
+        <display value="Laboratory worker with potential for exposure to chikungunya virus"/>
         <equivalence value="equivalent"/>
       </target>
     </element>

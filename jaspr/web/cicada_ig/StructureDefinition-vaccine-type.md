@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:VaccineType |
+| Draft as of 2026-09-06 | *Computable Name*:VaccineType |
 
 Type of the vaccine.
 
@@ -21,7 +21,7 @@ Type of the vaccine.
 
 * Use this Extension: [Vaccine](StructureDefinition-Vaccine.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/cicada.ig|current/StructureDefinition/vaccine-type)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-vaccine-type.json)
 
 ### Formal Views of Extension Content
 
@@ -46,67 +46,55 @@ Other representations of profile: [CSV](StructureDefinition-vaccine-type.csv), [
   "name" : "VaccineType",
   "title" : "Vaccine Type",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Type of the vaccine.",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
-  "context" : [
-    {
-      "type" : "element",
-      "expression" : "Element"
-    }
-  ],
+  "context" : [{
+    "type" : "element",
+    "expression" : "Element"
+  }],
   "type" : "Extension",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Extension",
-        "path" : "Extension",
-        "short" : "Vaccine Type",
-        "definition" : "Type of the vaccine."
-      },
-      {
-        "id" : "Extension.extension",
-        "path" : "Extension.extension",
-        "max" : "0"
-      },
-      {
-        "id" : "Extension.url",
-        "path" : "Extension.url",
-        "fixedUri" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type"
-      },
-      {
-        "id" : "Extension.value[x]",
-        "path" : "Extension.value[x]",
-        "type" : [
-          {
-            "code" : "CodeableConcept"
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "Extension",
+      "path" : "Extension",
+      "short" : "Vaccine Type",
+      "definition" : "Type of the vaccine."
+    },
+    {
+      "id" : "Extension.extension",
+      "path" : "Extension.extension",
+      "max" : "0"
+    },
+    {
+      "id" : "Extension.url",
+      "path" : "Extension.url",
+      "fixedUri" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type"
+    },
+    {
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "type" : [{
+        "code" : "CodeableConcept"
+      }]
+    }]
   }
 }
 

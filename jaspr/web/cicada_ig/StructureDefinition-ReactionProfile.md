@@ -9,16 +9,16 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:ReactionProfile |
+| Draft as of 2026-09-06 | *Computable Name*:ReactionProfile |
 
  
 Profile for allergy intolerances relevant to immunization. The code (allergen/substance) may use SNOMED CT or ICD-10-CM. Reaction substances may use CVX, MVX, SNOMED CT, or RxNorm. 
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Implementation Guide
+* This Profile is not used by any profiles in this Specification
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/cicada.ig|current/StructureDefinition/ReactionProfile)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-ReactionProfile.json)
 
 ### Formal Views of Profile Content
 
@@ -41,66 +41,58 @@ Other representations of profile: [CSV](StructureDefinition-ReactionProfile.csv)
   "name" : "ReactionProfile",
   "title" : "Allergy Intolerance Profile for Immunization Decision Support",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Profile for allergy intolerances relevant to immunization. The code (allergen/substance) may use SNOMED CT or ICD-10-CM. Reaction substances may use CVX, MVX, SNOMED CT, or RxNorm.",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "AllergyIntolerance",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "AllergyIntolerance",
-        "path" : "AllergyIntolerance"
-      },
-      {
-        "id" : "AllergyIntolerance.code",
-        "path" : "AllergyIntolerance.code",
-        "binding" : {
-          "strength" : "extensible",
-          "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-snomed"
-        }
-      },
-      {
-        "id" : "AllergyIntolerance.reaction.substance",
-        "path" : "AllergyIntolerance.reaction.substance",
-        "binding" : {
-          "strength" : "extensible",
-          "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx"
-        }
+    "element" : [{
+      "id" : "AllergyIntolerance",
+      "path" : "AllergyIntolerance"
+    },
+    {
+      "id" : "AllergyIntolerance.code",
+      "path" : "AllergyIntolerance.code",
+      "binding" : {
+        "strength" : "extensible",
+        "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-snomed"
       }
-    ]
+    },
+    {
+      "id" : "AllergyIntolerance.reaction.substance",
+      "path" : "AllergyIntolerance.reaction.substance",
+      "binding" : {
+        "strength" : "extensible",
+        "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx"
+      }
+    }]
   }
 }
 

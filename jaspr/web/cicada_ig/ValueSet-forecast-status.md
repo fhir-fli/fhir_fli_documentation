@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-status | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:ForecastStatusVS |
+| Draft as of 2026-09-06 | *Computable Name*:ForecastStatusVS |
 
  
 Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8. 
@@ -23,8 +23,6 @@ Combined value set for immunization forecast status, referencing published stand
  
 
 ### Expansion
-
-No Expansion for this valueset (not supported by Publication Tooling)
 
 -------
 
@@ -52,62 +50,54 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "name" : "ForecastStatusVS",
   "title" : "Forecast Status Value Set",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8.",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"
+    "include" : [{
+      "system" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"
+    },
+    {
+      "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"
+    },
+    {
+      "system" : "http://loinc.org",
+      "concept" : [{
+        "code" : "LA13421-5",
+        "display" : "Complete - all required doses have been received to meet the requirements for a particular vaccine group."
       },
       {
-        "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"
+        "code" : "LA13422-3",
+        "display" : "On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."
       },
       {
-        "system" : "http://loinc.org",
-        "concept" : [
-          {
-            "code" : "LA13421-5",
-            "display" : "Complete"
-          },
-          {
-            "code" : "LA13422-3",
-            "display" : "On schedule"
-          },
-          {
-            "code" : "LA13423-1",
-            "display" : "Overdue"
-          },
-          {
-            "code" : "LA27183-5",
-            "display" : "Immune"
-          },
-          {
-            "code" : "LA4216-3",
-            "display" : "Contraindicated"
-          },
-          {
-            "code" : "LA4695-8",
-            "display" : "Not Recommended"
-          },
-          {
-            "code" : "LA13424-9",
-            "display" : "Too old"
-          }
-        ]
-      }
-    ]
+        "code" : "LA13423-1",
+        "display" : "Overdue - person is late getting the next dose in the series."
+      },
+      {
+        "code" : "LA27183-5",
+        "display" : "Immune"
+      },
+      {
+        "code" : "LA4216-3",
+        "display" : "Contraindicated"
+      },
+      {
+        "code" : "LA4695-8",
+        "display" : "Not Recommended"
+      },
+      {
+        "code" : "LA13424-9",
+        "display" : "Too old - cannot complete the series because the latest age for receiving dose has passed."
+      }]
+    }]
   }
 }
 

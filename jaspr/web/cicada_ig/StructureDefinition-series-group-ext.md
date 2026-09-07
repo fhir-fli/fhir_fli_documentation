@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:SeriesGroup |
+| Draft as of 2026-09-06 | *Computable Name*:SeriesGroup |
 
 The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group.
 
@@ -19,9 +19,9 @@ The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendati
 
 **Usages:**
 
-* This Extension is not used by any profiles in this Implementation Guide
+* Examples for this Extension: [ImmunizationRecommendation/cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/cicada.ig|current/StructureDefinition/series-group-ext)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-series-group-ext.json)
 
 ### Formal Views of Extension Content
 
@@ -46,67 +46,55 @@ Other representations of profile: [CSV](StructureDefinition-series-group-ext.csv
   "name" : "SeriesGroup",
   "title" : "Series Group",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group.",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
-  "context" : [
-    {
-      "type" : "element",
-      "expression" : "ImmunizationRecommendation.recommendation"
-    }
-  ],
+  "context" : [{
+    "type" : "element",
+    "expression" : "ImmunizationRecommendation.recommendation"
+  }],
   "type" : "Extension",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Extension",
-        "path" : "Extension",
-        "short" : "Series Group",
-        "definition" : "The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group."
-      },
-      {
-        "id" : "Extension.extension",
-        "path" : "Extension.extension",
-        "max" : "0"
-      },
-      {
-        "id" : "Extension.url",
-        "path" : "Extension.url",
-        "fixedUri" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext"
-      },
-      {
-        "id" : "Extension.value[x]",
-        "path" : "Extension.value[x]",
-        "type" : [
-          {
-            "code" : "string"
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "Extension",
+      "path" : "Extension",
+      "short" : "Series Group",
+      "definition" : "The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group."
+    },
+    {
+      "id" : "Extension.extension",
+      "path" : "Extension.extension",
+      "max" : "0"
+    },
+    {
+      "id" : "Extension.url",
+      "path" : "Extension.url",
+      "fixedUri" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext"
+    },
+    {
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "type" : [{
+        "code" : "string"
+      }]
+    }]
   }
 }
 

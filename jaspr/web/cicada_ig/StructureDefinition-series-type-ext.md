@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:SeriesType |
+| Draft as of 2026-09-06 | *Computable Name*:SeriesType |
 
 Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes.
 
@@ -22,7 +22,7 @@ Whether this recommendation came from the standard series group or a risk series
 * Use this Extension: [Cicada Immunization Recommendation](StructureDefinition-cicada-immunization-recommendation.md)
 * Examples for this Extension: [ImmunizationRecommendation/cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/cicada.ig|current/StructureDefinition/series-type-ext)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-series-type-ext.json)
 
 ### Formal Views of Extension Content
 
@@ -49,71 +49,59 @@ Other representations of profile: [CSV](StructureDefinition-series-type-ext.csv)
   "name" : "SeriesType",
   "title" : "Series Type",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes.",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
-  "context" : [
-    {
-      "type" : "element",
-      "expression" : "ImmunizationRecommendation.recommendation"
-    }
-  ],
+  "context" : [{
+    "type" : "element",
+    "expression" : "ImmunizationRecommendation.recommendation"
+  }],
   "type" : "Extension",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Extension",
-        "path" : "Extension",
-        "short" : "Series Type",
-        "definition" : "Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes."
-      },
-      {
-        "id" : "Extension.extension",
-        "path" : "Extension.extension",
-        "max" : "0"
-      },
-      {
-        "id" : "Extension.url",
-        "path" : "Extension.url",
-        "fixedUri" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext"
-      },
-      {
-        "id" : "Extension.value[x]",
-        "path" : "Extension.value[x]",
-        "type" : [
-          {
-            "code" : "CodeableConcept"
-          }
-        ],
-        "binding" : {
-          "strength" : "required",
-          "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/series-type-vs"
-        }
+    "element" : [{
+      "id" : "Extension",
+      "path" : "Extension",
+      "short" : "Series Type",
+      "definition" : "Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes."
+    },
+    {
+      "id" : "Extension.extension",
+      "path" : "Extension.extension",
+      "max" : "0"
+    },
+    {
+      "id" : "Extension.url",
+      "path" : "Extension.url",
+      "fixedUri" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext"
+    },
+    {
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "type" : [{
+        "code" : "CodeableConcept"
+      }],
+      "binding" : {
+        "strength" : "required",
+        "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/series-type-vs"
       }
-    ]
+    }]
   }
 }
 

@@ -1,6 +1,5 @@
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -8,326 +7,424 @@
 
 <http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10> a fhir:ValueSet ;
   fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "vaccine-condition-codes-icd10"] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet vaccine-condition-codes-icd10</b></p><a name=\"vaccine-condition-codes-icd10\"> </a><a name=\"hcvaccine-condition-codes-icd10\"> </a><ul><li>Include these codes as defined in <code>http://hl7.org/fhir/sid/icd-10-cm</code><span title=\"Version is not explicitly stated. No matching Code System found\"> version Not Stated (use latest from terminology server)</span><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>D84.9</td><td>Immunodeficiency, unspecified</td></tr><tr><td>D83.9</td><td>Common variable immunodeficiency, unspecified</td></tr><tr><td>D80.9</td><td>Immunodeficiency with predominantly antibody defects, unspecified</td></tr><tr><td>D89.9</td><td>Disorder involving immune mechanism, unspecified</td></tr><tr><td>D84.8</td><td>Other specified immunodeficiency disorders</td></tr><tr><td>Z94.84</td><td>Bone marrow transplant status</td></tr><tr><td>T86.00</td><td>Unspecified complication of bone marrow transplant</td></tr><tr><td>T86.09</td><td>Other complications of bone marrow transplant</td></tr><tr><td>B18.2</td><td>Chronic viral hepatitis C</td></tr><tr><td>B17.10</td><td>Acute hepatitis C without hepatic coma</td></tr><tr><td>B17.11</td><td>Acute hepatitis C with hepatic coma</td></tr><tr><td>B19.20</td><td>Unspecified viral hepatitis C without hepatic coma</td></tr><tr><td>Z33.1</td><td>Pregnant state, incidental</td></tr><tr><td>O09.90</td><td>Supervision of high risk pregnancy, unspecified trimester</td></tr><tr><td>Z34.00</td><td>Encounter for supervision of normal first pregnancy, unspecified trimester</td></tr><tr><td>Z34.80</td><td>Encounter for supervision of other normal pregnancy, unspecified trimester</td></tr><tr><td>Z39.1</td><td>Encounter for care and examination of lactating mother</td></tr><tr><td>G96.00</td><td>Cerebrospinal fluid leak, unspecified</td></tr><tr><td>G96.01</td><td>Cranial cerebrospinal fluid leak, spontaneous</td></tr><tr><td>G96.02</td><td>Spinal cerebrospinal fluid leak, spontaneous</td></tr><tr><td>G96.08</td><td>Other cranial cerebrospinal fluid leak</td></tr><tr><td>G96.09</td><td>Other spinal cerebrospinal fluid leak</td></tr><tr><td>Z96.21</td><td>Cochlear implant status</td></tr><tr><td>D81.9</td><td>Combined immunodeficiency, unspecified</td></tr><tr><td>D81.0</td><td>SCID with reticular dysgenesis</td></tr><tr><td>D81.1</td><td>SCID with low T- and B-cell numbers</td></tr><tr><td>D81.2</td><td>SCID with low or normal B-cell numbers</td></tr><tr><td>D81.3</td><td>Adenosine deaminase deficiency</td></tr><tr><td>D81.5</td><td>Purine nucleoside phosphorylase deficiency</td></tr><tr><td>D81.6</td><td>Major histocompatibility complex class I deficiency</td></tr><tr><td>D81.7</td><td>Major histocompatibility complex class II deficiency</td></tr><tr><td>E10.9</td><td>Type 1 diabetes mellitus without complications</td></tr><tr><td>E10.65</td><td>Type 1 diabetes mellitus with hyperglycemia</td></tr><tr><td>E11.9</td><td>Type 2 diabetes mellitus without complications</td></tr><tr><td>E11.65</td><td>Type 2 diabetes mellitus with hyperglycemia</td></tr><tr><td>E13.9</td><td>Other specified diabetes mellitus without complications</td></tr><tr><td>E08.9</td><td>Diabetes mellitus due to underlying condition without complications</td></tr><tr><td>E09.9</td><td>Drug or chemical induced diabetes mellitus without complications</td></tr><tr><td>K70.30</td><td>Alcoholic cirrhosis of liver without ascites</td></tr><tr><td>K70.31</td><td>Alcoholic cirrhosis of liver with ascites</td></tr><tr><td>K73.9</td><td>Chronic hepatitis, unspecified</td></tr><tr><td>K74.0</td><td>Hepatic fibrosis</td></tr><tr><td>K74.60</td><td>Unspecified cirrhosis of liver</td></tr><tr><td>K74.69</td><td>Other cirrhosis of liver</td></tr><tr><td>K76.0</td><td>Fatty liver, not elsewhere classified</td></tr><tr><td>K76.9</td><td>Liver disease, unspecified</td></tr><tr><td>I25.10</td><td>Atherosclerotic heart disease of native coronary artery without angina pectoris</td></tr><tr><td>I25.9</td><td>Chronic ischemic heart disease, unspecified</td></tr><tr><td>I50.9</td><td>Heart failure, unspecified</td></tr><tr><td>I50.20</td><td>Unspecified systolic (congestive) heart failure</td></tr><tr><td>I50.30</td><td>Unspecified diastolic (congestive) heart failure</td></tr><tr><td>I42.9</td><td>Cardiomyopathy, unspecified</td></tr><tr><td>I42.0</td><td>Dilated cardiomyopathy</td></tr><tr><td>Q24.9</td><td>Congenital malformation of heart, unspecified</td></tr><tr><td>J44.9</td><td>Chronic obstructive pulmonary disease, unspecified</td></tr><tr><td>J44.1</td><td>Chronic obstructive pulmonary disease with acute exacerbation</td></tr><tr><td>J43.9</td><td>Emphysema, unspecified</td></tr><tr><td>J84.9</td><td>Interstitial pulmonary disease, unspecified</td></tr><tr><td>J84.10</td><td>Pulmonary fibrosis, unspecified</td></tr><tr><td>J47.9</td><td>Bronchiectasis, uncomplicated</td></tr><tr><td>P27.1</td><td>Bronchopulmonary dysplasia originating in the perinatal period</td></tr><tr><td>D73.0</td><td>Hyposplenism</td></tr><tr><td>Q89.01</td><td>Asplenia (congenital)</td></tr><tr><td>D73.89</td><td>Other diseases of spleen</td></tr><tr><td>Z90.81</td><td>Acquired absence of spleen</td></tr><tr><td>N18.1</td><td>Chronic kidney disease, stage 1</td></tr><tr><td>N18.2</td><td>Chronic kidney disease, stage 2</td></tr><tr><td>N18.30</td><td>Chronic kidney disease, stage 3 unspecified</td></tr><tr><td>N18.4</td><td>Chronic kidney disease, stage 4</td></tr><tr><td>N18.5</td><td>Chronic kidney disease, stage 5</td></tr><tr><td>N18.6</td><td>End stage renal disease</td></tr><tr><td>N18.9</td><td>Chronic kidney disease, unspecified</td></tr><tr><td>Z99.2</td><td>Dependence on renal dialysis</td></tr><tr><td>B20</td><td>Human immunodeficiency virus [HIV] disease</td></tr><tr><td>Z21</td><td>Asymptomatic human immunodeficiency virus [HIV] infection status</td></tr><tr><td>J45.20</td><td>Mild intermittent asthma, uncomplicated</td></tr><tr><td>J45.30</td><td>Mild persistent asthma, uncomplicated</td></tr><tr><td>J45.40</td><td>Moderate persistent asthma, uncomplicated</td></tr><tr><td>J45.50</td><td>Severe persistent asthma, uncomplicated</td></tr><tr><td>J45.909</td><td>Unspecified asthma, uncomplicated</td></tr><tr><td>J45.998</td><td>Other asthma</td></tr><tr><td>K56.1</td><td>Intussusception</td></tr><tr><td>K52.9</td><td>Noninfective gastroenteritis and colitis, unspecified</td></tr><tr><td>A09</td><td>Infectious gastroenteritis and colitis, unspecified</td></tr><tr><td>A08.0</td><td>Rotaviral enteritis</td></tr><tr><td>A08.39</td><td>Other viral enteritis</td></tr><tr><td>A15.0</td><td>Tuberculosis of lung</td></tr><tr><td>A15.9</td><td>Respiratory tuberculosis unspecified</td></tr><tr><td>A18.9</td><td>Tuberculosis of other organs</td></tr><tr><td>A19.9</td><td>Miliary tuberculosis, unspecified</td></tr><tr><td>R76.11</td><td>Nonspecific reaction to tuberculin skin test without active tuberculosis</td></tr><tr><td>Z86.11</td><td>Personal history of tuberculosis</td></tr><tr><td>Z79.82</td><td>Long term (current) use of aspirin</td></tr><tr><td>Z11.3</td><td>Encounter for screening for infections with a predominantly sexual mode of transmission</td></tr><tr><td>Z11.4</td><td>Encounter for screening for human immunodeficiency virus [HIV]</td></tr><tr><td>Z20.2</td><td>Contact with and exposure to infections with a predominantly sexual mode of transmission</td></tr></table></li></ul></div>"^^rdf:XMLLiteral ]
-  ] ; # 
-  fhir:url [
-     fhir:v "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10"^^xsd:anyURI ;
-     fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10>
-  ] ; # 
-  fhir:version [ fhir:v "0.1.0"] ; # 
-  fhir:name [ fhir:v "VaccineConditionCodesIcd10"] ; # 
-  fhir:title [ fhir:v "Vaccine Condition Codes (ICD-10-CM)"] ; # 
-  fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
-  fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
-  fhir:contact ( [
-     fhir:name [ fhir:v "FHIR-FLI" ] ;
-     fhir:telecom ( [
-       fhir:system [ fhir:v "url" ] ;
-       fhir:value [ fhir:v "http://fhirfli.dev" ]
-     ] )
-  ] ) ; # 
-  fhir:description [ fhir:v "Value set for conditions based on ICD-10-CM that may impact immunization decisions, mapped to CDSi observation codes."] ; # 
-  fhir:compose [
-     fhir:include ( [
-       fhir:system [
-         fhir:v "http://hl7.org/fhir/sid/icd-10-cm"^^xsd:anyURI ;
-         fhir:l <http://hl7.org/fhir/sid/icd-10-cm>
-       ] ;
-       fhir:concept ( [
-         fhir:code [ fhir:v "D84.9" ] ;
-         fhir:display [ fhir:v "Immunodeficiency, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "D83.9" ] ;
-         fhir:display [ fhir:v "Common variable immunodeficiency, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "D80.9" ] ;
-         fhir:display [ fhir:v "Immunodeficiency with predominantly antibody defects, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "D89.9" ] ;
-         fhir:display [ fhir:v "Disorder involving immune mechanism, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "D84.8" ] ;
-         fhir:display [ fhir:v "Other specified immunodeficiency disorders" ]
-       ] [
-         fhir:code [ fhir:v "Z94.84" ] ;
-         fhir:display [ fhir:v "Bone marrow transplant status" ]
-       ] [
-         fhir:code [ fhir:v "T86.00" ] ;
-         fhir:display [ fhir:v "Unspecified complication of bone marrow transplant" ]
-       ] [
-         fhir:code [ fhir:v "T86.09" ] ;
-         fhir:display [ fhir:v "Other complications of bone marrow transplant" ]
-       ] [
-         fhir:code [ fhir:v "B18.2" ] ;
-         fhir:display [ fhir:v "Chronic viral hepatitis C" ]
-       ] [
-         fhir:code [ fhir:v "B17.10" ] ;
-         fhir:display [ fhir:v "Acute hepatitis C without hepatic coma" ]
-       ] [
-         fhir:code [ fhir:v "B17.11" ] ;
-         fhir:display [ fhir:v "Acute hepatitis C with hepatic coma" ]
-       ] [
-         fhir:code [ fhir:v "B19.20" ] ;
-         fhir:display [ fhir:v "Unspecified viral hepatitis C without hepatic coma" ]
-       ] [
-         fhir:code [ fhir:v "Z33.1" ] ;
-         fhir:display [ fhir:v "Pregnant state, incidental" ]
-       ] [
-         fhir:code [ fhir:v "O09.90" ] ;
-         fhir:display [ fhir:v "Supervision of high risk pregnancy, unspecified trimester" ]
-       ] [
-         fhir:code [ fhir:v "Z34.00" ] ;
-         fhir:display [ fhir:v "Encounter for supervision of normal first pregnancy, unspecified trimester" ]
-       ] [
-         fhir:code [ fhir:v "Z34.80" ] ;
-         fhir:display [ fhir:v "Encounter for supervision of other normal pregnancy, unspecified trimester" ]
-       ] [
-         fhir:code [ fhir:v "Z39.1" ] ;
-         fhir:display [ fhir:v "Encounter for care and examination of lactating mother" ]
-       ] [
-         fhir:code [ fhir:v "G96.00" ] ;
-         fhir:display [ fhir:v "Cerebrospinal fluid leak, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "G96.01" ] ;
-         fhir:display [ fhir:v "Cranial cerebrospinal fluid leak, spontaneous" ]
-       ] [
-         fhir:code [ fhir:v "G96.02" ] ;
-         fhir:display [ fhir:v "Spinal cerebrospinal fluid leak, spontaneous" ]
-       ] [
-         fhir:code [ fhir:v "G96.08" ] ;
-         fhir:display [ fhir:v "Other cranial cerebrospinal fluid leak" ]
-       ] [
-         fhir:code [ fhir:v "G96.09" ] ;
-         fhir:display [ fhir:v "Other spinal cerebrospinal fluid leak" ]
-       ] [
-         fhir:code [ fhir:v "Z96.21" ] ;
-         fhir:display [ fhir:v "Cochlear implant status" ]
-       ] [
-         fhir:code [ fhir:v "D81.9" ] ;
-         fhir:display [ fhir:v "Combined immunodeficiency, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "D81.0" ] ;
-         fhir:display [ fhir:v "SCID with reticular dysgenesis" ]
-       ] [
-         fhir:code [ fhir:v "D81.1" ] ;
-         fhir:display [ fhir:v "SCID with low T- and B-cell numbers" ]
-       ] [
-         fhir:code [ fhir:v "D81.2" ] ;
-         fhir:display [ fhir:v "SCID with low or normal B-cell numbers" ]
-       ] [
-         fhir:code [ fhir:v "D81.3" ] ;
-         fhir:display [ fhir:v "Adenosine deaminase deficiency" ]
-       ] [
-         fhir:code [ fhir:v "D81.5" ] ;
-         fhir:display [ fhir:v "Purine nucleoside phosphorylase deficiency" ]
-       ] [
-         fhir:code [ fhir:v "D81.6" ] ;
-         fhir:display [ fhir:v "Major histocompatibility complex class I deficiency" ]
-       ] [
-         fhir:code [ fhir:v "D81.7" ] ;
-         fhir:display [ fhir:v "Major histocompatibility complex class II deficiency" ]
-       ] [
-         fhir:code [ fhir:v "E10.9" ] ;
-         fhir:display [ fhir:v "Type 1 diabetes mellitus without complications" ]
-       ] [
-         fhir:code [ fhir:v "E10.65" ] ;
-         fhir:display [ fhir:v "Type 1 diabetes mellitus with hyperglycemia" ]
-       ] [
-         fhir:code [ fhir:v "E11.9" ] ;
-         fhir:display [ fhir:v "Type 2 diabetes mellitus without complications" ]
-       ] [
-         fhir:code [ fhir:v "E11.65" ] ;
-         fhir:display [ fhir:v "Type 2 diabetes mellitus with hyperglycemia" ]
-       ] [
-         fhir:code [ fhir:v "E13.9" ] ;
-         fhir:display [ fhir:v "Other specified diabetes mellitus without complications" ]
-       ] [
-         fhir:code [ fhir:v "E08.9" ] ;
-         fhir:display [ fhir:v "Diabetes mellitus due to underlying condition without complications" ]
-       ] [
-         fhir:code [ fhir:v "E09.9" ] ;
-         fhir:display [ fhir:v "Drug or chemical induced diabetes mellitus without complications" ]
-       ] [
-         fhir:code [ fhir:v "K70.30" ] ;
-         fhir:display [ fhir:v "Alcoholic cirrhosis of liver without ascites" ]
-       ] [
-         fhir:code [ fhir:v "K70.31" ] ;
-         fhir:display [ fhir:v "Alcoholic cirrhosis of liver with ascites" ]
-       ] [
-         fhir:code [ fhir:v "K73.9" ] ;
-         fhir:display [ fhir:v "Chronic hepatitis, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "K74.0" ] ;
-         fhir:display [ fhir:v "Hepatic fibrosis" ]
-       ] [
-         fhir:code [ fhir:v "K74.60" ] ;
-         fhir:display [ fhir:v "Unspecified cirrhosis of liver" ]
-       ] [
-         fhir:code [ fhir:v "K74.69" ] ;
-         fhir:display [ fhir:v "Other cirrhosis of liver" ]
-       ] [
-         fhir:code [ fhir:v "K76.0" ] ;
-         fhir:display [ fhir:v "Fatty liver, not elsewhere classified" ]
-       ] [
-         fhir:code [ fhir:v "K76.9" ] ;
-         fhir:display [ fhir:v "Liver disease, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "I25.10" ] ;
-         fhir:display [ fhir:v "Atherosclerotic heart disease of native coronary artery without angina pectoris" ]
-       ] [
-         fhir:code [ fhir:v "I25.9" ] ;
-         fhir:display [ fhir:v "Chronic ischemic heart disease, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "I50.9" ] ;
-         fhir:display [ fhir:v "Heart failure, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "I50.20" ] ;
-         fhir:display [ fhir:v "Unspecified systolic (congestive) heart failure" ]
-       ] [
-         fhir:code [ fhir:v "I50.30" ] ;
-         fhir:display [ fhir:v "Unspecified diastolic (congestive) heart failure" ]
-       ] [
-         fhir:code [ fhir:v "I42.9" ] ;
-         fhir:display [ fhir:v "Cardiomyopathy, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "I42.0" ] ;
-         fhir:display [ fhir:v "Dilated cardiomyopathy" ]
-       ] [
-         fhir:code [ fhir:v "Q24.9" ] ;
-         fhir:display [ fhir:v "Congenital malformation of heart, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "J44.9" ] ;
-         fhir:display [ fhir:v "Chronic obstructive pulmonary disease, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "J44.1" ] ;
-         fhir:display [ fhir:v "Chronic obstructive pulmonary disease with acute exacerbation" ]
-       ] [
-         fhir:code [ fhir:v "J43.9" ] ;
-         fhir:display [ fhir:v "Emphysema, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "J84.9" ] ;
-         fhir:display [ fhir:v "Interstitial pulmonary disease, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "J84.10" ] ;
-         fhir:display [ fhir:v "Pulmonary fibrosis, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "J47.9" ] ;
-         fhir:display [ fhir:v "Bronchiectasis, uncomplicated" ]
-       ] [
-         fhir:code [ fhir:v "P27.1" ] ;
-         fhir:display [ fhir:v "Bronchopulmonary dysplasia originating in the perinatal period" ]
-       ] [
-         fhir:code [ fhir:v "D73.0" ] ;
-         fhir:display [ fhir:v "Hyposplenism" ]
-       ] [
-         fhir:code [ fhir:v "Q89.01" ] ;
-         fhir:display [ fhir:v "Asplenia (congenital)" ]
-       ] [
-         fhir:code [ fhir:v "D73.89" ] ;
-         fhir:display [ fhir:v "Other diseases of spleen" ]
-       ] [
-         fhir:code [ fhir:v "Z90.81" ] ;
-         fhir:display [ fhir:v "Acquired absence of spleen" ]
-       ] [
-         fhir:code [ fhir:v "N18.1" ] ;
-         fhir:display [ fhir:v "Chronic kidney disease, stage 1" ]
-       ] [
-         fhir:code [ fhir:v "N18.2" ] ;
-         fhir:display [ fhir:v "Chronic kidney disease, stage 2" ]
-       ] [
-         fhir:code [ fhir:v "N18.30" ] ;
-         fhir:display [ fhir:v "Chronic kidney disease, stage 3 unspecified" ]
-       ] [
-         fhir:code [ fhir:v "N18.4" ] ;
-         fhir:display [ fhir:v "Chronic kidney disease, stage 4" ]
-       ] [
-         fhir:code [ fhir:v "N18.5" ] ;
-         fhir:display [ fhir:v "Chronic kidney disease, stage 5" ]
-       ] [
-         fhir:code [ fhir:v "N18.6" ] ;
-         fhir:display [ fhir:v "End stage renal disease" ]
-       ] [
-         fhir:code [ fhir:v "N18.9" ] ;
-         fhir:display [ fhir:v "Chronic kidney disease, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "Z99.2" ] ;
-         fhir:display [ fhir:v "Dependence on renal dialysis" ]
-       ] [
-         fhir:code [ fhir:v "B20" ] ;
-         fhir:display [ fhir:v "Human immunodeficiency virus [HIV] disease" ]
-       ] [
-         fhir:code [ fhir:v "Z21" ] ;
-         fhir:display [ fhir:v "Asymptomatic human immunodeficiency virus [HIV] infection status" ]
-       ] [
-         fhir:code [ fhir:v "J45.20" ] ;
-         fhir:display [ fhir:v "Mild intermittent asthma, uncomplicated" ]
-       ] [
-         fhir:code [ fhir:v "J45.30" ] ;
-         fhir:display [ fhir:v "Mild persistent asthma, uncomplicated" ]
-       ] [
-         fhir:code [ fhir:v "J45.40" ] ;
-         fhir:display [ fhir:v "Moderate persistent asthma, uncomplicated" ]
-       ] [
-         fhir:code [ fhir:v "J45.50" ] ;
-         fhir:display [ fhir:v "Severe persistent asthma, uncomplicated" ]
-       ] [
-         fhir:code [ fhir:v "J45.909" ] ;
-         fhir:display [ fhir:v "Unspecified asthma, uncomplicated" ]
-       ] [
-         fhir:code [ fhir:v "J45.998" ] ;
-         fhir:display [ fhir:v "Other asthma" ]
-       ] [
-         fhir:code [ fhir:v "K56.1" ] ;
-         fhir:display [ fhir:v "Intussusception" ]
-       ] [
-         fhir:code [ fhir:v "K52.9" ] ;
-         fhir:display [ fhir:v "Noninfective gastroenteritis and colitis, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "A09" ] ;
-         fhir:display [ fhir:v "Infectious gastroenteritis and colitis, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "A08.0" ] ;
-         fhir:display [ fhir:v "Rotaviral enteritis" ]
-       ] [
-         fhir:code [ fhir:v "A08.39" ] ;
-         fhir:display [ fhir:v "Other viral enteritis" ]
-       ] [
-         fhir:code [ fhir:v "A15.0" ] ;
-         fhir:display [ fhir:v "Tuberculosis of lung" ]
-       ] [
-         fhir:code [ fhir:v "A15.9" ] ;
-         fhir:display [ fhir:v "Respiratory tuberculosis unspecified" ]
-       ] [
-         fhir:code [ fhir:v "A18.9" ] ;
-         fhir:display [ fhir:v "Tuberculosis of other organs" ]
-       ] [
-         fhir:code [ fhir:v "A19.9" ] ;
-         fhir:display [ fhir:v "Miliary tuberculosis, unspecified" ]
-       ] [
-         fhir:code [ fhir:v "R76.11" ] ;
-         fhir:display [ fhir:v "Nonspecific reaction to tuberculin skin test without active tuberculosis" ]
-       ] [
-         fhir:code [ fhir:v "Z86.11" ] ;
-         fhir:display [ fhir:v "Personal history of tuberculosis" ]
-       ] [
-         fhir:code [ fhir:v "Z79.82" ] ;
-         fhir:display [ fhir:v "Long term (current) use of aspirin" ]
-       ] [
-         fhir:code [ fhir:v "Z11.3" ] ;
-         fhir:display [ fhir:v "Encounter for screening for infections with a predominantly sexual mode of transmission" ]
-       ] [
-         fhir:code [ fhir:v "Z11.4" ] ;
-         fhir:display [ fhir:v "Encounter for screening for human immunodeficiency virus [HIV]" ]
-       ] [
-         fhir:code [ fhir:v "Z20.2" ] ;
-         fhir:display [ fhir:v "Contact with and exposure to infections with a predominantly sexual mode of transmission" ]
-       ] )
-     ] )
-  ] . # 
+  fhir:Resource.id [ fhir:value "vaccine-condition-codes-icd10"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet vaccine-condition-codes-icd10</b></p><a name=\"vaccine-condition-codes-icd10\"> </a><a name=\"hcvaccine-condition-codes-icd10\"> </a><ul><li>Include these codes as defined in <a href=\"CodeSystem-icd-10-cm.html\"><code>http://hl7.org/fhir/sid/icd-10-cm</code></a><span title=\"Version is not explicitly stated. No matching Code System found\"> version Not Stated (use latest from terminology server)</span><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b><a href=\"ValueSet-cdsi-observation-codes-vs.html\">ICD-10-CM to CDSi Observation Code Map</a></b></td></tr><tr><td>D84.9</td><td>Immunodeficiency, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-003\">003</a></td></tr><tr><td>D83.9</td><td>Common variable immunodeficiency, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-003\">003</a></td></tr><tr><td>D80.9</td><td>Immunodeficiency with predominantly antibody defects, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-003\">003</a></td></tr><tr><td>D89.9</td><td>Disorder involving immune mechanism, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-003\">003</a></td></tr><tr><td>D84.8</td><td>Other specified immunodeficiency disorders</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-003\">003</a></td></tr><tr><td>Z94.84</td><td>Bone marrow transplant status</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-004\">004</a></td></tr><tr><td>T86.00</td><td>Unspecified complication of bone marrow transplant</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-004\">004</a></td></tr><tr><td>T86.09</td><td>Other complications of bone marrow transplant</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-004\">004</a></td></tr><tr><td>B18.2</td><td>Chronic viral hepatitis C</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-005\">005</a></td></tr><tr><td>B17.10</td><td>Acute hepatitis C without hepatic coma</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-005\">005</a></td></tr><tr><td>B17.11</td><td>Acute hepatitis C with hepatic coma</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-005\">005</a></td></tr><tr><td>B19.20</td><td>Unspecified viral hepatitis C without hepatic coma</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-005\">005</a></td></tr><tr><td>Z33.1</td><td>Pregnant state, incidental</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-007\">007</a></td></tr><tr><td>O09.90</td><td>Supervision of high risk pregnancy, unspecified trimester</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-007\">007</a></td></tr><tr><td>Z34.00</td><td>Encounter for supervision of normal first pregnancy, unspecified trimester</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-007\">007</a></td></tr><tr><td>Z34.80</td><td>Encounter for supervision of other normal pregnancy, unspecified trimester</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-007\">007</a></td></tr><tr><td>Z39.1</td><td>Encounter for care and examination of lactating mother</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-009\">009</a></td></tr><tr><td>G96.00</td><td>Cerebrospinal fluid leak, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-010\">010</a></td></tr><tr><td>G96.01</td><td>Cranial cerebrospinal fluid leak, spontaneous</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-010\">010</a></td></tr><tr><td>G96.02</td><td>Spinal cerebrospinal fluid leak, spontaneous</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-010\">010</a></td></tr><tr><td>G96.08</td><td>Other cranial cerebrospinal fluid leak</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-010\">010</a></td></tr><tr><td>G96.09</td><td>Other spinal cerebrospinal fluid leak</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-010\">010</a></td></tr><tr><td>Z96.21</td><td>Cochlear implant status</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-011\">011</a></td></tr><tr><td>D81.9</td><td>Combined immunodeficiency, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>D81.0</td><td>SCID with reticular dysgenesis</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>D81.1</td><td>SCID with low T- and B-cell numbers</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>D81.2</td><td>SCID with low or normal B-cell numbers</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>D81.3</td><td>Adenosine deaminase deficiency</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>D81.5</td><td>Purine nucleoside phosphorylase deficiency</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>D81.6</td><td>Major histocompatibility complex class I deficiency</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>D81.7</td><td>Major histocompatibility complex class II deficiency</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-013\">013</a></td></tr><tr><td>E10.9</td><td>Type 1 diabetes mellitus without complications</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-014\">014</a></td></tr><tr><td>E10.65</td><td>Type 1 diabetes mellitus with hyperglycemia</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-014\">014</a></td></tr><tr><td>E11.9</td><td>Type 2 diabetes mellitus without complications</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-014\">014</a></td></tr><tr><td>E11.65</td><td>Type 2 diabetes mellitus with hyperglycemia</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-014\">014</a></td></tr><tr><td>E13.9</td><td>Other specified diabetes mellitus without complications</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-014\">014</a></td></tr><tr><td>E08.9</td><td>Diabetes mellitus due to underlying condition without complications</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-014\">014</a></td></tr><tr><td>E09.9</td><td>Drug or chemical induced diabetes mellitus without complications</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-014\">014</a></td></tr><tr><td>K70.30</td><td>Alcoholic cirrhosis of liver without ascites</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>K70.31</td><td>Alcoholic cirrhosis of liver with ascites</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>K73.9</td><td>Chronic hepatitis, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>K74.0</td><td>Hepatic fibrosis</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>K74.60</td><td>Unspecified cirrhosis of liver</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>K74.69</td><td>Other cirrhosis of liver</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>K76.0</td><td>Fatty liver, not elsewhere classified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>K76.9</td><td>Liver disease, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-015\">015</a></td></tr><tr><td>I25.10</td><td>Atherosclerotic heart disease of native coronary artery without angina pectoris</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>I25.9</td><td>Chronic ischemic heart disease, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>I50.9</td><td>Heart failure, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>I50.20</td><td>Unspecified systolic (congestive) heart failure</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>I50.30</td><td>Unspecified diastolic (congestive) heart failure</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>I42.9</td><td>Cardiomyopathy, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>I42.0</td><td>Dilated cardiomyopathy</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>Q24.9</td><td>Congenital malformation of heart, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-016\">016</a></td></tr><tr><td>J44.9</td><td>Chronic obstructive pulmonary disease, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-017\">017</a></td></tr><tr><td>J44.1</td><td>Chronic obstructive pulmonary disease with acute exacerbation</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-017\">017</a></td></tr><tr><td>J43.9</td><td>Emphysema, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-017\">017</a></td></tr><tr><td>J84.9</td><td>Interstitial pulmonary disease, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-017\">017</a></td></tr><tr><td>J84.10</td><td>Pulmonary fibrosis, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-017\">017</a></td></tr><tr><td>J47.9</td><td>Bronchiectasis, uncomplicated</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-017\">017</a></td></tr><tr><td>P27.1</td><td>Bronchopulmonary dysplasia originating in the perinatal period</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-017\">017</a></td></tr><tr><td>D73.0</td><td>Hyposplenism</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-018\">018</a></td></tr><tr><td>Q89.01</td><td>Asplenia (congenital)</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-018\">018</a></td></tr><tr><td>D73.89</td><td>Other diseases of spleen</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-018\">018</a></td></tr><tr><td>Z90.81</td><td>Acquired absence of spleen</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-018\">018</a></td></tr><tr><td>N18.1</td><td>Chronic kidney disease, stage 1</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>N18.2</td><td>Chronic kidney disease, stage 2</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>N18.30</td><td>Chronic kidney disease, stage 3 unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>N18.4</td><td>Chronic kidney disease, stage 4</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>N18.5</td><td>Chronic kidney disease, stage 5</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>N18.6</td><td>End stage renal disease</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>N18.9</td><td>Chronic kidney disease, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>Z99.2</td><td>Dependence on renal dialysis</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-019\">019</a></td></tr><tr><td>B20</td><td>Human immunodeficiency virus [HIV] disease</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-026\">026</a></td></tr><tr><td>Z21</td><td>Asymptomatic human immunodeficiency virus [HIV] infection status</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-026\">026</a></td></tr><tr><td>J45.20</td><td>Mild intermittent asthma, uncomplicated</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-027\">027</a></td></tr><tr><td>J45.30</td><td>Mild persistent asthma, uncomplicated</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-027\">027</a></td></tr><tr><td>J45.40</td><td>Moderate persistent asthma, uncomplicated</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-027\">027</a></td></tr><tr><td>J45.50</td><td>Severe persistent asthma, uncomplicated</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-027\">027</a></td></tr><tr><td>J45.909</td><td>Unspecified asthma, uncomplicated</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-027\">027</a></td></tr><tr><td>J45.998</td><td>Other asthma</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-027\">027</a></td></tr><tr><td>K56.1</td><td>Intussusception</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-028\">028</a></td></tr><tr><td>K52.9</td><td>Noninfective gastroenteritis and colitis, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-029\">029</a></td></tr><tr><td>A09</td><td>Infectious gastroenteritis and colitis, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-029\">029</a></td></tr><tr><td>A08.0</td><td>Rotaviral enteritis</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-029\">029</a></td></tr><tr><td>A08.39</td><td>Other viral enteritis</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-029\">029</a></td></tr><tr><td>A15.0</td><td>Tuberculosis of lung</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-031\">031</a></td></tr><tr><td>A15.9</td><td>Respiratory tuberculosis unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-031\">031</a></td></tr><tr><td>A18.89</td><td>Tuberculosis of other sites</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-031\">031</a></td></tr><tr><td>A19.9</td><td>Miliary tuberculosis, unspecified</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-031\">031</a></td></tr><tr><td>R76.11</td><td>Nonspecific reaction to tuberculin skin test without active tuberculosis</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-031\">031</a></td></tr><tr><td>Z86.11</td><td>Personal history of tuberculosis</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-031\">031</a></td></tr><tr><td>Z79.82</td><td>Long term (current) use of aspirin</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-034\">034</a></td></tr><tr><td>Z11.3</td><td>Encounter for screening for infections with a predominantly sexual mode of transmission</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-039\">039</a></td></tr><tr><td>Z11.4</td><td>Encounter for screening for human immunodeficiency virus [HIV]</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-039\">039</a></td></tr><tr><td>Z20.2</td><td>Contact with and exposure to infections with a predominantly sexual mode of transmission</td><td><span title=\"EQUIVALENT\">~</span><a href=\"CodeSystem-cdsi-observation-codes.html#cdsi-observation-codes-039\">039</a></td></tr></table></li></ul></div>"
+  ] ;
+  fhir:ValueSet.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10"] ;
+  fhir:ValueSet.version [ fhir:value "0.1.0"] ;
+  fhir:ValueSet.name [ fhir:value "VaccineConditionCodesIcd10"] ;
+  fhir:ValueSet.title [ fhir:value "Vaccine Condition Codes (ICD-10-CM)"] ;
+  fhir:ValueSet.status [ fhir:value "active"] ;
+  fhir:ValueSet.date [ fhir:value "2026-09-06T20:44:07-04:00"^^xsd:dateTime] ;
+  fhir:ValueSet.publisher [ fhir:value "FHIR-FLI"] ;
+  fhir:ValueSet.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "FHIR-FLI" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "http://fhirfli.dev" ]
+     ]
+  ] ;
+  fhir:ValueSet.description [ fhir:value "Value set for conditions based on ICD-10-CM that may impact immunization decisions, mapped to CDSi observation codes."] ;
+  fhir:ValueSet.compose [
+     fhir:ValueSet.compose.include [
+       fhir:index 0 ;
+       fhir:ValueSet.compose.include.system [ fhir:value "http://hl7.org/fhir/sid/icd-10-cm" ] ;
+       fhir:ValueSet.compose.include.concept [
+         fhir:index 0 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D84.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Immunodeficiency, unspecified" ]
+       ], [
+         fhir:index 1 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D83.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Common variable immunodeficiency, unspecified" ]
+       ], [
+         fhir:index 2 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D80.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Immunodeficiency with predominantly antibody defects, unspecified" ]
+       ], [
+         fhir:index 3 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D89.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Disorder involving immune mechanism, unspecified" ]
+       ], [
+         fhir:index 4 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D84.8" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other specified immunodeficiency disorders" ]
+       ], [
+         fhir:index 5 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z94.84" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Bone marrow transplant status" ]
+       ], [
+         fhir:index 6 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "T86.00" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Unspecified complication of bone marrow transplant" ]
+       ], [
+         fhir:index 7 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "T86.09" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other complications of bone marrow transplant" ]
+       ], [
+         fhir:index 8 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "B18.2" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic viral hepatitis C" ]
+       ], [
+         fhir:index 9 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "B17.10" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Acute hepatitis C without hepatic coma" ]
+       ], [
+         fhir:index 10 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "B17.11" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Acute hepatitis C with hepatic coma" ]
+       ], [
+         fhir:index 11 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "B19.20" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Unspecified viral hepatitis C without hepatic coma" ]
+       ], [
+         fhir:index 12 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z33.1" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Pregnant state, incidental" ]
+       ], [
+         fhir:index 13 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "O09.90" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Supervision of high risk pregnancy, unspecified trimester" ]
+       ], [
+         fhir:index 14 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z34.00" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Encounter for supervision of normal first pregnancy, unspecified trimester" ]
+       ], [
+         fhir:index 15 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z34.80" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Encounter for supervision of other normal pregnancy, unspecified trimester" ]
+       ], [
+         fhir:index 16 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z39.1" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Encounter for care and examination of lactating mother" ]
+       ], [
+         fhir:index 17 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "G96.00" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Cerebrospinal fluid leak, unspecified" ]
+       ], [
+         fhir:index 18 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "G96.01" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Cranial cerebrospinal fluid leak, spontaneous" ]
+       ], [
+         fhir:index 19 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "G96.02" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Spinal cerebrospinal fluid leak, spontaneous" ]
+       ], [
+         fhir:index 20 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "G96.08" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other cranial cerebrospinal fluid leak" ]
+       ], [
+         fhir:index 21 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "G96.09" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other spinal cerebrospinal fluid leak" ]
+       ], [
+         fhir:index 22 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z96.21" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Cochlear implant status" ]
+       ], [
+         fhir:index 23 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Combined immunodeficiency, unspecified" ]
+       ], [
+         fhir:index 24 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.0" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "SCID with reticular dysgenesis" ]
+       ], [
+         fhir:index 25 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.1" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "SCID with low T- and B-cell numbers" ]
+       ], [
+         fhir:index 26 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.2" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "SCID with low or normal B-cell numbers" ]
+       ], [
+         fhir:index 27 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.3" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Adenosine deaminase deficiency" ]
+       ], [
+         fhir:index 28 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.5" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Purine nucleoside phosphorylase deficiency" ]
+       ], [
+         fhir:index 29 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.6" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Major histocompatibility complex class I deficiency" ]
+       ], [
+         fhir:index 30 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D81.7" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Major histocompatibility complex class II deficiency" ]
+       ], [
+         fhir:index 31 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "E10.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Type 1 diabetes mellitus without complications" ]
+       ], [
+         fhir:index 32 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "E10.65" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Type 1 diabetes mellitus with hyperglycemia" ]
+       ], [
+         fhir:index 33 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "E11.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Type 2 diabetes mellitus without complications" ]
+       ], [
+         fhir:index 34 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "E11.65" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Type 2 diabetes mellitus with hyperglycemia" ]
+       ], [
+         fhir:index 35 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "E13.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other specified diabetes mellitus without complications" ]
+       ], [
+         fhir:index 36 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "E08.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Diabetes mellitus due to underlying condition without complications" ]
+       ], [
+         fhir:index 37 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "E09.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Drug or chemical induced diabetes mellitus without complications" ]
+       ], [
+         fhir:index 38 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K70.30" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Alcoholic cirrhosis of liver without ascites" ]
+       ], [
+         fhir:index 39 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K70.31" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Alcoholic cirrhosis of liver with ascites" ]
+       ], [
+         fhir:index 40 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K73.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic hepatitis, unspecified" ]
+       ], [
+         fhir:index 41 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K74.0" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Hepatic fibrosis" ]
+       ], [
+         fhir:index 42 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K74.60" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Unspecified cirrhosis of liver" ]
+       ], [
+         fhir:index 43 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K74.69" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other cirrhosis of liver" ]
+       ], [
+         fhir:index 44 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K76.0" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Fatty liver, not elsewhere classified" ]
+       ], [
+         fhir:index 45 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K76.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Liver disease, unspecified" ]
+       ], [
+         fhir:index 46 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "I25.10" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Atherosclerotic heart disease of native coronary artery without angina pectoris" ]
+       ], [
+         fhir:index 47 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "I25.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic ischemic heart disease, unspecified" ]
+       ], [
+         fhir:index 48 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "I50.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Heart failure, unspecified" ]
+       ], [
+         fhir:index 49 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "I50.20" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Unspecified systolic (congestive) heart failure" ]
+       ], [
+         fhir:index 50 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "I50.30" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Unspecified diastolic (congestive) heart failure" ]
+       ], [
+         fhir:index 51 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "I42.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Cardiomyopathy, unspecified" ]
+       ], [
+         fhir:index 52 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "I42.0" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Dilated cardiomyopathy" ]
+       ], [
+         fhir:index 53 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Q24.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Congenital malformation of heart, unspecified" ]
+       ], [
+         fhir:index 54 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J44.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic obstructive pulmonary disease, unspecified" ]
+       ], [
+         fhir:index 55 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J44.1" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic obstructive pulmonary disease with acute exacerbation" ]
+       ], [
+         fhir:index 56 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J43.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Emphysema, unspecified" ]
+       ], [
+         fhir:index 57 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J84.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Interstitial pulmonary disease, unspecified" ]
+       ], [
+         fhir:index 58 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J84.10" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Pulmonary fibrosis, unspecified" ]
+       ], [
+         fhir:index 59 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J47.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Bronchiectasis, uncomplicated" ]
+       ], [
+         fhir:index 60 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "P27.1" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Bronchopulmonary dysplasia originating in the perinatal period" ]
+       ], [
+         fhir:index 61 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D73.0" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Hyposplenism" ]
+       ], [
+         fhir:index 62 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Q89.01" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Asplenia (congenital)" ]
+       ], [
+         fhir:index 63 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "D73.89" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other diseases of spleen" ]
+       ], [
+         fhir:index 64 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z90.81" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Acquired absence of spleen" ]
+       ], [
+         fhir:index 65 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "N18.1" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic kidney disease, stage 1" ]
+       ], [
+         fhir:index 66 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "N18.2" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic kidney disease, stage 2" ]
+       ], [
+         fhir:index 67 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "N18.30" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic kidney disease, stage 3 unspecified" ]
+       ], [
+         fhir:index 68 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "N18.4" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic kidney disease, stage 4" ]
+       ], [
+         fhir:index 69 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "N18.5" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic kidney disease, stage 5" ]
+       ], [
+         fhir:index 70 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "N18.6" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "End stage renal disease" ]
+       ], [
+         fhir:index 71 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "N18.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Chronic kidney disease, unspecified" ]
+       ], [
+         fhir:index 72 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z99.2" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Dependence on renal dialysis" ]
+       ], [
+         fhir:index 73 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "B20" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Human immunodeficiency virus [HIV] disease" ]
+       ], [
+         fhir:index 74 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z21" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Asymptomatic human immunodeficiency virus [HIV] infection status" ]
+       ], [
+         fhir:index 75 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J45.20" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Mild intermittent asthma, uncomplicated" ]
+       ], [
+         fhir:index 76 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J45.30" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Mild persistent asthma, uncomplicated" ]
+       ], [
+         fhir:index 77 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J45.40" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Moderate persistent asthma, uncomplicated" ]
+       ], [
+         fhir:index 78 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J45.50" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Severe persistent asthma, uncomplicated" ]
+       ], [
+         fhir:index 79 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J45.909" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Unspecified asthma, uncomplicated" ]
+       ], [
+         fhir:index 80 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "J45.998" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other asthma" ]
+       ], [
+         fhir:index 81 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K56.1" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Intussusception" ]
+       ], [
+         fhir:index 82 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "K52.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Noninfective gastroenteritis and colitis, unspecified" ]
+       ], [
+         fhir:index 83 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "A09" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Infectious gastroenteritis and colitis, unspecified" ]
+       ], [
+         fhir:index 84 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "A08.0" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Rotaviral enteritis" ]
+       ], [
+         fhir:index 85 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "A08.39" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Other viral enteritis" ]
+       ], [
+         fhir:index 86 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "A15.0" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Tuberculosis of lung" ]
+       ], [
+         fhir:index 87 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "A15.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Respiratory tuberculosis unspecified" ]
+       ], [
+         fhir:index 88 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "A18.89" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Tuberculosis of other sites" ]
+       ], [
+         fhir:index 89 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "A19.9" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Miliary tuberculosis, unspecified" ]
+       ], [
+         fhir:index 90 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "R76.11" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Nonspecific reaction to tuberculin skin test without active tuberculosis" ]
+       ], [
+         fhir:index 91 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z86.11" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Personal history of tuberculosis" ]
+       ], [
+         fhir:index 92 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z79.82" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Long term (current) use of aspirin" ]
+       ], [
+         fhir:index 93 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z11.3" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Encounter for screening for infections with a predominantly sexual mode of transmission" ]
+       ], [
+         fhir:index 94 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z11.4" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Encounter for screening for human immunodeficiency virus [HIV]" ]
+       ], [
+         fhir:index 95 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "Z20.2" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Contact with and exposure to infections with a predominantly sexual mode of transmission" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-condition-codes-icd10.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

@@ -9,16 +9,16 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ProcedureProfile | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:ProcedureProfile |
+| Draft as of 2026-09-06 | *Computable Name*:ProcedureProfile |
 
  
 Profile for medical procedures related to immunization based on SNOMED CT or CPT codes. 
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Implementation Guide
+* This Profile is not used by any profiles in this Specification
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/cicada.ig|current/StructureDefinition/ProcedureProfile)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-ProcedureProfile.json)
 
 ### Formal Views of Profile Content
 
@@ -41,63 +41,55 @@ Other representations of profile: [CSV](StructureDefinition-ProcedureProfile.csv
   "name" : "ProcedureProfile",
   "title" : "Immunization Procedures Profile",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Profile for medical procedures related to immunization based on SNOMED CT or CPT codes.",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "workflow",
-      "uri" : "http://hl7.org/fhir/workflow",
-      "name" : "Workflow Pattern"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "workflow",
+    "uri" : "http://hl7.org/fhir/workflow",
+    "name" : "Workflow Pattern"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "Procedure",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Procedure",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Procedure",
-        "path" : "Procedure"
-      },
-      {
-        "id" : "Procedure.code",
-        "path" : "Procedure.code",
-        "binding" : {
-          "strength" : "extensible",
-          "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/procedures"
-        }
+    "element" : [{
+      "id" : "Procedure",
+      "path" : "Procedure"
+    },
+    {
+      "id" : "Procedure.code",
+      "path" : "Procedure.code",
+      "binding" : {
+        "strength" : "extensible",
+        "valueSet" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/procedures"
       }
-    ]
+    }]
   }
 }
 

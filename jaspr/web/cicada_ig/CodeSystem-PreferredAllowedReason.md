@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:PreferredAllowedReasonCS |
+| Draft as of 2026-09-06 | *Computable Name*:PreferredAllowedReasonCS |
 
  
 Reasons why certain doses are Preferred or Allowed doses 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [PreferredAllowedReasonVS](ValueSet-preferred-allowed-reason.md)
+* [Reasons why certain doses are Preferred or Allowed doses](ValueSet-preferred-allowed-reason.md)
 
 
 
@@ -31,54 +31,48 @@ Reasons why certain doses are Preferred or Allowed doses
   "name" : "PreferredAllowedReasonCS",
   "title" : "Reasons why certain doses are Preferred or Allowed doses",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Reasons why certain doses are Preferred or Allowed doses",
   "content" : "complete",
   "count" : 6,
-  "concept" : [
-    {
-      "code" : "notAPreferableOrAllowableVaccine",
-      "display" : "Not a preferable or allowable vaccine",
-      "definition" : "Not a preferable or allowable vaccine"
-    },
-    {
-      "code" : "wrongTradeName",
-      "display" : "Wrong trade name",
-      "definition" : "Wrong trade name"
-    },
-    {
-      "code" : "lessThanRecommendedVolume",
-      "display" : "Less than recommended volume",
-      "definition" : "Less than recommended volume"
-    },
-    {
-      "code" : "administeredOutsideOfPreferredAgeRange",
-      "display" : "Administered outside of preferred age range",
-      "definition" : "Administered outside of preferred age range"
-    },
-    {
-      "code" : "noPreferredTypes",
-      "display" : "No preferred types",
-      "definition" : "No preferred types"
-    },
-    {
-      "code" : "noAllowedTypes",
-      "display" : "No allowed types",
-      "definition" : "No allowed types"
-    }
-  ]
+  "concept" : [{
+    "code" : "notAPreferableOrAllowableVaccine",
+    "display" : "Not a preferable or allowable vaccine",
+    "definition" : "Not a preferable or allowable vaccine"
+  },
+  {
+    "code" : "wrongTradeName",
+    "display" : "Wrong trade name",
+    "definition" : "Wrong trade name"
+  },
+  {
+    "code" : "lessThanRecommendedVolume",
+    "display" : "Less than recommended volume",
+    "definition" : "Less than recommended volume"
+  },
+  {
+    "code" : "administeredOutsideOfPreferredAgeRange",
+    "display" : "Administered outside of preferred age range",
+    "definition" : "Administered outside of preferred age range"
+  },
+  {
+    "code" : "noPreferredTypes",
+    "display" : "No preferred types",
+    "definition" : "No preferred types"
+  },
+  {
+    "code" : "noAllowedTypes",
+    "display" : "No allowed types",
+    "definition" : "No allowed types"
+  }]
 }
 
 ```

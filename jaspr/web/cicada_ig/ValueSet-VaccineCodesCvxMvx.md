@@ -9,16 +9,16 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:VaccineCodesCvxMvx |
+| Draft as of 2026-09-06 | *Computable Name*:VaccineCodesCvxMvx |
 
  **References** 
 
-* [Dose of a Vaccine](StructureDefinition-vax-dose.md)
 * [Medication Administration Profile with Vaccine Codes](StructureDefinition-MedicationAdministrationProfile.md)
 * [Medication Dispense Profile with Vaccine Codes](StructureDefinition-MedicationDispenseProfile.md)
 * [Medication Request Profile with Vaccine Codes](StructureDefinition-MedicationRequestProfile.md)
 * [Medication Statement Profile with Vaccine Codes](StructureDefinition-MedicationStatementProfile.md)
 * [Allergy Intolerance Profile for Immunization Decision Support](StructureDefinition-ReactionProfile.md)
+* [Dose of a Vaccine](StructureDefinition-vax-dose.md)
 
 ### Logical Definition (CLD)
 
@@ -51,28 +51,22 @@
   "version" : "0.1.0",
   "name" : "VaccineCodesCvxMvx",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://hl7.org/fhir/sid/cvx"
-      },
-      {
-        "system" : "http://hl7.org/fhir/sid/mvx"
-      }
-    ]
+    "include" : [{
+      "system" : "http://hl7.org/fhir/sid/cvx"
+    },
+    {
+      "system" : "http://hl7.org/fhir/sid/mvx"
+    }]
   }
 }
 

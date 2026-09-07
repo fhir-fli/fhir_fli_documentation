@@ -11,7 +11,7 @@
   <name value="CicadaIG"/>
   <title value="The Cicada Vaccine Forecasting Engine and Guide"/>
   <status value="draft"/>
-  <date value="2026-09-02T22:18:14-04:00"/>
+  <date value="2026-09-06T20:44:07-04:00"/>
   <publisher value="FHIR-FLI"/>
   <contact>
     <name value="FHIR-FLI"/>
@@ -64,10 +64,18 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="autoload-resources"/>
+        <valueString value="special-url"/>
       </extension>
       <extension url="value">
-        <valueString value="false"/>
+        <valueString value="http://hl7.org/fhir/sid/icd-10-cm"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-expansion-params"/>
+      </extension>
+      <extension url="value">
+        <valueString value="../../input/resources/Parameters-manifest.json"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -254,8 +262,13 @@
         <valueString value="true"/>
       </extension>
     </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/expansion-parameters">
+      <valueReference>
+        <reference value="Parameters/expansion-parameters"/>
+      </valueReference>
+    </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency">
-      <valueCode value="hl7.fhir.uv.tools.r4#0.9.0"/>
+      <valueCode value="hl7.fhir.uv.tools.r4#1.1.2"/>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
@@ -275,10 +288,18 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueCode value="autoload-resources"/>
+        <valueCode value="special-url"/>
       </extension>
       <extension url="value">
-        <valueString value="false"/>
+        <valueString value="http://hl7.org/fhir/sid/icd-10-cm"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-expansion-params"/>
+      </extension>
+      <extension url="value">
+        <valueString value="../../input/resources/Parameters-manifest.json"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -543,6 +564,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/antigen-supporting-data"/>
+      </reference>
+      <name value="Antigen Supporting Data"/>
+      <description value="A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
@@ -572,6 +604,17 @@
       </reference>
       <name value="CDSI Observation Codes"/>
       <description value="Observations and Conditions that are important to indications or contraindications in vaccine forecasting"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/cdsi-observation-codes-vs"/>
+      </reference>
+      <name value="CDSI Observation Codes Value Set"/>
+      <description value="Every CDSi observation code, as published in the supporting data."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -784,13 +827,24 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/icd-10-cm"/>
+      </reference>
+      <name value="ICD-10-CM (external, content not present)"/>
+      <description value="Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="ConceptMap"/>
       </extension>
       <reference>
         <reference value="ConceptMap/Icd10ToCdsiObservation"/>
       </reference>
       <name value="ICD-10-CM to CDSi Observation Code Map"/>
-      <description value="Maps ICD-10-CM diagnosis codes to CDSi observation codes used in immunization decision support."/>
+      <description value="Maps ICD-10-CM codes to CDSi observation codes used in immunization decision support. Generated from the cicada crosswalk."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -867,18 +921,17 @@
         <reference value="ValueSet/vaccine-lab-evidence-of-immunity-loinc"/>
       </reference>
       <name value="Lab Evidence of Immunity (LOINC)"/>
-      <description value="LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support."/>
+      <description value="LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. Serum IgG in every case, plus total antibody for hepatitis A, which is what evidence of immunity means for these antigens; IgM, cerebrospinal fluid and avidity codes are deliberately excluded."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureMap"/>
+        <valueString value="Parameters"/>
       </extension>
       <reference>
-        <reference value="StructureMap/MapVaccineCodes"/>
+        <reference value="Parameters/manifest"/>
       </reference>
-      <name value="MapVaccineCodes"/>
-      <description value="Define the usage of FHIR resource types with specific aliases"/>
+      <name value="manifest"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1026,6 +1079,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/schedule-supporting-data"/>
+      </reference>
+      <name value="Schedule Supporting Data"/>
+      <description value="This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
@@ -1076,7 +1140,7 @@
         <reference value="ConceptMap/SnomedToCdsiObservation"/>
       </reference>
       <name value="SNOMED CT to CDSi Observation Code Map"/>
-      <description value="Maps SNOMED CT codes to CDSi observation codes used in immunization decision support."/>
+      <description value="Maps SNOMED CT codes to CDSi observation codes used in immunization decision support. Generated from CDC's supporting data."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1256,23 +1320,13 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resourcedefn"/>
+        <valueString value="StructureMap"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/antigen-supporting-data"/>
+        <reference value="StructureMap/MapVaccineCodes"/>
       </reference>
-      <name value="Antigen Supporting Data"/>
-      <description value="A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series."/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resourcedefn"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/schedule-supporting-data"/>
-      </reference>
-      <name value="Schedule Supporting Data"/>
-      <description value="This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes."/>
+      <name value="MapVaccineCodes"/>
+      <description value="Define the usage of FHIR resource types with specific aliases"/>
     </resource>
     <page>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">

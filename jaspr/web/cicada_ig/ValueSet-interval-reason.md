@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/interval-reason | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:IntervalReasonVS |
+| Draft as of 2026-09-06 | *Computable Name*:IntervalReasonVS |
 
  
 This value set includes codes for the reason an interval is considered to be invalid. 
@@ -51,40 +51,32 @@ This value set includes codes for the reason an interval is considered to be inv
   "name" : "IntervalReasonVS",
   "title" : "Interval Reason",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "This value set includes codes for the reason an interval is considered to be invalid.",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason",
+      "concept" : [{
+        "code" : "tooLate",
+        "display" : "Interval: too late"
+      },
       {
-        "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason",
-        "concept" : [
-          {
-            "code" : "tooLate",
-            "display" : "Interval: too late"
-          },
-          {
-            "code" : "tooShort",
-            "display" : "Interval: too short"
-          },
-          {
-            "code" : "gracePeriod",
-            "display" : "Interval: grace period"
-          }
-        ]
-      }
-    ]
+        "code" : "tooShort",
+        "display" : "Interval: too short"
+      },
+      {
+        "code" : "gracePeriod",
+        "display" : "Interval: grace period"
+      }]
+    }]
   }
 }
 

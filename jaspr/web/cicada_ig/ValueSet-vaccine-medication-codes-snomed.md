@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-snomed | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:VaccineMedicationCodesSnomed |
+| Draft as of 2026-09-06 | *Computable Name*:VaccineMedicationCodesSnomed |
 
  
 Value set for medications and substances based on SNOMED CT, including both active ingredients and marketed products. 
@@ -50,113 +50,89 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "name" : "VaccineMedicationCodesSnomed",
   "title" : "Medications",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Value set for medications and substances based on SNOMED CT, including both active ingredients and marketed products.",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "372763006"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "51361008"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "372532009"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "108712009"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "387010007"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "116100000"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "412261005"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "386142008"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "64520006"
-          }
-        ]
-      }
-    ]
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "372763006"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "51361008"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "372532009"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "108712009"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "387010007"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "116100000"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "412261005"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "386142008"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "64520006"
+      }]
+    }]
   }
 }
 

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-reason | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:EvalReasonVS |
+| Draft as of 2026-09-06 | *Computable Name*:EvalReasonVS |
 
  
 The reason for the evaluation. 
@@ -50,88 +50,80 @@ The reason for the evaluation.
   "name" : "EvalReasonVS",
   "title" : "Evaluation Reason",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "The reason for the evaluation.",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason",
+      "concept" : [{
+        "code" : "noDateGiven",
+        "display" : "No Date Given"
+      },
       {
-        "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason",
-        "concept" : [
-          {
-            "code" : "noDateGiven",
-            "display" : "No Date Given"
-          },
-          {
-            "code" : "noCvx",
-            "display" : "No Cvx"
-          },
-          {
-            "code" : "expired",
-            "display" : "Expired Product"
-          },
-          {
-            "code" : "ageTooOld",
-            "display" : "Age: Too Old"
-          },
-          {
-            "code" : "ageTooYoung",
-            "display" : "Age: Too Young"
-          },
-          {
-            "code" : "inadvertentVaccine",
-            "display" : "Inadvertent Vaccine"
-          },
-          {
-            "code" : "notPreferableOrAllowable",
-            "display" : "Not a preferable or allowable vaccine"
-          },
-          {
-            "code" : "notRecommendedVolume",
-            "display" : "Volume administered is less than recommended volume"
-          },
-          {
-            "code" : "partialDose",
-            "display" : "Partial Dose"
-          },
-          {
-            "code" : "coldChainBreak",
-            "display" : "Cold Chain Break"
-          },
-          {
-            "code" : "recall",
-            "display" : "Manufacturer Recall"
-          },
-          {
-            "code" : "adverseStorage",
-            "display" : "Adverse Storage"
-          },
-          {
-            "code" : "intervalTooShort",
-            "display" : "Interval: too short"
-          },
-          {
-            "code" : "seriesAlreadyCompleted",
-            "display" : "Series Already Completed"
-          },
-          {
-            "code" : "liveVirusConflict",
-            "display" : "Live Virus Conflict"
-          }
-        ]
-      }
-    ]
+        "code" : "noCvx",
+        "display" : "No Cvx"
+      },
+      {
+        "code" : "expired",
+        "display" : "Expired Product"
+      },
+      {
+        "code" : "ageTooOld",
+        "display" : "Age: Too Old"
+      },
+      {
+        "code" : "ageTooYoung",
+        "display" : "Age: Too Young"
+      },
+      {
+        "code" : "inadvertentVaccine",
+        "display" : "Inadvertent Vaccine"
+      },
+      {
+        "code" : "notPreferableOrAllowable",
+        "display" : "Not a preferable or allowable vaccine"
+      },
+      {
+        "code" : "notRecommendedVolume",
+        "display" : "Volume administered is less than recommended volume"
+      },
+      {
+        "code" : "partialDose",
+        "display" : "Partial Dose"
+      },
+      {
+        "code" : "coldChainBreak",
+        "display" : "Cold Chain Break"
+      },
+      {
+        "code" : "recall",
+        "display" : "Manufacturer Recall"
+      },
+      {
+        "code" : "adverseStorage",
+        "display" : "Adverse Storage"
+      },
+      {
+        "code" : "intervalTooShort",
+        "display" : "Interval: too short"
+      },
+      {
+        "code" : "seriesAlreadyCompleted",
+        "display" : "Series Already Completed"
+      },
+      {
+        "code" : "liveVirusConflict",
+        "display" : "Live Virus Conflict"
+      }]
+    }]
   }
 }
 

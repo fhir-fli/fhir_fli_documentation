@@ -25,12 +25,14 @@
 * [CDSI Observation Codes](CodeSystem-cdsi-observation-codes.md)
 * [Cicada Data Integrity Code System](CodeSystem-data-integrity.md)
 * [Cicada Forecast Reason Code System](CodeSystem-forecast-reason.md)
+* [ICD-10-CM (external, content not present)](CodeSystem-icd-10-cm.md)
 * [Series Type Code System](CodeSystem-series-type.md)
 * [Target Dose Status Code System](CodeSystem-target-dose-status.md)
 
 ### ValueSets
 
 * [VaccineCodesCvxMvx](ValueSet-VaccineCodesCvxMvx.md)
+* [CDSI Observation Codes Value Set](ValueSet-cdsi-observation-codes-vs.md)
 * [Cicada Data Integrity Value Set](ValueSet-data-integrity-vs.md)
 * [Dose Status Reason Value Set](ValueSet-dose-status-reason.md)
 * [Evaluation Reason](ValueSet-eval-reason.md)
@@ -51,7 +53,7 @@
 * [Medications](ValueSet-vaccine-medication-codes-snomed.md)
 * [Valid Age Reason](ValueSet-valid-age-reason.md)
 
-### Resources
+### Logicals
 
 * [Antigen Supporting Data](StructureDefinition-antigen-supporting-data.md)
 * [Schedule Supporting Data](StructureDefinition-schedule-supporting-data.md)
@@ -110,6 +112,10 @@
 ### ImplementationGuides
 
 * [The Cicada Vaccine Forecasting Engine and Guide](index.md)
+
+### Parameters
+
+* [manifest](Parameters-manifest.md)
 
 ### Patients
 

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/preferred-allowed-reason | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:PreferredAllowedReasonVS |
+| Draft as of 2026-09-06 | *Computable Name*:PreferredAllowedReasonVS |
 
  
 Reasons why certain doses are Preferred or Allowed doses 
@@ -51,52 +51,44 @@ Reasons why certain doses are Preferred or Allowed doses
   "name" : "PreferredAllowedReasonVS",
   "title" : "Reasons why certain doses are Preferred or Allowed doses",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Reasons why certain doses are Preferred or Allowed doses",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason",
+      "concept" : [{
+        "code" : "notAPreferableOrAllowableVaccine",
+        "display" : "Not a preferable or allowable vaccine"
+      },
       {
-        "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason",
-        "concept" : [
-          {
-            "code" : "notAPreferableOrAllowableVaccine",
-            "display" : "Not a preferable or allowable vaccine"
-          },
-          {
-            "code" : "wrongTradeName",
-            "display" : "Wrong trade name"
-          },
-          {
-            "code" : "lessThanRecommendedVolume",
-            "display" : "Less than recommended volume"
-          },
-          {
-            "code" : "administeredOutsideOfPreferredAgeRange",
-            "display" : "Administered outside of preferred age range"
-          },
-          {
-            "code" : "noPreferredTypes",
-            "display" : "No preferred types"
-          },
-          {
-            "code" : "noAllowedTypes",
-            "display" : "No allowed types"
-          }
-        ]
-      }
-    ]
+        "code" : "wrongTradeName",
+        "display" : "Wrong trade name"
+      },
+      {
+        "code" : "lessThanRecommendedVolume",
+        "display" : "Less than recommended volume"
+      },
+      {
+        "code" : "administeredOutsideOfPreferredAgeRange",
+        "display" : "Administered outside of preferred age range"
+      },
+      {
+        "code" : "noPreferredTypes",
+        "display" : "No preferred types"
+      },
+      {
+        "code" : "noAllowedTypes",
+        "display" : "No allowed types"
+      }]
+    }]
   }
 }
 

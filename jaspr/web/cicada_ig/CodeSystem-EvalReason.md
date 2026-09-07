@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:EvalReasonCS |
+| Draft as of 2026-09-06 | *Computable Name*:EvalReasonCS |
 
  
 The reason for the evaluation. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [EvalReasonVS](ValueSet-eval-reason.md)
+* [Evaluation Reason](ValueSet-eval-reason.md)
 
 
 
@@ -31,99 +31,93 @@ The reason for the evaluation.
   "name" : "EvalReasonCS",
   "title" : "Evaluation Reason",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "The reason for the evaluation.",
   "content" : "complete",
   "count" : 15,
-  "concept" : [
-    {
-      "code" : "noDateGiven",
-      "display" : "No Date Given",
-      "definition" : "No Date Given"
-    },
-    {
-      "code" : "noCvx",
-      "display" : "No Cvx",
-      "definition" : "No Cvx"
-    },
-    {
-      "code" : "expired",
-      "display" : "Expired Product",
-      "definition" : "Expired Product"
-    },
-    {
-      "code" : "ageTooOld",
-      "display" : "Age: Too Old",
-      "definition" : "Age: Too Old"
-    },
-    {
-      "code" : "ageTooYoung",
-      "display" : "Age: Too Young",
-      "definition" : "Age: Too Young"
-    },
-    {
-      "code" : "inadvertentVaccine",
-      "display" : "Inadvertent Vaccine",
-      "definition" : "Inadvertent Vaccine"
-    },
-    {
-      "code" : "notPreferableOrAllowable",
-      "display" : "Not a preferable or allowable vaccine",
-      "definition" : "Not a preferable or allowable vaccine"
-    },
-    {
-      "code" : "notRecommendedVolume",
-      "display" : "Volume administered is less than recommended volume",
-      "definition" : "Volume administered is less than recommended volume"
-    },
-    {
-      "code" : "partialDose",
-      "display" : "Partial Dose",
-      "definition" : "Partial Dose"
-    },
-    {
-      "code" : "coldChainBreak",
-      "display" : "Cold Chain Break",
-      "definition" : "Cold Chain Break"
-    },
-    {
-      "code" : "recall",
-      "display" : "Manufacturer Recall",
-      "definition" : "Manufacturer Recall"
-    },
-    {
-      "code" : "adverseStorage",
-      "display" : "Adverse Storage",
-      "definition" : "Adverse Storage"
-    },
-    {
-      "code" : "intervalTooShort",
-      "display" : "Interval: too short",
-      "definition" : "Interval: too short"
-    },
-    {
-      "code" : "seriesAlreadyCompleted",
-      "display" : "Series Already Completed",
-      "definition" : "Series Already Completed"
-    },
-    {
-      "code" : "liveVirusConflict",
-      "display" : "Live Virus Conflict",
-      "definition" : "Live Virus Conflict"
-    }
-  ]
+  "concept" : [{
+    "code" : "noDateGiven",
+    "display" : "No Date Given",
+    "definition" : "No Date Given"
+  },
+  {
+    "code" : "noCvx",
+    "display" : "No Cvx",
+    "definition" : "No Cvx"
+  },
+  {
+    "code" : "expired",
+    "display" : "Expired Product",
+    "definition" : "Expired Product"
+  },
+  {
+    "code" : "ageTooOld",
+    "display" : "Age: Too Old",
+    "definition" : "Age: Too Old"
+  },
+  {
+    "code" : "ageTooYoung",
+    "display" : "Age: Too Young",
+    "definition" : "Age: Too Young"
+  },
+  {
+    "code" : "inadvertentVaccine",
+    "display" : "Inadvertent Vaccine",
+    "definition" : "Inadvertent Vaccine"
+  },
+  {
+    "code" : "notPreferableOrAllowable",
+    "display" : "Not a preferable or allowable vaccine",
+    "definition" : "Not a preferable or allowable vaccine"
+  },
+  {
+    "code" : "notRecommendedVolume",
+    "display" : "Volume administered is less than recommended volume",
+    "definition" : "Volume administered is less than recommended volume"
+  },
+  {
+    "code" : "partialDose",
+    "display" : "Partial Dose",
+    "definition" : "Partial Dose"
+  },
+  {
+    "code" : "coldChainBreak",
+    "display" : "Cold Chain Break",
+    "definition" : "Cold Chain Break"
+  },
+  {
+    "code" : "recall",
+    "display" : "Manufacturer Recall",
+    "definition" : "Manufacturer Recall"
+  },
+  {
+    "code" : "adverseStorage",
+    "display" : "Adverse Storage",
+    "definition" : "Adverse Storage"
+  },
+  {
+    "code" : "intervalTooShort",
+    "display" : "Interval: too short",
+    "definition" : "Interval: too short"
+  },
+  {
+    "code" : "seriesAlreadyCompleted",
+    "display" : "Series Already Completed",
+    "definition" : "Series Already Completed"
+  },
+  {
+    "code" : "liveVirusConflict",
+    "display" : "Live Virus Conflict",
+    "definition" : "Live Virus Conflict"
+  }]
 }
 
 ```

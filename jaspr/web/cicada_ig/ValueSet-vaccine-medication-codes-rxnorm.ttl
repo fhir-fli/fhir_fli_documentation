@@ -1,6 +1,5 @@
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -8,50 +7,56 @@
 
 <http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-rxnorm> a fhir:ValueSet ;
   fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "vaccine-medication-codes-rxnorm"] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet vaccine-medication-codes-rxnorm</b></p><a name=\"vaccine-medication-codes-rxnorm\"> </a><a name=\"hcvaccine-medication-codes-rxnorm\"> </a><ul><li>Include these codes as defined in <a href=\"http://www.nlm.nih.gov/research/umls/rxnorm\"><code>http://www.nlm.nih.gov/research/umls/rxnorm</code></a><span title=\"Version is not explicitly stated. No matching Code System found\"> version Not Stated (use latest from terminology server)</span><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>281</td><td>Acyclovir</td></tr><tr><td>24811</td><td>Famciclovir</td></tr><tr><td>39786</td><td>Valacyclovir</td></tr><tr><td>1191</td><td>Aspirin</td></tr></table></li></ul></div>"^^rdf:XMLLiteral ]
-  ] ; # 
-  fhir:url [
-     fhir:v "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-rxnorm"^^xsd:anyURI ;
-     fhir:l <http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-rxnorm>
-  ] ; # 
-  fhir:version [ fhir:v "0.1.0"] ; # 
-  fhir:name [ fhir:v "VaccineMedicationCodesRxnorm"] ; # 
-  fhir:title [ fhir:v "Immunization-Relevant Medications (RxNorm)"] ; # 
-  fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
-  fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
-  fhir:contact ( [
-     fhir:name [ fhir:v "FHIR-FLI" ] ;
-     fhir:telecom ( [
-       fhir:system [ fhir:v "url" ] ;
-       fhir:value [ fhir:v "http://fhirfli.dev" ]
-     ] )
-  ] ) ; # 
-  fhir:description [ fhir:v "RxNorm codes for medications relevant to immunization decision support, including antivirals and aspirin."] ; # 
-  fhir:compose [
-     fhir:include ( [
-       fhir:system [
-         fhir:v "http://www.nlm.nih.gov/research/umls/rxnorm"^^xsd:anyURI ;
-         fhir:l <http://www.nlm.nih.gov/research/umls/rxnorm>
-       ] ;
-       fhir:concept ( [
-         fhir:code [ fhir:v "281" ] ;
-         fhir:display [ fhir:v "Acyclovir" ]
-       ] [
-         fhir:code [ fhir:v "24811" ] ;
-         fhir:display [ fhir:v "Famciclovir" ]
-       ] [
-         fhir:code [ fhir:v "39786" ] ;
-         fhir:display [ fhir:v "Valacyclovir" ]
-       ] [
-         fhir:code [ fhir:v "1191" ] ;
-         fhir:display [ fhir:v "Aspirin" ]
-       ] )
-     ] )
-  ] . # 
+  fhir:Resource.id [ fhir:value "vaccine-medication-codes-rxnorm"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet vaccine-medication-codes-rxnorm</b></p><a name=\"vaccine-medication-codes-rxnorm\"> </a><a name=\"hcvaccine-medication-codes-rxnorm\"> </a><ul><li>Include these codes as defined in <a href=\"http://www.nlm.nih.gov/research/umls/rxnorm\"><code>http://www.nlm.nih.gov/research/umls/rxnorm</code></a><span title=\"Version is not explicitly stated. No matching Code System found\"> version Not Stated (use latest from terminology server)</span><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>281</td><td>acyclovir</td></tr><tr><td>68099</td><td>famciclovir</td></tr><tr><td>73645</td><td>valACYclovir</td></tr><tr><td>1191</td><td>Aspirin</td></tr></table></li></ul></div>"
+  ] ;
+  fhir:ValueSet.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-rxnorm"] ;
+  fhir:ValueSet.version [ fhir:value "0.1.0"] ;
+  fhir:ValueSet.name [ fhir:value "VaccineMedicationCodesRxnorm"] ;
+  fhir:ValueSet.title [ fhir:value "Immunization-Relevant Medications (RxNorm)"] ;
+  fhir:ValueSet.status [ fhir:value "active"] ;
+  fhir:ValueSet.date [ fhir:value "2026-09-06T20:44:07-04:00"^^xsd:dateTime] ;
+  fhir:ValueSet.publisher [ fhir:value "FHIR-FLI"] ;
+  fhir:ValueSet.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "FHIR-FLI" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "http://fhirfli.dev" ]
+     ]
+  ] ;
+  fhir:ValueSet.description [ fhir:value "RxNorm codes for medications relevant to immunization decision support, including antivirals and aspirin."] ;
+  fhir:ValueSet.compose [
+     fhir:ValueSet.compose.include [
+       fhir:index 0 ;
+       fhir:ValueSet.compose.include.system [ fhir:value "http://www.nlm.nih.gov/research/umls/rxnorm" ] ;
+       fhir:ValueSet.compose.include.concept [
+         fhir:index 0 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "281" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "acyclovir" ]
+       ], [
+         fhir:index 1 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "68099" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "famciclovir" ]
+       ], [
+         fhir:index 2 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "73645" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "valACYclovir" ]
+       ], [
+         fhir:index 3 ;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "1191" ] ;
+         fhir:ValueSet.compose.include.concept.display [ fhir:value "Aspirin" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-rxnorm.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 
