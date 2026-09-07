@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vax-dose | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:VaxDose |
+| Draft as of 2026-09-07 | *Computable Name*:VaxDose |
 
  
 Detailed information about each vaccination dose. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-vax-dose.csv), [Exce
   "name" : "VaxDose",
   "title" : "Dose of a Vaccine",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

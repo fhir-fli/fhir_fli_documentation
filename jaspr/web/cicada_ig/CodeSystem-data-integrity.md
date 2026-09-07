@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:DataIntegrityCS |
+| Draft as of 2026-09-07 | *Computable Name*:DataIntegrityCS |
 
  
 Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses. 
@@ -31,7 +31,7 @@ Records that cannot describe an administration. CDSi evaluates a vaccine dose ad
   "name" : "DataIntegrityCS",
   "title" : "Cicada Data Integrity Code System",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

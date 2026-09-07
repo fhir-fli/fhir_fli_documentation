@@ -102,6 +102,13 @@
   "name" : "CicadaIG"
 },
 {
+  "id" : "AntigenSupportingData",
+  "type" : "StructureDefinition",
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/AntigenSupportingData",
+  "version" : "0.1.0",
+  "name" : "AntigenSupportingData"
+},
+{
   "id" : "MedicationAdministrationProfile",
   "type" : "StructureDefinition",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationAdministrationProfile",
@@ -142,6 +149,13 @@
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile",
   "version" : "0.1.0",
   "name" : "ReactionProfile"
+},
+{
+  "id" : "ScheduleSupportingData",
+  "type" : "StructureDefinition",
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ScheduleSupportingData",
+  "version" : "0.1.0",
+  "name" : "ScheduleSupportingData"
 },
 {
   "id" : "Vaccine",
@@ -198,13 +212,6 @@
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext",
   "version" : "0.1.0",
   "name" : "AntigenNeedingDose"
-},
-{
-  "id" : "antigen-supporting-data",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-supporting-data",
-  "version" : "0.1.0",
-  "name" : "AntigenSupportingData"
 },
 {
   "id" : "assessment-date",
@@ -289,13 +296,6 @@
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status",
   "version" : "0.1.0",
   "name" : "PreferredVaccineStatus"
-},
-{
-  "id" : "schedule-supporting-data",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/schedule-supporting-data",
-  "version" : "0.1.0",
-  "name" : "ScheduleSupportingData"
 },
 {
   "id" : "series-detail-ext",

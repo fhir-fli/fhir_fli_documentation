@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-reason | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:PreferredIntervalReason |
+| Draft as of 2026-09-07 | *Computable Name*:PreferredIntervalReason |
 
 Captures the reason for the preferred interval between vaccine doses.
 
@@ -48,7 +48,7 @@ Other representations of profile: [CSV](StructureDefinition-preferred-interval-r
   "name" : "PreferredIntervalReason",
   "title" : "Preferred Interval Reason",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

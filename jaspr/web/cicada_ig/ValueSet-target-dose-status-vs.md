@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/target-dose-status-vs | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:TargetDoseStatusVS |
+| Draft as of 2026-09-07 | *Computable Name*:TargetDoseStatusVS |
 
  
 CDSi target dose statuses. 
@@ -50,7 +50,7 @@ CDSi target dose statuses.
   "name" : "TargetDoseStatusVS",
   "title" : "Target Dose Status Value Set",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

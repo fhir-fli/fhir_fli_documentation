@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/procedures | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:ImmunizationProceduresSnomed |
+| Draft as of 2026-09-07 | *Computable Name*:ImmunizationProceduresSnomed |
 
  
 Comprehensive Value Set for medical procedures based on SNOMED CT codes. 
@@ -50,7 +50,7 @@ Comprehensive Value Set for medical procedures based on SNOMED CT codes.
   "name" : "ImmunizationProceduresSnomed",
   "title" : "Procedures",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

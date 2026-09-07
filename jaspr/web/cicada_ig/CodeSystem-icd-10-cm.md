@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://hl7.org/fhir/sid/icd-10-cm | *Version*:0.1.0 |
-| Active as of 2026-09-06 | *Computable Name*:Icd10Cm |
+| Active as of 2026-09-07 | *Computable Name*:Icd10Cm |
 
  
 Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server. 
@@ -32,7 +32,7 @@ Placeholder for the International Classification of Diseases, Tenth Revision, Cl
   "title" : "ICD-10-CM (external, content not present)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

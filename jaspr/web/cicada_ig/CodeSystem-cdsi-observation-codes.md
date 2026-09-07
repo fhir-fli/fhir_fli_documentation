@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/cdsi-observation-codes | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:CdsiObservationCodes |
+| Draft as of 2026-09-07 | *Computable Name*:CdsiObservationCodes |
 
  
 Observations and Conditions that are important to indications or contraindications in vaccine forecasting 
@@ -31,7 +31,7 @@ Observations and Conditions that are important to indications or contraindicatio
   "name" : "CdsiObservationCodes",
   "title" : "CDSI Observation Codes",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

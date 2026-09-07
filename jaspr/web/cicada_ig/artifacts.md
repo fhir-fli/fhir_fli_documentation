@@ -13,8 +13,8 @@ These define data models that represent the domain covered by this implementatio
 
 | | |
 | :--- | :--- |
-| [Antigen Supporting Data](StructureDefinition-antigen-supporting-data.md) | A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series. |
-| [Schedule Supporting Data](StructureDefinition-schedule-supporting-data.md) | This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes. |
+| [Antigen Supporting Data](StructureDefinition-AntigenSupportingData.md) | A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series. |
+| [Schedule Supporting Data](StructureDefinition-ScheduleSupportingData.md) | This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes. |
 
 ### Structures: Resource Profiles 
 

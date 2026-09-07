@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:VaccineRecommendationCategory |
+| Draft as of 2026-09-07 | *Computable Name*:VaccineRecommendationCategory |
 
 CDC's vaccine recommendation category for one Best Patient Series in this forecast: Routine, High-Risk, or SCDM (shared clinical decision making), determined per CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65) once the forecast is known, for a series whose status is Not Complete. Carries the series name, the category, and CDC's material for it. One extension per contributing series that has a category.
 
@@ -48,7 +48,7 @@ Other representations of profile: [CSV](StructureDefinition-vaccine-recommendati
   "name" : "VaccineRecommendationCategory",
   "title" : "Vaccine Recommendation Category",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

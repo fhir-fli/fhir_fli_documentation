@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/series-type-vs | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:SeriesTypeVS |
+| Draft as of 2026-09-07 | *Computable Name*:SeriesTypeVS |
 
  
 Series types a forecast can be scoped to. In practice a forecast carries standard or risk: CDSi Table 8-14 excludes Evaluation Only series from best patient series. 
@@ -50,7 +50,7 @@ Series types a forecast can be scoped to. In practice a forecast carries standar
   "name" : "SeriesTypeVS",
   "title" : "Series Type Value Set",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

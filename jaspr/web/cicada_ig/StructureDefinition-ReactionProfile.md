@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:ReactionProfile |
+| Draft as of 2026-09-07 | *Computable Name*:ReactionProfile |
 
  
 Profile for allergy intolerances relevant to immunization. The code (allergen/substance) may use SNOMED CT or ICD-10-CM. Reaction substances may use CVX, MVX, SNOMED CT, or RxNorm. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-ReactionProfile.csv)
   "name" : "ReactionProfile",
   "title" : "Allergy Intolerance Profile for Immunization Decision Support",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

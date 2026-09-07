@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:VaccineRecommendationCategoryCS |
+| Draft as of 2026-09-07 | *Computable Name*:VaccineRecommendationCategoryCS |
 
  
 The three categories of CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65): the type of recommendation a Best Patient Series carries for a patient who is recommended further doses. Displays are CDC's own words. 
@@ -31,7 +31,7 @@ The three categories of CDC's Vaccine Recommendation Category Determination (CDS
   "name" : "VaccineRecommendationCategoryCS",
   "title" : "Vaccine Recommendation Category",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

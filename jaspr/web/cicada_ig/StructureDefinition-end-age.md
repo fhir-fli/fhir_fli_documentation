@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/end-age | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:EndAge |
+| Draft as of 2026-09-07 | *Computable Name*:EndAge |
 
 The age at which the vaccine is no longer applicable.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-end-age.csv), [Excel
   "name" : "EndAge",
   "title" : "End Age",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

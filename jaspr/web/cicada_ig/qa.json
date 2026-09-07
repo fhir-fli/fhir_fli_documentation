@@ -6,14 +6,14 @@
   "status" : "draft",
   "package-id" : "cicada.ig",
   "ig-ver" : "0.1.0",
-  "date" : "Sun, 06 Sep, 2026 23:13:14 -0400",
-  "dateISO8601" : "2026-09-06T23:13:14-04:00",
+  "date" : "Mon, 07 Sep, 2026 18:40:23 -0400",
+  "dateISO8601" : "2026-09-07T18:40:23-04:00",
   "errs" : 0,
-  "warnings" : 415,
+  "warnings" : 162,
   "hints" : 232,
   "suppressed-hints" : 0,
   "suppressed-warnings" : 13,
   "version" : "4.0.1",
   "tool" : "5.0.0 (3)",
-  "maxMemory" : 1946756984
+  "maxMemory" : 2032820360
 }

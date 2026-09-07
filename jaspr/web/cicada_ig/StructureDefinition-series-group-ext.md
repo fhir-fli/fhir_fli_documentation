@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:SeriesGroup |
+| Draft as of 2026-09-07 | *Computable Name*:SeriesGroup |
 
 The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-series-group-ext.csv
   "name" : "SeriesGroup",
   "title" : "Series Group",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

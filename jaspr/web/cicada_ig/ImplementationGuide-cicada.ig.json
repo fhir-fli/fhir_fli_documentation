@@ -10,7 +10,7 @@
   "name" : "CicadaIG",
   "title" : "The Cicada Vaccine Forecasting Engine and Guide",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -743,7 +743,7 @@
         "valueString" : "StructureDefinition:logical"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/antigen-supporting-data"
+        "reference" : "StructureDefinition/AntigenSupportingData"
       },
       "name" : "Antigen Supporting Data",
       "description" : "A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series.",
@@ -1305,7 +1305,7 @@
         "valueString" : "StructureDefinition:logical"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/schedule-supporting-data"
+        "reference" : "StructureDefinition/ScheduleSupportingData"
       },
       "name" : "Schedule Supporting Data",
       "description" : "This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes.",

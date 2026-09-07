@@ -74,9 +74,9 @@
     "description" : "Observations and Conditions that are important to indications or contraindications in vaccine forecasting",
     "uses" : {
     },
+    "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map",
     "ValueSet-cdsi-observation-codes-vs.html" : "CDSI Observation Codes Value Set",
-    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
-    "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map"
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map"
   },
   {
     "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity",
@@ -198,8 +198,8 @@
     "description" : "This is a place holder for the code system which is fully supported through internal means (not by this code system)",
     "uses" : {
     },
-    "ValueSet-forecast-status.html" : "Forecast Status Value Set",
-    "ValueSet-vaccine-lab-evidence-of-immunity-loinc.html" : "Lab Evidence of Immunity (LOINC)"
+    "ValueSet-vaccine-lab-evidence-of-immunity-loinc.html" : "Lab Evidence of Immunity (LOINC)",
+    "ValueSet-forecast-status.html" : "Forecast Status Value Set"
   },
   {
     "url" : "http://snomed.info/sct",
@@ -211,9 +211,9 @@
     "oids" : ["2.16.840.1.113883.6.96"],
     "uses" : {
     },
-    "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes",
-    "ValueSet-vaccine-medication-codes-snomed.html" : "Medications",
     "ValueSet-procedures.html" : "Procedures",
+    "ValueSet-vaccine-medication-codes-snomed.html" : "Medications",
+    "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes",
     "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map"
   },
   {

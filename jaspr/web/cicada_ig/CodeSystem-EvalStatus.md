@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:EvalStatusCS |
+| Draft as of 2026-09-07 | *Computable Name*:EvalStatusCS |
 
  
 Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here. 
@@ -31,7 +31,7 @@ Extension codes for dose evaluation status beyond the HL7 THO immunization-evalu
   "name" : "EvalStatusCS",
   "title" : "Cicada Evaluation Status",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

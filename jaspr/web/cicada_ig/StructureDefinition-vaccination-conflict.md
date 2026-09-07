@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:VaccinationConflict |
+| Draft as of 2026-09-07 | *Computable Name*:VaccinationConflict |
 
 Indicates any conflicts with other vaccinations.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-vaccination-conflict
   "name" : "VaccinationConflict",
   "title" : "Vaccination Conflict",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
