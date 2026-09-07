@@ -9,12 +9,12 @@
     "systems" : ["http://hl7.org/fhir/sid/mvx", "http://hl7.org/fhir/sid/cvx"],
     "uses" : {
     },
-    "StructureDefinition-MedicationRequestProfile.html" : "Medication Request Profile with Vaccine Codes",
-    "StructureDefinition-MedicationAdministrationProfile.html" : "Medication Administration Profile with Vaccine Codes",
+    "StructureDefinition-ReactionProfile.html" : "Allergy Intolerance Profile for Immunization Decision Support",
     "StructureDefinition-vax-dose.html" : "Dose of a Vaccine",
     "StructureDefinition-MedicationStatementProfile.html" : "Medication Statement Profile with Vaccine Codes",
-    "StructureDefinition-ReactionProfile.html" : "Allergy Intolerance Profile for Immunization Decision Support",
-    "StructureDefinition-MedicationDispenseProfile.html" : "Medication Dispense Profile with Vaccine Codes"
+    "StructureDefinition-MedicationAdministrationProfile.html" : "Medication Administration Profile with Vaccine Codes",
+    "StructureDefinition-MedicationDispenseProfile.html" : "Medication Dispense Profile with Vaccine Codes",
+    "StructureDefinition-MedicationRequestProfile.html" : "Medication Request Profile with Vaccine Codes"
   },
   {
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/cdsi-observation-codes-vs",
@@ -111,8 +111,8 @@
     "systems" : ["http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason"],
     "uses" : {
     },
-    "StructureDefinition-allowed-interval-reason.html" : "Allowed Interval Reason",
-    "StructureDefinition-preferred-interval-reason.html" : "Preferred Interval Reason"
+    "StructureDefinition-preferred-interval-reason.html" : "Preferred Interval Reason",
+    "StructureDefinition-allowed-interval-reason.html" : "Allowed Interval Reason"
   },
   {
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/preferred-allowed-reason",
@@ -186,9 +186,9 @@
     "uses" : {
     },
     "StructureDefinition-ReactionProfile.html" : "Allergy Intolerance Profile for Immunization Decision Support",
-    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
     "StructureDefinition-VaccineObservationFhir.html" : "Observation Profile for Immunization Decision Support",
-    "StructureDefinition-VaccineConditionFhir.html" : "Condition Profile with Vaccine Condition Codes"
+    "StructureDefinition-VaccineConditionFhir.html" : "Condition Profile with Vaccine Condition Codes",
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map"
   },
   {
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-gender",
@@ -225,6 +225,18 @@
     "title" : "Medications",
     "description" : "Value set for medications and substances based on SNOMED CT, including both active ingredients and marketed products.",
     "systems" : ["http://snomed.info/sct"]
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-recommendation-category-vs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "VaccineRecommendationCategoryVS",
+    "title" : "Vaccine Recommendation Category Value Set",
+    "description" : "All codes from the Vaccine Recommendation Category code system.",
+    "systems" : ["http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category"],
+    "uses" : {
+    },
+    "StructureDefinition-vaccine-recommendation-category-ext.html" : "Vaccine Recommendation Category"
   },
   {
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/valid-age-reason",

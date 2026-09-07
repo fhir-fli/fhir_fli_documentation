@@ -183,6 +183,15 @@
     "systems" : ["http://snomed.info/sct"]
   },
   {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-recommendation-category-vs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "VaccineRecommendationCategoryVS",
+    "title" : "Vaccine Recommendation Category Value Set",
+    "description" : "All codes from the Vaccine Recommendation Category code system.",
+    "systems" : ["http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category"]
+  },
+  {
     "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/valid-age-reason",
     "version" : "0.1.0",
     "status" : "draft",

@@ -51,7 +51,7 @@ This value set includes codes for the reason an interval is considered to be inv
   "name" : "IntervalReasonVS",
   "title" : "Interval Reason",
   "status" : "draft",
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

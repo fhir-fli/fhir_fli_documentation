@@ -76,6 +76,13 @@
   "name" : "TargetDoseStatusCS"
 },
 {
+  "id" : "vaccine-recommendation-category",
+  "type" : "CodeSystem",
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+  "version" : "0.1.0",
+  "name" : "VaccineRecommendationCategoryCS"
+},
+{
   "id" : "Icd10ToCdsiObservation",
   "type" : "ConceptMap",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/ConceptMap/Icd10ToCdsiObservation",
@@ -326,6 +333,13 @@
   "name" : "VaccinationConflict"
 },
 {
+  "id" : "vaccine-recommendation-category-ext",
+  "type" : "StructureDefinition",
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext",
+  "version" : "0.1.0",
+  "name" : "VaccineRecommendationCategory"
+},
+{
   "id" : "vaccine-type",
   "type" : "StructureDefinition",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type",
@@ -506,6 +520,13 @@
   "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-snomed",
   "version" : "0.1.0",
   "name" : "VaccineMedicationCodesSnomed"
+},
+{
+  "id" : "vaccine-recommendation-category-vs",
+  "type" : "ValueSet",
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-recommendation-category-vs",
+  "version" : "0.1.0",
+  "name" : "VaccineRecommendationCategoryVS"
 },
 {
   "id" : "valid-age-reason",

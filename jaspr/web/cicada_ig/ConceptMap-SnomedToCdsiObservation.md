@@ -27,7 +27,7 @@ Maps SNOMED CT codes to CDSi observation codes used in immunization decision sup
   "title" : "SNOMED CT to CDSi Observation Code Map",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

@@ -28,6 +28,7 @@
 * [ICD-10-CM (external, content not present)](CodeSystem-icd-10-cm.md)
 * [Series Type Code System](CodeSystem-series-type.md)
 * [Target Dose Status Code System](CodeSystem-target-dose-status.md)
+* [Vaccine Recommendation Category](CodeSystem-vaccine-recommendation-category.md)
 
 ### ValueSets
 
@@ -51,6 +52,7 @@
 * [Lab Evidence of Immunity (LOINC)](ValueSet-vaccine-lab-evidence-of-immunity-loinc.md)
 * [Immunization-Relevant Medications (RxNorm)](ValueSet-vaccine-medication-codes-rxnorm.md)
 * [Medications](ValueSet-vaccine-medication-codes-snomed.md)
+* [Vaccine Recommendation Category Value Set](ValueSet-vaccine-recommendation-category-vs.md)
 * [Valid Age Reason](ValueSet-valid-age-reason.md)
 
 ### Logicals
@@ -96,6 +98,7 @@
 * [Series Type](StructureDefinition-series-type-ext.md)
 * [Target Dose Status](StructureDefinition-target-dose-status-ext.md)
 * [Vaccination Conflict](StructureDefinition-vaccination-conflict.md)
+* [Vaccine Recommendation Category](StructureDefinition-vaccine-recommendation-category-ext.md)
 * [Vaccine Type](StructureDefinition-vaccine-type.md)
 * [Valid Age Reason](StructureDefinition-valid-age-reason.md)
 * [Valid Age Status](StructureDefinition-valid-age-status.md)

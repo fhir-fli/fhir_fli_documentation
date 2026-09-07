@@ -1,8 +1,8 @@
 {
   "resourceType" : "Bundle",
-  "id" : "bca1bf58-b562-4fbf-8d65-8af8c4a3a4da",
+  "id" : "246c7cc3-6f07-4cfe-a09e-7045e1d607c5",
   "meta" : {
-    "lastUpdated" : "2026-09-06T20:44:07.894-04:00"
+    "lastUpdated" : "2026-09-06T23:13:14.796-04:00"
   },
   "type" : "collection",
   "entry" : [{
@@ -17,10 +17,10 @@
       "version" : "0.1.0",
       "name" : "VaccineCodesCvxMvx",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:726aff53-4001-41d1-9264-2050b14feef4",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:78866817-c4e3-466f-ac95-b299b6aa0c57",
+        "timestamp" : "2026-09-06T23:14:53-04:00",
         "total" : 369,
         "offset" : 0,
         "parameter" : [{
@@ -1916,10 +1916,10 @@
       "name" : "CdsiObservationCodesVS",
       "title" : "CDSI Observation Codes Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:a98bce87-f30a-468a-aab4-3143d5ba5ced",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:38e0832d-94ee-463f-9af2-c32338e2342c",
+        "timestamp" : "2026-09-06T23:14:53-04:00",
         "total" : 278,
         "offset" : 0,
         "parameter" : [{
@@ -3348,10 +3348,10 @@
       "name" : "DataIntegrityVS",
       "title" : "Cicada Data Integrity Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:1ac0fcab-4066-4f4d-a57d-589655cd177d",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:784b87b5-7a6e-4e9c-9b6e-0207738c901e",
+        "timestamp" : "2026-09-06T23:14:53-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -3405,10 +3405,10 @@
       "name" : "DoseStatusReasonVS",
       "title" : "Dose Status Reason Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:9c0a21dd-b5c4-4f46-9de8-1d37872b527f",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:95acb864-57f4-4289-9b06-c1e9c380ac9f",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 10,
         "offset" : 0,
         "parameter" : [{
@@ -3497,10 +3497,10 @@
       "name" : "EvalReasonVS",
       "title" : "Evaluation Reason",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:37a72bbf-a975-4216-9a05-0dd0cd0a7266",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:4890b628-0e91-4c35-90ba-b4cf818fe909",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 15,
         "offset" : 0,
         "parameter" : [{
@@ -3614,10 +3614,10 @@
       "name" : "EvalStatusVS",
       "title" : "Evaluation Status Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:64a7af0f-5fd6-4bc7-ba3e-d05c2febac15",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:4698cc37-01bf-4ab0-9c81-f921d58c3514",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -3675,10 +3675,10 @@
       "name" : "CicadaForecastReasonVS",
       "title" : "Cicada Forecast Reason Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:51c2f6a5-77c5-4c01-97bc-d0abe4e725ea",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:1307ece6-9c47-4b2d-8a76-80d7acc7f3cd",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 10,
         "offset" : 0,
         "parameter" : [{
@@ -3767,10 +3767,10 @@
       "name" : "ForecastStatusVS",
       "title" : "Forecast Status Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:4250ef11-ad97-49cc-a4af-1d0ebea07d5f",
-        "timestamp" : "2026-09-06T20:45:52-04:00",
+        "identifier" : "urn:uuid:6bbcdd8a-331b-4062-bbd9-e1495cc34db3",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 21,
         "offset" : 0,
         "parameter" : [{
@@ -3943,10 +3943,10 @@
       "name" : "ImmunizationProceduresCpt",
       "title" : "Immunization-Relevant Procedures (CPT)",
       "status" : "active",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:428585a0-60af-462b-8118-ba24ab3feaf0",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:dd5e3d51-276b-49ed-a2d4-95415f59cbd7",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 6,
         "offset" : 0,
         "parameter" : [{
@@ -4023,10 +4023,10 @@
       "name" : "IntervalReasonVS",
       "title" : "Interval Reason",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:4d42ba96-2bb3-4ab1-99a9-241427d9ccaf",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:9f8427d6-c754-4b72-992a-c9b88d371e24",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -4080,10 +4080,10 @@
       "name" : "PreferredAllowedReasonVS",
       "title" : "Reasons why certain doses are Preferred or Allowed doses",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:27762323-eaed-4cee-a6bb-40ee354a69be",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:ec1711a7-7be0-4c11-a3e5-78692dda67a0",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 6,
         "offset" : 0,
         "parameter" : [{
@@ -4152,14 +4152,14 @@
       "name" : "ImmunizationProceduresSnomed",
       "title" : "Procedures",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
           "valueBoolean" : true
         }],
-        "identifier" : "urn:uuid:75e54eed-67ee-447b-8cc1-ee130569864b",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:a86c7831-1150-4658-99d8-1e6e16875629",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "offset" : 0,
         "parameter" : [{
           "name" : "displayLanguage",
@@ -5727,10 +5727,10 @@
       "name" : "SeriesTypeVS",
       "title" : "Series Type Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:61540b92-3887-4254-b7c3-5a10b2557470",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:821d7624-afa6-4572-87c8-5b29798fc905",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -5784,10 +5784,10 @@
       "name" : "TargetDoseStatusVS",
       "title" : "Target Dose Status Value Set",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:d4b8ad0c-51f0-4048-856f-610c612b2256",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:cfc48020-9e3f-4b05-8384-040afa736a3e",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -5841,10 +5841,10 @@
       "name" : "VaccineConditionCodesIcd10",
       "title" : "Vaccine Condition Codes (ICD-10-CM)",
       "status" : "active",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:52229f14-44e9-4070-ba69-065fdf3cbaaf",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:a9acc62e-d597-4a70-9af6-9a7a3b63607c",
+        "timestamp" : "2026-09-06T23:14:54-04:00",
         "total" : 96,
         "offset" : 0,
         "parameter" : [{
@@ -6374,10 +6374,10 @@
       "name" : "VaccineGenderVS",
       "title" : "Vaccine Gender",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:32539a7a-edee-4f34-878c-b31ebd723128",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:7274d3f5-54e7-461c-b06f-d5b76c557423",
+        "timestamp" : "2026-09-06T23:14:55-04:00",
         "total" : 4,
         "offset" : 0,
         "parameter" : [{
@@ -6436,10 +6436,10 @@
       "name" : "VaccineLabEvidenceOfImmunityLoinc",
       "title" : "Lab Evidence of Immunity (LOINC)",
       "status" : "active",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:1f462f98-c23a-49e2-bfb2-72e3acec3fb3",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:f9854656-044b-48e2-a5fc-f30f5110ecdd",
+        "timestamp" : "2026-09-06T23:14:55-04:00",
         "total" : 19,
         "offset" : 0,
         "parameter" : [{
@@ -6581,10 +6581,10 @@
       "name" : "VaccineMedicationCodesRxnorm",
       "title" : "Immunization-Relevant Medications (RxNorm)",
       "status" : "active",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:22a3f041-2542-476c-879a-337bad5223de",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:beaec98b-35f1-469e-b77e-a73473778d6f",
+        "timestamp" : "2026-09-06T23:14:55-04:00",
         "total" : 4,
         "offset" : 0,
         "parameter" : [{
@@ -6651,14 +6651,14 @@
       "name" : "VaccineMedicationCodesSnomed",
       "title" : "Medications",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
           "valueBoolean" : true
         }],
-        "identifier" : "urn:uuid:151288af-0149-4df4-a85a-27ab86c1d1d8",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:bdb8c81f-40ee-4183-9dc6-03851291f190",
+        "timestamp" : "2026-09-06T23:14:55-04:00",
         "offset" : 0,
         "parameter" : [{
           "name" : "displayLanguage",
@@ -6860,6 +6860,63 @@
     }
   },
   {
+    "fullUrl" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-recommendation-category-vs",
+    "resource" : {
+      "resourceType" : "ValueSet",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" data-fhir=\"generated\"><p class=\"res-header-id\"/><p style=\"border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px\">Expansion performed internally based on <a href=\"CodeSystem-vaccine-recommendation-category.html\">codesystem Vaccine Recommendation Category v0.1.0 (CodeSystem)</a><span class=\"copy-text-inline\"><button data-clipboard-text=\"http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category|0.1.0\" title=\"Click to Copy URL\" class=\"btn-copy\"> </button></span></p><p>This value set contains 3 concepts</p><table class=\"codes\" data-fhir=\"generated\"><tr><td><b>System</b></td><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display (en)</b></td><td><b>Definition</b></td><td><b>JSON</b></td><td><b>XML</b></td></tr><tr><td><a name=\"x-http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category-routine\"> </a><code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category</code></td><td style=\"white-space:nowrap\">\u00a0\u00a0<a href=\"CodeSystem-vaccine-recommendation-category.html#vaccine-recommendation-category-routine\">routine</a></td><td>Routine</td><td>An age-based recommendation for the general population.</td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"{&quot;system&quot;: &quot;http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;routine&quot;, &quot;display&quot;: &quot;Routine&quot;}\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"&lt;coding&gt;&lt;system value=&quot;http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;routine&quot;&gt;&lt;display value=&quot;Routine&quot;&gt;&lt;/coding&gt;\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td></tr><tr><td><a name=\"x-http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category-high-risk\"> </a><code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category</code></td><td style=\"white-space:nowrap\">\u00a0\u00a0<a href=\"CodeSystem-vaccine-recommendation-category.html#vaccine-recommendation-category-high-risk\">high-risk</a></td><td>High-Risk</td><td>A recommendation because of a risk factor the patient has (a risk-based series, or an included indication).</td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"{&quot;system&quot;: &quot;http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;high-risk&quot;, &quot;display&quot;: &quot;High-Risk&quot;}\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"&lt;coding&gt;&lt;system value=&quot;http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;high-risk&quot;&gt;&lt;display value=&quot;High-Risk&quot;&gt;&lt;/coding&gt;\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td></tr><tr><td><a name=\"x-http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category-scdm\"> </a><code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category</code></td><td style=\"white-space:nowrap\">\u00a0\u00a0<a href=\"CodeSystem-vaccine-recommendation-category.html#vaccine-recommendation-category-scdm\">scdm</a></td><td>SCDM</td><td>Shared clinical decision making: the recommendation depends on a discussion between the patient and the clinician.</td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"{&quot;system&quot;: &quot;http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;scdm&quot;, &quot;display&quot;: &quot;SCDM&quot;}\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"&lt;coding&gt;&lt;system value=&quot;http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;scdm&quot;&gt;&lt;display value=&quot;SCDM&quot;&gt;&lt;/coding&gt;\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td></tr></table></div>"
+      },
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-recommendation-category-vs",
+      "version" : "0.1.0",
+      "name" : "VaccineRecommendationCategoryVS",
+      "title" : "Vaccine Recommendation Category Value Set",
+      "status" : "draft",
+      "date" : "2026-09-06T23:13:14-04:00",
+      "expansion" : {
+        "identifier" : "urn:uuid:374055fb-6a2c-413e-80f9-7fc8b8156164",
+        "timestamp" : "2026-09-06T23:14:55-04:00",
+        "total" : 3,
+        "offset" : 0,
+        "parameter" : [{
+          "name" : "displayLanguage",
+          "valueCode" : "en"
+        },
+        {
+          "name" : "count",
+          "valueInteger" : 1000
+        },
+        {
+          "name" : "offset",
+          "valueInteger" : 0
+        },
+        {
+          "name" : "excludeNested",
+          "valueBoolean" : false
+        },
+        {
+          "name" : "used-codesystem",
+          "valueUri" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category|0.1.0"
+        }],
+        "contains" : [{
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+          "code" : "routine",
+          "display" : "Routine"
+        },
+        {
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+          "code" : "high-risk",
+          "display" : "High-Risk"
+        },
+        {
+          "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+          "code" : "scdm",
+          "display" : "SCDM"
+        }]
+      }
+    }
+  },
+  {
     "fullUrl" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/valid-age-reason",
     "resource" : {
       "resourceType" : "ValueSet",
@@ -6872,10 +6929,10 @@
       "name" : "ValidAgeReasonVS",
       "title" : "Valid Age Reason",
       "status" : "draft",
-      "date" : "2026-09-06T20:44:07-04:00",
+      "date" : "2026-09-06T23:13:14-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:3c58dc1d-c65c-47ff-87cd-876faf04e1a8",
-        "timestamp" : "2026-09-06T20:45:53-04:00",
+        "identifier" : "urn:uuid:65deb30e-ae2a-4dbc-a7b5-e1e313214930",
+        "timestamp" : "2026-09-06T23:14:55-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{

@@ -31,7 +31,7 @@ CDSi series type: whether a patient series is the routine schedule, one indicate
   "name" : "SeriesTypeCS",
   "title" : "Series Type Code System",
   "status" : "draft",
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

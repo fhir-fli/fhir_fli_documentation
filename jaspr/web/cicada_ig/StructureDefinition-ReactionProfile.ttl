@@ -17,7 +17,7 @@
   fhir:StructureDefinition.name [ fhir:value "ReactionProfile"] ;
   fhir:StructureDefinition.title [ fhir:value "Allergy Intolerance Profile for Immunization Decision Support"] ;
   fhir:StructureDefinition.status [ fhir:value "draft"] ;
-  fhir:StructureDefinition.date [ fhir:value "2026-09-06T20:44:07-04:00"^^xsd:dateTime] ;
+  fhir:StructureDefinition.date [ fhir:value "2026-09-06T23:13:14-04:00"^^xsd:dateTime] ;
   fhir:StructureDefinition.publisher [ fhir:value "FHIR-FLI"] ;
   fhir:StructureDefinition.contact [
      fhir:index 0 ;

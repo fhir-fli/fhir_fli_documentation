@@ -62,6 +62,7 @@ These define constraints on FHIR data types for systems conforming to this imple
 | [Series Type](StructureDefinition-series-type-ext.md) | Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes. |
 | [Target Dose Status](StructureDefinition-target-dose-status-ext.md) | The CDSi target dose status this administered dose produced. |
 | [Vaccination Conflict](StructureDefinition-vaccination-conflict.md) | Indicates any conflicts with other vaccinations. |
+| [Vaccine Recommendation Category](StructureDefinition-vaccine-recommendation-category-ext.md) | CDC's vaccine recommendation category for one Best Patient Series in this forecast: Routine, High-Risk, or SCDM (shared clinical decision making), determined per CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65) once the forecast is known, for a series whose status is Not Complete. Carries the series name, the category, and CDC's material for it. One extension per contributing series that has a category. |
 | [Vaccine Type](StructureDefinition-vaccine-type.md) | Type of the vaccine. |
 | [Valid Age Reason](StructureDefinition-valid-age-reason.md) | Captures the reason why the vaccine was administered at a particular age. |
 | [Valid Age Status](StructureDefinition-valid-age-status.md) | Indicates if the vaccine was administered at the correct age. |
@@ -91,6 +92,7 @@ These define sets of codes used by systems conforming to this implementation gui
 | [Vaccine Condition Codes](ValueSet-vaccine-condition-codes-snomed.md) | Value set for conditions based on SNOMED CT, that may impact immunization. |
 | [Vaccine Condition Codes (ICD-10-CM)](ValueSet-vaccine-condition-codes-icd10.md) | Value set for conditions based on ICD-10-CM that may impact immunization decisions, mapped to CDSi observation codes. |
 | [Vaccine Gender](ValueSet-vaccine-gender.md) | Value set for gender categories relevant to vaccination data. |
+| [Vaccine Recommendation Category Value Set](ValueSet-vaccine-recommendation-category-vs.md) | All codes from the Vaccine Recommendation Category code system. |
 | [VaccineCodesCvxMvx](ValueSet-VaccineCodesCvxMvx.md) |  |
 | [Valid Age Reason](ValueSet-valid-age-reason.md) | Value set for reasons why a patient's age is considered valid/invalid for a vaccine. |
 
@@ -111,6 +113,7 @@ These define new code systems used by systems conforming to this implementation 
 | [Series Type Code System](CodeSystem-series-type.md) | CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data. |
 | [Target Dose Status Code System](CodeSystem-target-dose-status.md) | CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable. |
 | [Vaccine Gender](CodeSystem-VaccineGender.md) | Value set for gender categories relevant to vaccination data. |
+| [Vaccine Recommendation Category](CodeSystem-vaccine-recommendation-category.md) | The three categories of CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65): the type of recommendation a Best Patient Series carries for a patient who is recommended further doses. Displays are CDC's own words. |
 | [Valid Age Reason](CodeSystem-ValidAgeReason.md) | Value set for reasons why a patient's age is considered valid/invalid for a vaccine. |
 
 ### Terminology: Structure Maps 

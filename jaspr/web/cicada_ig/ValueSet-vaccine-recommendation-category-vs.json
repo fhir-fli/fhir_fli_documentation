@@ -1,0 +1,28 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "vaccine-recommendation-category-vs",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet vaccine-recommendation-category-vs</b></p><a name=\"vaccine-recommendation-category-vs\"> </a><a name=\"hcvaccine-recommendation-category-vs\"> </a><ul><li>Include all codes defined in <a href=\"CodeSystem-vaccine-recommendation-category.html\"><code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version &#x1F4E6;0.1.0</span></li></ul></div>"
+  },
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-recommendation-category-vs",
+  "version" : "0.1.0",
+  "name" : "VaccineRecommendationCategoryVS",
+  "title" : "Vaccine Recommendation Category Value Set",
+  "status" : "draft",
+  "date" : "2026-09-06T23:13:14-04:00",
+  "publisher" : "FHIR-FLI",
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
+  "description" : "All codes from the Vaccine Recommendation Category code system.",
+  "compose" : {
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category"
+    }]
+  }
+}
