@@ -10,7 +10,10 @@ what the app would draw, plus the verdict of the published JSON Schema.
 
 How to use it:
 
-- **Load an example** from the drop-down. The fifteen examples are real pages from the
+- **The first example** is a sampler: one page with the four main kinds of content
+  together — prose, a table, a flowchart and a calculator — assembled from the
+  ProtocolBook's paediatric sepsis page and the maintenance-fluids calculator.
+- **Load another example** from the drop-down. The other fifteen are real pages from the
   bundled books and between them use every block type (prose, tables, six flowchart
   variants, drug and procedure cards, images, layout grids, and the interactive formula,
   score and conversion blocks).
