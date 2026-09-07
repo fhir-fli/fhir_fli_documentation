@@ -32,7 +32,7 @@
 
 ### ValueSets
 
-* [VaccineCodesCvxMvx](ValueSet-VaccineCodesCvxMvx.md)
+* [Vaccine Codes (CVX and MVX)](ValueSet-VaccineCodesCvxMvx.md)
 * [CDSI Observation Codes Value Set](ValueSet-cdsi-observation-codes-vs.md)
 * [Cicada Data Integrity Value Set](ValueSet-data-integrity-vs.md)
 * [Dose Status Reason Value Set](ValueSet-dose-status-reason.md)
@@ -77,40 +77,41 @@
 
 ### Extensions
 
-* [Allowed Interval Reason](StructureDefinition-allowed-interval-reason.md)
-* [Allowed Interval Status](StructureDefinition-allowed-interval-status.md)
-* [Allowed Vaccine Reason](StructureDefinition-allowed-vaccine-reason.md)
-* [Allowed Vaccine Status](StructureDefinition-allowed-vaccine-status.md)
 * [Antigen Needing a Dose](StructureDefinition-antigen-needing-dose-ext.md)
-* [AssessmentDate](StructureDefinition-assessment-date.md)
 * [Begin Age](StructureDefinition-begin-age.md)
 * [Doses Remaining](StructureDefinition-doses-remaining-ext.md)
 * [End Age](StructureDefinition-end-age.md)
 * [Engine and Supporting Data Version](StructureDefinition-engine-version-ext.md)
 * [Evaluation Sub-step Detail](StructureDefinition-evaluation-detail-ext.md)
-* [Inadvertent Administration Status](StructureDefinition-inadvertent-administration-status.md)
-* [Preferred Interval Reason](StructureDefinition-preferred-interval-reason.md)
-* [Preferred Interval Status](StructureDefinition-preferred-interval-status.md)
-* [Preferred Vaccine Reason](StructureDefinition-preferred-vaccine-reason.md)
-* [Preferred Vaccine Status](StructureDefinition-preferred-vaccine-status.md)
 * [Contributing Series Detail](StructureDefinition-series-detail-ext.md)
 * [Series Group](StructureDefinition-series-group-ext.md)
 * [Series Type](StructureDefinition-series-type-ext.md)
 * [Target Dose Status](StructureDefinition-target-dose-status-ext.md)
-* [Vaccination Conflict](StructureDefinition-vaccination-conflict.md)
 * [Vaccine Recommendation Category](StructureDefinition-vaccine-recommendation-category-ext.md)
 * [Vaccine Type](StructureDefinition-vaccine-type.md)
-* [Valid Age Reason](StructureDefinition-valid-age-reason.md)
-* [Valid Age Status](StructureDefinition-valid-age-status.md)
 
 ### ConceptMaps
 
 * [ICD-10-CM to CDSi Observation Code Map](ConceptMap-Icd10ToCdsiObservation.md)
 * [SNOMED CT to CDSi Observation Code Map](ConceptMap-SnomedToCdsiObservation.md)
 
+### Conditions
+
+* [2016-UC-0032-055](Condition-2016-UC-0032-055.md)
+
+### ImmunizationEvaluations
+
+* [2016-UC-0032-1](ImmunizationEvaluation-2016-UC-0032-1.md)
+* [2016-UC-0032-2](ImmunizationEvaluation-2016-UC-0032-2.md)
+* [2016-UC-0032-3](ImmunizationEvaluation-2016-UC-0032-3.md)
+
 ### ImmunizationRecommendations
 
 * [cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md)
+
+### Immunizations
+
+* [2016-UC-0032-dose1](Immunization-2016-UC-0032-dose1.md)
 
 ### ImplementationGuides
 
@@ -127,3 +128,14 @@
 ### StructureMaps
 
 * [MapVaccineCodes](StructureMap-MapVaccineCodes.md)
+
+### Examples
+
+* [allergy-vaccine-reaction (AllergyIntolerance)](AllergyIntolerance-allergy-vaccine-reaction.md)
+* [vaccine-hepb-adult (Medication)](Medication-vaccine-hepb-adult.md)
+* [medication-administration-hepb (MedicationAdministration)](MedicationAdministration-medication-administration-hepb.md)
+* [medication-dispense-hepb (MedicationDispense)](MedicationDispense-medication-dispense-hepb.md)
+* [medication-request-hepb (MedicationRequest)](MedicationRequest-medication-request-hepb.md)
+* [medication-statement-hepb (MedicationStatement)](MedicationStatement-medication-statement-hepb.md)
+* [observation-immunocompromised (Observation)](Observation-observation-immunocompromised.md)
+* [procedure-stem-cell-transplant (Procedure)](Procedure-procedure-stem-cell-transplant.md)

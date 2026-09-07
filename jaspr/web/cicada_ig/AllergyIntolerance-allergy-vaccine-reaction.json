@@ -1,0 +1,43 @@
+{
+  "resourceType" : "AllergyIntolerance",
+  "id" : "allergy-vaccine-reaction",
+  "meta" : {
+    "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: AllergyIntolerance allergy-vaccine-reaction</b></p><a name=\"allergy-vaccine-reaction\"> </a><a name=\"hcallergy-vaccine-reaction\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ReactionProfile.html\">Allergy Intolerance Profile for Immunization Decision Support</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical active}\">Active</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 293104008}\">Vaccine adverse reaction</span></p><p><b>patient</b>: <a href=\"Patient-2016-UC-0032.html\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><h3>Reactions</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Substance</b></td><td><b>Manifestation</b></td><td><b>Severity</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://hl7.org/fhir/sid/cvx 08}\">Hep B, adolescent or pediatric</span></td><td><span title=\"Codes:{http://snomed.info/sct 39579001}\">Anaphylaxis</span></td><td>Severe</td></tr></table></div>"
+  },
+  "clinicalStatus" : {
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+      "code" : "active"
+    }]
+  },
+  "code" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "293104008"
+    }]
+  },
+  "patient" : {
+    "reference" : "Patient/2016-UC-0032"
+  },
+  "reaction" : [{
+    "substance" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/sid/cvx",
+        "code" : "08",
+        "display" : "Hep B, adolescent or pediatric"
+      }]
+    },
+    "manifestation" : [{
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "39579001",
+        "display" : "Anaphylaxis"
+      }]
+    }],
+    "severity" : "severe"
+  }]
+}

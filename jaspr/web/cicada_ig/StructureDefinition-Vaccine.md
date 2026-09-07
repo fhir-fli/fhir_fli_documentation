@@ -12,11 +12,11 @@
 | Draft as of 2026-09-07 | *Computable Name*:Vaccine |
 
  
-Simple vaccine to easily obtain needed information for forecasting 
+A vaccine product as CDC's supporting data describes one: the CVX, the trade name, the ages between which it is a preferable vaccine, and its type. Note that beginAge and endAge are FHIR Age values, which must be positive (age-1), so CDC's "0 days" cannot be carried; a begin age of 0 days is expressed by omitting beginAge. 
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Specification
+* Examples for this Profile: [Medication/vaccine-hepb-adult](Medication-vaccine-hepb-adult.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-Vaccine.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-Vaccine.csv), [Excel
   "name" : "Vaccine",
   "title" : "Vaccine",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-Vaccine.csv), [Excel
       "value" : "http://fhirfli.dev"
     }]
   }],
-  "description" : "Simple vaccine to easily obtain needed information for forecasting",
+  "description" : "A vaccine product as CDC's supporting data describes one: the CVX, the trade name, the ages between which it is a preferable vaccine, and its type. Note that beginAge and endAge are FHIR Age values, which must be positive (age-1), so CDC's \"0 days\" cannot be carried; a begin age of 0 days is expressed by omitting beginAge.",
   "fhirVersion" : "4.0.1",
   "mapping" : [{
     "identity" : "script10.6",
@@ -132,8 +132,8 @@ Other representations of profile: [CSV](StructureDefinition-Vaccine.csv), [Excel
       "path" : "Medication.identifier",
       "slicing" : {
         "discriminator" : [{
-          "type" : "pattern",
-          "path" : "type"
+          "type" : "value",
+          "path" : "system"
         }],
         "rules" : "open"
       }
@@ -142,18 +142,15 @@ Other representations of profile: [CSV](StructureDefinition-Vaccine.csv), [Excel
       "id" : "Medication.identifier:tradeName",
       "path" : "Medication.identifier",
       "sliceName" : "tradeName",
+      "short" : "The vaccine's trade name",
       "min" : 0,
       "max" : "1"
     },
     {
-      "id" : "Medication.identifier:tradeName.type",
-      "path" : "Medication.identifier.type",
+      "id" : "Medication.identifier:tradeName.system",
+      "path" : "Medication.identifier.system",
       "min" : 1,
-      "patternCodeableConcept" : {
-        "coding" : [{
-          "code" : "official"
-        }]
-      }
+      "patternUri" : "http://fhirfli.dev/fhir/ig/cicada/identifier/trade-name"
     }]
   }
 }

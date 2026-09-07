@@ -19,7 +19,7 @@ The engine build and the CDSi supporting-data release that produced this resourc
 
 **Usages:**
 
-* Examples for this Extension: [ImmunizationRecommendation/cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md)
+* Examples for this Extension: [ImmunizationEvaluation/2016-UC-0032-1](ImmunizationEvaluation-2016-UC-0032-1.md), [ImmunizationEvaluation/2016-UC-0032-2](ImmunizationEvaluation-2016-UC-0032-2.md), [ImmunizationEvaluation/2016-UC-0032-3](ImmunizationEvaluation-2016-UC-0032-3.md) and [ImmunizationRecommendation/cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-engine-version-ext.json)
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-engine-version-ext.c
   "name" : "EngineVersion",
   "title" : "Engine and Supporting Data Version",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

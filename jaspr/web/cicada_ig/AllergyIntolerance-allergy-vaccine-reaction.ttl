@@ -1,0 +1,71 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/AllergyIntolerance/allergy-vaccine-reaction> a fhir:AllergyIntolerance ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "allergy-vaccine-reaction"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile" ;
+       fhir:index 0 ;
+       fhir:link <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile>
+     ]
+  ] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: AllergyIntolerance allergy-vaccine-reaction</b></p><a name=\"allergy-vaccine-reaction\"> </a><a name=\"hcallergy-vaccine-reaction\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ReactionProfile.html\">Allergy Intolerance Profile for Immunization Decision Support</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical active}\">Active</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 293104008}\">Vaccine adverse reaction</span></p><p><b>patient</b>: <a href=\"Patient-2016-UC-0032.html\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><h3>Reactions</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Substance</b></td><td><b>Manifestation</b></td><td><b>Severity</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://hl7.org/fhir/sid/cvx 08}\">Hep B, adolescent or pediatric</span></td><td><span title=\"Codes:{http://snomed.info/sct 39579001}\">Anaphylaxis</span></td><td>Severe</td></tr></table></div>"
+  ] ;
+  fhir:AllergyIntolerance.clinicalStatus [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical" ] ;
+       fhir:Coding.code [ fhir:value "active" ]
+     ]
+  ] ;
+  fhir:AllergyIntolerance.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a sct:293104008 ;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+       fhir:Coding.code [ fhir:value "293104008" ]
+     ]
+  ] ;
+  fhir:AllergyIntolerance.patient [
+     fhir:link <http://fhirfli.dev/fhir/ig/cicada/Patient/2016-UC-0032> ;
+     fhir:Reference.reference [ fhir:value "Patient/2016-UC-0032" ]
+  ] ;
+  fhir:AllergyIntolerance.reaction [
+     fhir:index 0 ;
+     fhir:AllergyIntolerance.reaction.substance [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         fhir:Coding.system [ fhir:value "http://hl7.org/fhir/sid/cvx" ] ;
+         fhir:Coding.code [ fhir:value "08" ] ;
+         fhir:Coding.display [ fhir:value "Hep B, adolescent or pediatric" ]
+       ]
+     ] ;
+     fhir:AllergyIntolerance.reaction.manifestation [
+       fhir:index 0 ;
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         a sct:39579001 ;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+         fhir:Coding.code [ fhir:value "39579001" ] ;
+         fhir:Coding.display [ fhir:value "Anaphylaxis" ]
+       ]
+     ] ;
+     fhir:AllergyIntolerance.reaction.severity [ fhir:value "severe" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/AllergyIntolerance/allergy-vaccine-reaction.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

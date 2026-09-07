@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImmunizationEvaluation xmlns="http://hl7.org/fhir">
+  <id value="2016-UC-0032-2"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/us/immds/StructureDefinition/immds-immunizationevaluation"/>
+  </meta>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ImmunizationEvaluation 2016-UC-0032-2</b></p><a name="2016-UC-0032-2"> </a><a name="hc2016-UC-0032-2"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="http://hl7.org/fhir/us/immds/STU1/StructureDefinition-immds-immunizationevaluation.html">ImmDS Immunization Evaluation</a></p></div><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Target Dose Status</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status satisfied}">Satisfied</span></p><blockquote><p><b>Evaluation Sub-step Detail</b></p><ul><li>validAgeReason: Age: Grace Period</li><li>preferredInterval: true</li><li>conflict: false</li><li>preferredVaccine: true</li></ul></blockquote><p><b>status</b>: Completed</p><p><b>patient</b>: <a href="Patient-2016-UC-0032.html">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>date</b>: 2015-04-30 00:00:00-0400</p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 14189004}">Measles</span></p><p><b>immunizationEvent</b>: <a href="Immunization-2016-UC-0032-dose1.html">Immunization: status = completed; vaccineCode = MMR; occurrence[x] = 2015-04-30</a></p><p><b>doseStatus</b>: <span title="Codes:{http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status valid}">Valid</span></p><p><b>series</b>: Measles 2-dose series</p><p><b>doseNumber</b>: 1</p><p><b>seriesDoses</b>: 2</p></div>
+  </text>
+  <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+    <extension url="engine">
+      <valueString value="cicada/0.0.1"/>
+    </extension>
+    <extension url="supportingData">
+      <valueString value="CDSi 4.65-508"/>
+    </extension>
+  </extension>
+  <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/target-dose-status-ext">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status"/>
+        <code value="satisfied"/>
+        <display value="Satisfied"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext">
+    <extension url="validAgeReason">
+      <valueString value="Age: Grace Period"/>
+    </extension>
+    <extension url="preferredInterval">
+      <valueBoolean value="true"/>
+    </extension>
+    <extension url="conflict">
+      <valueBoolean value="false"/>
+    </extension>
+    <extension url="preferredVaccine">
+      <valueBoolean value="true"/>
+    </extension>
+  </extension>
+  <status value="completed"/>
+  <patient>
+    <reference value="Patient/2016-UC-0032"/>
+  </patient>
+  <date value="2015-04-30T00:00:00.000-04:00"/>
+  <targetDisease>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="14189004"/>
+      <display value="Measles"/>
+    </coding>
+    <text value="Measles"/>
+  </targetDisease>
+  <immunizationEvent>
+    <reference value="Immunization/2016-UC-0032-dose1"/>
+  </immunizationEvent>
+  <doseStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"/>
+      <code value="valid"/>
+      <display value="Valid"/>
+    </coding>
+  </doseStatus>
+  <series value="Measles 2-dose series"/>
+  <doseNumberPositiveInt value="1"/>
+  <seriesDosesPositiveInt value="2"/>
+</ImmunizationEvaluation>

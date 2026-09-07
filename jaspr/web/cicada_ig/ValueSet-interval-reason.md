@@ -16,8 +16,7 @@ This value set includes codes for the reason an interval is considered to be inv
 
  **References** 
 
-* [Allowed Interval Reason](StructureDefinition-allowed-interval-reason.md)
-* [Preferred Interval Reason](StructureDefinition-preferred-interval-reason.md)
+This value set is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
 
 ### Logical Definition (CLD)
 
@@ -51,7 +50,8 @@ This value set includes codes for the reason an interval is considered to be inv
   "name" : "IntervalReasonVS",
   "title" : "Interval Reason",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "experimental" : false,
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

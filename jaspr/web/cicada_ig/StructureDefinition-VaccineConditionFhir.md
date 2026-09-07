@@ -16,7 +16,7 @@ Profile for conditions where the code must be from the Vaccine Condition Codes v
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Specification
+* Examples for this Profile: [Condition/2016-UC-0032-055](Condition-2016-UC-0032-055.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-VaccineConditionFhir.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-VaccineConditionFhir
   "name" : "VaccineConditionFhir",
   "title" : "Condition Profile with Vaccine Condition Codes",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

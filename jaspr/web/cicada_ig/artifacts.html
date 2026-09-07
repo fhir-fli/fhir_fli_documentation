@@ -178,7 +178,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          <a href="#7">Terminology: Concept Maps</a>
       </li>
       <li>
-         <a href="#8">Other</a>
+         <a href="#8">Example: Example Instances</a>
+      </li>
+      <li>
+         <a href="#9">Other</a>
       </li>
    </ul>
 </div>
@@ -251,7 +254,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="StructureDefinition/vax-dose">Dose of a Vaccine</a>
             </td>
             <td>
-<p>Detailed information about each vaccination dose.</p>
+<p>An administered dose as the engine reads it: the vaccine as CVX, the date, the patient, and optionally the dose volume, the manufacturer and a subpotency reason. The engine's evaluation of the dose is returned on ImmunizationEvaluation (target-dose-status-ext, evaluation-detail-ext), not written back onto the Immunization; until 2026-09-07 this profile declared thirteen evaluation extensions nothing ever emitted.</p>
 </td>
          </tr>
          <tr>
@@ -323,7 +326,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="StructureDefinition/Vaccine">Vaccine</a>
             </td>
             <td>
-<p>Simple vaccine to easily obtain needed information for forecasting</p>
+<p>A vaccine product as CDC's supporting data describes one: the CVX, the trade name, the ages between which it is a preferable vaccine, and its type. Note that beginAge and endAge are FHIR Age values, which must be positive (age-1), so CDC's "0 days" cannot be carried; a begin age of 0 days is expressed by omitting beginAge.</p>
 </td>
          </tr>
       </tbody>
@@ -336,56 +339,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <tbody>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-allowed-interval-reason.html"
-                  title="StructureDefinition/allowed-interval-reason">Allowed Interval Reason</a>
-            </td>
-            <td>
-<p>Captures the reason for the allowed interval between vaccine doses.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-allowed-interval-status.html"
-                  title="StructureDefinition/allowed-interval-status">Allowed Interval Status</a>
-            </td>
-            <td>
-<p>Captures the status of the allowed interval for vaccination.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-allowed-vaccine-reason.html"
-                  title="StructureDefinition/allowed-vaccine-reason">Allowed Vaccine Reason</a>
-            </td>
-            <td>
-<p>Captures the reason why a particular vaccine is allowed.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-allowed-vaccine-status.html"
-                  title="StructureDefinition/allowed-vaccine-status">Allowed Vaccine Status</a>
-            </td>
-            <td>
-<p>Indicates if the vaccine administered is allowed under certain conditions.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
                <a href="StructureDefinition-antigen-needing-dose-ext.html"
                   title="StructureDefinition/antigen-needing-dose-ext">Antigen Needing a Dose</a>
             </td>
             <td>
 <p>An antigen within this vaccine group that needs the forecast dose. A multi-antigen group forecasts as one recommendation, so without this a caller cannot tell whether all of MMR is due or only the measles component. Repeats, one per antigen.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-assessment-date.html"
-                  title="StructureDefinition/assessment-date">AssessmentDate</a>
-            </td>
-            <td>
-<p>The date on which the vaccination assessment was made.</p>
 </td>
          </tr>
          <tr>
@@ -444,51 +402,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inadvertent-administration-status.html"
-                  title="StructureDefinition/inadvertent-administration-status">Inadvertent Administration Status</a>
-            </td>
-            <td>
-<p>Indicates if the vaccine was administered inadvertently.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-preferred-interval-reason.html"
-                  title="StructureDefinition/preferred-interval-reason">Preferred Interval Reason</a>
-            </td>
-            <td>
-<p>Captures the reason for the preferred interval between vaccine doses.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-preferred-interval-status.html"
-                  title="StructureDefinition/preferred-interval-status">Preferred Interval Status</a>
-            </td>
-            <td>
-<p>Indicates if the vaccine was administered at the preferred interval.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-preferred-vaccine-reason.html"
-                  title="StructureDefinition/preferred-vaccine-reason">Preferred Vaccine Reason</a>
-            </td>
-            <td>
-<p>Captures the reason why a particular vaccine is preferred.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-preferred-vaccine-status.html"
-                  title="StructureDefinition/preferred-vaccine-status">Preferred Vaccine Status</a>
-            </td>
-            <td>
-<p>Indicates if the vaccine administered is the preferred vaccine.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
                <a href="StructureDefinition-series-group-ext.html"
                   title="StructureDefinition/series-group-ext">Series Group</a>
             </td>
@@ -516,15 +429,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-vaccination-conflict.html"
-                  title="StructureDefinition/vaccination-conflict">Vaccination Conflict</a>
-            </td>
-            <td>
-<p>Indicates any conflicts with other vaccinations.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
                <a href="StructureDefinition-vaccine-recommendation-category-ext.html"
                   title="StructureDefinition/vaccine-recommendation-category-ext">Vaccine Recommendation Category</a>
             </td>
@@ -539,24 +443,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>Type of the vaccine.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-valid-age-reason.html"
-                  title="StructureDefinition/valid-age-reason">Valid Age Reason</a>
-            </td>
-            <td>
-<p>Captures the reason why the vaccine was administered at a particular age.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-valid-age-status.html"
-                  title="StructureDefinition/valid-age-status">Valid Age Status</a>
-            </td>
-            <td>
-<p>Indicates if the vaccine was administered at the correct age.</p>
 </td>
          </tr>
       </tbody>
@@ -707,6 +593,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="ValueSet-VaccineCodesCvxMvx.html"
+                  title="ValueSet/VaccineCodesCvxMvx">Vaccine Codes (CVX and MVX)</a>
+            </td>
+            <td>
+<p>Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="ValueSet-vaccine-condition-codes-snomed.html"
                   title="ValueSet/vaccine-condition-codes-snomed">Vaccine Condition Codes</a>
             </td>
@@ -738,15 +633,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>All codes from the Vaccine Recommendation Category code system.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="ValueSet-VaccineCodesCvxMvx.html"
-                  title="ValueSet/VaccineCodesCvxMvx">VaccineCodesCvxMvx</a>
-            </td>
-            <td>
-
 </td>
          </tr>
          <tr>
@@ -920,6 +806,86 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       </tbody>
    </table>
    <a name="8"> </a>
+   <h3>Example: Example Instances </h3>
+    <p>These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="AllergyIntolerance-allergy-vaccine-reaction.html"
+                  title="AllergyIntolerance/allergy-vaccine-reaction">AllergyIntolerance: adverse reaction to a vaccine</a>
+            </td>
+            <td>
+<p>An allergy record the engine reads as a contraindication candidate: SNOMED 293104008, Vaccines adverse reaction, the root of the vaccine reaction concepts in the condition value set, with the substance as the CVX of the vaccine reacted to.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Medication-vaccine-hepb-adult.html"
+                  title="Medication/vaccine-hepb-adult">Medication: Hep B, adult</a>
+            </td>
+            <td>
+<p>A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="MedicationAdministration-medication-administration-hepb.html"
+                  title="MedicationAdministration/medication-administration-hepb">MedicationAdministration: a vaccine given as a medication</a>
+            </td>
+            <td>
+<p>A hepatitis B dose recorded as a MedicationAdministration, which the engine accepts as an administered dose.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="MedicationDispense-medication-dispense-hepb.html"
+                  title="MedicationDispense/medication-dispense-hepb">MedicationDispense: a vaccine dispensed as a medication</a>
+            </td>
+            <td>
+<p>A hepatitis B dose dispensed as a MedicationDispense.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="MedicationRequest-medication-request-hepb.html"
+                  title="MedicationRequest/medication-request-hepb">MedicationRequest: a vaccine ordered as a medication</a>
+            </td>
+            <td>
+<p>A hepatitis B dose ordered as a MedicationRequest.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="MedicationStatement-medication-statement-hepb.html"
+                  title="MedicationStatement/medication-statement-hepb">MedicationStatement: a vaccine recorded as a medication</a>
+            </td>
+            <td>
+<p>A hepatitis B dose recorded as a MedicationStatement, which the engine accepts as an administered dose.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Observation-observation-immunocompromised.html"
+                  title="Observation/observation-immunocompromised">Observation: patient immunocompromised</a>
+            </td>
+            <td>
+<p>A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Procedure-procedure-stem-cell-transplant.html"
+                  title="Procedure/procedure-stem-cell-transplant">Procedure: haemopoietic stem cell transplant</a>
+            </td>
+            <td>
+<p>A procedure the engine reads as an immunization-relevant history item: SNOMED 234336002, one of the roots of the immunization procedures value set.</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="9"> </a>
    <h3>Other </h3>
     <p>These are resources that are used within this implementation guide that do not fit into one of the other categories.</p>
 <table class="grid">
@@ -929,17 +895,71 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             <td style="column-width:30%">
                <a href="Patient-2016-UC-0032.html" title="Patient/2016-UC-0032">2016-UC-0032</a>
             </td>
+            <td>
+<p>The patient of CDC CDSi condition test case 2016-UC-0032, the case the forecast example is computed from.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Condition-2016-UC-0032-055.html"
+                  title="Condition/2016-UC-0032-055">2016-UC-0032-055</a>
+            </td>
+            <td>
+<p>The one condition in case 2016-UC-0032, CDSi observation 055 Health care personnel, as the engine reads it (VaccineConditionFhir).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ImmunizationEvaluation-2016-UC-0032-1.html"
+                  title="ImmunizationEvaluation/2016-UC-0032-1">2016-UC-0032-1</a>
+            </td>
+            <td>
+<p>The engine's evaluation of the case's MMR dose against measles, with the target-dose status and the sub-step detail extensions.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ImmunizationEvaluation-2016-UC-0032-2.html"
+                  title="ImmunizationEvaluation/2016-UC-0032-2">2016-UC-0032-2</a>
+            </td>
+            <td>
+<p>The engine's evaluation of the case's MMR dose against mumps.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ImmunizationEvaluation-2016-UC-0032-3.html"
+                  title="ImmunizationEvaluation/2016-UC-0032-3">2016-UC-0032-3</a>
+            </td>
+            <td>
+<p>The engine's evaluation of the case's MMR dose against rubella.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Immunization-2016-UC-0032-dose1.html"
+                  title="Immunization/2016-UC-0032-dose1">2016-UC-0032-dose1</a>
+            </td>
+            <td>
+<p>The one dose in case 2016-UC-0032, an MMR, as the engine reads it (vax-dose).</p>
+</td>
          </tr>
          <tr>
             <td style="column-width:30%">
                <a href="ImmunizationRecommendation-cicada-forecast-example.html"
                   title="ImmunizationRecommendation/cicada-forecast-example">cicada-forecast-example</a>
             </td>
+            <td>
+<p>The engine's forecast for 2016-UC-0032, all 17 recommendations, regenerated from the engine by cicada/tool/write_ig_example.dart.</p>
+</td>
          </tr>
          <tr>
             <td style="column-width:30%">
                <a href="Parameters-manifest.html" title="Parameters/manifest">manifest</a>
             </td>
+            <td>
+<p>Expansion parameters for the build: SNOMED CT is expanded and validated against the US edition, which carries the US-extension concepts CDSi cites.</p>
+</td>
          </tr>
       </tbody>
    </table>
@@ -961,7 +981,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 7, 2026 18:40-0400">2026-09-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 7, 2026 19:28-0400">2026-09-07</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

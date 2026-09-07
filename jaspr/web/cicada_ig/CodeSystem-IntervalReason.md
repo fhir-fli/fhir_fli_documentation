@@ -31,7 +31,8 @@ This value set includes codes for the reason an interval is considered to be inv
   "name" : "IntervalReasonCS",
   "title" : "Interval Reason",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "experimental" : false,
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -41,6 +42,7 @@ This value set includes codes for the reason an interval is considered to be inv
     }]
   }],
   "description" : "This value set includes codes for the reason an interval is considered to be invalid.",
+  "caseSensitive" : true,
   "content" : "complete",
   "count" : 3,
   "concept" : [{

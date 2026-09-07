@@ -16,7 +16,7 @@ Profile for medication dispenses with vaccine codes from CVX or MVX.
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Specification
+* Examples for this Profile: [MedicationDispense/medication-dispense-hepb](MedicationDispense-medication-dispense-hepb.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-MedicationDispenseProfile.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-MedicationDispensePr
   "name" : "MedicationDispenseProfile",
   "title" : "Medication Dispense Profile with Vaccine Codes",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

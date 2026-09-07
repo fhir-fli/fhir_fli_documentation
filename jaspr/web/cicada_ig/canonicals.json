@@ -86,13 +86,15 @@
   "id" : "Icd10ToCdsiObservation",
   "type" : "ConceptMap",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/ConceptMap/Icd10ToCdsiObservation",
-  "version" : "0.1.0"
+  "version" : "0.1.0",
+  "name" : "Icd10ToCdsiObservation"
 },
 {
   "id" : "SnomedToCdsiObservation",
   "type" : "ConceptMap",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/ConceptMap/SnomedToCdsiObservation",
-  "version" : "0.1.0"
+  "version" : "0.1.0",
+  "name" : "SnomedToCdsiObservation"
 },
 {
   "id" : "cicada.ig",
@@ -179,46 +181,11 @@
   "name" : "VaccineObservationFhir"
 },
 {
-  "id" : "allowed-interval-reason",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-reason",
-  "version" : "0.1.0",
-  "name" : "AllowedIntervalReason"
-},
-{
-  "id" : "allowed-interval-status",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-status",
-  "version" : "0.1.0",
-  "name" : "AllowedIntervalStatus"
-},
-{
-  "id" : "allowed-vaccine-reason",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-reason",
-  "version" : "0.1.0",
-  "name" : "AllowedVaccineReason"
-},
-{
-  "id" : "allowed-vaccine-status",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status",
-  "version" : "0.1.0",
-  "name" : "AllowedVaccineStatus"
-},
-{
   "id" : "antigen-needing-dose-ext",
   "type" : "StructureDefinition",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext",
   "version" : "0.1.0",
   "name" : "AntigenNeedingDose"
-},
-{
-  "id" : "assessment-date",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date",
-  "version" : "0.1.0",
-  "name" : "AssessmentDate"
 },
 {
   "id" : "begin-age",
@@ -263,41 +230,6 @@
   "name" : "EvaluationDetail"
 },
 {
-  "id" : "inadvertent-administration-status",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/inadvertent-administration-status",
-  "version" : "0.1.0",
-  "name" : "InadvertentAdministrationStatus"
-},
-{
-  "id" : "preferred-interval-reason",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-reason",
-  "version" : "0.1.0",
-  "name" : "PreferredIntervalReason"
-},
-{
-  "id" : "preferred-interval-status",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-status",
-  "version" : "0.1.0",
-  "name" : "PreferredIntervalStatus"
-},
-{
-  "id" : "preferred-vaccine-reason",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-reason",
-  "version" : "0.1.0",
-  "name" : "PreferredVaccineReason"
-},
-{
-  "id" : "preferred-vaccine-status",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status",
-  "version" : "0.1.0",
-  "name" : "PreferredVaccineStatus"
-},
-{
   "id" : "series-detail-ext",
   "type" : "StructureDefinition",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext",
@@ -326,13 +258,6 @@
   "name" : "TargetDoseStatus"
 },
 {
-  "id" : "vaccination-conflict",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict",
-  "version" : "0.1.0",
-  "name" : "VaccinationConflict"
-},
-{
   "id" : "vaccine-recommendation-category-ext",
   "type" : "StructureDefinition",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext",
@@ -345,20 +270,6 @@
   "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type",
   "version" : "0.1.0",
   "name" : "VaccineType"
-},
-{
-  "id" : "valid-age-reason",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-reason",
-  "version" : "0.1.0",
-  "name" : "ValidAgeReason"
-},
-{
-  "id" : "valid-age-status",
-  "type" : "StructureDefinition",
-  "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-status",
-  "version" : "0.1.0",
-  "name" : "ValidAgeStatus"
 },
 {
   "id" : "vax-dose",

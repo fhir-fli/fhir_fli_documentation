@@ -11,7 +11,7 @@
   <name value="CicadaIG"/>
   <title value="The Cicada Vaccine Forecasting Engine and Guide"/>
   <status value="draft"/>
-  <date value="2026-09-07T18:40:23-04:00"/>
+  <date value="2026-09-07T19:28:06-04:00"/>
   <publisher value="FHIR-FLI"/>
   <contact>
     <name value="FHIR-FLI"/>
@@ -494,6 +494,62 @@
         <reference value="Patient/2016-UC-0032"/>
       </reference>
       <name value="2016-UC-0032"/>
+      <description value="The patient of CDC CDSi condition test case 2016-UC-0032, the case the forecast example is computed from."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Condition"/>
+      </extension>
+      <reference>
+        <reference value="Condition/2016-UC-0032-055"/>
+      </reference>
+      <name value="2016-UC-0032-055"/>
+      <description value="The one condition in case 2016-UC-0032, CDSi observation 055 Health care personnel, as the engine reads it (VaccineConditionFhir)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ImmunizationEvaluation"/>
+      </extension>
+      <reference>
+        <reference value="ImmunizationEvaluation/2016-UC-0032-1"/>
+      </reference>
+      <name value="2016-UC-0032-1"/>
+      <description value="The engine's evaluation of the case's MMR dose against measles, with the target-dose status and the sub-step detail extensions."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ImmunizationEvaluation"/>
+      </extension>
+      <reference>
+        <reference value="ImmunizationEvaluation/2016-UC-0032-2"/>
+      </reference>
+      <name value="2016-UC-0032-2"/>
+      <description value="The engine's evaluation of the case's MMR dose against mumps."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ImmunizationEvaluation"/>
+      </extension>
+      <reference>
+        <reference value="ImmunizationEvaluation/2016-UC-0032-3"/>
+      </reference>
+      <name value="2016-UC-0032-3"/>
+      <description value="The engine's evaluation of the case's MMR dose against rubella."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Immunization"/>
+      </extension>
+      <reference>
+        <reference value="Immunization/2016-UC-0032-dose1"/>
+      </reference>
+      <name value="2016-UC-0032-dose1"/>
+      <description value="The one dose in case 2016-UC-0032, an MMR, as the engine reads it (vax-dose)."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -509,47 +565,14 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="AllergyIntolerance"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/allowed-interval-reason"/>
+        <reference value="AllergyIntolerance/allergy-vaccine-reaction"/>
       </reference>
-      <name value="Allowed Interval Reason"/>
-      <description value="Captures the reason for the allowed interval between vaccine doses."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/allowed-interval-status"/>
-      </reference>
-      <name value="Allowed Interval Status"/>
-      <description value="Captures the status of the allowed interval for vaccination."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/allowed-vaccine-reason"/>
-      </reference>
-      <name value="Allowed Vaccine Reason"/>
-      <description value="Captures the reason why a particular vaccine is allowed."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/allowed-vaccine-status"/>
-      </reference>
-      <name value="Allowed Vaccine Status"/>
-      <description value="Indicates if the vaccine administered is allowed under certain conditions."/>
-      <exampleBoolean value="false"/>
+      <name value="AllergyIntolerance: adverse reaction to a vaccine"/>
+      <description value="An allergy record the engine reads as a contraindication candidate: SNOMED 293104008, Vaccines adverse reaction, the root of the vaccine reaction concepts in the condition value set, with the substance as the CVX of the vaccine reacted to."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -571,17 +594,6 @@
       </reference>
       <name value="Antigen Supporting Data"/>
       <description value="A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/assessment-date"/>
-      </reference>
-      <name value="AssessmentDate"/>
-      <description value="The date on which the vaccination assessment was made."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -691,6 +703,7 @@
         <reference value="ImmunizationRecommendation/cicada-forecast-example"/>
       </reference>
       <name value="cicada-forecast-example"/>
+      <description value="The engine's forecast for 2016-UC-0032, all 17 recommendations, regenerated from the engine by cicada/tool/write_ig_example.dart."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -723,7 +736,7 @@
         <reference value="StructureDefinition/vax-dose"/>
       </reference>
       <name value="Dose of a Vaccine"/>
-      <description value="Detailed information about each vaccination dose."/>
+      <description value="An administered dose as the engine reads it: the vaccine as CVX, the date, the patient, and optionally the dose volume, the manufacturer and a subpotency reason. The engine's evaluation of the dose is returned on ImmunizationEvaluation (target-dose-status-ext, evaluation-detail-ext), not written back onto the Immunization; until 2026-09-07 this profile declared thirteen evaluation extensions nothing ever emitted."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -882,17 +895,6 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/inadvertent-administration-status"/>
-      </reference>
-      <name value="Inadvertent Administration Status"/>
-      <description value="Indicates if the vaccine was administered inadvertently."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="ValueSet"/>
       </extension>
       <reference>
@@ -932,6 +934,7 @@
         <reference value="Parameters/manifest"/>
       </reference>
       <name value="manifest"/>
+      <description value="Expansion parameters for the build: SNOMED CT is expanded and validated against the US edition, which carries the US-extension concepts CDSi cites."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -980,6 +983,50 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Medication"/>
+      </extension>
+      <reference>
+        <reference value="Medication/vaccine-hepb-adult"/>
+      </reference>
+      <name value="Medication: Hep B, adult"/>
+      <description value="A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1)."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/Vaccine"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationAdministration"/>
+      </extension>
+      <reference>
+        <reference value="MedicationAdministration/medication-administration-hepb"/>
+      </reference>
+      <name value="MedicationAdministration: a vaccine given as a medication"/>
+      <description value="A hepatitis B dose recorded as a MedicationAdministration, which the engine accepts as an administered dose."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationAdministrationProfile"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationDispense"/>
+      </extension>
+      <reference>
+        <reference value="MedicationDispense/medication-dispense-hepb"/>
+      </reference>
+      <name value="MedicationDispense: a vaccine dispensed as a medication"/>
+      <description value="A hepatitis B dose dispensed as a MedicationDispense."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationDispenseProfile"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationRequest"/>
+      </extension>
+      <reference>
+        <reference value="MedicationRequest/medication-request-hepb"/>
+      </reference>
+      <name value="MedicationRequest: a vaccine ordered as a medication"/>
+      <description value="A hepatitis B dose ordered as a MedicationRequest."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationRequestProfile"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="ValueSet"/>
       </extension>
       <reference>
@@ -988,6 +1035,17 @@
       <name value="Medications"/>
       <description value="Value set for medications and substances based on SNOMED CT, including both active ingredients and marketed products."/>
       <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationStatement"/>
+      </extension>
+      <reference>
+        <reference value="MedicationStatement/medication-statement-hepb"/>
+      </reference>
+      <name value="MedicationStatement: a vaccine recorded as a medication"/>
+      <description value="A hepatitis B dose recorded as a MedicationStatement, which the engine accepts as an administered dose."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationStatementProfile"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1002,47 +1060,25 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="Observation"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/preferred-interval-reason"/>
+        <reference value="Observation/observation-immunocompromised"/>
       </reference>
-      <name value="Preferred Interval Reason"/>
-      <description value="Captures the reason for the preferred interval between vaccine doses."/>
-      <exampleBoolean value="false"/>
+      <name value="Observation: patient immunocompromised"/>
+      <description value="A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="Procedure"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/preferred-interval-status"/>
+        <reference value="Procedure/procedure-stem-cell-transplant"/>
       </reference>
-      <name value="Preferred Interval Status"/>
-      <description value="Indicates if the vaccine was administered at the preferred interval."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/preferred-vaccine-reason"/>
-      </reference>
-      <name value="Preferred Vaccine Reason"/>
-      <description value="Captures the reason why a particular vaccine is preferred."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/preferred-vaccine-status"/>
-      </reference>
-      <name value="Preferred Vaccine Status"/>
-      <description value="Indicates if the vaccine administered is the preferred vaccine."/>
-      <exampleBoolean value="false"/>
+      <name value="Procedure: haemopoietic stem cell transplant"/>
+      <description value="A procedure the engine reads as an immunization-relevant history item: SNOMED 234336002, one of the roots of the immunization procedures value set."/>
+      <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ProcedureProfile"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1178,17 +1214,6 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/vaccination-conflict"/>
-      </reference>
-      <name value="Vaccination Conflict"/>
-      <description value="Indicates any conflicts with other vaccinations."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -1206,7 +1231,18 @@
         <reference value="StructureDefinition/Vaccine"/>
       </reference>
       <name value="Vaccine"/>
-      <description value="Simple vaccine to easily obtain needed information for forecasting"/>
+      <description value="A vaccine product as CDC's supporting data describes one: the CVX, the trade name, the ages between which it is a preferable vaccine, and its type. Note that beginAge and endAge are FHIR Age values, which must be positive (age-1), so CDC's &quot;0 days&quot; cannot be carried; a begin age of 0 days is expressed by omitting beginAge."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/VaccineCodesCvxMvx"/>
+      </reference>
+      <name value="Vaccine Codes (CVX and MVX)"/>
+      <description value="Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1302,27 +1338,6 @@
         <valueString value="ValueSet"/>
       </extension>
       <reference>
-        <reference value="ValueSet/VaccineCodesCvxMvx"/>
-      </reference>
-      <name value="VaccineCodesCvxMvx"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/valid-age-reason"/>
-      </reference>
-      <name value="Valid Age Reason"/>
-      <description value="Captures the reason why the vaccine was administered at a particular age."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="ValueSet"/>
-      </extension>
-      <reference>
         <reference value="ValueSet/valid-age-reason"/>
       </reference>
       <name value="Valid Age Reason"/>
@@ -1338,17 +1353,6 @@
       </reference>
       <name value="Valid Age Reason"/>
       <description value="Value set for reasons why a patient's age is considered valid/invalid for a vaccine."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/valid-age-status"/>
-      </reference>
-      <name value="Valid Age Status"/>
-      <description value="Indicates if the vaccine was administered at the correct age."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

@@ -16,7 +16,7 @@ A profile that extends the base FHIR Patient resource to include detailed vaccin
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Specification
+* Examples for this Profile: [Patient/2016-UC-0032](Patient-2016-UC-0032.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-vax-patient.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-vax-patient.csv), [E
   "name" : "VaxPatient",
   "title" : "Vaccination Patient",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -86,29 +86,6 @@ Other representations of profile: [CSV](StructureDefinition-vax-patient.csv), [E
     "element" : [{
       "id" : "Patient",
       "path" : "Patient"
-    },
-    {
-      "id" : "Patient.extension",
-      "path" : "Patient.extension",
-      "slicing" : {
-        "discriminator" : [{
-          "type" : "value",
-          "path" : "url"
-        }],
-        "ordered" : false,
-        "rules" : "open"
-      }
-    },
-    {
-      "id" : "Patient.extension:assessmentDate",
-      "path" : "Patient.extension",
-      "sliceName" : "assessmentDate",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date"]
-      }]
     },
     {
       "id" : "Patient.birthDate",

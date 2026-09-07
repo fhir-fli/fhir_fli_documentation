@@ -31,7 +31,8 @@ Value set for gender categories relevant to vaccination data.
   "name" : "VaccineGenderCS",
   "title" : "Vaccine Gender",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "experimental" : false,
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -41,6 +42,7 @@ Value set for gender categories relevant to vaccination data.
     }]
   }],
   "description" : "Value set for gender categories relevant to vaccination data.",
+  "caseSensitive" : true,
   "content" : "complete",
   "count" : 4,
   "concept" : [{

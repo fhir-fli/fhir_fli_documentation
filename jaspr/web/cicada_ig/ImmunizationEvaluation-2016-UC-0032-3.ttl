@@ -1,0 +1,105 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/ImmunizationEvaluation/2016-UC-0032-3> a fhir:ImmunizationEvaluation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "2016-UC-0032-3"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://hl7.org/fhir/us/immds/StructureDefinition/immds-immunizationevaluation" ;
+       fhir:index 0 ;
+       fhir:link <http://hl7.org/fhir/us/immds/StructureDefinition/immds-immunizationevaluation>
+     ]
+  ] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ImmunizationEvaluation 2016-UC-0032-3</b></p><a name=\"2016-UC-0032-3\"> </a><a name=\"hc2016-UC-0032-3\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/us/immds/STU1/StructureDefinition-immds-immunizationevaluation.html\">ImmDS Immunization Evaluation</a></p></div><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Target Dose Status</b>: <span title=\"Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status satisfied}\">Satisfied</span></p><blockquote><p><b>Evaluation Sub-step Detail</b></p><ul><li>validAgeReason: Age: Grace Period</li><li>preferredInterval: true</li><li>conflict: false</li><li>preferredVaccine: true</li></ul></blockquote><p><b>status</b>: Completed</p><p><b>patient</b>: <a href=\"Patient-2016-UC-0032.html\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>date</b>: 2015-04-30 00:00:00-0400</p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 36653000}\">Rubella</span></p><p><b>immunizationEvent</b>: <a href=\"Immunization-2016-UC-0032-dose1.html\">Immunization: status = completed; vaccineCode = MMR; occurrence[x] = 2015-04-30</a></p><p><b>doseStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status valid}\">Valid</span></p><p><b>series</b>: Rubella 2-dose series</p><p><b>doseNumber</b>: 1</p><p><b>seriesDoses</b>: 2</p></div>"
+  ] ;
+  fhir:DomainResource.extension [
+     fhir:index 0 ;
+     fhir:Element.extension [
+       fhir:index 0 ;
+       fhir:Extension.url [ fhir:value "engine" ] ;
+       fhir:Extension.valueString [ fhir:value "cicada/0.0.1" ]
+     ], [
+       fhir:index 1 ;
+       fhir:Extension.url [ fhir:value "supportingData" ] ;
+       fhir:Extension.valueString [ fhir:value "CDSi 4.65-508" ]
+     ] ;
+     fhir:Extension.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext" ]
+  ], [
+     fhir:index 1 ;
+     fhir:Extension.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/target-dose-status-ext" ] ;
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         fhir:Coding.system [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status" ] ;
+         fhir:Coding.code [ fhir:value "satisfied" ] ;
+         fhir:Coding.display [ fhir:value "Satisfied" ]
+       ]
+     ]
+  ], [
+     fhir:index 2 ;
+     fhir:Element.extension [
+       fhir:index 0 ;
+       fhir:Extension.url [ fhir:value "validAgeReason" ] ;
+       fhir:Extension.valueString [ fhir:value "Age: Grace Period" ]
+     ], [
+       fhir:index 1 ;
+       fhir:Extension.url [ fhir:value "preferredInterval" ] ;
+       fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 2 ;
+       fhir:Extension.url [ fhir:value "conflict" ] ;
+       fhir:Extension.valueBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 3 ;
+       fhir:Extension.url [ fhir:value "preferredVaccine" ] ;
+       fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
+     ] ;
+     fhir:Extension.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext" ]
+  ] ;
+  fhir:ImmunizationEvaluation.status [ fhir:value "completed"] ;
+  fhir:ImmunizationEvaluation.patient [
+     fhir:link <http://fhirfli.dev/fhir/ig/cicada/Patient/2016-UC-0032> ;
+     fhir:Reference.reference [ fhir:value "Patient/2016-UC-0032" ]
+  ] ;
+  fhir:ImmunizationEvaluation.date [ fhir:value "2015-04-30T00:00:00.000-04:00"^^xsd:dateTime] ;
+  fhir:ImmunizationEvaluation.targetDisease [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a sct:36653000 ;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+       fhir:Coding.code [ fhir:value "36653000" ] ;
+       fhir:Coding.display [ fhir:value "Rubella" ]
+     ] ;
+     fhir:CodeableConcept.text [ fhir:value "Rubella" ]
+  ] ;
+  fhir:ImmunizationEvaluation.immunizationEvent [
+     fhir:link <http://fhirfli.dev/fhir/ig/cicada/Immunization/2016-UC-0032-dose1> ;
+     fhir:Reference.reference [ fhir:value "Immunization/2016-UC-0032-dose1" ]
+  ] ;
+  fhir:ImmunizationEvaluation.doseStatus [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status" ] ;
+       fhir:Coding.code [ fhir:value "valid" ] ;
+       fhir:Coding.display [ fhir:value "Valid" ]
+     ]
+  ] ;
+  fhir:ImmunizationEvaluation.series [ fhir:value "Rubella 2-dose series"] ;
+  fhir:ImmunizationEvaluation.doseNumberPositiveInt [ fhir:value "1"^^xsd:positiveInteger] ;
+  fhir:ImmunizationEvaluation.seriesDosesPositiveInt [ fhir:value "2"^^xsd:positiveInteger] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/ImmunizationEvaluation/2016-UC-0032-3.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

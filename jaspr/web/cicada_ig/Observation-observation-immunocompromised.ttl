@@ -1,0 +1,45 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/Observation/observation-immunocompromised> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "observation-immunocompromised"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir" ;
+       fhir:index 0 ;
+       fhir:link <http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir>
+     ]
+  ] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation observation-immunocompromised</b></p><a name=\"observation-immunocompromised\"> </a><a name=\"hcobservation-immunocompromised\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-VaccineObservationFhir.html\">Observation Profile for Immunization Decision Support</a></p></div><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 370388006}\">Patient immunocompromised</span></p><p><b>subject</b>: <a href=\"Patient-2016-UC-0032.html\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>effective</b>: 2015-04-30</p></div>"
+  ] ;
+  fhir:Observation.status [ fhir:value "final"] ;
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a sct:370388006 ;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+       fhir:Coding.code [ fhir:value "370388006" ] ;
+       fhir:Coding.display [ fhir:value "Patient immunocompromised" ]
+     ]
+  ] ;
+  fhir:Observation.subject [
+     fhir:link <http://fhirfli.dev/fhir/ig/cicada/Patient/2016-UC-0032> ;
+     fhir:Reference.reference [ fhir:value "Patient/2016-UC-0032" ]
+  ] ;
+  fhir:Observation.effectiveDateTime [ fhir:value "2015-04-30"^^xsd:date] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/Observation/observation-immunocompromised.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

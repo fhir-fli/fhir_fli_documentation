@@ -20,62 +20,10 @@ htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
 "Immunization.contained","Immunization.contained","","inline resources
 anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
 ","Contained, inline Resources","These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.","This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels.","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
-"Immunization.extension","Immunization.extension","","","",0,*,"","","","Extension {[]} {[]}
-","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
-","",,"open","DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:assessmentDate","Immunization.extension","assessmentDate","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date]]} {[]}
-","Extension","The date on which the vaccination assessment was made.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:inadvertentAdministration","Immunization.extension","inadvertentAdministration","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/inadvertent-administration-status]]} {[]}
-","Inadvertent Administration Status","Indicates if the vaccine was administered inadvertently.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:validAgeStatus","Immunization.extension","validAgeStatus","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-status]]} {[]}
-","Valid Age Status","Indicates if the vaccine was administered at the correct age.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:validAgeReason","Immunization.extension","validAgeReason","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-reason]]} {[]}
-","Valid Age Reason","Captures the reason why the vaccine was administered at a particular age.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:preferredIntervalStatus","Immunization.extension","preferredIntervalStatus","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-status]]} {[]}
-","Preferred Interval Status","Indicates if the vaccine was administered at the preferred interval.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:preferredIntervalReason","Immunization.extension","preferredIntervalReason","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-reason]]} {[]}
-","Preferred Interval Reason","Captures the reason for the preferred interval between vaccine doses.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:allowedIntervalStatus","Immunization.extension","allowedIntervalStatus","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-status]]} {[]}
-","Allowed Interval Status","Captures the status of the allowed interval for vaccination.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:allowedIntervalReason","Immunization.extension","allowedIntervalReason","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-reason]]} {[]}
-","Allowed Interval Reason","Captures the reason for the allowed interval between vaccine doses.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:vaccinationConflict","Immunization.extension","vaccinationConflict","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict]]} {[]}
-","Vaccination Conflict","Indicates any conflicts with other vaccinations.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:preferredVaccineStatus","Immunization.extension","preferredVaccineStatus","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status]]} {[]}
-","Preferred Vaccine Status","Indicates if the vaccine administered is the preferred vaccine.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:preferredVaccineReason","Immunization.extension","preferredVaccineReason","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-reason]]} {[]}
-","Preferred Vaccine Reason","Captures the reason why a particular vaccine is preferred.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:allowedVaccineStatus","Immunization.extension","allowedVaccineStatus","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status]]} {[]}
-","Allowed Vaccine Status","Indicates if the vaccine administered is allowed under certain conditions.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Immunization.extension:allowedVaccineReason","Immunization.extension","allowedVaccineReason","","",0,1,"","","","Extension {[CanonicalType[http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-reason]]} {[]}
-","Allowed Vaccine Reason","Captures the reason why a particular vaccine is allowed.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Immunization.extension","Immunization.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Immunization.modifierExtension","Immunization.modifierExtension","","extensions
 user content","",0,*,"","Y","","Extension {[]} {[]}
 ","Extensions that cannot be ignored","May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.

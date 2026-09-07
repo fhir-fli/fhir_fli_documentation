@@ -16,7 +16,7 @@ Value set for reasons why a patient's age is considered valid/invalid for a vacc
 
  **References** 
 
-* [Valid Age Reason](StructureDefinition-valid-age-reason.md)
+This value set is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
 
 ### Logical Definition (CLD)
 
@@ -50,7 +50,8 @@ Value set for reasons why a patient's age is considered valid/invalid for a vacc
   "name" : "ValidAgeReasonVS",
   "title" : "Valid Age Reason",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "experimental" : false,
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

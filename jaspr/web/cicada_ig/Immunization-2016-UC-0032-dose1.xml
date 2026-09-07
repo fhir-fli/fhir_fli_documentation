@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Immunization xmlns="http://hl7.org/fhir">
+  <id value="2016-UC-0032-dose1"/>
+  <meta>
+    <profile value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vax-dose"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Immunization 2016-UC-0032-dose1</b></p><a name="2016-UC-0032-dose1"> </a><a name="hc2016-UC-0032-dose1"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-vax-dose.html">Dose of a Vaccine</a></p></div><p><b>status</b>: Completed</p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 03}, {http://hl7.org/fhir/sid/mvx MSD}">MMR</span></p><p><b>patient</b>: <a href="Patient-2016-UC-0032.html">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>occurrence</b>: 2015-04-30</p></div>
+  </text>
+  <status value="completed"/>
+  <vaccineCode>
+    <coding>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="03"/>
+      <display value="MMR"/>
+    </coding>
+    <coding>
+      <system value="http://hl7.org/fhir/sid/mvx"/>
+      <code value="MSD"/>
+      <display value="Merck and Co., Inc."/>
+    </coding>
+  </vaccineCode>
+  <patient>
+    <reference value="Patient/2016-UC-0032"/>
+    <type value="Patient"/>
+  </patient>
+  <occurrenceDateTime value="2015-04-30"/>
+</Immunization>

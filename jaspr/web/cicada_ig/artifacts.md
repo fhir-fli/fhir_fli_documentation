@@ -25,7 +25,7 @@ These define constraints on FHIR resources for systems conforming to this implem
 | [Allergy Intolerance Profile for Immunization Decision Support](StructureDefinition-ReactionProfile.md) | Profile for allergy intolerances relevant to immunization. The code (allergen/substance) may use SNOMED CT or ICD-10-CM. Reaction substances may use CVX, MVX, SNOMED CT, or RxNorm. |
 | [Cicada Immunization Recommendation](StructureDefinition-cicada-immunization-recommendation.md) | The forecast cicada returns. Constrains ImmunizationRecommendation to say which series group each recommendation belongs to, so that more than one recommendation for a single vaccine group can be told apart. |
 | [Condition Profile with Vaccine Condition Codes](StructureDefinition-VaccineConditionFhir.md) | Profile for conditions where the code must be from the Vaccine Condition Codes value set. Accepts SNOMED CT and ICD-10-CM coded conditions. |
-| [Dose of a Vaccine](StructureDefinition-vax-dose.md) | Detailed information about each vaccination dose. |
+| [Dose of a Vaccine](StructureDefinition-vax-dose.md) | An administered dose as the engine reads it: the vaccine as CVX, the date, the patient, and optionally the dose volume, the manufacturer and a subpotency reason. The engine's evaluation of the dose is returned on ImmunizationEvaluation (target-dose-status-ext, evaluation-detail-ext), not written back onto the Immunization; until 2026-09-07 this profile declared thirteen evaluation extensions nothing ever emitted. |
 | [Immunization Procedures Profile](StructureDefinition-ProcedureProfile.md) | Profile for medical procedures related to immunization based on SNOMED CT or CPT codes. |
 | [Medication Administration Profile with Vaccine Codes](StructureDefinition-MedicationAdministrationProfile.md) | Profile for medication administrations with vaccine codes from CVX or MVX. |
 | [Medication Dispense Profile with Vaccine Codes](StructureDefinition-MedicationDispenseProfile.md) | Profile for medication dispenses with vaccine codes from CVX or MVX. |
@@ -33,7 +33,7 @@ These define constraints on FHIR resources for systems conforming to this implem
 | [Medication Statement Profile with Vaccine Codes](StructureDefinition-MedicationStatementProfile.md) | Profile for medication statements with vaccine codes from CVX or MVX. |
 | [Observation Profile for Immunization Decision Support](StructureDefinition-VaccineObservationFhir.md) | Profile for Observation resources carrying lab evidence of immunity or other findings relevant to immunization decisions. Codes may be from SNOMED CT, ICD-10-CM, or LOINC. |
 | [Vaccination Patient](StructureDefinition-vax-patient.md) | A profile that extends the base FHIR Patient resource to include detailed vaccination-related information. |
-| [Vaccine](StructureDefinition-Vaccine.md) | Simple vaccine to easily obtain needed information for forecasting |
+| [Vaccine](StructureDefinition-Vaccine.md) | A vaccine product as CDC's supporting data describes one: the CVX, the trade name, the ages between which it is a preferable vaccine, and its type. Note that beginAge and endAge are FHIR Age values, which must be positive (age-1), so CDC's "0 days" cannot be carried; a begin age of 0 days is expressed by omitting beginAge. |
 
 ### Structures: Extension Definitions 
 
@@ -41,31 +41,18 @@ These define constraints on FHIR data types for systems conforming to this imple
 
 | | |
 | :--- | :--- |
-| [Allowed Interval Reason](StructureDefinition-allowed-interval-reason.md) | Captures the reason for the allowed interval between vaccine doses. |
-| [Allowed Interval Status](StructureDefinition-allowed-interval-status.md) | Captures the status of the allowed interval for vaccination. |
-| [Allowed Vaccine Reason](StructureDefinition-allowed-vaccine-reason.md) | Captures the reason why a particular vaccine is allowed. |
-| [Allowed Vaccine Status](StructureDefinition-allowed-vaccine-status.md) | Indicates if the vaccine administered is allowed under certain conditions. |
 | [Antigen Needing a Dose](StructureDefinition-antigen-needing-dose-ext.md) | An antigen within this vaccine group that needs the forecast dose. A multi-antigen group forecasts as one recommendation, so without this a caller cannot tell whether all of MMR is due or only the measles component. Repeats, one per antigen. |
-| [AssessmentDate](StructureDefinition-assessment-date.md) | The date on which the vaccination assessment was made. |
 | [Begin Age](StructureDefinition-begin-age.md) | The age at which the vaccine becomes applicable. |
 | [Contributing Series Detail](StructureDefinition-series-detail-ext.md) | One contributing series: its own status, its own four dates, and the component dates that produced them. A vaccine group forecast reports the aggregate over several series, so without this a group covered by more than one reports a single answer for all of them, and a due date arrives with no way to see whether age or interval produced it. Repeats, one per series. |
 | [Doses Remaining](StructureDefinition-doses-remaining-ext.md) | How many doses remain in the series after the one being forecast, or 'Recurring' where the series ends in a recurring dose. seriesDoses and doseNumber allow a reader to subtract, but no arithmetic says the series never ends. |
 | [End Age](StructureDefinition-end-age.md) | The age at which the vaccine is no longer applicable. |
 | [Engine and Supporting Data Version](StructureDefinition-engine-version-ext.md) | The engine build and the CDSi supporting-data release that produced this resource. A forecast is a function of both, so a stored response naming neither cannot be traced to what produced it. Parameters is not a DomainResource and carries no extension, so the stamp sits on each evaluation and on each recommendation. |
 | [Evaluation Sub-step Detail](StructureDefinition-evaluation-detail-ext.md) | The CDSi Chapter 6 sub-step outcomes behind a dose's evaluation: which of age, interval, conflict and vaccine choice passed, and for those that failed, which rule failed. doseStatusReason carries ten ImmDS codes; the engine knows more than that. |
-| [Inadvertent Administration Status](StructureDefinition-inadvertent-administration-status.md) | Indicates if the vaccine was administered inadvertently. |
-| [Preferred Interval Reason](StructureDefinition-preferred-interval-reason.md) | Captures the reason for the preferred interval between vaccine doses. |
-| [Preferred Interval Status](StructureDefinition-preferred-interval-status.md) | Indicates if the vaccine was administered at the preferred interval. |
-| [Preferred Vaccine Reason](StructureDefinition-preferred-vaccine-reason.md) | Captures the reason why a particular vaccine is preferred. |
-| [Preferred Vaccine Status](StructureDefinition-preferred-vaccine-status.md) | Indicates if the vaccine administered is the preferred vaccine. |
 | [Series Group](StructureDefinition-series-group-ext.md) | The series group this forecast is scoped to, per CDSi FORECASTVG-1. recommendation.series names the series; core FHIR has nowhere for the group. |
 | [Series Type](StructureDefinition-series-type-ext.md) | Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes. |
 | [Target Dose Status](StructureDefinition-target-dose-status-ext.md) | The CDSi target dose status this administered dose produced. |
-| [Vaccination Conflict](StructureDefinition-vaccination-conflict.md) | Indicates any conflicts with other vaccinations. |
 | [Vaccine Recommendation Category](StructureDefinition-vaccine-recommendation-category-ext.md) | CDC's vaccine recommendation category for one Best Patient Series in this forecast: Routine, High-Risk, or SCDM (shared clinical decision making), determined per CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65) once the forecast is known, for a series whose status is Not Complete. Carries the series name, the category, and CDC's material for it. One extension per contributing series that has a category. |
 | [Vaccine Type](StructureDefinition-vaccine-type.md) | Type of the vaccine. |
-| [Valid Age Reason](StructureDefinition-valid-age-reason.md) | Captures the reason why the vaccine was administered at a particular age. |
-| [Valid Age Status](StructureDefinition-valid-age-status.md) | Indicates if the vaccine was administered at the correct age. |
 
 ### Terminology: Value Sets 
 
@@ -89,11 +76,11 @@ These define sets of codes used by systems conforming to this implementation gui
 | [Reasons why certain doses are Preferred or Allowed doses](ValueSet-preferred-allowed-reason.md) | Reasons why certain doses are Preferred or Allowed doses |
 | [Series Type Value Set](ValueSet-series-type-vs.md) | Series types a forecast can be scoped to. In practice a forecast carries standard or risk: CDSi Table 8-14 excludes Evaluation Only series from best patient series. |
 | [Target Dose Status Value Set](ValueSet-target-dose-status-vs.md) | CDSi target dose statuses. |
+| [Vaccine Codes (CVX and MVX)](ValueSet-VaccineCodesCvxMvx.md) | Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with. |
 | [Vaccine Condition Codes](ValueSet-vaccine-condition-codes-snomed.md) | Value set for conditions based on SNOMED CT, that may impact immunization. |
 | [Vaccine Condition Codes (ICD-10-CM)](ValueSet-vaccine-condition-codes-icd10.md) | Value set for conditions based on ICD-10-CM that may impact immunization decisions, mapped to CDSi observation codes. |
 | [Vaccine Gender](ValueSet-vaccine-gender.md) | Value set for gender categories relevant to vaccination data. |
 | [Vaccine Recommendation Category Value Set](ValueSet-vaccine-recommendation-category-vs.md) | All codes from the Vaccine Recommendation Category code system. |
-| [VaccineCodesCvxMvx](ValueSet-VaccineCodesCvxMvx.md) |  |
 | [Valid Age Reason](ValueSet-valid-age-reason.md) | Value set for reasons why a patient's age is considered valid/invalid for a vaccine. |
 
 ### Terminology: Code Systems 
@@ -133,13 +120,33 @@ These define transformations to convert between codes by systems conforming with
 | [ICD-10-CM to CDSi Observation Code Map](ConceptMap-Icd10ToCdsiObservation.md) | Maps ICD-10-CM codes to CDSi observation codes used in immunization decision support. Generated from the cicada crosswalk. |
 | [SNOMED CT to CDSi Observation Code Map](ConceptMap-SnomedToCdsiObservation.md) | Maps SNOMED CT codes to CDSi observation codes used in immunization decision support. Generated from CDC's supporting data. |
 
+### Example: Example Instances 
+
+These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.
+
+| | |
+| :--- | :--- |
+| [AllergyIntolerance: adverse reaction to a vaccine](AllergyIntolerance-allergy-vaccine-reaction.md) | An allergy record the engine reads as a contraindication candidate: SNOMED 293104008, Vaccines adverse reaction, the root of the vaccine reaction concepts in the condition value set, with the substance as the CVX of the vaccine reacted to. |
+| [Medication: Hep B, adult](Medication-vaccine-hepb-adult.md) | A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1). |
+| [MedicationAdministration: a vaccine given as a medication](MedicationAdministration-medication-administration-hepb.md) | A hepatitis B dose recorded as a MedicationAdministration, which the engine accepts as an administered dose. |
+| [MedicationDispense: a vaccine dispensed as a medication](MedicationDispense-medication-dispense-hepb.md) | A hepatitis B dose dispensed as a MedicationDispense. |
+| [MedicationRequest: a vaccine ordered as a medication](MedicationRequest-medication-request-hepb.md) | A hepatitis B dose ordered as a MedicationRequest. |
+| [MedicationStatement: a vaccine recorded as a medication](MedicationStatement-medication-statement-hepb.md) | A hepatitis B dose recorded as a MedicationStatement, which the engine accepts as an administered dose. |
+| [Observation: patient immunocompromised](Observation-observation-immunocompromised.md) | A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006. |
+| [Procedure: haemopoietic stem cell transplant](Procedure-procedure-stem-cell-transplant.md) | A procedure the engine reads as an immunization-relevant history item: SNOMED 234336002, one of the roots of the immunization procedures value set. |
+
 ### Other 
 
 These are resources that are used within this implementation guide that do not fit into one of the other categories.
 
-| |
-| :--- |
-| [2016-UC-0032](Patient-2016-UC-0032.md) |
-| [cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md) |
-| [manifest](Parameters-manifest.md) |
+| | |
+| :--- | :--- |
+| [2016-UC-0032](Patient-2016-UC-0032.md) | The patient of CDC CDSi condition test case 2016-UC-0032, the case the forecast example is computed from. |
+| [2016-UC-0032-055](Condition-2016-UC-0032-055.md) | The one condition in case 2016-UC-0032, CDSi observation 055 Health care personnel, as the engine reads it (VaccineConditionFhir). |
+| [2016-UC-0032-1](ImmunizationEvaluation-2016-UC-0032-1.md) | The engine's evaluation of the case's MMR dose against measles, with the target-dose status and the sub-step detail extensions. |
+| [2016-UC-0032-2](ImmunizationEvaluation-2016-UC-0032-2.md) | The engine's evaluation of the case's MMR dose against mumps. |
+| [2016-UC-0032-3](ImmunizationEvaluation-2016-UC-0032-3.md) | The engine's evaluation of the case's MMR dose against rubella. |
+| [2016-UC-0032-dose1](Immunization-2016-UC-0032-dose1.md) | The one dose in case 2016-UC-0032, an MMR, as the engine reads it (vax-dose). |
+| [cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md) | The engine's forecast for 2016-UC-0032, all 17 recommendations, regenerated from the engine by cicada/tool/write_ig_example.dart. |
+| [manifest](Parameters-manifest.md) | Expansion parameters for the build: SNOMED CT is expanded and validated against the US edition, which carries the US-extension concepts CDSi cites. |
 

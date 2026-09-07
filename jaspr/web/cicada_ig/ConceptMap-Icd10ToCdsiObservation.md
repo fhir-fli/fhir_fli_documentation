@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ConceptMap/Icd10ToCdsiObservation | *Version*:0.1.0 |
-| Active as of 2026-09-07 | *Computable Name*: |
+| Active as of 2026-09-07 | *Computable Name*:Icd10ToCdsiObservation |
 
  
 Maps ICD-10-CM codes to CDSi observation codes used in immunization decision support. Generated from the cicada crosswalk. 
@@ -24,10 +24,11 @@ Maps ICD-10-CM codes to CDSi observation codes used in immunization decision sup
   "id" : "Icd10ToCdsiObservation",
   "url" : "http://fhirfli.dev/fhir/ig/cicada/ConceptMap/Icd10ToCdsiObservation",
   "version" : "0.1.0",
+  "name" : "Icd10ToCdsiObservation",
   "title" : "ICD-10-CM to CDSi Observation Code Map",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
