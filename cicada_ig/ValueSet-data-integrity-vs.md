@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/data-integrity-vs | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:DataIntegrityVS |
+| Draft as of 2026-09-07 | *Computable Name*:DataIntegrityVS |
 
  
 Reasons a dose was reported rather than evaluated. 
@@ -50,7 +50,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "name" : "DataIntegrityVS",
   "title" : "Cicada Data Integrity Value Set",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

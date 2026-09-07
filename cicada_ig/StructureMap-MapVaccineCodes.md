@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureMap/MapVaccineCodes | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:MapVaccineCodes |
+| Draft as of 2026-09-07 | *Computable Name*:MapVaccineCodes |
 
  
 Define the usage of FHIR resource types with specific aliases 
@@ -26,7 +26,7 @@ Define the usage of FHIR resource types with specific aliases
   "version" : "0.1.0",
   "name" : "MapVaccineCodes",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

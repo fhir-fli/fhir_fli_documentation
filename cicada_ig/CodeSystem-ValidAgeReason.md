@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:ValidAgeReasonCS |
+| Draft as of 2026-09-07 | *Computable Name*:ValidAgeReasonCS |
 
  
 Value set for reasons why a patient's age is considered valid/invalid for a vaccine. 
@@ -31,7 +31,7 @@ Value set for reasons why a patient's age is considered valid/invalid for a vacc
   "name" : "ValidAgeReasonCS",
   "title" : "Valid Age Reason",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

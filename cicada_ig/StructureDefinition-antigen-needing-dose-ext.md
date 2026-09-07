@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:AntigenNeedingDose |
+| Draft as of 2026-09-07 | *Computable Name*:AntigenNeedingDose |
 
 An antigen within this vaccine group that needs the forecast dose. A multi-antigen group forecasts as one recommendation, so without this a caller cannot tell whether all of MMR is due or only the measles component. Repeats, one per antigen.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-antigen-needing-dose
   "name" : "AntigenNeedingDose",
   "title" : "Antigen Needing a Dose",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

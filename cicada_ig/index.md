@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ImplementationGuide/cicada.ig | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:CicadaIG |
+| Draft as of 2026-09-07 | *Computable Name*:CicadaIG |
 
 # Cicada IG
 
@@ -18,7 +18,7 @@ All I've done is take all of their hard work, guidance and expertise and make it
 
 The CDSi Logic Specification can be found on the [CDC CDSi page](https://www.cdc.gov/iis/cdsi/). The current supporting data version implemented is **4.61-508**.
 
-First, a warning: This is not completely FHIR compliant. As part of this was to help myself get more familiar with [FHIR Shorthand (commonly known as FSH)](https://build.fhir.org/ig/HL7/fhir-shorthand/), there are some "Resources" I've defined (e.g. [Antigen Supporting Data](StructureDefinition-antigen-supporting-data.md) and [Schedule Supporting Data](StructureDefinition-schedule-supporting-data.md)), that are certainly NOT FHIR. However, they are an accurate representation (at least in JSON) for the data used in the CDC's "CLINICAL DECISION SUPPORT FOR IMMUNIZATION (CDSI): LOGIC SPECIFICATION FOR ACIP RECOMMENDATIONS".
+First, a warning: This is not completely FHIR compliant. As part of this was to help myself get more familiar with [FHIR Shorthand (commonly known as FSH)](https://build.fhir.org/ig/HL7/fhir-shorthand/), there are some "Resources" I've defined (e.g. [Antigen Supporting Data](StructureDefinition-AntigenSupportingData.md) and [Schedule Supporting Data](StructureDefinition-ScheduleSupportingData.md)), that are certainly NOT FHIR. However, they are an accurate representation (at least in JSON) for the data used in the CDC's "CLINICAL DECISION SUPPORT FOR IMMUNIZATION (CDSI): LOGIC SPECIFICATION FOR ACIP RECOMMENDATIONS".
 
 ### Preparation
 
@@ -62,7 +62,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
   "name" : "CicadaIG",
   "title" : "The Cicada Vaccine Forecasting Engine and Guide",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -824,10 +824,10 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-antigen-supporting-data.html"
+        "valueUri" : "StructureDefinition-AntigenSupportingData.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/antigen-supporting-data"
+        "reference" : "StructureDefinition/AntigenSupportingData"
       },
       "name" : "Antigen Supporting Data",
       "description" : "A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series.",
@@ -1574,10 +1574,10 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-schedule-supporting-data.html"
+        "valueUri" : "StructureDefinition-ScheduleSupportingData.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/schedule-supporting-data"
+        "reference" : "StructureDefinition/ScheduleSupportingData"
       },
       "name" : "Schedule Supporting Data",
       "description" : "This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes.",

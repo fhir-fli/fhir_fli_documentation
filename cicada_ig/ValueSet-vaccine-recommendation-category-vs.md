@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-recommendation-category-vs | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:VaccineRecommendationCategoryVS |
+| Draft as of 2026-09-07 | *Computable Name*:VaccineRecommendationCategoryVS |
 
  
 All codes from the Vaccine Recommendation Category code system. 
@@ -50,7 +50,7 @@ All codes from the Vaccine Recommendation Category code system.
   "name" : "VaccineRecommendationCategoryVS",
   "title" : "Vaccine Recommendation Category Value Set",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

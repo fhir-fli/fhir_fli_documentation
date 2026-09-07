@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-status | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:ValidAgeStatus |
+| Draft as of 2026-09-07 | *Computable Name*:ValidAgeStatus |
 
 Indicates if the vaccine was administered at the correct age.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-valid-age-status.csv
   "name" : "ValidAgeStatus",
   "title" : "Valid Age Status",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

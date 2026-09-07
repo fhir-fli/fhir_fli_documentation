@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/forecast-status | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:ForecastStatusVS |
+| Draft as of 2026-09-07 | *Computable Name*:ForecastStatusVS |
 
  
 Combined value set for immunization forecast status, referencing published standard CodeSystems. Includes ImmDS IG ForecastStatus (CDSi-compatible), HL7 THO immunization-recommendation-status, and LOINC answer list LL940-8. 
@@ -50,7 +50,7 @@ Combined value set for immunization forecast status, referencing published stand
   "name" : "ForecastStatusVS",
   "title" : "Forecast Status Value Set",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

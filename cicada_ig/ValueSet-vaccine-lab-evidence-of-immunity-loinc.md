@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-lab-evidence-of-immunity-loinc | *Version*:0.1.0 |
-| Active as of 2026-09-06 | *Computable Name*:VaccineLabEvidenceOfImmunityLoinc |
+| Active as of 2026-09-07 | *Computable Name*:VaccineLabEvidenceOfImmunityLoinc |
 
  
 LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. Serum IgG in every case, plus total antibody for hepatitis A, which is what evidence of immunity means for these antigens; IgM, cerebrospinal fluid and avidity codes are deliberately excluded. 
@@ -50,7 +50,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "name" : "VaccineLabEvidenceOfImmunityLoinc",
   "title" : "Lab Evidence of Immunity (LOINC)",
   "status" : "active",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

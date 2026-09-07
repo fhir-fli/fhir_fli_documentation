@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:TargetDoseStatusCS |
+| Draft as of 2026-09-07 | *Computable Name*:TargetDoseStatusCS |
 
  
 CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable. 
@@ -31,7 +31,7 @@ CDSi Table 3-2. The status of the target dose an administered dose was evaluated
   "name" : "TargetDoseStatusCS",
   "title" : "Target Dose Status Code System",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

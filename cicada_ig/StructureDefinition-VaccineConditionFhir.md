@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineConditionFhir | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:VaccineConditionFhir |
+| Draft as of 2026-09-07 | *Computable Name*:VaccineConditionFhir |
 
  
 Profile for conditions where the code must be from the Vaccine Condition Codes value set. Accepts SNOMED CT and ICD-10-CM coded conditions. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-VaccineConditionFhir
   "name" : "VaccineConditionFhir",
   "title" : "Condition Profile with Vaccine Condition Codes",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

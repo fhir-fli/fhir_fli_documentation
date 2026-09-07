@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:EvaluationDetail |
+| Draft as of 2026-09-07 | *Computable Name*:EvaluationDetail |
 
 The CDSi Chapter 6 sub-step outcomes behind a dose's evaluation: which of age, interval, conflict and vaccine choice passed, and for those that failed, which rule failed. doseStatusReason carries ten ImmDS codes; the engine knows more than that.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-evaluation-detail-ex
   "name" : "EvaluationDetail",
   "title" : "Evaluation Sub-step Detail",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

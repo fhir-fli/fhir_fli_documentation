@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:CicadaImmunizationRecommendation |
+| Draft as of 2026-09-07 | *Computable Name*:CicadaImmunizationRecommendation |
 
  
 The forecast cicada returns. Constrains ImmunizationRecommendation to say which series group each recommendation belongs to, so that more than one recommendation for a single vaccine group can be told apart. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-cicada-immunization-
   "name" : "CicadaImmunizationRecommendation",
   "title" : "Cicada Immunization Recommendation",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

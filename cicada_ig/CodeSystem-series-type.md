@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:SeriesTypeCS |
+| Draft as of 2026-09-07 | *Computable Name*:SeriesTypeCS |
 
  
 CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data. 
@@ -31,7 +31,7 @@ CDSi series type: whether a patient series is the routine schedule, one indicate
   "name" : "SeriesTypeCS",
   "title" : "Series Type Code System",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

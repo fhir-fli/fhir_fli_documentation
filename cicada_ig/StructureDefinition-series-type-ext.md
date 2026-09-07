@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:SeriesType |
+| Draft as of 2026-09-07 | *Computable Name*:SeriesType |
 
 Whether this recommendation came from the standard series group or a risk series group. Present so a client receiving two recommendations for one vaccine group can tell which pathway each describes.
 
@@ -49,7 +49,7 @@ Other representations of profile: [CSV](StructureDefinition-series-type-ext.csv)
   "name" : "SeriesType",
   "title" : "Series Type",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationRequestProfile | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:MedicationRequestProfile |
+| Draft as of 2026-09-07 | *Computable Name*:MedicationRequestProfile |
 
  
 Profile for medication requests with vaccine codes from CVX or MVX. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-MedicationRequestPro
   "name" : "MedicationRequestProfile",
   "title" : "Medication Request Profile with Vaccine Codes",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:SeriesDetail |
+| Draft as of 2026-09-07 | *Computable Name*:SeriesDetail |
 
 One contributing series: its own status, its own four dates, and the component dates that produced them. A vaccine group forecast reports the aggregate over several series, so without this a group covered by more than one reports a single answer for all of them, and a due date arrives with no way to see whether age or interval produced it. Repeats, one per series.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-series-detail-ext.cs
   "name" : "SeriesDetail",
   "title" : "Contributing Series Detail",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

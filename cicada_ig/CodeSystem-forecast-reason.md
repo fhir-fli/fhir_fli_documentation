@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:CicadaForecastReasonCS |
+| Draft as of 2026-09-07 | *Computable Name*:CicadaForecastReasonCS |
 
  
 Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped. 
@@ -31,7 +31,7 @@ Why the engine forecast what it did. The ImmDS ForecastReason code system covers
   "name" : "CicadaForecastReasonCS",
   "title" : "Cicada Forecast Reason Code System",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

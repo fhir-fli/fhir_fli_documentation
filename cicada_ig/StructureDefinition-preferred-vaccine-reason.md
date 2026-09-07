@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-reason | *Version*:0.1.0 |
-| Draft as of 2026-09-06 | *Computable Name*:PreferredVaccineReason |
+| Draft as of 2026-09-07 | *Computable Name*:PreferredVaccineReason |
 
 Captures the reason why a particular vaccine is preferred.
 
@@ -48,7 +48,7 @@ Other representations of profile: [CSV](StructureDefinition-preferred-vaccine-re
   "name" : "PreferredVaccineReason",
   "title" : "Preferred Vaccine Reason",
   "status" : "draft",
-  "date" : "2026-09-06T23:13:14-04:00",
+  "date" : "2026-09-07T18:40:23-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
