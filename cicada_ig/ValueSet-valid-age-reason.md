@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/valid-age-reason | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:ValidAgeReasonVS |
+| Draft as of 2026-09-06 | *Computable Name*:ValidAgeReasonVS |
 
  
 Value set for reasons why a patient's age is considered valid/invalid for a vaccine. 
@@ -50,40 +50,32 @@ Value set for reasons why a patient's age is considered valid/invalid for a vacc
   "name" : "ValidAgeReasonVS",
   "title" : "Valid Age Reason",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Value set for reasons why a patient's age is considered valid/invalid for a vaccine.",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason",
+      "concept" : [{
+        "code" : "gracePeriod",
+        "display" : "Age: Grace Period"
+      },
       {
-        "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason",
-        "concept" : [
-          {
-            "code" : "gracePeriod",
-            "display" : "Age: Grace Period"
-          },
-          {
-            "code" : "tooYoung",
-            "display" : "Age: Too Young"
-          },
-          {
-            "code" : "tooOld",
-            "display" : "Age: Too Old"
-          }
-        ]
-      }
-    ]
+        "code" : "tooYoung",
+        "display" : "Age: Too Young"
+      },
+      {
+        "code" : "tooOld",
+        "display" : "Age: Too Old"
+      }]
+    }]
   }
 }
 

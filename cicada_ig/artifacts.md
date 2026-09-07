@@ -7,6 +7,15 @@
 
 This page provides a list of the FHIR artifacts defined as part of this implementation guide.
 
+### Structures: Logical Models 
+
+These define data models that represent the domain covered by this implementation guide in more business-friendly terms than the underlying FHIR resources.
+
+| | |
+| :--- | :--- |
+| [Antigen Supporting Data](StructureDefinition-antigen-supporting-data.md) | A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series. |
+| [Schedule Supporting Data](StructureDefinition-schedule-supporting-data.md) | This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes. |
+
 ### Structures: Resource Profiles 
 
 These define constraints on FHIR resources for systems conforming to this implementation guide.
@@ -63,6 +72,7 @@ These define sets of codes used by systems conforming to this implementation gui
 
 | | |
 | :--- | :--- |
+| [CDSI Observation Codes Value Set](ValueSet-cdsi-observation-codes-vs.md) | Every CDSi observation code, as published in the supporting data. |
 | [Cicada Data Integrity Value Set](ValueSet-data-integrity-vs.md) | Reasons a dose was reported rather than evaluated. |
 | [Cicada Forecast Reason Value Set](ValueSet-forecast-reason-vs.md) | Forecast reasons the engine can report. |
 | [Dose Status Reason Value Set](ValueSet-dose-status-reason.md) | Value set for dose evaluation status reasons, referencing the published ImmDS IG StatusReason CodeSystem. |
@@ -72,7 +82,7 @@ These define sets of codes used by systems conforming to this implementation gui
 | [Immunization-Relevant Medications (RxNorm)](ValueSet-vaccine-medication-codes-rxnorm.md) | RxNorm codes for medications relevant to immunization decision support, including antivirals and aspirin. |
 | [Immunization-Relevant Procedures (CPT)](ValueSet-immunization-procedures-cpt.md) | CPT codes for procedures relevant to immunization decision support, including splenectomy and cochlear implant. |
 | [Interval Reason](ValueSet-interval-reason.md) | This value set includes codes for the reason an interval is considered to be invalid. |
-| [Lab Evidence of Immunity (LOINC)](ValueSet-vaccine-lab-evidence-of-immunity-loinc.md) | LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. |
+| [Lab Evidence of Immunity (LOINC)](ValueSet-vaccine-lab-evidence-of-immunity-loinc.md) | LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. Serum IgG in every case, plus total antibody for hepatitis A, which is what evidence of immunity means for these antigens; IgM, cerebrospinal fluid and avidity codes are deliberately excluded. |
 | [Medications](ValueSet-vaccine-medication-codes-snomed.md) | Value set for medications and substances based on SNOMED CT, including both active ingredients and marketed products. |
 | [Procedures](ValueSet-procedures.md) | Comprehensive Value Set for medical procedures based on SNOMED CT codes. |
 | [Reasons why certain doses are Preferred or Allowed doses](ValueSet-preferred-allowed-reason.md) | Reasons why certain doses are Preferred or Allowed doses |
@@ -95,6 +105,7 @@ These define new code systems used by systems conforming to this implementation 
 | [Cicada Evaluation Status](CodeSystem-EvalStatus.md) | Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here. |
 | [Cicada Forecast Reason Code System](CodeSystem-forecast-reason.md) | Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped. |
 | [Evaluation Reason](CodeSystem-EvalReason.md) | The reason for the evaluation. |
+| [ICD-10-CM (external, content not present)](CodeSystem-icd-10-cm.md) | Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server. |
 | [Interval Reason](CodeSystem-IntervalReason.md) | This value set includes codes for the reason an interval is considered to be invalid. |
 | [Reasons why certain doses are Preferred or Allowed doses](CodeSystem-PreferredAllowedReason.md) | Reasons why certain doses are Preferred or Allowed doses |
 | [Series Type Code System](CodeSystem-series-type.md) | CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data. |
@@ -116,17 +127,16 @@ These define transformations to convert between codes by systems conforming with
 
 | | |
 | :--- | :--- |
-| [ICD-10-CM to CDSi Observation Code Map](ConceptMap-Icd10ToCdsiObservation.md) | Maps ICD-10-CM diagnosis codes to CDSi observation codes used in immunization decision support. |
-| [SNOMED CT to CDSi Observation Code Map](ConceptMap-SnomedToCdsiObservation.md) | Maps SNOMED CT codes to CDSi observation codes used in immunization decision support. |
+| [ICD-10-CM to CDSi Observation Code Map](ConceptMap-Icd10ToCdsiObservation.md) | Maps ICD-10-CM codes to CDSi observation codes used in immunization decision support. Generated from the cicada crosswalk. |
+| [SNOMED CT to CDSi Observation Code Map](ConceptMap-SnomedToCdsiObservation.md) | Maps SNOMED CT codes to CDSi observation codes used in immunization decision support. Generated from CDC's supporting data. |
 
 ### Other 
 
 These are resources that are used within this implementation guide that do not fit into one of the other categories.
 
-| | |
-| :--- | :--- |
-| [2016-UC-0032](Patient-2016-UC-0032.md) |  |
-| [Antigen Supporting Data](StructureDefinition-antigen-supporting-data.md) | A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series. |
-| [Schedule Supporting Data](StructureDefinition-schedule-supporting-data.md) | This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes. |
-| [cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md) |  |
+| |
+| :--- |
+| [2016-UC-0032](Patient-2016-UC-0032.md) |
+| [cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md) |
+| [manifest](Parameters-manifest.md) |
 

@@ -1,6 +1,5 @@
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -8,48 +7,56 @@
 
 <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender> a fhir:CodeSystem ;
   fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "VaccineGender"] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem VaccineGender</b></p><a name=\"VaccineGender\"> </a><a name=\"hcVaccineGender\"> </a><p>This  code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">female<a name=\"VaccineGender-female\"> </a></td><td>Female</td><td>Female</td></tr><tr><td style=\"white-space:nowrap\">transgender<a name=\"VaccineGender-transgender\"> </a></td><td>Transgender</td><td>Transgender</td></tr><tr><td style=\"white-space:nowrap\">unknown<a name=\"VaccineGender-unknown\"> </a></td><td>Unknown</td><td>Unknown</td></tr><tr><td style=\"white-space:nowrap\">male<a name=\"VaccineGender-male\"> </a></td><td>Male</td><td>Male</td></tr></table></div>"^^rdf:XMLLiteral ]
-  ] ; # 
-  fhir:url [
-     fhir:v "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender"^^xsd:anyURI ;
-     fhir:l <http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender>
-  ] ; # 
-  fhir:version [ fhir:v "0.1.0"] ; # 
-  fhir:name [ fhir:v "VaccineGenderCS"] ; # 
-  fhir:title [ fhir:v "Vaccine Gender"] ; # 
-  fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-09-02T22:18:14-04:00"^^xsd:dateTime] ; # 
-  fhir:publisher [ fhir:v "FHIR-FLI"] ; # 
-  fhir:contact ( [
-     fhir:name [ fhir:v "FHIR-FLI" ] ;
-     fhir:telecom ( [
-       fhir:system [ fhir:v "url" ] ;
-       fhir:value [ fhir:v "http://fhirfli.dev" ]
-     ] )
-  ] ) ; # 
-  fhir:description [ fhir:v "Value set for gender categories relevant to vaccination data."] ; # 
-  fhir:content [ fhir:v "complete"] ; # 
-  fhir:count [ fhir:v "4"^^xsd:nonNegativeInteger] ; # 
-  fhir:concept ( [
-     fhir:code [ fhir:v "female" ] ;
-     fhir:display [ fhir:v "Female" ] ;
-     fhir:definition [ fhir:v "Female" ]
-  ] [
-     fhir:code [ fhir:v "transgender" ] ;
-     fhir:display [ fhir:v "Transgender" ] ;
-     fhir:definition [ fhir:v "Transgender" ]
-  ] [
-     fhir:code [ fhir:v "unknown" ] ;
-     fhir:display [ fhir:v "Unknown" ] ;
-     fhir:definition [ fhir:v "Unknown" ]
-  ] [
-     fhir:code [ fhir:v "male" ] ;
-     fhir:display [ fhir:v "Male" ] ;
-     fhir:definition [ fhir:v "Male" ]
-  ] ) . # 
+  fhir:Resource.id [ fhir:value "VaccineGender"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem VaccineGender</b></p><a name=\"VaccineGender\"> </a><a name=\"hcVaccineGender\"> </a><p>This  code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">female<a name=\"VaccineGender-female\"> </a></td><td>Female</td><td>Female</td></tr><tr><td style=\"white-space:nowrap\">transgender<a name=\"VaccineGender-transgender\"> </a></td><td>Transgender</td><td>Transgender</td></tr><tr><td style=\"white-space:nowrap\">unknown<a name=\"VaccineGender-unknown\"> </a></td><td>Unknown</td><td>Unknown</td></tr><tr><td style=\"white-space:nowrap\">male<a name=\"VaccineGender-male\"> </a></td><td>Male</td><td>Male</td></tr></table></div>"
+  ] ;
+  fhir:CodeSystem.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender"] ;
+  fhir:CodeSystem.version [ fhir:value "0.1.0"] ;
+  fhir:CodeSystem.name [ fhir:value "VaccineGenderCS"] ;
+  fhir:CodeSystem.title [ fhir:value "Vaccine Gender"] ;
+  fhir:CodeSystem.status [ fhir:value "draft"] ;
+  fhir:CodeSystem.date [ fhir:value "2026-09-06T20:44:07-04:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.publisher [ fhir:value "FHIR-FLI"] ;
+  fhir:CodeSystem.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "FHIR-FLI" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "http://fhirfli.dev" ]
+     ]
+  ] ;
+  fhir:CodeSystem.description [ fhir:value "Value set for gender categories relevant to vaccination data."] ;
+  fhir:CodeSystem.content [ fhir:value "complete"] ;
+  fhir:CodeSystem.count [ fhir:value "4"^^xsd:nonNegativeInteger] ;
+  fhir:CodeSystem.concept [
+     fhir:index 0 ;
+     fhir:CodeSystem.concept.code [ fhir:value "female" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Female" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Female" ]
+  ], [
+     fhir:index 1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "transgender" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Transgender" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Transgender" ]
+  ], [
+     fhir:index 2 ;
+     fhir:CodeSystem.concept.code [ fhir:value "unknown" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Unknown" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Unknown" ]
+  ], [
+     fhir:index 3 ;
+     fhir:CodeSystem.concept.code [ fhir:value "male" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Male" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Male" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

@@ -595,18 +595,6 @@
     }
   ],
   "profiles": {
-    "Medication": [
-      {
-        "url": "http://example.org/fhir/StructureDefinition/Vaccine",
-        "title": "Vaccine"
-      }
-    ],
-    "Immunization": [
-      {
-        "url": "http://example.org/fhir/StructureDefinition/vax-dose",
-        "title": "Dose of a Vaccine"
-      }
-    ],
     "MedicationAdministration": [
       {
         "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationAdministrationProfile",
@@ -643,6 +631,12 @@
         "title": "Allergy Intolerance Profile for Immunization Decision Support"
       }
     ],
+    "Medication": [
+      {
+        "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/Vaccine",
+        "title": "Vaccine"
+      }
+    ],
     "Condition": [
       {
         "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineConditionFhir",
@@ -655,22 +649,16 @@
         "title": "Observation Profile for Immunization Decision Support"
       }
     ],
-    "antigen-supporting-data": [
-      {
-        "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-supporting-data",
-        "title": "Antigen Supporting Data"
-      }
-    ],
     "ImmunizationRecommendation": [
       {
         "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation",
         "title": "Cicada Immunization Recommendation"
       }
     ],
-    "schedule-supporting-data": [
+    "Immunization": [
       {
-        "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/schedule-supporting-data",
-        "title": "Schedule Supporting Data"
+        "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vax-dose",
+        "title": "Dose of a Vaccine"
       }
     ],
     "Patient": [
@@ -693,6 +681,9 @@
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status": [
       "Immunization"
     ],
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext": [
+      "ImmunizationRecommendation.recommendation"
+    ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date": [
       "Immunization",
       "Patient"
@@ -700,8 +691,14 @@
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/begin-age": [
       "Medication"
     ],
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext": [
+      "ImmunizationRecommendation.recommendation"
+    ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/end-age": [
       "Medication"
+    ],
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext": [
+      "ImmunizationRecommendation.recommendation"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/inadvertent-administration-status": [
       "Immunization"
@@ -717,6 +714,12 @@
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status": [
       "Immunization"
+    ],
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext": [
+      "ImmunizationRecommendation.recommendation"
+    ],
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext": [
+      "ImmunizationRecommendation.recommendation"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext": [
       "ImmunizationRecommendation.recommendation"
@@ -753,6 +756,9 @@
     ],
     "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy": [
       "StructureDefinition.snapshot.element.type"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/expansion-parameters": [
+      "ImplementationGuide.definition"
     ],
     "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency": [
       "ImplementationGuide.definition"

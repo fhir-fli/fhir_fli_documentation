@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/immunization-procedures-cpt | *Version*:0.1.0 |
-| Active as of 2026-09-02 | *Computable Name*:ImmunizationProceduresCpt |
+| Active as of 2026-09-06 | *Computable Name*:ImmunizationProceduresCpt |
 
  
 CPT codes for procedures relevant to immunization decision support, including splenectomy and cochlear implant. 
@@ -23,8 +23,6 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
  
 
 ### Expansion
-
-No Expansion for this valueset (not supported by Publication Tooling)
 
 -------
 
@@ -52,52 +50,44 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "name" : "ImmunizationProceduresCpt",
   "title" : "Immunization-Relevant Procedures (CPT)",
   "status" : "active",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "CPT codes for procedures relevant to immunization decision support, including splenectomy and cochlear implant.",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://www.ama-assn.org/go/cpt",
+      "concept" : [{
+        "code" : "38100",
+        "display" : "Splenectomy; total (separate procedure)"
+      },
       {
-        "system" : "http://www.ama-assn.org/go/cpt",
-        "concept" : [
-          {
-            "code" : "38100",
-            "display" : "Splenectomy; total (separate procedure)"
-          },
-          {
-            "code" : "38101",
-            "display" : "Splenectomy; total, en bloc"
-          },
-          {
-            "code" : "38102",
-            "display" : "Splenectomy; total, en bloc with other organs"
-          },
-          {
-            "code" : "38115",
-            "display" : "Repair of ruptured spleen with splenorrhaphy"
-          },
-          {
-            "code" : "38120",
-            "display" : "Laparoscopy, surgical, splenectomy"
-          },
-          {
-            "code" : "69930",
-            "display" : "Cochlear device implantation"
-          }
-        ]
-      }
-    ]
+        "code" : "38101",
+        "display" : "Splenectomy; partial (separate procedure)"
+      },
+      {
+        "code" : "38102",
+        "display" : "Splenectomy; total, en bloc for extensive disease, in conjunction with other procedure (List in addition to code for primary procedure)"
+      },
+      {
+        "code" : "38115",
+        "display" : "Repair of ruptured spleen (splenorrhaphy) with or without partial splenectomy"
+      },
+      {
+        "code" : "38120",
+        "display" : "Laparoscopy, surgical, splenectomy"
+      },
+      {
+        "code" : "69930",
+        "display" : "Cochlear device implantation, with or without mastoidectomy"
+      }]
+    }]
   }
 }
 

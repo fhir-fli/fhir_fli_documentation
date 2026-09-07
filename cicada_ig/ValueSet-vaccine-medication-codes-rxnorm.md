@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-medication-codes-rxnorm | *Version*:0.1.0 |
-| Active as of 2026-09-02 | *Computable Name*:VaccineMedicationCodesRxnorm |
+| Active as of 2026-09-06 | *Computable Name*:VaccineMedicationCodesRxnorm |
 
  
 RxNorm codes for medications relevant to immunization decision support, including antivirals and aspirin. 
@@ -23,8 +23,6 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
  
 
 ### Expansion
-
-No Expansion for this valueset (not supported by Publication Tooling)
 
 -------
 
@@ -52,44 +50,36 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "name" : "VaccineMedicationCodesRxnorm",
   "title" : "Immunization-Relevant Medications (RxNorm)",
   "status" : "active",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "RxNorm codes for medications relevant to immunization decision support, including antivirals and aspirin.",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "concept" : [{
+        "code" : "281",
+        "display" : "acyclovir"
+      },
       {
-        "system" : "http://www.nlm.nih.gov/research/umls/rxnorm",
-        "concept" : [
-          {
-            "code" : "281",
-            "display" : "Acyclovir"
-          },
-          {
-            "code" : "24811",
-            "display" : "Famciclovir"
-          },
-          {
-            "code" : "39786",
-            "display" : "Valacyclovir"
-          },
-          {
-            "code" : "1191",
-            "display" : "Aspirin"
-          }
-        ]
-      }
-    ]
+        "code" : "68099",
+        "display" : "famciclovir"
+      },
+      {
+        "code" : "73645",
+        "display" : "valACYclovir"
+      },
+      {
+        "code" : "1191",
+        "display" : "Aspirin"
+      }]
+    }]
   }
 }
 

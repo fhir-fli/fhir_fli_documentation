@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="icd-10-cm"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CodeSystem icd-10-cm</b></p><a name="icd-10-cm"> </a><a name="hcicd-10-cm"> </a><p>This case-insensitive code system <code>http://hl7.org/fhir/sid/icd-10-cm</code> defines codes, but no codes are represented here</p></div>
+  </text>
+  <url value="http://hl7.org/fhir/sid/icd-10-cm"/>
+  <version value="0.1.0"/>
+  <name value="Icd10Cm"/>
+  <title value="ICD-10-CM (external, content not present)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-09-06T20:44:07-04:00"/>
+  <publisher value="FHIR-FLI"/>
+  <contact>
+    <name value="FHIR-FLI"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://fhirfli.dev"/>
+    </telecom>
+  </contact>
+  <description value="Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server."/>
+  <caseSensitive value="false"/>
+  <content value="not-present"/>
+</CodeSystem>

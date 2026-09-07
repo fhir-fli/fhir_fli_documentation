@@ -18,11 +18,9 @@ MMR: Patient is a healthcare worker, born before 1957, has received one dose of 
 {
   "resourceType" : "Patient",
   "id" : "2016-UC-0032",
-  "name" : [
-    {
-      "family" : "MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine."
-    }
-  ],
+  "name" : [{
+    "family" : "MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine."
+  }],
   "gender" : "female",
   "birthDate" : "1955-08-12"
 }

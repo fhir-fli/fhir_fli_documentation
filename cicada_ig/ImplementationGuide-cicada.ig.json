@@ -10,7 +10,7 @@
   "name" : "CicadaIG",
   "title" : "The Cicada Vaccine Forecasting Engine and Guide",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -75,11 +75,22 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "autoload-resources"
+        "valueString" : "special-url"
       },
       {
         "url" : "value",
-        "valueString" : "false"
+        "valueString" : "http://hl7.org/fhir/sid/icd-10-cm"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-expansion-params"
+      },
+      {
+        "url" : "value",
+        "valueString" : "../../input/resources/Parameters-manifest.json"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -337,8 +348,14 @@
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/expansion-parameters",
+      "valueReference" : {
+        "reference" : "Parameters/expansion-parameters"
+      }
+    },
+    {
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools.r4#0.9.0"
+      "valueCode" : "hl7.fhir.uv.tools.r4#1.1.2"
     },
     {
       "extension" : [{
@@ -365,11 +382,22 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "autoload-resources"
+        "valueCode" : "special-url"
       },
       {
         "url" : "value",
-        "valueString" : "false"
+        "valueString" : "http://hl7.org/fhir/sid/icd-10-cm"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-expansion-params"
+      },
+      {
+        "url" : "value",
+        "valueString" : "../../input/resources/Parameters-manifest.json"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -712,6 +740,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/antigen-supporting-data"
+      },
+      "name" : "Antigen Supporting Data",
+      "description" : "A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
@@ -743,6 +783,18 @@
       },
       "name" : "CDSI Observation Codes",
       "description" : "Observations and Conditions that are important to indications or contraindications in vaccine forecasting",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/cdsi-observation-codes-vs"
+      },
+      "name" : "CDSI Observation Codes Value Set",
+      "description" : "Every CDSi observation code, as published in the supporting data.",
       "exampleBoolean" : false
     },
     {
@@ -975,13 +1027,25 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/icd-10-cm"
+      },
+      "name" : "ICD-10-CM (external, content not present)",
+      "description" : "Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ConceptMap"
       }],
       "reference" : {
         "reference" : "ConceptMap/Icd10ToCdsiObservation"
       },
       "name" : "ICD-10-CM to CDSi Observation Code Map",
-      "description" : "Maps ICD-10-CM diagnosis codes to CDSi observation codes used in immunization decision support.",
+      "description" : "Maps ICD-10-CM codes to CDSi observation codes used in immunization decision support. Generated from the cicada crosswalk.",
       "exampleBoolean" : false
     },
     {
@@ -1065,19 +1129,18 @@
         "reference" : "ValueSet/vaccine-lab-evidence-of-immunity-loinc"
       },
       "name" : "Lab Evidence of Immunity (LOINC)",
-      "description" : "LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support.",
+      "description" : "LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. Serum IgG in every case, plus total antibody for hepatitis A, which is what evidence of immunity means for these antigens; IgM, cerebrospinal fluid and avidity codes are deliberately excluded.",
       "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureMap"
+        "valueString" : "Parameters"
       }],
       "reference" : {
-        "reference" : "StructureMap/MapVaccineCodes"
+        "reference" : "Parameters/manifest"
       },
-      "name" : "MapVaccineCodes",
-      "description" : "Define the usage of FHIR resource types with specific aliases",
+      "name" : "manifest",
       "exampleBoolean" : false
     },
     {
@@ -1239,6 +1302,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/schedule-supporting-data"
+      },
+      "name" : "Schedule Supporting Data",
+      "description" : "This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
@@ -1293,7 +1368,7 @@
         "reference" : "ConceptMap/SnomedToCdsiObservation"
       },
       "name" : "SNOMED CT to CDSi Observation Code Map",
-      "description" : "Maps SNOMED CT codes to CDSi observation codes used in immunization decision support.",
+      "description" : "Maps SNOMED CT codes to CDSi observation codes used in immunization decision support. Generated from CDC's supporting data.",
       "exampleBoolean" : false
     },
     {
@@ -1490,24 +1565,13 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resourcedefn"
+        "valueString" : "StructureMap"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/antigen-supporting-data"
+        "reference" : "StructureMap/MapVaccineCodes"
       },
-      "name" : "Antigen Supporting Data",
-      "description" : "A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series."
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resourcedefn"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/schedule-supporting-data"
-      },
-      "name" : "Schedule Supporting Data",
-      "description" : "This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes."
+      "name" : "MapVaccineCodes",
+      "description" : "Define the usage of FHIR resource types with specific aliases"
     }],
     "page" : {
       "extension" : [{

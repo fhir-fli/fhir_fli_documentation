@@ -6,13 +6,177 @@
     <profile value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation"/>
   </meta>
   <text>
-    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ImmunizationRecommendation cicada-forecast-example</b></p><a name="cicada-forecast-example"> </a><a name="hccicada-forecast-example"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-cicada-immunization-recommendation.html">Cicada Immunization Recommendation</a></p></div><p><b>patient</b>: <a href="Patient-2016-UC-0032.html">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>date</b>: 2015-04-30 00:00:00-0400</p><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type risk}">Risk</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 03}">MMR</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 36989005}, {http://snomed.info/sct 14189004}, {http://snomed.info/sct 36653000}">MMR</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><p><b>description</b>: Antigens: Mumps, Measles, Rubella</p><p><b>doseNumber</b>: 2</p><p><b>supportingPatientInformation</b>: Health care personnel</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 03}">MMR</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 36989005}, {http://snomed.info/sct 14189004}, {http://snomed.info/sct 36653000}">MMR</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status complete}, {http://loinc.org LA13421-5}">Complete</span></p><p><b>description</b>: Antigens: Mumps, Measles, Rubella</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 107}">DTaP, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 27836007}, {http://snomed.info/sct 76902006}, {http://snomed.info/sct 397430003}">DTaP/Tdap/Td</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><p><b>description</b>: Antigens: Pertussis, Tetanus, Diphtheria</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 88}">influenza, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 6142004}">Influenza</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><p><b>series</b>: Influenza standard series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 17}">Hib, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 709410003}">Hib</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 152}">Pneumococcal Conjugate, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 16814004}">Pneumococcal</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: Pneumococcal 50+ 1-dose PCV series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 21}">varicella</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 38907003}">Varicella</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><p><b>series</b>: Varicella childhood 2-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 45}">Hep B, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 66071002}">HepB</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 1955-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 1955-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 1955-09-08 00:00:00-0400</p></blockquote><p><b>series</b>: HepB 3-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 108}">meningococcal, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 23511006}">Meningococcal</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 213}">SARS-COV-2 (COVID-19) vaccine, unspecified</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 840539006}">COVID-19</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><p><b>series</b>: COVID-19 start at 6mo-23mo shared clinical decision-making series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 89}">polio, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 398102009}">Polio</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 188}">zoster, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 4740000}">Zoster</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: Zoster 2-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 85}">Hep A, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 40468003}">HepA</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 304}">RSV, unspecified</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 55735004}">RSV</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Not Complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: RSV 75 years+ 1-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 137}">HPV, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 240532009}">HPV</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 164}">meningococcal B, unspecified</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 860805006}">Meningococcal B</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p></blockquote><blockquote><p><b>recommendation</b></p><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 122}">rotavirus, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 18624000}">Rotavirus</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus Aged Out}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p></blockquote></div>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ImmunizationRecommendation cicada-forecast-example</b></p><a name="cicada-forecast-example"> </a><a name="hccicada-forecast-example"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-cicada-immunization-recommendation.html">Cicada Immunization Recommendation</a></p></div><p><b>patient</b>: <a href="Patient-2016-UC-0032.html">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>date</b>: 2015-04-30 00:00:00-0400</p><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: 1</p><p><b>Series Group</b>: Increased Risk</p><p><b>Antigen Needing a Dose</b>: Mumps</p><p><b>Antigen Needing a Dose</b>: Measles</p><p><b>Antigen Needing a Dose</b>: Rubella</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Mumps risk 2-dose series</li><li>seriesGroupName: Increased Risk</li><li>seriesType: risk</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>targetDoseNumber: 1</li><li>earliestDate: 2015-05-28 00:00:00-0400</li><li>recommendedDate: 2015-05-28 00:00:00-0400</li><li>pastDueDate: 2015-05-28 00:00:00-0400</li><li>earliestRecommendedIntervalDate: 2015-05-28 00:00:00-0400</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Measles risk 2-dose series</li><li>seriesGroupName: Increased Risk</li><li>seriesType: risk</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>targetDoseNumber: 1</li><li>earliestDate: 2015-05-28 00:00:00-0400</li><li>recommendedDate: 2015-05-28 00:00:00-0400</li><li>pastDueDate: 2015-05-28 00:00:00-0400</li><li>earliestRecommendedIntervalDate: 2015-05-28 00:00:00-0400</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Rubella risk 2-dose series</li><li>seriesGroupName: Increased Risk</li><li>seriesType: risk</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>targetDoseNumber: 1</li><li>earliestDate: 2015-05-28 00:00:00-0400</li><li>recommendedDate: 2015-05-28 00:00:00-0400</li><li>pastDueDate: 2015-05-28 00:00:00-0400</li><li>earliestRecommendedIntervalDate: 2015-05-28 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type risk}">Risk</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 03}">MMR</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 36989005}, {http://snomed.info/sct 14189004}, {http://snomed.info/sct 36653000}">MMR</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><p><b>description</b>: Persons identified as being at increased risk who have received less than or equal to 2 doses of mumps virus-containing vaccine should receive 1 dose.
+Antigens: Mumps, Measles, Rubella</p><p><b>doseNumber</b>: 2</p><p><b>supportingPatientInformation</b>: Health care personnel</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: 1</p><p><b>Series Group</b>: Standard</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Mumps 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status complete}, {http://loinc.org LA13421-5}">Complete</span></li><li>targetDoseNumber: 2</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Measles 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status complete}, {http://loinc.org LA13421-5}">Complete</span></li><li>targetDoseNumber: 2</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Rubella 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status complete}, {http://loinc.org LA13421-5}">Complete</span></li><li>targetDoseNumber: 2</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 03}">MMR</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 36989005}, {http://snomed.info/sct 14189004}, {http://snomed.info/sct 36653000}">MMR</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus complete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status complete}, {http://loinc.org LA13421-5}">Complete</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason complete}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason series-complete}">Patient series is complete</span></p><p><b>description</b>: Antigens: Mumps, Measles, Rubella</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: Recurring</p><p><b>Series Group</b>: Standard</p><p><b>Antigen Needing a Dose</b>: Pertussis</p><p><b>Antigen Needing a Dose</b>: Tetanus</p><p><b>Antigen Needing a Dose</b>: Diphtheria</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Pertussis standard series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>targetDoseNumber: 6</li><li>earliestDate: 1962-08-12 00:00:00-0400</li><li>recommendedDate: 1962-08-12 00:00:00-0400</li><li>pastDueDate: 1962-08-12 00:00:00-0400</li><li>minimumAgeDate: 1962-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 1962-08-12 00:00:00-0400</li><li>latestRecommendedAgeDate: 1962-08-12 00:00:00-0400</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Tetanus standard series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>targetDoseNumber: 6</li><li>earliestDate: 1962-08-12 00:00:00-0400</li><li>recommendedDate: 1962-08-12 00:00:00-0400</li><li>pastDueDate: 1962-08-12 00:00:00-0400</li><li>minimumAgeDate: 1962-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 1962-08-12 00:00:00-0400</li><li>latestRecommendedAgeDate: 1962-08-12 00:00:00-0400</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Diphtheria standard series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>targetDoseNumber: 6</li><li>earliestDate: 1962-08-12 00:00:00-0400</li><li>recommendedDate: 1962-08-12 00:00:00-0400</li><li>pastDueDate: 1962-08-12 00:00:00-0400</li><li>minimumAgeDate: 1962-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 1962-08-12 00:00:00-0400</li><li>latestRecommendedAgeDate: 1962-08-12 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 107}">DTaP, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 27836007}, {http://snomed.info/sct 76902006}, {http://snomed.info/sct 397428000}">DTaP/Tdap/Td</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 1962-08-12 00:00:00-0400</p></blockquote><p><b>description</b>: Dose 4 may be administered as early as age 12 months if at least 6 months have elapsed since dose 3
+Antigens: Pertussis, Tetanus, Diphtheria</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: Recurring</p><p><b>Series Group</b>: Standard</p><p><b>Antigen Needing a Dose</b>: Influenza</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Influenza standard series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>targetDoseNumber: 1</li><li>earliestDate: 2025-07-01 00:00:00-0400</li><li>recommendedDate: 2025-07-01 00:00:00-0400</li><li>pastDueDate: 2025-07-01 00:00:00-0400</li><li>seasonalRecommendationStartDate: 2025-07-01 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 88}">influenza, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 719590007}">Influenza</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2025-07-01 00:00:00-0400</p></blockquote><p><b>description</b>: ACIP recommends persons aged 65 years and older preferentially receive any one of the following higher dose or adjuvanted influenza vaccines: trivalent high-dose inactivated influenza vaccine (HD-IIV3), trivalent recombinant influenza vaccine (RIV3), or trivalent adjuvanted inactivated influenza vaccine (aIIV3). If none of these three vaccines is available at an opportunity for vaccine administration, then any other age-appropriate influenza vaccine should be used.
+All persons aged 6 months and older with egg allergy should receive influenza vaccine. Any influenza vaccine (egg based or non-egg based) that is otherwise appropriate for the recipient's age and health status can be used.
+Solid organ transplant recipients aged 19 through 64 years receiving immunosuppressive medications can receive HD-IIV3 or aIIV3. No preference over other age-appropriate IIV3 or RIV3 vaccines.
+For most people who need only one dose of influenza vaccine for the season, September and October are generally good times to be vaccinated against influenza. Ideally, everyone should be vaccinated by the end of October.</p><p><b>series</b>: Influenza standard series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Hib start at 2 months 4-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 17}">Hib, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 709410003}">Hib</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason maximumAge}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason exceeded-maximum-age}">Patient has exceeded the maximum age</span></p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: 2</p><p><b>Series Group</b>: Standard 50+</p><p><b>Antigen Needing a Dose</b>: Pneumococcal</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Pneumococcal 50+ 1-dose PCV series</li><li>seriesGroupName: Standard 50+</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>earliestDate: 2005-08-12 00:00:00-0400</li><li>recommendedDate: 2005-08-12 00:00:00-0400</li><li>pastDueDate: 2005-08-12 00:00:00-0400</li><li>minimumAgeDate: 2005-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 2005-08-12 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 152}">Pneumococcal Conjugate, unspecified formulation</span>, <span title="Codes:{http://hl7.org/fhir/sid/cvx 215}">PCV15</span>, <span title="Codes:{http://hl7.org/fhir/sid/cvx 216}">PCV20</span>, <span title="Codes:{http://hl7.org/fhir/sid/cvx 327}">PCV21</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 16814004}">Pneumococcal</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><p><b>description</b>: Adults who have received PCV15 but have not yet completed PPSV23 series, can complete the series with either 1 dose of PCV20 or 1 dose of PCV21 if they no longer have access to PPSV23.</p><p><b>series</b>: Pneumococcal 50+ 1-dose PCV series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: 2</p><p><b>Series Group</b>: Standard</p><p><b>Antigen Needing a Dose</b>: Varicella</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Varicella childhood 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>earliestDate: 2015-05-28 00:00:00-0400</li><li>recommendedDate: 2015-05-28 00:00:00-0400</li><li>pastDueDate: 2015-05-28 00:00:00-0400</li><li>minimumAgeDate: 1956-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 1956-08-12 00:00:00-0400</li><li>latestRecommendedAgeDate: 1957-01-09 00:00:00-0500</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 21}">varicella</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 38907003}">Varicella</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2015-05-28 00:00:00-0400</p></blockquote><p><b>description</b>: HIV-infected people eligible for vaccination should get 2 doses of single-antigen varicella vaccine separated by 3 months. HIV-infected people should not get the combination MMRV vaccine.</p><p><b>series</b>: Varicella childhood 2-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: 3</p><p><b>Series Group</b>: Standard</p><p><b>Antigen Needing a Dose</b>: HepB</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: HepB 3-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>earliestDate: 1955-08-12 00:00:00-0400</li><li>recommendedDate: 1955-08-12 00:00:00-0400</li><li>pastDueDate: 1955-09-08 00:00:00-0400</li><li>minimumAgeDate: 1955-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 1955-08-12 00:00:00-0400</li><li>latestRecommendedAgeDate: 1955-09-09 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 45}">Hep B, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 66071002}">HepB</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 1955-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 1955-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 1955-09-08 00:00:00-0400</p></blockquote><p><b>description</b>: Anyone age 60 years or older who does not meet risk-based recommendations may still receive Hepatitis B vaccination.</p><p><b>series</b>: HepB 3-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Meningococcal ACWY 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></li><li>targetDoseNumber: 1</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 108}">meningococcal, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 23511006}">Meningococcal</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason maximumAge}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason exceeded-maximum-age}">Patient has exceeded the maximum age</span></p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: Recurring</p><p><b>Series Group</b>: Standard</p><p><b>Antigen Needing a Dose</b>: COVID-19</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: COVID-19 start at 6mo-23mo shared clinical decision-making series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>earliestDate: 2025-08-27 00:00:00-0400</li><li>recommendedDate: 2025-08-27 00:00:00-0400</li><li>pastDueDate: 2025-08-27 00:00:00-0400</li><li>minimumAgeDate: 1956-02-12 00:00:00-0500</li><li>earliestRecommendedAgeDate: 1956-02-12 00:00:00-0500</li><li>seasonalRecommendationStartDate: 2025-08-27 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 213}">SARS-COV-2 (COVID-19) vaccine, unspecified</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 840539006}">COVID-19</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><p><b>forecastReason</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason shared-clinical-decision-making}">Recommended by shared clinical decision-making</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2025-08-27 00:00:00-0400</p></blockquote><p><b>description</b>: Vaccination based on individual-based decision-making- with an emphasis that the risk-benefit of vaccination is most favorable for individuals who are at an increased risk for severe COVID-19 disease and lowest for individuals who are not at an increased risk according to the CDC list of COVID-19 risk factors. see https://www.cdc.gov/covid/hcp/clinical-care/underlying-conditions.html
+For people who have a history of myocarditis with MIS-C or MIS-A, see https://www.cdc.gov/covid/hcp/vaccine-considerations/special-situations-and-populations.html#cdc_clinical_guidance_recomm_key-covid-19-vaccination-and-mis-c-and-mis-a</p><p><b>series</b>: COVID-19 start at 6mo-23mo shared clinical decision-making series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Polio 4-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 89}">polio, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 721764008}">Polio</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason maximumAge}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason exceeded-maximum-age}">Patient has exceeded the maximum age</span></p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: 2</p><p><b>Series Group</b>: Standard</p><p><b>Antigen Needing a Dose</b>: Zoster</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Zoster 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>earliestDate: 2005-08-12 00:00:00-0400</li><li>recommendedDate: 2005-08-12 00:00:00-0400</li><li>pastDueDate: 2005-08-12 00:00:00-0400</li><li>minimumAgeDate: 2005-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 2005-08-12 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 188}">zoster, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 4740000}">Zoster</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status overdue}, {http://loinc.org LA13423-1}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2005-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: Zoster 2-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: HepA 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: HepA risk Twinrix tertiary 3-dose series</li><li>seriesGroupName: Increased Risk</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>earliestDate: 1974-08-12 00:00:00-0400</li><li>recommendedDate: 1974-08-12 00:00:00-0400</li><li>pastDueDate: 1974-08-12 00:00:00-0400</li><li>minimumAgeDate: 1974-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 1974-08-12 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 85}">Hep A, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 40468003}">HepA</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason maximumAge}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason exceeded-maximum-age}">Patient has exceeded the maximum age</span></p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><p><b>Doses Remaining</b>: 1</p><p><b>Series Group</b>: Standard 75+</p><p><b>Antigen Needing a Dose</b>: RSV</p><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: RSV 75 years+ 1-dose series</li><li>seriesGroupName: Standard 75+</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></li><li>earliestDate: 2030-08-12 00:00:00-0400</li><li>recommendedDate: 2030-08-12 00:00:00-0400</li><li>pastDueDate: 2030-08-12 00:00:00-0400</li><li>minimumAgeDate: 2030-08-12 00:00:00-0400</li><li>earliestRecommendedAgeDate: 2030-08-12 00:00:00-0400</li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 304}">RSV, unspecified</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 55735004}">RSV</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus notComplete}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status due}, {http://loinc.org LA13422-3}">Not Complete</span></p><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30981-5}">Earliest date to give</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 30980-7}">Date vaccine due</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><blockquote><p><b>dateCriterion</b></p><p><b>code</b>: <span title="Codes:{http://loinc.org 59778-1}">Date when overdue for immunization</span></p><p><b>value</b>: 2030-08-12 00:00:00-0400</p></blockquote><p><b>series</b>: RSV 75 years+ 1-dose series</p><p><b>doseNumber</b>: 1</p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: HPV 2-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 137}">HPV, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 240532009}">HPV</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason maximumAge}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason exceeded-maximum-age}">Patient has exceeded the maximum age</span></p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Meningococcal B 2-dose series MenB-4C Shared Clinical Decision Making</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 164}">meningococcal B, unspecified</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 1354584007}">Meningococcal B</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason maximumAge}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason exceeded-maximum-age}">Patient has exceeded the maximum age</span>, <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason shared-clinical-decision-making}">Recommended by shared clinical decision-making</span></p></blockquote><blockquote><p><b>recommendation</b></p><blockquote><p><b>Engine and Supporting Data Version</b></p><ul><li>engine: cicada/0.0.1</li><li>supportingData: CDSi 4.65-508</li></ul></blockquote><blockquote><p><b>Contributing Series Detail</b></p><ul><li>seriesName: Rotavirus 3-dose series</li><li>seriesGroupName: Standard</li><li>seriesType: standard</li><li>status: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></li></ul></blockquote><p><b>Series Type</b>: <span title="Codes:{http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type standard}">Standard</span></p><p><b>vaccineCode</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 122}">rotavirus, unspecified formulation</span></p><p><b>targetDisease</b>: <span title="Codes:{http://snomed.info/sct 415822001}">Rotavirus</span></p><p><b>forecastStatus</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus agedOut}, {http://terminology.hl7.org/CodeSystem/immunization-recommendation-status agedout}, {http://loinc.org LA13424-9}">Aged Out</span></p><p><b>forecastReason</b>: <span title="Codes:{http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason maximumAge}, {http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason exceeded-maximum-age}">Patient has exceeded the maximum age</span></p></blockquote></div>
   </text>
   <patient>
     <reference value="Patient/2016-UC-0032"/>
   </patient>
   <date value="2015-04-30T00:00:00.000-04:00"/>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="1"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Increased Risk"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Mumps"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Measles"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Rubella"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Mumps risk 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Increased Risk"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="risk"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="1"/>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedIntervalDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Measles risk 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Increased Risk"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="risk"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="1"/>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedIntervalDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Rubella risk 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Increased Risk"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="risk"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="1"/>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedIntervalDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -28,6 +192,7 @@
         <code value="03"/>
         <display value="MMR"/>
       </coding>
+      <text value="MMR"/>
     </vaccineCode>
     <targetDisease>
       <coding>
@@ -50,7 +215,7 @@
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -61,7 +226,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13422-3"/>
-        <display value="On schedule"/>
+        <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -94,13 +259,126 @@
       </code>
       <value value="2015-05-28T00:00:00.000-04:00"/>
     </dateCriterion>
-    <description value="Antigens: Mumps, Measles, Rubella"/>
+    <description value="Persons identified as being at increased risk who have received less than or equal to 2 doses of mumps virus-containing vaccine should receive 1 dose.&#xA;Antigens: Mumps, Measles, Rubella"/>
     <doseNumberString value="2"/>
     <supportingPatientInformation>
       <display value="Health care personnel"/>
     </supportingPatientInformation>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="1"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Mumps 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="complete"/>
+            <display value="Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="complete"/>
+            <display value="Complete"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13421-5"/>
+            <display value="Complete - all required doses have been received to meet the requirements for a particular vaccine group."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="2"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Measles 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="complete"/>
+            <display value="Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="complete"/>
+            <display value="Complete"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13421-5"/>
+            <display value="Complete - all required doses have been received to meet the requirements for a particular vaccine group."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="2"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Rubella 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="complete"/>
+            <display value="Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="complete"/>
+            <display value="Complete"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13421-5"/>
+            <display value="Complete - all required doses have been received to meet the requirements for a particular vaccine group."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="2"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -116,6 +394,7 @@
         <code value="03"/>
         <display value="MMR"/>
       </coding>
+      <text value="MMR"/>
     </vaccineCode>
     <targetDisease>
       <coding>
@@ -138,7 +417,7 @@
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Complete"/>
+        <code value="complete"/>
         <display value="Complete"/>
       </coding>
       <coding>
@@ -149,12 +428,201 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13421-5"/>
-        <display value="Complete"/>
+        <display value="Complete - all required doses have been received to meet the requirements for a particular vaccine group."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="complete"/>
+        <display value="Complete"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="series-complete"/>
+        <display value="Patient series is complete"/>
+      </coding>
+      <text value="Patient series is complete"/>
+    </forecastReason>
     <description value="Antigens: Mumps, Measles, Rubella"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="Recurring"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Pertussis"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Tetanus"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Diphtheria"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Pertussis standard series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="6"/>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="latestRecommendedAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Tetanus standard series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="6"/>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="latestRecommendedAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Diphtheria standard series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="6"/>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="latestRecommendedAgeDate">
+        <valueDateTime value="1962-08-12T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -170,6 +638,7 @@
         <code value="107"/>
         <display value="DTaP, unspecified formulation"/>
       </coding>
+      <text value="DTaP, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
@@ -184,7 +653,7 @@
       </coding>
       <coding>
         <system value="http://snomed.info/sct"/>
-        <code value="397430003"/>
+        <code value="397428000"/>
         <display value="Diphtheria"/>
       </coding>
       <text value="DTaP/Tdap/Td"/>
@@ -192,7 +661,7 @@
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -203,7 +672,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13423-1"/>
-        <display value="Overdue"/>
+        <display value="Overdue - person is late getting the next dose in the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -236,10 +705,72 @@
       </code>
       <value value="1962-08-12T00:00:00.000-04:00"/>
     </dateCriterion>
-    <description value="Antigens: Pertussis, Tetanus, Diphtheria"/>
+    <description value="Dose 4 may be administered as early as age 12 months if at least 6 months have elapsed since dose 3&#xA;Antigens: Pertussis, Tetanus, Diphtheria"/>
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="Recurring"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Influenza"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Influenza standard series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="1"/>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2025-07-01T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2025-07-01T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2025-07-01T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="seasonalRecommendationStartDate">
+        <valueDateTime value="2025-07-01T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -255,19 +786,20 @@
         <code value="88"/>
         <display value="influenza, unspecified formulation"/>
       </coding>
+      <text value="influenza, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
-        <code value="6142004"/>
-        <display value="Influenza"/>
+        <code value="719590007"/>
+        <display value="Influenza caused by seasonal influenza virus"/>
       </coding>
       <text value="Influenza"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -278,7 +810,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13422-3"/>
-        <display value="On schedule"/>
+        <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -311,10 +843,49 @@
       </code>
       <value value="2025-07-01T00:00:00.000-04:00"/>
     </dateCriterion>
+    <description value="ACIP recommends persons aged 65 years and older preferentially receive any one of the following higher dose or adjuvanted influenza vaccines: trivalent high-dose inactivated influenza vaccine (HD-IIV3), trivalent recombinant influenza vaccine (RIV3), or trivalent adjuvanted inactivated influenza vaccine (aIIV3). If none of these three vaccines is available at an opportunity for vaccine administration, then any other age-appropriate influenza vaccine should be used.&#xA;All persons aged 6 months and older with egg allergy should receive influenza vaccine. Any influenza vaccine (egg based or non-egg based) that is otherwise appropriate for the recipient's age and health status can be used.&#xA;Solid organ transplant recipients aged 19 through 64 years receiving immunosuppressive medications can receive HD-IIV3 or aIIV3. No preference over other age-appropriate IIV3 or RIV3 vaccines.&#xA;For most people who need only one dose of influenza vaccine for the season, September and October are generally good times to be vaccinated against influenza. Ideally, everyone should be vaccinated by the end of October."/>
     <series value="Influenza standard series"/>
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Hib start at 2 months 4-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="agedOut"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="agedout"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13424-9"/>
+            <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -330,19 +901,20 @@
         <code value="17"/>
         <display value="Hib, unspecified formulation"/>
       </coding>
+      <text value="Hib, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="709410003"/>
-        <display value="Hib"/>
+        <display value="Haemophilus influenzae type b infection"/>
       </coding>
       <text value="Hib"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Aged Out"/>
+        <code value="agedOut"/>
         <display value="Aged Out"/>
       </coding>
       <coding>
@@ -353,11 +925,86 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13424-9"/>
-        <display value="Too old"/>
+        <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="maximumAge"/>
+        <display value="Maximum Age Exceeded"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="exceeded-maximum-age"/>
+        <display value="Patient has exceeded the maximum age"/>
+      </coding>
+      <text value="Patient has exceeded the maximum age"/>
+    </forecastReason>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="2"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard 50+"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Pneumococcal"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Pneumococcal 50+ 1-dose PCV series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard 50+"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -373,19 +1020,44 @@
         <code value="152"/>
         <display value="Pneumococcal Conjugate, unspecified formulation"/>
       </coding>
+      <text value="Pneumococcal Conjugate, unspecified formulation"/>
+    </vaccineCode>
+    <vaccineCode>
+      <coding>
+        <system value="http://hl7.org/fhir/sid/cvx"/>
+        <code value="215"/>
+        <display value="Pneumococcal conjugate PCV15, polysaccharide CRM197 conjugate, adjuvant, PF"/>
+      </coding>
+      <text value="PCV15"/>
+    </vaccineCode>
+    <vaccineCode>
+      <coding>
+        <system value="http://hl7.org/fhir/sid/cvx"/>
+        <code value="216"/>
+        <display value="Pneumococcal conjugate PCV20, polysaccharide CRM197 conjugate, adjuvant, PF"/>
+      </coding>
+      <text value="PCV20"/>
+    </vaccineCode>
+    <vaccineCode>
+      <coding>
+        <system value="http://hl7.org/fhir/sid/cvx"/>
+        <code value="327"/>
+        <display value="Pneumococcal conjugate PCV21, polysaccharide CRM197 conjugate, PF"/>
+      </coding>
+      <text value="PCV21"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="16814004"/>
-        <display value="Pneumococcal"/>
+        <display value="Pneumococcal infectious disease"/>
       </coding>
       <text value="Pneumococcal"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -396,7 +1068,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13423-1"/>
-        <display value="Overdue"/>
+        <display value="Overdue - person is late getting the next dose in the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -429,10 +1101,76 @@
       </code>
       <value value="2005-08-12T00:00:00.000-04:00"/>
     </dateCriterion>
+    <description value="Adults who have received PCV15 but have not yet completed PPSV23 series, can complete the series with either 1 dose of PCV20 or 1 dose of PCV21 if they no longer have access to PPSV23."/>
     <series value="Pneumococcal 50+ 1-dose PCV series"/>
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="2"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Varicella"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Varicella childhood 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2015-05-28T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="1956-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="1956-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="latestRecommendedAgeDate">
+        <valueDateTime value="1957-01-09T00:00:00.000-05:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -448,6 +1186,7 @@
         <code value="21"/>
         <display value="varicella"/>
       </coding>
+      <text value="varicella"/>
     </vaccineCode>
     <targetDisease>
       <coding>
@@ -460,7 +1199,7 @@
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -471,7 +1210,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13422-3"/>
-        <display value="On schedule"/>
+        <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -504,10 +1243,76 @@
       </code>
       <value value="2015-05-28T00:00:00.000-04:00"/>
     </dateCriterion>
+    <description value="HIV-infected people eligible for vaccination should get 2 doses of single-antigen varicella vaccine separated by 3 months. HIV-infected people should not get the combination MMRV vaccine."/>
     <series value="Varicella childhood 2-dose series"/>
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="3"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="HepB"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="HepB 3-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="1955-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="1955-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="1955-09-08T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="1955-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="1955-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="latestRecommendedAgeDate">
+        <valueDateTime value="1955-09-09T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -523,19 +1328,20 @@
         <code value="45"/>
         <display value="Hep B, unspecified formulation"/>
       </coding>
+      <text value="Hep B, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="66071002"/>
-        <display value="HepB"/>
+        <display value="Type B viral hepatitis"/>
       </coding>
       <text value="HepB"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -546,7 +1352,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13423-1"/>
-        <display value="Overdue"/>
+        <display value="Overdue - person is late getting the next dose in the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -579,10 +1385,52 @@
       </code>
       <value value="1955-09-08T00:00:00.000-04:00"/>
     </dateCriterion>
+    <description value="Anyone age 60 years or older who does not meet risk-based recommendations may still receive Hepatitis B vaccination."/>
     <series value="HepB 3-dose series"/>
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Meningococcal ACWY 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="agedOut"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="agedout"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13424-9"/>
+            <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="targetDoseNumber">
+        <valuePositiveInt value="1"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -596,21 +1444,22 @@
       <coding>
         <system value="http://hl7.org/fhir/sid/cvx"/>
         <code value="108"/>
-        <display value="meningococcal, unspecified formulation"/>
+        <display value="meningococcal ACWY, unspecified formulation"/>
       </coding>
+      <text value="meningococcal, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="23511006"/>
-        <display value="Meningococcal"/>
+        <display value="Meningococcal infectious disease"/>
       </coding>
       <text value="Meningococcal"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Aged Out"/>
+        <code value="agedOut"/>
         <display value="Aged Out"/>
       </coding>
       <coding>
@@ -621,11 +1470,89 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13424-9"/>
-        <display value="Too old"/>
+        <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="maximumAge"/>
+        <display value="Maximum Age Exceeded"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="exceeded-maximum-age"/>
+        <display value="Patient has exceeded the maximum age"/>
+      </coding>
+      <text value="Patient has exceeded the maximum age"/>
+    </forecastReason>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="Recurring"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="COVID-19"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="COVID-19 start at 6mo-23mo shared clinical decision-making series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2025-08-27T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2025-08-27T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2025-08-27T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="1956-02-12T00:00:00.000-05:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="1956-02-12T00:00:00.000-05:00"/>
+      </extension>
+      <extension url="seasonalRecommendationStartDate">
+        <valueDateTime value="2025-08-27T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -639,8 +1566,9 @@
       <coding>
         <system value="http://hl7.org/fhir/sid/cvx"/>
         <code value="213"/>
-        <display value="SARS-COV-2 (COVID-19) vaccine, unspecified"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, UNSPECIFIED"/>
       </coding>
+      <text value="SARS-COV-2 (COVID-19) vaccine, unspecified"/>
     </vaccineCode>
     <targetDisease>
       <coding>
@@ -653,7 +1581,7 @@
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -664,9 +1592,17 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13422-3"/>
-        <display value="On schedule"/>
+        <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="shared-clinical-decision-making"/>
+        <display value="Recommended by shared clinical decision-making"/>
+      </coding>
+      <text value="Recommended by shared clinical decision-making"/>
+    </forecastReason>
     <dateCriterion>
       <code>
         <coding>
@@ -697,10 +1633,49 @@
       </code>
       <value value="2025-08-27T00:00:00.000-04:00"/>
     </dateCriterion>
+    <description value="Vaccination based on individual-based decision-making- with an emphasis that the risk-benefit of vaccination is most favorable for individuals who are at an increased risk for severe COVID-19 disease and lowest for individuals who are not at an increased risk according to the CDC list of COVID-19 risk factors. see https://www.cdc.gov/covid/hcp/clinical-care/underlying-conditions.html&#xA;For people who have a history of myocarditis with MIS-C or MIS-A, see https://www.cdc.gov/covid/hcp/vaccine-considerations/special-situations-and-populations.html#cdc_clinical_guidance_recomm_key-covid-19-vaccination-and-mis-c-and-mis-a"/>
     <series value="COVID-19 start at 6mo-23mo shared clinical decision-making series"/>
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Polio 4-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="agedOut"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="agedout"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13424-9"/>
+            <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -716,19 +1691,20 @@
         <code value="89"/>
         <display value="polio, unspecified formulation"/>
       </coding>
+      <text value="polio, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
-        <code value="398102009"/>
-        <display value="Polio"/>
+        <code value="721764008"/>
+        <display value="Infection caused by Human poliovirus"/>
       </coding>
       <text value="Polio"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Aged Out"/>
+        <code value="agedOut"/>
         <display value="Aged Out"/>
       </coding>
       <coding>
@@ -739,11 +1715,86 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13424-9"/>
-        <display value="Too old"/>
+        <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="maximumAge"/>
+        <display value="Maximum Age Exceeded"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="exceeded-maximum-age"/>
+        <display value="Patient has exceeded the maximum age"/>
+      </coding>
+      <text value="Patient has exceeded the maximum age"/>
+    </forecastReason>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="2"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="Zoster"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Zoster 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="2005-08-12T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -759,19 +1810,20 @@
         <code value="188"/>
         <display value="zoster, unspecified formulation"/>
       </coding>
+      <text value="zoster, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="4740000"/>
-        <display value="Zoster"/>
+        <display value="Herpes zoster"/>
       </coding>
       <text value="Zoster"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -782,7 +1834,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13423-1"/>
-        <display value="Overdue"/>
+        <display value="Overdue - person is late getting the next dose in the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -819,6 +1871,89 @@
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="HepA 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="agedOut"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="agedout"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13424-9"/>
+            <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="HepA risk Twinrix tertiary 3-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Increased Risk"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="1974-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="1974-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="1974-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="1974-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="1974-08-12T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -834,19 +1969,20 @@
         <code value="85"/>
         <display value="Hep A, unspecified formulation"/>
       </coding>
+      <text value="Hep A, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="40468003"/>
-        <display value="HepA"/>
+        <display value="Viral hepatitis, type A"/>
       </coding>
       <text value="HepA"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Aged Out"/>
+        <code value="agedOut"/>
         <display value="Aged Out"/>
       </coding>
       <coding>
@@ -857,11 +1993,86 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13424-9"/>
-        <display value="Too old"/>
+        <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="maximumAge"/>
+        <display value="Maximum Age Exceeded"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="exceeded-maximum-age"/>
+        <display value="Patient has exceeded the maximum age"/>
+      </coding>
+      <text value="Patient has exceeded the maximum age"/>
+    </forecastReason>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/doses-remaining-ext">
+      <valueString value="1"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-group-ext">
+      <valueString value="Standard 75+"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext">
+      <valueString value="RSV"/>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="RSV 75 years+ 1-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard 75+"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="notComplete"/>
+            <display value="Not Complete"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="due"/>
+            <display value="Due"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13422-3"/>
+            <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="earliestDate">
+        <valueDateTime value="2030-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="recommendedDate">
+        <valueDateTime value="2030-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="pastDueDate">
+        <valueDateTime value="2030-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="minimumAgeDate">
+        <valueDateTime value="2030-08-12T00:00:00.000-04:00"/>
+      </extension>
+      <extension url="earliestRecommendedAgeDate">
+        <valueDateTime value="2030-08-12T00:00:00.000-04:00"/>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -875,21 +2086,22 @@
       <coding>
         <system value="http://hl7.org/fhir/sid/cvx"/>
         <code value="304"/>
-        <display value="RSV, unspecified"/>
+        <display value="Respiratory syncytial virus (RSV), unspecified"/>
       </coding>
+      <text value="RSV, unspecified"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="55735004"/>
-        <display value="RSV"/>
+        <display value="Respiratory syncytial virus infection"/>
       </coding>
       <text value="RSV"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Not Complete"/>
+        <code value="notComplete"/>
         <display value="Not Complete"/>
       </coding>
       <coding>
@@ -900,7 +2112,7 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13422-3"/>
-        <display value="On schedule"/>
+        <display value="On schedule - person is not overdue for a given dose in the series. Includes a person too young to start the series."/>
       </coding>
     </forecastStatus>
     <dateCriterion>
@@ -937,6 +2149,44 @@
     <doseNumberString value="1"/>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="HPV 2-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="agedOut"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="agedout"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13424-9"/>
+            <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -952,19 +2202,20 @@
         <code value="137"/>
         <display value="HPV, unspecified formulation"/>
       </coding>
+      <text value="HPV, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="240532009"/>
-        <display value="HPV"/>
+        <display value="Human papilloma virus infection"/>
       </coding>
       <text value="HPV"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Aged Out"/>
+        <code value="agedOut"/>
         <display value="Aged Out"/>
       </coding>
       <coding>
@@ -975,11 +2226,62 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13424-9"/>
-        <display value="Too old"/>
+        <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="maximumAge"/>
+        <display value="Maximum Age Exceeded"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="exceeded-maximum-age"/>
+        <display value="Patient has exceeded the maximum age"/>
+      </coding>
+      <text value="Patient has exceeded the maximum age"/>
+    </forecastReason>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Meningococcal B 2-dose series MenB-4C Shared Clinical Decision Making"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="agedOut"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="agedout"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13424-9"/>
+            <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -995,19 +2297,20 @@
         <code value="164"/>
         <display value="meningococcal B, unspecified"/>
       </coding>
+      <text value="meningococcal B, unspecified"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
-        <code value="860805006"/>
-        <display value="Meningococcal B"/>
+        <code value="1354584007"/>
+        <display value="Meningococcal infectious disease caused by Neisseria meningitidis serogroup B"/>
       </coding>
       <text value="Meningococcal B"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Aged Out"/>
+        <code value="agedOut"/>
         <display value="Aged Out"/>
       </coding>
       <coding>
@@ -1018,11 +2321,70 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13424-9"/>
-        <display value="Too old"/>
+        <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="maximumAge"/>
+        <display value="Maximum Age Exceeded"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="exceeded-maximum-age"/>
+        <display value="Patient has exceeded the maximum age"/>
+      </coding>
+      <text value="Patient has exceeded the maximum age"/>
+    </forecastReason>
+    <forecastReason>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="shared-clinical-decision-making"/>
+        <display value="Recommended by shared clinical decision-making"/>
+      </coding>
+      <text value="Recommended by shared clinical decision-making"/>
+    </forecastReason>
   </recommendation>
   <recommendation>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext">
+      <extension url="engine">
+        <valueString value="cicada/0.0.1"/>
+      </extension>
+      <extension url="supportingData">
+        <valueString value="CDSi 4.65-508"/>
+      </extension>
+    </extension>
+    <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext">
+      <extension url="seriesName">
+        <valueString value="Rotavirus 3-dose series"/>
+      </extension>
+      <extension url="seriesGroupName">
+        <valueString value="Standard"/>
+      </extension>
+      <extension url="seriesType">
+        <valueString value="standard"/>
+      </extension>
+      <extension url="status">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
+            <code value="agedOut"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"/>
+            <code value="agedout"/>
+            <display value="Aged Out"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="LA13424-9"/>
+            <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+    </extension>
     <extension url="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext">
       <valueCodeableConcept>
         <coding>
@@ -1038,19 +2400,20 @@
         <code value="122"/>
         <display value="rotavirus, unspecified formulation"/>
       </coding>
+      <text value="rotavirus, unspecified formulation"/>
     </vaccineCode>
     <targetDisease>
       <coding>
         <system value="http://snomed.info/sct"/>
-        <code value="18624000"/>
-        <display value="Rotavirus"/>
+        <code value="415822001"/>
+        <display value="Viral gastroenteritis caused by Rotavirus"/>
       </coding>
       <text value="Rotavirus"/>
     </targetDisease>
     <forecastStatus>
       <coding>
         <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus"/>
-        <code value="Aged Out"/>
+        <code value="agedOut"/>
         <display value="Aged Out"/>
       </coding>
       <coding>
@@ -1061,8 +2424,21 @@
       <coding>
         <system value="http://loinc.org"/>
         <code value="LA13424-9"/>
-        <display value="Too old"/>
+        <display value="Too old - cannot complete the series because the latest age for receiving dose has passed."/>
       </coding>
     </forecastStatus>
+    <forecastReason>
+      <coding>
+        <system value="http://hl7.org/fhir/us/immds/CodeSystem/ForecastReason"/>
+        <code value="maximumAge"/>
+        <display value="Maximum Age Exceeded"/>
+      </coding>
+      <coding>
+        <system value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason"/>
+        <code value="exceeded-maximum-age"/>
+        <display value="Patient has exceeded the maximum age"/>
+      </coding>
+      <text value="Patient has exceeded the maximum age"/>
+    </forecastReason>
   </recommendation>
 </ImmunizationRecommendation>

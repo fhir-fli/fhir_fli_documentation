@@ -66,7 +66,7 @@
   <name value="AntigenSupportingData"/>
   <title value="Antigen Supporting Data"/>
   <status value="draft"/>
-  <date value="2026-09-02T22:18:14-04:00"/>
+  <date value="2026-09-06T20:44:07-04:00"/>
   <publisher value="FHIR-FLI"/>
   <contact>
     <name value="FHIR-FLI"/>
@@ -82,9 +82,9 @@
     <uri value="http://hl7.org/v3"/>
     <name value="RIM Mapping"/>
   </mapping>
-  <kind value="resource"/>
+  <kind value="logical"/>
   <abstract value="false"/>
-  <type value="antigen-supporting-data"/>
+  <type value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-supporting-data"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Element"/>
   <derivation value="specialization"/>
   <snapshot>

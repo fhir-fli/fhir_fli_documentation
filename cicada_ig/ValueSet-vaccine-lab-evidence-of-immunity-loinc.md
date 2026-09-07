@@ -9,10 +9,10 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-lab-evidence-of-immunity-loinc | *Version*:0.1.0 |
-| Active as of 2026-09-02 | *Computable Name*:VaccineLabEvidenceOfImmunityLoinc |
+| Active as of 2026-09-06 | *Computable Name*:VaccineLabEvidenceOfImmunityLoinc |
 
  
-LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. 
+LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. Serum IgG in every case, plus total antibody for hepatitis A, which is what evidence of immunity means for these antigens; IgM, cerebrospinal fluid and avidity codes are deliberately excluded. 
 
  **References** 
 
@@ -23,8 +23,6 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
  
 
 ### Expansion
-
-No Expansion for this valueset (not supported by Publication Tooling)
 
 -------
 
@@ -52,100 +50,96 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "name" : "VaccineLabEvidenceOfImmunityLoinc",
   "title" : "Lab Evidence of Immunity (LOINC)",
   "status" : "active",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
-  "description" : "LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support.",
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
+  "description" : "LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. Serum IgG in every case, plus total antibody for hepatitis A, which is what evidence of immunity means for these antigens; IgM, cerebrospinal fluid and avidity codes are deliberately excluded.",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://loinc.org",
+      "concept" : [{
+        "code" : "32018-4",
+        "display" : "Hepatitis A virus IgG Ab [Presence] in Serum"
+      },
       {
-        "system" : "http://loinc.org",
-        "concept" : [
-          {
-            "code" : "21500-4",
-            "display" : "Measles virus IgG Ab [Units/volume] in Serum"
-          },
-          {
-            "code" : "35275-7",
-            "display" : "Measles virus IgG Ab [Presence] in Serum"
-          },
-          {
-            "code" : "20479-2",
-            "display" : "Measles virus Ab [Presence] in Serum"
-          },
-          {
-            "code" : "6476-3",
-            "display" : "Mumps virus IgG Ab [Units/volume] in Serum"
-          },
-          {
-            "code" : "39012-0",
-            "display" : "Mumps virus IgG Ab [Presence] in Serum"
-          },
-          {
-            "code" : "22416-2",
-            "display" : "Mumps virus Ab [Presence] in Serum"
-          },
-          {
-            "code" : "8014-3",
-            "display" : "Rubella virus IgG Ab [Units/volume] in Serum"
-          },
-          {
-            "code" : "25514-1",
-            "display" : "Rubella virus IgG Ab [Presence] in Serum"
-          },
-          {
-            "code" : "20458-6",
-            "display" : "Rubella virus Ab [Presence] in Serum"
-          },
-          {
-            "code" : "19162-7",
-            "display" : "Varicella zoster virus IgG Ab [Units/volume] in Serum"
-          },
-          {
-            "code" : "17763-4",
-            "display" : "Varicella zoster virus IgG Ab [Presence] in Serum"
-          },
-          {
-            "code" : "5403-8",
-            "display" : "Varicella zoster virus Ab [Presence] in Serum"
-          },
-          {
-            "code" : "16935-9",
-            "display" : "Hepatitis B virus surface Ab [Units/volume] in Serum"
-          },
-          {
-            "code" : "22322-2",
-            "display" : "Hepatitis B virus surface Ab [Presence] in Serum"
-          },
-          {
-            "code" : "10900-9",
-            "display" : "Hepatitis B virus surface Ab [Units/volume] in Serum by Immunoassay"
-          },
-          {
-            "code" : "32018-4",
-            "display" : "Hepatitis A virus Ab [Presence] in Serum"
-          },
-          {
-            "code" : "40724-7",
-            "display" : "Hepatitis A virus IgG Ab [Presence] in Serum"
-          },
-          {
-            "code" : "13950-1",
-            "display" : "Hepatitis A virus Ab [Units/volume] in Serum"
-          }
-        ]
-      }
-    ]
+        "code" : "40724-7",
+        "display" : "Hepatitis A virus IgG Ab [Presence] in Serum by Immunoassay"
+      },
+      {
+        "code" : "22313-1",
+        "display" : "Hepatitis A virus IgG Ab [Units/volume] in Serum"
+      },
+      {
+        "code" : "20575-7",
+        "display" : "Hepatitis A virus Ab [Presence] in Serum"
+      },
+      {
+        "code" : "16935-9",
+        "display" : "Hepatitis B virus surface Ab [Units/volume] in Serum"
+      },
+      {
+        "code" : "22322-2",
+        "display" : "Hepatitis B virus surface Ab [Presence] in Serum"
+      },
+      {
+        "code" : "10900-9",
+        "display" : "Hepatitis B virus surface Ab [Presence] in Serum by Immunoassay"
+      },
+      {
+        "code" : "7962-4",
+        "display" : "Measles virus IgG Ab [Units/volume] in Serum"
+      },
+      {
+        "code" : "20479-2",
+        "display" : "Measles virus IgG Ab [Presence] in Serum"
+      },
+      {
+        "code" : "35275-7",
+        "display" : "Measles virus IgG Ab [Presence] in Serum by Immunoassay"
+      },
+      {
+        "code" : "7966-5",
+        "display" : "Mumps virus IgG Ab [Units/volume] in Serum"
+      },
+      {
+        "code" : "22415-4",
+        "display" : "Mumps virus IgG Ab [Presence] in Serum"
+      },
+      {
+        "code" : "6476-6",
+        "display" : "Mumps virus IgG Ab [Presence] in Serum by Immunoassay"
+      },
+      {
+        "code" : "8014-3",
+        "display" : "Rubella virus IgG Ab [Units/volume] in Serum"
+      },
+      {
+        "code" : "25514-1",
+        "display" : "Rubella virus IgG Ab [Presence] in Serum"
+      },
+      {
+        "code" : "40667-8",
+        "display" : "Rubella virus IgG Ab [Presence] in Serum or Plasma by Immunoassay"
+      },
+      {
+        "code" : "8047-3",
+        "display" : "Varicella zoster virus IgG Ab [Units/volume] in Serum"
+      },
+      {
+        "code" : "19162-7",
+        "display" : "Varicella zoster virus IgG Ab [Presence] in Serum"
+      },
+      {
+        "code" : "15410-4",
+        "display" : "Varicella zoster virus IgG Ab [Presence] in Serum by Immunoassay"
+      }]
+    }]
   }
 }
 

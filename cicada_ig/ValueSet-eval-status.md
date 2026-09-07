@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/eval-status | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:EvalStatusVS |
+| Draft as of 2026-09-06 | *Computable Name*:EvalStatusVS |
 
  
 Combined value set for dose evaluation status, including HL7 THO standard codes (valid, notvalid) and the Cicada extension code (extraneous). 
 
  **References** 
 
-* [Dose of a Vaccine](StructureDefinition-vax-dose.md)
+This value set is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
 
 ### Logical Definition (CLD)
 
@@ -50,35 +50,27 @@ Combined value set for dose evaluation status, including HL7 THO standard codes 
   "name" : "EvalStatusVS",
   "title" : "Evaluation Status Value Set",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Combined value set for dose evaluation status, including HL7 THO standard codes (valid, notvalid) and the Cicada extension code (extraneous).",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
-      },
-      {
-        "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus",
-        "concept" : [
-          {
-            "code" : "extraneous",
-            "display" : "Extraneous"
-          }
-        ]
-      }
-    ]
+    "include" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
+    },
+    {
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus",
+      "concept" : [{
+        "code" : "extraneous",
+        "display" : "Extraneous"
+      }]
+    }]
   }
 }
 

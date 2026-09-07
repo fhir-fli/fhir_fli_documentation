@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/vaccine-gender | *Version*:0.1.0 |
-| Draft as of 2026-09-02 | *Computable Name*:VaccineGenderVS |
+| Draft as of 2026-09-06 | *Computable Name*:VaccineGenderVS |
 
  
 Value set for gender categories relevant to vaccination data. 
 
  **References** 
 
-* [Vaccination Patient](StructureDefinition-vax-patient.md)
+This value set is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
 
 ### Logical Definition (CLD)
 
@@ -50,44 +50,36 @@ Value set for gender categories relevant to vaccination data.
   "name" : "VaccineGenderVS",
   "title" : "Vaccine Gender",
   "status" : "draft",
-  "date" : "2026-09-02T22:18:14-04:00",
+  "date" : "2026-09-06T20:44:07-04:00",
   "publisher" : "FHIR-FLI",
-  "contact" : [
-    {
-      "name" : "FHIR-FLI",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "http://fhirfli.dev"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
   "description" : "Value set for gender categories relevant to vaccination data.",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender",
+      "concept" : [{
+        "code" : "female",
+        "display" : "Female"
+      },
       {
-        "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender",
-        "concept" : [
-          {
-            "code" : "female",
-            "display" : "Female"
-          },
-          {
-            "code" : "transgender",
-            "display" : "Transgender"
-          },
-          {
-            "code" : "unknown",
-            "display" : "Unknown"
-          },
-          {
-            "code" : "male",
-            "display" : "Male"
-          }
-        ]
-      }
-    ]
+        "code" : "transgender",
+        "display" : "Transgender"
+      },
+      {
+        "code" : "unknown",
+        "display" : "Unknown"
+      },
+      {
+        "code" : "male",
+        "display" : "Male"
+      }]
+    }]
   }
 }
 

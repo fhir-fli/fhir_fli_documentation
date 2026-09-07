@@ -1,209 +1,266 @@
 {
-  "codeSystems" : [
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "EvalReasonCS",
-      "title" : "Evaluation Reason",
-      "description" : "The reason for the evaluation.",
-      "uses" : {
-      },
-      "ValueSet-eval-reason.html" : "Evaluation Reason"
+  "codeSystems" : [{
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalReason",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "EvalReasonCS",
+    "title" : "Evaluation Reason",
+    "description" : "The reason for the evaluation.",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "EvalStatusCS",
-      "title" : "Cicada Evaluation Status",
-      "description" : "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here.",
-      "uses" : {
-      },
-      "ValueSet-eval-status.html" : "Evaluation Status Value Set"
+    "ValueSet-eval-reason.html" : "Evaluation Reason"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/EvalStatus",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "EvalStatusCS",
+    "title" : "Cicada Evaluation Status",
+    "description" : "Extension codes for dose evaluation status beyond the HL7 THO immunization-evaluation-dose-status CodeSystem. Only codes not covered by the standard are defined here.",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "IntervalReasonCS",
-      "title" : "Interval Reason",
-      "description" : "This value set includes codes for the reason an interval is considered to be invalid.",
-      "uses" : {
-      },
-      "ValueSet-interval-reason.html" : "Interval Reason"
+    "ValueSet-eval-status.html" : "Evaluation Status Value Set"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "IntervalReasonCS",
+    "title" : "Interval Reason",
+    "description" : "This value set includes codes for the reason an interval is considered to be invalid.",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "PreferredAllowedReasonCS",
-      "title" : "Reasons why certain doses are Preferred or Allowed doses",
-      "description" : "Reasons why certain doses are Preferred or Allowed doses",
-      "uses" : {
-      },
-      "ValueSet-preferred-allowed-reason.html" : "Reasons why certain doses are Preferred or Allowed doses"
+    "ValueSet-interval-reason.html" : "Interval Reason"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "PreferredAllowedReasonCS",
+    "title" : "Reasons why certain doses are Preferred or Allowed doses",
+    "description" : "Reasons why certain doses are Preferred or Allowed doses",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "VaccineGenderCS",
-      "title" : "Vaccine Gender",
-      "description" : "Value set for gender categories relevant to vaccination data.",
-      "uses" : {
-      },
-      "ValueSet-vaccine-gender.html" : "Vaccine Gender"
+    "ValueSet-preferred-allowed-reason.html" : "Reasons why certain doses are Preferred or Allowed doses"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/VaccineGender",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "VaccineGenderCS",
+    "title" : "Vaccine Gender",
+    "description" : "Value set for gender categories relevant to vaccination data.",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "ValidAgeReasonCS",
-      "title" : "Valid Age Reason",
-      "description" : "Value set for reasons why a patient's age is considered valid/invalid for a vaccine.",
-      "uses" : {
-      },
-      "ValueSet-valid-age-reason.html" : "Valid Age Reason"
+    "ValueSet-vaccine-gender.html" : "Vaccine Gender"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/ValidAgeReason",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "ValidAgeReasonCS",
+    "title" : "Valid Age Reason",
+    "description" : "Value set for reasons why a patient's age is considered valid/invalid for a vaccine.",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "DataIntegrityCS",
-      "title" : "Cicada Data Integrity Code System",
-      "description" : "Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses.",
-      "uses" : {
-      },
-      "ValueSet-data-integrity-vs.html" : "Cicada Data Integrity Value Set"
+    "ValueSet-valid-age-reason.html" : "Valid Age Reason"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/cdsi-observation-codes",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "CdsiObservationCodes",
+    "title" : "CDSI Observation Codes",
+    "description" : "Observations and Conditions that are important to indications or contraindications in vaccine forecasting",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "CicadaForecastReasonCS",
-      "title" : "Cicada Forecast Reason Code System",
-      "description" : "Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped.",
-      "uses" : {
-      },
-      "ValueSet-forecast-reason-vs.html" : "Cicada Forecast Reason Value Set"
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
+    "ValueSet-cdsi-observation-codes-vs.html" : "CDSI Observation Codes Value Set",
+    "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "DataIntegrityCS",
+    "title" : "Cicada Data Integrity Code System",
+    "description" : "Records that cannot describe an administration. CDSi evaluates a vaccine dose administered and defines the assessment date as the current date, so these doses are excluded from evaluation and forecasting and reported in an OperationOutcome. They are statements about the data, never about the patient's immunity, which is why they are not evaluation statuses.",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "SeriesTypeCS",
-      "title" : "Series Type Code System",
-      "description" : "CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data.",
-      "uses" : {
-      },
-      "ValueSet-series-type-vs.html" : "Series Type Value Set"
+    "ValueSet-data-integrity-vs.html" : "Cicada Data Integrity Value Set"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/forecast-reason",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "CicadaForecastReasonCS",
+    "title" : "Cicada Forecast Reason Code System",
+    "description" : "Why the engine forecast what it did. The ImmDS ForecastReason code system covers four of these; the rest have no ImmDS concept, and the ImmDS binding on ImmunizationRecommendation.recommendation.forecastReason is example strength, so they travel as a second coding rather than being dropped.",
+    "uses" : {
     },
-    {
-      "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status",
-      "version" : "0.1.0",
-      "status" : "draft",
-      "name" : "TargetDoseStatusCS",
-      "title" : "Target Dose Status Code System",
-      "description" : "CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable.",
-      "uses" : {
-      },
-      "ValueSet-target-dose-status-vs.html" : "Target Dose Status Value Set"
+    "ValueSet-forecast-reason-vs.html" : "Cicada Forecast Reason Value Set"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "SeriesTypeCS",
+    "title" : "Series Type Code System",
+    "description" : "CDSi series type: whether a patient series is the routine schedule, one indicated by a risk condition, or evaluation-only. Mirrors the seriesType attribute of the CDSi antigen supporting data.",
+    "uses" : {
     },
-    {
-      "url" : "http://hl7.org/fhir/sid/cvx",
-      "version" : "20250715",
-      "status" : "active",
-      "name" : "CVX",
-      "title" : "CVX - US Vaccine Codes",
-      "description" : "CVX Codes for vaccines",
-      "uses" : {
-      },
-      "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
+    "ValueSet-series-type-vs.html" : "Series Type Value Set"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "TargetDoseStatusCS",
+    "title" : "Target Dose Status Code System",
+    "description" : "CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable.",
+    "uses" : {
     },
-    {
-      "url" : "http://hl7.org/fhir/sid/mvx",
-      "version" : "20201030",
-      "status" : "active",
-      "name" : "MVX",
-      "title" : "MVX - Manufacturers of Vaccines",
-      "description" : "MVX Codes for manufacturers of vaccines",
-      "uses" : {
-      },
-      "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
+    "ValueSet-target-dose-status-vs.html" : "Target Dose Status Value Set"
+  },
+  {
+    "url" : "http://hl7.org/fhir/sid/cvx",
+    "version" : "20250715",
+    "status" : "active",
+    "name" : "CVX",
+    "title" : "CVX - US Vaccine Codes",
+    "description" : "CVX Codes for vaccines",
+    "uses" : {
     },
-    {
-      "url" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
-      "version" : "1.0.0",
-      "status" : "active",
-      "name" : "ForecastStatus",
-      "title" : "Forecast Status",
-      "description" : "A set of forecast statuses.",
-      "uses" : {
-      },
-      "ValueSet-forecast-status.html" : "Forecast Status Value Set"
+    "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
+  },
+  {
+    "url" : "http://hl7.org/fhir/sid/icd-10-cm",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "Icd10Cm",
+    "title" : "ICD-10-CM (external, content not present)",
+    "description" : "Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server.",
+    "uses" : {
     },
-    {
-      "url" : "http://hl7.org/fhir/us/immds/CodeSystem/StatusReason",
-      "version" : "1.0.0",
-      "status" : "active",
-      "name" : "StatusReason",
-      "title" : "Evaluation Status Reason",
-      "description" : "A set of reasons for the evaluation status.",
-      "uses" : {
-      },
-      "ValueSet-dose-status-reason.html" : "Dose Status Reason Value Set"
+    "ValueSet-vaccine-condition-codes-icd10.html" : "Vaccine Condition Codes (ICD-10-CM)",
+    "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map"
+  },
+  {
+    "url" : "http://hl7.org/fhir/sid/mvx",
+    "version" : "20201030",
+    "status" : "active",
+    "name" : "MVX",
+    "title" : "MVX - Manufacturers of Vaccines",
+    "description" : "MVX Codes for manufacturers of vaccines",
+    "uses" : {
     },
-    {
-      "url" : "http://snomed.info/sct",
-      "version" : null,
-      "status" : "active",
-      "name" : "SNOMED_CT",
-      "title" : "SNOMED CT (all versions)",
-      "description" : "SNOMED CT is the most comprehensive and precise clinical health terminology product in the world, owned and distributed around the world by The International Health Terminology Standards Development Organisation (IHTSDO).",
-      "oids" : ["2.16.840.1.113883.6.96"],
-      "uses" : {
-      },
-      "ValueSet-procedures.html" : "Procedures",
-      "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
-      "ValueSet-vaccine-medication-codes-snomed.html" : "Medications",
-      "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes"
+    "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
+  },
+  {
+    "url" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "ForecastStatus",
+    "title" : "Forecast Status",
+    "description" : "A set of forecast statuses.",
+    "uses" : {
     },
-    {
-      "url" : "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status",
-      "version" : "1.0.1",
-      "status" : "active",
-      "name" : "ImmunizationEvaluationDoseStatusCodes",
-      "title" : "Immunization Evaluation Dose Status codes",
-      "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the validity of a dose relative to a particular recommended schedule. This value set is provided as a suggestive example.",
-      "oids" : ["2.16.840.1.113883.4.642.1.1102"],
-      "uses" : {
-      },
-      "ValueSet-eval-status.html" : "Evaluation Status Value Set"
+    "ValueSet-forecast-status.html" : "Forecast Status Value Set"
+  },
+  {
+    "url" : "http://hl7.org/fhir/us/immds/CodeSystem/StatusReason",
+    "version" : "1.0.0",
+    "status" : "active",
+    "name" : "StatusReason",
+    "title" : "Evaluation Status Reason",
+    "description" : "A set of reasons for the evaluation status.",
+    "uses" : {
     },
-    {
-      "url" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
-      "version" : "2.0.0",
-      "status" : "active",
-      "name" : "ImmunizationRecommendationStatusCodes",
-      "title" : "Immunization Recommendation Status Codes",
-      "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the status of the patient towards perceived immunity against a vaccine preventable disease. This value set is provided as a suggestive example.",
-      "oids" : ["2.16.840.1.113883.4.642.1.1104"],
-      "uses" : {
-      },
-      "ValueSet-forecast-status.html" : "Forecast Status Value Set"
+    "ValueSet-dose-status-reason.html" : "Dose Status Reason Value Set"
+  },
+  {
+    "url" : "http://loinc.org",
+    "version" : "2.82",
+    "status" : "active",
+    "name" : "LOINC",
+    "title" : null,
+    "description" : "This is a place holder for the code system which is fully supported through internal means (not by this code system)",
+    "uses" : {
     },
-    {
-      "url" : "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason",
-      "version" : "1.0.1",
-      "status" : "active",
-      "name" : "ImmunizationSubpotentReason",
-      "title" : "Immunization Subpotent Reason",
-      "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the reason why a dose is considered to be subpotent. This value set is provided as a suggestive example.",
-      "oids" : ["2.16.840.1.113883.4.642.1.1098"],
-      "uses" : {
-      },
-      "http://hl7.org/fhir/R4/valueset-immunization-subpotent-reason.html" : "Immunization Subpotent Reason"
-    }
-  ]
+    "ValueSet-forecast-status.html" : "Forecast Status Value Set",
+    "ValueSet-vaccine-lab-evidence-of-immunity-loinc.html" : "Lab Evidence of Immunity (LOINC)"
+  },
+  {
+    "url" : "http://snomed.info/sct",
+    "version" : null,
+    "status" : "active",
+    "name" : "SNOMED_CT",
+    "title" : "SNOMED CT (all versions)",
+    "description" : "SNOMED CT is the most comprehensive and precise clinical health terminology product in the world, owned and distributed around the world by The International Health Terminology Standards Development Organisation (IHTSDO).",
+    "oids" : ["2.16.840.1.113883.6.96"],
+    "uses" : {
+    },
+    "ValueSet-vaccine-medication-codes-snomed.html" : "Medications",
+    "ValueSet-procedures.html" : "Procedures",
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
+    "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status",
+    "version" : "1.0.1",
+    "status" : "active",
+    "name" : "ImmunizationEvaluationDoseStatusCodes",
+    "title" : "Immunization Evaluation Dose Status codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the validity of a dose relative to a particular recommended schedule. This value set is provided as a suggestive example.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1102"],
+    "uses" : {
+    },
+    "ValueSet-eval-status.html" : "Evaluation Status Value Set"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+    "version" : "2.0.0",
+    "status" : "active",
+    "name" : "ImmunizationRecommendationStatusCodes",
+    "title" : "Immunization Recommendation Status Codes",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the status of the patient towards perceived immunity against a vaccine preventable disease. This value set is provided as a suggestive example.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1104"],
+    "uses" : {
+    },
+    "ValueSet-forecast-status.html" : "Forecast Status Value Set"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason",
+    "version" : "1.0.1",
+    "status" : "active",
+    "name" : "ImmunizationSubpotentReason",
+    "title" : "Immunization Subpotent Reason",
+    "description" : "The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the reason why a dose is considered to be subpotent. This value set is provided as a suggestive example.",
+    "oids" : ["2.16.840.1.113883.4.642.1.1098"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-immunization-subpotent-reason.html" : "Immunization Subpotent Reason"
+  },
+  {
+    "url" : "http://www.ama-assn.org/go/cpt",
+    "version" : "2023",
+    "status" : "active",
+    "name" : "CPT",
+    "title" : null,
+    "description" : "This is a place holder for the code system which is fully supported through internal means (not by this code system)",
+    "uses" : {
+    },
+    "ValueSet-immunization-procedures-cpt.html" : "Immunization-Relevant Procedures (CPT)"
+  },
+  {
+    "url" : "http://www.nlm.nih.gov/research/umls/rxnorm",
+    "version" : "03022026",
+    "status" : "active",
+    "name" : "RxNorm",
+    "title" : null,
+    "description" : "This is a place holder for the code system which is fully supported through internal means (not by this code system)",
+    "uses" : {
+    },
+    "ValueSet-vaccine-medication-codes-rxnorm.html" : "Immunization-Relevant Medications (RxNorm)"
+  }]
 }

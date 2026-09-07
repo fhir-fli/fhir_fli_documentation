@@ -157,25 +157,28 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
    <p>Contents:</p>
    <ul>
       <li>
-         <a href="#1">Structures: Resource Profiles</a>
+         <a href="#1">Structures: Logical Models</a>
       </li>
       <li>
-         <a href="#2">Structures: Extension Definitions</a>
+         <a href="#2">Structures: Resource Profiles</a>
       </li>
       <li>
-         <a href="#3">Terminology: Value Sets</a>
+         <a href="#3">Structures: Extension Definitions</a>
       </li>
       <li>
-         <a href="#4">Terminology: Code Systems</a>
+         <a href="#4">Terminology: Value Sets</a>
       </li>
       <li>
-         <a href="#5">Terminology: Structure Maps</a>
+         <a href="#5">Terminology: Code Systems</a>
       </li>
       <li>
-         <a href="#6">Terminology: Concept Maps</a>
+         <a href="#6">Terminology: Structure Maps</a>
       </li>
       <li>
-         <a href="#7">Other</a>
+         <a href="#7">Terminology: Concept Maps</a>
+      </li>
+      <li>
+         <a href="#8">Other</a>
       </li>
    </ul>
 </div>
@@ -184,6 +187,32 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
      xmlns:html="http://www.w3.org/1999/xhtml">
    <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
    <a name="1"> </a>
+   <h3>Structures: Logical Models </h3>
+    <p>These define data models that represent the domain covered by this implementation guide in more business-friendly terms than the underlying FHIR resources.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-antigen-supporting-data.html"
+                  title="StructureDefinition/antigen-supporting-data">Antigen Supporting Data</a>
+            </td>
+            <td>
+<p>A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-schedule-supporting-data.html"
+                  title="StructureDefinition/schedule-supporting-data">Schedule Supporting Data</a>
+            </td>
+            <td>
+<p>This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes.</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="2"> </a>
    <h3>Structures: Resource Profiles </h3>
     <p>These define constraints on FHIR resources for systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -299,7 +328,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
       </tbody>
    </table>
-   <a name="2"> </a>
+   <a name="3"> </a>
    <h3>Structures: Extension Definitions </h3>
     <p>These define constraints on FHIR data types for systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -523,12 +552,21 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
       </tbody>
    </table>
-   <a name="3"> </a>
+   <a name="4"> </a>
    <h3>Terminology: Value Sets </h3>
     <p>These define sets of codes used by systems conforming to this implementation guide.</p>
 <table class="grid">
       <col style="width:20%"/>
       <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-cdsi-observation-codes-vs.html"
+                  title="ValueSet/cdsi-observation-codes-vs">CDSI Observation Codes Value Set</a>
+            </td>
+            <td>
+<p>Every CDSi observation code, as published in the supporting data.</p>
+</td>
+         </tr>
          <tr>
             <td style="column-width:30%">
                <a href="ValueSet-data-integrity-vs.html"
@@ -612,7 +650,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="ValueSet/vaccine-lab-evidence-of-immunity-loinc">Lab Evidence of Immunity (LOINC)</a>
             </td>
             <td>
-<p>LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support.</p>
+<p>LOINC codes for laboratory tests that provide evidence of immunity, mapped to CDSi observation codes for immunization decision support. Serum IgG in every case, plus total antibody for hepatitis A, which is what evidence of immunity means for these antigens; IgM, cerebrospinal fluid and avidity codes are deliberately excluded.</p>
 </td>
          </tr>
          <tr>
@@ -703,7 +741,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
       </tbody>
    </table>
-   <a name="4"> </a>
+   <a name="5"> </a>
    <h3>Terminology: Code Systems </h3>
     <p>These define new code systems used by systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -749,6 +787,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>The reason for the evaluation.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-icd-10-cm.html" title="CodeSystem/icd-10-cm">ICD-10-CM (external, content not present)</a>
+            </td>
+            <td>
+<p>Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server.</p>
 </td>
          </tr>
          <tr>
@@ -803,7 +849,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
       </tbody>
    </table>
-   <a name="5"> </a>
+   <a name="6"> </a>
    <h3>Terminology: Structure Maps </h3>
     <p>These define transformations to convert between data structures used by systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -820,7 +866,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
       </tbody>
    </table>
-   <a name="6"> </a>
+   <a name="7"> </a>
    <h3>Terminology: Concept Maps </h3>
     <p>These define transformations to convert between codes by systems conforming with this implementation guide.</p>
 <table class="grid">
@@ -832,7 +878,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="ConceptMap/Icd10ToCdsiObservation">ICD-10-CM to CDSi Observation Code Map</a>
             </td>
             <td>
-<p>Maps ICD-10-CM diagnosis codes to CDSi observation codes used in immunization decision support.</p>
+<p>Maps ICD-10-CM codes to CDSi observation codes used in immunization decision support. Generated from the cicada crosswalk.</p>
 </td>
          </tr>
          <tr>
@@ -841,12 +887,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="ConceptMap/SnomedToCdsiObservation">SNOMED CT to CDSi Observation Code Map</a>
             </td>
             <td>
-<p>Maps SNOMED CT codes to CDSi observation codes used in immunization decision support.</p>
+<p>Maps SNOMED CT codes to CDSi observation codes used in immunization decision support. Generated from CDC's supporting data.</p>
 </td>
          </tr>
       </tbody>
    </table>
-   <a name="7"> </a>
+   <a name="8"> </a>
    <h3>Other </h3>
     <p>These are resources that are used within this implementation guide that do not fit into one of the other categories.</p>
 <table class="grid">
@@ -856,36 +902,17 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             <td style="column-width:30%">
                <a href="Patient-2016-UC-0032.html" title="Patient/2016-UC-0032">2016-UC-0032</a>
             </td>
-            <td>
-
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-antigen-supporting-data.html"
-                  title="StructureDefinition/antigen-supporting-data">Antigen Supporting Data</a>
-            </td>
-            <td>
-<p>A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-schedule-supporting-data.html"
-                  title="StructureDefinition/schedule-supporting-data">Schedule Supporting Data</a>
-            </td>
-            <td>
-<p>This resource consolidates various mapping and conflict information related to vaccine scheduling to support decision-making processes.</p>
-</td>
          </tr>
          <tr>
             <td style="column-width:30%">
                <a href="ImmunizationRecommendation-cicada-forecast-example.html"
                   title="ImmunizationRecommendation/cicada-forecast-example">cicada-forecast-example</a>
             </td>
-            <td>
-
-</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Parameters-manifest.html" title="Parameters/manifest">manifest</a>
+            </td>
          </tr>
       </tbody>
    </table>
@@ -907,7 +934,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 2, 2026 22:18-0400">2026-09-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://fhirfli.dev">FHIR-FLI</a>.  Package cicada.ig#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Sep 6, 2026 20:44-0400">2026-09-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
