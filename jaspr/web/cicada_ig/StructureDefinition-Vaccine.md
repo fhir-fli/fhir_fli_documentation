@@ -16,7 +16,7 @@ A vaccine product as CDC's supporting data describes one: the CVX, the trade nam
 
 **Usages:**
 
-* Examples for this Profile: [Medication/vaccine-hepb-adult](Medication-vaccine-hepb-adult.md)
+* Examples for this Profile: [Medication/vaccine-dtap](Medication-vaccine-dtap.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-Vaccine.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-Vaccine.csv), [Excel
   "name" : "Vaccine",
   "title" : "Vaccine",
   "status" : "draft",
-  "date" : "2026-09-07T19:28:06-04:00",
+  "date" : "2026-09-07T19:51:55-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

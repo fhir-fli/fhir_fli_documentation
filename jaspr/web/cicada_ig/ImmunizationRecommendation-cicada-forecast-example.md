@@ -1371,8 +1371,8 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
       },
       {
         "system" : "http://snomed.info/sct",
-        "code" : "397428000",
-        "display" : "Diphtheria"
+        "code" : "397430003",
+        "display" : "Diphtheria caused by Corynebacterium diphtheriae"
       }],
       "text" : "DTaP/Tdap/Td"
     },

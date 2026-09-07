@@ -11,7 +11,7 @@
   <name value="CicadaIG"/>
   <title value="The Cicada Vaccine Forecasting Engine and Guide"/>
   <status value="draft"/>
-  <date value="2026-09-07T19:28:06-04:00"/>
+  <date value="2026-09-07T19:51:55-04:00"/>
   <publisher value="FHIR-FLI"/>
   <contact>
     <name value="FHIR-FLI"/>
@@ -986,10 +986,10 @@
         <valueString value="Medication"/>
       </extension>
       <reference>
-        <reference value="Medication/vaccine-hepb-adult"/>
+        <reference value="Medication/vaccine-dtap"/>
       </reference>
-      <name value="Medication: Hep B, adult"/>
-      <description value="A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1)."/>
+      <name value="Medication: DTaP"/>
+      <description value="A vaccine product as a Medication: CVX 20 with a trade name, the ages between which CDC's Diphtheria standard series lists it as a preferable vaccine (6 weeks to 7 years), and its vaccine type. CDC's &quot;0 days&quot; begin ages cannot be examples here: FHIR's Age datatype requires a positive value (age-1)."/>
       <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/Vaccine"/>
     </resource>
     <resource>
@@ -1068,6 +1068,17 @@
       <name value="Observation: patient immunocompromised"/>
       <description value="A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006."/>
       <exampleCanonical value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/practitioner-recording"/>
+      </reference>
+      <name value="Practitioner: the recorder of the example observation"/>
+      <description value="The performer of observation-immunocompromised. Practitioner is not profiled by this IG; the example exists so that the observation can carry a performer, as the base specification recommends."/>
+      <exampleBoolean value="true"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">

@@ -20,7 +20,7 @@ Type of the vaccine.
 **Usages:**
 
 * Use this Extension: [Vaccine](StructureDefinition-Vaccine.md)
-* Examples for this Extension: [Medication/vaccine-hepb-adult](Medication-vaccine-hepb-adult.md)
+* Examples for this Extension: [Medication/vaccine-dtap](Medication-vaccine-dtap.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-vaccine-type.json)
 
@@ -47,7 +47,7 @@ Other representations of profile: [CSV](StructureDefinition-vaccine-type.csv), [
   "name" : "VaccineType",
   "title" : "Vaccine Type",
   "status" : "draft",
-  "date" : "2026-09-07T19:28:06-04:00",
+  "date" : "2026-09-07T19:51:55-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -67,7 +67,7 @@ Other representations of profile: [CSV](StructureDefinition-vaccine-type.csv), [
   "abstract" : false,
   "context" : [{
     "type" : "element",
-    "expression" : "Element"
+    "expression" : "Medication"
   }],
   "type" : "Extension",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",

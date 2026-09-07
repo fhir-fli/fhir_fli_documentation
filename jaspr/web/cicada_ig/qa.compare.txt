@@ -1,7 +1,7 @@
 CicadaIG : Validation Results
 =========================================
 
-err = 0, warn = 12, info = 214
+err = 0, warn = 0, info = 214
 $--
 Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.dev/fhir/ig/cicada)
  Build Errors : 0 / 0 / 0
@@ -22,12 +22,13 @@ Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.de
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ConceptMap-Icd10ToCdsiObservation : 0 / 1 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ConceptMap-SnomedToCdsiObservation : 0 / 0 / 3
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ImplementationGuide-cicada.ig : 0 / 0 / 2
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/Medication-vaccine-hepb-adult : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/Medication-vaccine-dtap : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/MedicationAdministration-medication-administration-hepb : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/MedicationDispense-medication-dispense-hepb : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/MedicationRequest-medication-request-hepb : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/MedicationStatement-medication-statement-hepb : 0 / 0 / 1
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/Observation-observation-immunocompromised : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/Observation-observation-immunocompromised : 0 / 0 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/Practitioner-practitioner-recording : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/Procedure-procedure-stem-cell-transplant : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-AntigenSupportingData : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-MedicationAdministrationProfile : 0 / 0 / 3
@@ -41,10 +42,10 @@ Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.de
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-VaccineConditionFhir : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-VaccineObservationFhir : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-antigen-needing-dose-ext : 0 / 0 / 2
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-begin-age : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-begin-age : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-cicada-immunization-recommendation : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-doses-remaining-ext : 0 / 0 / 2
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-end-age : 0 / 2 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-end-age : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-engine-version-ext : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-evaluation-detail-ext : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-series-detail-ext : 0 / 0 / 2
@@ -52,7 +53,7 @@ Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.de
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-series-type-ext : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-target-dose-status-ext : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vaccine-recommendation-category-ext : 0 / 0 / 2
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vaccine-type : 0 / 1 / 2
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vaccine-type : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vax-dose : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/StructureDefinition-vax-patient : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-VaccineCodesCvxMvx : 0 / 1 / 1
@@ -70,7 +71,7 @@ Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.de
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-series-type-vs : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-target-dose-status-vs : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-condition-codes-icd10 : 0 / 1 / 15
- /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-condition-codes-snomed : 0 / 21 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-condition-codes-snomed : 0 / 20 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-gender : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-lab-evidence-of-immunity-loinc : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-medication-codes-rxnorm : 0 / 1 / 1
@@ -78,12 +79,12 @@ Generated $--. FHIR version $-- for cicada.ig#$-- (canonical = http://fhirfli.de
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-vaccine-recommendation-category-vs : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/fsh-generated/resources/ValueSet-valid-age-reason : 0 / 1 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/input/maps/MapVaccineCodes : 0 / 1 / 38
- /home/grey/dev/fhir/cicada/cicada_ig/input/resources/Condition-2016-UC-0032-055 : 0 / 1 / 1
+ /home/grey/dev/fhir/cicada/cicada_ig/input/resources/Condition-2016-UC-0032-055 : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/input/resources/Immunization-2016-UC-0032-dose1 : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/input/resources/ImmunizationEvaluation-2016-UC-0032-1 : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/input/resources/ImmunizationEvaluation-2016-UC-0032-2 : 0 / 0 / 2
  /home/grey/dev/fhir/cicada/cicada_ig/input/resources/ImmunizationEvaluation-2016-UC-0032-3 : 0 / 0 / 2
- /home/grey/dev/fhir/cicada/cicada_ig/input/resources/ImmunizationRecommendation-cicada-forecast-example : 0 / 14 / 128
+ /home/grey/dev/fhir/cicada/cicada_ig/input/resources/ImmunizationRecommendation-cicada-forecast-example : 0 / 13 / 128
  /home/grey/dev/fhir/cicada/cicada_ig/input/resources/Parameters-manifest : 0 / 0 / 1
  /home/grey/dev/fhir/cicada/cicada_ig/input/resources/Patient-2016-UC-0032 : 0 / 0 / 1
 </table>
@@ -104,21 +105,19 @@ INFORMATION: CodeSystem/icd-10-cm: CodeSystem: Most code systems defined in HL7 
 == fsh-generated/resources/CodeSystem-target-dose-status.json ==
 == fsh-generated/resources/CodeSystem-vaccine-recommendation-category.json ==
 == fsh-generated/resources/ConceptMap-Icd10ToCdsiObservation.json ==
-WARNING: ConceptMap/Icd10ToCdsiObservation: ConceptMap.group[0].source: Source Code System http://hl7.org/fhir/sid/icd-10-cm doesn't have all content (content = not-present), so the source codes cannot be checked
 INFORMATION: Resource: The resource ConceptMap/Icd10ToCdsiObservation could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/ConceptMap-SnomedToCdsiObservation.json ==
 INFORMATION: ConceptMap/SnomedToCdsiObservation: ConceptMap.group[0].source: Source Code System http://snomed.info/sct is only supported on the terminology server, so the source codes are not validated for performance reasons
 INFORMATION: Resource: The resource ConceptMap/SnomedToCdsiObservation could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/ImplementationGuide-cicada.ig.json ==
 INFORMATION: Resource: The resource ImplementationGuide/cicada.ig could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
-== fsh-generated/resources/Medication-vaccine-hepb-adult.json ==
-WARNING: Medication/vaccine-hepb-adult: Medication.identifier[0].system: No definition could be found for URL value 'http://fhirfli.dev/fhir/ig/cicada/identifier/trade-name'
+== fsh-generated/resources/Medication-vaccine-dtap.json ==
 == fsh-generated/resources/MedicationAdministration-medication-administration-hepb.json ==
 == fsh-generated/resources/MedicationDispense-medication-dispense-hepb.json ==
 == fsh-generated/resources/MedicationRequest-medication-request-hepb.json ==
 == fsh-generated/resources/MedicationStatement-medication-statement-hepb.json ==
 == fsh-generated/resources/Observation-observation-immunocompromised.json ==
-WARNING: Observation/observation-immunocompromised: Observation: Best Practice Recommendation: In general, all observations should have a performer
+== fsh-generated/resources/Practitioner-practitioner-recording.json ==
 == fsh-generated/resources/Procedure-procedure-stem-cell-transplant.json ==
 == fsh-generated/resources/StructureDefinition-AntigenSupportingData.json ==
 INFORMATION: Resource: The resource StructureDefinition/AntigenSupportingData could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
@@ -147,16 +146,13 @@ INFORMATION: Resource: The resource StructureDefinition/VaccineObservationFhir c
 == fsh-generated/resources/StructureDefinition-antigen-needing-dose-ext.json ==
 INFORMATION: Resource: The resource StructureDefinition/antigen-needing-dose-ext could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-begin-age.json ==
-WARNING: StructureDefinition/begin-age: StructureDefinition.context[0]: Review the extension type for begin-age: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 INFORMATION: Resource: The resource StructureDefinition/begin-age could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-cicada-immunization-recommendation.json ==
 INFORMATION: Resource: The resource StructureDefinition/cicada-immunization-recommendation could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-doses-remaining-ext.json ==
 INFORMATION: Resource: The resource StructureDefinition/doses-remaining-ext could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-end-age.json ==
-WARNING: StructureDefinition/end-age: StructureDefinition.context[0]: Review the extension type for end-age: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 INFORMATION: Resource: The resource StructureDefinition/end-age could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
-WARNING: StructureDefinition.where(url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/end-age'): The Implementation Guide contains no examples for this extension
 == fsh-generated/resources/StructureDefinition-engine-version-ext.json ==
 INFORMATION: Resource: The resource StructureDefinition/engine-version-ext could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-evaluation-detail-ext.json ==
@@ -172,7 +168,6 @@ INFORMATION: Resource: The resource StructureDefinition/target-dose-status-ext c
 == fsh-generated/resources/StructureDefinition-vaccine-recommendation-category-ext.json ==
 INFORMATION: Resource: The resource StructureDefinition/vaccine-recommendation-category-ext could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-vaccine-type.json ==
-WARNING: StructureDefinition/vaccine-type: StructureDefinition.context[0]: Review the extension type for vaccine-type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 INFORMATION: Resource: The resource StructureDefinition/vaccine-type could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/StructureDefinition-vax-dose.json ==
 INFORMATION: Resource: The resource StructureDefinition/vax-dose could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
@@ -208,8 +203,6 @@ INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0]
 INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[68]: Wrong Display Name 'Chronic kidney disease, stage 4' for http://hl7.org/fhir/sid/icd-10-cm#N18.4. Valid display is 'Chronic kidney disease, stage 4 (severe)' (for the language(s) 'en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
 INFORMATION: ValueSet/vaccine-condition-codes-icd10: ValueSet.compose.include[0].concept[95]: Wrong Display Name 'Contact with and exposure to infections with a predominantly sexual mode of transmission' for http://hl7.org/fhir/sid/icd-10-cm#Z20.2. Valid display is 'Contact with and (suspected) exposure to infections with a predominantly sexual mode of transmission' (for the language(s) 'en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
 == fsh-generated/resources/ValueSet-vaccine-condition-codes-snomed.json ==
-WARNING: ValueSet/vaccine-condition-codes-snomed: ValueSet: Constraint failed: dom-6: 'A resource should have narrative for robust management (text.`div`.exists())' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)
-WARNING: ValueSet.where(id = 'vaccine-condition-codes-snomed'): Error from https://tx.fhir.org/r4: Error: The SNOMED CT Concept 451301000124103 is not known
 == fsh-generated/resources/ValueSet-vaccine-gender.json ==
 == fsh-generated/resources/ValueSet-vaccine-lab-evidence-of-immunity-loinc.json ==
 == fsh-generated/resources/ValueSet-vaccine-medication-codes-rxnorm.json ==
@@ -253,10 +246,8 @@ INFORMATION: StructureMap/MapVaccineCodes: StructureMap.group[9].rule[2].source[
 INFORMATION: StructureMap/MapVaccineCodes: StructureMap.group[10].rule[0].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 INFORMATION: StructureMap/MapVaccineCodes: StructureMap.group[10].rule[1].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
 INFORMATION: StructureMap/MapVaccineCodes: StructureMap.group[10].rule[2].rule[0].source[0]: The source statement doesn't assign a variable to the source - check that this is what is intended
-WARNING: StructureMap/MapVaccineCodes: StructureMap.group[0].input[0]: Group MapToVaccineConditionObservation parameter src has no type, so the paths cannot be validated
 INFORMATION: Resource: The resource StructureMap/MapVaccineCodes could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == input/resources/Condition-2016-UC-0032-055.json ==
-WARNING: Condition/2016-UC-0032-055: Condition.code.coding[0].system: A definition for the code system 'https://www.cdc.gov/vaccines/programs/iis/cdsi.html' could not be found, so this coding was not checked. The CodeableConcept is still valid: another coding is in the value set
 == input/resources/Immunization-2016-UC-0032-dose1.json ==
 == input/resources/ImmunizationEvaluation-2016-UC-0032-1.json ==
 INFORMATION: ImmunizationEvaluation/2016-UC-0032-1: ImmunizationEvaluation.extension[1].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/target-dose-status|0.1.0
@@ -305,7 +296,6 @@ INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRec
 INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].extension[10].extension[1].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category|0.1.0
 INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].extension[11].extension[1].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category|0.1.0
 INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].extension[12].value.ofType(CodeableConcept): Reference to draft CodeSystem http://fhirfli.dev/fhir/ig/cicada/CodeSystem/series-type|0.1.0
-WARNING: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[2].targetDisease.coding[2]: The concept '397428000' has a status of inactive and its use should be reviewed
 INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].extension[0]: This element does not match any known slice defined in the profile http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation|0.1.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].extension[1]: This element does not match any known slice defined in the profile http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation|0.1.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: ImmunizationRecommendation/cicada-forecast-example: ImmunizationRecommendation.recommendation[3].extension[2]: This element does not match any known slice defined in the profile http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/cicada-immunization-recommendation|0.1.0 (this may not be a problem, but you should check that it's not intended to match a slice)

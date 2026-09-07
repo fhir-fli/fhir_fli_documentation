@@ -1,20 +1,22 @@
-# Medication: Hep B, adult - The Cicada Vaccine Forecasting Engine and Guide v0.1.0
+# Medication: DTaP - The Cicada Vaccine Forecasting Engine and Guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **Medication: Hep B, adult**
+* **Medication: DTaP**
 
-## Example Medication: Medication: Hep B, adult
+## Example Medication: Medication: DTaP
 
 Profile: [Vaccine](StructureDefinition-Vaccine.md)
 
-**Begin Age**: 20 years (Details: UCUM codea = 'a')
+**Begin Age**: 6 weeks (Details: UCUM codewk = 'wk')
 
-**Vaccine Type**: Hep B, adult
+**End Age**: 7 years (Details: UCUM codea = 'a')
 
-**identifier**: `http://fhirfli.dev/fhir/ig/cicada/identifier/trade-name`/Engerix-B
+**Vaccine Type**: DTaP
 
-**code**: Hep B, adult
+**identifier**: `http://fhirfli.dev/fhir/ig/cicada/identifier/trade-name`/Infanrix
+
+**code**: DTaP
 
 
 
@@ -23,14 +25,23 @@ Profile: [Vaccine](StructureDefinition-Vaccine.md)
 ```json
 {
   "resourceType" : "Medication",
-  "id" : "vaccine-hepb-adult",
+  "id" : "vaccine-dtap",
   "meta" : {
     "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/Vaccine"]
   },
   "extension" : [{
     "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/begin-age",
     "valueAge" : {
-      "value" : 20,
+      "value" : 6,
+      "unit" : "weeks",
+      "system" : "http://unitsofmeasure.org",
+      "code" : "wk"
+    }
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/end-age",
+    "valueAge" : {
+      "value" : 7,
       "unit" : "years",
       "system" : "http://unitsofmeasure.org",
       "code" : "a"
@@ -41,20 +52,20 @@ Profile: [Vaccine](StructureDefinition-Vaccine.md)
     "valueCodeableConcept" : {
       "coding" : [{
         "system" : "http://hl7.org/fhir/sid/cvx",
-        "code" : "43",
-        "display" : "Hep B, adult"
+        "code" : "20",
+        "display" : "DTaP"
       }]
     }
   }],
   "identifier" : [{
     "system" : "http://fhirfli.dev/fhir/ig/cicada/identifier/trade-name",
-    "value" : "Engerix-B"
+    "value" : "Infanrix"
   }],
   "code" : {
     "coding" : [{
       "system" : "http://hl7.org/fhir/sid/cvx",
-      "code" : "43",
-      "display" : "Hep B, adult"
+      "code" : "20",
+      "display" : "DTaP"
     }]
   }
 }

@@ -16,6 +16,8 @@ Profile: [Observation Profile for Immunization Decision Support](StructureDefini
 
 **effective**: 2015-04-30
 
+**performer**: [Practitioner Grace Okello ](Practitioner-practitioner-recording.md)
+
 
 
 ## Resource Content
@@ -38,7 +40,10 @@ Profile: [Observation Profile for Immunization Decision Support](StructureDefini
   "subject" : {
     "reference" : "Patient/2016-UC-0032"
   },
-  "effectiveDateTime" : "2015-04-30"
+  "effectiveDateTime" : "2015-04-30",
+  "performer" : [{
+    "reference" : "Practitioner/practitioner-recording"
+  }]
 }
 
 ```

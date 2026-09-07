@@ -132,10 +132,11 @@
 ### Examples
 
 * [allergy-vaccine-reaction (AllergyIntolerance)](AllergyIntolerance-allergy-vaccine-reaction.md)
-* [vaccine-hepb-adult (Medication)](Medication-vaccine-hepb-adult.md)
+* [vaccine-dtap (Medication)](Medication-vaccine-dtap.md)
 * [medication-administration-hepb (MedicationAdministration)](MedicationAdministration-medication-administration-hepb.md)
 * [medication-dispense-hepb (MedicationDispense)](MedicationDispense-medication-dispense-hepb.md)
 * [medication-request-hepb (MedicationRequest)](MedicationRequest-medication-request-hepb.md)
 * [medication-statement-hepb (MedicationStatement)](MedicationStatement-medication-statement-hepb.md)
 * [observation-immunocompromised (Observation)](Observation-observation-immunocompromised.md)
+* [practitioner-recording (Practitioner)](Practitioner-practitioner-recording.md)
 * [procedure-stem-cell-transplant (Procedure)](Procedure-procedure-stem-cell-transplant.md)

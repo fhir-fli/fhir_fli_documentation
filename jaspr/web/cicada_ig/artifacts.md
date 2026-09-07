@@ -127,12 +127,13 @@ These are example instances that show what data produced and consumed by systems
 | | |
 | :--- | :--- |
 | [AllergyIntolerance: adverse reaction to a vaccine](AllergyIntolerance-allergy-vaccine-reaction.md) | An allergy record the engine reads as a contraindication candidate: SNOMED 293104008, Vaccines adverse reaction, the root of the vaccine reaction concepts in the condition value set, with the substance as the CVX of the vaccine reacted to. |
-| [Medication: Hep B, adult](Medication-vaccine-hepb-adult.md) | A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1). |
+| [Medication: DTaP](Medication-vaccine-dtap.md) | A vaccine product as a Medication: CVX 20 with a trade name, the ages between which CDC's Diphtheria standard series lists it as a preferable vaccine (6 weeks to 7 years), and its vaccine type. CDC's "0 days" begin ages cannot be examples here: FHIR's Age datatype requires a positive value (age-1). |
 | [MedicationAdministration: a vaccine given as a medication](MedicationAdministration-medication-administration-hepb.md) | A hepatitis B dose recorded as a MedicationAdministration, which the engine accepts as an administered dose. |
 | [MedicationDispense: a vaccine dispensed as a medication](MedicationDispense-medication-dispense-hepb.md) | A hepatitis B dose dispensed as a MedicationDispense. |
 | [MedicationRequest: a vaccine ordered as a medication](MedicationRequest-medication-request-hepb.md) | A hepatitis B dose ordered as a MedicationRequest. |
 | [MedicationStatement: a vaccine recorded as a medication](MedicationStatement-medication-statement-hepb.md) | A hepatitis B dose recorded as a MedicationStatement, which the engine accepts as an administered dose. |
 | [Observation: patient immunocompromised](Observation-observation-immunocompromised.md) | A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006. |
+| [Practitioner: the recorder of the example observation](Practitioner-practitioner-recording.md) | The performer of observation-immunocompromised. Practitioner is not profiled by this IG; the example exists so that the observation can carry a performer, as the base specification recommends. |
 | [Procedure: haemopoietic stem cell transplant](Procedure-procedure-stem-cell-transplant.md) | A procedure the engine reads as an immunization-relevant history item: SNOMED 234336002, one of the roots of the immunization procedures value set. |
 
 ### Other 
