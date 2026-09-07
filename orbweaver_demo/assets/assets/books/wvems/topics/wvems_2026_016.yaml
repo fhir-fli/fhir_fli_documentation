@@ -1,0 +1,168 @@
+# ============================================================
+# WVEMS 2026 Protocol 16 — Fever
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-016"
+  version: "v260101"
+  title: "Fever"
+  list_subtitle: "2026-016 · Tylenol / Ibuprofen"
+  last_reviewed: "Aug 2025"
+  tags: ["fever", "tylenol", "ibuprofen", "acetaminophen", "infection", "ppe", "sepsis"]
+  aliases:
+    - "PPE"
+    - "Infection"
+    - "Illness"
+    - "Flu"
+    - "Cold"
+    - "URI"
+    - "Cellulitis"
+    - "UTI"
+  category: "universal"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 16
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 2 branches)
+    # Asymmetric: Minor branch has 1 action, Major has 3
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      entry:
+        text: "Temp above 100.4 °F (38.0 °C)"
+        shape: "stadium"
+
+      decision:
+        text: "Severity?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "minor"
+          label: "Minor"
+          criteria:
+            - "Adequate Perfusion"
+            - "Fatigue, Chills"
+          actions:
+            - text: "Position of Comfort"
+              kind: "procedure"
+
+        - id: "major"
+          label: "Major"
+          criteria:
+            - "Poor Perfusion"
+            - "Tachy, Dyspnea"
+          actions:
+            - provider_level: "A"
+              text: "NS Bolus"
+              kind: "medication_administration"
+            - provider_level: "E"
+              text: "Tylenol"
+              kind: "medication_administration"
+            - provider_level: "E"
+              text: "Ibuprofen"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "[Circulation](topic:wvems-2026-008), [Tachy](topic:wvems-2026-014)"
+          - text: "[Cold / Heat](topic:wvems-2026-068)"
+          - text: "[Sepsis](topic:wvems-2026-094)"
+
+      critical_care_link:
+        text: "[Sepsis](topic:wvems-2026-094)"
+
+      dose_table:
+        - drug: "[NS Bolus](topic:wvems-2026-drug-reference#ns-bolus)"
+          dose: "500 mL"
+          route: "IV/IO"
+          frequency: "x4"
+          population: "adult"
+        - drug: "[Tylenol](topic:wvems-2026-drug-reference#tylenol)"
+          dose: "1,000 mg"
+          route: "PO, IV/IO"
+          frequency: "x1"
+          population: "adult"
+        - drug: "[Ibuprofen](topic:wvems-2026-drug-reference#ibuprofen)"
+          dose: "600 mg"
+          route: "PO"
+          frequency: "x1"
+          population: "adult"
+
+  - page_number: 17
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Prose blocks (notes page)
+    # ────────────────────────────────────────────────
+
+    - type: "prose"
+      title: "Fever Imperatives"
+      highlight: true
+      markdown: |
+        - Use a **mask** for any cough or respiratory disease (URI, Flu, etc).
+          - Consider enhanced PPE for known pathogens (COVID, Ebola, etc).
+        - Fever is a response to an infection. **[Hyperthermia](topic:wvems-2026-068) is different**.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Tylenol®](topic:wvems-2026-drug-reference#tylenol)** (Acetaminophen): avoid if end-stage liver disease.
+          - {E} may only give PO — use OTC tabs, caps, powder, or liquid.
+          - {A} may give PO or IV/IO — for IV/IO, give slowly over 10 min.
+        - **[Ibuprofen](topic:wvems-2026-drug-reference#ibuprofen)** (Advil®, Motrin®): avoid if active GI bleeding.
+        - Max daily dose of **[Tylenol](topic:wvems-2026-drug-reference#tylenol)** is **3,000 mg** & **Ibuprofen** is **2,400 mg**.
+
+    - type: "prose"
+      title: "Poor Perfusion"
+      highlight: true
+      markdown: |
+        Suspect if several of these:
+        - Altered Mental Status
+        - Skin Pale, Cool, Diaphoretic
+        - Tachycardia, Hypotension
+        - Dyspnea, Tachypnea
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Temporal thermometers are inaccurate on sweaty skin.
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider [Sepsis](topic:wvems-2026-094) if indicated and credentialed for CC.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Peds under 5 y/o may have a [Seizure](topic:wvems-2026-042) caused by fever.
+          - It is usually self-limiting and does not require intervention.
+          - Consider intervention if longer than **5 min** or [Seizure](topic:wvems-2026-042) reoccurs.
+        - Breaking tablets in half is appropriate. **Do not break capsules**.
+        - Consider removing excessive clothing. **Dress children normally**.
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - ACLS — https://www.ahajournals.org/doi/10.1161/CIR.0000000000001376 [Ver: 2025]
+        - PALS — https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000001368 [Ver: 2025]
+        - Medscape Vitals — https://emedicine.medscape.com/article/2172054 [Ver: 2/24]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 13.
+
+        NEMSIS: 9914061, 9914129

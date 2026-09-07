@@ -1,0 +1,127 @@
+# ============================================================
+# WVEMS 2026 Protocol 22 — Nausea / Vomiting
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-022"
+  version: "v260101"
+  title: "Nausea / Vomiting"
+  list_subtitle: "2026-022 · Zofran"
+  last_reviewed: "Aug 2023"
+  tags: ["nausea", "vomiting", "emesis", "zofran", "ondansetron"]
+  aliases:
+    - "Emesis"
+    - "Hyperemesis"
+    - "Cyclic Vomiting"
+  category: "universal"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 22
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 2 branches)
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      entry:
+        text: "Nausea or Vomiting"
+        shape: "stadium"
+
+      decision:
+        text: "Severity?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "minor"
+          label: "Minor"
+          criteria:
+            - "Mild Nausea"
+            - "No Vomiting"
+          actions:
+            - text: "Keep NPO"
+              kind: "procedure"
+
+        - id: "major"
+          label: "Major"
+          criteria:
+            - "Moderate N/V"
+            - "Tachycardia"
+          actions:
+            - provider_level: "E"
+              text: "Zofran"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "[Fever](topic:wvems-2026-016), [Pain](topic:wvems-2026-020)"
+          - text: "[Abdominal Pain](topic:wvems-2026-034)"
+
+      dose_table:
+        - drug: "[Zofran](topic:wvems-2026-drug-reference#zofran)"
+          dose: "4 mg"
+          route: "IV/IO, IM/IN, PO"
+          frequency: "Q 5 min x2"
+          population: "adult"
+
+  - page_number: 23
+    blocks:
+
+    - type: "prose"
+      title: "Nausea / Vomiting Imperatives"
+      highlight: true
+      markdown: |
+        - It is appropriate to **pre-treat for nausea** before symptoms start.
+          - Consider before any intervention (or meds) that cause nausea.
+          - Especially if vomiting would cause serious complications.
+          - Strongly consider **[Zofran](topic:wvems-2026-drug-reference#zofran)** with any invasive airway device.
+        - **Avoid oral** food and fluids. (Oral meds are OK.)
+          - Keep patients **NPO** (Nil Per Os: Lat. “nothing through the mouth”)
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Zofran®](topic:wvems-2026-drug-reference#zofran)** (Ondansetron): Use for all causes of nausea & vomiting.
+          - Use caution with [Bradycardia](topic:wvems-2026-012), and [Overdose / Tox](topic:wvems-2026-040).
+          - Consider **[12-Lead](topic:wvems-2026-096#12-lead)** if hx/risk of **Long QT** or electrolyte imbalance.
+          - {E} May only give PO - use **Orally Disintegrating Tabs** (ODTs)
+
+    - type: "band_callout"
+      band: "peds"
+      title: ""
+      markdown: |
+        - {A} Alternate 4–10 y/o dose: break ODT in half and give 2 mg PO
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Consider an atypical [Cardiac](topic:wvems-2026-028) cause in diabetics and the elderly.
+        - Sniffing an alcohol prep may also provide minor nausea relief.
+        - Vomiting is a protective mechanism in [overdose](topic:wvems-2026-040) (such as EtOH).
+          - But intentionally inducing vomiting (i.e. ipecac) is not indicated.
+          - May consider **[Zofran](topic:wvems-2026-drug-reference#zofran)** for dry heaving after stomach is empty.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape Vomiting — https://emedicine.medscape.com/article/933135 [Ver: 5/25]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 25, 26
+
+        NEMSIS: 9914131

@@ -1,0 +1,153 @@
+# ============================================================
+# WVEMS 2026 Protocol 40 — Overdose / Tox
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-040"
+  version: "v260101"
+  title: "Overdose / Tox"
+  list_subtitle: "2026-040 · Narcan / Antidote"
+  last_reviewed: "Aug 2025"
+  tags: ["overdose", "tox", "poisoning", "narcan", "naloxone", "antidote"]
+  aliases:
+    - "Poisoning"
+    - "Ingestion"
+    - "Intoxicated"
+    - "Drunk"
+    - "WMDs"
+  category: "medical"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 40
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 2 branches)
+    # Conditional Narcan, asymmetric 1+4 actions
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      warnings:
+        - type: "safety"
+          text: "Ensure Provider SAFETY"
+        - type: "safety"
+          text: "Ensure Patient DECON"
+        - type: "caution"
+          text: "[Use Caution if Patient Refusal](topic:wvems-2026-109#patient-refusals)"
+
+      entry:
+        text: "Symptomatic Toxic Exposure or Overdose"
+        shape: "stadium"
+
+      decision:
+        text: "Severity?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "minor"
+          label: "Minor"
+          criteria:
+            - "Adequate Perfusion"
+            - "Minor Symptoms"
+          actions:
+            - provider_level: "A"
+              text: "Saline Lock"
+              kind: "procedure"
+
+        - id: "major"
+          label: "Major"
+          criteria:
+            - "Poor Perfusion"
+            - "Toxic Effects"
+          actions:
+            - text: "Narcan"
+              kind: "medication_administration"
+              condition: "If hypoxic"
+            - provider_level: "E"
+              text: "12-Lead"
+              kind: "diagnostic"
+            - provider_level: "A"
+              text: "NS Bolus"
+              kind: "medication_administration"
+            - text: "Administer [Antidote](topic:wvems-2026-096#administer-antidote)"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "Co-ingestions, [Brady](topic:wvems-2026-012), [N/V](topic:wvems-2026-022)"
+          - text: "[Shock](topic:wvems-2026-008), [Hyperthermia](topic:wvems-2026-068)"
+          - text: "Patient DECON"
+
+      dose_table:
+        - drug: "[Narcan](topic:wvems-2026-drug-reference#narcan)"
+          dose: "up to 4 mg"
+          route: "IV/IO, IM/IN"
+          frequency: "PRN"
+          population: "adult"
+        - drug: "[NS Bolus](topic:wvems-2026-drug-reference#ns-bolus)"
+          dose: "500 mL"
+          route: "IV/IO"
+          frequency: "x4"
+          population: "adult"
+
+  - page_number: 41
+    blocks:
+
+    - type: "prose"
+      title: "Overdose / Tox Imperatives"
+      highlight: true
+      markdown: |
+        - Collect a detailed history and **SDS** (Safety Data Sheet) if able:
+          - Substance, quantity and **time** of ingestion or exposure
+        - Consider an **[Antidote](topic:wvems-2026-096#administer-antidote)** for critical symptoms from a **known toxin**.
+          - Minor exposures with few symptoms do not require an **[Antidote](topic:wvems-2026-096#administer-antidote)**.
+          - Stable patients should be monitored and transported.
+          - Supportive care is sufficient for **alcohol** (ethanol) intoxication.
+        - Monitor [Airway](topic:wvems-2026-004) closely with all **caustic ingestions**.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Narcan®](topic:wvems-2026-drug-reference#narcan)** (Naloxone): Should only be used to treat **[Hypoxia](topic:wvems-2026-006)**.
+          - May try for any substance OD or exposure w/ dyspnea or shock.
+          - Call **Medical Control** for any refusal after **[Narcan](topic:wvems-2026-drug-reference#narcan)**.
+          - {} May provide premeasured **intranasal** doses only.
+          - {A} Titrate dose to resps & SpO₂; May start as low as **0.04** mg.
+        - **[NS Bolus](topic:wvems-2026-drug-reference#ns-bolus)** (0.9% Saline): Fluids may help dilute toxins.
+          - Consider even without [Hypotension](topic:wvems-2026-008). Avoid with [CHF](topic:wvems-2026-030) or [dialysis](topic:wvems-2026-018).
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - If poison is known, consider **Poison Control**: 800-222-1222.
+          - Most **[Antidotes](topic:wvems-2026-096#administer-antidote)** require **online orders** (and dosing instructions).
+        - This protocol includes **poisoning** and toxic ingestions.
+          - For **chemical burns** and skin exposures, refer to [Burns](topic:wvems-2026-070).
+          - For **gasses** and smoke inhalation, refer to [Inhalation](topic:wvems-2026-072).
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Just a **single pill** of some adult meds can cause profound [shock](topic:wvems-2026-008).
+          - Ingested **cigarettes or vape fluid** (nicotine) can be **fatal**.
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape Opioids — https://emedicine.medscape.com/article/815784 [Ver: 6/25]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 25
+
+        NEMSIS: 9914043, 9914135, 9914215, 9914217, 9914219, 9104225

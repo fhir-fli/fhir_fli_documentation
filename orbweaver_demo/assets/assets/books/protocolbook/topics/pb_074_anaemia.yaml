@@ -1,0 +1,132 @@
+# ============================================================
+# ProtocolBook p.74 — Anaemia (approach + when to transfuse). OPENS
+# the new "Anaemia & Transfusion" section (pp.74–76: p.74 approach →
+# p.75 Evaluation for Cause of Anaemia → p.76 Transfusions). First
+# leaf of the new group (accent slate blue-grey 0xFF37474F — distinct
+# from the blood-toned red/pink/rust accents already in use).
+#
+# The printed page is a CONTENT-FLOW diagram (boxes + downward arrows
+# in a single sequence, with NO Yes/No decision branch). Per the
+# hybrid rule (standing decision #1), no-decision content-flows render
+# as titled prose + a table in top-to-bottom order, NOT as a flowchart.
+#
+# Faithful-rendering calls:
+#   - Management box is printed numbered 12–18 (a continuation of the
+#     book's general-approach numbering); the decorative numbers carry
+#     no meaning as a standalone topic → dropped, rendered as bullets.
+#     "Weight" kept bold as printed (emphasised in the source).
+#   - The "Transfuse in the following cases" box → a threshold table
+#     (setting → Hb cut-off), the clinically load-bearing part.
+#   - Citation superscripts (27, 72…) dropped.
+#   - "Evaluate for Cause of anemia" terminal box → cross-link to the
+#     p.75 workup topic (pb-anaemia-workup).
+#   - spO2 normalised to SpO₂; "anemia" kept as the book's spelling in
+#     quoted box titles, "anaemia" elsewhere.
+#
+# ✅ OE-VERIFIED CLEAN — NO CHANGES (Grey's OpenEvidence pass,
+#    2026-07-26). The tiered transfusion thresholds were confirmed
+#    consistent with WHO/LMIC guidance (Maitland 2019 NEJM, TRACT;
+#    Carson 2023 JAMA). The empirical malaria + sepsis co-treatment
+#    pearl was singled out as an important LMIC-specific teaching
+#    point. Clinical findings of iron deficiency (pallor, tachycardia,
+#    koilonychia, glossitis, angular stomatitis, oesophageal webs) and
+#    the four occult-bleeding compartments (thorax, abdomen,
+#    retroperitoneum/pelvis, thigh) confirmed as standard.
+# Cross-book pass 2026-08-28: oxygen trigger 94% -> 90%. A routine 94%
+#   trigger commits oxygen to a much larger group without mortality benefit,
+#   and oxygen is the most rationed resource in this setting. Discharge and
+#   target criteria are NOT this figure and were left alone.
+# ============================================================
+
+topic:
+  id: "pb-anaemia"
+  title: "Anaemia — Approach & Transfusion Thresholds"
+  list_subtitle: "p.74 · assess / resuscitate / when to transfuse"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["anaemia", "anemia", "pallor", "transfusion", "haemoglobin", "malaria", "sepsis", "bleeding", "koilonychia"]
+  category: "medical"
+  page_number: 74
+
+  blocks:
+
+    # 2026-08-24 — the print draws p.74 as a boxed spine with arrows
+    # (history/findings -> management -> bleeding? -> empiric malaria+sepsis ->
+    # transfusion thresholds -> evaluate cause), so it is a flowchart here too.
+    # The transfusion thresholds stay a table below: a `linear` step carries a
+    # title and bullets, not a table.
+    - type: "flowchart"
+      variant: "linear"
+      entry_chain:
+        - text: "Anaemia"
+          shape: "stadium"
+      steps:
+        - type: "content"
+          title: "History"
+          bullets:
+            - "Sleepiness · anorexia · dysphagia"
+            - "Fatigue · dyspnoea on exertion · syncope"
+        - type: "content"
+          title: "Clinical findings"
+          bullets:
+            - "Pallor · tachycardia · heart failure symptoms"
+            - "Stomatitis · angular stomatitis · glossitis · koilonychia"
+            - "Oesophageal / pharyngeal webs"
+        - type: "content"
+          title: "Management"
+          bullets:
+            - "Monitor, support ABCs"
+            - "Check vital signs (BP, PR, RR, SpO₂, Temp, weight)"
+            - "Assess GCS and hydration status"
+            - "Insert 2 IVs; start oxygen if SpO₂ < 90%"
+            - "Draw CBC and malaria; consider blood cultures if concern for sepsis"
+            - "Type and cross if tachycardic, tachypnoeic, or severe pallor"
+            - "Perform a brief, targeted history and physical exam"
+        - type: "content"
+          title: "Is there a possibility of bleeding?"
+          bullets:
+            - "Ask about recent trauma"
+            - "Clinically significant GI bleeding should be visible as haematemesis, coffee-ground emesis, melaena, or haematochezia"
+            - "Four locations may hide active bleeding: thorax, abdomen, retroperitoneum / pelvis, thigh"
+        - type: "content"
+          title: "Consider empirical treatment"
+          bullets:
+            - "Treat empirically for malaria and sepsis if appropriate"
+            - "There is NO way to clinically differentiate between malaria and sepsis"
+        - type: "content"
+          title: "Transfuse? (thresholds in the table below)"
+          bullets:
+            - "High malaria areas — by blood supply"
+            - "Low malaria areas — <7 g/dL, or <10 g/dL and unstable"
+      convergence:
+        text: "Evaluate for the cause of anaemia"
+        shape: "rounded_rectangle"
+        bullets:
+          - text: "[Anaemia workup](topic:pb-anaemia-workup)"
+
+    - type: "prose"
+      title: "⚠ A normal SpO₂ does not exclude critical anaemia"
+      callout: true
+      markdown: |
+        SpO₂ measures saturation of the haemoglobin that is **present**, not oxygen
+        delivery — a child with Hb 3 g/dL can read 99% while profoundly
+        oxygen-deficient. **Give oxygen on clinical grounds** — respiratory
+        distress, altered consciousness, or shock — whatever the reading.
+
+    - type: "table"
+      title: "When to transfuse"
+      zebra: true
+      columns: ["Setting", "Transfuse if haemoglobin"]
+      column_flex: [5, 5]
+      column_align: ["left", "left"]
+      rows:
+        - cells: [{text: "**High malaria areas**", span: 2}]
+        - cells: ["Low blood supply", "<4 g/dL, or <5 g/dL and unstable"]
+        - cells: ["Good blood supply", "<5 g/dL"]
+        - cells: [{text: "**Low malaria areas**", span: 2}]
+        - cells: ["—", "<7 g/dL, or <10 g/dL and unstable"]
+
+    - type: "prose"
+      markdown: |
+        **"Unstable" means any of:** respiratory distress (RR >50 in infants, >40 in older children) · impaired consciousness · clinical shock (weak fast pulse, cold extremities, capillary refill >3 s) · acidotic breathing.
+
+        Then [evaluate for the cause of anaemia](topic:pb-anaemia-workup).

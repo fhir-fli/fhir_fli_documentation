@@ -1,0 +1,178 @@
+# ============================================================
+# WVEMS 2026 Protocol 48 — Pregnancy / Delivery
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-048"
+  version: "v260101"
+  title: "Pregnancy / Delivery"
+  list_subtitle: "2026-048 · OB / Eclampsia / Postpartum"
+  last_reviewed: "Dec 2025"
+  tags:
+    - "pregnancy"
+    - "delivery"
+    - "obstetrics"
+    - "preeclampsia"
+    - "eclampsia"
+    - "postpartum"
+  aliases:
+    - "Contractions"
+    - "Miscarriage"
+    - "Postpartum care"
+    - "Postpartum bleeding"
+    - "OB"
+  category: "medical"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 48
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Flowchart block (severity variant — 3 branches)
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      warnings:
+        - type: "caution"
+          text: "[Use Caution if Patient Refusal](topic:wvems-2026-109#patient-refusals)"
+
+      entry:
+        text: "Suspected or Known Pregnancy (20 weeks & over)"
+        shape: "stadium"
+
+      decision:
+        text: "Delivery?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "not_imminent"
+          label: "Not Imminent"
+          criteria:
+            - "Vaginal Bleeding"
+            - "Labor, Contractions"
+            - "Miscarriage"
+          actions:
+            - text: "Left Lateral Recumbent"
+              kind: "procedure"
+            - provider_level: "A"
+              text: "NS Bolus"
+              kind: "medication_administration"
+
+        - id: "normal"
+          label: "Normal"
+          criteria:
+            - "Adequate Perfusion"
+            - "Full Term (>36w)"
+            - "Head Presentation"
+          actions:
+            - provider_level: "E"
+              text: "Deliver [Baby](topic:wvems-2026-096#deliver-baby)"
+              kind: "procedure"
+            - text: "[Manage Neonate](topic:wvems-2026-050)"
+              kind: "procedure"
+            - provider_level: "A"
+              text: "Saline Lock"
+              kind: "procedure"
+
+        - id: "complicated"
+          label: "Complicated"
+          criteria:
+            - "Premature or Twins"
+            - "Failed Delivery"
+            - "Prolapse or Breech"
+          actions:
+            - text: "Don’t Push"
+              kind: "procedure"
+            - provider_level: "E"
+              text: "Emergent Transport"
+              kind: "procedure"
+            - provider_level: "E"
+              text: "[Manage OB Complication](topic:wvems-2026-096#manage-ob-complication)"
+              kind: "procedure"
+            - provider_level: "A"
+              text: "NS Bolus"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        warnings:
+          - type: "caution"
+            text: "[Consider Destination Triage](topic:wvems-2026-109#destination-triage)"
+        bullets:
+          - text: "[HTN](topic:wvems-2026-010), [Circulation](topic:wvems-2026-008)"
+          - text: "[Seizure](topic:wvems-2026-042), [Bleeding](topic:wvems-2026-058)"
+          - text: "[Preeclampsia](topic:wvems-2026-092)"
+
+      critical_care_link:
+        text: "[Preeclampsia](topic:wvems-2026-092)"
+
+      dose_table:
+        - drug: "[NS Bolus](topic:wvems-2026-drug-reference#ns-bolus)"
+          dose: "500 mL"
+          route: "IV/IO"
+          frequency: "x4"
+          population: "adult"
+
+  - page_number: 49
+    blocks:
+
+    - type: "prose"
+      title: "Pregnancy / Delivery Imperatives"
+      markdown: |
+        - This protocol applies to **late pregnancy** (20 weeks & over).
+          - There are no specific EMS interventions for early pregnancy.
+          - Uterus palpable above the umbilicus suggests late pregnancy.
+        - Any SBP reading **above 160 mmHg** may be **preeclampsia**.
+          - Prioritize transport. Call **Medical Control** for any refusal.
+        - Aggressively treat any [Seizure](topic:wvems-2026-042) as **eclampsia**.
+        - Any maternal trauma after 20 weeks should be transported.
+          - Fetus may have injury that is not immediately obvious.
+          - Even minor trauma (simple falls, etc.) can cause fetal harm.
+        - **Prioritize transport** if any complications (to facility w/ OB/GYN).
+        - **Reduce cord** over the head if found around the neck.
+        - **[Manage OB Complications](topic:wvems-2026-096#manage-ob-complication)** during transport:
+          - **Failed Delivery / Shoulder Dystocia**: transport knees to chest.
+          - **Prolapse**: don’t handle cord; relieve pressure with fingers in vagina.
+          - **Breech**: do not pull; elevate presenting part if pressing on cord.
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider [Preeclampsia](topic:wvems-2026-092) if indicated and credentialed for CC.
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Consider **destination triage** to a facility with **OB/GYN** services.
+        - Call **Medical Control** with questions regarding medication safety.
+        - **Postpartum bleeding** can be severe; **fundal massage** can help.
+          - {A} If poor perfusion: **[TXA](topic:wvems-2026-drug-reference#txa)** (Tranex. Acid): **2 g** IV/IO over 10 min.
+        - May attempt **home delivery** if uncomplicated and imminent.
+          - Crowning and urge to push suggest delivery is imminent.
+        - Attempt to have a **chaperone** present for any genital evaluation.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Refer to [Neonate](topic:wvems-2026-050) for management of the newborn baby.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape Delivery — https://emedicine.medscape.com/article/260036 [Ver: 2/24]
+        - Medscape Eclampsia — https://emedicine.medscape.com/article/253960 [Ver: 8/25]
+        - Limmer D, O’Keefe MF. **Emergency Care** 15th ed. Chapter 36
+
+        NEMSIS: 9914145

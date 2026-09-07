@@ -1,0 +1,129 @@
+# ============================================================
+# WHO IMCI §1.6.1 — Principles for ingested poisons.
+# Pocket Book 2nd ed (2013), pp.27–28 (incl. Table 5).
+# OpenEvidence review applied 2026-06-22:
+#   - Charcoal "within 1 h" dogma OBSOLETE (CTRC 2026): up to 6 h for many
+#     poisons, beyond 6 h if ongoing absorption (modified-release/bezoars).
+#   - Infant charcoal dose 0.5–1 g/kg (was 1 g/kg).
+#   - IPECAC REMOVED ENTIRELY (no benefit, ↑adverse events; AAP/AACT/
+#     Cochrane 2018) → do NOT induce vomiting; WBI for iron/lithium/SR.
+#   - Gastric lavage: rarely indicated, NOT routine, retrieves <30% toxin.
+# OpenEvidence-reviewed 2026-07:
+#   - Added a note that charcoal has NO role for iron, lithium, alcohols,
+#     acids/alkalis or metals (CTRC 2026) — it does not adsorb them.
+#   - Charcoal timing (up to 6 h / beyond if ongoing absorption), infant
+#     dose 0.5–1 g/kg, ipecac removal, WBI for iron/lithium/SR, and gastric
+#     lavage caveats all re-confirmed accurate — unchanged.
+# ============================================================
+
+topic:
+  id: "who-imci-1-6-1-ingested"
+  title: "Ingested Poisons — Principles"
+  list_subtitle: "1.6.1 · decontamination, charcoal, lavage"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · WHO PB 2013 + CTRC 2026"
+  tags: ["poisoning", "ingestion", "activated charcoal", "gastric lavage", "decontamination", "ipecac", "imci"]
+  aliases:
+    - "Activated Charcoal"
+    - "Gastric Lavage"
+  category: "medical"
+
+  page_number: 27
+
+  blocks:
+
+    - type: "prose"
+      title: "Assess first"
+      highlight: true
+      markdown: |
+        Quickly assess **emergency signs** — airway, breathing, circulation
+        and **level of consciousness** — as some poisons **depress
+        breathing, cause shock, or induce coma**. Check for
+        **hypoglycaemia**; if glucose is unavailable and consciousness is
+        reduced, treat as hypoglycaemia
+        ([Chart 10](topic:who-imci-chart10-glucose)).
+
+    - type: "prose"
+      title: "Gastric decontamination"
+      markdown: |
+        - Give charcoal **early**, but the old **"within 1 h" cut-off is
+          obsolete** (CTRC 2026): give **up to 6 h** post-ingestion for many
+          poisons, and **beyond 6 h** when ongoing absorption is likely
+          (modified-release formulations, pharmacobezoars).
+        - **Weigh benefit against risk** — decontamination does **not**
+          guarantee full removal.
+        - **Charcoal has NO role for iron, lithium, alcohols, acids/alkalis
+          or metals** — it does not adsorb them (use other measures, e.g.
+          whole bowel irrigation for iron/lithium).
+
+    - type: "prose"
+      title: "⚠ Contraindications to decontamination"
+      callout: true
+      palette:
+        alert: "0xFFD32F2F"
+        alert_fill: "0xFFFDECEA"
+        alert_text: "0xFFB71C1C"
+      markdown: |
+        - **Unprotected airway** in an unconscious child (unless intubated
+          with an inflated tube).
+        - **Corrosives or petroleum products.**
+        - **Never use salt as an emetic** — it can be **fatal**.
+
+    - type: "prose"
+      title: "Kerosene / petrol or mouth burns"
+      markdown: |
+        If the child swallowed **kerosene, petrol or petrol-based products**
+        (most pesticides are in petrol solvents) **or** the **mouth/throat
+        is burnt** (bleach, toilet cleaner, battery acid):
+        - **Do NOT induce vomiting.** Give **water or milk** orally.
+        - **Call an anaesthetist** to assess the airway.
+
+    - type: "prose"
+      title: "Activated charcoal (preferred)"
+      markdown: |
+        Give activated charcoal if available; **do not induce vomiting**.
+        Give by mouth or NG tube — be sure the NG tube is in the **stomach,
+        not the airway**. Mix in **8–10 volumes of water** (e.g. 5 g in
+        40 ml). Give the whole dose at once if tolerated, or divide it.
+
+    - type: "table"
+      title: "Table 5 · Activated charcoal per dose"
+      columns: ["Age", "Dose"]
+      column_flex: [3, 2]
+      rows:
+        - cells: ["≤ 1 year", "0.5–1 g/kg"]
+        - cells: ["1–12 years", "25–50 g"]
+        - cells: ["Adolescents & adults", "25–100 g"]
+
+    - type: "prose"
+      title: "If charcoal is unavailable"
+      markdown: |
+        **Do NOT induce vomiting. Ipecac is no longer recommended** (no
+        benefit; increases adverse events — withdrawn by AAP / AACT /
+        Cochrane 2018). For **iron, lithium or sustained-release**
+        formulations, consider **whole bowel irrigation** if available.
+
+    - type: "prose"
+      title: "Gastric lavage — rarely indicated"
+      markdown: |
+        **Not routinely recommended** — it retrieves **< 30%** of the toxin
+        and carries real risk. Reserve for **experienced staff** when a
+        **recent, life-threatening** ingestion of a non-corrosive,
+        non-petroleum agent is involved:
+        - Have **suction** ready. Place the child **left lateral,
+          head-down**.
+        - Pass a **24–28 French** tube **via the mouth** (a smaller NG tube
+          won't pass tablets). Confirm it is in the stomach.
+        - Lavage with **10 ml/kg of 0.9% saline**; returned volume should
+          ≈ volume given; continue until the return is clear.
+        - Anaesthetist tracheal intubation may be needed to reduce
+          aspiration risk.
+
+    - type: "prose"
+      title: "Then"
+      markdown: |
+        - Give a **specific antidote** if indicated, and general care.
+        - **Observe 4–24 h** depending on the poison.
+        - Keep unconscious children in the **recovery position**.
+        - Transfer (when safe) if unconscious / deteriorating, with
+          mouth-throat burns, severe respiratory distress, cyanosis or
+          heart failure.

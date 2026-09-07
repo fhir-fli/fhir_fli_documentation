@@ -1,0 +1,168 @@
+# ============================================================
+# ProtocolBook p.22 — Malaria
+#
+# All rows use a 12-column grid convention so widgets align across
+# the page.  Cell spans / flex values always sum to 12.
+#
+# Row layout:
+#   Row 1 (branches):           [6 | 6]
+#   Row 2 (test scenarios):     [3 | 3 | 3 | 3]
+#   Row 3 (actions):            [3 | 6 | 3]
+#     inner column (flex 6):    "Treat presumptively" / [3 | 3]
+#   Merge arrows → severity
+#   Severity row:               [6 | 2 | 4]
+#   Yes arrow row:              [6 | 6]
+#
+# ✅ OE-VERIFIED CLEAN — NO CHANGES (Grey's OpenEvidence pass,
+#    2026-07-26). Severe-malaria criteria confirmed broadly consistent
+#    with WHO. Artesunate weight-differentiated dosing verified correct
+#    (this is the page whose REVERSED bands were fixed in d180100 —
+#    the correction now reads clean against WHO). Dosing schedule at
+#    0, 12, 24 h then daily ✓. The "DO NOT bolus unless diarrhoea with
+#    signs of severe dehydration" rule was specifically endorsed as
+#    consistent with FEAST (boluses increased mortality in febrile
+#    African children with impaired perfusion) and an important
+#    LMIC-specific teaching point.
+#
+# ⚠️ NOTED, NOT CHANGED (OE rated LOW, acceptable as-is):
+#    - Our "≥ 2 convulsions" is marginally more conservative than
+#      WHO's ">2 in 24 h" — triggers severe classification one seizure
+#      earlier. Erring toward treating as severe is right here.
+#    - Our severe-anaemia haemoglobin threshold differs slightly from
+#      the WHO cut-off; OE judged ours acceptable and suggested only
+#      that the distinction could be noted. Not added.
+# OpenEvidence-applied 2026-08-28 (WHO full advance pass):
+#   D10% 5 -> 2 mL/kg (WHO pass flag 1-2).
+# ============================================================
+
+topic:
+  id: "pb-malaria"
+  title: "Malaria"
+  list_subtitle: "p.22 · diagnosis + severe Rx"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["malaria", "infectious", "tropical", "artesunate", "pediatric"]
+  category: "medical"
+  page_number: 22
+
+  blocks:
+
+    - type: "prose"
+      highlight: true
+      markdown: |-
+        If the **blood slide is positive** → **treat**.
+        If the **RDT is negative** → **do not treat**.
+
+    - type: "prose"
+      markdown: |-
+        **Regardless of testing:** if the patient has signs or symptoms of **severe malaria**, treat presumptively and test afterwards to confirm.
+
+    - type: "table"
+      layout: "boxed"
+      rows:
+        - cells:
+            - text: "**None/Incomplete Rx last 4 wks**"
+              span: 6
+            - text: "**Completed Rx last 4 wks**"
+              span: 6
+
+    - type: "arrows"
+      count: 4
+
+    - type: "table"
+      layout: "boxed"
+      rows:
+        - cells:
+            - text: "+RDT\nno/−B/S"
+              span: 3
+            - text: "No RDT\n−B/S"
+              span: 3
+            - text: "+RDT\nNo B/S"
+              span: 3
+            - text: "+RDT/no RDT\n−B/S"
+              span: 3
+
+    - type: "arrows"
+      count: 4
+
+    - type: "row"
+      blocks:
+        - type: "prose"
+          flex: 3
+          boxed: true
+          markdown: "**Treat**"
+        - type: "column"
+          flex: 6
+          blocks:
+            - type: "prose"
+              boxed: true
+              markdown: "**Treat presumptively**"
+            - type: "row"
+              blocks:
+                - type: "prose"
+                  boxed: true
+                  markdown: "Order **RDT**"
+                - type: "prose"
+                  boxed: true
+                  markdown: "Order **B/S**"
+        - type: "prose"
+          flex: 3
+          boxed: true
+          markdown: "**Don't treat** — consider alt Dx"
+
+    - type: "merge_arrows"
+      columns: 12
+      sources: [1, 4, 7]
+      target_center: 2.5
+
+    - type: "row"
+      blocks:
+        - type: "prose"
+          flex: 7
+          highlight: true
+          markdown: |-
+            **Severe = Fever PLUS any of:**
+            - AVPU = V, P, U or ≤ 2
+            - ≥ 2 convulsions
+            - Fever ≥ 40 °C (104 °F)
+            - Hypoglycemia (< 2.5 mmol/L; < 3.0 in severe malnutrition)
+            - Anemia (Hgb < 7)
+        - type: "arrows"
+          flex: 1
+          direction: "right"
+          count: 1
+          label: "No"
+          length: 24
+        - type: "prose"
+          flex: 4
+          boxed: true
+          markdown: "Treat as **uncomplicated malaria**"
+
+    - type: "row"
+      blocks:
+        - type: "arrows"
+          flex: 6
+          count: 1
+          label: "Yes"
+          length: 24
+          inline: true
+        - type: "prose"
+          flex: 6
+          markdown: ""
+
+    - type: "prose"
+      title: "Severe Malaria — Immediate Rx"
+      highlight: true
+      markdown: |-
+        - **IV / IM Artesunate\*** at **0, 12, 24 h** — < 20 kg: **3 mg/kg** · ≥ 20 kg: **2.4 mg/kg**
+        - Treat hypoglycemia → 10 % dextrose **2 ml/kg**
+        - Maintenance fluids / feeds
+        - **DO NOT bolus** unless diarrhea with signs of severe dehydration
+        - If severely pale, respiratory distress, or known Hgb < 5 → consider transfusion **10–20 ml/kg over 2–4 h**
+
+        After 24 h of Artesunate: if taking PO → switch to **3 days PO Rx**. If not → continue Artesunate OD up to **7 days** or until able to take PO.
+
+    - type: "prose"
+      markdown: |-
+        \* Severe malaria may also include SBP < 70 with cold clammy skin, abnormal bleeding / DIC, renal failure (anuria by history or Cr > 3 mg/dL), macroscopic haemoglobinuria, or hyperbilirubinaemia (> 3 mg/dL) with B/S MPS +++.
+
+        Treatment applies to all adults and children, including infants, pregnant women in all trimesters, and lactating women.

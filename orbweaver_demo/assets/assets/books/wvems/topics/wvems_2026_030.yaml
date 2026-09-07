@@ -1,0 +1,186 @@
+# ============================================================
+# WVEMS 2026 Protocol 30 — Dyspnea (SOB)
+# Source: assets/2026-WVEMS-Protocols (MayJuun LLC, MIT)
+# ============================================================
+
+topic:
+
+  id: "wvems-2026-030"
+  version: "v260101"
+  title: "Dyspnea"
+  list_subtitle: "2026-030 · cause-branched (Reactive / Infectious / Overload)"
+  last_reviewed: "Jun 2025"
+  tags: ["dyspnea", "sob", "wheezing", "asthma", "copd", "chf", "albuterol", "nitro"]
+  aliases:
+    - "SOB"
+    - "Wheezing"
+    - "Asthma"
+    - "COPD"
+    - "CHF"
+    - "BRUE"
+  category: "medical"
+
+  # Sticky: flowchart page + prose page each snap to a full screen.
+  layout: "paged"
+
+  pages:
+
+  - page_number: 30
+    blocks:
+
+    # ────────────────────────────────────────────────
+    # Cause-branched (not severity) — same schema, different decision label
+    # 3 branches: Reactive / Infectious / Overload
+    # ────────────────────────────────────────────────
+    - type: "flowchart"
+      variant: "severity"
+
+      entry:
+        text: "Obvious Difficulty Breathing"
+        shape: "stadium"
+
+      decision:
+        text: "Cause?"
+        shape: "diamond"
+
+      branches:
+
+        - id: "reactive"
+          label: "Reactive"
+          criteria:
+            - "COPD, Asthma"
+            - "Croup in Peds"
+          actions:
+            - provider_level: "E"
+              text: "Albuterol"
+              kind: "medication_administration"
+            - provider_level: "E"
+              text: "Atrovent"
+              kind: "medication_administration"
+            - provider_level: "A"
+              text: "Epi Neb"
+              kind: "medication_administration"
+            - provider_level: "A"
+              text: "Decadron"
+              kind: "medication_administration"
+
+        - id: "infectious"
+          label: "Infectious"
+          criteria:
+            - "URI, Common Cold"
+            - "Pneumonia, Flu"
+          actions:
+            - text: "Position of Comfort"
+              kind: "procedure"
+
+        - id: "overload"
+          label: "Overload"
+          criteria:
+            - "Heart Failure, CHF"
+            - "Pulmonary Edema"
+          actions:
+            - provider_level: "A"
+              text: "Nitro"
+              kind: "medication_administration"
+
+      convergence:
+        text: "Consider"
+        shape: "stadium"
+        bullets:
+          - text: "[Breathing](topic:wvems-2026-006), [Circulation](topic:wvems-2026-008)"
+          - text: "[Tachy](topic:wvems-2026-014), [Brady](topic:wvems-2026-012), [Allergy](topic:wvems-2026-032)"
+          - text: "[Pulmonary Edema](topic:wvems-2026-090)"
+
+      critical_care_link:
+        text: "[Pulm. Edema](topic:wvems-2026-090)"
+
+      dose_table:
+        - drug: "[Albuterol](topic:wvems-2026-drug-reference#albuterol)"
+          dose: "2.5 mg"
+          route: "NEB"
+          frequency: "Q 5 min x4"
+          population: "adult"
+        - drug: "[Atrovent](topic:wvems-2026-drug-reference#atrovent)"
+          dose: "0.5 mg"
+          route: "NEB"
+          frequency: "x1"
+          population: "adult"
+        - drug: "[Decadron](topic:wvems-2026-drug-reference#decadron)"
+          dose: "10 mg"
+          route: "IV/IO, IM"
+          frequency: "x1"
+          population: "adult"
+        - drug: "[Epi Neb](topic:wvems-2026-drug-reference#epi-epi-neb)"
+          dose: "5 mg"
+          route: "NEB"
+          frequency: "x1"
+          population: "adult"
+        - drug: "[Nitro](topic:wvems-2026-drug-reference#nitro-nitro-drip)"
+          dose: "0.4 mg"
+          route: "SL"
+          frequency: "Q 5 min x3"
+          population: "adult"
+
+  - page_number: 31
+    blocks:
+
+    - type: "prose"
+      title: "Dyspnea Imperatives"
+      highlight: true
+      markdown: |
+        - [Breathing](topic:wvems-2026-006) (O₂ and [NIPPV](topic:wvems-2026-096#nippv)) should take precedence over meds.
+          - SpO₂ and EtCO₂ should be used **extensively** for dyspnea.
+
+    - type: "prose"
+      title: "Medications"
+      markdown: |
+        - **[Albuterol](topic:wvems-2026-drug-reference#albuterol)** (Ventolin®) & **[Atrovent®](topic:wvems-2026-drug-reference#atrovent)** (Ipratropium bromide):
+          - May combine in same nebulizer. May cause palpitations.
+        - **[Epi Neb](topic:wvems-2026-drug-reference#epi-epi-neb)** (Epinephrine): Use **1 mg/mL vial** (not 0.1 mg/mL prefill).
+        - **[Decadron®](topic:wvems-2026-drug-reference#decadron)** (Dexamethasone): Alternate dose: 8 mg IV/IO, IM x1
+        - **[Nitro](topic:wvems-2026-drug-reference#nitro-nitro-drip)** (Nitroglycerin): May cause [Hypotension](topic:wvems-2026-008).
+          - May use **double dose** (0.8 mg) if hypertensive & requiring [NIPPV](topic:wvems-2026-096#nippv).
+          - Contraindicated if recent (36 h) use of any [PDE5 inhibitor](topic:wvems-2026-028).
+        - May consider **[Magnesium](topic:wvems-2026-drug-reference#magnesium)** for severe asthma and/or wheezing.
+          - {I} **[Magnesium](topic:wvems-2026-drug-reference#magnesium)** (Sulfate): **1** gram IV/IO over 10 min
+
+    - type: "band_callout"
+      band: "peds"
+      title: ""
+      markdown: |
+        - Good choice for severe croup, bronchiolitis or asthma in peds.
+
+    - type: "prose"
+      title: "Notes"
+      markdown: |
+        - Consider an atypical [Cardiac](topic:wvems-2026-028) cause in diabetics and the elderly.
+        - [Anxiety](topic:wvems-2026-046) can also cause dyspnea and hyperventilation.
+          - Consider simple reassurance for obvious benign anxiety.
+
+    - type: "band_callout"
+      band: "critical_care"
+      title: ""
+      markdown: |
+        - Consider [Pulmonary Edema](topic:wvems-2026-090) if indicated & credentialed for CC.
+
+    - type: "band_callout"
+      band: "peds"
+      title: "Pediatrics"
+      markdown: |
+        - Defer aggressive evaluation if any concern for **epiglottitis**.
+          - Agitation can make it much worse. (Unlikely if vaccinated.)
+        - **Croup** is an infection that is best treated like a reactive cause.
+          - **Stridor** may be present (but [choking](topic:wvems-2026-004) may also cause stridor).
+        - Use [Peds Reference](topic:wvems-2026-144) or other approved source for peds dosing.
+
+    - type: "prose"
+      title: "References"
+      text_scale: 0.8
+      markdown: |
+        - Medscape COPD — https://emedicine.medscape.com/article/297664 [Ver: 7/25]
+        - Medscape Asthma — https://emedicine.medscape.com/article/296301 [Ver: 8/24]
+        - Medscape CHF — https://emedicine.medscape.com/article/163062 [Ver: 9/25]
+        - Medscape Croup — https://emedicine.medscape.com/article/962972 [Ver: 1/24]
+        - Limmer D, O’Keefe MF. Emergency Care 15th ed. Chapter 10, 19
+
+        NEMSIS: 9914137, 9914139, 9914197, 9914221, 9914223

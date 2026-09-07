@@ -1,0 +1,129 @@
+# ============================================================
+# ProtocolBook p.60 — Sickle Cell Acute Management. A multi-decision
+# cascade (stroke → ACS → splenic sequestration → vaso-occlusive
+# crisis → fever → dehydration → supportive care) → `algorithm`
+# flowchart, with an initial-management prose block.
+#
+# Faithful-rendering calls:
+#   - Citation superscripts (neuro 156,157; supportive 158–161)
+#     dropped.
+#   - The Yes outcomes that point to other protocols (stroke, ACS,
+#     pain, dehydration) are textual pointer boxes — flowchart boxes
+#     can't link, and those protocols are separate topics in this
+#     Sickle Cell group (Stroke p.61, ACS p.62).
+#   - "DO NOT BOLUS if not hypotensive" emphasis survives via the
+#     ALL-CAPS wording (AlgoBox = plain text).
+#   - Splenic-sequestration and fever boxes keep their a/b and
+#     bullet detail as flat bullets.
+# Cross-book pass 2026-08-28: oxygen trigger 94% -> 90%. A routine 94%
+#   trigger commits oxygen to a much larger group without mortality benefit,
+#   and oxygen is the most rationed resource in this setting. The other book
+#   used 90% throughout and this book already used 90% on its paediatric
+#   pneumonia page. Discharge/target criteria on other pages are NOT this
+#   figure and were left alone.
+# ============================================================
+
+topic:
+  id: "pb-sickle-cell-acute"
+  title: "Sickle Cell Acute Management"
+  list_subtitle: "p.60 · crisis triage"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["sickle cell", "SCD", "crisis", "vaso-occlusive", "acute chest syndrome", "splenic sequestration", "stroke", "ceftriaxone", "paediatric", "haematology"]
+  category: "medical"
+  page_number: 60
+
+  blocks:
+
+    - type: "prose"
+      title: "Initial Management"
+      markdown: |
+        - Monitor, support ABCs
+        - Check VS (BP, PR, RR, spO2, Temp, Wt)
+        - Assess GCS, hydration status
+        - Insert IV, Start Oxygen if spO2 <90%
+        - Draw CBC, retic count, malaria, Tbili/Dbili if jaundiced
+        - Perform brief, targeted history, physical exam
+
+    - type: "flowchart"
+      variant: "algorithm"
+      stages:
+        - decision: "Focal Neurologic findings? (Hemiparesis, focal neurologic deficit, speech disorder)"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Treat for Stroke"
+                severity: "emergency"
+            - label: "No"
+              continue: true
+        - decision: "Meets criteria for pneumonia or has moderate to severe chest pain?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Treat for Acute Chest Syndrome"
+                severity: "emergency"
+            - label: "No"
+              continue: true
+        - decision: "Sudden Splenic Enlargement with drop in Hgb >2g/dL from baseline? (usually with abdominal pain and <5yo)"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Splenic sequestration"
+                bullets:
+                  - "Hgb may continue to drop, monitor carefully"
+                  - "May require more aggressive transfusions than normal crisis"
+                  - "Transfuse CAUTIOUSLY in 5 mL/kg aliquots with serial Hb — aim for Hb 7-8, not higher. As the spleen releases the sequestered cells the Hb overshoots and causes hyperviscosity"
+                  - "Otherwise manage supportively as for a vaso-occlusive crisis: IV fluids, analgesia, oxygen"
+                  - "DO NOT splenectomise in acute sequestration — mortality is high"
+                  - "Recurs in about half of cases. Elective splenectomy after a second episode, or after one life-threatening episode; vaccinate against pneumococcus and meningococcus first"
+                  - "Tell the family to return immediately for sudden pallor, abdominal distension or lethargy"
+                severity: "emergency"
+            - label: "No"
+              continue: true
+        - decision: "Hgb far below baseline with a LOW reticulocyte count? (retic <1%, or near zero)"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Aplastic crisis"
+                bullets:
+                  - "Marrow has stopped producing red cells, usually after Parvovirus B19"
+                  - "Distinguished from sequestration by the LOW retic count and NO splenomegaly"
+                  - "Hgb typically falls to 3-6 g/dL and will keep falling until the marrow recovers"
+                  - "Transfuse; recovery is usually within 7-10 days"
+                severity: "emergency"
+            - label: "No"
+              continue: true
+        - decision: "Vaso-occlusive Crisis or Moderate to Severe pain?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Treat aggressively, see pain management protocol"
+                severity: "priority"
+            - label: "No"
+              continue: true
+        - decision: "Fever?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Treat for infection"
+                bullets:
+                  - "Blood Cultures"
+                  - "Ceftriaxone: 100mg/kg/OD IV (can give 50mg/kg/12hrs) — max 2g/dose, and max 4g/day only if treating meningitis, otherwise max 2g/day"
+                  - "If evidence of sepsis, use sepsis protocol"
+                severity: "priority"
+            - label: "No"
+              continue: true
+        - decision: "Hypotensive or dehydrated?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Treat with dehydration protocol"
+                severity: "priority"
+            - label: "No"
+              continue: true
+      terminal:
+        title: "Supportive Care"
+        bullets:
+          - "Hydration: if mildly dehydrated or poor PO intake, may consider 1.5 x MIVF for 24hrs, goal is Euvolemia; ideally overall intake (IV and PO) should be full maintenance; watch carefully for volume overload (DO NOT BOLUS if not hypotensive)"
+          - "Feeding"
+          - "Malaria"
+        severity: "non_urgent"

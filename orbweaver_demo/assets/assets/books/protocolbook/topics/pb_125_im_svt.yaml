@@ -1,0 +1,128 @@
+# ============================================================
+# ProtocolBook p.125 — Supraventricular Tachycardias (SVT). Internal
+# Medicine Protocols leaf.
+#
+# Genuine multi-decision flowchart → `algorithm` variant (per the hybrid
+# rule). Spine: stable? (No → acute termination with adenosine /
+# cardioversion; Yes → workup) → sinus tachycardia? (Yes → treat cause;
+# No → beta blocker) → atrial fibrillation / flutter? (Yes → rate control
+# + anticoagulation). The two intro points are prose above the chart.
+#
+# Faithful-rendering calls:
+#   - The adenosine dosing protocol + the "cardioversion preferred for
+#     unstable" note live inside the adenosine box bullets (flowchart box
+#     text is plain — no MiniMarkdown).
+#   - The stable=Yes path runs the stable-patient workup spine; the
+#     unstable=No path gets acute termination — clinically coherent as
+#     drawn.
+#
+# CONTENT FLAGS for the later OE / content pass (rendered faithfully):
+#   - Adenosine 6 mg → 12 mg → 12 mg IV push with rapid NS flush, max 3
+#     doses, is standard. For the AF/flutter arm the book suggests digoxin
+#     for rate control and warfarin (10 mg ×2 days then titrate to INR
+#     2–3); current practice favours a beta-blocker/CCB for rate control
+#     and a DOAC over warfarin where available, and CHA₂DS₂-VASc-guided
+#     anticoagulation — flag for OE (transcribed as printed).
+# 2026-08-29 structural audit: the final "Atrial fibrillation or atrial
+#   flutter?" decision had ONLY a Yes outcome. A reader who answered No fell
+#   off the bottom of the chart with no instruction. Added the No branch,
+#   which points back at the treatment already given above. Found by
+#   tool/flowchart_structure_audit.py - the only one-sided decision in all
+#   111 charts across the three books.
+# ============================================================
+
+topic:
+  id: "pb-im-svt"
+  title: "Supraventricular Tachycardias (SVT)"
+  list_subtitle: "p.125 · stable? · adenosine · rate control"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["SVT", "supraventricular tachycardia", "arrhythmia", "adenosine", "cardioversion", "sinus tachycardia", "atrial fibrillation", "atrial flutter", "rate control", "digoxin", "warfarin", "anticoagulation", "internal medicine", "cardiology"]
+  category: "medical"
+  page_number: 125
+
+  blocks:
+
+    - type: "prose"
+      title: "Supraventricular tachycardias (SVT)"
+      markdown: |
+        - Tachycardias arising above the AV node
+        - Narrow QRS indicates SVT
+
+    - type: "flowchart"
+      variant: "algorithm"
+      entry:
+        text: "Evaluation of SVT"
+        shape: "stadium"
+      stages:
+        - decision: "Is the patient UNSTABLE? (hypotension, altered mental status, ischaemic chest pain, acute heart failure)"
+          outcomes:
+            - label: "Yes — unstable"
+              box:
+                title: "IMMEDIATE synchronised cardioversion"
+                severity: "emergency"
+                bullets:
+                  - "**Adult: 50–100 J biphasic**, escalating if unsuccessful. **Child: 0.5–1 J/kg**, increasing to 2 J/kg"
+                  - "Sedate the conscious patient first"
+                  - "⚠️ First confirm the tachycardia is CAUSING the instability rather than responding to it — cardioverting a compensatory sinus tachycardia (sepsis, hypovolaemia) is harmful"
+                  - "Adenosine may be tried first ONLY if it does not delay cardioversion — regular narrow complex, IV access already in place"
+                  - "**If no synchronised cardioversion is available** — the realistic case here — run the drug pathway opposite AND arrange urgent transfer, in parallel"
+            - label: "No — stable"
+              continue: true
+        - decision: "Sinus tachycardia?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "Treat underlying cause"
+            - label: "No — regular narrow complex"
+              box:
+                title: "1. Vagal manoeuvres first"
+                bullets:
+                  - "**Modified Valsalva** — strain, then lay supine with passive leg raise. More effective than the standard Valsalva or carotid massage"
+              continue: true
+        - decision: "Still in SVT after vagal manoeuvres?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "2. Adenosine"
+                bullets:
+                  - "Give each dose as rapidly as possible"
+                  - "Follow each dose immediately with a flush of 20 mL IV NS"
+                  - "6 mg IV push (followed by NS flush)"
+                  - "Wait 1–2 minutes"
+                  - "No response — give 12 mg IV push (followed by NS flush)"
+                  - "Wait 1–2 minutes"
+                  - "No response — give 12 mg IV push (followed by NS flush)"
+                  - "Do not use more than 3 doses"
+                  - "Terminates AVNRT/AVRT in ~90–95%, with a very short half-life"
+            - label: "No"
+              continue: true
+        - decision: "Adenosine failed or contraindicated?"
+          outcomes:
+            - label: "Yes"
+              box:
+                title: "3. IV rate-control drug, then 4. cardioversion"
+                bullets:
+                  - "IV diltiazem or verapamil, **or** an IV beta blocker"
+                  - "⚠️ **Avoid diltiazem and verapamil in suspected HFrEF**"
+                  - "Synchronised cardioversion (after sedation) if drugs fail or are contraindicated"
+            - label: "No"
+              continue: true
+        - decision: "Atrial fibrillation or atrial flutter?"
+          outcomes:
+            - label: "No — the rhythm is not AF or flutter"
+              box:
+                title: "You have already treated it above"
+                bullets:
+                  - "A regular narrow-complex SVT that broke with vagal manoeuvres or adenosine needs nothing further here"
+                  - "One that did not break has had rate control and then cardioversion (step 3 → 4 above)"
+                  - "If the rhythm is still undiagnosed, get a 12-lead and treat the underlying cause"
+            - label: "Yes"
+              box:
+                title: "Rate control & anticoagulation"
+                bullets:
+                  - "**Rate control: a beta blocker is first-line**, including in HFrEF. Digoxin is second-line — it controls rate at rest but poorly on exertion — and is best added to a beta blocker. **Avoid verapamil and diltiazem in HFrEF**"
+                  - "**Digoxin — load:** 0.5 mg PO then 0.25 mg q6–8h ×2 (total ~1–1.5 mg/24 h), or IV 0.25–0.5 mg then 0.25 mg q6h to ~0.75–1.5 mg/24 h. **Maintenance 0.0625–0.25 mg PO daily** (lower in the elderly and in renal impairment). Target level **0.5–0.9 ng/mL** — ≥ 1.2 is associated with increased mortality"
+                  - "**Before digoxin check renal function, K⁺, Mg²⁺ and Ca²⁺** — hypokalaemia and hypomagnesaemia potentiate toxicity. Monitor for nausea, visual change, arrhythmia"
+                  - "**Anticoagulate on CHA₂DS₂-VASc, not automatically: men ≥ 2, women ≥ 3.** A score of 1 (men) or 2 (women) is intermediate — shared decision. (European guidance uses the sex-independent CHA₂DS₂-VA: ≥ 2 anticoagulate, ≥ 1 consider)"
+                  - "🛑 **Warfarin: do NOT load.** Routine loading increases bleeding without faster protection. **Start 2.5 mg daily or lower in the older or frail adult.** First INR at **3–5 days**, then at least weekly until stable, then every 4–6 weeks (goal 2–3). The book previously printed 10 mg daily × 2 days"
+                  - "**Where INR monitoring is unreliable, warfarin is the wrong choice** — its benefit depends on time in therapeutic range. Prefer a DOAC if available; if neither is possible, **rate control alone is safer than unmonitored warfarin**. Aspirin is NOT an adequate substitute"

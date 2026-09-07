@@ -1,0 +1,111 @@
+# ============================================================
+# ProtocolBook p.127 — Adult COPD and Asthma. Internal Medicine Protocols
+# leaf.
+#
+# The page's boxes-and-arrows are a SEQUENTIAL content-flow (management →
+# oxygen caution → evaluate other causes → bronchodilator Rx → antibiotics
+# if infective features), NOT a branching decision tree → titled prose +
+# one safety callout per the hybrid rule. The SpO2 caution is the one
+# genuine "don't get this wrong" point → amber callout.
+#
+# Faithful-rendering calls:
+#   - History / exam outlines → nested prose (decorative VI./VII. numbering
+#     dropped).
+#   - The oxygen box → titled callout. The infective-exacerbation box is a
+#     conditional ("if more sputum / colour change / fever / tachypnoea →
+#     antibiotics") rendered as a titled prose section.
+#
+# CONTENT FLAGS for the later OE / content pass (rendered faithfully):
+#   - Target SpO2 88–92% in known/suspected COPD to avoid CO2 narcosis is
+#     standard (book says 90–92%). Salbutamol/ipratropium q20min ×3, a 5-day
+#     prednisolone 40 mg course, and antibiotics for the Anthonisen
+#     (increased dyspnoea + sputum volume + purulence) criteria are all
+#     current exacerbation care.
+# Cross-book pass 2026-08-28: COPD saturation target 90-92% -> 88-92%, the
+#   standard hypercapnia cap this file's own header already flagged. Also
+#   states that the START trigger and the HOLD target are different numbers.
+# ============================================================
+
+topic:
+  id: "pb-im-copd-asthma"
+  title: "Adult COPD and Asthma"
+  list_subtitle: "p.127 · exacerbation management"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["COPD", "asthma", "exacerbation", "shortness of breath", "SOB", "dyspnea", "wheezing", "salbutamol", "albuterol", "ipratropium", "prednisolone", "oxygen", "bronchodilator", "adult", "internal medicine", "respiratory"]
+  category: "medical"
+  page_number: 127
+
+  blocks:
+
+    - type: "prose"
+      title: "History"
+      markdown: |
+        - **CC:** almost always shortness of breath
+        - **COPD:** often chronic and progressive symptoms
+          - Cough, wheezing
+          - Sputum production (3 or more months in the last 2 yrs)
+          - Dyspnea on exertion, usually worse with upper body activity, lower body activity better tolerated
+          - Smoking history
+        - **Asthma:** may also have cough, chest tightness, wheezing
+
+    - type: "prose"
+      title: "Physical exam / study findings"
+      markdown: |
+        - Prolonged expiratory phase
+        - Expiratory wheezing
+        - Use of accessory respiratory muscles
+        - Hypoxia
+        - NOT finger clubbing (if present, other dx needs to be considered)
+        - CXR: hyperinflation, flat diaphragm
+
+    # 2026-08-24 — History and Physical exam are printed as plain outline text,
+    # but from "Management" down the print draws a boxed spine with arrows and
+    # an oxygen-target callout hanging off the side. That part is a flowchart.
+    - type: "flowchart"
+      variant: "linear"
+      warnings:
+        - type: "caution"
+          text: "Known or suspected COPD — aim for spO₂ 88–92%, NOT higher. The trigger to START oxygen is not the target to hold it at"
+      entry_chain:
+        - text: "Adult COPD or asthma"
+          shape: "stadium"
+      steps:
+        - type: "content"
+          title: "Management"
+          bullets:
+            - "Monitor, support ABCs"
+            - "Check VS (PR, RR, spO₂, Temp, weight)"
+            - "Assess AVPU / GCS"
+            - "Assess hydration status, IV if needed"
+            - "Perform brief, targeted history and physical exam"
+        - type: "content"
+          title: "Evaluate for other causes of SOB"
+          bullets:
+            - "Heart failure"
+            - "Pneumonia"
+            - "Pulmonary TB"
+        - type: "content"
+          title: "Bronchodilator therapy"
+          bullets:
+            - "Albuterol / ipratropium q20min × 3 doses — nebuliser (5 mg / 0.5 mg) or MDI 8 puffs"
+            - "Caution using albuterol with cardiac disease"
+            - "Evaluate after the first Rx and after the first 3; if symptoms dramatically improve, more likely asthma"
+            - "Prednisolone 40 mg/day × 5 days"
+      convergence:
+        text: "More sputum, colour change to yellow/green, or increased breathlessness, fever, tachypnoea?"
+        shape: "diamond"
+        bullets:
+          - text: "Suspect infective COPD exacerbation and treat"
+          - text: "Amoxicillin / clavulanate 875 mg BD × 5 days"
+          - text: "Doxycycline 100 mg BD × 10 days"
+          - text: "Azithromycin 500 mg once daily × 3 days"
+
+    - type: "prose"
+      title: "Important note on oxygen"
+      callout: true
+      palette:
+        alert: "0xFFEF6C00"
+        alert_fill: "0xFFFFF3E0"
+        alert_text: "0xFFE65100"
+      markdown: |
+        If the patient has known or suspected COPD, aim for an **spO₂ of 90–92%, not higher**.

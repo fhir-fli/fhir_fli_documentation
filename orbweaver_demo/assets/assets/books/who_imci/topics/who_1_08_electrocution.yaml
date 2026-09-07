@@ -1,0 +1,71 @@
+# ============================================================
+# WHO IMCI §1.8 — Electrocution. Pocket Book 2nd ed (2013), p.34.
+# OpenEvidence review applied 2026-06-24:
+#   - Urine-output target ≥2 ml/kg/h confirmed for myoglobinuria.
+#   - Furosemide/mannitol caveat: NOT routinely supported (Bosch NEJM 2009;
+#     Chest 2026) — only if output inadequate despite crystalloid.
+#   - ABCDE / trauma assessment / tetanus / fasciotomy unchanged.
+# OpenEvidence-reviewed 2026-07:
+#   - Added ECG/cardiac monitoring for significant electrical injury
+#     (arrhythmias, incl. delayed; 2025 AHA).
+#   - Added the "iceberg" caveat: deep tissue injury may far exceed the
+#     visible external burn.
+#   - Urine-output target and mannitol/bicarbonate caveat re-confirmed —
+#     unchanged.
+# ============================================================
+
+topic:
+  id: "who-imci-1-8-electrocution"
+  title: "Electrocution"
+  list_subtitle: "1.8 · ABC, fluids for myoglobinuria, wound care"
+  last_reviewed: "OpenEvidence-reviewed 2026-07 · WHO PB 2013 + 2025 AHA"
+  tags: ["electrocution", "electrical injury", "burns", "myoglobinuria", "rhabdomyolysis", "imci", "pediatric"]
+  aliases:
+    - "Electrical Injury"
+  category: "medical"
+
+  page_number: 34
+
+  blocks:
+
+    - type: "prose"
+      title: "Emergency care"
+      highlight: true
+      markdown: |
+        - Ensure **airway, breathing and circulatory support**.
+        - Give **oxygen**, especially for **severe hypoxia, facial or oral
+          burns, loss of consciousness, inability to protect the airway, or
+          respiratory distress**.
+
+    - type: "prose"
+      title: "Cardiac monitoring"
+      markdown: |
+        - Put any child with a **significant electrical injury** on
+          **continuous ECG / cardiac monitoring** — electrical current can
+          cause **arrhythmias, including delayed** ones.
+
+    - type: "prose"
+      title: "Assess for trauma"
+      markdown: |
+        Look for traumatic injuries — **pneumothorax, peritonitis, pelvic
+        fractures**.
+
+        **Beware the "iceberg":** deep tissue and muscle injury along the
+        current path may be **far more extensive than the visible external
+        burn** suggests.
+
+    - type: "prose"
+      title: "Fluids & myoglobin"
+      markdown: |
+        - Start **normal saline or Ringer's lactate**, titrated to a **urine
+          output ≥ 2 ml/kg/h** in any child with significant **burns or
+          myoglobinuria** (higher than the usual 0.5–1 ml/kg/h target).
+        - **Mannitol or bicarbonate are NOT routinely supported** — consider
+          only if urine output stays inadequate **despite aggressive
+          crystalloid** resuscitation.
+
+    - type: "prose"
+      title: "Wound care"
+      markdown: |
+        - Give **tetanus vaccine** as indicated and provide **wound care**.
+        - Treatment may include **early fasciotomy** when necessary.

@@ -1,0 +1,85 @@
+# ============================================================
+# ProtocolBook p.23 — Malaria: Complications & Co-infection
+#
+# ✅ OE-CONFIRMED CHANGES APPLIED (Grey's OpenEvidence pass, 2026-07-26):
+#
+#   1. MODERATE — AKI section made FUROSEMIDE the hero. As printed,
+#      "if decreasing urinary output, add Lasix … the most important
+#      part of treatment is to maintain a normal urinary output"
+#      reads as: make urine with a diuretic. Furosemide does not
+#      improve renal outcomes in AKI and actively worsens injury in a
+#      volume-depleted child — which is exactly the malaria patient.
+#      Reframed to lead with fluid balance and effective antimalarial
+#      therapy, with furosemide explicitly reserved for fluid
+#      OVERLOAD. Dose and interval preserved. The "exclude pre-renal
+#      causes" step was already there and is what makes this safe.
+#
+#   2. MODERATE — DELAYED HAEMOLYSIS follow-up was a single control
+#      CBC at 2 weeks. Post-artesunate delayed haemolysis needs
+#      weekly CBC plus haemolysis markers for 4 weeks; one snapshot
+#      at 2 weeks can miss both an earlier nadir and a later one.
+#      Markers named (LDH, bilirubin, haptoglobin, reticulocytes) to
+#      make it actionable — same vocabulary as the p.75 workup page.
+#
+# ✓ OE-VERIFIED, NO CHANGE: treatment-failure logic incl. positive
+#   slide at 72 h → second-line; the co-infection section (the "no
+#   clinical or lab finding differentiates bacterial infection from
+#   malaria" pearl was called out as an important LMIC teaching
+#   point, and LP-before-antibiotics is correct).
+#
+# ✅ RESOLVED AND APPLIED (header corrected 2026-07-28 — it still said
+#   "OPEN, NOT APPLIED" long after the change had gone in, and that
+#   stale wording was fed back into OE, which then re-answered a
+#   settled question from the obsolete text):
+#   - item (e) previously started IRON + folic acid for Hgb < 9 DURING
+#     the acute episode, for 14 days. It now reads "start it only
+#     after the antimalarial course is complete, not on admission"
+#     and "treat for 3 months", dispensing 14 days at a time. Iron
+#     during acute infection is hazardous in a malaria-endemic
+#     setting, and 14 days was too short to refill stores.
+#     Re-confirmed by OE 2026-07-28.
+# ============================================================
+
+topic:
+  id: "pb-malaria-complications"
+  title: "Malaria — Complications & Co-infection"
+  list_subtitle: "p.23 · AKI, anemia, Rx failure"
+  last_reviewed: "pocketbook v1.7"
+  tags: ["malaria", "complications", "co-infection", "tropical", "pediatric"]
+  category: "medical"
+  page_number: 23
+
+  blocks:
+
+    - type: "prose"
+      title: "Complications"
+      markdown: |-
+        a) **Coma:** maintain airway, place patient on side, exclude other causes (hypoglycemia, meningitis)
+        b) **Hyperpyrexia:** tepid sponging, paracetamol
+        c) **Convulsions:** see general convulsion treatment
+        d) **Acute kidney injury:**
+          i) Exclude pre-renal causes — correct hypovolaemia first
+          ii) **Careful fluid balance is the most important part of treatment**
+          iii) Effective antimalarial treatment is the definitive therapy
+          iv) **Furosemide (Lasix) 1 mg/kg/dose every 6–12 h is for fluid OVERLOAD only** — it does not improve renal recovery, and worsens injury in a volume-depleted child
+        e) **Anemia:** Hgb < 9 here is a **pragmatic treatment threshold for starting iron in this setting, not the definition of anaemia** (WHO's diagnostic cut-offs are higher and age-specific). If Hgb < 9, give iron — but **start it only after the antimalarial course is complete**, not on admission. **Treat for 3 months** (it takes 2–4 weeks to correct the haemoglobin and 1–3 months to refill iron stores); dispense 14 days at a time and review at each refill. Recheck Hb at 1 month — if it has not risen, the diagnosis is wrong or adherence has failed
+        f) **After discharge for severe malarial anaemia — give post-discharge malaria chemoprevention (PDMC):** a full course of **dihydroartemisinin-piperaquine monthly for 3 months** (at weeks 2, 6 and 10 after discharge). WHO-recommended since 2022; reduces all-cause mortality by ~77% and readmission by ~55%. Use these visits for the haemolysis checks in (h) as well
+        g) **Treatment Failure:**
+          i) Consider other causes of illness / co-morbidity
+          ii) A child on PO antimalarials with signs of severe malaria → switch to **IV artesunate**
+          iii) If on PO antimalarials and still febrile with a **positive blood slide** after **72 h** → check compliance; if treatment failure, proceed to **second-line Rx**
+        h) **Delayed haemolysis (post-artesunate):**
+          i) Occurs in children who received **PARENTERAL artesunate** — not oral ACT, and not quinine or artemether. Commonest after high parasitaemia, but do not restrict monitoring to those children
+          ii) **Weekly haemoglobin for 4 weeks** after discharge — Hb alone is enough to act on, and is available everywhere
+          iii) If Hb falls, or there is jaundice or dark urine, add **LDH, bilirubin, haptoglobin and reticulocytes where available**
+          iv) Transfuse if symptomatic, or if Hb falls below the transfusion threshold
+          v) Tell the carer at discharge to return immediately for yellow eyes, dark urine, pallor or breathlessness — do not wait for the appointment
+
+    - type: "prose"
+      title: "Co-infection"
+      markdown: |-
+        No good clinical or laboratory finding differentiates bacterial infection from malaria.  Children with current or recent malaria are at higher risk of invasive bacterial infections and have higher mortality rates.
+
+        a) **Pneumonia:** treat if concern for and meets WHO criteria for pneumonia
+        b) **Septicemia:** treat if concern for and meets **SIRS criteria**
+        c) **Meningitis:** treat if concern for and meets WHO criteria; **get LP before starting antibiotics**
