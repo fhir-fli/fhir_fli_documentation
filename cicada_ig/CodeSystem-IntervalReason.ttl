@@ -10,14 +10,15 @@
   fhir:Resource.id [ fhir:value "IntervalReason"] ;
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "generated" ] ;
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem IntervalReason</b></p><a name=\"IntervalReason\"> </a><a name=\"hcIntervalReason\"> </a><p>This  code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">tooLate<a name=\"IntervalReason-tooLate\"> </a></td><td>Interval: too late</td><td>Interval: too late</td></tr><tr><td style=\"white-space:nowrap\">tooShort<a name=\"IntervalReason-tooShort\"> </a></td><td>Interval: too short</td><td>Interval: too short</td></tr><tr><td style=\"white-space:nowrap\">gracePeriod<a name=\"IntervalReason-gracePeriod\"> </a></td><td>Interval: grace period</td><td>Interval: grace period</td></tr></table></div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem IntervalReason</b></p><a name=\"IntervalReason\"> </a><a name=\"hcIntervalReason\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">tooLate<a name=\"IntervalReason-tooLate\"> </a></td><td>Interval: too late</td><td>Interval: too late</td></tr><tr><td style=\"white-space:nowrap\">tooShort<a name=\"IntervalReason-tooShort\"> </a></td><td>Interval: too short</td><td>Interval: too short</td></tr><tr><td style=\"white-space:nowrap\">gracePeriod<a name=\"IntervalReason-gracePeriod\"> </a></td><td>Interval: grace period</td><td>Interval: grace period</td></tr></table></div>"
   ] ;
   fhir:CodeSystem.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/IntervalReason"] ;
   fhir:CodeSystem.version [ fhir:value "0.1.0"] ;
   fhir:CodeSystem.name [ fhir:value "IntervalReasonCS"] ;
   fhir:CodeSystem.title [ fhir:value "Interval Reason"] ;
   fhir:CodeSystem.status [ fhir:value "draft"] ;
-  fhir:CodeSystem.date [ fhir:value "2026-09-07T18:40:23-04:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.experimental [ fhir:value "false"^^xsd:boolean] ;
+  fhir:CodeSystem.date [ fhir:value "2026-09-07T19:28:06-04:00"^^xsd:dateTime] ;
   fhir:CodeSystem.publisher [ fhir:value "FHIR-FLI"] ;
   fhir:CodeSystem.contact [
      fhir:index 0 ;
@@ -29,6 +30,7 @@
      ]
   ] ;
   fhir:CodeSystem.description [ fhir:value "This value set includes codes for the reason an interval is considered to be invalid."] ;
+  fhir:CodeSystem.caseSensitive [ fhir:value "true"^^xsd:boolean] ;
   fhir:CodeSystem.content [ fhir:value "complete"] ;
   fhir:CodeSystem.count [ fhir:value "3"^^xsd:nonNegativeInteger] ;
   fhir:CodeSystem.concept [

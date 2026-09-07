@@ -31,7 +31,8 @@ Value set for reasons why a patient's age is considered valid/invalid for a vacc
   "name" : "ValidAgeReasonCS",
   "title" : "Valid Age Reason",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "experimental" : false,
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -41,6 +42,7 @@ Value set for reasons why a patient's age is considered valid/invalid for a vacc
     }]
   }],
   "description" : "Value set for reasons why a patient's age is considered valid/invalid for a vaccine.",
+  "caseSensitive" : true,
   "content" : "complete",
   "count" : 3,
   "concept" : [{

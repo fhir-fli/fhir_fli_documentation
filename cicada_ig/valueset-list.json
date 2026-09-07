@@ -4,8 +4,8 @@
     "version" : "0.1.0",
     "status" : "draft",
     "name" : "VaccineCodesCvxMvx",
-    "title" : null,
-    "description" : "",
+    "title" : "Vaccine Codes (CVX and MVX)",
+    "description" : "Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with.",
     "systems" : ["http://hl7.org/fhir/sid/mvx", "http://hl7.org/fhir/sid/cvx"]
   },
   {

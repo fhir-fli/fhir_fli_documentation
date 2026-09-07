@@ -10,14 +10,15 @@
   fhir:Resource.id [ fhir:value "PreferredAllowedReason"] ;
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "generated" ] ;
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem PreferredAllowedReason</b></p><a name=\"PreferredAllowedReason\"> </a><a name=\"hcPreferredAllowedReason\"> </a><p>This  code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">notAPreferableOrAllowableVaccine<a name=\"PreferredAllowedReason-notAPreferableOrAllowableVaccine\"> </a></td><td>Not a preferable or allowable vaccine</td><td>Not a preferable or allowable vaccine</td></tr><tr><td style=\"white-space:nowrap\">wrongTradeName<a name=\"PreferredAllowedReason-wrongTradeName\"> </a></td><td>Wrong trade name</td><td>Wrong trade name</td></tr><tr><td style=\"white-space:nowrap\">lessThanRecommendedVolume<a name=\"PreferredAllowedReason-lessThanRecommendedVolume\"> </a></td><td>Less than recommended volume</td><td>Less than recommended volume</td></tr><tr><td style=\"white-space:nowrap\">administeredOutsideOfPreferredAgeRange<a name=\"PreferredAllowedReason-administeredOutsideOfPreferredAgeRange\"> </a></td><td>Administered outside of preferred age range</td><td>Administered outside of preferred age range</td></tr><tr><td style=\"white-space:nowrap\">noPreferredTypes<a name=\"PreferredAllowedReason-noPreferredTypes\"> </a></td><td>No preferred types</td><td>No preferred types</td></tr><tr><td style=\"white-space:nowrap\">noAllowedTypes<a name=\"PreferredAllowedReason-noAllowedTypes\"> </a></td><td>No allowed types</td><td>No allowed types</td></tr></table></div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem PreferredAllowedReason</b></p><a name=\"PreferredAllowedReason\"> </a><a name=\"hcPreferredAllowedReason\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">notAPreferableOrAllowableVaccine<a name=\"PreferredAllowedReason-notAPreferableOrAllowableVaccine\"> </a></td><td>Not a preferable or allowable vaccine</td><td>Not a preferable or allowable vaccine</td></tr><tr><td style=\"white-space:nowrap\">wrongTradeName<a name=\"PreferredAllowedReason-wrongTradeName\"> </a></td><td>Wrong trade name</td><td>Wrong trade name</td></tr><tr><td style=\"white-space:nowrap\">lessThanRecommendedVolume<a name=\"PreferredAllowedReason-lessThanRecommendedVolume\"> </a></td><td>Less than recommended volume</td><td>Less than recommended volume</td></tr><tr><td style=\"white-space:nowrap\">administeredOutsideOfPreferredAgeRange<a name=\"PreferredAllowedReason-administeredOutsideOfPreferredAgeRange\"> </a></td><td>Administered outside of preferred age range</td><td>Administered outside of preferred age range</td></tr><tr><td style=\"white-space:nowrap\">noPreferredTypes<a name=\"PreferredAllowedReason-noPreferredTypes\"> </a></td><td>No preferred types</td><td>No preferred types</td></tr><tr><td style=\"white-space:nowrap\">noAllowedTypes<a name=\"PreferredAllowedReason-noAllowedTypes\"> </a></td><td>No allowed types</td><td>No allowed types</td></tr></table></div>"
   ] ;
   fhir:CodeSystem.url [ fhir:value "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/PreferredAllowedReason"] ;
   fhir:CodeSystem.version [ fhir:value "0.1.0"] ;
   fhir:CodeSystem.name [ fhir:value "PreferredAllowedReasonCS"] ;
   fhir:CodeSystem.title [ fhir:value "Reasons why certain doses are Preferred or Allowed doses"] ;
   fhir:CodeSystem.status [ fhir:value "draft"] ;
-  fhir:CodeSystem.date [ fhir:value "2026-09-07T18:40:23-04:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.experimental [ fhir:value "false"^^xsd:boolean] ;
+  fhir:CodeSystem.date [ fhir:value "2026-09-07T19:28:06-04:00"^^xsd:dateTime] ;
   fhir:CodeSystem.publisher [ fhir:value "FHIR-FLI"] ;
   fhir:CodeSystem.contact [
      fhir:index 0 ;
@@ -29,6 +30,7 @@
      ]
   ] ;
   fhir:CodeSystem.description [ fhir:value "Reasons why certain doses are Preferred or Allowed doses"] ;
+  fhir:CodeSystem.caseSensitive [ fhir:value "true"^^xsd:boolean] ;
   fhir:CodeSystem.content [ fhir:value "complete"] ;
   fhir:CodeSystem.count [ fhir:value "6"^^xsd:nonNegativeInteger] ;
   fhir:CodeSystem.concept [

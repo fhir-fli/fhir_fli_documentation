@@ -12,11 +12,11 @@
 | Draft as of 2026-09-07 | *Computable Name*:VaxDose |
 
  
-Detailed information about each vaccination dose. 
+An administered dose as the engine reads it: the vaccine as CVX, the date, the patient, and optionally the dose volume, the manufacturer and a subpotency reason. The engine's evaluation of the dose is returned on ImmunizationEvaluation (target-dose-status-ext, evaluation-detail-ext), not written back onto the Immunization; until 2026-09-07 this profile declared thirteen evaluation extensions nothing ever emitted. 
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Specification
+* Examples for this Profile: [Immunization/2016-UC-0032-dose1](Immunization-2016-UC-0032-dose1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-vax-dose.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-vax-dose.csv), [Exce
   "name" : "VaxDose",
   "title" : "Dose of a Vaccine",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-vax-dose.csv), [Exce
       "value" : "http://fhirfli.dev"
     }]
   }],
-  "description" : "Detailed information about each vaccination dose.",
+  "description" : "An administered dose as the engine reads it: the vaccine as CVX, the date, the patient, and optionally the dose volume, the manufacturer and a subpotency reason. The engine's evaluation of the dose is returned on ImmunizationEvaluation (target-dose-status-ext, evaluation-detail-ext), not written back onto the Immunization; until 2026-09-07 this profile declared thirteen evaluation extensions nothing ever emitted.",
   "fhirVersion" : "4.0.1",
   "mapping" : [{
     "identity" : "workflow",
@@ -86,161 +86,6 @@ Other representations of profile: [CSV](StructureDefinition-vax-dose.csv), [Exce
     "element" : [{
       "id" : "Immunization",
       "path" : "Immunization"
-    },
-    {
-      "id" : "Immunization.extension",
-      "path" : "Immunization.extension",
-      "slicing" : {
-        "discriminator" : [{
-          "type" : "value",
-          "path" : "url"
-        }],
-        "ordered" : false,
-        "rules" : "open"
-      }
-    },
-    {
-      "id" : "Immunization.extension:assessmentDate",
-      "path" : "Immunization.extension",
-      "sliceName" : "assessmentDate",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:inadvertentAdministration",
-      "path" : "Immunization.extension",
-      "sliceName" : "inadvertentAdministration",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/inadvertent-administration-status"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:validAgeStatus",
-      "path" : "Immunization.extension",
-      "sliceName" : "validAgeStatus",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-status"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:validAgeReason",
-      "path" : "Immunization.extension",
-      "sliceName" : "validAgeReason",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-reason"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:preferredIntervalStatus",
-      "path" : "Immunization.extension",
-      "sliceName" : "preferredIntervalStatus",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-status"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:preferredIntervalReason",
-      "path" : "Immunization.extension",
-      "sliceName" : "preferredIntervalReason",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-reason"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:allowedIntervalStatus",
-      "path" : "Immunization.extension",
-      "sliceName" : "allowedIntervalStatus",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-status"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:allowedIntervalReason",
-      "path" : "Immunization.extension",
-      "sliceName" : "allowedIntervalReason",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-reason"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:vaccinationConflict",
-      "path" : "Immunization.extension",
-      "sliceName" : "vaccinationConflict",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:preferredVaccineStatus",
-      "path" : "Immunization.extension",
-      "sliceName" : "preferredVaccineStatus",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:preferredVaccineReason",
-      "path" : "Immunization.extension",
-      "sliceName" : "preferredVaccineReason",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-reason"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:allowedVaccineStatus",
-      "path" : "Immunization.extension",
-      "sliceName" : "allowedVaccineStatus",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status"]
-      }]
-    },
-    {
-      "id" : "Immunization.extension:allowedVaccineReason",
-      "path" : "Immunization.extension",
-      "sliceName" : "allowedVaccineReason",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-reason"]
-      }]
     },
     {
       "id" : "Immunization.statusReason",

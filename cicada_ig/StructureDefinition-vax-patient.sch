@@ -12,7 +12,6 @@
   <sch:pattern>
     <sch:title>f:Patient</sch:title>
     <sch:rule context="f:Patient">
-      <sch:assert test="count(f:extension[@url = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date']) &lt;= 1">extension with URL = 'http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:birthDate) &gt;= 1">birthDate: minimum cardinality of 'birthDate' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>

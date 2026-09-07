@@ -1,0 +1,23 @@
+{
+  "resourceType" : "Observation",
+  "id" : "observation-immunocompromised",
+  "meta" : {
+    "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation observation-immunocompromised</b></p><a name=\"observation-immunocompromised\"> </a><a name=\"hcobservation-immunocompromised\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-VaccineObservationFhir.html\">Observation Profile for Immunization Decision Support</a></p></div><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 370388006}\">Patient immunocompromised</span></p><p><b>subject</b>: <a href=\"Patient-2016-UC-0032.html\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>effective</b>: 2015-04-30</p></div>"
+  },
+  "status" : "final",
+  "code" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "370388006",
+      "display" : "Patient immunocompromised"
+    }]
+  },
+  "subject" : {
+    "reference" : "Patient/2016-UC-0032"
+  },
+  "effectiveDateTime" : "2015-04-30"
+}

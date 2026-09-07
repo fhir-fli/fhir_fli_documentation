@@ -4,143 +4,10 @@
   "fhirVersion": "4.0.1",
   "extensions": [
     {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-reason",
-      "title": "Allowed Interval Reason",
-      "types": [
-        "base64Binary",
-        "boolean",
-        "canonical",
-        "code",
-        "date",
-        "dateTime",
-        "decimal",
-        "id",
-        "instant",
-        "integer",
-        "markdown",
-        "oid",
-        "positiveInt",
-        "string",
-        "time",
-        "unsignedInt",
-        "uri",
-        "url",
-        "uuid",
-        "Address",
-        "Age",
-        "Annotation",
-        "Attachment",
-        "CodeableConcept",
-        "Coding",
-        "ContactPoint",
-        "Count",
-        "Distance",
-        "Duration",
-        "HumanName",
-        "Identifier",
-        "Money",
-        "Period",
-        "Quantity",
-        "Range",
-        "Ratio",
-        "Reference",
-        "SampledData",
-        "Signature",
-        "Timing",
-        "ContactDetail",
-        "Contributor",
-        "DataRequirement",
-        "Expression",
-        "ParameterDefinition",
-        "RelatedArtifact",
-        "TriggerDefinition",
-        "UsageContext",
-        "Dosage",
-        "Meta"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-status",
-      "title": "Allowed Interval Status",
-      "types": [
-        "boolean"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-reason",
-      "title": "Allowed Vaccine Reason",
-      "types": [
-        "base64Binary",
-        "boolean",
-        "canonical",
-        "code",
-        "date",
-        "dateTime",
-        "decimal",
-        "id",
-        "instant",
-        "integer",
-        "markdown",
-        "oid",
-        "positiveInt",
-        "string",
-        "time",
-        "unsignedInt",
-        "uri",
-        "url",
-        "uuid",
-        "Address",
-        "Age",
-        "Annotation",
-        "Attachment",
-        "CodeableConcept",
-        "Coding",
-        "ContactPoint",
-        "Count",
-        "Distance",
-        "Duration",
-        "HumanName",
-        "Identifier",
-        "Money",
-        "Period",
-        "Quantity",
-        "Range",
-        "Ratio",
-        "Reference",
-        "SampledData",
-        "Signature",
-        "Timing",
-        "ContactDetail",
-        "Contributor",
-        "DataRequirement",
-        "Expression",
-        "ParameterDefinition",
-        "RelatedArtifact",
-        "TriggerDefinition",
-        "UsageContext",
-        "Dosage",
-        "Meta"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status",
-      "title": "Allowed Vaccine Status",
-      "types": [
-        "boolean"
-      ]
-    },
-    {
       "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext",
       "title": "Antigen Needing a Dose",
       "types": [
         "string"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date",
-      "title": "AssessmentDate",
-      "types": [
-        "dateTime"
       ]
     },
     {
@@ -291,139 +158,6 @@
       ]
     },
     {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/inadvertent-administration-status",
-      "title": "Inadvertent Administration Status",
-      "types": [
-        "boolean"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-reason",
-      "title": "Preferred Interval Reason",
-      "types": [
-        "base64Binary",
-        "boolean",
-        "canonical",
-        "code",
-        "date",
-        "dateTime",
-        "decimal",
-        "id",
-        "instant",
-        "integer",
-        "markdown",
-        "oid",
-        "positiveInt",
-        "string",
-        "time",
-        "unsignedInt",
-        "uri",
-        "url",
-        "uuid",
-        "Address",
-        "Age",
-        "Annotation",
-        "Attachment",
-        "CodeableConcept",
-        "Coding",
-        "ContactPoint",
-        "Count",
-        "Distance",
-        "Duration",
-        "HumanName",
-        "Identifier",
-        "Money",
-        "Period",
-        "Quantity",
-        "Range",
-        "Ratio",
-        "Reference",
-        "SampledData",
-        "Signature",
-        "Timing",
-        "ContactDetail",
-        "Contributor",
-        "DataRequirement",
-        "Expression",
-        "ParameterDefinition",
-        "RelatedArtifact",
-        "TriggerDefinition",
-        "UsageContext",
-        "Dosage",
-        "Meta"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-status",
-      "title": "Preferred Interval Status",
-      "types": [
-        "boolean"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-reason",
-      "title": "Preferred Vaccine Reason",
-      "types": [
-        "base64Binary",
-        "boolean",
-        "canonical",
-        "code",
-        "date",
-        "dateTime",
-        "decimal",
-        "id",
-        "instant",
-        "integer",
-        "markdown",
-        "oid",
-        "positiveInt",
-        "string",
-        "time",
-        "unsignedInt",
-        "uri",
-        "url",
-        "uuid",
-        "Address",
-        "Age",
-        "Annotation",
-        "Attachment",
-        "CodeableConcept",
-        "Coding",
-        "ContactPoint",
-        "Count",
-        "Distance",
-        "Duration",
-        "HumanName",
-        "Identifier",
-        "Money",
-        "Period",
-        "Quantity",
-        "Range",
-        "Ratio",
-        "Reference",
-        "SampledData",
-        "Signature",
-        "Timing",
-        "ContactDetail",
-        "Contributor",
-        "DataRequirement",
-        "Expression",
-        "ParameterDefinition",
-        "RelatedArtifact",
-        "TriggerDefinition",
-        "UsageContext",
-        "Dosage",
-        "Meta"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status",
-      "title": "Preferred Vaccine Status",
-      "types": [
-        "boolean"
-      ]
-    },
-    {
       "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext",
       "title": "Contributing Series Detail",
       "types": [
@@ -517,13 +251,6 @@
       ]
     },
     {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict",
-      "title": "Vaccination Conflict",
-      "types": [
-        "boolean"
-      ]
-    },
-    {
       "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext",
       "title": "Vaccine Recommendation Category",
       "types": [
@@ -587,69 +314,6 @@
       "title": "Vaccine Type",
       "types": [
         "CodeableConcept"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-reason",
-      "title": "Valid Age Reason",
-      "types": [
-        "base64Binary",
-        "boolean",
-        "canonical",
-        "code",
-        "date",
-        "dateTime",
-        "decimal",
-        "id",
-        "instant",
-        "integer",
-        "markdown",
-        "oid",
-        "positiveInt",
-        "string",
-        "time",
-        "unsignedInt",
-        "uri",
-        "url",
-        "uuid",
-        "Address",
-        "Age",
-        "Annotation",
-        "Attachment",
-        "CodeableConcept",
-        "Coding",
-        "ContactPoint",
-        "Count",
-        "Distance",
-        "Duration",
-        "HumanName",
-        "Identifier",
-        "Money",
-        "Period",
-        "Quantity",
-        "Range",
-        "Ratio",
-        "Reference",
-        "SampledData",
-        "Signature",
-        "Timing",
-        "ContactDetail",
-        "Contributor",
-        "DataRequirement",
-        "Expression",
-        "ParameterDefinition",
-        "RelatedArtifact",
-        "TriggerDefinition",
-        "UsageContext",
-        "Dosage",
-        "Meta"
-      ]
-    },
-    {
-      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-status",
-      "title": "Valid Age Status",
-      "types": [
-        "boolean"
       ]
     }
   ],
@@ -728,24 +392,8 @@
     ]
   },
   "usage": {
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-reason": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-interval-status": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-reason": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/allowed-vaccine-status": [
-      "Immunization"
-    ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/antigen-needing-dose-ext": [
       "ImmunizationRecommendation.recommendation"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/assessment-date": [
-      "Immunization",
-      "Patient"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/begin-age": [
       "Medication"
@@ -757,22 +405,11 @@
       "Medication"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/engine-version-ext": [
+      "ImmunizationEvaluation",
       "ImmunizationRecommendation.recommendation"
     ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/inadvertent-administration-status": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-reason": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-interval-status": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-reason": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/preferred-vaccine-status": [
-      "Immunization"
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/evaluation-detail-ext": [
+      "ImmunizationEvaluation"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext": [
       "ImmunizationRecommendation.recommendation"
@@ -783,20 +420,14 @@
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext": [
       "ImmunizationRecommendation.recommendation"
     ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict": [
-      "Immunization"
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/target-dose-status-ext": [
+      "ImmunizationEvaluation"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext": [
       "ImmunizationRecommendation.recommendation"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type": [
       "Medication"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-reason": [
-      "Immunization"
-    ],
-    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/valid-age-status": [
-      "Immunization"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice": [
       "StructureDefinition.snapshot.element.constraint"

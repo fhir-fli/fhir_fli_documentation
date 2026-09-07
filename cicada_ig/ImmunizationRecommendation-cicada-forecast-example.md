@@ -894,8 +894,8 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
           },
           {
             "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
-            "code" : "complete",
-            "display" : "Complete"
+            "code" : "seriescomplete",
+            "display" : "Series Complete"
           },
           {
             "system" : "http://loinc.org",
@@ -933,8 +933,8 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
           },
           {
             "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
-            "code" : "complete",
-            "display" : "Complete"
+            "code" : "seriescomplete",
+            "display" : "Series Complete"
           },
           {
             "system" : "http://loinc.org",
@@ -972,8 +972,8 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
           },
           {
             "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
-            "code" : "complete",
-            "display" : "Complete"
+            "code" : "seriescomplete",
+            "display" : "Series Complete"
           },
           {
             "system" : "http://loinc.org",
@@ -1032,8 +1032,8 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
       },
       {
         "system" : "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
-        "code" : "complete",
-        "display" : "Complete"
+        "code" : "seriescomplete",
+        "display" : "Series Complete"
       },
       {
         "system" : "http://loinc.org",

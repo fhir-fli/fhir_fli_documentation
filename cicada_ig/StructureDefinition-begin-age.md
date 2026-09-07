@@ -20,6 +20,7 @@ The age at which the vaccine becomes applicable.
 **Usages:**
 
 * Use this Extension: [Vaccine](StructureDefinition-Vaccine.md)
+* Examples for this Extension: [Medication/vaccine-hepb-adult](Medication-vaccine-hepb-adult.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-begin-age.json)
 
@@ -46,7 +47,7 @@ Other representations of profile: [CSV](StructureDefinition-begin-age.csv), [Exc
   "name" : "BeginAge",
   "title" : "Begin Age",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

@@ -1,5 +1,5 @@
 URL,Version,Status,OIDs,Name,Title,Description,Uses,Used,Sources
-http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx,0.1.0,draft,,VaccineCodesCvxMvx,,"",,"FHIR"
+http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx,0.1.0,draft,,VaccineCodesCvxMvx,Vaccine Codes (CVX and MVX),"Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with.",,"FHIR"
 http://fhirfli.dev/fhir/ig/cicada/ValueSet/cdsi-observation-codes-vs,0.1.0,draft,,CdsiObservationCodesVS,CDSI Observation Codes Value Set,"Every CDSi observation code, as published in the supporting data.",,"Internal"
 http://fhirfli.dev/fhir/ig/cicada/ValueSet/data-integrity-vs,0.1.0,draft,,DataIntegrityVS,Cicada Data Integrity Value Set,"Reasons a dose was reported rather than evaluated.",,"Internal"
 http://fhirfli.dev/fhir/ig/cicada/ValueSet/dose-status-reason,0.1.0,draft,,DoseStatusReasonVS,Dose Status Reason Value Set,"Value set for dose evaluation status reasons, referencing the published ImmDS IG StatusReason CodeSystem.",,"hl7.fhir.us.immds"

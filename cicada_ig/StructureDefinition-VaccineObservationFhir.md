@@ -16,7 +16,7 @@ Profile for Observation resources carrying lab evidence of immunity or other fin
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Specification
+* Examples for this Profile: [Observation/observation-immunocompromised](Observation-observation-immunocompromised.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-VaccineObservationFhir.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-VaccineObservationFh
   "name" : "VaccineObservationFhir",
   "title" : "Observation Profile for Immunization Decision Support",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

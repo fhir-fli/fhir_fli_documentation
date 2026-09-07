@@ -47,7 +47,49 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
 
 ### Select Patient Series
 
-* After evaluating and forecasting, we need to pick the best series for each antigen. This covers pre-filtering, prioritization, scoring, and final selection.
+* After evaluating and forecasting, we need to pick the best series for each antigen. This covers pre-filtering, prioritization, scoring, and final selection. 
+
+### Dependencies and terminology
+
+ 
+
+
+
+
+*There are no Global profiles defined*
+
+* Parameter: system-version
+  * Value: SNOMED CT[US]
+
+This is an R4 IG. None of the features it uses are changed in R4B, so it can be used as is with R4B systems. Packages for both [R4 (cicada.ig.r4)](package.r4.tgz) and [R4B (cicada.ig.r4b)](package.r4b.tgz) are available.
+
+### Intellectual property
+
+This publication includes IP covered under the following statements.
+
+* Current Procedural Terminology (CPT) is copyright 2020 American Medical Association. All rights reserved
+
+* [CPT](http://tx.fhir.org/r4/ValueSet/x-cpt2023): [ImmunizationProceduresCpt](ValueSet-immunization-procedures-cpt.md)
+
+
+* This material contains content from [LOINC](http://loinc.org). LOINC is copyright © 1995-2020, Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the [license](http://loinc.org/license). LOINC® is a registered United States trademark of Regenstrief Institute, Inc.
+
+* [LOINC](http://tx.fhir.org/r4/ValueSet/x-loinc2.82): [CicadaImmunizationRecommendation](StructureDefinition-cicada-immunization-recommendation.md), [ForecastStatusVS](ValueSet-forecast-status.md), [ImmunizationRecommendation/cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md) and [VaccineLabEvidenceOfImmunityLoinc](ValueSet-vaccine-lab-evidence-of-immunity-loinc.md)
+
+
+* This material contains content that is copyright of SNOMED International. Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact [https://www.snomed.org/get-snomed](https://www.snomed.org/get-snomed) or [info@snomed.org](mailto:info@snomed.org).
+
+* [SNOMED Clinical Terms&reg; (SNOMED CT&reg;)](http://hl7.org/fhir/R4/codesystem-snomedct.html): [AllergyIntolerance/allergy-vaccine-reaction](AllergyIntolerance-allergy-vaccine-reaction.md), [Condition/2016-UC-0032-055](Condition-2016-UC-0032-055.md)... Show 13 more, [ImmunizationEvaluation/2016-UC-0032-1](ImmunizationEvaluation-2016-UC-0032-1.md), [ImmunizationEvaluation/2016-UC-0032-2](ImmunizationEvaluation-2016-UC-0032-2.md), [ImmunizationEvaluation/2016-UC-0032-3](ImmunizationEvaluation-2016-UC-0032-3.md), [ImmunizationProceduresSnomed](ValueSet-procedures.md), [ImmunizationRecommendation/cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md), [Observation/observation-immunocompromised](Observation-observation-immunocompromised.md), [Procedure/procedure-stem-cell-transplant](Procedure-procedure-stem-cell-transplant.md), [ProcedureProfile](StructureDefinition-ProcedureProfile.md), [ReactionProfile](StructureDefinition-ReactionProfile.md), [VaccineConditionCodesSnomed](ValueSet-vaccine-condition-codes-snomed.md), [VaccineConditionFhir](StructureDefinition-VaccineConditionFhir.md), [VaccineMedicationCodesSnomed](ValueSet-vaccine-medication-codes-snomed.md) and [VaccineObservationFhir](StructureDefinition-VaccineObservationFhir.md)
+
+
+* This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: [https://terminology.hl7.org/license.html](https://terminology.hl7.org/license.html)
+
+* [AllergyIntolerance Clinical Status Codes](http://terminology.hl7.org/7.3.0/CodeSystem-allergyintolerance-clinical.html): [AllergyIntolerance/allergy-vaccine-reaction](AllergyIntolerance-allergy-vaccine-reaction.md)
+* [Condition Clinical Status Codes](http://terminology.hl7.org/7.3.0/CodeSystem-condition-clinical.html): [Condition/2016-UC-0032-055](Condition-2016-UC-0032-055.md)
+* [Immunization Evaluation Dose Status codes](http://terminology.hl7.org/7.3.0/CodeSystem-immunization-evaluation-dose-status.html): [EvalStatusVS](ValueSet-eval-status.md), [ImmunizationEvaluation/2016-UC-0032-1](ImmunizationEvaluation-2016-UC-0032-1.md), [ImmunizationEvaluation/2016-UC-0032-2](ImmunizationEvaluation-2016-UC-0032-2.md) and [ImmunizationEvaluation/2016-UC-0032-3](ImmunizationEvaluation-2016-UC-0032-3.md)
+* [Immunization Recommendation Status Codes](http://terminology.hl7.org/7.3.0/CodeSystem-immunization-recommendation-status.html): [CicadaImmunizationRecommendation](StructureDefinition-cicada-immunization-recommendation.md), [ForecastStatusVS](ValueSet-forecast-status.md) and [ImmunizationRecommendation/cicada-forecast-example](ImmunizationRecommendation-cicada-forecast-example.md)
+* [Immunization Subpotent Reason](http://terminology.hl7.org/7.3.0/CodeSystem-immunization-subpotent-reason.html): [VaxDose](StructureDefinition-vax-dose.md)
+
 
 
 
@@ -62,7 +104,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
   "name" : "CicadaIG",
   "title" : "The Cicada Vaccine Forecasting Engine and Guide",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -719,6 +761,87 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "reference" : "Patient/2016-UC-0032"
       },
       "name" : "2016-UC-0032",
+      "description" : "The patient of CDC CDSi condition test case 2016-UC-0032, the case the forecast example is computed from.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Condition"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "Condition-2016-UC-0032-055.html"
+      }],
+      "reference" : {
+        "reference" : "Condition/2016-UC-0032-055"
+      },
+      "name" : "2016-UC-0032-055",
+      "description" : "The one condition in case 2016-UC-0032, CDSi observation 055 Health care personnel, as the engine reads it (VaccineConditionFhir).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ImmunizationEvaluation"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ImmunizationEvaluation-2016-UC-0032-1.html"
+      }],
+      "reference" : {
+        "reference" : "ImmunizationEvaluation/2016-UC-0032-1"
+      },
+      "name" : "2016-UC-0032-1",
+      "description" : "The engine's evaluation of the case's MMR dose against measles, with the target-dose status and the sub-step detail extensions.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ImmunizationEvaluation"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ImmunizationEvaluation-2016-UC-0032-2.html"
+      }],
+      "reference" : {
+        "reference" : "ImmunizationEvaluation/2016-UC-0032-2"
+      },
+      "name" : "2016-UC-0032-2",
+      "description" : "The engine's evaluation of the case's MMR dose against mumps.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ImmunizationEvaluation"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ImmunizationEvaluation-2016-UC-0032-3.html"
+      }],
+      "reference" : {
+        "reference" : "ImmunizationEvaluation/2016-UC-0032-3"
+      },
+      "name" : "2016-UC-0032-3",
+      "description" : "The engine's evaluation of the case's MMR dose against rubella.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Immunization"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "Immunization-2016-UC-0032-dose1.html"
+      }],
+      "reference" : {
+        "reference" : "Immunization/2016-UC-0032-dose1"
+      },
+      "name" : "2016-UC-0032-dose1",
+      "description" : "The one dose in case 2016-UC-0032, an MMR, as the engine reads it (vax-dose).",
       "exampleBoolean" : false
     },
     {
@@ -740,66 +863,18 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "AllergyIntolerance"
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-allowed-interval-reason.html"
+        "valueUri" : "AllergyIntolerance-allergy-vaccine-reaction.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/allowed-interval-reason"
+        "reference" : "AllergyIntolerance/allergy-vaccine-reaction"
       },
-      "name" : "Allowed Interval Reason",
-      "description" : "Captures the reason for the allowed interval between vaccine doses.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-allowed-interval-status.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/allowed-interval-status"
-      },
-      "name" : "Allowed Interval Status",
-      "description" : "Captures the status of the allowed interval for vaccination.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-allowed-vaccine-reason.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/allowed-vaccine-reason"
-      },
-      "name" : "Allowed Vaccine Reason",
-      "description" : "Captures the reason why a particular vaccine is allowed.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-allowed-vaccine-status.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/allowed-vaccine-status"
-      },
-      "name" : "Allowed Vaccine Status",
-      "description" : "Indicates if the vaccine administered is allowed under certain conditions.",
-      "exampleBoolean" : false
+      "name" : "AllergyIntolerance: adverse reaction to a vaccine",
+      "description" : "An allergy record the engine reads as a contraindication candidate: SNOMED 293104008, Vaccines adverse reaction, the root of the vaccine reaction concepts in the condition value set, with the substance as the CVX of the vaccine reacted to.",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ReactionProfile"
     },
     {
       "extension" : [{
@@ -831,22 +906,6 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       },
       "name" : "Antigen Supporting Data",
       "description" : "A resource to store supporting data for antigens including target disease, vaccine groups, immunity criteria, contraindications, and vaccination series.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-assessment-date.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/assessment-date"
-      },
-      "name" : "AssessmentDate",
-      "description" : "The date on which the vaccination assessment was made.",
       "exampleBoolean" : false
     },
     {
@@ -1006,6 +1065,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "reference" : "ImmunizationRecommendation/cicada-forecast-example"
       },
       "name" : "cicada-forecast-example",
+      "description" : "The engine's forecast for 2016-UC-0032, all 17 recommendations, regenerated from the engine by cicada/tool/write_ig_example.dart.",
       "exampleBoolean" : false
     },
     {
@@ -1053,7 +1113,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "reference" : "StructureDefinition/vax-dose"
       },
       "name" : "Dose of a Vaccine",
-      "description" : "Detailed information about each vaccination dose.",
+      "description" : "An administered dose as the engine reads it: the vaccine as CVX, the date, the patient, and optionally the dose volume, the manufacturer and a subpotency reason. The engine's evaluation of the dose is returned on ImmunizationEvaluation (target-dose-status-ext, evaluation-detail-ext), not written back onto the Immunization; until 2026-09-07 this profile declared thirteen evaluation extensions nothing ever emitted.",
       "exampleBoolean" : false
     },
     {
@@ -1283,22 +1343,6 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inadvertent-administration-status.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/inadvertent-administration-status"
-      },
-      "name" : "Inadvertent Administration Status",
-      "description" : "Indicates if the vaccine was administered inadvertently.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
       },
       {
@@ -1357,6 +1401,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "reference" : "Parameters/manifest"
       },
       "name" : "manifest",
+      "description" : "Expansion parameters for the build: SNOMED CT is expanded and validated against the US edition, which carries the US-extension concepts CDSi cites.",
       "exampleBoolean" : false
     },
     {
@@ -1426,6 +1471,70 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Medication"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "Medication-vaccine-hepb-adult.html"
+      }],
+      "reference" : {
+        "reference" : "Medication/vaccine-hepb-adult"
+      },
+      "name" : "Medication: Hep B, adult",
+      "description" : "A vaccine product as a Medication: CVX 43 with a trade name, the age from which CDC's HepB 3-dose series lists it as a preferable vaccine (20 years, no upper bound), and its vaccine type. CVX 08's begin age of 0 days cannot be an example here: FHIR's Age datatype requires a positive value (age-1).",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/Vaccine"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationAdministration"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "MedicationAdministration-medication-administration-hepb.html"
+      }],
+      "reference" : {
+        "reference" : "MedicationAdministration/medication-administration-hepb"
+      },
+      "name" : "MedicationAdministration: a vaccine given as a medication",
+      "description" : "A hepatitis B dose recorded as a MedicationAdministration, which the engine accepts as an administered dose.",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationAdministrationProfile"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationDispense"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "MedicationDispense-medication-dispense-hepb.html"
+      }],
+      "reference" : {
+        "reference" : "MedicationDispense/medication-dispense-hepb"
+      },
+      "name" : "MedicationDispense: a vaccine dispensed as a medication",
+      "description" : "A hepatitis B dose dispensed as a MedicationDispense.",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationDispenseProfile"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationRequest"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "MedicationRequest-medication-request-hepb.html"
+      }],
+      "reference" : {
+        "reference" : "MedicationRequest/medication-request-hepb"
+      },
+      "name" : "MedicationRequest: a vaccine ordered as a medication",
+      "description" : "A hepatitis B dose ordered as a MedicationRequest.",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationRequestProfile"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
       },
       {
@@ -1438,6 +1547,22 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       "name" : "Medications",
       "description" : "Value set for medications and substances based on SNOMED CT, including both active ingredients and marketed products.",
       "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "MedicationStatement-medication-statement-hepb.html"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/medication-statement-hepb"
+      },
+      "name" : "MedicationStatement: a vaccine recorded as a medication",
+      "description" : "A hepatitis B dose recorded as a MedicationStatement, which the engine accepts as an administered dose.",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationStatementProfile"
     },
     {
       "extension" : [{
@@ -1458,66 +1583,34 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "Observation"
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-preferred-interval-reason.html"
+        "valueUri" : "Observation-observation-immunocompromised.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/preferred-interval-reason"
+        "reference" : "Observation/observation-immunocompromised"
       },
-      "name" : "Preferred Interval Reason",
-      "description" : "Captures the reason for the preferred interval between vaccine doses.",
-      "exampleBoolean" : false
+      "name" : "Observation: patient immunocompromised",
+      "description" : "A coded observation carrying CDSi observation 003, Immunocompromised, as its SNOMED coded value 370388006.",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/VaccineObservationFhir"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "Procedure"
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-preferred-interval-status.html"
+        "valueUri" : "Procedure-procedure-stem-cell-transplant.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/preferred-interval-status"
+        "reference" : "Procedure/procedure-stem-cell-transplant"
       },
-      "name" : "Preferred Interval Status",
-      "description" : "Indicates if the vaccine was administered at the preferred interval.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-preferred-vaccine-reason.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/preferred-vaccine-reason"
-      },
-      "name" : "Preferred Vaccine Reason",
-      "description" : "Captures the reason why a particular vaccine is preferred.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-preferred-vaccine-status.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/preferred-vaccine-status"
-      },
-      "name" : "Preferred Vaccine Status",
-      "description" : "Indicates if the vaccine administered is the preferred vaccine.",
-      "exampleBoolean" : false
+      "name" : "Procedure: haemopoietic stem cell transplant",
+      "description" : "A procedure the engine reads as an immunization-relevant history item: SNOMED 234336002, one of the roots of the immunization procedures value set.",
+      "exampleCanonical" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ProcedureProfile"
     },
     {
       "extension" : [{
@@ -1714,22 +1807,6 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-vaccination-conflict.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/vaccination-conflict"
-      },
-      "name" : "Vaccination Conflict",
-      "description" : "Indicates any conflicts with other vaccinations.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       },
       {
@@ -1756,7 +1833,23 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
         "reference" : "StructureDefinition/Vaccine"
       },
       "name" : "Vaccine",
-      "description" : "Simple vaccine to easily obtain needed information for forecasting",
+      "description" : "A vaccine product as CDC's supporting data describes one: the CVX, the trade name, the ages between which it is a preferable vaccine, and its type. Note that beginAge and endAge are FHIR Age values, which must be positive (age-1), so CDC's \"0 days\" cannot be carried; a begin age of 0 days is expressed by omitting beginAge.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-VaccineCodesCvxMvx.html"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/VaccineCodesCvxMvx"
+      },
+      "name" : "Vaccine Codes (CVX and MVX)",
+      "description" : "Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with.",
       "exampleBoolean" : false
     },
     {
@@ -1894,37 +1987,6 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "ValueSet-VaccineCodesCvxMvx.html"
-      }],
-      "reference" : {
-        "reference" : "ValueSet/VaccineCodesCvxMvx"
-      },
-      "name" : "VaccineCodesCvxMvx",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-valid-age-reason.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/valid-age-reason"
-      },
-      "name" : "Valid Age Reason",
-      "description" : "Captures the reason why the vaccine was administered at a particular age.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "ValueSet"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "ValueSet-valid-age-reason.html"
       }],
       "reference" : {
@@ -1948,22 +2010,6 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       },
       "name" : "Valid Age Reason",
       "description" : "Value set for reasons why a patient's age is considered valid/invalid for a vaccine.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-valid-age-status.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/valid-age-status"
-      },
-      "name" : "Valid Age Status",
-      "description" : "Indicates if the vaccine was administered at the correct age.",
       "exampleBoolean" : false
     },
     {

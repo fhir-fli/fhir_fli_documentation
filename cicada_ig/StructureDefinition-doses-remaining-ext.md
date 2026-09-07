@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-doses-remaining-ext.
   "name" : "DosesRemaining",
   "title" : "Doses Remaining",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

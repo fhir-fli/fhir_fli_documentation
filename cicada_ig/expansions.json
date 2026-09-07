@@ -1,8 +1,8 @@
 {
   "resourceType" : "Bundle",
-  "id" : "d0db3881-abda-4026-a0fb-a7c372bb6506",
+  "id" : "a97e1d12-01c2-4295-a902-81af5c445fcb",
   "meta" : {
-    "lastUpdated" : "2026-09-07T18:40:23.876-04:00"
+    "lastUpdated" : "2026-09-07T19:28:06.090-04:00"
   },
   "type" : "collection",
   "entry" : [{
@@ -16,11 +16,13 @@
       "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx",
       "version" : "0.1.0",
       "name" : "VaccineCodesCvxMvx",
+      "title" : "Vaccine Codes (CVX and MVX)",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:19384574-229e-47f3-b822-1271a10dc3d4",
-        "timestamp" : "2026-09-07T18:44:08-04:00",
+        "identifier" : "urn:uuid:c0210e51-bf6d-4d4b-8b47-8b03f3f12df3",
+        "timestamp" : "2026-09-07T19:31:51-04:00",
         "total" : 369,
         "offset" : 0,
         "parameter" : [{
@@ -1916,10 +1918,11 @@
       "name" : "CdsiObservationCodesVS",
       "title" : "CDSI Observation Codes Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:2364e3c9-7f35-49be-8a09-411bb5642ca7",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:dea0e0d6-12b7-4edb-972c-97101979ba88",
+        "timestamp" : "2026-09-07T19:31:51-04:00",
         "total" : 278,
         "offset" : 0,
         "parameter" : [{
@@ -3348,10 +3351,11 @@
       "name" : "DataIntegrityVS",
       "title" : "Cicada Data Integrity Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:34531621-7e43-45c6-ae97-3dbe50ad83a9",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:bdbb25b6-ddaf-43f5-b91a-142b2f204bd0",
+        "timestamp" : "2026-09-07T19:31:51-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -3405,10 +3409,11 @@
       "name" : "DoseStatusReasonVS",
       "title" : "Dose Status Reason Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:2735409c-150e-4c0b-a5a3-4ed4e95c1a0c",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:9b042d6e-8c1e-4106-bbc9-fdd43ab04880",
+        "timestamp" : "2026-09-07T19:31:51-04:00",
         "total" : 10,
         "offset" : 0,
         "parameter" : [{
@@ -3497,10 +3502,11 @@
       "name" : "EvalReasonVS",
       "title" : "Evaluation Reason",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:4e7269c7-fe35-462e-b01a-f8094f167820",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:01bcf683-01e7-4d6c-9b55-002cd174033a",
+        "timestamp" : "2026-09-07T19:31:51-04:00",
         "total" : 15,
         "offset" : 0,
         "parameter" : [{
@@ -3614,10 +3620,11 @@
       "name" : "EvalStatusVS",
       "title" : "Evaluation Status Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:f3b80404-2d36-41b7-a92e-14ab252cd459",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:3fd4d2c0-27dd-45b7-8c7e-84be52da8ac2",
+        "timestamp" : "2026-09-07T19:31:51-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -3675,10 +3682,11 @@
       "name" : "CicadaForecastReasonVS",
       "title" : "Cicada Forecast Reason Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:cdea27b7-f206-4412-b1fe-df8b9938f69f",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:e1b853f9-ba17-4e94-a896-a1f79c5ddbc6",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 10,
         "offset" : 0,
         "parameter" : [{
@@ -3767,10 +3775,11 @@
       "name" : "ForecastStatusVS",
       "title" : "Forecast Status Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:4d24886e-2ade-49e3-8cb6-7e938851a6ea",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:45ba523b-3b87-4de7-9342-d2e46921385a",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 21,
         "offset" : 0,
         "parameter" : [{
@@ -3943,10 +3952,11 @@
       "name" : "ImmunizationProceduresCpt",
       "title" : "Immunization-Relevant Procedures (CPT)",
       "status" : "active",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:5f9c36fa-8a15-4eda-9222-daf07ae26329",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:9013e603-6cf2-4e1a-965f-5abf81329a82",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 6,
         "offset" : 0,
         "parameter" : [{
@@ -4023,10 +4033,11 @@
       "name" : "IntervalReasonVS",
       "title" : "Interval Reason",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:642276ea-06d0-4d5d-8bfb-727b2e6a2cad",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:36a655dc-e532-48c1-ac3d-096da2b7681e",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -4080,10 +4091,11 @@
       "name" : "PreferredAllowedReasonVS",
       "title" : "Reasons why certain doses are Preferred or Allowed doses",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:648b73d5-d5ec-40c9-96c4-8bf33a8e9529",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:fd808558-ad59-419d-bf8d-923042b436c4",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 6,
         "offset" : 0,
         "parameter" : [{
@@ -4152,14 +4164,15 @@
       "name" : "ImmunizationProceduresSnomed",
       "title" : "Procedures",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
           "valueBoolean" : true
         }],
-        "identifier" : "urn:uuid:bcc3d5e1-039d-4be7-b5c7-e29195109a50",
-        "timestamp" : "2026-09-07T18:44:09-04:00",
+        "identifier" : "urn:uuid:ea0d2d32-d89c-46a0-88de-fe9f8772ecaf",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "offset" : 0,
         "parameter" : [{
           "name" : "displayLanguage",
@@ -5727,10 +5740,11 @@
       "name" : "SeriesTypeVS",
       "title" : "Series Type Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:88d301b4-7808-4fa6-b1f2-5c822606f4aa",
-        "timestamp" : "2026-09-07T18:44:10-04:00",
+        "identifier" : "urn:uuid:7bc91302-0b83-4971-b8fd-8057c338f84b",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -5784,10 +5798,11 @@
       "name" : "TargetDoseStatusVS",
       "title" : "Target Dose Status Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:4813e74c-7c66-44ce-bec4-0a6594071881",
-        "timestamp" : "2026-09-07T18:44:10-04:00",
+        "identifier" : "urn:uuid:5384343d-6c70-4c8c-b4cc-312528e83bbf",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -5841,10 +5856,11 @@
       "name" : "VaccineConditionCodesIcd10",
       "title" : "Vaccine Condition Codes (ICD-10-CM)",
       "status" : "active",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:7c432daf-c8ce-4125-be4b-e523a1dfcf74",
-        "timestamp" : "2026-09-07T18:44:10-04:00",
+        "identifier" : "urn:uuid:a7a9c0fa-ebf9-424c-aa50-648ae826a137",
+        "timestamp" : "2026-09-07T19:31:52-04:00",
         "total" : 96,
         "offset" : 0,
         "parameter" : [{
@@ -6374,10 +6390,11 @@
       "name" : "VaccineGenderVS",
       "title" : "Vaccine Gender",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:175483b6-b035-43c5-9f65-d0d39e3b50d9",
-        "timestamp" : "2026-09-07T18:44:11-04:00",
+        "identifier" : "urn:uuid:87798bfa-fc58-4d4e-901a-072ec5bae059",
+        "timestamp" : "2026-09-07T19:31:54-04:00",
         "total" : 4,
         "offset" : 0,
         "parameter" : [{
@@ -6436,10 +6453,11 @@
       "name" : "VaccineLabEvidenceOfImmunityLoinc",
       "title" : "Lab Evidence of Immunity (LOINC)",
       "status" : "active",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:f71003d6-c1e8-45d4-9cb3-61456cc4747d",
-        "timestamp" : "2026-09-07T18:44:11-04:00",
+        "identifier" : "urn:uuid:8ba01f65-4b0f-478c-bb39-4b849e016f06",
+        "timestamp" : "2026-09-07T19:31:54-04:00",
         "total" : 19,
         "offset" : 0,
         "parameter" : [{
@@ -6581,10 +6599,11 @@
       "name" : "VaccineMedicationCodesRxnorm",
       "title" : "Immunization-Relevant Medications (RxNorm)",
       "status" : "active",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:e81934ff-cf7a-4000-a4e9-8413fb5c0a16",
-        "timestamp" : "2026-09-07T18:44:11-04:00",
+        "identifier" : "urn:uuid:49b73366-3c4e-4352-8020-902432d1aef8",
+        "timestamp" : "2026-09-07T19:31:54-04:00",
         "total" : 4,
         "offset" : 0,
         "parameter" : [{
@@ -6651,14 +6670,15 @@
       "name" : "VaccineMedicationCodesSnomed",
       "title" : "Medications",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
           "valueBoolean" : true
         }],
-        "identifier" : "urn:uuid:40484d94-999f-4cae-b2c9-ffa2dcbc5afc",
-        "timestamp" : "2026-09-07T18:44:11-04:00",
+        "identifier" : "urn:uuid:e971f56f-b502-46e3-a28e-06238b517668",
+        "timestamp" : "2026-09-07T19:31:54-04:00",
         "offset" : 0,
         "parameter" : [{
           "name" : "displayLanguage",
@@ -6872,10 +6892,11 @@
       "name" : "VaccineRecommendationCategoryVS",
       "title" : "Vaccine Recommendation Category Value Set",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:c18a2d50-0f57-4fc2-b082-0590695c272a",
-        "timestamp" : "2026-09-07T18:44:11-04:00",
+        "identifier" : "urn:uuid:871d1306-68cc-493f-9863-9d14af89be90",
+        "timestamp" : "2026-09-07T19:31:54-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -6929,10 +6950,11 @@
       "name" : "ValidAgeReasonVS",
       "title" : "Valid Age Reason",
       "status" : "draft",
-      "date" : "2026-09-07T18:40:23-04:00",
+      "experimental" : false,
+      "date" : "2026-09-07T19:28:06-04:00",
       "expansion" : {
-        "identifier" : "urn:uuid:cba2b249-20fc-4197-83a6-6ae274dafe25",
-        "timestamp" : "2026-09-07T18:44:11-04:00",
+        "identifier" : "urn:uuid:aca0a1b7-037c-45d1-b780-90fc8ae3dc2f",
+        "timestamp" : "2026-09-07T19:31:54-04:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{

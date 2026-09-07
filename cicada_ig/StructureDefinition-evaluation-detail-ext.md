@@ -19,7 +19,7 @@ The CDSi Chapter 6 sub-step outcomes behind a dose's evaluation: which of age, i
 
 **Usages:**
 
-* This Extension is not used by any profiles in this Specification
+* Examples for this Extension: [ImmunizationEvaluation/2016-UC-0032-1](ImmunizationEvaluation-2016-UC-0032-1.md), [ImmunizationEvaluation/2016-UC-0032-2](ImmunizationEvaluation-2016-UC-0032-2.md) and [ImmunizationEvaluation/2016-UC-0032-3](ImmunizationEvaluation-2016-UC-0032-3.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-evaluation-detail-ext.json)
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-evaluation-detail-ex
   "name" : "EvaluationDetail",
   "title" : "Evaluation Sub-step Detail",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

@@ -16,7 +16,7 @@ Profile for medical procedures related to immunization based on SNOMED CT or CPT
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Specification
+* Examples for this Profile: [Procedure/procedure-stem-cell-transplant](Procedure-procedure-stem-cell-transplant.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/cicada.ig|current/StructureDefinition/StructureDefinition-ProcedureProfile.json)
 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-ProcedureProfile.csv
   "name" : "ProcedureProfile",
   "title" : "Immunization Procedures Profile",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

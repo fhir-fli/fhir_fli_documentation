@@ -16,8 +16,7 @@ Reasons why certain doses are Preferred or Allowed doses
 
  **References** 
 
-* [Allowed Vaccine Reason](StructureDefinition-allowed-vaccine-reason.md)
-* [Preferred Vaccine Reason](StructureDefinition-preferred-vaccine-reason.md)
+This value set is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
 
 ### Logical Definition (CLD)
 
@@ -51,7 +50,8 @@ Reasons why certain doses are Preferred or Allowed doses
   "name" : "PreferredAllowedReasonVS",
   "title" : "Reasons why certain doses are Preferred or Allowed doses",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "experimental" : false,
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

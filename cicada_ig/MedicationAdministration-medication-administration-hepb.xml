@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MedicationAdministration xmlns="http://hl7.org/fhir">
+  <id value="medication-administration-hepb"/>
+  <meta>
+    <profile value="http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/MedicationAdministrationProfile"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: MedicationAdministration medication-administration-hepb</b></p><a name="medication-administration-hepb"> </a><a name="hcmedication-administration-hepb"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-MedicationAdministrationProfile.html">Medication Administration Profile with Vaccine Codes</a></p></div><p><b>status</b>: Completed</p><p><b>medication</b>: <span title="Codes:{http://hl7.org/fhir/sid/cvx 08}">Hep B, adolescent or pediatric</span></p><p><b>subject</b>: <a href="Patient-2016-UC-0032.html">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>effective</b>: 1998-03-10</p></div>
+  </text>
+  <status value="completed"/>
+  <medicationCodeableConcept>
+    <coding>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="08"/>
+      <display value="Hep B, adolescent or pediatric"/>
+    </coding>
+  </medicationCodeableConcept>
+  <subject>
+    <reference value="Patient/2016-UC-0032"/>
+  </subject>
+  <effectiveDateTime value="1998-03-10"/>
+</MedicationAdministration>

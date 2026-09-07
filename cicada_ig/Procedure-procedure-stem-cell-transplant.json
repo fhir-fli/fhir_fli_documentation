@@ -1,0 +1,22 @@
+{
+  "resourceType" : "Procedure",
+  "id" : "procedure-stem-cell-transplant",
+  "meta" : {
+    "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/ProcedureProfile"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Procedure procedure-stem-cell-transplant</b></p><a name=\"procedure-stem-cell-transplant\"> </a><a name=\"hcprocedure-stem-cell-transplant\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ProcedureProfile.html\">Immunization Procedures Profile</a></p></div><p><b>status</b>: Completed</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 234336002}\">Hemopoietic stem cell transplant</span></p><p><b>subject</b>: <a href=\"Patient-2016-UC-0032.html\">MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine.  Female, DoB: 1955-08-12</a></p><p><b>performed</b>: 2014-11-02</p></div>"
+  },
+  "status" : "completed",
+  "code" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "234336002"
+    }]
+  },
+  "subject" : {
+    "reference" : "Patient/2016-UC-0032"
+  },
+  "performedDateTime" : "2014-11-02"
+}

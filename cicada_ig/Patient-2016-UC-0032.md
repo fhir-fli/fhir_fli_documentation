@@ -6,6 +6,8 @@
 
 ## Patient: 2016-UC-0032
 
+Profile: [Vaccination Patient](StructureDefinition-vax-patient.md)
+
 MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine. Female, DoB: 1955-08-12
 
 -------
@@ -18,6 +20,9 @@ MMR: Patient is a healthcare worker, born before 1957, has received one dose of 
 {
   "resourceType" : "Patient",
   "id" : "2016-UC-0032",
+  "meta" : {
+    "profile" : ["http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vax-patient"]
+  },
   "name" : [{
     "family" : "MMR: Patient is a healthcare worker, born before 1957, has received one dose of the MMR vaccine."
   }],

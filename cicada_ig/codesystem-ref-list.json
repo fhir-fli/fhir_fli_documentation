@@ -74,9 +74,9 @@
     "description" : "Observations and Conditions that are important to indications or contraindications in vaccine forecasting",
     "uses" : {
     },
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
     "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map",
-    "ValueSet-cdsi-observation-codes-vs.html" : "CDSI Observation Codes Value Set",
-    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map"
+    "ValueSet-cdsi-observation-codes-vs.html" : "CDSI Observation Codes Value Set"
   },
   {
     "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/data-integrity",
@@ -142,7 +142,7 @@
     "description" : "CVX Codes for vaccines",
     "uses" : {
     },
-    "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
+    "ValueSet-VaccineCodesCvxMvx.html" : "Vaccine Codes (CVX and MVX)"
   },
   {
     "url" : "http://hl7.org/fhir/sid/icd-10-cm",
@@ -153,8 +153,8 @@
     "description" : "Placeholder for the International Classification of Diseases, Tenth Revision, Clinical Modification, maintained by the US National Center for Health Statistics. No concepts are carried here; codes are validated by the terminology server.",
     "uses" : {
     },
-    "ValueSet-vaccine-condition-codes-icd10.html" : "Vaccine Condition Codes (ICD-10-CM)",
-    "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map"
+    "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map",
+    "ValueSet-vaccine-condition-codes-icd10.html" : "Vaccine Condition Codes (ICD-10-CM)"
   },
   {
     "url" : "http://hl7.org/fhir/sid/mvx",
@@ -165,7 +165,7 @@
     "description" : "MVX Codes for manufacturers of vaccines",
     "uses" : {
     },
-    "ValueSet-VaccineCodesCvxMvx.html" : "VaccineCodesCvxMvx"
+    "ValueSet-VaccineCodesCvxMvx.html" : "Vaccine Codes (CVX and MVX)"
   },
   {
     "url" : "http://hl7.org/fhir/us/immds/CodeSystem/ForecastStatus",
@@ -212,9 +212,9 @@
     "uses" : {
     },
     "ValueSet-procedures.html" : "Procedures",
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
     "ValueSet-vaccine-medication-codes-snomed.html" : "Medications",
-    "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes",
-    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map"
+    "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status",

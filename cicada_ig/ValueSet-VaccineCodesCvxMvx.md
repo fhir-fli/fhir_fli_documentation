@@ -1,15 +1,18 @@
-# VaccineCodesCvxMvx - The Cicada Vaccine Forecasting Engine and Guide v0.1.0
+# Vaccine Codes (CVX and MVX) - The Cicada Vaccine Forecasting Engine and Guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **VaccineCodesCvxMvx**
+* **Vaccine Codes (CVX and MVX)**
 
-## ValueSet: VaccineCodesCvxMvx 
+## ValueSet: Vaccine Codes (CVX and MVX) 
 
 | | |
 | :--- | :--- |
 | *Official URL*:http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx | *Version*:0.1.0 |
 | Draft as of 2026-09-07 | *Computable Name*:VaccineCodesCvxMvx |
+
+ 
+Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with. 
 
  **References** 
 
@@ -50,8 +53,10 @@
   "url" : "http://fhirfli.dev/fhir/ig/cicada/ValueSet/VaccineCodesCvxMvx",
   "version" : "0.1.0",
   "name" : "VaccineCodesCvxMvx",
+  "title" : "Vaccine Codes (CVX and MVX)",
   "status" : "draft",
-  "date" : "2026-09-07T18:40:23-04:00",
+  "experimental" : false,
+  "date" : "2026-09-07T19:28:06-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -60,6 +65,7 @@
       "value" : "http://fhirfli.dev"
     }]
   }],
+  "description" : "Every code from CVX (vaccine administered) and MVX (manufacturer), the two CDC code systems a vaccine dose is recorded with.",
   "compose" : {
     "include" : [{
       "system" : "http://hl7.org/fhir/sid/cvx"
