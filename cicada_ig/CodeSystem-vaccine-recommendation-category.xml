@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="vaccine-recommendation-category"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CodeSystem vaccine-recommendation-category</b></p><a name="vaccine-recommendation-category"> </a><a name="hcvaccine-recommendation-category"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category</code> defines the following codes:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">routine<a name="vaccine-recommendation-category-routine"> </a></td><td>Routine</td><td>An age-based recommendation for the general population.</td></tr><tr><td style="white-space:nowrap">high-risk<a name="vaccine-recommendation-category-high-risk"> </a></td><td>High-Risk</td><td>A recommendation because of a risk factor the patient has (a risk-based series, or an included indication).</td></tr><tr><td style="white-space:nowrap">scdm<a name="vaccine-recommendation-category-scdm"> </a></td><td>SCDM</td><td>Shared clinical decision making: the recommendation depends on a discussion between the patient and the clinician.</td></tr></table></div>
+  </text>
+  <url value="http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category"/>
+  <version value="0.1.0"/>
+  <name value="VaccineRecommendationCategoryCS"/>
+  <title value="Vaccine Recommendation Category"/>
+  <status value="draft"/>
+  <date value="2026-09-06T23:13:14-04:00"/>
+  <publisher value="FHIR-FLI"/>
+  <contact>
+    <name value="FHIR-FLI"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://fhirfli.dev"/>
+    </telecom>
+  </contact>
+  <description value="The three categories of CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65): the type of recommendation a Best Patient Series carries for a patient who is recommended further doses. Displays are CDC's own words."/>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="3"/>
+  <concept>
+    <code value="routine"/>
+    <display value="Routine"/>
+    <definition value="An age-based recommendation for the general population."/>
+  </concept>
+  <concept>
+    <code value="high-risk"/>
+    <display value="High-Risk"/>
+    <definition value="A recommendation because of a risk factor the patient has (a risk-based series, or an included indication)."/>
+  </concept>
+  <concept>
+    <code value="scdm"/>
+    <display value="SCDM"/>
+    <definition value="Shared clinical decision making: the recommendation depends on a discussion between the patient and the clinician."/>
+  </concept>
+</CodeSystem>

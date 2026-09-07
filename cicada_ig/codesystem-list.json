@@ -88,6 +88,14 @@
     "description" : "CDSi Table 3-2. The status of the target dose an administered dose was evaluated against. R4 ImmunizationEvaluation carries only doseNumber, derived from this, so a skipped target dose and a satisfied one are otherwise indistinguishable."
   },
   {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "VaccineRecommendationCategoryCS",
+    "title" : "Vaccine Recommendation Category",
+    "description" : "The three categories of CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65): the type of recommendation a Best Patient Series carries for a patient who is recommended further doses. Displays are CDC's own words."
+  },
+  {
     "url" : "http://hl7.org/fhir/sid/icd-10-cm",
     "version" : "0.1.0",
     "status" : "active",

@@ -74,8 +74,8 @@
     "description" : "Observations and Conditions that are important to indications or contraindications in vaccine forecasting",
     "uses" : {
     },
-    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
     "ValueSet-cdsi-observation-codes-vs.html" : "CDSI Observation Codes Value Set",
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
     "ConceptMap-Icd10ToCdsiObservation.html" : "ICD-10-CM to CDSi Observation Code Map"
   },
   {
@@ -121,6 +121,17 @@
     "uses" : {
     },
     "ValueSet-target-dose-status-vs.html" : "Target Dose Status Value Set"
+  },
+  {
+    "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "VaccineRecommendationCategoryCS",
+    "title" : "Vaccine Recommendation Category",
+    "description" : "The three categories of CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65): the type of recommendation a Best Patient Series carries for a patient who is recommended further doses. Displays are CDC's own words.",
+    "uses" : {
+    },
+    "ValueSet-vaccine-recommendation-category-vs.html" : "Vaccine Recommendation Category Value Set"
   },
   {
     "url" : "http://hl7.org/fhir/sid/cvx",
@@ -200,10 +211,10 @@
     "oids" : ["2.16.840.1.113883.6.96"],
     "uses" : {
     },
+    "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes",
     "ValueSet-vaccine-medication-codes-snomed.html" : "Medications",
     "ValueSet-procedures.html" : "Procedures",
-    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map",
-    "ValueSet-vaccine-condition-codes-snomed.html" : "Vaccine Condition Codes"
+    "ConceptMap-SnomedToCdsiObservation.html" : "SNOMED CT to CDSi Observation Code Map"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status",

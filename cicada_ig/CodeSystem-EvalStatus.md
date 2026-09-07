@@ -31,7 +31,7 @@ Extension codes for dose evaluation status beyond the HL7 THO immunization-evalu
   "name" : "EvalStatusCS",
   "title" : "Cicada Evaluation Status",
   "status" : "draft",
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

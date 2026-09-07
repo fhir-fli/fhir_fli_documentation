@@ -49,7 +49,7 @@ Other representations of profile: [CSV](StructureDefinition-series-type-ext.csv)
   "name" : "SeriesType",
   "title" : "Series Type",
   "status" : "draft",
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

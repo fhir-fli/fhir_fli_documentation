@@ -524,6 +524,65 @@
       ]
     },
     {
+      "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext",
+      "title": "Vaccine Recommendation Category",
+      "types": [
+        "string",
+        "CodeableConcept",
+        "url",
+        "base64Binary",
+        "boolean",
+        "canonical",
+        "code",
+        "date",
+        "dateTime",
+        "decimal",
+        "id",
+        "instant",
+        "integer",
+        "markdown",
+        "oid",
+        "positiveInt",
+        "string",
+        "time",
+        "unsignedInt",
+        "uri",
+        "url",
+        "uuid",
+        "Address",
+        "Age",
+        "Annotation",
+        "Attachment",
+        "CodeableConcept",
+        "Coding",
+        "ContactPoint",
+        "Count",
+        "Distance",
+        "Duration",
+        "HumanName",
+        "Identifier",
+        "Money",
+        "Period",
+        "Quantity",
+        "Range",
+        "Ratio",
+        "Reference",
+        "SampledData",
+        "Signature",
+        "Timing",
+        "ContactDetail",
+        "Contributor",
+        "DataRequirement",
+        "Expression",
+        "ParameterDefinition",
+        "RelatedArtifact",
+        "TriggerDefinition",
+        "UsageContext",
+        "Dosage",
+        "Meta"
+      ]
+    },
+    {
       "url": "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type",
       "title": "Vaccine Type",
       "types": [
@@ -726,6 +785,9 @@
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccination-conflict": [
       "Immunization"
+    ],
+    "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext": [
+      "ImmunizationRecommendation.recommendation"
     ],
     "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-type": [
       "Medication"

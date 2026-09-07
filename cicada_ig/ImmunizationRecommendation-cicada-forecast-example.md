@@ -51,6 +51,21 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * pastDueDate: 2015-05-28 00:00:00-0400
 * earliestRecommendedIntervalDate: 2015-05-28 00:00:00-0400
 
+> **Vaccine Recommendation Category**
+* series: Mumps risk 2-dose series
+* category: High-Risk
+* material: [https://www.cdc.gov/mumps/hcp/vaccine-considerations/index.html](https://www.cdc.gov/mumps/hcp/vaccine-considerations/index.html)
+
+> **Vaccine Recommendation Category**
+* series: Measles risk 2-dose series
+* category: High-Risk
+* material: [https://www.cdc.gov/measles/hcp/vaccine-considerations/index.html](https://www.cdc.gov/measles/hcp/vaccine-considerations/index.html)
+
+> **Vaccine Recommendation Category**
+* series: Rubella risk 2-dose series
+* category: High-Risk
+* material: [https://www.cdc.gov/rubella/hcp/vaccine-considerations/index.html](https://www.cdc.gov/rubella/hcp/vaccine-considerations/index.html)
+
 **Series Type**: Risk**vaccineCode**: MMR**targetDisease**: MMR**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 2015-05-28 00:00:00-0400
 
@@ -133,6 +148,21 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * earliestRecommendedAgeDate: 1962-08-12 00:00:00-0400
 * latestRecommendedAgeDate: 1962-08-12 00:00:00-0400
 
+> **Vaccine Recommendation Category**
+* series: Pertussis standard series
+* category: Routine
+* material: [https://www.cdc.gov/pertussis/hcp/vaccine-recommendations/index.html](https://www.cdc.gov/pertussis/hcp/vaccine-recommendations/index.html)
+
+> **Vaccine Recommendation Category**
+* series: Tetanus standard series
+* category: Routine
+* material: [https://www.cdc.gov/tetanus/hcp/vaccine-recommendations/index.html](https://www.cdc.gov/tetanus/hcp/vaccine-recommendations/index.html)
+
+> **Vaccine Recommendation Category**
+* series: Diphtheria standard series
+* category: Routine
+* material: [https://www.cdc.gov/diphtheria/hcp/vaccine-recommendations/index.html](https://www.cdc.gov/diphtheria/hcp/vaccine-recommendations/index.html)
+
 **Series Type**: Standard**vaccineCode**: DTaP, unspecified formulation**targetDisease**: DTaP/Tdap/Td**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 1962-08-12 00:00:00-0400
 
@@ -157,6 +187,11 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * recommendedDate: 2025-07-01 00:00:00-0400
 * pastDueDate: 2025-07-01 00:00:00-0400
 * seasonalRecommendationStartDate: 2025-07-01 00:00:00-0400
+
+> **Vaccine Recommendation Category**
+* series: Influenza standard series
+* category: Routine
+* material: [https://www.cdc.gov/flu/hcp/vax-summary/index.html](https://www.cdc.gov/flu/hcp/vax-summary/index.html)
 
 **Series Type**: Standard**vaccineCode**: influenza, unspecified formulation**targetDisease**: Influenza**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 2025-07-01 00:00:00-0400
@@ -196,6 +231,11 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * minimumAgeDate: 2005-08-12 00:00:00-0400
 * earliestRecommendedAgeDate: 2005-08-12 00:00:00-0400
 
+> **Vaccine Recommendation Category**
+* series: Pneumococcal 50+ 1-dose PCV series
+* category: Routine
+* material: [https://www.cdc.gov/pneumococcal/hcp/vaccine-recommendations/index.html#cdc_generic_section_3-adults-50-years-or-older](https://www.cdc.gov/pneumococcal/hcp/vaccine-recommendations/index.html#cdc_generic_section_3-adults-50-years-or-older)
+
 **Series Type**: Standard**vaccineCode**: Pneumococcal Conjugate, unspecified formulation, PCV15, PCV20, PCV21**targetDisease**: Pneumococcal**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 2005-08-12 00:00:00-0400
 
@@ -222,6 +262,11 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * earliestRecommendedAgeDate: 1956-08-12 00:00:00-0400
 * latestRecommendedAgeDate: 1957-01-09 00:00:00-0500
 
+> **Vaccine Recommendation Category**
+* series: Varicella childhood 2-dose series
+* category: Routine
+* material: [https://www.cdc.gov/chickenpox/hcp/vaccine-considerations/index.html](https://www.cdc.gov/chickenpox/hcp/vaccine-considerations/index.html)
+
 **Series Type**: Standard**vaccineCode**: varicella**targetDisease**: Varicella**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 2015-05-28 00:00:00-0400
 
@@ -247,6 +292,11 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * minimumAgeDate: 1955-08-12 00:00:00-0400
 * earliestRecommendedAgeDate: 1955-08-12 00:00:00-0400
 * latestRecommendedAgeDate: 1955-09-09 00:00:00-0400
+
+> **Vaccine Recommendation Category**
+* series: HepB 3-dose series
+* category: Routine
+* material: [https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent-notes.html#note-hepb](https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent-notes.html#note-hepb)
 
 **Series Type**: Standard**vaccineCode**: Hep B, unspecified formulation**targetDisease**: HepB**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 1955-08-12 00:00:00-0400
@@ -288,6 +338,11 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * earliestRecommendedAgeDate: 1956-02-12 00:00:00-0500
 * seasonalRecommendationStartDate: 2025-08-27 00:00:00-0400
 
+> **Vaccine Recommendation Category**
+* series: COVID-19 start at 6mo-23mo shared clinical decision-making series
+* category: SCDM
+* material: [https://www.cdc.gov/covid/hcp/vaccine-considerations/routine-guidance.html](https://www.cdc.gov/covid/hcp/vaccine-considerations/routine-guidance.html)
+
 **Series Type**: Standard**vaccineCode**: SARS-COV-2 (COVID-19) vaccine, unspecified**targetDisease**: COVID-19**forecastStatus**: Not Complete**forecastReason**: Recommended by shared clinical decision-making
 > **dateCriterion****code**: Earliest date to give**value**: 2025-08-27 00:00:00-0400
 
@@ -325,6 +380,11 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * pastDueDate: 2005-08-12 00:00:00-0400
 * minimumAgeDate: 2005-08-12 00:00:00-0400
 * earliestRecommendedAgeDate: 2005-08-12 00:00:00-0400
+
+> **Vaccine Recommendation Category**
+* series: Zoster 2-dose series
+* category: Routine
+* material: [https://www.cdc.gov/shingles/hcp/vaccine-considerations/index.html](https://www.cdc.gov/shingles/hcp/vaccine-considerations/index.html)
 
 **Series Type**: Standard**vaccineCode**: zoster, unspecified formulation**targetDisease**: Zoster**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 2005-08-12 00:00:00-0400
@@ -374,6 +434,11 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
 * pastDueDate: 2030-08-12 00:00:00-0400
 * minimumAgeDate: 2030-08-12 00:00:00-0400
 * earliestRecommendedAgeDate: 2030-08-12 00:00:00-0400
+
+> **Vaccine Recommendation Category**
+* series: RSV 75 years+ 1-dose series
+* category: Routine
+* material: [https://www.cdc.gov/rsv/hcp/vaccine-clinical-guidance/adults.html](https://www.cdc.gov/rsv/hcp/vaccine-clinical-guidance/adults.html)
 
 **Series Type**: Standard**vaccineCode**: RSV, unspecified**targetDisease**: RSV**forecastStatus**: Not Complete
 > **dateCriterion****code**: Earliest date to give**value**: 2030-08-12 00:00:00-0400
@@ -633,6 +698,69 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
         "valueDateTime" : "2015-05-28T00:00:00.000-04:00"
       }],
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Mumps risk 2-dose series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "high-risk",
+            "display" : "High-Risk"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/mumps/hcp/vaccine-considerations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Measles risk 2-dose series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "high-risk",
+            "display" : "High-Risk"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/measles/hcp/vaccine-considerations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Rubella risk 2-dose series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "high-risk",
+            "display" : "High-Risk"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/rubella/hcp/vaccine-considerations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
     },
     {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
@@ -1150,6 +1278,69 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
     },
     {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Pertussis standard series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/pertussis/hcp/vaccine-recommendations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Tetanus standard series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/tetanus/hcp/vaccine-recommendations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Diphtheria standard series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/diphtheria/hcp/vaccine-recommendations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
       "valueCodeableConcept" : {
         "coding" : [{
@@ -1313,6 +1504,27 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
         "valueDateTime" : "2025-07-01T00:00:00.000-04:00"
       }],
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Influenza standard series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/flu/hcp/vax-summary/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
     },
     {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
@@ -1575,6 +1787,27 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
     },
     {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Pneumococcal 50+ 1-dose PCV series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/pneumococcal/hcp/vaccine-recommendations/index.html#cdc_generic_section_3-adults-50-years-or-older"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
       "valueCodeableConcept" : {
         "coding" : [{
@@ -1759,6 +1992,27 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
     },
     {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Varicella childhood 2-dose series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/chickenpox/hcp/vaccine-considerations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
       "valueCodeableConcept" : {
         "coding" : [{
@@ -1917,6 +2171,27 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
         "valueDateTime" : "1955-09-09T00:00:00.000-04:00"
       }],
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "HepB 3-dose series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent-notes.html#note-hepb"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
     },
     {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
@@ -2187,6 +2462,27 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
     },
     {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "COVID-19 start at 6mo-23mo shared clinical decision-making series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "scdm",
+            "display" : "SCDM"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/covid/hcp/vaccine-considerations/routine-guidance.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
+    },
+    {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
       "valueCodeableConcept" : {
         "coding" : [{
@@ -2453,6 +2749,27 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
         "valueDateTime" : "2005-08-12T00:00:00.000-04:00"
       }],
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "Zoster 2-dose series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/shingles/hcp/vaccine-considerations/index.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
     },
     {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",
@@ -2767,6 +3084,27 @@ Profile: [Cicada Immunization Recommendation](StructureDefinition-cicada-immuniz
         "valueDateTime" : "2030-08-12T00:00:00.000-04:00"
       }],
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-detail-ext"
+    },
+    {
+      "extension" : [{
+        "url" : "series",
+        "valueString" : "RSV 75 years+ 1-dose series"
+      },
+      {
+        "url" : "category",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+            "code" : "routine",
+            "display" : "Routine"
+          }]
+        }
+      },
+      {
+        "url" : "material",
+        "valueUrl" : "https://www.cdc.gov/rsv/hcp/vaccine-clinical-guidance/adults.html"
+      }],
+      "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/vaccine-recommendation-category-ext"
     },
     {
       "url" : "http://fhirfli.dev/fhir/ig/cicada/StructureDefinition/series-type-ext",

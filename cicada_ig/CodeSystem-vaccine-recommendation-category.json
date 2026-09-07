@@ -1,0 +1,41 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "vaccine-recommendation-category",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem vaccine-recommendation-category</b></p><a name=\"vaccine-recommendation-category\"> </a><a name=\"hcvaccine-recommendation-category\"> </a><p>This case-sensitive code system <code>http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">routine<a name=\"vaccine-recommendation-category-routine\"> </a></td><td>Routine</td><td>An age-based recommendation for the general population.</td></tr><tr><td style=\"white-space:nowrap\">high-risk<a name=\"vaccine-recommendation-category-high-risk\"> </a></td><td>High-Risk</td><td>A recommendation because of a risk factor the patient has (a risk-based series, or an included indication).</td></tr><tr><td style=\"white-space:nowrap\">scdm<a name=\"vaccine-recommendation-category-scdm\"> </a></td><td>SCDM</td><td>Shared clinical decision making: the recommendation depends on a discussion between the patient and the clinician.</td></tr></table></div>"
+  },
+  "url" : "http://fhirfli.dev/fhir/ig/cicada/CodeSystem/vaccine-recommendation-category",
+  "version" : "0.1.0",
+  "name" : "VaccineRecommendationCategoryCS",
+  "title" : "Vaccine Recommendation Category",
+  "status" : "draft",
+  "date" : "2026-09-06T23:13:14-04:00",
+  "publisher" : "FHIR-FLI",
+  "contact" : [{
+    "name" : "FHIR-FLI",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://fhirfli.dev"
+    }]
+  }],
+  "description" : "The three categories of CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65): the type of recommendation a Best Patient Series carries for a patient who is recommended further doses. Displays are CDC's own words.",
+  "caseSensitive" : true,
+  "content" : "complete",
+  "count" : 3,
+  "concept" : [{
+    "code" : "routine",
+    "display" : "Routine",
+    "definition" : "An age-based recommendation for the general population."
+  },
+  {
+    "code" : "high-risk",
+    "display" : "High-Risk",
+    "definition" : "A recommendation because of a risk factor the patient has (a risk-based series, or an included indication)."
+  },
+  {
+    "code" : "scdm",
+    "display" : "SCDM",
+    "definition" : "Shared clinical decision making: the recommendation depends on a discussion between the patient and the clinician."
+  }]
+}

@@ -62,7 +62,7 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
   "name" : "CicadaIG",
   "title" : "The Cicada Vaccine Forecasting Engine and Guide",
   "status" : "draft",
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
@@ -132,6 +132,17 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       {
         "url" : "value",
         "valueString" : "http://hl7.org/fhir/sid/icd-10-cm"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-suppressed-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -209,17 +220,6 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       {
         "url" : "value",
         "valueString" : "output"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueString" : "path-suppressed-warnings"
-      },
-      {
-        "url" : "value",
-        "valueString" : "input/ignoreWarnings.txt"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -445,6 +445,17 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
     {
       "extension" : [{
         "url" : "code",
+        "valueCode" : "path-suppressed-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
         "valueCode" : "path-expansion-params"
       },
       {
@@ -516,17 +527,6 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       {
         "url" : "value",
         "valueString" : "output"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueCode" : "path-suppressed-warnings"
-      },
-      {
-        "url" : "value",
-        "valueString" : "input/ignoreWarnings.txt"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -1821,6 +1821,54 @@ First, a warning: This is not completely FHIR compliant. As part of this was to 
       },
       "name" : "Vaccine Gender",
       "description" : "Value set for gender categories relevant to vaccination data.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-vaccine-recommendation-category-ext.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/vaccine-recommendation-category-ext"
+      },
+      "name" : "Vaccine Recommendation Category",
+      "description" : "CDC's vaccine recommendation category for one Best Patient Series in this forecast: Routine, High-Risk, or SCDM (shared clinical decision making), determined per CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65) once the forecast is known, for a series whose status is Not Complete. Carries the series name, the category, and CDC's material for it. One extension per contributing series that has a category.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-vaccine-recommendation-category.html"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/vaccine-recommendation-category"
+      },
+      "name" : "Vaccine Recommendation Category",
+      "description" : "The three categories of CDC's Vaccine Recommendation Category Determination (CDSi supporting data 4.65): the type of recommendation a Best Patient Series carries for a patient who is recommended further doses. Displays are CDC's own words.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-vaccine-recommendation-category-vs.html"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/vaccine-recommendation-category-vs"
+      },
+      "name" : "Vaccine Recommendation Category Value Set",
+      "description" : "All codes from the Vaccine Recommendation Category code system.",
       "exampleBoolean" : false
     },
     {

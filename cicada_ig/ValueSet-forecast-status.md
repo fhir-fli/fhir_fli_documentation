@@ -50,7 +50,7 @@ Combined value set for immunization forecast status, referencing published stand
   "name" : "ForecastStatusVS",
   "title" : "Forecast Status Value Set",
   "status" : "draft",
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",

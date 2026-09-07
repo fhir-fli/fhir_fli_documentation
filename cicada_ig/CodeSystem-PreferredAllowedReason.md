@@ -31,7 +31,7 @@ Reasons why certain doses are Preferred or Allowed doses
   "name" : "PreferredAllowedReasonCS",
   "title" : "Reasons why certain doses are Preferred or Allowed doses",
   "status" : "draft",
-  "date" : "2026-09-06T20:44:07-04:00",
+  "date" : "2026-09-06T23:13:14-04:00",
   "publisher" : "FHIR-FLI",
   "contact" : [{
     "name" : "FHIR-FLI",
