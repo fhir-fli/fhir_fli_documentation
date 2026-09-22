@@ -1,8 +1,7 @@
+import 'package:fhir_fli_docs/components/site_styles.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/theme.dart';
-
-import 'site_styles.dart';
 
 class SiteFooter extends StatelessComponent {
   const SiteFooter({super.key});
@@ -34,10 +33,10 @@ class SiteFooter extends StatelessComponent {
             ('About', 'about'),
             ('Contact', 'contact'),
             ('GitHub', 'https://github.com/fhir-fli'),
-            ('This site\'s source', 'https://github.com/fhir-fli/fhir_fli_documentation'),
+            ("This site's source", 'https://github.com/fhir-fli/fhir_fli_documentation'),
           ]),
         ]),
-        p(classes: 'footer-note', [
+        const p(classes: 'footer-note', [
           Component.text('FHIR® is the registered trademark of HL7 and is used with the permission of HL7. '),
           Component.text('Built with '),
           a(href: 'https://jaspr.site', [Component.text('Jaspr')]),

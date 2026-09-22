@@ -39,7 +39,7 @@ class CollapsibleSidebar extends StatelessComponent {
     return Component.fragment([
       Document.head(children: [Style(styles: _styles)]),
       nav(classes: 'sidebar', [
-        button(classes: 'sidebar-close', attributes: {'aria-label': 'Close navigation'}, [Component.text('×')]),
+        const button(classes: 'sidebar-close', attributes: {'aria-label': 'Close navigation'}, [Component.text('×')]),
         div([
           if (mobileNav.isNotEmpty) div(classes: 'sidebar-group sidebar-mobile-nav', [_linkList(mobileNav, current)]),
           for (final group in groups) _buildGroup(group, current),
@@ -85,13 +85,13 @@ class CollapsibleSidebar extends StatelessComponent {
   static List<StyleRule> get _styles => [
     css('.sidebar', [
       css('&').styles(
-        position: Position.relative(),
+        position: const Position.relative(),
         padding: Padding.only(left: 0.5.rem, bottom: 1.25.rem, top: 0.75.rem),
         fontSize: 0.875.rem,
         lineHeight: 1.25.rem,
       ),
       css.media(MediaQuery.all(minWidth: 1024.px), [
-        css('&').styles(padding: Padding.only(top: Unit.zero)),
+        css('&').styles(padding: const Padding.only(top: Unit.zero)),
       ]),
 
       // The close button only exists for the slide-in sidebar on narrow
@@ -109,7 +109,7 @@ class CollapsibleSidebar extends StatelessComponent {
           lineHeight: 1.em,
           backgroundColor: Colors.transparent,
         ),
-        css('&:hover').styles(backgroundColor: Color('#0000000d')),
+        css('&:hover').styles(backgroundColor: const Color('#0000000d')),
         css.media(MediaQuery.all(minWidth: 1024.px), [
           css('&').styles(display: Display.none),
         ]),
@@ -156,7 +156,7 @@ class CollapsibleSidebar extends StatelessComponent {
             textTransform: TextTransform.upperCase,
             letterSpacing: 0.05.em,
           ),
-          css('&:hover').styles(opacity: 1, backgroundColor: Color('#0000000d')),
+          css('&:hover').styles(opacity: 1, backgroundColor: const Color('#0000000d')),
           css('&::-webkit-details-marker').styles(display: Display.none),
           css('&::before').styles(
             content: '',
@@ -197,18 +197,18 @@ class CollapsibleSidebar extends StatelessComponent {
               textOverflow: TextOverflow.ellipsis,
               whiteSpace: WhiteSpace.noWrap,
             ),
-            css('&:hover').styles(opacity: 1, backgroundColor: Color('#0000000d')),
+            css('&:hover').styles(opacity: 1, backgroundColor: const Color('#0000000d')),
             css('&.active').styles(
               opacity: 1,
               color: ContentColors.primary,
               fontWeight: FontWeight.w700,
-              backgroundColor: Color('color-mix(in srgb, currentColor 15%, transparent)'),
+              backgroundColor: const Color('color-mix(in srgb, currentColor 15%, transparent)'),
             ),
           ]),
           css('a').styles(
             display: Display.inlineFlex,
             padding: Padding.only(left: 12.px, top: 0.45.rem, bottom: 0.45.rem),
-            flex: Flex(grow: 1),
+            flex: const Flex(grow: 1),
             textDecoration: TextDecoration.none,
           ),
         ]),

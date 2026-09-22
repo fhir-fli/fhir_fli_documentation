@@ -26,7 +26,7 @@ class _CodeCopyButtonState extends State<CodeCopyButton> {
       attributes: {'aria-label': copied ? 'Copied' : 'Copy code', 'title': 'Copy'},
       events: {
         'click': (event) {
-          final target = event.currentTarget as web.Element;
+          final target = event.currentTarget! as web.Element;
           final content = target.parentElement?.querySelector('pre code')?.textContent;
           if (content == null) return;
           web.window.navigator.clipboard.writeText(content);
@@ -34,7 +34,7 @@ class _CodeCopyButtonState extends State<CodeCopyButton> {
           Timer(const Duration(seconds: 2), () => setState(() => copied = false));
         },
       },
-      [copied ? const _CheckIcon() : const _CopyIcon()],
+      [if (copied) const _CheckIcon() else const _CopyIcon()],
     );
   }
 }
@@ -44,7 +44,7 @@ class _CopyIcon extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return svg(
+    return const svg(
       viewBox: '0 0 24 24',
       attributes: {'width': '16', 'height': '16', 'fill': 'none', 'stroke': 'currentColor', 'stroke-width': '2'},
       [
@@ -60,7 +60,7 @@ class _CheckIcon extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return svg(
+    return const svg(
       viewBox: '0 0 24 24',
       attributes: {'width': '16', 'height': '16', 'fill': 'none', 'stroke': 'currentColor', 'stroke-width': '2.5'},
       [path(d: 'M20 6 9 17l-5-5', [])],

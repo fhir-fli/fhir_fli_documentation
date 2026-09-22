@@ -49,7 +49,7 @@ class SiteStyles extends StatelessComponent {
       radius: BorderRadius.circular(0.3.rem),
       fontSize: 0.85.em,
       fontWeight: FontWeight.w500,
-      backgroundColor: Color('color-mix(in srgb, currentColor 9%, transparent)'),
+      backgroundColor: const Color('color-mix(in srgb, currentColor 9%, transparent)'),
     ),
     css('.content code::before, .content code::after').styles(raw: {'content': 'none'}),
 
@@ -59,9 +59,9 @@ class SiteStyles extends StatelessComponent {
       width: Unit.fitContent,
       maxWidth: 100.percent,
       margin: Margin.symmetric(vertical: 1.5.rem),
-      border: Border.all(color: ContentColors.tdBorders, width: 1.px, style: BorderStyle.solid),
+      border: Border.all(color: ContentColors.tdBorders, width: 1.px),
       radius: BorderRadius.circular(0.5.rem),
-      overflow: Overflow.only(x: Overflow.auto),
+      overflow: const Overflow.only(x: Overflow.auto),
       raw: {'border-collapse': 'separate', 'border-spacing': '0'},
     ),
     css('.content-container th, .content-container td').styles(
@@ -84,17 +84,17 @@ class SiteStyles extends StatelessComponent {
       textTransform: TextTransform.upperCase,
       letterSpacing: 0.04.em,
       whiteSpace: WhiteSpace.noWrap,
-      backgroundColor: Color('color-mix(in srgb, var(--primary) 8%, transparent)'),
+      backgroundColor: const Color('color-mix(in srgb, var(--primary) 8%, transparent)'),
     ),
     css('.content-container tbody tr:nth-child(even)').styles(
-      backgroundColor: Color('color-mix(in srgb, currentColor 2.5%, transparent)'),
+      backgroundColor: const Color('color-mix(in srgb, currentColor 2.5%, transparent)'),
     ),
 
     // ---- Fenced code blocks --------------------------------------------
     css('.code-block', [
       css('&').styles(
         margin: Margin.symmetric(vertical: 1.5.em),
-        border: Border.all(width: 1.px, color: Color('#ffffff14')),
+        border: Border.all(width: 1.px, color: const Color('#ffffff14')),
         radius: BorderRadius.circular(0.5.rem),
         overflow: Overflow.hidden,
         backgroundColor: ContentColors.preBg,
@@ -104,12 +104,12 @@ class SiteStyles extends StatelessComponent {
         height: 2.rem,
         padding: Padding.only(left: 1.rem, right: 0.4.rem),
         border: Border.only(
-          bottom: BorderSide(width: 1.px, color: Color('#ffffff14')),
+          bottom: BorderSide(width: 1.px, color: const Color('#ffffff14')),
         ),
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.center,
         color: Colors.white,
-        backgroundColor: Color('#ffffff08'),
+        backgroundColor: const Color('#ffffff08'),
       ),
       css('.code-lang').styles(
         opacity: 0.55,
@@ -135,31 +135,33 @@ class SiteStyles extends StatelessComponent {
         color: Colors.white,
         backgroundColor: Colors.transparent,
       ),
-      css('.code-copy:hover, .code-copy:focus-visible').styles(opacity: 1, backgroundColor: Color('#ffffff1f')),
+      css('.code-copy:hover, .code-copy:focus-visible').styles(opacity: 1, backgroundColor: const Color('#ffffff1f')),
       css('pre').styles(
         margin: Margin.zero,
-        radius: BorderRadius.circular(Unit.zero),
+        radius: const BorderRadius.circular(Unit.zero),
         raw: {'tab-size': '2'},
       ),
 
       // highlight.js token palette. Code blocks keep a dark background in
       // both themes, so one palette (GitHub Dark) serves both.
-      css('.hljs-comment, .hljs-quote').styles(color: Color('#8b949e'), fontStyle: FontStyle.italic),
-      css('.hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag').styles(color: Color('#ff7b72')),
+      css('.hljs-comment, .hljs-quote').styles(color: const Color('#8b949e'), fontStyle: FontStyle.italic),
+      css('.hljs-keyword, .hljs-selector-tag, .hljs-subst, .hljs-doctag').styles(color: const Color('#ff7b72')),
       css(
         '.hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-symbol, .hljs-bullet',
-      ).styles(color: Color('#79c0ff')),
-      css('.hljs-string, .hljs-regexp, .hljs-addition').styles(color: Color('#a5d6ff')),
+      ).styles(color: const Color('#79c0ff')),
+      css('.hljs-string, .hljs-regexp, .hljs-addition').styles(color: const Color('#a5d6ff')),
       css('.hljs-title, .hljs-section, .hljs-selector-id, .hljs-function .hljs-title').styles(
-        color: Color('#d2a8ff'),
+        color: const Color('#d2a8ff'),
         fontWeight: FontWeight.w600,
       ),
-      css('.hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name').styles(color: Color('#ffa657')),
-      css('.hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class').styles(color: Color('#7ee787')),
-      css('.hljs-attr').styles(color: Color('#79c0ff')),
-      css('.hljs-meta, .hljs-meta-keyword').styles(color: Color('#d2a8ff')),
-      css('.hljs-meta-string').styles(color: Color('#a5d6ff')),
-      css('.hljs-deletion').styles(color: Color('#ffa198')),
+      css(
+        '.hljs-type, .hljs-class .hljs-title, .hljs-built_in, .hljs-builtin-name',
+      ).styles(color: const Color('#ffa657')),
+      css('.hljs-tag, .hljs-name, .hljs-attribute, .hljs-selector-class').styles(color: const Color('#7ee787')),
+      css('.hljs-attr').styles(color: const Color('#79c0ff')),
+      css('.hljs-meta, .hljs-meta-keyword').styles(color: const Color('#d2a8ff')),
+      css('.hljs-meta-string').styles(color: const Color('#a5d6ff')),
+      css('.hljs-deletion').styles(color: const Color('#ffa198')),
       css('.hljs-emphasis').styles(fontStyle: FontStyle.italic),
       css('.hljs-strong').styles(fontWeight: FontWeight.w700),
     ]),
@@ -183,12 +185,12 @@ class SiteStyles extends StatelessComponent {
           gap: Gap.row(0.35.rem),
           color: ContentColors.text,
           textDecoration: TextDecoration.none,
-          backgroundColor: Color('color-mix(in srgb, currentColor 3%, transparent)'),
+          backgroundColor: const Color('color-mix(in srgb, currentColor 3%, transparent)'),
         ),
         css('&:hover').styles(
           border: Border.all(width: 1.px, color: ContentColors.primary),
           transform: Transform.translate(y: (-2).px),
-          backgroundColor: Color('color-mix(in srgb, var(--primary) 6%, transparent)'),
+          backgroundColor: const Color('color-mix(in srgb, var(--primary) 6%, transparent)'),
         ),
         css('h3').styles(
           display: Display.flex,
@@ -206,20 +208,20 @@ class SiteStyles extends StatelessComponent {
           fontFamily: ContentTheme.currentCodeFont,
           fontSize: 0.85.em,
           fontWeight: FontWeight.w600,
-          backgroundColor: Color('color-mix(in srgb, var(--primary) 12%, transparent)'),
+          backgroundColor: const Color('color-mix(in srgb, var(--primary) 12%, transparent)'),
         ),
         css('p').styles(margin: Margin.zero, fontSize: 0.875.rem, lineHeight: 1.45.em),
         css('.tag').styles(
           display: Display.inlineBlock,
           padding: Padding.symmetric(vertical: 0.05.em, horizontal: 0.5.em),
-          margin: Margin.only(left: Unit.auto),
+          margin: const Margin.only(left: Unit.auto),
           radius: BorderRadius.circular(1.rem),
           opacity: 0.7,
           fontSize: 0.65.rem,
           fontWeight: FontWeight.w600,
           textTransform: TextTransform.upperCase,
           letterSpacing: 0.05.em,
-          backgroundColor: Color('color-mix(in srgb, currentColor 10%, transparent)'),
+          backgroundColor: const Color('color-mix(in srgb, currentColor 10%, transparent)'),
         ),
       ]),
     ]),
@@ -265,7 +267,7 @@ class SiteStyles extends StatelessComponent {
       textDecoration: TextDecoration.none,
     ),
     css('.header .nav-link:hover').styles(
-      backgroundColor: Color('color-mix(in srgb, currentColor 6%, transparent)'),
+      backgroundColor: const Color('color-mix(in srgb, currentColor 6%, transparent)'),
     ),
   ];
 }

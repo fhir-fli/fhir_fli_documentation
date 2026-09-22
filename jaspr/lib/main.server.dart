@@ -4,6 +4,12 @@
 /// To run code on the client, check the `main.client.dart` file.
 library;
 
+import 'package:fhir_fli_docs/components/code_block.dart';
+import 'package:fhir_fli_docs/components/collapsible_sidebar.dart';
+import 'package:fhir_fli_docs/components/footer.dart';
+import 'package:fhir_fli_docs/components/site_header.dart';
+// This file is generated automatically by Jaspr, do not remove or edit.
+import 'package:fhir_fli_docs/main.server.options.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/callout.dart';
@@ -13,14 +19,6 @@ import 'package:jaspr_content/components/sidebar.dart';
 import 'package:jaspr_content/components/theme_toggle.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
-
-import 'components/code_block.dart';
-import 'components/collapsible_sidebar.dart';
-import 'components/footer.dart';
-import 'components/site_header.dart';
-
-// This file is generated automatically by Jaspr, do not remove or edit.
-import 'main.server.options.dart';
 
 /// Text links shown in the header on wide screens and repeated at the top of
 /// the sidebar on narrow ones, where the header has no room for them.
@@ -34,16 +32,16 @@ void main() {
   Jaspr.initializeApp(options: defaultServerOptions);
   runApp(
     ContentApp(
-      templateEngine: MustacheTemplateEngine(),
-      parsers: [MarkdownParser()],
+      templateEngine: const MustacheTemplateEngine(),
+      parsers: const [MarkdownParser()],
       extensions: [
         HeadingAnchorsExtension(),
-        TableOfContentsExtension(),
+        const TableOfContentsExtension(),
       ],
       components: [
         HighlightedCodeBlock(),
         Callout(),
-        Image(zoom: true),
+        const Image(zoom: true),
       ],
       layouts: [
         DocsLayout(
@@ -52,11 +50,11 @@ void main() {
             logo: 'images/fhir-fli-logo.svg',
             items: [
               for (final link in _navLinks) a(classes: 'nav-link', href: link.href, [Component.text(link.text)]),
-              ThemeToggle(),
-              GitHubButton(repo: 'fhir-fli/fhir_fli_documentation'),
+              const ThemeToggle(),
+              const GitHubButton(repo: 'fhir-fli/fhir_fli_documentation'),
             ],
           ),
-          sidebar: CollapsibleSidebar(
+          sidebar: const CollapsibleSidebar(
             mobileNav: _navLinks,
             groups: [
               SidebarGroup(

@@ -70,9 +70,9 @@ class SiteHeader extends StatelessComponent {
         display: Display.flex,
         height: 4.rem,
         padding: Padding.symmetric(horizontal: 1.rem, vertical: .25.rem),
-        margin: Margin.symmetric(horizontal: Unit.auto),
+        margin: const Margin.symmetric(horizontal: Unit.auto),
         border: Border.only(
-          bottom: BorderSide(color: Color('#0000000d'), width: 1.px),
+          bottom: BorderSide(color: const Color('#0000000d'), width: 1.px),
         ),
         alignItems: AlignItems.center,
         gap: Gap.column(1.rem),
@@ -96,7 +96,7 @@ class SiteHeader extends StatelessComponent {
         css('&').styles(
           display: Display.flex,
           justifyContent: JustifyContent.end,
-          flex: Flex(grow: 1),
+          flex: const Flex(grow: 1),
         ),
       ]),
       css('.header-items', [
@@ -107,7 +107,7 @@ class SiteHeader extends StatelessComponent {
         ),
       ]),
       css.media(MediaQuery.all(maxWidth: 767.px), [
-        css('.header-title').styles(flex: Flex(basis: Unit.auto)),
+        css('.header-title').styles(flex: const Flex(basis: Unit.auto)),
         css('.header-items .nav-link').styles(display: Display.none),
         css('.github-button .github-info').styles(display: Display.none),
       ]),

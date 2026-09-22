@@ -1,3 +1,4 @@
+import 'package:fhir_fli_docs/components/code_copy_button.dart';
 import 'package:highlight/highlight.dart' show highlight;
 import 'package:highlight/languages/bash.dart' as lang_bash;
 import 'package:highlight/languages/dart.dart' as lang_dart;
@@ -9,8 +10,6 @@ import 'package:highlight/languages/yaml.dart' as lang_yaml;
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
-
-import 'code_copy_button.dart';
 
 /// Renders fenced code blocks with server-side syntax highlighting.
 ///
