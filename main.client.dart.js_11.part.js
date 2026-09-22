@@ -1,9 +1,9 @@
 ((a,b)=>{a[b]=a[b]||{}})(self,"$__dart_deferred_initializers__")
-$__dart_deferred_initializers__.current=function(a,b,c,$){var B,A={aY:function aY(){}}
+$__dart_deferred_initializers__.current=function(a,b,c,$){var B,A={aX:function aX(){}}
 B=c[0]
 A=a.updateHolder(c[10],A)
-A.aY.prototype={}
+A.aX.prototype={}
 var z=a.updateTypes([]);(function inheritance(){var y=a.inherit
-y(A.aY,B.i)})()};
-(a=>{a["Pu7KFv7GZcrnBysGPjkPgQAzLTg="]=a.current})($__dart_deferred_initializers__);
+y(A.aX,B.i)})()};
+(a=>{a["qbnLbmm22CiPQz5XtgjAnDrTXL8="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_11.part.js.map
