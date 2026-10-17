@@ -215,7 +215,7 @@ dependencies:
 #### New Package
 ```yaml
 dependencies:
-  fhir_r4: ^0.9.0
+  fhir_r4: ^0.14.0
 ```
 
 **Action Required:** Update your `pubspec.yaml` and run `flutter pub get`.
