@@ -11,7 +11,7 @@ Add the core package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4: ^0.12.0
+  fhir_r4: ^0.14.0
 ```
 
 Then build a resource, serialize it, and read it back:

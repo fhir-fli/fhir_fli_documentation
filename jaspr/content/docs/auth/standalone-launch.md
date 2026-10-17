@@ -56,7 +56,7 @@ final client = SmartFhirClient(
     clientId: 'your-app-client-id',
     
     // FHIR server base URL
-    fhirBaseUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'.toFhirUri,
+    fhirBaseUrl: Uri.parse('https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'),
     
     // Your app's redirect URI (must be registered)
     redirectUri: Uri.parse('com.yourcompany.yourapp://callback'),
@@ -108,7 +108,7 @@ import 'package:fhir_r4_at_rest/fhir_r4_at_rest.dart';
 
 // Read a resource
 final readRequest = FhirReadRequest(
-  base: Uri.parse(client.fhirBaseUrl.toString()),
+  base: client.fhirBaseUrl,
   resourceType: 'Patient',
   id: 'patient-id',
   client: client, // Authenticated client handles auth headers
@@ -120,7 +120,7 @@ final patient = Patient.fromJson(
 
 // Search for resources
 final searchRequest = FhirSearchRequest(
-  base: Uri.parse(client.fhirBaseUrl.toString()),
+  base: client.fhirBaseUrl,
   resourceType: 'Observation',
   search: SearchObservation()
     .category(FhirString('vital-signs')),
@@ -132,7 +132,7 @@ final searchResponse = await searchRequest.sendRequest();
 // Create a resource
 final newObservation = Observation(/* ... */);
 final createRequest = FhirCreateRequest(
-  base: Uri.parse(client.fhirBaseUrl.toString()),
+  base: client.fhirBaseUrl,
   resourceType: 'Observation',
   resource: newObservation.toJson(),
   client: client,
@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> {
     _client = SmartFhirClient(
       config: SmartConfig(
         clientId: 'your-client-id',
-        fhirBaseUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'.toFhirUri,
+        fhirBaseUrl: Uri.parse('https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'),
         redirectUri: Uri.parse('com.yourcompany.yourapp://callback'),
         scopes: ['patient/*.read', 'launch/patient', 'offline_access'],
       ),
@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
         // Fetch patient data with fhir_r4_at_rest, using the
         // authenticated client
         final request = FhirReadRequest(
-          base: Uri.parse(_client!.fhirBaseUrl.toString()),
+          base: _client!.fhirBaseUrl,
           resourceType: 'Patient',
           id: patientId,
           client: _client!,
@@ -307,7 +307,7 @@ class _HomePageState extends State<HomePage> {
         Card(
           child: ListTile(
             leading: Icon(Icons.person),
-            title: Text(_patient!.name?.first?.text?.value ?? 'Unknown'),
+            title: Text(_patient!.name?.first?.text?.valueString ?? 'Unknown'),
             subtitle: Text('Patient ID: ${_patient!.id}'),
           ),
         ),

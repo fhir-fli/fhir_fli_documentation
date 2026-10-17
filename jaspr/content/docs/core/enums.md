@@ -44,8 +44,11 @@ print(groupingBehavior.valueString);  // 'visual-group'
 
 // Access additional metadata
 print(groupingBehavior.display?.valueString);  // 'Visual Group'
-print(groupingBehavior.system?.valueString);   // 'http://hl7.org/fhir/ValueSet/action-grouping-behavior'
+print(groupingBehavior.system?.valueString);   // 'http://hl7.org/fhir/action-grouping-behavior'
+print(groupingBehavior.version?.valueString);  // '4.3.0'
 ```
+
+The `system` is the CodeSystem the code is defined in, with that CodeSystem's `version` (since 0.13.0; earlier releases put the ValueSet's url there, which is not a code system). A value parsed from JSON or built from a string carries the `system`, `version` and `display` of the constant it matches, so `ActionGroupingBehavior('visual-group')` and `ActionGroupingBehavior.fromJson('visual-group')` both have them. `toJson` writes only the code.
 
 ### Using Native Dart Enums
 
@@ -210,16 +213,18 @@ class ActionGroupingBehavior extends FhirCodeEnum {
     FhirString? display,
     // Other parameters
   }) {
-    final valueString = 
+    final valueString =
         rawValue != null ? FhirCode._validateCode(rawValue) : null;
     final valueEnum = ActionGroupingBehaviorEnum.fromString(valueString);
-    
+    // The predefined constant this code matches, if any
+    final known = _known(valueEnum);
+
     return ActionGroupingBehavior._(
       valueString: valueString,
       valueEnum: valueEnum,
-      system: system,
-      version: version,
-      display: display,
+      system: system ?? known?.system,
+      version: version ?? known?.version,
+      display: display ?? known?.display,
       // Other fields
     );
   }
@@ -232,7 +237,7 @@ class ActionGroupingBehavior extends FhirCodeEnum {
     valueString: 'visual-group',
     valueEnum: ActionGroupingBehaviorEnum.visualGroup,
     system: FhirUri._(
-      valueString: 'http://hl7.org/fhir/ValueSet/action-grouping-behavior',
+      valueString: 'http://hl7.org/fhir/action-grouping-behavior',
     ),
     version: FhirString._(valueString: '4.3.0'),
     display: FhirString._(

@@ -244,7 +244,10 @@ final int? month = myDateTime.month;
 final int? day = myDateTime.day;
 final int? hour = myDateTime.hour;
 
-// Accessing as DateTime
+// Accessing as DateTime. A value written with Z or an offset is the
+// instant it denotes, returned in UTC: '2013-01-14T10:00:00+02:00' is
+// 08:00Z. A date, or a dateTime written without an offset, has no instant
+// of its own and is returned in the local zone.
 final DateTime? dateTimeValue = myDateTime.valueDateTime;
 
 // Comparing dates - note the comparison operators return bool? because

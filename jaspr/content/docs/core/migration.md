@@ -3,6 +3,87 @@ id: migration
 title: Migration Guide
 ---
 
+## Upgrading fhir_r4 0.12.x → 0.14.0
+
+Change every `fhir_r4*` constraint to `^0.14.0`. 0.13.0 moved each engine into
+a package that serves every FHIR version (`fhir_path`, `fhir_at_rest`,
+`fhir_auth`, `fhir_bulk`, `fhir_cds_hooks`, `fhir_db`, `fhir_mapping`,
+`fhir_validation`, all reading resources through `fhir_node`). Each `fhir_r4_*`
+package re-exports its engine with the R4 model filled in, so an import does
+not change and most code compiles as it was. 0.14.0 moves the CQL engine to
+`cql` 0.8.0 and otherwise only aligns versions.
+
+**Code that has to change**
+
+| Package | Was | Now |
+| --- | --- | --- |
+| `fhir_r4_auth` | `SmartConfig(fhirBaseUrl: url.toFhirUri)`; `client.fhirBaseUrl` a `FhirUri` | `fhirBaseUrl: Uri.parse(url)`; `client.fhirBaseUrl` is a `Uri` |
+| `fhir_r4_at_rest` | `result.errorOperationOutcomes` held `OperationOutcome` | They hold `Resource`: `.cast<OperationOutcome>()` to read `issue` |
+| `fhir_r4_path`, `fhir_r4_mapping` | `cache.getCanonicalResource<ValueSet>(url)` | `cache.valueSet(url)` or `cache.canonical<ValueSet>(url)` (the `TypedResourceCache` extension); the cache itself holds `FhirNode` |
+| `fhir_r4_path`, `fhir_r4_mapping` | `OnlineResourceCache()` | `OnlineResourceCache(parse: Resource.fromJson)` |
+| `fhir_r4_path` | `WorkerContext.loadStructureDefinition(...)` returned nothing | It returns a `Future`: await it |
+| `fhir_r4_bulk` | `WhichResource.resourceType` an `R4ResourceType`; `kickoff.unknownTypes()` | `resourceType` is the type's name; `kickoff.unknownTypes(r4Bulk)`. `BulkRequest.request()` returns `List<Resource>` |
+| `fhir_r4_cds_hooks` | `CdsRequest.prefetch`, `CdsAction.resource` and the contexts' bundles were `Resource` / `Bundle` | They are `Map<String, dynamic>`: pass `resource.toJson()`; `prefetchResources` and `typedResource` give the typed views |
+| `fhir_r4_mapping` | Engine extensions on `ElementDefinition`, `StructureDefinition`, `StructureMap`, `ValueSet` | Gone; the engine reads those by element name |
+| `fhir_r4_cql` | `library.execute(context)` | `library.execute(context, const R4ModelResolver())`. The resolver is an optional argument, so leaving it out compiles; an operation that needs the model then throws `StateError('No ModelResolver in execution context…')` at run time |
+
+**Answers that change without a compile error**
+
+- **A code's `system` is its CodeSystem** (`fhir_r4` 0.13.0). Every enum
+  constant's `system` is the CodeSystem the code is defined in
+  (`http://hl7.org/fhir/observation-status`), with its `version`; it was the
+  ValueSet's url. A code parsed from JSON or built from a string now carries
+  its constant's `system`, `version` and `display`. `toJson` is unchanged.
+- **`valueDateTime` is the instant** (`fhir_r4` 0.13.0). A value written with
+  `Z` or an offset comes back in UTC (`2013-01-14T10:00:00+02:00` is 08:00Z);
+  it used to keep the wall-clock time and drop the offset. A date, or a
+  dateTime with no offset, is still local.
+- **CQL strings are `CqlString`** (`cql` 0.8.0, through `fhir_r4_cql` 0.14.0).
+  Every string operator answers a `CqlString`, never a Dart `String`: read
+  `.valueString`. `Successor` / `Predecessor` at a type's bound answer null
+  where they threw, and Variance of quantities keeps the elements' unit.
+  From `cql` 0.7.0 (`fhir_r4_cql` 0.13.0): `To*`, `ConvertsTo*` and the
+  `resolve*Ref` lookups answer null where they threw, and an impossible date
+  is refused with a `FormatException`.
+- **`fhir_r4_db` search follows R4B search.html more closely.** Number,
+  quantity and date values are ranges and the prefixes are the range rules
+  (`eq` is containment, so `probability=0.3` finds 0.31); a quantity is
+  `[prefix][number]|[system]|[code]` and the old `5|mg` form is no longer
+  read; `code=|X` and `subject:identifier=|42` match only values with no
+  system; Period and Timing values, contained resources and the meta
+  parameters (`_tag`, `_profile`, `_security`, `_source`) are indexed;
+  `_include` names a search parameter (`Patient:organization`, not the
+  element); a bare id that names resources of two types throws
+  `AmbiguousReference`. Modifiers the store gives no meaning are refused with
+  `UnsupportedSearchModifier` instead of being answered as something else
+  (token and reference `:above` / `:below`, `name:text`, `subject:Foo`), as is
+  `:missing=maybe` (`InvalidSearchValue`) and a `:in` / `:not-in` ValueSet
+  whose compose cannot be evaluated (`UnsupportedValueSetCompose`).
+- **An update keeps the submitted `meta`.** `saveResource` writes the
+  submitted `profile` and `source` with the store's `versionId` and
+  `lastUpdated`, and merges `tag` and `security` labels with the stored ones
+  (`mergeTags: false` writes them as submitted). `preserveMeta: true` stores a
+  fetched resource's server `meta` as received.
+
+**The store upgrades itself.** `fhir_r4_db` 0.12.0 wrote schema 6; 0.14.0
+(through `fhir_db` 0.15.1) is schema 15. The first open migrates, and the
+search index, which is derived data, is rebuilt from the stored resources
+twice, at the schema 10 step and at the schema 15 step. One rebuild was
+measured at 467 s for 928,935 resources. A subclass that overrides
+`migration` must call `rebuildSearchIndex()` itself. Because of the code
+`system` change above, a store indexed by an older release needs that rebuild
+for `status=<system>|final`, `:in` and `:not-in` to match `code` elements.
+
+**New in these releases**: paged history with tombstones (`getHistory`,
+`countHistory`, `getVersion`), `ifMatchVersion` on save and delete
+(`VersionConflict`), compartment search (`CompartmentScope`), indexed
+uploaded `SearchParameter`s, `FhirDb.rekey`, streaming NDJSON in
+`fhir_r4_bulk` (`NdjsonStream.lines`, `resources`, `encode`, `write`) and the
+Bulk Data 2.0.0 models (`BulkExportKickoff`, `BulkExportManifest`). See the
+[fhir_r4_db](docs/fhir_r4_db) and [fhir_r4_bulk](docs/fhir_r4_bulk) pages.
+
+---
+
 ## Upgrading fhir_r4 0.9.x → 0.12.0
 
 The resource APIs did not change. All three releases are about `fhir_r*_db`

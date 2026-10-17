@@ -9,8 +9,8 @@ The `fhir_r4_db` library provides a local database solution for storing and mana
 
 ```yaml
 dependencies:
-  fhir_r4_db: ^0.12.0
-  fhir_r4: ^0.12.0
+  fhir_r4_db: ^0.14.0
+  fhir_r4: ^0.14.0
   drift: ^2.33.0
   sqlite3: ^3.1.5
 ```
@@ -235,6 +235,52 @@ final history = await dao.getResourceHistory(
   '12345',
 );
 ```
+
+`getResourceHistory` returns the stored versions and leaves deletions out. `getHistory` returns `HistoryEntry` rows instead, deletions included (`deleted` is true and `resource` is null for a tombstone), and pages in SQL; `countHistory` gives the total and `getVersion` reads one version by key:
+
+```dart
+final page = await dao.getHistory(
+  R4ResourceType.Patient,
+  '12345',
+  count: 20,
+  offset: 0,
+);
+for (final entry in page) {
+  print('${entry.versionId} ${entry.lastUpdated} deleted=${entry.deleted}');
+}
+final total = await dao.countHistory(R4ResourceType.Patient, '12345');
+final second = await dao.getVersion(R4ResourceType.Patient, '12345', '2');
+```
+
+### Conditional Updates (If-Match)
+
+`saveResource` and `deleteResource` take `ifMatchVersion`. The stored version is checked inside the write's transaction, so a second writer cannot land between the check and the write; on a mismatch nothing is written and `VersionConflict` is thrown with the `expected` and `actual` versions:
+
+```dart
+try {
+  await dao.saveResource(updated, ifMatchVersion: '2');
+} on VersionConflict catch (e) {
+  print('Expected ${e.expected}, stored ${e.actual}');
+}
+```
+
+### Compartment Search
+
+`search` and `searchCount` take a `CompartmentScope`, so `Patient/123/Observation?code=...` is one search. Which parameters put a type in a compartment comes from the published CompartmentDefinitions:
+
+```dart
+final observations = await dao.search(
+  resourceType: R4ResourceType.Observation,
+  searchParameters: {
+    'code': ['http://loinc.org|8867-4'],
+  },
+  compartment: const CompartmentScope('Patient', '123'),
+);
+```
+
+### Custom Search Parameters
+
+A stored `SearchParameter` with `status: active` is indexed: every later save of its base types is indexed by its FHIRPath expression, through `fhir_r4_path`. Call `db.rebuildSearchIndex()` to index what was stored before it. A definition the store cannot index by is refused with `InvalidSearchParameter`.
 
 Use timestamp-based versioning instead of incrementing integers:
 
