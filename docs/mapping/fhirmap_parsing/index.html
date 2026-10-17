@@ -1767,6 +1767,9 @@ group PatientToPerson(source src : Patient, target tgt : Person) {
                   </div>
                   <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'dart:io'</span>;
 
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4_mapping/fhir_r4_mapping.dart'</span>;
+
 Future&lt;StructureMap&gt; parseMapFile(<span class="hljs-built_in">String</span> filePath) <span class="hljs-keyword">async</span> {
   <span class="hljs-keyword">final</span> parser = <span class="hljs-keyword">await</span> StructureMapParser.create();
   <span class="hljs-keyword">final</span> fileContent = <span class="hljs-keyword">await</span> File(filePath).readAsString();
@@ -1791,7 +1794,14 @@ Future&lt;StructureMap&gt; parseMapFile(<span class="hljs-built_in">String</span
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">void</span> compareGeneratedMap(<span class="hljs-built_in">String</span> mapText, <span class="hljs-built_in">String</span> referencePath) <span class="hljs-keyword">async</span> {
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'dart:convert'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'dart:io'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:collection/collection.dart'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4_mapping/fhir_r4_mapping.dart'</span>;
+
+Future&lt;<span class="hljs-keyword">void</span>&gt; compareGeneratedMap(<span class="hljs-built_in">String</span> mapText, <span class="hljs-built_in">String</span> referencePath) <span class="hljs-keyword">async</span> {
   <span class="hljs-keyword">final</span> parser = <span class="hljs-keyword">await</span> StructureMapParser.create();
   
   <span class="hljs-comment">// Parse the map text</span>

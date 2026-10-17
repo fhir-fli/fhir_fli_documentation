@@ -1683,8 +1683,8 @@
                     <!--/@code_copy_button-->
                   </div>
                   <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
-  <span class="hljs-attr">fhir_r4_auth:</span> <span class="hljs-string">^0.12.0</span>
-  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.12.0</span></code></pre>
+  <span class="hljs-attr">fhir_r4_auth:</span> <span class="hljs-string">^0.14.0</span>
+  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.14.0</span></code></pre>
                 </div>
                 <p>
                   For R5 or R6, use <code>fhir_r5_auth</code>/<code>fhir_r6_auth</code> and <code>fhir_r5</code>/<code>fhir_r6</code>
@@ -1845,7 +1845,7 @@ sudo apt-get install -y libwebkit2gtk-4.1-dev libsecret-1-dev</code></pre>
 <span class="hljs-keyword">void</span> main() {
   <span class="hljs-keyword">final</span> config = SmartConfig(
     clientId: <span class="hljs-string">'test'</span>,
-    fhirBaseUrl: <span class="hljs-string">'https://example.com'</span>.toFhirUri,
+    fhirBaseUrl: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'https://example.com'</span>),
     redirectUri: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'com.test://callback'</span>),
     scopes: [<span class="hljs-string">'patient/*.read'</span>],
   );

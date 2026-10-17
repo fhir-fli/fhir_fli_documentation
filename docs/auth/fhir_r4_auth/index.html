@@ -1693,8 +1693,8 @@
                     <!--/@code_copy_button-->
                   </div>
                   <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
-  <span class="hljs-attr">fhir_r4_auth:</span> <span class="hljs-string">^0.12.0</span>
-  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.12.0</span></code></pre>
+  <span class="hljs-attr">fhir_r4_auth:</span> <span class="hljs-string">^0.14.0</span>
+  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.14.0</span></code></pre>
                 </div>
                 <h3 id="basic-example" anchor="true"><span>Basic Example</span><a href="/docs/auth/fhir_r4_auth#basic-example">#</a></h3>
                 <div class="code-block">
@@ -1715,7 +1715,7 @@
 <span class="hljs-keyword">final</span> client = SmartFhirClient(
   config: SmartConfig(
     clientId: <span class="hljs-string">'your-client-id'</span>,
-    fhirBaseUrl: <span class="hljs-string">'https://fhir.example.com/r4'</span>.toFhirUri,
+    fhirBaseUrl: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'https://fhir.example.com/r4'</span>),
     redirectUri: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'com.yourapp://callback'</span>),
     scopes: [<span class="hljs-string">'patient/*.read'</span>, <span class="hljs-string">'launch/patient'</span>],
   ),

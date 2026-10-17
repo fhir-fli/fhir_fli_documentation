@@ -1671,8 +1671,9 @@
                   <span>Resource Cache Hierarchy</span><a href="/docs/mapping/fhir_mapping_engine#resource-cache-hierarchy">#</a>
                 </h3>
                 <p>
-                  The mapping engine relies on a cache system to efficiently access and store canonical resources. The cache classes are provided by the 
-                  <code>fhir_r4_path</code> package (a dependency of <code>fhir_r4_mapping</code>) and come in three levels:
+                  The mapping engine relies on a cache system to efficiently access and store canonical resources. The cache classes belong to the model-independent 
+                  <code>fhir_path</code> engine; <code>fhir_r4_path</code> and <code>fhir_r4_mapping</code> re-export them. They hold every resource as a 
+                  <code>FhirNode</code>, which every <code>fhir_r4</code> class is, and come in three levels:
                 </p>
                 <h4 id="1-resourcecache-base-abstract-class">1. ResourceCache (Base Abstract Class)</h4>
                 <div class="code-block">
@@ -1687,25 +1688,27 @@
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResourceCache</span> </span>{
-  <span class="hljs-comment">// Fetches a CanonicalResource (StructureDefinition, ValueSet, etc.)</span>
-  <span class="hljs-comment">// by canonical URL, optionally by version</span>
-  Future&lt;T?&gt; getCanonicalResource&lt;T <span class="hljs-keyword">extends</span> CanonicalResource&gt;(
-    <span class="hljs-built_in">String</span> url, [
-    <span class="hljs-built_in">String</span>? version,
-  ]);
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_node/fhir_node.dart'</span>;
 
-  <span class="hljs-comment">// Saves a CanonicalResource to the cache</span>
-  Future&lt;<span class="hljs-keyword">void</span>&gt; saveCanonicalResource(CanonicalResource resource);
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResourceCache</span> </span>{
+  <span class="hljs-comment">// Fetches a canonical resource (StructureDefinition, ValueSet, etc.)</span>
+  <span class="hljs-comment">// by canonical URL, optionally by version</span>
+  Future&lt;FhirNode?&gt; getCanonicalResource(<span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]);
+
+  <span class="hljs-comment">// Saves a canonical resource to the cache</span>
+  Future&lt;<span class="hljs-keyword">void</span>&gt; saveCanonicalResource(FhirNode resource);
 
   <span class="hljs-comment">// Convenience lookups</span>
-  Future&lt;StructureDefinition?&gt; getStructureDefinition(<span class="hljs-built_in">String</span> url);
-  Future&lt;<span class="hljs-built_in">List</span>&lt;StructureDefinition&gt;&gt; getStructureDefinitions();
-  Future&lt;CodeSystem?&gt; getCodeSystem(<span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]);
-  Future&lt;<span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt;?&gt; getResourceMap(<span class="hljs-built_in">String</span> url);
+  Future&lt;FhirNode?&gt; getStructureDefinition(<span class="hljs-built_in">String</span> url);
+  Future&lt;<span class="hljs-built_in">List</span>&lt;FhirNode&gt;&gt; getStructureDefinitions();
+  Future&lt;FhirNode?&gt; getCodeSystem(<span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]);
   Future&lt;<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt;&gt; getResourceNames();
 }</code></pre>
                 </div>
+                <p>
+                  For the R4 classes, <code>fhir_r4_path</code>'s <code>TypedResourceCache</code> extension adds <code>canonical&lt;T&gt;(url, [version])</code>, 
+                  <code>structureDefinition(url)</code>, <code>codeSystem(url, [version])</code> and <code>valueSet(url, [version])</code>.
+                </p>
                 <p>
                   The base <code>ResourceCache</code> defines the interface for canonical resource lookup operations. As an abstract class, it can't be instantiated directly.
                 </p>
@@ -1745,10 +1748,11 @@
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> cache = OnlineResourceCache();</code></pre>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> cache = OnlineResourceCache(parse: Resource.fromJson);</code></pre>
                 </div>
                 <p>
-                  This extends <code>CanonicalResourceCache</code> to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it over HTTP from its canonical URL, caching the result for subsequent lookups. You can optionally pass your own 
+                  This extends <code>CanonicalResourceCache</code> to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it over HTTP from its canonical URL, caching the result for subsequent lookups. 
+                  <code>parse</code> is the model's resource-from-JSON, so what it fetches comes back as R4 classes. You can optionally pass your own 
                   <code>http</code> <code>Client</code>.
                 </p>
                 <h3 id="resource-builders" anchor="true"><span>Resource Builders</span><a href="/docs/mapping/fhir_mapping_engine#resource-builders">#</a></h3>
@@ -1957,7 +1961,7 @@ mapEngine.extendedEmptyFromType = customEmptyFromType;</code></pre>
 <span class="hljs-keyword">await</span> localCache.saveCanonicalResource(valueSetB);
 
 <span class="hljs-comment">// For mixed local/online operation</span>
-<span class="hljs-keyword">final</span> onlineCache = OnlineResourceCache();
+<span class="hljs-keyword">final</span> onlineCache = OnlineResourceCache(parse: Resource.fromJson);
 <span class="hljs-keyword">await</span> onlineCache.saveCanonicalResource(structureDefinitionA);  <span class="hljs-comment">// Priority local cache</span>
 <span class="hljs-comment">// Other resources will be fetched from online sources if needed</span></code></pre>
                 </div>
@@ -2008,7 +2012,7 @@ mapEngine.extendedEmptyFromType = customEmptyFromType;</code></pre>
 
 Future&lt;<span class="hljs-keyword">void</span>&gt; main() <span class="hljs-keyword">async</span> {
   <span class="hljs-comment">// Step 1: Set up resource cache</span>
-  <span class="hljs-keyword">final</span> resourceCache = OnlineResourceCache();
+  <span class="hljs-keyword">final</span> resourceCache = OnlineResourceCache(parse: Resource.fromJson);
   
   <span class="hljs-comment">// Step 2: Pre-load any local resources</span>
   <span class="hljs-keyword">await</span> resourceCache

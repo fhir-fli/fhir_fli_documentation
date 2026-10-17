@@ -1658,6 +1658,217 @@
             <div class="content-container">
               <div class="content-header"><h1>Migration Guide</h1></div>
               <section class="content">
+                <h2 id="upgrading-fhir_r4-012x--0140" anchor="true">
+                  <span>Upgrading fhir_r4 0.12.x → 0.14.0</span><a href="/docs/core/migration#upgrading-fhir_r4-012x--0140">#</a>
+                </h2>
+                <p>
+                  Change every <code>fhir_r4*</code> constraint to <code>^0.14.0</code>. 0.13.0 moved each engine into
+                  a package that serves every FHIR version (<code>fhir_path</code>, <code>fhir_at_rest</code>,
+                  <code>fhir_auth</code>, <code>fhir_bulk</code>, <code>fhir_cds_hooks</code>, <code>fhir_db</code>, 
+                  <code>fhir_mapping</code>,
+                  <code>fhir_validation</code>, all reading resources through <code>fhir_node</code>). Each 
+                  <code>fhir_r4_*</code>
+                  package re-exports its engine with the R4 model filled in, so an import does
+                  not change and most code compiles as it was. 0.14.0 moves the CQL engine to
+                  <code>cql</code> 0.8.0 and otherwise only aligns versions.
+                </p>
+                <p><strong>Code that has to change</strong></p>
+                <table>
+                  <thead><tr><th>Package</th><th>Was</th><th>Now</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>fhir_r4_auth</code></td>
+                      <td>
+                        <code>SmartConfig(fhirBaseUrl: url.toFhirUri)</code>
+                        ; 
+                        <code>client.fhirBaseUrl</code>
+                         a 
+                        <code>FhirUri</code>
+                      </td>
+                      <td><code>fhirBaseUrl: Uri.parse(url)</code>; <code>client.fhirBaseUrl</code> is a <code>Uri</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_at_rest</code></td>
+                      <td><code>result.errorOperationOutcomes</code> held <code>OperationOutcome</code></td>
+                      <td>
+                        They hold 
+                        <code>Resource</code>
+                        : 
+                        <code>.cast&lt;OperationOutcome&gt;()</code>
+                         to read 
+                        <code>issue</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_path</code>, <code>fhir_r4_mapping</code></td>
+                      <td><code>cache.getCanonicalResource&lt;ValueSet&gt;(url)</code></td>
+                      <td>
+                        <code>cache.valueSet(url)</code>
+                         or 
+                        <code>cache.canonical&lt;ValueSet&gt;(url)</code>
+                         (the 
+                        <code>TypedResourceCache</code>
+                         extension); the cache itself holds 
+                        <code>FhirNode</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_path</code>, <code>fhir_r4_mapping</code></td>
+                      <td><code>OnlineResourceCache()</code></td>
+                      <td><code>OnlineResourceCache(parse: Resource.fromJson)</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_path</code></td>
+                      <td><code>WorkerContext.loadStructureDefinition(...)</code> returned nothing</td>
+                      <td>It returns a <code>Future</code>: await it</td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_bulk</code></td>
+                      <td>
+                        <code>WhichResource.resourceType</code>
+                         an 
+                        <code>R4ResourceType</code>
+                        ; 
+                        <code>kickoff.unknownTypes()</code>
+                      </td>
+                      <td>
+                        <code>resourceType</code>
+                         is the type's name; 
+                        <code>kickoff.unknownTypes(r4Bulk)</code>
+                        . 
+                        <code>BulkRequest.request()</code>
+                         returns 
+                        <code>List&lt;Resource&gt;</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_cds_hooks</code></td>
+                      <td>
+                        <code>CdsRequest.prefetch</code>
+                        , 
+                        <code>CdsAction.resource</code>
+                         and the contexts' bundles were 
+                        <code>Resource</code>
+                         / 
+                        <code>Bundle</code>
+                      </td>
+                      <td>
+                        They are 
+                        <code>Map&lt;String, dynamic&gt;</code>
+                        : pass 
+                        <code>resource.toJson()</code>
+                        ; 
+                        <code>prefetchResources</code>
+                         and 
+                        <code>typedResource</code>
+                         give the typed views
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_mapping</code></td>
+                      <td>
+                        Engine extensions on 
+                        <code>ElementDefinition</code>
+                        , 
+                        <code>StructureDefinition</code>
+                        , 
+                        <code>StructureMap</code>
+                        , 
+                        <code>ValueSet</code>
+                      </td>
+                      <td>Gone; the engine reads those by element name</td>
+                    </tr>
+                    <tr>
+                      <td><code>fhir_r4_cql</code></td>
+                      <td><code>library.execute(context)</code></td>
+                      <td>
+                        <code>library.execute(context, const R4ModelResolver())</code>
+                        . The resolver is an optional argument, so leaving it out compiles; an operation that needs the model then throws 
+                        <code>StateError('No ModelResolver in execution context…')</code>
+                         at run time
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p><strong>Answers that change without a compile error</strong></p>
+                <ul>
+                  <li>
+                    <strong>A code's <code>system</code> is its CodeSystem</strong> (<code>fhir_r4</code> 0.13.0). Every enum
+                    constant's <code>system</code> is the CodeSystem the code is defined in
+                    (<code>http://hl7.org/fhir/observation-status</code>), with its <code>version</code>; it was the
+                    ValueSet's url. A code parsed from JSON or built from a string now carries
+                    its constant's <code>system</code>, <code>version</code> and <code>display</code>. 
+                    <code>toJson</code> is unchanged.
+                  </li>
+                  <li>
+                    <strong><code>valueDateTime</code> is the instant</strong> (<code>fhir_r4</code> 0.13.0). A value written with
+                    <code>Z</code> or an offset comes back in UTC (<code>2013-01-14T10:00:00+02:00</code>
+                     is 08:00Z);
+                    it used to keep the wall-clock time and drop the offset. A date, or a
+                    dateTime with no offset, is still local.
+                  </li>
+                  <li>
+                    <strong>CQL strings are <code>CqlString</code></strong> (<code>cql</code> 0.8.0, through <code>fhir_r4_cql</code>
+                     0.14.0).
+                    Every string operator answers a <code>CqlString</code>, never a Dart <code>String</code>: read
+                    <code>.valueString</code>. <code>Successor</code> / <code>Predecessor</code> at a type's bound answer null
+                    where they threw, and Variance of quantities keeps the elements' unit.
+                    From <code>cql</code> 0.7.0 (<code>fhir_r4_cql</code> 0.13.0): <code>To*</code>, 
+                    <code>ConvertsTo*</code> and the
+                    <code>resolve*Ref</code> lookups answer null where they threw, and an impossible date
+                    is refused with a <code>FormatException</code>.
+                  </li>
+                  <li>
+                    <strong><code>fhir_r4_db</code> search follows R4B search.html more closely.</strong> Number,
+                    quantity and date values are ranges and the prefixes are the range rules
+                    (<code>eq</code> is containment, so <code>probability=0.3</code> finds 0.31); a quantity is
+                    <code>[prefix][number]|[system]|[code]</code> and the old <code>5|mg</code> form is no longer
+                    read; <code>code=|X</code> and <code>subject:identifier=|42</code> match only values with no
+                    system; Period and Timing values, contained resources and the meta
+                    parameters (<code>_tag</code>, <code>_profile</code>, <code>_security</code>, <code>_source</code>) are indexed;
+                    <code>_include</code> names a search parameter (<code>Patient:organization</code>, not the
+                    element); a bare id that names resources of two types throws
+                    <code>AmbiguousReference</code>. Modifiers the store gives no meaning are refused with
+                    <code>UnsupportedSearchModifier</code> instead of being answered as something else
+                    (token and reference <code>:above</code> / <code>:below</code>, <code>name:text</code>, 
+                    <code>subject:Foo</code>), as is
+                    <code>:missing=maybe</code> (<code>InvalidSearchValue</code>) and a <code>:in</code>
+                     / <code>:not-in</code> ValueSet
+                    whose compose cannot be evaluated (<code>UnsupportedValueSetCompose</code>).
+                  </li>
+                  <li>
+                    <strong>An update keeps the submitted <code>meta</code>.</strong> <code>saveResource</code> writes the
+                    submitted <code>profile</code> and <code>source</code> with the store's <code>versionId</code>
+                     and
+                    <code>lastUpdated</code>, and merges <code>tag</code> and <code>security</code> labels with the stored ones
+                    (<code>mergeTags: false</code> writes them as submitted). <code>preserveMeta: true</code>
+                     stores a
+                    fetched resource's server <code>meta</code> as received.
+                  </li>
+                </ul>
+                <p>
+                  <strong>The store upgrades itself.</strong> <code>fhir_r4_db</code> 0.12.0 wrote schema 6; 0.14.0
+                  (through <code>fhir_db</code> 0.15.1) is schema 15. The first open migrates, and the
+                  search index, which is derived data, is rebuilt from the stored resources
+                  twice, at the schema 10 step and at the schema 15 step. One rebuild was
+                  measured at 467 s for 928,935 resources. A subclass that overrides
+                  <code>migration</code> must call <code>rebuildSearchIndex()</code> itself. Because of the code
+                  <code>system</code> change above, a store indexed by an older release needs that rebuild
+                  for <code>status=&lt;system&gt;|final</code>, <code>:in</code> and <code>:not-in</code>
+                   to match <code>code</code> elements.
+                </p>
+                <p>
+                  <strong>New in these releases</strong>: paged history with tombstones (<code>getHistory</code>,
+                  <code>countHistory</code>, <code>getVersion</code>), <code>ifMatchVersion</code> on save and delete
+                  (<code>VersionConflict</code>), compartment search (<code>CompartmentScope</code>), indexed
+                  uploaded <code>SearchParameter</code>s, <code>FhirDb.rekey</code>, streaming NDJSON in
+                  <code>fhir_r4_bulk</code> (<code>NdjsonStream.lines</code>, <code>resources</code>, 
+                  <code>encode</code>, <code>write</code>) and the
+                  Bulk Data 2.0.0 models (<code>BulkExportKickoff</code>, <code>BulkExportManifest</code>). See the
+                  <a href="docs/fhir_r4_db">fhir_r4_db</a> and <a href="docs/fhir_r4_bulk">fhir_r4_bulk</a>
+                   pages.
+                </p>
+                <hr/>
                 <h2 id="upgrading-fhir_r4-09x--0120" anchor="true">
                   <span>Upgrading fhir_r4 0.9.x → 0.12.0</span><a href="/docs/core/migration#upgrading-fhir_r4-09x--0120">#</a>
                 </h2>
@@ -3454,6 +3665,7 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
+                  <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-012x--0140">Upgrading fhir_r4 0.12.x → 0.14.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-09x--0120">Upgrading fhir_r4 0.9.x → 0.12.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-08x--090">Upgrading fhir_r4 0.8.x → 0.9.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-07x--080">Upgrading fhir_r4 0.7.x → 0.8.0</a></li>

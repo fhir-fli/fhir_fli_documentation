@@ -2214,13 +2214,18 @@
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> resource <span class="hljs-keyword">in</span> result.resources) {
   <span class="hljs-built_in">print</span>(<span class="hljs-string">'Retrieved resource: <span class="hljs-subst">${resource.id}</span>'</span>);
 }
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> error <span class="hljs-keyword">in</span> result.errorOperationOutcomes) {
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> error <span class="hljs-keyword">in</span> result.errorOperationOutcomes.cast&lt;OperationOutcome&gt;()) {
   <span class="hljs-built_in">print</span>(<span class="hljs-string">'Error: <span class="hljs-subst">${error.issue.first.diagnostics}</span>'</span>);
 }
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> info <span class="hljs-keyword">in</span> result.informationOperationOutcomes) {
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> info
+    <span class="hljs-keyword">in</span> result.informationOperationOutcomes.cast&lt;OperationOutcome&gt;()) {
   <span class="hljs-built_in">print</span>(<span class="hljs-string">'Info: <span class="hljs-subst">${info.issue.first.diagnostics}</span>'</span>);
 }</code></pre>
                 </div>
+                <p>
+                  The OperationOutcome lists hold <code>Resource</code> (the parsing itself lives in the version-independent 
+                  <code>fhir_at_rest</code>), so cast to <code>OperationOutcome</code> to read the issues.
+                </p>
                 <p>
                   If you expect a specific resource type, use <code>parseRequestResultForType&lt;T&gt;</code>. Resources of type 
                   <code>T</code> land in <code>result.resources</code>, while resources of any other type are wrapped in error OperationOutcomes for troubleshooting.

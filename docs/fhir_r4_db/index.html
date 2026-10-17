@@ -1676,8 +1676,8 @@
                     <!--/@code_copy_button-->
                   </div>
                   <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
-  <span class="hljs-attr">fhir_r4_db:</span> <span class="hljs-string">^0.12.0</span>
-  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.12.0</span>
+  <span class="hljs-attr">fhir_r4_db:</span> <span class="hljs-string">^0.14.0</span>
+  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.14.0</span>
   <span class="hljs-attr">drift:</span> <span class="hljs-string">^2.33.0</span>
   <span class="hljs-attr">sqlite3:</span> <span class="hljs-string">^3.1.5</span></code></pre>
                 </div>
@@ -2025,6 +2025,92 @@
   <span class="hljs-string">'12345'</span>,
 );</code></pre>
                 </div>
+                <p>
+                  <code>getResourceHistory</code> returns the stored versions and leaves deletions out. <code>getHistory</code>
+                   returns <code>HistoryEntry</code> rows instead, deletions included (<code>deleted</code> is true and 
+                  <code>resource</code> is null for a tombstone), and pages in SQL; <code>countHistory</code> gives the total and 
+                  <code>getVersion</code> reads one version by key:
+                </p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> page = <span class="hljs-keyword">await</span> dao.getHistory(
+  R4ResourceType.Patient,
+  <span class="hljs-string">'12345'</span>,
+  count: <span class="hljs-number">20</span>,
+  offset: <span class="hljs-number">0</span>,
+);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> entry <span class="hljs-keyword">in</span> page) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">${entry.versionId}</span> <span class="hljs-subst">${entry.lastUpdated}</span> deleted=<span class="hljs-subst">${entry.deleted}</span>'</span>);
+}
+<span class="hljs-keyword">final</span> total = <span class="hljs-keyword">await</span> dao.countHistory(R4ResourceType.Patient, <span class="hljs-string">'12345'</span>);
+<span class="hljs-keyword">final</span> second = <span class="hljs-keyword">await</span> dao.getVersion(R4ResourceType.Patient, <span class="hljs-string">'12345'</span>, <span class="hljs-string">'2'</span>);</code></pre>
+                </div>
+                <h3 id="conditional-updates-if-match" anchor="true">
+                  <span>Conditional Updates (If-Match)</span><a href="/docs/fhir_r4_db#conditional-updates-if-match">#</a>
+                </h3>
+                <p>
+                  <code>saveResource</code> and <code>deleteResource</code> take <code>ifMatchVersion</code>. The stored version is checked inside the write's transaction, so a second writer cannot land between the check and the write; on a mismatch nothing is written and 
+                  <code>VersionConflict</code> is thrown with the <code>expected</code> and <code>actual</code> versions:
+                </p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">await</span> dao.saveResource(updated, ifMatchVersion: <span class="hljs-string">'2'</span>);
+} <span class="hljs-keyword">on</span> VersionConflict <span class="hljs-keyword">catch</span> (e) {
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">'Expected <span class="hljs-subst">${e.expected}</span>, stored <span class="hljs-subst">${e.actual}</span>'</span>);
+}</code></pre>
+                </div>
+                <h3 id="compartment-search" anchor="true"><span>Compartment Search</span><a href="/docs/fhir_r4_db#compartment-search">#</a></h3>
+                <p>
+                  <code>search</code> and <code>searchCount</code> take a <code>CompartmentScope</code>, so <code>Patient/123/Observation?code=...</code>
+                   is one search. Which parameters put a type in a compartment comes from the published CompartmentDefinitions:
+                </p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> observations = <span class="hljs-keyword">await</span> dao.search(
+  resourceType: R4ResourceType.Observation,
+  searchParameters: {
+    <span class="hljs-string">'code'</span>: [<span class="hljs-string">'http://loinc.org|8867-4'</span>],
+  },
+  compartment: <span class="hljs-keyword">const</span> CompartmentScope(<span class="hljs-string">'Patient'</span>, <span class="hljs-string">'123'</span>),
+);</code></pre>
+                </div>
+                <h3 id="custom-search-parameters" anchor="true"><span>Custom Search Parameters</span><a href="/docs/fhir_r4_db#custom-search-parameters">#</a></h3>
+                <p>
+                  A stored <code>SearchParameter</code> with <code>status: active</code> is indexed: every later save of its base types is indexed by its FHIRPath expression, through 
+                  <code>fhir_r4_path</code>. Call <code>db.rebuildSearchIndex()</code> to index what was stored before it. A definition the store cannot index by is refused with 
+                  <code>InvalidSearchParameter</code>.
+                </p>
                 <p>Use timestamp-based versioning instead of incrementing integers:</p>
                 <div class="code-block">
                   <div class="code-head">
@@ -2315,6 +2401,9 @@ Future&lt;<span class="hljs-keyword">void</span>&gt; main() <span class="hljs-ke
                   <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#deleting-resources">Deleting Resources</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhir_r4_db#advanced-features">Advanced Features</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#resource-versioning-and-history">Resource Versioning and History</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#conditional-updates-if-match">Conditional Updates (If-Match)</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#compartment-search">Compartment Search</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/fhir_r4_db#custom-search-parameters">Custom Search Parameters</a></li>
                   <li style="padding-left: 0.75em">
                     <a href="/docs/fhir_r4_db#resolving-a-resource-to-its-patient">Resolving a Resource to its Patient</a>
                   </li>

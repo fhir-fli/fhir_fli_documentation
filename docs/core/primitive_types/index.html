@@ -2010,7 +2010,10 @@ FhirBase
 <span class="hljs-keyword">final</span> <span class="hljs-built_in">int</span>? day = myDateTime.day;
 <span class="hljs-keyword">final</span> <span class="hljs-built_in">int</span>? hour = myDateTime.hour;
 
-<span class="hljs-comment">// Accessing as DateTime</span>
+<span class="hljs-comment">// Accessing as DateTime. A value written with Z or an offset is the</span>
+<span class="hljs-comment">// instant it denotes, returned in UTC: '2013-01-14T10:00:00+02:00' is</span>
+<span class="hljs-comment">// 08:00Z. A date, or a dateTime written without an offset, has no instant</span>
+<span class="hljs-comment">// of its own and is returned in the local zone.</span>
 <span class="hljs-keyword">final</span> <span class="hljs-built_in">DateTime</span>? dateTimeValue = myDateTime.valueDateTime;
 
 <span class="hljs-comment">// Comparing dates - note the comparison operators return bool? because</span>

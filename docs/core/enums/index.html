@@ -1727,8 +1727,16 @@
 
 <span class="hljs-comment">// Access additional metadata</span>
 <span class="hljs-built_in">print</span>(groupingBehavior.display?.valueString);  <span class="hljs-comment">// 'Visual Group'</span>
-<span class="hljs-built_in">print</span>(groupingBehavior.system?.valueString);   <span class="hljs-comment">// 'http://hl7.org/fhir/ValueSet/action-grouping-behavior'</span></code></pre>
+<span class="hljs-built_in">print</span>(groupingBehavior.system?.valueString);   <span class="hljs-comment">// 'http://hl7.org/fhir/action-grouping-behavior'</span>
+<span class="hljs-built_in">print</span>(groupingBehavior.version?.valueString);  <span class="hljs-comment">// '4.3.0'</span></code></pre>
                 </div>
+                <p>
+                  The <code>system</code> is the CodeSystem the code is defined in, with that CodeSystem's <code>version</code>
+                   (since 0.13.0; earlier releases put the ValueSet's url there, which is not a code system). A value parsed from JSON or built from a string carries the 
+                  <code>system</code>, <code>version</code> and <code>display</code> of the constant it matches, so <code>ActionGroupingBehavior('visual-group')</code>
+                   and <code>ActionGroupingBehavior.fromJson('visual-group')</code> both have them. <code>toJson</code>
+                   writes only the code.
+                </p>
                 <h3 id="using-native-dart-enums" anchor="true"><span>Using Native Dart Enums</span><a href="/docs/core/enums#using-native-dart-enums">#</a></h3>
                 <p>
                   Each FHIR code enum class is now paired with a native Dart enum, accessible via the <code>valueEnum</code>
@@ -1946,16 +1954,18 @@
     FhirString? display,
     <span class="hljs-comment">// Other parameters</span>
   }) {
-    <span class="hljs-keyword">final</span> valueString = 
+    <span class="hljs-keyword">final</span> valueString =
         rawValue != <span class="hljs-keyword">null</span> ? FhirCode._validateCode(rawValue) : <span class="hljs-keyword">null</span>;
     <span class="hljs-keyword">final</span> valueEnum = ActionGroupingBehaviorEnum.fromString(valueString);
-    
+    <span class="hljs-comment">// The predefined constant this code matches, if any</span>
+    <span class="hljs-keyword">final</span> known = _known(valueEnum);
+
     <span class="hljs-keyword">return</span> ActionGroupingBehavior._(
       valueString: valueString,
       valueEnum: valueEnum,
-      system: system,
-      version: version,
-      display: display,
+      system: system ?? known?.system,
+      version: version ?? known?.version,
+      display: display ?? known?.display,
       <span class="hljs-comment">// Other fields</span>
     );
   }
@@ -1968,7 +1978,7 @@
     valueString: <span class="hljs-string">'visual-group'</span>,
     valueEnum: ActionGroupingBehaviorEnum.visualGroup,
     system: FhirUri._(
-      valueString: <span class="hljs-string">'http://hl7.org/fhir/ValueSet/action-grouping-behavior'</span>,
+      valueString: <span class="hljs-string">'http://hl7.org/fhir/action-grouping-behavior'</span>,
     ),
     version: FhirString._(valueString: <span class="hljs-string">'4.3.0'</span>),
     display: FhirString._(

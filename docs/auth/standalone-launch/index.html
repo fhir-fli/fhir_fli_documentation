@@ -1734,7 +1734,7 @@
     clientId: <span class="hljs-string">'your-app-client-id'</span>,
     
     <span class="hljs-comment">// FHIR server base URL</span>
-    fhirBaseUrl: <span class="hljs-string">'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'</span>.toFhirUri,
+    fhirBaseUrl: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'</span>),
     
     <span class="hljs-comment">// Your app's redirect URI (must be registered)</span>
     redirectUri: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'com.yourcompany.yourapp://callback'</span>),
@@ -1808,7 +1808,7 @@
 
 <span class="hljs-comment">// Read a resource</span>
 <span class="hljs-keyword">final</span> readRequest = FhirReadRequest(
-  base: <span class="hljs-built_in">Uri</span>.parse(client.fhirBaseUrl.toString()),
+  base: client.fhirBaseUrl,
   resourceType: <span class="hljs-string">'Patient'</span>,
   id: <span class="hljs-string">'patient-id'</span>,
   client: client, <span class="hljs-comment">// Authenticated client handles auth headers</span>
@@ -1820,7 +1820,7 @@
 
 <span class="hljs-comment">// Search for resources</span>
 <span class="hljs-keyword">final</span> searchRequest = FhirSearchRequest(
-  base: <span class="hljs-built_in">Uri</span>.parse(client.fhirBaseUrl.toString()),
+  base: client.fhirBaseUrl,
   resourceType: <span class="hljs-string">'Observation'</span>,
   search: SearchObservation()
     .category(FhirString(<span class="hljs-string">'vital-signs'</span>)),
@@ -1832,7 +1832,7 @@
 <span class="hljs-comment">// Create a resource</span>
 <span class="hljs-keyword">final</span> newObservation = Observation(<span class="hljs-comment">/* ... */</span>);
 <span class="hljs-keyword">final</span> createRequest = FhirCreateRequest(
-  base: <span class="hljs-built_in">Uri</span>.parse(client.fhirBaseUrl.toString()),
+  base: client.fhirBaseUrl,
   resourceType: <span class="hljs-string">'Observation'</span>,
   resource: newObservation.toJson(),
   client: client,
@@ -1895,7 +1895,7 @@
     _client = SmartFhirClient(
       config: SmartConfig(
         clientId: <span class="hljs-string">'your-client-id'</span>,
-        fhirBaseUrl: <span class="hljs-string">'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'</span>.toFhirUri,
+        fhirBaseUrl: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4'</span>),
         redirectUri: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'com.yourcompany.yourapp://callback'</span>),
         scopes: [<span class="hljs-string">'patient/*.read'</span>, <span class="hljs-string">'launch/patient'</span>, <span class="hljs-string">'offline_access'</span>],
       ),
@@ -1918,7 +1918,7 @@
         <span class="hljs-comment">// Fetch patient data with fhir_r4_at_rest, using the</span>
         <span class="hljs-comment">// authenticated client</span>
         <span class="hljs-keyword">final</span> request = FhirReadRequest(
-          base: <span class="hljs-built_in">Uri</span>.parse(_client!.fhirBaseUrl.toString()),
+          base: _client!.fhirBaseUrl,
           resourceType: <span class="hljs-string">'Patient'</span>,
           id: patientId,
           client: _client!,
@@ -2015,7 +2015,7 @@
         Card(
           child: ListTile(
             leading: Icon(Icons.person),
-            title: Text(_patient!.name?.first?.text?.value ?? <span class="hljs-string">'Unknown'</span>),
+            title: Text(_patient!.name?.first?.text?.valueString ?? <span class="hljs-string">'Unknown'</span>),
             subtitle: Text(<span class="hljs-string">'Patient ID: <span class="hljs-subst">${_patient!.id}</span>'</span>),
           ),
         ),

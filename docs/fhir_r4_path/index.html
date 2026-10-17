@@ -1683,8 +1683,8 @@
                     <!--/@code_copy_button-->
                   </div>
                   <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
-  <span class="hljs-attr">fhir_r4_path:</span> <span class="hljs-string">^0.12.0</span>
-  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.12.0</span></code></pre>
+  <span class="hljs-attr">fhir_r4_path:</span> <span class="hljs-string">^0.14.0</span>
+  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.14.0</span></code></pre>
                 </div>
                 <h2 id="basic-usage" anchor="true"><span>Basic Usage</span><a href="/docs/fhir_r4_path#basic-usage">#</a></h2>
                 <p>
@@ -1719,7 +1719,7 @@
       HumanName(
         family: <span class="hljs-string">'Smith'</span>.toFhirString,
         given: [<span class="hljs-string">'Jane'</span>.toFhirString],
-        use: HumanNameUse.official,
+        use: NameUse.official,
       ),
     ],
   );
@@ -1729,7 +1729,7 @@
       HumanName(
         family: <span class="hljs-string">'Brown'</span>.toFhirString,
         given: [<span class="hljs-string">'Charlie'</span>.toFhirString],
-        use: HumanNameUse.official,
+        use: NameUse.official,
       ),
     ],
   );
@@ -1919,8 +1919,10 @@ Patient.active = true and Patient.deceased = false</code></pre>
                 <h2 id="advanced-features" anchor="true"><span>Advanced Features</span><a href="/docs/fhir_r4_path#advanced-features">#</a></h2>
                 <h3 id="resource-cache" anchor="true"><span>Resource Cache</span><a href="/docs/fhir_r4_path#resource-cache">#</a></h3>
                 <p>
-                  For advanced scenarios, the library provides a <code>ResourceCache</code> abstract class for caching canonical resources (like 
-                  <code>CodeSystem</code>, <code>ValueSet</code>, <code>StructureDefinition</code>), saving time on repeated lookups:
+                  For advanced scenarios, the engine reads canonical resources (<code>CodeSystem</code>, <code>ValueSet</code>, 
+                  <code>StructureDefinition</code>, ...) through a <code>ResourceCache</code>, so repeated lookups are not fetched again. The cache belongs to the model-independent 
+                  <code>fhir_path</code> engine and holds every resource as a <code>FhirNode</code>; every <code>fhir_r4</code>
+                   class is one:
                 </p>
                 <div class="code-block">
                   <div class="code-head">
@@ -1934,19 +1936,22 @@ Patient.active = true and Patient.deceased = false</code></pre>
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResourceCache</span> </span>{
-  Future&lt;T?&gt; getCanonicalResource&lt;T <span class="hljs-keyword">extends</span> CanonicalResource&gt;(
-    <span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]
-  );
+                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_node/fhir_node.dart'</span>;
 
-  Future&lt;<span class="hljs-keyword">void</span>&gt; saveCanonicalResource(CanonicalResource resource);
-
-  Future&lt;StructureDefinition?&gt; getStructureDefinition(<span class="hljs-built_in">String</span> url);
-  Future&lt;<span class="hljs-built_in">List</span>&lt;StructureDefinition&gt;&gt; getStructureDefinitions();
-  Future&lt;CodeSystem?&gt; getCodeSystem(<span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]);
-  <span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResourceCache</span> </span>{
+  Future&lt;FhirNode?&gt; getCanonicalResource(<span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]);
+  Future&lt;<span class="hljs-keyword">void</span>&gt; saveCanonicalResource(FhirNode resource);
+  Future&lt;FhirNode?&gt; getStructureDefinition(<span class="hljs-built_in">String</span> url);
+  Future&lt;<span class="hljs-built_in">List</span>&lt;FhirNode&gt;&gt; getStructureDefinitions();
+  Future&lt;FhirNode?&gt; getCodeSystem(<span class="hljs-built_in">String</span> url, [<span class="hljs-built_in">String</span>? version]);
+  Future&lt;<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt;&gt; getResourceNames();
 }</code></pre>
                 </div>
+                <p>
+                  <code>fhir_r4_path</code> adds a <code>TypedResourceCache</code> extension that answers with the R4 classes: 
+                  <code>canonical&lt;T&gt;(url, [version])</code>, <code>structureDefinition(url)</code>, <code>codeSystem(url, [version])</code>
+                   and <code>valueSet(url, [version])</code>, each null when the resource is absent or of another type.
+                </p>
                 <h3 id="canonical-resource-cache" anchor="true"><span>Canonical Resource Cache</span><a href="/docs/fhir_r4_path#canonical-resource-cache">#</a></h3>
                 <p>
                   <code>CanonicalResourceCache</code> is the standard in-memory implementation, with version-aware storage and retrieval:
@@ -1974,23 +1979,24 @@ Patient.active = true and Patient.deceased = false</code></pre>
   url: <span class="hljs-string">'http://example.org/fhir/ValueSet/my-codes'</span>.toFhirUri,
   version: <span class="hljs-string">'1.0.0'</span>.toFhirString,
   name: <span class="hljs-string">'MyCodes'</span>.toFhirString,
+  status: PublicationStatus.active,
 );
 manager.see(valueSet);
 
-<span class="hljs-comment">// Retrieve by URL (latest version)</span>
-<span class="hljs-keyword">final</span> retrieved = <span class="hljs-keyword">await</span> manager.getCanonicalResource&lt;ValueSet&gt;(
-  <span class="hljs-string">'http://example.org/fhir/ValueSet/my-codes'</span>
+<span class="hljs-comment">// Retrieve by URL (latest version), as a ValueSet</span>
+<span class="hljs-keyword">final</span> retrieved = <span class="hljs-keyword">await</span> manager.valueSet(
+  <span class="hljs-string">'http://example.org/fhir/ValueSet/my-codes'</span>,
 );
 
 <span class="hljs-comment">// Retrieve by URL and version</span>
-<span class="hljs-keyword">final</span> specificVersion = <span class="hljs-keyword">await</span> manager.getCanonicalResource&lt;ValueSet&gt;(
+<span class="hljs-keyword">final</span> specificVersion = <span class="hljs-keyword">await</span> manager.valueSet(
   <span class="hljs-string">'http://example.org/fhir/ValueSet/my-codes'</span>,
-  <span class="hljs-string">'1.0.0'</span>
+  <span class="hljs-string">'1.0.0'</span>,
 );</code></pre>
                 </div>
                 <p>
                   <code>OnlineResourceCache</code> extends <code>CanonicalResourceCache</code> and falls back to an HTTP GET (with 
-                  <code>Accept: application/fhir+json</code>) when a resource is not cached locally, then caches what it fetched. To give the engine a cache, pass it to the worker context:
+                  <code>Accept: application/fhir+json</code>) when a resource is not cached locally, then caches what it fetched. It takes the model's parser, so it builds R4 resources from what it fetches. To give the engine a cache, pass it to the worker context:
                 </p>
                 <div class="code-block">
                   <div class="code-head">
@@ -2005,7 +2011,7 @@ manager.see(valueSet);
                     <!--/@code_copy_button-->
                   </div>
                   <pre><code class="hljs"><span class="hljs-keyword">final</span> engine = <span class="hljs-keyword">await</span> FHIRPathEngine.create(
-  WorkerContext(resourceCache: OnlineResourceCache()),
+  WorkerContext(resourceCache: OnlineResourceCache(parse: Resource.fromJson)),
 );</code></pre>
                 </div>
                 <h2 id="error-handling" anchor="true"><span>Error Handling</span><a href="/docs/fhir_r4_path#error-handling">#</a></h2>
