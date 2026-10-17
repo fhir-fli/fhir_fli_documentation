@@ -24,7 +24,7 @@ dependencies:
   fhir_r4_cql: ^0.14.0
 ```
 
-`fhir_r4_cql` re-exports `package:cql/cql.dart`, so this single dependency gives you the whole engine plus the R4 wiring. If you don't need FHIR at all, you can depend on the engine directly instead (`cql: ^0.6.3`).
+`fhir_r4_cql` re-exports `package:cql/cql.dart`, so this single dependency gives you the whole engine plus the R4 wiring. If you don't need FHIR at all, you can depend on the engine directly instead (`cql: ^0.8.0`).
 
 ## Architecture
 
