@@ -28,8 +28,8 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.12.0
-  fhir_r4: ^0.12.0
+  fhir_r4_auth: ^0.14.0
+  fhir_r4: ^0.14.0
 ```
 
 ### Basic Example
@@ -41,7 +41,7 @@ import 'package:fhir_r4_auth/fhir_r4_auth.dart';
 final client = SmartFhirClient(
   config: SmartConfig(
     clientId: 'your-client-id',
-    fhirBaseUrl: 'https://fhir.example.com/r4'.toFhirUri,
+    fhirBaseUrl: Uri.parse('https://fhir.example.com/r4'),
     redirectUri: Uri.parse('com.yourapp://callback'),
     scopes: ['patient/*.read', 'launch/patient'],
   ),

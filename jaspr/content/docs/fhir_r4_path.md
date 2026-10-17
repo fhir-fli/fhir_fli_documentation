@@ -11,8 +11,8 @@ As of version 0.6.0, the FHIRPath engine itself lives in the standalone, model-i
 
 ```yaml
 dependencies:
-  fhir_r4_path: ^0.12.0
-  fhir_r4: ^0.12.0
+  fhir_r4_path: ^0.14.0
+  fhir_r4: ^0.14.0
 ```
 
 ## Basic Usage
@@ -36,7 +36,7 @@ void main() async {
       HumanName(
         family: 'Smith'.toFhirString,
         given: ['Jane'.toFhirString],
-        use: HumanNameUse.official,
+        use: NameUse.official,
       ),
     ],
   );
@@ -46,7 +46,7 @@ void main() async {
       HumanName(
         family: 'Brown'.toFhirString,
         given: ['Charlie'.toFhirString],
-        use: HumanNameUse.official,
+        use: NameUse.official,
       ),
     ],
   );
@@ -162,22 +162,22 @@ Patient.active = true and Patient.deceased = false
 
 ### Resource Cache
 
-For advanced scenarios, the library provides a `ResourceCache` abstract class for caching canonical resources (like `CodeSystem`, `ValueSet`, `StructureDefinition`), saving time on repeated lookups:
+For advanced scenarios, the engine reads canonical resources (`CodeSystem`, `ValueSet`, `StructureDefinition`, ...) through a `ResourceCache`, so repeated lookups are not fetched again. The cache belongs to the model-independent `fhir_path` engine and holds every resource as a `FhirNode`; every `fhir_r4` class is one:
 
 ```dart
+import 'package:fhir_node/fhir_node.dart';
+
 abstract class ResourceCache {
-  Future<T?> getCanonicalResource<T extends CanonicalResource>(
-    String url, [String? version]
-  );
-
-  Future<void> saveCanonicalResource(CanonicalResource resource);
-
-  Future<StructureDefinition?> getStructureDefinition(String url);
-  Future<List<StructureDefinition>> getStructureDefinitions();
-  Future<CodeSystem?> getCodeSystem(String url, [String? version]);
-  // ...
+  Future<FhirNode?> getCanonicalResource(String url, [String? version]);
+  Future<void> saveCanonicalResource(FhirNode resource);
+  Future<FhirNode?> getStructureDefinition(String url);
+  Future<List<FhirNode>> getStructureDefinitions();
+  Future<FhirNode?> getCodeSystem(String url, [String? version]);
+  Future<List<String>> getResourceNames();
 }
 ```
+
+`fhir_r4_path` adds a `TypedResourceCache` extension that answers with the R4 classes: `canonical<T>(url, [version])`, `structureDefinition(url)`, `codeSystem(url, [version])` and `valueSet(url, [version])`, each null when the resource is absent or of another type.
 
 ### Canonical Resource Cache
 
@@ -195,26 +195,27 @@ final valueSet = ValueSet(
   url: 'http://example.org/fhir/ValueSet/my-codes'.toFhirUri,
   version: '1.0.0'.toFhirString,
   name: 'MyCodes'.toFhirString,
+  status: PublicationStatus.active,
 );
 manager.see(valueSet);
 
-// Retrieve by URL (latest version)
-final retrieved = await manager.getCanonicalResource<ValueSet>(
-  'http://example.org/fhir/ValueSet/my-codes'
+// Retrieve by URL (latest version), as a ValueSet
+final retrieved = await manager.valueSet(
+  'http://example.org/fhir/ValueSet/my-codes',
 );
 
 // Retrieve by URL and version
-final specificVersion = await manager.getCanonicalResource<ValueSet>(
+final specificVersion = await manager.valueSet(
   'http://example.org/fhir/ValueSet/my-codes',
-  '1.0.0'
+  '1.0.0',
 );
 ```
 
-`OnlineResourceCache` extends `CanonicalResourceCache` and falls back to an HTTP GET (with `Accept: application/fhir+json`) when a resource is not cached locally, then caches what it fetched. To give the engine a cache, pass it to the worker context:
+`OnlineResourceCache` extends `CanonicalResourceCache` and falls back to an HTTP GET (with `Accept: application/fhir+json`) when a resource is not cached locally, then caches what it fetched. It takes the model's parser, so it builds R4 resources from what it fetches. To give the engine a cache, pass it to the worker context:
 
 ```dart
 final engine = await FHIRPathEngine.create(
-  WorkerContext(resourceCache: OnlineResourceCache()),
+  WorkerContext(resourceCache: OnlineResourceCache(parse: Resource.fromJson)),
 );
 ```
 

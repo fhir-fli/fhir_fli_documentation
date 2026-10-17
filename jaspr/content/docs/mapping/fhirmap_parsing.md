@@ -75,6 +75,9 @@ Often, you'll want to parse mapping files from the file system:
 ```dart
 import 'dart:io';
 
+import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
+
 Future<StructureMap> parseMapFile(String filePath) async {
   final parser = await StructureMapParser.create();
   final fileContent = await File(filePath).readAsString();
@@ -87,7 +90,14 @@ Future<StructureMap> parseMapFile(String filePath) async {
 When testing or validating your parser, you might want to compare the generated StructureMap to a known good version:
 
 ```dart
-void compareGeneratedMap(String mapText, String referencePath) async {
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:collection/collection.dart';
+import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
+
+Future<void> compareGeneratedMap(String mapText, String referencePath) async {
   final parser = await StructureMapParser.create();
   
   // Parse the map text

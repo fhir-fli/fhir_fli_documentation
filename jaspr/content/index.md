@@ -15,7 +15,7 @@ the HL7 specifications, so they follow the standard element for element.
 
 ```yaml
 dependencies:
-  fhir_r4: ^0.12.0
+  fhir_r4: ^0.14.0
 ```
 
 ## Packages

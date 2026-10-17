@@ -19,8 +19,8 @@ Add the dependencies to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  fhir_r4_auth: ^0.12.0
-  fhir_r4: ^0.12.0
+  fhir_r4_auth: ^0.14.0
+  fhir_r4: ^0.14.0
 ```
 
 For R5 or R6, use `fhir_r5_auth`/`fhir_r6_auth` and `fhir_r5`/`fhir_r6` instead.
@@ -118,7 +118,7 @@ import 'package:fhir_r4/fhir_r4.dart';
 void main() {
   final config = SmartConfig(
     clientId: 'test',
-    fhirBaseUrl: 'https://example.com'.toFhirUri,
+    fhirBaseUrl: Uri.parse('https://example.com'),
     redirectUri: Uri.parse('com.test://callback'),
     scopes: ['patient/*.read'],
   );

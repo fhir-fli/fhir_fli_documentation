@@ -400,13 +400,16 @@ final result = parseRequestResult(resource);
 for (final resource in result.resources) {
   print('Retrieved resource: ${resource.id}');
 }
-for (final error in result.errorOperationOutcomes) {
+for (final error in result.errorOperationOutcomes.cast<OperationOutcome>()) {
   print('Error: ${error.issue.first.diagnostics}');
 }
-for (final info in result.informationOperationOutcomes) {
+for (final info
+    in result.informationOperationOutcomes.cast<OperationOutcome>()) {
   print('Info: ${info.issue.first.diagnostics}');
 }
 ```
+
+The OperationOutcome lists hold `Resource` (the parsing itself lives in the version-independent `fhir_at_rest`), so cast to `OperationOutcome` to read the issues.
 
 If you expect a specific resource type, use `parseRequestResultForType<T>`. Resources of type `T` land in `result.resources`, while resources of any other type are wrapped in error OperationOutcomes for troubleshooting.
 

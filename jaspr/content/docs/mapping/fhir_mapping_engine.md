@@ -11,30 +11,30 @@ The FHIR Mapping Engine is the component that executes StructureMap resources to
 
 ### Resource Cache Hierarchy
 
-The mapping engine relies on a cache system to efficiently access and store canonical resources. The cache classes are provided by the `fhir_r4_path` package (a dependency of `fhir_r4_mapping`) and come in three levels:
+The mapping engine relies on a cache system to efficiently access and store canonical resources. The cache classes belong to the model-independent `fhir_path` engine; `fhir_r4_path` and `fhir_r4_mapping` re-export them. They hold every resource as a `FhirNode`, which every `fhir_r4` class is, and come in three levels:
 
 #### 1. ResourceCache (Base Abstract Class)
 
 ```dart
-abstract class ResourceCache {
-  // Fetches a CanonicalResource (StructureDefinition, ValueSet, etc.)
-  // by canonical URL, optionally by version
-  Future<T?> getCanonicalResource<T extends CanonicalResource>(
-    String url, [
-    String? version,
-  ]);
+import 'package:fhir_node/fhir_node.dart';
 
-  // Saves a CanonicalResource to the cache
-  Future<void> saveCanonicalResource(CanonicalResource resource);
+abstract class ResourceCache {
+  // Fetches a canonical resource (StructureDefinition, ValueSet, etc.)
+  // by canonical URL, optionally by version
+  Future<FhirNode?> getCanonicalResource(String url, [String? version]);
+
+  // Saves a canonical resource to the cache
+  Future<void> saveCanonicalResource(FhirNode resource);
 
   // Convenience lookups
-  Future<StructureDefinition?> getStructureDefinition(String url);
-  Future<List<StructureDefinition>> getStructureDefinitions();
-  Future<CodeSystem?> getCodeSystem(String url, [String? version]);
-  Future<Map<String, dynamic>?> getResourceMap(String url);
+  Future<FhirNode?> getStructureDefinition(String url);
+  Future<List<FhirNode>> getStructureDefinitions();
+  Future<FhirNode?> getCodeSystem(String url, [String? version]);
   Future<List<String>> getResourceNames();
 }
 ```
+
+For the R4 classes, `fhir_r4_path`'s `TypedResourceCache` extension adds `canonical<T>(url, [version])`, `structureDefinition(url)`, `codeSystem(url, [version])` and `valueSet(url, [version])`.
 
 The base `ResourceCache` defines the interface for canonical resource lookup operations. As an abstract class, it can't be instantiated directly.
 
@@ -54,10 +54,10 @@ final sd = await cache.getStructureDefinition(
 #### 3. OnlineResourceCache
 
 ```dart
-final cache = OnlineResourceCache();
+final cache = OnlineResourceCache(parse: Resource.fromJson);
 ```
 
-This extends `CanonicalResourceCache` to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it over HTTP from its canonical URL, caching the result for subsequent lookups. You can optionally pass your own `http` `Client`.
+This extends `CanonicalResourceCache` to add online lookup capabilities. If a resource isn't found in the local cache, it will attempt to fetch it over HTTP from its canonical URL, caching the result for subsequent lookups. `parse` is the model's resource-from-JSON, so what it fetches comes back as R4 classes. You can optionally pass your own `http` `Client`.
 
 ### Resource Builders
 
@@ -188,7 +188,7 @@ await localCache.saveCanonicalResource(structureDefinitionA);
 await localCache.saveCanonicalResource(valueSetB);
 
 // For mixed local/online operation
-final onlineCache = OnlineResourceCache();
+final onlineCache = OnlineResourceCache(parse: Resource.fromJson);
 await onlineCache.saveCanonicalResource(structureDefinitionA);  // Priority local cache
 // Other resources will be fetched from online sources if needed
 ```
@@ -221,7 +221,7 @@ import 'package:fhir_r4_mapping/fhir_r4_mapping.dart';
 
 Future<void> main() async {
   // Step 1: Set up resource cache
-  final resourceCache = OnlineResourceCache();
+  final resourceCache = OnlineResourceCache(parse: Resource.fromJson);
   
   // Step 2: Pre-load any local resources
   await resourceCache
