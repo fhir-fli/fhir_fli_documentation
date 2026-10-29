@@ -7,87 +7,91 @@ This guide walks you through your first session with FHIR ANT — from installat
 
 ## Install
 
-Download FHIR ANT from the [Google Play Store](https://play.google.com/store/apps/details?id=com.fhirfli.fhirant). It also runs as a Linux desktop app or a standalone CLI server (see [CLI Usage](docs/fhirant/fhirant_cli)).
+FHIR ANT is pre-release and has no public download. Testers receive the Android build (Android 7.0 or newer) directly; [INSTALL.md](https://github.com/fhir-fli/fhirant/blob/main/INSTALL.md) in the repository explains installing it. The server also runs as a standalone CLI process (see [CLI Usage](docs/fhirant/fhirant_cli)).
 
 ## First Launch
 
 When you open the app for the first time, you'll see a three-page onboarding:
 
 1. **Welcome** — what FHIR ANT is
-2. **How It Works** — features overview
-3. **Sample Data** — optionally load a set of realistic clinical data (MIMIC-IV subset) to explore with
+2. **How It Works** — starting the server, connecting from another device, Experimentation vs Secure mode, backup and restore
+3. **Load Sample Data?** — optionally load a set of realistic clinical data (MIMIC-IV subset) to explore with
 
 You can always load or clear sample data later. Tap **Get Started** to reach the dashboard.
 
 ## The Dashboard
 
-The dashboard has four sections:
+The dashboard has five cards:
 
-- **Server Control** — start/stop the server, toggle Dev Mode, set the port
-- **Network Info** — your device's IP address and a QR code other devices can scan to connect
-- **Resource Counts** — how many FHIR resources are stored, by type
+- **FHIR Server** — start/stop the server, set the port, choose Experimentation or Secure mode, keep it running in the background
+- **Network** — the server's URL, its certificate fingerprint, and a QR code carrying both for other devices to scan
+- **Resources** — how many FHIR resources are stored, by type
+- **Backup** — export every record to a passphrase-protected file, or restore one
 - **Request Log** — live feed of incoming HTTP requests
 
 ## Starting the Server
 
-Tap **Start** on the Server Control card. The server binds to all network interfaces on the configured port (default 8080). The URL will look something like:
+Tap **Start** on the FHIR Server card. The server binds to all network interfaces on the configured port (default 8080). The URL will look something like:
 
 ```
-http://192.168.1.42:8080
+https://192.168.1.42:8080
 ```
 
-Any device on the same Wi-Fi network can reach this URL.
+Any device on the same Wi-Fi network can reach this URL. The app serves HTTPS only, with a self-signed certificate: a client should pin the SHA-256 fingerprint the Network card shows. The examples below use `curl -k`, which skips the certificate check, for a quick try only.
 
-### Dev Mode vs Authenticated Mode
+### Experimentation vs Secure Mode
 
-By default, the server starts in **Dev Mode** — authentication is disabled and all requests are accepted. This is useful for quick testing.
+A fresh install starts in **Experimentation mode** — authentication is disabled and all requests are accepted. It is for test data only.
 
-To require authentication, toggle Dev Mode **off** before starting the server. When Dev Mode is off, all non-public endpoints require a valid JWT token.
+To require authentication, stop the server and switch **Authentication** to **Secure**. When there is no administrator yet, the app asks you to create one. In Secure mode, all non-public endpoints require a valid JWT token.
 
-## Using Dev Mode
+## Using Experimentation Mode
 
-With Dev Mode on, you can immediately start making requests:
+With Experimentation mode on, you can immediately start making requests:
 
 ```bash
 # Server capabilities
-curl http://192.168.1.42:8080/metadata
+curl -k https://192.168.1.42:8080/metadata
 
 # Search for all patients
-curl http://192.168.1.42:8080/Patient
+curl -k https://192.168.1.42:8080/Patient
 
 # Create a patient
-curl -X POST http://192.168.1.42:8080/Patient \
+curl -k -X POST https://192.168.1.42:8080/Patient \
   -H "Content-Type: application/fhir+json" \
   -d '{"resourceType":"Patient","name":[{"family":"Smith","given":["John"]}]}'
 ```
 
-No tokens or credentials needed — every request is treated as an admin.
+No tokens or credentials needed — every request is treated as an admin. Registering accounts is refused in this mode.
 
 ## Setting Up Authentication
 
-When you're ready to use auth, stop the server, toggle Dev Mode off, and start it again.
+When you're ready to use auth, stop the server, switch to Secure mode, and start it again.
 
 ### Step 1: Check Server Status
 
-The `/auth/status` endpoint is public and tells you whether any users exist:
+The `/auth/status` endpoint is public and tells you whether any users exist. On a fresh CLI server with authentication on:
 
 ```bash
-curl http://192.168.1.42:8080/auth/status
+curl http://localhost:8080/auth/status
 ```
 
 ```json
-{"firstUser": true}
+{"firstUser": true, "bootstrapTokenRequired": true}
 ```
 
-`"firstUser": true` means no users have been created yet.
+`"firstUser": true` means no users have been created yet; `"bootstrapTokenRequired": true` means the first registration must carry the server's bootstrap token.
 
 ### Step 2: Create the Admin Account
 
-When no users exist, anyone can register — this is the bootstrap mechanism. The first user is **automatically promoted to admin** regardless of what role you request:
+**In the app**, you create the administrator in the dialog that appears when you switch to Secure mode; skip to Step 3 and log in with it.
+
+**On the CLI**, either start the server with `FHIRANT_ADMIN_USERNAME` and `FHIRANT_ADMIN_PASSWORD` set, or register the first account with the one-time bootstrap token the server prints at start (it is also in `<db-path>/.bootstrap_token`). The first user is **automatically promoted to admin** regardless of what role you request:
 
 ```bash
-curl -X POST http://192.168.1.42:8080/auth/register \
+curl -X POST http://localhost:8080/auth/register \
   -H "Content-Type: application/json" \
+  -H "X-Bootstrap-Token: <token from the server log>" \
   -d '{"username": "admin", "password": "mysecurepassword"}'
 ```
 
@@ -103,7 +107,7 @@ curl -X POST http://192.168.1.42:8080/auth/register \
 }
 ```
 
-Registration returns a JWT immediately — you're logged in.
+Registration returns a JWT immediately — you're logged in. Without the token, the first registration is refused (403).
 
 <Info>
 **Password Requirements**
@@ -113,17 +117,17 @@ Passwords must be 12-128 characters. There are no complexity rules (no required 
 
 ### Step 3: Make Authenticated Requests
 
-Use the `token` from registration or login in the `Authorization` header:
+Use the `token` from registration or login in the `Authorization` header (the examples from here use `$BASE` for your server's URL; add `-k` for the app's self-signed certificate):
 
 ```bash
 TOKEN="eyJ..."
 
 # Search patients
 curl -H "Authorization: Bearer $TOKEN" \
-  http://192.168.1.42:8080/Patient
+  $BASE/Patient
 
 # Create a resource
-curl -X POST http://192.168.1.42:8080/Observation \
+curl -X POST $BASE/Observation \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/fhir+json" \
   -d '{
@@ -140,13 +144,13 @@ Once the admin account exists, only admins can create new users. Use the admin t
 
 ```bash
 # Create a clinician (default role)
-curl -X POST http://192.168.1.42:8080/auth/register \
+curl -X POST $BASE/auth/register \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"username": "drjones", "password": "anothersecurepassword"}'
 
 # Create a read-only user
-curl -X POST http://192.168.1.42:8080/auth/register \
+curl -X POST $BASE/auth/register \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"username": "viewer", "password": "viewersecurepassword", "role": "readonly"}'
@@ -163,7 +167,7 @@ Available roles and their default SMART scopes:
 You can also assign custom SMART scopes per user:
 
 ```bash
-curl -X POST http://192.168.1.42:8080/auth/register \
+curl -X POST $BASE/auth/register \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -179,7 +183,7 @@ curl -X POST http://192.168.1.42:8080/auth/register \
 Other users log in with their credentials:
 
 ```bash
-curl -X POST http://192.168.1.42:8080/auth/login \
+curl -X POST $BASE/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username": "drjones", "password": "anothersecurepassword"}'
 ```
@@ -200,7 +204,7 @@ curl -X POST http://192.168.1.42:8080/auth/login \
 Access tokens expire after 8 hours. Use the refresh token (valid for 7 days) to get a new one:
 
 ```bash
-curl -X POST http://192.168.1.42:8080/auth/token \
+curl -X POST $BASE/auth/token \
   -H "Content-Type: application/json" \
   -d '{"grant_type": "refresh_token", "refresh_token": "eyJ..."}'
 ```
@@ -210,14 +214,14 @@ curl -X POST http://192.168.1.42:8080/auth/token \
 Revoke your current token:
 
 ```bash
-curl -X POST http://192.168.1.42:8080/auth/logout \
+curl -X POST $BASE/auth/logout \
   -H "Authorization: Bearer $TOKEN"
 ```
 
 Or revoke a specific token:
 
 ```bash
-curl -X POST http://192.168.1.42:8080/auth/revoke \
+curl -X POST $BASE/auth/revoke \
   -H "Content-Type: application/json" \
   -d '{"token": "eyJ..."}'
 ```
@@ -248,28 +252,34 @@ curl "$BASE/Observation?patient.name=smith"
 
 ### Backup and Restore
 
-Export all data as a FHIR Bundle:
+A backup is encrypted under a passphrase you choose. The passphrase is not stored and cannot be recovered. Export all data as an encrypted SQLite file:
 
 ```bash
-curl -X POST "$BASE/\$backup" -H "Authorization: Bearer $TOKEN" > backup.json
+curl -X POST "$BASE/\$backup" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/fhir+json" \
+  -d '{"resourceType":"Parameters","parameter":[{"name":"passphrase","valueString":"a long passphrase"}]}' \
+  -o backup.sqlite
 ```
 
-Restore from a backup:
+Restore it, sending the file as the body and the passphrase in a header:
 
 ```bash
 curl -X POST "$BASE/\$restore" \
   -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/fhir+json" \
-  -d @backup.json
+  -H "X-Backup-Passphrase: a long passphrase" \
+  --data-binary @backup.sqlite
 ```
+
+`$restore` also takes a plain FHIR Bundle (collection or transaction). The app's Backup card does both without curl.
 
 ## Connecting from a FHIR Client
 
-FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the [fhir_r4_at_rest](docs/at_rest/fhir_r4_at_rest) Dart package:
+FHIR ANT is a standard FHIR R4 (R4B) server. Any FHIR client library can connect to it; from the app, it must accept the app's self-signed certificate (pin its fingerprint). For example, with the [fhir_r4_at_rest](docs/at_rest/fhir_r4_at_rest) Dart package:
 
 ```dart
 final request = FhirSearchRequest(
-  base: Uri.parse('http://192.168.1.42:8080'),
+  base: Uri.parse('https://192.168.1.42:8080'),
   type: R4ResourceType.Patient,
   parameters: FhirSearchParams(params: [
     SearchString(FhirSearchParamDefinition.familyParam, ['Smith']),
@@ -286,8 +296,8 @@ Try clearing the app cache in Android Settings > Apps > FHIR ANT > Clear Cache, 
 **Can't connect from another device**
 Make sure both devices are on the same Wi-Fi network. Some networks (especially guest networks) isolate devices from each other.
 
-**"Account is locked" error**
-After 5 failed login attempts, the account locks for 15 minutes. Wait for it to expire, or have an admin unlock it:
+**Login keeps failing with the right password**
+After 5 failed login attempts, the account locks for 15 minutes. A locked account gets the same "Invalid username or password" answer as a wrong password. Wait for it to expire, or have an admin unlock it:
 
 ```bash
 curl -X POST "$BASE/admin/unlock/2" -H "Authorization: Bearer $ADMIN_TOKEN"
