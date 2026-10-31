@@ -1658,14 +1658,27 @@
             <div class="content-container">
               <div class="content-header"><h1>FHIR ANT API Reference</h1></div>
               <section class="content">
-                <p>Complete list of all endpoints available on the FHIR ANT server.</p>
+                <p>
+                  Every route the FHIR ANT server registers, grouped by purpose. With authentication on, everything outside the public endpoints needs a token.
+                </p>
                 <h2 id="public-endpoints" anchor="true"><span>Public Endpoints</span><a href="/docs/fhirant/fhirant_api_reference#public-endpoints">#</a></h2>
-                <p>These endpoints do not require authentication even when Dev Mode is off.</p>
+                <p>
+                  These need no token even with authentication on. Everything under <code>/auth/</code> is reachable without one; 
+                  <code>/auth/password</code> itself requires the caller's token.
+                </p>
                 <table>
                   <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
                   <tbody>
-                    <tr><td><code>GET</code></td><td><code>/</code></td><td>Server info</td></tr>
-                    <tr><td><code>GET</code></td><td><code>/health</code></td><td>Health check</td></tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/</code></td>
+                      <td>Welcome page (with a query string it is the system search, which requires a token)</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/health</code></td>
+                      <td>Health check: status, uptime, version, database connectivity</td>
+                    </tr>
                     <tr><td><code>GET</code></td><td><code>/metadata</code></td><td>FHIR CapabilityStatement</td></tr>
                     <tr>
                       <td><code>GET</code></td>
@@ -1681,9 +1694,34 @@
                 <table>
                   <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
                   <tbody>
-                    <tr><td><code>POST</code></td><td><code>/auth/register</code></td><td>Register new user</td></tr>
-                    <tr><td><code>POST</code></td><td><code>/auth/login</code></td><td>Login, returns JWT</td></tr>
-                    <tr><td><code>POST</code></td><td><code>/auth/token</code></td><td>Token refresh / code exchange</td></tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/auth/status</code></td>
+                      <td>
+                        Whether any account exists (
+                        <code>firstUser</code>
+                        ) and whether the first registration needs the bootstrap token (
+                        <code>bootstrapTokenRequired</code>
+                        )
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/auth/register</code></td>
+                      <td>
+                        Register a user (the first one with the bootstrap token, later ones by an admin; refused while authentication is off)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/auth/login</code></td>
+                      <td>Login, returns a JWT and a refresh token</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/auth/token</code></td>
+                      <td>Token refresh / authorization code exchange</td>
+                    </tr>
                     <tr><td><code>POST</code></td><td><code>/auth/revoke</code></td><td>Revoke a token (RFC 7009)</td></tr>
                     <tr><td><code>POST</code></td><td><code>/auth/logout</code></td><td>Logout (revoke current token)</td></tr>
                     <tr>
@@ -1691,34 +1729,94 @@
                       <td><code>/auth/authorize</code></td>
                       <td>OAuth authorization (show form)</td>
                     </tr>
-                    <tr><td><code>POST</code></td><td><code>/auth/authorize</code></td><td>OAuth authorization (submit)</td></tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/auth/authorize</code></td>
+                      <td>OAuth authorization (submit, form or JSON)</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/auth/password</code></td>
+                      <td>Change your own password (<code>current_password</code>, <code>new_password</code>)</td>
+                    </tr>
                   </tbody>
                 </table>
                 <h2 id="admin-endpoints" anchor="true"><span>Admin Endpoints</span><a href="/docs/fhirant/fhirant_api_reference#admin-endpoints">#</a></h2>
+                <p>All require the admin role.</p>
                 <table>
                   <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
                   <tbody>
                     <tr>
                       <td><code>POST</code></td>
                       <td><code>/admin/unlock/&lt;userId&gt;</code></td>
-                      <td>Unlock locked account</td>
+                      <td>Unlock a locked account</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/admin/users</code></td>
+                      <td>List accounts, without their secrets</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/admin/users/&lt;userId&gt;/password</code></td>
+                      <td>Set an account's password (<code>new_password</code>)</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/admin/users/&lt;userId&gt;/deactivate</code></td>
+                      <td>Deactivate an account</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/admin/users/&lt;userId&gt;/activate</code></td>
+                      <td>Reactivate an account</td>
+                    </tr>
+                    <tr>
+                      <td><code>PUT</code></td>
+                      <td><code>/admin/users/&lt;userId&gt;/role</code></td>
+                      <td>Change an account's role (<code>role</code>)</td>
+                    </tr>
+                    <tr>
+                      <td><code>PUT</code></td>
+                      <td><code>/admin/users/&lt;userId&gt;/scopes</code></td>
+                      <td>Set an account's SMART scopes (<code>scopes</code>, or null for the role's defaults)</td>
                     </tr>
                   </tbody>
                 </table>
+                <p>
+                  A change to an account's password, role, scopes or activation ends every token issued to it before the change. The last active administrator cannot be deactivated or demoted.
+                </p>
                 <h2 id="resource-crud" anchor="true"><span>Resource CRUD</span><a href="/docs/fhirant/fhirant_api_reference#resource-crud">#</a></h2>
                 <table>
                   <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
                   <tbody>
-                    <tr><td><code>POST</code></td><td><code>/&lt;type&gt;</code></td><td>Create resource</td></tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/&lt;type&gt;</code></td>
+                      <td>Create resource (<code>If-None-Exist</code> for conditional create)</td>
+                    </tr>
                     <tr><td><code>GET</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td>Read resource</td></tr>
-                    <tr><td><code>PUT</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td>Update resource</td></tr>
+                    <tr>
+                      <td><code>PUT</code></td>
+                      <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
+                      <td>Update resource, or create it with that id (<code>If-Match</code> for a version-aware update)</td>
+                    </tr>
+                    <tr>
+                      <td><code>PUT</code></td>
+                      <td><code>/&lt;type&gt;?&lt;criteria&gt;</code></td>
+                      <td>Conditional update</td>
+                    </tr>
                     <tr>
                       <td><code>PATCH</code></td>
                       <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
                       <td>JSON Patch resource</td>
                     </tr>
                     <tr><td><code>DELETE</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td>Delete resource</td></tr>
-                    <tr><td><code>DELETE</code></td><td><code>/&lt;type&gt;</code></td><td>Conditional delete</td></tr>
+                    <tr>
+                      <td><code>DELETE</code></td>
+                      <td><code>/&lt;type&gt;?&lt;criteria&gt;</code></td>
+                      <td>Conditional delete</td>
+                    </tr>
                   </tbody>
                 </table>
                 <h2 id="search" anchor="true"><span>Search</span><a href="/docs/fhirant/fhirant_api_reference#search">#</a></h2>
@@ -1727,6 +1825,7 @@
                   <tbody>
                     <tr><td><code>GET</code></td><td><code>/&lt;type&gt;</code></td><td>Search by type</td></tr>
                     <tr><td><code>POST</code></td><td><code>/&lt;type&gt;/_search</code></td><td>POST-based search</td></tr>
+                    <tr><td><code>GET</code></td><td><code>/?&lt;params&gt;</code></td><td>System-level search</td></tr>
                     <tr>
                       <td><code>POST</code></td>
                       <td><code>/_search</code></td>
@@ -1782,6 +1881,27 @@
                     <tr><td><code>ALL</code></td><td><code>/&lt;type&gt;/$validate</code></td><td>Validate against type</td></tr>
                     <tr><td><code>GET/POST</code></td><td><code>/$fhirpath</code></td><td>Evaluate FHIRPath</td></tr>
                     <tr><td><code>POST</code></td><td><code>/$transform</code></td><td>FHIR Mapping Language</td></tr>
+                    <tr><td><code>POST</code></td><td><code>/$cql</code></td><td>Evaluate CQL</td></tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/Library/&lt;id&gt;/$evaluate</code></td>
+                      <td>Evaluate a stored CQL Library</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/Library/$evaluate</code></td>
+                      <td>Evaluate a Library by canonical URL or inline</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/$immds-forecast</code></td>
+                      <td>Immunization forecast, CDC CDSi logic</td>
+                    </tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/$immds-forecast-who</code></td>
+                      <td>Immunization forecast, WHO EPI logic</td>
+                    </tr>
                     <tr>
                       <td><code>GET</code></td>
                       <td><code>/Composition/&lt;id&gt;/$document</code></td>
@@ -1802,8 +1922,18 @@
                       <td><code>/&lt;type&gt;/&lt;id&gt;/$meta-delete</code></td>
                       <td>Remove meta tags</td>
                     </tr>
-                    <tr><td><code>POST</code></td><td><code>/$backup</code></td><td>Export all data</td></tr>
-                    <tr><td><code>POST</code></td><td><code>/$restore</code></td><td>Import data</td></tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/$reindex</code></td>
+                      <td>Rebuild the search index (asynchronous)</td>
+                    </tr>
+                    <tr><td><code>GET</code></td><td><code>/$reindex-status</code></td><td>Poll the reindex job</td></tr>
+                    <tr>
+                      <td><code>POST</code></td>
+                      <td><code>/$backup</code></td>
+                      <td>Export all data, encrypted under a passphrase</td>
+                    </tr>
+                    <tr><td><code>POST</code></td><td><code>/$restore</code></td><td>Import a backup</td></tr>
                   </tbody>
                 </table>
                 <h2 id="terminology" anchor="true"><span>Terminology</span><a href="/docs/fhirant/fhirant_api_reference#terminology">#</a></h2>
@@ -1842,10 +1972,46 @@
                     </tr>
                     <tr>
                       <td><code>GET/POST</code></td>
+                      <td><code>/CodeSystem/&lt;id&gt;/$subsumes</code></td>
+                      <td>Subsumption test</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/CodeSystem/$subsumes</code></td>
+                      <td>Subsumption test (type-level)</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
                       <td><code>/ValueSet/&lt;id&gt;/$expand</code></td>
                       <td>Expand ValueSet</td>
                     </tr>
                     <tr><td><code>GET/POST</code></td><td><code>/ValueSet/$expand</code></td><td>Expand (type-level)</td></tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/ConceptMap/&lt;id&gt;/$translate</code></td>
+                      <td>Translate a code</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/ConceptMap/$translate</code></td>
+                      <td>Translate (type-level)</td>
+                    </tr>
+                    <tr>
+                      <td><code>GET/POST</code></td>
+                      <td><code>/NamingSystem/$preferred-id</code></td>
+                      <td>Preferred identifier</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h2 id="subscriptions" anchor="true"><span>Subscriptions</span><a href="/docs/fhirant/fhirant_api_reference#subscriptions">#</a></h2>
+                <table>
+                  <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>GET</code></td>
+                      <td><code>/ws</code></td>
+                      <td>Websocket channel: connect, send <code>bind &lt;id&gt;</code>, receive notifications</td>
+                    </tr>
                   </tbody>
                 </table>
                 <h2 id="bulk-data-export" anchor="true"><span>Bulk Data Export</span><a href="/docs/fhirant/fhirant_api_reference#bulk-data-export">#</a></h2>
@@ -1928,6 +2094,7 @@
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_api_reference#compartments">Compartments</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_api_reference#operations">Operations</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_api_reference#terminology">Terminology</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_api_reference#subscriptions">Subscriptions</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_api_reference#bulk-data-export">Bulk Data Export</a></li>
                 </ul>
               </div>

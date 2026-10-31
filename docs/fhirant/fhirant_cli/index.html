@@ -1659,7 +1659,7 @@
               <div class="content-header"><h1>FHIR ANT CLI</h1></div>
               <section class="content">
                 <p>
-                  FHIR ANT can also run as a standalone command-line server on any platform that supports Dart (Linux, macOS, Windows). This is useful for development, CI/CD, and server deployments.
+                  FHIR ANT also runs as a standalone command-line server on any platform Dart supports (Linux, macOS, Windows). This is useful for development, CI/CD, and server deployments.
                 </p>
                 <h2 id="running" anchor="true"><span>Running</span><a href="/docs/fhirant/fhirant_cli#running">#</a></h2>
                 <div class="code-block">
@@ -1677,18 +1677,85 @@
                   <pre><code class="hljs"><span class="hljs-built_in">cd</span> packages/fhirant_server
 dart run bin/server.dart</code></pre>
                 </div>
+                <p>
+                  The store is encrypted, and the server refuses to start without a key (see Environment Variables below). For a throwaway database, pass 
+                  <code>--allow-public-key</code>, or <code>--dev-mode</code>, which implies it.
+                </p>
+                <p>
+                  The CLI opens the store on its own isolate, so a long write (a large transaction Bundle, a restore) does not stop the server answering other requests.
+                </p>
                 <h2 id="options" anchor="true"><span>Options</span><a href="/docs/fhirant/fhirant_cli#options">#</a></h2>
                 <table>
                   <thead><tr><th>Flag</th><th>Default</th><th>Description</th></tr></thead>
                   <tbody>
                     <tr><td><code>--port</code>, <code>-p</code></td><td><code>8080</code></td><td>Server port</td></tr>
-                    <tr><td><code>--db-path</code></td><td><code>data/db</code></td><td>Database file path</td></tr>
-                    <tr><td><code>--sqlcipher-path</code></td><td>(auto-detect)</td><td>Custom SQLCipher library path</td></tr>
-                    <tr><td><code>--config</code>, <code>-c</code></td><td>—</td><td>YAML configuration file</td></tr>
+                    <tr>
+                      <td><code>--db-path</code></td>
+                      <td><code>data/db</code></td>
+                      <td>
+                        Directory for the database (
+                        <code>fhirant.db</code>
+                        ), the generated JWT secret, the bootstrap token and bulk export files
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--config</code>, <code>-c</code></td>
+                      <td>—</td>
+                      <td>
+                        YAML config file whose keys are these option names; the command line overrides it, and an unknown key is an error
+                      </td>
+                    </tr>
                     <tr><td><code>--https</code></td><td><code>false</code></td><td>Enable HTTPS</td></tr>
                     <tr><td><code>--cert-path</code></td><td>—</td><td>HTTPS certificate file</td></tr>
                     <tr><td><code>--key-path</code></td><td>—</td><td>HTTPS private key file</td></tr>
-                    <tr><td><code>--dev-mode</code></td><td><code>false</code></td><td>Disable authentication</td></tr>
+                    <tr>
+                      <td><code>--dev-mode</code></td>
+                      <td><code>false</code></td>
+                      <td>Disable authentication (testing only). Implies <code>--allow-public-key</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>--allow-public-key</code></td>
+                      <td><code>false</code></td>
+                      <td>
+                        Open the store under the publicly known default key when 
+                        <code>FHIRANT_ENCRYPTION_KEY</code>
+                         is unset (throwaway databases only), with authentication still on
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--spec-path</code></td>
+                      <td><code>/app/fhir_spec</code></td>
+                      <td>Directory of FHIR spec NDJSON files loaded on first start</td>
+                    </tr>
+                    <tr>
+                      <td><code>--base-url</code></td>
+                      <td>—</td>
+                      <td>
+                        The URL clients reach this server by, so a search can tell an absolute reference to this server from one to another server
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>--audit-retention-days</code></td>
+                      <td>unset</td>
+                      <td>Days AuditEvents are kept before the hourly sweep removes them. Unset: none are removed</td>
+                    </tr>
+                    <tr>
+                      <td><code>--clamd-host</code></td>
+                      <td>unset</td>
+                      <td>
+                        Host of a ClamAV 
+                        <code>clamd</code>
+                         daemon. Set, every file a client sends is scanned before it is stored; a match is refused (422), and so is a file clamd cannot answer for (503). 
+                        <code>$restore</code>
+                         is not scanned yet. Unset: nothing is scanned
+                      </td>
+                    </tr>
+                    <tr><td><code>--clamd-port</code></td><td><code>3310</code></td><td>clamd's TCP port</td></tr>
+                    <tr>
+                      <td><code>--clamd-timeout-seconds</code></td>
+                      <td><code>130</code></td>
+                      <td>How long one scan may take before the file is refused</td>
+                    </tr>
                     <tr><td><code>--help</code>, <code>-h</code></td><td>—</td><td>Show usage</td></tr>
                   </tbody>
                 </table>
@@ -1696,10 +1763,44 @@ dart run bin/server.dart</code></pre>
                 <table>
                   <thead><tr><th>Variable</th><th>Description</th></tr></thead>
                   <tbody>
-                    <tr><td><code>FHIRANT_ENCRYPTION_KEY</code></td><td>Database encryption key</td></tr>
-                    <tr><td><code>FHIRANT_JWT_SECRET</code></td><td>JWT signing secret</td></tr>
+                    <tr>
+                      <td><code>FHIRANT_ENCRYPTION_KEY</code></td>
+                      <td>
+                        Database encryption key. Unset, the server refuses to start unless 
+                        <code>--allow-public-key</code>
+                         or 
+                        <code>--dev-mode</code>
+                         is given. Set but empty, it always refuses: an empty key is no encryption
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>FHIRANT_JWT_SECRET</code></td>
+                      <td>
+                        JWT signing secret. Unset, a strong secret is generated once and kept at 
+                        <code>&lt;db-path&gt;/.jwt_secret</code>
+                        ; set it when several instances must share one
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>FHIRANT_ADMIN_USERNAME</code>, <code>FHIRANT_ADMIN_PASSWORD</code></td>
+                      <td>
+                        Create the first administrator at start. Ignored once an administrator exists. Only one of the two set, or a username or password the server refuses, stops the server
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
+                <h2 id="the-first-administrator" anchor="true">
+                  <span>The First Administrator</span><a href="/docs/fhirant/fhirant_cli#the-first-administrator">#</a>
+                </h2>
+                <p>
+                  With authentication on and no accounts, the server prints a one-time <strong>bootstrap token</strong>
+                   at start and writes it to <code>&lt;db-path&gt;/.bootstrap_token</code> (owner-readable). The first 
+                  <code>POST /auth/register</code> must carry it in the <code>X-Bootstrap-Token</code> header (or a <code>bootstrap_token</code>
+                   body field), and becomes the administrator. To skip this, set <code>FHIRANT_ADMIN_USERNAME</code> and 
+                  <code>FHIRANT_ADMIN_PASSWORD</code> and restart. See <a href="docs/fhirant/fhirant_getting_started">Getting Started</a>
+                   for the requests.
+                </p>
+                <p>In dev mode registration is refused.</p>
                 <h2 id="examples" anchor="true"><span>Examples</span><a href="/docs/fhirant/fhirant_cli#examples">#</a></h2>
                 <div class="code-block">
                   <div class="code-head">
@@ -1713,20 +1814,27 @@ dart run bin/server.dart</code></pre>
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs"><span class="hljs-comment"># Basic server on port 3000</span>
-dart run bin/server.dart --port 3000
+                  <pre><code class="hljs"><span class="hljs-comment"># Dev mode (no auth, throwaway key) on port 3000 with a custom DB path</span>
+dart run bin/server.dart --dev-mode --port 3000 --db-path /tmp/fhirant
 
-<span class="hljs-comment"># Dev mode (no auth) with custom DB path</span>
-dart run bin/server.dart --dev-mode --db-path /tmp/fhirant
+<span class="hljs-comment"># Authentication on, with your own key and the first admin from the environment</span>
+FHIRANT_ENCRYPTION_KEY=<span class="hljs-string">'a-long-random-secret'</span> \
+FHIRANT_ADMIN_USERNAME=admin FHIRANT_ADMIN_PASSWORD=<span class="hljs-string">'a-long-passphrase'</span> \
+  dart run bin/server.dart
 
 <span class="hljs-comment"># HTTPS with certificates</span>
-dart run bin/server.dart --https --cert-path cert.pem --key-path key.pem
+FHIRANT_ENCRYPTION_KEY=<span class="hljs-string">'a-long-random-secret'</span> \
+  dart run bin/server.dart --https --cert-path cert.pem --key-path key.pem
 
-<span class="hljs-comment"># Production with encryption key</span>
-FHIRANT_ENCRYPTION_KEY=my-secret-key dart run bin/server.dart</code></pre>
+<span class="hljs-comment"># Scan uploaded files with a local clamd</span>
+FHIRANT_ENCRYPTION_KEY=<span class="hljs-string">'a-long-random-secret'</span> \
+  dart run bin/server.dart --clamd-host localhost</code></pre>
                 </div>
                 <h2 id="docker" anchor="true"><span>Docker</span><a href="/docs/fhirant/fhirant_cli#docker">#</a></h2>
-                <p>A Dockerfile is included for containerized deployments:</p>
+                <p>
+                  The repository root has a Dockerfile. The image runs the compiled server on port 8080 with its database in 
+                  <code>/data</code>:
+                </p>
                 <div class="code-block">
                   <div class="code-head">
                     <span class="code-lang">bash</span>
@@ -1740,7 +1848,28 @@ FHIRANT_ENCRYPTION_KEY=my-secret-key dart run bin/server.dart</code></pre>
                     <!--/@code_copy_button-->
                   </div>
                   <pre><code class="hljs">docker build -t fhirant .
-docker run -p 8080:8080 -e FHIRANT_ENCRYPTION_KEY=my-key fhirant</code></pre>
+docker run -p 8080:8080 -v fhirant-data:/data \
+  -e FHIRANT_ENCRYPTION_KEY=a-long-random-secret \
+  -e FHIRANT_JWT_SECRET=another-long-random-secret \
+  fhirant</code></pre>
+                </div>
+                <p>
+                  <code>docker-compose.yml</code> runs the same server beside a ClamAV <code>clamd</code> container (<code>clamav/clamav:1.5.4</code>) with 
+                  <code>--clamd-host clamav</code>. It requires both secrets to be set:
+                </p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">bash</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">FHIRANT_ENCRYPTION_KEY=... FHIRANT_JWT_SECRET=... docker compose up</code></pre>
                 </div>
                 <h2 id="testing" anchor="true"><span>Testing</span><a href="/docs/fhirant/fhirant_cli#testing">#</a></h2>
                 <div class="code-block">
@@ -1758,10 +1887,10 @@ docker run -p 8080:8080 -e FHIRANT_ENCRYPTION_KEY=my-key fhirant</code></pre>
                   <pre><code class="hljs"><span class="hljs-comment"># Run all server tests</span>
 <span class="hljs-built_in">cd</span> packages/fhirant_server &amp;&amp; dart <span class="hljs-built_in">test</span>
 
-<span class="hljs-comment"># Run smoke test against a running server</span>
+<span class="hljs-comment"># From the repository root: smoke test against a running server</span>
 dart run tools/smoke_test.dart http://localhost:8080
 
-<span class="hljs-comment"># Run smoke test with auth testing</span>
+<span class="hljs-comment"># Smoke test including the authentication tests</span>
 dart run tools/smoke_test.dart http://localhost:8080 --auth</code></pre>
                 </div>
               </section>
@@ -1813,6 +1942,7 @@ dart run tools/smoke_test.dart http://localhost:8080 --auth</code></pre>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#running">Running</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#options">Options</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#environment-variables">Environment Variables</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#the-first-administrator">The First Administrator</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#examples">Examples</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#docker">Docker</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_cli#testing">Testing</a></li>

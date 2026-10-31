@@ -1658,7 +1658,9 @@
             <div class="content-container">
               <div class="content-header"><h1>FHIR ANT Capabilities</h1></div>
               <section class="content">
-                <p>FHIR ANT implements a broad set of the FHIR R4 specification. Here's what's supported.</p>
+                <p>
+                  FHIR ANT implements a broad set of the FHIR R4 specification, as R4B (4.3.0). Here's what's supported. The server's own CapabilityStatement (<code>GET /metadata</code>) is the full list.
+                </p>
                 <h2 id="fhir-rest-api" anchor="true"><span>FHIR REST API</span><a href="/docs/fhirant/fhirant_capabilities#fhir-rest-api">#</a></h2>
                 <h3 id="crud-operations" anchor="true"><span>CRUD Operations</span><a href="/docs/fhirant/fhirant_capabilities#crud-operations">#</a></h3>
                 <table>
@@ -1675,13 +1677,13 @@
                       <td>Update</td>
                       <td><code>PUT</code></td>
                       <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
-                      <td>Auto-versions with timestamp</td>
+                      <td>Auto-versions with timestamp; creates the resource if the id is new</td>
                     </tr>
                     <tr>
                       <td>Patch</td>
                       <td><code>PATCH</code></td>
                       <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
-                      <td>JSON Patch (RFC 6902)</td>
+                      <td>JSON Patch (RFC 6902); FHIRPath Patch is refused (415)</td>
                     </tr>
                     <tr><td>Delete</td><td><code>DELETE</code></td><td><code>/&lt;type&gt;/&lt;id&gt;</code></td><td></td></tr>
                     <tr>
@@ -1691,10 +1693,16 @@
                       <td>Via <code>If-None-Exist</code> header</td>
                     </tr>
                     <tr>
-                      <td>Conditional Update</td>
+                      <td>Version-aware Update</td>
                       <td><code>PUT</code></td>
                       <td><code>/&lt;type&gt;/&lt;id&gt;</code></td>
-                      <td>Via <code>If-Match</code> header</td>
+                      <td>Via <code>If-Match</code> header (412 on a version mismatch)</td>
+                    </tr>
+                    <tr>
+                      <td>Conditional Update</td>
+                      <td><code>PUT</code></td>
+                      <td><code>/&lt;type&gt;?&lt;criteria&gt;</code></td>
+                      <td>Via search criteria</td>
                     </tr>
                     <tr>
                       <td>Conditional Delete</td>
@@ -1710,7 +1718,10 @@
                   <tbody>
                     <tr><td>GET search</td><td><code>GET /&lt;type&gt;?param=value</code></td></tr>
                     <tr><td>POST search</td><td><code>POST /&lt;type&gt;/_search</code></td></tr>
-                    <tr><td>System search</td><td><code>POST /_search</code> (requires <code>_type</code>)</td></tr>
+                    <tr>
+                      <td>System search</td>
+                      <td><code>GET /?&lt;params&gt;</code>, <code>POST /_search</code> (requires <code>_type</code>)</td>
+                    </tr>
                     <tr><td>String params</td><td>Starts-with matching</td></tr>
                     <tr>
                       <td>Token params</td>
@@ -1774,6 +1785,15 @@
                       <td><code>true</code>, <code>false</code>, <code>text</code>, <code>data</code>, <code>count</code></td>
                     </tr>
                     <tr><td><code>_elements</code></td><td>Return only specified fields (adds SUBSETTED tag)</td></tr>
+                    <tr><td><code>_filter</code></td><td>Filter expressions</td></tr>
+                    <tr>
+                      <td><code>_contained</code></td>
+                      <td><code>false</code> only (contained resources are not indexed)</td>
+                    </tr>
+                    <tr>
+                      <td><code>Prefer: handling=strict</code></td>
+                      <td>Unknown parameters are reported instead of ignored</td>
+                    </tr>
                   </tbody>
                 </table>
                 <h3 id="history" anchor="true"><span>History</span><a href="/docs/fhirant/fhirant_capabilities#history">#</a></h3>
@@ -1789,9 +1809,16 @@
                 </table>
                 <h3 id="bundles" anchor="true"><span>Bundles</span><a href="/docs/fhirant/fhirant_capabilities#bundles">#</a></h3>
                 <ul>
-                  <li><strong>Transaction</strong> bundles — atomic, all-or-nothing with <code>urn:uuid</code> resolution</li>
+                  <li>
+                    <strong>Transaction</strong> bundles — atomic, all-or-nothing with <code>urn:uuid</code> resolution. Entries are processed in the order the spec sets (DELETE, then POST, then PUT/PATCH, then GET), and two entries naming the same resource fail the transaction
+                  </li>
                   <li><strong>Batch</strong> bundles — independent operations</li>
-                  <li>Full <code>urn:uuid</code> cross-reference resolution within transactions</li>
+                  <li>
+                    Full <code>urn:uuid</code> cross-reference resolution within transactions, and conditional references (<code>Patient?identifier=...</code>)
+                  </li>
+                  <li>
+                    A transaction's plain creates are written to the store together, up to 100 at a time; a create that reads first (a conditional create, a conditional reference) still sees every write before it
+                  </li>
                 </ul>
                 <h3 id="compartments" anchor="true"><span>Compartments</span><a href="/docs/fhirant/fhirant_capabilities#compartments">#</a></h3>
                 <table>
@@ -1848,15 +1875,40 @@
                       <td><code>POST /$transform</code></td>
                       <td>FHIR Mapping Language transforms</td>
                     </tr>
+                    <tr><td><code>$cql</code></td><td><code>POST /$cql</code></td><td>Evaluate CQL</td></tr>
+                    <tr>
+                      <td><code>$evaluate</code></td>
+                      <td><code>POST /Library/&lt;id&gt;/$evaluate</code>, <code>POST /Library/$evaluate</code></td>
+                      <td>Evaluate a CQL Library (stored, by canonical URL, or inline)</td>
+                    </tr>
+                    <tr>
+                      <td><code>$immds-forecast</code></td>
+                      <td><code>POST /$immds-forecast</code></td>
+                      <td>Immunization forecast, CDC CDSi logic</td>
+                    </tr>
+                    <tr>
+                      <td><code>$immds-forecast-who</code></td>
+                      <td><code>POST /$immds-forecast-who</code></td>
+                      <td>Immunization forecast, WHO EPI logic</td>
+                    </tr>
+                    <tr>
+                      <td><code>$reindex</code></td>
+                      <td><code>POST /$reindex</code>, <code>GET /$reindex-status</code></td>
+                      <td>Rebuild the search index after a SearchParameter is added (asynchronous)</td>
+                    </tr>
                     <tr>
                       <td><code>$backup</code></td>
                       <td><code>POST /$backup</code></td>
-                      <td>Export all data as FHIR Bundle</td>
+                      <td>
+                        Export all data, encrypted under a passphrase you supply (an encrypted SQLite file, or with 
+                        <code>format=bundle</code>
+                         an encrypted Bundle)
+                      </td>
                     </tr>
                     <tr>
                       <td><code>$restore</code></td>
                       <td><code>POST /$restore</code></td>
-                      <td>Import data from FHIR Bundle</td>
+                      <td>Import an encrypted backup or a plain FHIR Bundle</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1874,6 +1926,9 @@
                     </tr>
                     <tr><td><code>$lookup</code></td><td><code>GET/POST /CodeSystem/&lt;id&gt;/$lookup</code></td></tr>
                     <tr><td><code>$expand</code></td><td><code>GET/POST /ValueSet/&lt;id&gt;/$expand</code></td></tr>
+                    <tr><td><code>$subsumes</code></td><td><code>GET/POST /CodeSystem/&lt;id&gt;/$subsumes</code></td></tr>
+                    <tr><td><code>$translate</code></td><td><code>GET/POST /ConceptMap/&lt;id&gt;/$translate</code></td></tr>
+                    <tr><td><code>$preferred-id</code></td><td><code>GET/POST /NamingSystem/$preferred-id</code></td></tr>
                   </tbody>
                 </table>
                 <p>Instance-level and type-level variants are both supported.</p>
@@ -1891,13 +1946,24 @@
                 </table>
                 <p>
                   Supports <code>_type</code>, <code>_since</code>, <code>_typeFilter</code>, and <code>_outputFormat</code>
-                   parameters.
+                   parameters. <code>_elements</code>, <code>patient</code> and <code>includeAssociatedData</code> are refused (400) unless the request sends 
+                  <code>Prefer: handling=lenient</code>, which ignores them. Export files are encrypted at rest on the server.
+                </p>
+                <h2 id="subscriptions" anchor="true"><span>Subscriptions</span><a href="/docs/fhirant/fhirant_capabilities#subscriptions">#</a></h2>
+                <p>
+                  R4 Subscriptions with the <code>rest-hook</code> and <code>websocket</code> channel types. Notifications are sent after the write commits. For a websocket subscription, connect to 
+                  <code>GET /ws</code> and send <code>bind &lt;id&gt;</code>.
+                </p>
+                <h2 id="file-scanning" anchor="true"><span>File Scanning</span><a href="/docs/fhirant/fhirant_capabilities#file-scanning">#</a></h2>
+                <p>
+                  With <code>--clamd-host</code> set (CLI and Docker), every file a client's resource carries is scanned by ClamAV before it is stored; a match is refused (422), and a file the scanner cannot answer for is refused (503). 
+                  <code>$restore</code> is not scanned yet. The app has no scanner.
                 </p>
                 <h2 id="content-negotiation" anchor="true">
                   <span>Content Negotiation</span><a href="/docs/fhirant/fhirant_capabilities#content-negotiation">#</a>
                 </h2>
                 <ul>
-                  <li><code>Accept: application/fhir+json</code> (default)</li>
+                  <li><code>Accept: application/fhir+json</code> (default). JSON only: XML is refused (406)</li>
                   <li><code>_format</code> parameter</li>
                   <li><code>_pretty=true</code> for formatted output</li>
                   <li>
@@ -1912,7 +1978,7 @@
                     <code>GET /metadata</code> — Full CapabilityStatement with all supported resources, search parameters, operations, and security information
                   </li>
                   <li><code>GET /.well-known/smart-configuration</code> — SMART on FHIR discovery document</li>
-                  <li><code>GET /health</code> — Server health check (status, uptime, database connectivity)</li>
+                  <li><code>GET /health</code> — Server health check (status, uptime, version, database connectivity)</li>
                 </ul>
               </section>
               <div class="content-footer">
@@ -1969,6 +2035,8 @@
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#operations">Operations</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#terminology">Terminology</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#bulk-data-export">Bulk Data Export</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#subscriptions">Subscriptions</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#file-scanning">File Scanning</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#content-negotiation">Content Negotiation</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_capabilities#metadata">Metadata</a></li>
                 </ul>

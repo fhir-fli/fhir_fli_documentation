@@ -1660,7 +1660,7 @@
               <section class="content">
                 <p>
                   <strong>Effective date:</strong> March 7, 2026
-                  <strong>Last updated:</strong> March 7, 2026
+                  <strong>Last updated:</strong> October 29, 2026
                 </p>
                 <h2 id="summary" anchor="true"><span>Summary</span><a href="/docs/fhirant/fhirant_privacy_policy#summary">#</a></h2>
                 <p>
@@ -1676,26 +1676,32 @@
                   </li>
                   <li><strong>User accounts</strong> (username and hashed password) for authentication</li>
                   <li><strong>Server logs</strong> (request timestamps, methods, paths, and client IP addresses)</li>
+                  <li>
+                    <strong>An audit trail</strong>: a FHIR AuditEvent for each request, with who made it and the client's IP address
+                  </li>
                   <li><strong>Encryption keys</strong> stored in your device's secure keystore (Android Keystore)</li>
                 </ul>
                 <h2 id="where-data-is-stored" anchor="true">
                   <span>Where Data Is Stored</span><a href="/docs/fhirant/fhirant_privacy_policy#where-data-is-stored">#</a>
                 </h2>
                 <p>
-                  All data is stored <strong>locally on your device</strong> in an encrypted SQLite database. The encryption key is generated on first launch and stored in the device's hardware-backed secure keystore.
+                  All data is stored <strong>locally on your device</strong> in an encrypted SQLite database. The encryption key is generated on first launch and stored in the device's secure storage (Android Keystore).
                 </p>
                 <h2 id="data-transmission" anchor="true"><span>Data Transmission</span><a href="/docs/fhirant/fhirant_privacy_policy#data-transmission">#</a></h2>
                 <p>
                   FHIR ANT is a server — it <strong>receives</strong> requests from clients on your local network. It does not:
                 </p>
                 <ul>
-                  <li>Send data to any external servers</li>
+                  <li>
+                    Send data to any external servers, except where a client asks for it: a Subscription with a <code>rest-hook</code>
+                     channel sends its notifications to the endpoint the Subscription names
+                  </li>
                   <li>Include analytics or telemetry</li>
                   <li>Phone home or check for updates</li>
                   <li>Transmit data over the internet (unless you explicitly expose it)</li>
                 </ul>
                 <p>
-                  When the server is running, devices on the same network can connect to it via HTTP. <strong>You control who has access</strong>
+                  When the server is running, devices on the same network can connect to it via HTTPS. <strong>You control who has access</strong>
                    by managing your network and the server's authentication settings.
                 </p>
                 <h2 id="third-party-services" anchor="true">
@@ -1705,10 +1711,12 @@
                 <h2 id="data-retention" anchor="true"><span>Data Retention</span><a href="/docs/fhirant/fhirant_privacy_policy#data-retention">#</a></h2>
                 <p>Data persists on your device until you:</p>
                 <ul>
-                  <li>Delete individual resources through the FHIR API</li>
                   <li>Uninstall the app (which removes all app data)</li>
                   <li>Clear the app's data through Android settings</li>
                 </ul>
+                <p>
+                  Deleting a resource through the FHIR API does not erase it. The server keeps every earlier version as history, as FHIR servers do, and answers a read of the deleted resource with 410 Gone. There is no API call that removes a resource's history.
+                </p>
                 <h2 id="childrens-privacy" anchor="true">
                   <span>Children's Privacy</span><a href="/docs/fhirant/fhirant_privacy_policy#childrens-privacy">#</a>
                 </h2>
@@ -1717,9 +1725,9 @@
                 </p>
                 <h2 id="security" anchor="true"><span>Security</span><a href="/docs/fhirant/fhirant_privacy_policy#security">#</a></h2>
                 <ul>
-                  <li>Database encrypted with SQLCipher (AES-256)</li>
+                  <li>Database encrypted in the SQLCipher 4 format (AES-256)</li>
                   <li>Encryption key stored in Android Keystore</li>
-                  <li>Passwords hashed with bcrypt</li>
+                  <li>Passwords hashed with argon2id (older PBKDF2 hashes are still accepted)</li>
                   <li>JWT-based authentication (when Dev Mode is off)</li>
                   <li>Account lockout after failed login attempts</li>
                 </ul>
@@ -1730,7 +1738,7 @@
                 </p>
                 <h2 id="open-source" anchor="true"><span>Open Source</span><a href="/docs/fhirant/fhirant_privacy_policy#open-source">#</a></h2>
                 <p>
-                  FHIR ANT is open source. You can review the complete source code at <a href="https://github.com/fhir-fli/fhir">github.com/fhir-fli/fhir</a>.
+                  FHIR ANT is open source. You can review the complete source code at <a href="https://github.com/fhir-fli/fhirant">github.com/fhir-fli/fhirant</a>.
                 </p>
                 <h2 id="contact" anchor="true"><span>Contact</span><a href="/docs/fhirant/fhirant_privacy_policy#contact">#</a></h2>
                 <p>If you have questions about this privacy policy:</p>

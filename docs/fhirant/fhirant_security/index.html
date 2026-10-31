@@ -1659,17 +1659,29 @@
               <div class="content-header"><h1>Security &amp; Authentication</h1></div>
               <section class="content">
                 <p>
-                  FHIR ANT includes a full authentication and authorization system. In <strong>Dev Mode</strong> (the default for testing), authentication is bypassed. When Dev Mode is off, all non-public endpoints require a valid JWT token.
+                  FHIR ANT includes a full authentication and authorization system. With authentication off (<strong>Experimentation mode</strong>
+                   in the app, <code>--dev-mode</code> on the CLI), it is bypassed. With it on (<strong>Secure mode</strong>
+                   in the app, the CLI's default), all non-public endpoints require a valid JWT token.
                 </p>
-                <h2 id="dev-mode" anchor="true"><span>Dev Mode</span><a href="/docs/fhirant/fhirant_security#dev-mode">#</a></h2>
+                <h2 id="experimentation-mode--dev-mode" anchor="true">
+                  <span>Experimentation Mode / Dev Mode</span><a href="/docs/fhirant/fhirant_security#experimentation-mode--dev-mode">#</a>
+                </h2>
                 <p>
-                  When enabled, all requests are accepted without authentication. A synthetic admin user is injected into every request so that audit trails and scope enforcement still function internally.
+                  When enabled, all requests are accepted without authentication. A synthetic admin user is injected into every request so that audit trails and scope enforcement still function internally. Registration is refused, so nobody on the network can create the administrator that Secure mode will later trust; 
+                  <code>$restore</code> brings in the FHIR records but none of the backup's accounts.
                 </p>
-                <p><strong>Dev Mode is for testing only.</strong> A warning banner appears in the app when it's active.</p>
+                <p>
+                  <strong>It is for test data only.</strong> A fresh app install starts in it while FHIR ANT is pre-release, and the app shows a warning banner whenever it is active.
+                </p>
                 <h2 id="authentication-flow" anchor="true"><span>Authentication Flow</span><a href="/docs/fhirant/fhirant_security#authentication-flow">#</a></h2>
                 <h3 id="registration--login" anchor="true">
                   <span>Registration &amp; Login</span><a href="/docs/fhirant/fhirant_security#registration--login">#</a>
                 </h3>
+                <p>
+                  The first account is the administrator. In the app you create it when you switch to Secure mode. On the CLI, either set 
+                  <code>FHIRANT_ADMIN_USERNAME</code> and <code>FHIRANT_ADMIN_PASSWORD</code>, or register with the one-time bootstrap token the server prints at start (also in 
+                  <code>&lt;db-path&gt;/.bootstrap_token</code>). After that only an admin can register users.
+                </p>
                 <div class="code-block">
                   <div class="code-head">
                     <span class="code-lang">bash</span>
@@ -1682,9 +1694,10 @@
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs"><span class="hljs-comment"># Register a new user (first user becomes admin)</span>
+                  <pre><code class="hljs"><span class="hljs-comment"># Register the first user, who becomes admin (CLI, no admin seeded)</span>
 curl -X POST http://server:8080/auth/register \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -H <span class="hljs-string">"X-Bootstrap-Token: &lt;token from the server log&gt;"</span> \
   -d <span class="hljs-string">'{"username":"admin","password":"mysecurepassword"}'</span>
 
 <span class="hljs-comment"># Login</span>
@@ -1737,6 +1750,7 @@ curl -H <span class="hljs-string">"Authorization: Bearer eyJ..."</span> http://s
                   <li><code>POST /auth/authorize</code> — Submit authorization (JSON or form-encoded)</li>
                   <li><code>POST /auth/token</code> — Exchange code for tokens (with <code>code_verifier</code>)</li>
                 </ol>
+                <p>Only the <code>S256</code> code challenge method is accepted; <code>plain</code> is refused.</p>
                 <h3 id="token-revocation-rfc-7009" anchor="true">
                   <span>Token Revocation (RFC 7009)</span><a href="/docs/fhirant/fhirant_security#token-revocation-rfc-7009">#</a>
                 </h3>
@@ -1784,6 +1798,10 @@ curl -X POST http://server:8080/auth/<span class="hljs-built_in">logout</span> \
                   </tbody>
                 </table>
                 <p>
+                  A <code>patient/</code> scope applies to an account linked to a Patient (registered with a <code>patient</code>
+                   reference); it confines that account to the patient's compartment.
+                </p>
+                <p>
                   <strong>Permissions:</strong> <code>c</code> (create), <code>r</code> (read), <code>u</code> (update), 
                   <code>d</code> (delete), <code>s</code> (search)
                 </p>
@@ -1803,23 +1821,47 @@ curl -X POST http://server:8080/auth/<span class="hljs-built_in">logout</span> \
                 <ul>
                   <li>Minimum 12 characters, maximum 128</li>
                   <li>No complexity rules (length &gt; complexity)</li>
-                  <li>Blocked common passwords (e.g., "password123456")</li>
-                  <li>Case-insensitive blocklist matching</li>
+                  <li>
+                    30,407 common passwords of that length are blocked (e.g., "password123456"), matched case-insensitively
+                  </li>
+                  <li>
+                    Passwords are stored as argon2id hashes (19 MiB memory, 2 iterations, 1 lane); older PBKDF2 hashes still verify
+                  </li>
                 </ul>
+                <h2 id="account-management" anchor="true"><span>Account Management</span><a href="/docs/fhirant/fhirant_security#account-management">#</a></h2>
+                <p>
+                  An account can change its own password (<code>POST /auth/password</code>). An admin can list accounts, set a password, deactivate or reactivate an account, and change its role or scopes (<code>/admin/users/...</code>, see the 
+                  <a href="docs/fhirant/fhirant_api_reference">API Reference</a>). Each of these ends every token the account held before the change.
+                </p>
                 <h2 id="account-lockout" anchor="true"><span>Account Lockout</span><a href="/docs/fhirant/fhirant_security#account-lockout">#</a></h2>
                 <ul>
                   <li>Account locks after 5 failed login attempts</li>
                   <li>Auto-unlock after 15 minutes</li>
                   <li>Admin can manually unlock via <code>POST /admin/unlock/&lt;userId&gt;</code></li>
-                  <li>Returns HTTP 423 (Locked) when account is locked</li>
+                  <li>
+                    A locked account gets the same answer as a wrong password (401, "Invalid username or password"), so a caller cannot tell a locked account from a bad guess
+                  </li>
                 </ul>
+                <h2 id="rate-limiting" anchor="true"><span>Rate Limiting</span><a href="/docs/fhirant/fhirant_security#rate-limiting">#</a></h2>
+                <p>
+                  Per client address, per minute: 600 requests in general (1,000 on the CLI in dev mode), and 10 on the credential endpoints (<code>/auth/login</code>, 
+                  <code>/auth/authorize</code>, <code>/auth/token</code>, <code>/auth/register</code>).
+                </p>
+                <h2 id="transport" anchor="true"><span>Transport</span><a href="/docs/fhirant/fhirant_security#transport">#</a></h2>
+                <p>
+                  The app serves HTTPS only, with a self-signed certificate it generates and keeps in secure storage. There is no certificate authority to vouch for it, so clients pin its SHA-256 fingerprint, which the Network card shows and its QR code carries. The CLI serves HTTP unless started with 
+                  <code>--https</code>.
+                </p>
                 <h2 id="database-encryption" anchor="true"><span>Database Encryption</span><a href="/docs/fhirant/fhirant_security#database-encryption">#</a></h2>
                 <p>
-                  The SQLite database is encrypted with SQLCipher. The encryption key is generated on first launch and stored in the device's secure keystore (Android Keystore / iOS Keychain). Data at rest is always encrypted.
+                  The SQLite database is encrypted in the SQLCipher 4 format (AES-256) through SQLite3 Multiple Ciphers. In the app the encryption key is generated on first launch and kept in the device's secure storage (Android Keystore / iOS Keychain). On the CLI the key is 
+                  <code>FHIRANT_ENCRYPTION_KEY</code>; the server refuses an empty key, and refuses the publicly known default unless told it is a throwaway database (<code>--allow-public-key</code>). Backups are encrypted under a passphrase you choose, which is not stored and cannot be recovered.
                 </p>
                 <h2 id="audit-trail" anchor="true"><span>Audit Trail</span><a href="/docs/fhirant/fhirant_security#audit-trail">#</a></h2>
                 <p>
-                  All requests are logged with timestamp, method, path, status code, duration, client IP, and authenticated user (if present).
+                  Every request except the welcome page, <code>/metadata</code>, <code>/favicon.ico</code>, <code>/health</code>, the SMART discovery document and a 
+                  <code>POST /AuditEvent</code> is recorded as a FHIR AuditEvent, including requests the server refuses, with who made it when that is known. A Bundle leaves one AuditEvent per entry. On the CLI, 
+                  <code>--audit-retention-days</code> sets how long they are kept; by default none are removed.
                 </p>
               </section>
               <div class="content-footer">
@@ -1867,7 +1909,9 @@ curl -X POST http://server:8080/auth/<span class="hljs-built_in">logout</span> \
               <div>
                 <h3>On this page</h3>
                 <ul>
-                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#dev-mode">Dev Mode</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/fhirant/fhirant_security#experimentation-mode--dev-mode">Experimentation Mode / Dev Mode</a>
+                  </li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#authentication-flow">Authentication Flow</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#registration--login">Registration &amp; Login</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#using-tokens">Using Tokens</a></li>
@@ -1879,7 +1923,10 @@ curl -X POST http://server:8080/auth/<span class="hljs-built_in">logout</span> \
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#smart-on-fhir-scopes">SMART on FHIR Scopes</a></li>
                   <li style="padding-left: 0.75em"><a href="/docs/fhirant/fhirant_security#default-scopes-by-role">Default Scopes by Role</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#password-policy">Password Policy</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#account-management">Account Management</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#account-lockout">Account Lockout</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#rate-limiting">Rate Limiting</a></li>
+                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#transport">Transport</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#database-encryption">Database Encryption</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_security#audit-trail">Audit Trail</a></li>
                 </ul>

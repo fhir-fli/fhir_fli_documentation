@@ -1663,36 +1663,42 @@
                 </p>
                 <h2 id="install" anchor="true"><span>Install</span><a href="/docs/fhirant/fhirant_getting_started#install">#</a></h2>
                 <p>
-                  Download FHIR ANT from the <a href="https://play.google.com/store/apps/details?id=com.fhirfli.fhirant">Google Play Store</a>. It also runs as a Linux desktop app or a standalone CLI server (see 
+                  FHIR ANT is pre-release and has no public download. Testers receive the Android build (Android 7.0 or newer) directly; 
+                  <a href="https://github.com/fhir-fli/fhirant/blob/main/INSTALL.md">INSTALL.md</a> in the repository explains installing it. The server also runs as a standalone CLI process (see 
                   <a href="docs/fhirant/fhirant_cli">CLI Usage</a>).
                 </p>
                 <h2 id="first-launch" anchor="true"><span>First Launch</span><a href="/docs/fhirant/fhirant_getting_started#first-launch">#</a></h2>
                 <p>When you open the app for the first time, you'll see a three-page onboarding:</p>
                 <ol>
                   <li><strong>Welcome</strong> — what FHIR ANT is</li>
-                  <li><strong>How It Works</strong> — features overview</li>
                   <li>
-                    <strong>Sample Data</strong> — optionally load a set of realistic clinical data (MIMIC-IV subset) to explore with
+                    <strong>How It Works</strong> — starting the server, connecting from another device, Experimentation vs Secure mode, backup and restore
+                  </li>
+                  <li>
+                    <strong>Load Sample Data?</strong> — optionally load a set of realistic clinical data (MIMIC-IV subset) to explore with
                   </li>
                 </ol>
                 <p>
                   You can always load or clear sample data later. Tap <strong>Get Started</strong> to reach the dashboard.
                 </p>
                 <h2 id="the-dashboard" anchor="true"><span>The Dashboard</span><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">#</a></h2>
-                <p>The dashboard has four sections:</p>
+                <p>The dashboard has five cards:</p>
                 <ul>
-                  <li><strong>Server Control</strong> — start/stop the server, toggle Dev Mode, set the port</li>
                   <li>
-                    <strong>Network Info</strong> — your device's IP address and a QR code other devices can scan to connect
+                    <strong>FHIR Server</strong> — start/stop the server, set the port, choose Experimentation or Secure mode, keep it running in the background
                   </li>
-                  <li><strong>Resource Counts</strong> — how many FHIR resources are stored, by type</li>
+                  <li>
+                    <strong>Network</strong> — the server's URL, its certificate fingerprint, and a QR code carrying both for other devices to scan
+                  </li>
+                  <li><strong>Resources</strong> — how many FHIR resources are stored, by type</li>
+                  <li><strong>Backup</strong> — export every record to a passphrase-protected file, or restore one</li>
                   <li><strong>Request Log</strong> — live feed of incoming HTTP requests</li>
                 </ul>
                 <h2 id="starting-the-server" anchor="true">
                   <span>Starting the Server</span><a href="/docs/fhirant/fhirant_getting_started#starting-the-server">#</a>
                 </h2>
                 <p>
-                  Tap <strong>Start</strong> on the Server Control card. The server binds to all network interfaces on the configured port (default 8080). The URL will look something like:
+                  Tap <strong>Start</strong> on the FHIR Server card. The server binds to all network interfaces on the configured port (default 8080). The URL will look something like:
                 </p>
                 <div class="code-block">
                   <div class="code-head">
@@ -1706,20 +1712,25 @@
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs">http://192.168.1.42:8080</code></pre>
+                  <pre><code class="hljs">https://192.168.1.42:8080</code></pre>
                 </div>
-                <p>Any device on the same Wi-Fi network can reach this URL.</p>
-                <h3 id="dev-mode-vs-authenticated-mode" anchor="true">
-                  <span>Dev Mode vs Authenticated Mode</span><a href="/docs/fhirant/fhirant_getting_started#dev-mode-vs-authenticated-mode">#</a>
+                <p>
+                  Any device on the same Wi-Fi network can reach this URL. The app serves HTTPS only, with a self-signed certificate: a client should pin the SHA-256 fingerprint the Network card shows. The examples below use 
+                  <code>curl -k</code>, which skips the certificate check, for a quick try only.
+                </p>
+                <h3 id="experimentation-vs-secure-mode" anchor="true">
+                  <span>Experimentation vs Secure Mode</span><a href="/docs/fhirant/fhirant_getting_started#experimentation-vs-secure-mode">#</a>
                 </h3>
                 <p>
-                  By default, the server starts in <strong>Dev Mode</strong> — authentication is disabled and all requests are accepted. This is useful for quick testing.
+                  A fresh install starts in <strong>Experimentation mode</strong> — authentication is disabled and all requests are accepted. It is for test data only.
                 </p>
                 <p>
-                  To require authentication, toggle Dev Mode <strong>off</strong> before starting the server. When Dev Mode is off, all non-public endpoints require a valid JWT token.
+                  To require authentication, stop the server and switch <strong>Authentication</strong> to <strong>Secure</strong>. When there is no administrator yet, the app asks you to create one. In Secure mode, all non-public endpoints require a valid JWT token.
                 </p>
-                <h2 id="using-dev-mode" anchor="true"><span>Using Dev Mode</span><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">#</a></h2>
-                <p>With Dev Mode on, you can immediately start making requests:</p>
+                <h2 id="using-experimentation-mode" anchor="true">
+                  <span>Using Experimentation Mode</span><a href="/docs/fhirant/fhirant_getting_started#using-experimentation-mode">#</a>
+                </h2>
+                <p>With Experimentation mode on, you can immediately start making requests:</p>
                 <div class="code-block">
                   <div class="code-head">
                     <span class="code-lang">bash</span>
@@ -1733,25 +1744,29 @@
                     <!--/@code_copy_button-->
                   </div>
                   <pre><code class="hljs"><span class="hljs-comment"># Server capabilities</span>
-curl http://192.168.1.42:8080/metadata
+curl -k https://192.168.1.42:8080/metadata
 
 <span class="hljs-comment"># Search for all patients</span>
-curl http://192.168.1.42:8080/Patient
+curl -k https://192.168.1.42:8080/Patient
 
 <span class="hljs-comment"># Create a patient</span>
-curl -X POST http://192.168.1.42:8080/Patient \
+curl -k -X POST https://192.168.1.42:8080/Patient \
   -H <span class="hljs-string">"Content-Type: application/fhir+json"</span> \
   -d <span class="hljs-string">'{"resourceType":"Patient","name":[{"family":"Smith","given":["John"]}]}'</span></code></pre>
                 </div>
-                <p>No tokens or credentials needed — every request is treated as an admin.</p>
+                <p>
+                  No tokens or credentials needed — every request is treated as an admin. Registering accounts is refused in this mode.
+                </p>
                 <h2 id="setting-up-authentication" anchor="true">
                   <span>Setting Up Authentication</span><a href="/docs/fhirant/fhirant_getting_started#setting-up-authentication">#</a>
                 </h2>
-                <p>When you're ready to use auth, stop the server, toggle Dev Mode off, and start it again.</p>
+                <p>When you're ready to use auth, stop the server, switch to Secure mode, and start it again.</p>
                 <h3 id="step-1-check-server-status" anchor="true">
                   <span>Step 1: Check Server Status</span><a href="/docs/fhirant/fhirant_getting_started#step-1-check-server-status">#</a>
                 </h3>
-                <p>The <code>/auth/status</code> endpoint is public and tells you whether any users exist:</p>
+                <p>
+                  The <code>/auth/status</code> endpoint is public and tells you whether any users exist. On a fresh CLI server with authentication on:
+                </p>
                 <div class="code-block">
                   <div class="code-head">
                     <span class="code-lang">bash</span>
@@ -1764,7 +1779,7 @@ curl -X POST http://192.168.1.42:8080/Patient \
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs">curl http://192.168.1.42:8080/auth/status</code></pre>
+                  <pre><code class="hljs">curl http://localhost:8080/auth/status</code></pre>
                 </div>
                 <div class="code-block">
                   <div class="code-head">
@@ -1778,14 +1793,22 @@ curl -X POST http://192.168.1.42:8080/Patient \
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs">{<span class="hljs-attr">"firstUser"</span>: <span class="hljs-literal">true</span>}</code></pre>
+                  <pre><code class="hljs">{<span class="hljs-attr">"firstUser"</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">"bootstrapTokenRequired"</span>: <span class="hljs-literal">true</span>}</code></pre>
                 </div>
-                <p><code>"firstUser": true</code> means no users have been created yet.</p>
+                <p>
+                  <code>"firstUser": true</code> means no users have been created yet; <code>"bootstrapTokenRequired": true</code>
+                   means the first registration must carry the server's bootstrap token.
+                </p>
                 <h3 id="step-2-create-the-admin-account" anchor="true">
                   <span>Step 2: Create the Admin Account</span><a href="/docs/fhirant/fhirant_getting_started#step-2-create-the-admin-account">#</a>
                 </h3>
                 <p>
-                  When no users exist, anyone can register — this is the bootstrap mechanism. The first user is <strong>automatically promoted to admin</strong>
+                  <strong>In the app</strong>, you create the administrator in the dialog that appears when you switch to Secure mode; skip to Step 3 and log in with it.
+                </p>
+                <p>
+                  <strong>On the CLI</strong>, either start the server with <code>FHIRANT_ADMIN_USERNAME</code> and <code>FHIRANT_ADMIN_PASSWORD</code>
+                   set, or register the first account with the one-time bootstrap token the server prints at start (it is also in 
+                  <code>&lt;db-path&gt;/.bootstrap_token</code>). The first user is <strong>automatically promoted to admin</strong>
                    regardless of what role you request:
                 </p>
                 <div class="code-block">
@@ -1800,8 +1823,9 @@ curl -X POST http://192.168.1.42:8080/Patient \
                     </button>
                     <!--/@code_copy_button-->
                   </div>
-                  <pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/register \
+                  <pre><code class="hljs">curl -X POST http://localhost:8080/auth/register \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -H <span class="hljs-string">"X-Bootstrap-Token: &lt;token from the server log&gt;"</span> \
   -d <span class="hljs-string">'{"username": "admin", "password": "mysecurepassword"}'</span></code></pre>
                 </div>
                 <div class="code-block">
@@ -1826,19 +1850,21 @@ curl -X POST http://192.168.1.42:8080/Patient \
   <span class="hljs-attr">"scopes"</span>: [<span class="hljs-string">"system/*.*"</span>]
 }</code></pre>
                 </div>
-                <p>Registration returns a JWT immediately — you're logged in.</p>
+                <p>
+                  Registration returns a JWT immediately — you're logged in. Without the token, the first registration is refused (403).
+                </p>
                 <div class="callout callout-info">
                   <span><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="20px" height="20px"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></span>
                   <span>
 **Password Requirements**<p>Passwords must be 12-128 characters. There are no complexity rules (no required uppercase, numbers, or symbols), but common passwords like <code>password123456</code> are blocked. This follows <a href="https://pages.nist.gov/800-63-3/sp800-63b.html">NIST 800-63B</a> guidelines — length matters more than complexity.
-</p><h3 id="step-3-make-authenticated-requests" anchor="true"><span>Step 3: Make Authenticated Requests</span><a href="/docs/fhirant/fhirant_getting_started#step-3-make-authenticated-requests">#</a></h3><p>Use the <code>token</code> from registration or login in the <code>Authorization</code> header:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">TOKEN=<span class="hljs-string">"eyJ..."</span>
+</p><h3 id="step-3-make-authenticated-requests" anchor="true"><span>Step 3: Make Authenticated Requests</span><a href="/docs/fhirant/fhirant_getting_started#step-3-make-authenticated-requests">#</a></h3><p>Use the <code>token</code> from registration or login in the <code>Authorization</code> header (the examples from here use <code>$BASE</code> for your server's URL; add <code>-k</code> for the app's self-signed certificate):</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">TOKEN=<span class="hljs-string">"eyJ..."</span>
 
 <span class="hljs-comment"># Search patients</span>
 curl -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
-  http://192.168.1.42:8080/Patient
+  <span class="hljs-variable">$BASE</span>/Patient
 
 <span class="hljs-comment"># Create a resource</span>
-curl -X POST http://192.168.1.42:8080/Observation \
+curl -X POST <span class="hljs-variable">$BASE</span>/Observation \
   -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
   -H <span class="hljs-string">"Content-Type: application/fhir+json"</span> \
   -d <span class="hljs-string">'{
@@ -1847,16 +1873,16 @@ curl -X POST http://192.168.1.42:8080/Observation \
     "code": {"text": "Heart rate"},
     "valueQuantity": {"value": 72, "unit": "bpm"}
   }'</span></code></pre></div><h3 id="step-4-register-additional-users" anchor="true"><span>Step 4: Register Additional Users</span><a href="/docs/fhirant/fhirant_getting_started#step-4-register-additional-users">#</a></h3><p>Once the admin account exists, only admins can create new users. Use the admin token and optionally specify a role:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs"><span class="hljs-comment"># Create a clinician (default role)</span>
-curl -X POST http://192.168.1.42:8080/auth/register \
+curl -X POST <span class="hljs-variable">$BASE</span>/auth/register \
   -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"username": "drjones", "password": "anothersecurepassword"}'</span>
 
 <span class="hljs-comment"># Create a read-only user</span>
-curl -X POST http://192.168.1.42:8080/auth/register \
+curl -X POST <span class="hljs-variable">$BASE</span>/auth/register \
   -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
-  -d <span class="hljs-string">'{"username": "viewer", "password": "viewersecurepassword", "role": "readonly"}'</span></code></pre></div><p>Available roles and their default SMART scopes:</p><table><thead><tr><th>Role</th><th>Default Scopes</th><th>Can Do</th></tr></thead><tbody><tr><td><code>admin</code></td><td><code>system/*.*</code></td><td>Everything, including registering users</td></tr><tr><td><code>clinician</code></td><td><code>user/*.*</code></td><td>Full CRUD on all resource types</td></tr><tr><td><code>readonly</code></td><td><code>user/*.rs</code></td><td>Read and search only</td></tr></tbody></table><p>You can also assign custom SMART scopes per user:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/register \
+  -d <span class="hljs-string">'{"username": "viewer", "password": "viewersecurepassword", "role": "readonly"}'</span></code></pre></div><p>Available roles and their default SMART scopes:</p><table><thead><tr><th>Role</th><th>Default Scopes</th><th>Can Do</th></tr></thead><tbody><tr><td><code>admin</code></td><td><code>system/*.*</code></td><td>Everything, including registering users</td></tr><tr><td><code>clinician</code></td><td><code>user/*.*</code></td><td>Full CRUD on all resource types</td></tr><tr><td><code>readonly</code></td><td><code>user/*.rs</code></td><td>Read and search only</td></tr></tbody></table><p>You can also assign custom SMART scopes per user:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-variable">$BASE</span>/auth/register \
   -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{
@@ -1864,7 +1890,7 @@ curl -X POST http://192.168.1.42:8080/auth/register \
     "password": "labsecurepassword",
     "role": "clinician",
     "scopes": ["user/Observation.cruds", "user/DiagnosticReport.cruds", "user/Patient.rs"]
-  }'</span></code></pre></div><h3 id="step-5-logging-in" anchor="true"><span>Step 5: Logging In</span><a href="/docs/fhirant/fhirant_getting_started#step-5-logging-in">#</a></h3><p>Other users log in with their credentials:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/login \
+  }'</span></code></pre></div><h3 id="step-5-logging-in" anchor="true"><span>Step 5: Logging In</span><a href="/docs/fhirant/fhirant_getting_started#step-5-logging-in">#</a></h3><p>Other users log in with their credentials:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-variable">$BASE</span>/auth/login \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"username": "drjones", "password": "anothersecurepassword"}'</span></code></pre></div><div class="code-block"><div class="code-head"><span class="code-lang">json</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">{
   <span class="hljs-attr">"token"</span>: <span class="hljs-string">"eyJ..."</span>,
@@ -1873,10 +1899,10 @@ curl -X POST http://192.168.1.42:8080/auth/register \
   <span class="hljs-attr">"username"</span>: <span class="hljs-string">"drjones"</span>,
   <span class="hljs-attr">"role"</span>: <span class="hljs-string">"clinician"</span>,
   <span class="hljs-attr">"scopes"</span>: [<span class="hljs-string">"user/*.*"</span>]
-}</code></pre></div><h3 id="step-6-refreshing-tokens" anchor="true"><span>Step 6: Refreshing Tokens</span><a href="/docs/fhirant/fhirant_getting_started#step-6-refreshing-tokens">#</a></h3><p>Access tokens expire after 8 hours. Use the refresh token (valid for 7 days) to get a new one:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/token \
+}</code></pre></div><h3 id="step-6-refreshing-tokens" anchor="true"><span>Step 6: Refreshing Tokens</span><a href="/docs/fhirant/fhirant_getting_started#step-6-refreshing-tokens">#</a></h3><p>Access tokens expire after 8 hours. Use the refresh token (valid for 7 days) to get a new one:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-variable">$BASE</span>/auth/token \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
-  -d <span class="hljs-string">'{"grant_type": "refresh_token", "refresh_token": "eyJ..."}'</span></code></pre></div><h3 id="step-7-logging-out" anchor="true"><span>Step 7: Logging Out</span><a href="/docs/fhirant/fhirant_getting_started#step-7-logging-out">#</a></h3><p>Revoke your current token:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/<span class="hljs-built_in">logout</span> \
-  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span></code></pre></div><p>Or revoke a specific token:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST http://192.168.1.42:8080/auth/revoke \
+  -d <span class="hljs-string">'{"grant_type": "refresh_token", "refresh_token": "eyJ..."}'</span></code></pre></div><h3 id="step-7-logging-out" anchor="true"><span>Step 7: Logging Out</span><a href="/docs/fhirant/fhirant_getting_started#step-7-logging-out">#</a></h3><p>Revoke your current token:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-variable">$BASE</span>/auth/<span class="hljs-built_in">logout</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span></code></pre></div><p>Or revoke a specific token:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-variable">$BASE</span>/auth/revoke \
   -H <span class="hljs-string">"Content-Type: application/json"</span> \
   -d <span class="hljs-string">'{"token": "eyJ..."}'</span></code></pre></div><h2 id="common-workflows" anchor="true"><span>Common Workflows</span><a href="/docs/fhirant/fhirant_getting_started#common-workflows">#</a></h2><h3 id="browse-resources-in-the-app" anchor="true"><span>Browse Resources in the App</span><a href="/docs/fhirant/fhirant_getting_started#browse-resources-in-the-app">#</a></h3><p>Tap on any resource type in the Resource Counts card to open the resource browser. You can view resources as JSON or YAML, and tap on FHIR references (like <code>Patient/123</code>) to navigate to the referenced resource.</p><h3 id="search-with-parameters" anchor="true"><span>Search with Parameters</span><a href="/docs/fhirant/fhirant_getting_started#search-with-parameters">#</a></h3><p>FHIR ANT supports the full range of FHIR search parameters:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs"><span class="hljs-comment"># Search by name</span>
 curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Patient?name=smith"</span>
@@ -1888,11 +1914,15 @@ curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observa
 curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observation?patient=Patient/123&amp;_include=Observation:patient"</span>
 
 <span class="hljs-comment"># Chain through references</span>
-curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observation?patient.name=smith"</span></code></pre></div><h3 id="backup-and-restore" anchor="true"><span>Backup and Restore</span><a href="/docs/fhirant/fhirant_getting_started#backup-and-restore">#</a></h3><p>Export all data as a FHIR Bundle:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/\$backup"</span> -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> &gt; backup.json</code></pre></div><p>Restore from a backup:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/\$restore"</span> \
+curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observation?patient.name=smith"</span></code></pre></div><h3 id="backup-and-restore" anchor="true"><span>Backup and Restore</span><a href="/docs/fhirant/fhirant_getting_started#backup-and-restore">#</a></h3><p>A backup is encrypted under a passphrase you choose. The passphrase is not stored and cannot be recovered. Export all data as an encrypted SQLite file:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/\$backup"</span> \
   -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
   -H <span class="hljs-string">"Content-Type: application/fhir+json"</span> \
-  -d @backup.json</code></pre></div><h2 id="connecting-from-a-fhir-client" anchor="true"><span>Connecting from a FHIR Client</span><a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">#</a></h2><p>FHIR ANT is a standard FHIR R4 server. Any FHIR client library can connect to it. For example, with the <a href="docs/at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a> Dart package:</p><div class="code-block"><div class="code-head"><span class="code-lang">dart</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirSearchRequest(
-  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'http://192.168.1.42:8080'</span>),
+  -d <span class="hljs-string">'{"resourceType":"Parameters","parameter":[{"name":"passphrase","valueString":"a long passphrase"}]}'</span> \
+  -o backup.sqlite</code></pre></div><p>Restore it, sending the file as the body and the passphrase in a header:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/\$restore"</span> \
+  -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span>"</span> \
+  -H <span class="hljs-string">"X-Backup-Passphrase: a long passphrase"</span> \
+  --data-binary @backup.sqlite</code></pre></div><p><code>$restore</code> also takes a plain FHIR Bundle (collection or transaction). The app's Backup card does both without curl.</p><h2 id="connecting-from-a-fhir-client" anchor="true"><span>Connecting from a FHIR Client</span><a href="/docs/fhirant/fhirant_getting_started#connecting-from-a-fhir-client">#</a></h2><p>FHIR ANT is a standard FHIR R4 (R4B) server. Any FHIR client library can connect to it; from the app, it must accept the app's self-signed certificate (pin its fingerprint). For example, with the <a href="docs/at_rest/fhir_r4_at_rest">fhir_r4_at_rest</a> Dart package:</p><div class="code-block"><div class="code-head"><span class="code-lang">dart</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs"><span class="hljs-keyword">final</span> request = FhirSearchRequest(
+  base: <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">'https://192.168.1.42:8080'</span>),
   type: R4ResourceType.Patient,
   parameters: FhirSearchParams(params: [
     SearchString(FhirSearchParamDefinition.familyParam, [<span class="hljs-string">'Smith'</span>]),
@@ -1900,8 +1930,8 @@ curl <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/Observa
 );
 <span class="hljs-keyword">final</span> response = <span class="hljs-keyword">await</span> request.request();</code></pre></div><h2 id="troubleshooting" anchor="true"><span>Troubleshooting</span><a href="/docs/fhirant/fhirant_getting_started#troubleshooting">#</a></h2><p><strong>App shows a loading spinner that never finishes</strong>
 Try clearing the app cache in Android Settings &gt; Apps &gt; FHIR ANT &gt; Clear Cache, then relaunch.</p><p><strong>Can't connect from another device</strong>
-Make sure both devices are on the same Wi-Fi network. Some networks (especially guest networks) isolate devices from each other.</p><p><strong>"Account is locked" error</strong>
-After 5 failed login attempts, the account locks for 15 minutes. Wait for it to expire, or have an admin unlock it:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/admin/unlock/2"</span> -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$ADMIN_TOKEN</span>"</span></code></pre></div><p><strong>Token expired</strong>
+Make sure both devices are on the same Wi-Fi network. Some networks (especially guest networks) isolate devices from each other.</p><p><strong>Login keeps failing with the right password</strong>
+After 5 failed login attempts, the account locks for 15 minutes. A locked account gets the same "Invalid username or password" answer as a wrong password. Wait for it to expire, or have an admin unlock it:</p><div class="code-block"><div class="code-head"><span class="code-lang">bash</span><!--@code_copy_button--><button class="code-copy" aria-label="Copy code" title="Copy"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><!--/@code_copy_button--></div><pre><code class="hljs">curl -X POST <span class="hljs-string">"<span class="hljs-variable">$BASE</span>/admin/unlock/2"</span> -H <span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$ADMIN_TOKEN</span>"</span></code></pre></div><p><strong>Token expired</strong>
 Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see Step 6 above). Refresh tokens last 7 days.</p><h2 id="next-steps" anchor="true"><span>Next Steps</span><a href="/docs/fhirant/fhirant_getting_started#next-steps">#</a></h2><ul><li><a href="docs/fhirant/fhirant_capabilities">Capabilities</a> — full feature matrix</li><li><a href="docs/fhirant/fhirant_api_reference">API Reference</a> — every endpoint</li><li><a href="docs/fhirant/fhirant_security">Security &amp; Auth</a> — OAuth 2.0, SMART scopes, password policy</li><li><a href="docs/fhirant/fhirant_cli">CLI Usage</a> — run the server from the command line</li></ul></span>
                 </div>
               </section>
@@ -1955,9 +1985,11 @@ Access tokens last 8 hours. Use the refresh token endpoint to get a new one (see
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#the-dashboard">The Dashboard</a></li>
                   <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#starting-the-server">Starting the Server</a></li>
                   <li style="padding-left: 0.75em">
-                    <a href="/docs/fhirant/fhirant_getting_started#dev-mode-vs-authenticated-mode">Dev Mode vs Authenticated Mode</a>
+                    <a href="/docs/fhirant/fhirant_getting_started#experimentation-vs-secure-mode">Experimentation vs Secure Mode</a>
                   </li>
-                  <li style="padding-left: 0em"><a href="/docs/fhirant/fhirant_getting_started#using-dev-mode">Using Dev Mode</a></li>
+                  <li style="padding-left: 0em">
+                    <a href="/docs/fhirant/fhirant_getting_started#using-experimentation-mode">Using Experimentation Mode</a>
+                  </li>
                   <li style="padding-left: 0em">
                     <a href="/docs/fhirant/fhirant_getting_started#setting-up-authentication">Setting Up Authentication</a>
                   </li>
