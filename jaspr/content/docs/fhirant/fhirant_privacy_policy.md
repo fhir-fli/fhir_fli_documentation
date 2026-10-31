@@ -42,9 +42,10 @@ FHIR ANT does not use any third-party services, SDKs, or analytics platforms.
 ## Data Retention
 
 Data persists on your device until you:
-- Delete individual resources through the FHIR API
 - Uninstall the app (which removes all app data)
 - Clear the app's data through Android settings
+
+Deleting a resource through the FHIR API does not erase it. The server keeps every earlier version as history, as FHIR servers do, and answers a read of the deleted resource with 410 Gone. There is no API call that removes a resource's history.
 
 ## Children's Privacy
 
