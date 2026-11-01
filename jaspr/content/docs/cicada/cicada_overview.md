@@ -40,19 +40,21 @@ Cicada supports two immunization schedules:
 | **Antigens** | 30+ (U.S. formulations) | 22 (global formulations) |
 | **Typical vaccines** | DTaP, IPV, MMR | DTP, OPV+IPV, MR, pentavalent |
 | **Dose timing** | 2/4/6 months | 6/10/14 weeks |
-| **Spec version** | CDSi v4.61-508 | WHO position papers (2025) |
+| **Spec version** | CDSi v4.65-508 | WHO position papers (2025) |
 
 Switch between modes at runtime with `ForecastMode.cdc` or `ForecastMode.who`.
 
 ## Test Results
 
-Cicada has been extensively validated:
+Measured 2026-11-01 against CDSi supporting data 4.65-508:
 
-- **CDC Healthy Test Cases**: 1010/1014 (99.6%)
-- **CDC Condition Test Cases**: 747/777 (96.1%)
-- **NIST FITS (external)**: 167/169 (98.8%)
+- **CDC healthy test cases**: 1063/1064 agree with CDC's expected result.
+- **CDC underlying-conditions test cases**: 312/337 agree.
+- **NIST FITS (external)**: forecasts pass (22 cases, 70 forecast values correct, 0 errors, run 2026-08-29). Dose evaluations have never matched.
 
-All remaining failures are verified as version mismatch issues between test data versions and engine version, not engine bugs.
+All 26 disagreements are written up case by case in the repository (`CDSI-DISPUTED-CASES.md`), with an evidence review against current ACIP recommendations. Most of those reviews rule for Cicada against an outdated CDC test row. Three are defects in CDC's supporting data. In one case, `2016-UC-0198`, the review found CDC's row clinically right, but the only rule that made Cicada pass appears in no CDSi specification. That rule was removed and the case is left failing. The test suite checks each of the 26 against its recorded difference. A new difference, or a case that starts to agree, fails the build.
+
+Earlier versions of this page quoted 99.6%, 96.1% and 98.8%. Those numbers are withdrawn. The 99.6% came from a test file that made no assertions. The 96.1% used a denominator of 777 that included 439 empty rows. The 98.8% counted forecasts only.
 
 ## Installation
 
