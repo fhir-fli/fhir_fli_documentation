@@ -1718,19 +1718,25 @@
                       <td>DTP, OPV+IPV, MR, pentavalent</td>
                     </tr>
                     <tr><td><strong>Dose timing</strong></td><td>2/4/6 months</td><td>6/10/14 weeks</td></tr>
-                    <tr><td><strong>Spec version</strong></td><td>CDSi v4.61-508</td><td>WHO position papers (2025)</td></tr>
+                    <tr><td><strong>Spec version</strong></td><td>CDSi v4.65-508</td><td>WHO position papers (2025)</td></tr>
                   </tbody>
                 </table>
                 <p>Switch between modes at runtime with <code>ForecastMode.cdc</code> or <code>ForecastMode.who</code>.</p>
                 <h2 id="test-results" anchor="true"><span>Test Results</span><a href="/docs/cicada/cicada_overview#test-results">#</a></h2>
-                <p>Cicada has been extensively validated:</p>
+                <p>Measured 2026-11-01 against CDSi supporting data 4.65-508:</p>
                 <ul>
-                  <li><strong>CDC Healthy Test Cases</strong>: 1010/1014 (99.6%)</li>
-                  <li><strong>CDC Condition Test Cases</strong>: 747/777 (96.1%)</li>
-                  <li><strong>NIST FITS (external)</strong>: 167/169 (98.8%)</li>
+                  <li><strong>CDC healthy test cases</strong>: 1063/1064 agree with CDC's expected result.</li>
+                  <li><strong>CDC underlying-conditions test cases</strong>: 312/337 agree.</li>
+                  <li>
+                    <strong>NIST FITS (external)</strong>: forecasts pass (22 cases, 70 forecast values correct, 0 errors, run 2026-08-29). Dose evaluations have never matched.
+                  </li>
                 </ul>
                 <p>
-                  All remaining failures are verified as version mismatch issues between test data versions and engine version, not engine bugs.
+                  All 26 disagreements are written up case by case in the repository (<code>CDSI-DISPUTED-CASES.md</code>), with an evidence review against current ACIP recommendations. Most of those reviews rule for Cicada against an outdated CDC test row. Three are defects in CDC's supporting data. In one case, 
+                  <code>2016-UC-0198</code>, the review found CDC's row clinically right, but the only rule that made Cicada pass appears in no CDSi specification. That rule was removed and the case is left failing. The test suite checks each of the 26 against its recorded difference. A new difference, or a case that starts to agree, fails the build.
+                </p>
+                <p>
+                  Earlier versions of this page quoted 99.6%, 96.1% and 98.8%. Those numbers are withdrawn. The 99.6% came from a test file that made no assertions. The 96.1% used a denominator of 777 that included 439 empty rows. The 98.8% counted forecasts only.
                 </p>
                 <h2 id="installation" anchor="true"><span>Installation</span><a href="/docs/cicada/cicada_overview#installation">#</a></h2>
                 <div class="code-block">
