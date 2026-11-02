@@ -5,6 +5,13 @@ title: WHO Immunization Forecasting
 
 Cicada supports WHO Expanded Programme on Immunization (EPI) recommendations alongside the CDC's CDSi schedule. This enables immunization forecasting for global health contexts where the U.S. schedule is not applicable.
 
+> **WHO mode is unvalidated.** CDC publishes test cases; we found no WHO
+> equivalent (the WHO SMART immunization guide, draft v0.2.0, carries logic but no
+> expected forecasts), and cicada's WHO forecasts have not been checked against an
+> outside answer. Until 2026-11-01 WHO mode also used the CDC antigen list, so it
+> returned the U.S. schedule (zoster, RSV, MenB, varicella; no BCG); fixed in
+> cicada PR #5. Treat WHO output as a draft for review, not a recommendation.
+
 ## WHO Antigens
 
 Cicada includes definitions for 22 WHO antigens:
