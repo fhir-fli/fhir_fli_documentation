@@ -16,7 +16,11 @@ jobs:
       - name: ⚙️ Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          # Pinned: on Dart 3.14.1 `dart pub get` failed (2026-11-21): no jaspr
+          # 0.23 release resolves there (build_web_compilers 4.8.11+ needs
+          # analyzer >=13.3, jaspr_builder 0.23 allows ^10/^12.1; 4.8.5 and older
+          # need SDK <3.14). Unpin when moving to jaspr 0.24 (beta on 2026-11-21).
+          sdk: 3.13.0
 
       - name: 📦 Install jaspr CLI
         run: dart pub global activate jaspr_cli
