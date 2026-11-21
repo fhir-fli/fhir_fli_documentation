@@ -346,7 +346,7 @@ packages:
     source: hosted
     version: "0.5.3+1"
   jaspr_router:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: jaspr_router
       sha256: "5ec42c13db34e03ef9d34bac715b2eba4a80e553c618e0263037be50db08bbe4"
