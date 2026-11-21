@@ -37,3 +37,11 @@ jobs:
 
       - name: 👷 Build website
         run: $HOME/.pub-cache/bin/jaspr build
+
+  # Fails when a package declares a dependency it does not use, or requires
+  # an older version of one of our pub.dev packages than the latest.
+  dependencies:
+    uses: fhir-fli/.github/.github/workflows/dependencies.yml@main
+    # The Dart the build job pins, until jaspr 0.24 (see the build job).
+    with:
+      dart-sdk: 3.13.0
