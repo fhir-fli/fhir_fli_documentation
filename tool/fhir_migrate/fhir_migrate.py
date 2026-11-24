@@ -173,6 +173,12 @@ def fix(err, text):
             # ("String is not a subtype of FhirString?"). Seen with
             # strict-casts on (convert_app.sh turns it on for this pass).
             src_type = DYNAMIC_AS.get(d)
+            # Only a read out of decoded JSON (`p['name']`). Anything else
+            # that is dynamic may already be the FHIR type at run time
+            # (`data.resource.valueQuantity.value` is a FhirDecimal), and a
+            # cast to num would fail there; a person decides.
+            if not re.search(r"\[\s*['\"][^'\"]+['\"]\s*\]$", expr):
+                return None
             if src_type and dst.endswith("?"):
                 return start, end, f"({expr} as {src_type}?)?.to{d}"
             if src_type:  # a list element or a required field: not null
@@ -232,6 +238,11 @@ def fix(err, text):
             name, typ = gm.groups()
             if name == "fhirId":
                 return start, end, "id"
+            if name in ("valueString", "valueUri", "valueDouble", "valueInt", "valueBoolean",
+                        "valueDateTime") and typ not in PRIMS and typ not in CODE_ENUMS:
+                # The dynamic pass renamed `.label.value` on the app's own
+                # typed class (Bahmni's ControlDefinition); put it back.
+                return start, end, "value"
             if name == "value" and typ in VALUE_GETTER:
                 return start, end, VALUE_GETTER[typ]
             if name == "value" and (typ in PRIMS or typ in CODE_ENUMS):
