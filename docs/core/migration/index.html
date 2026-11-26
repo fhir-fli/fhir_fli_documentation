@@ -1658,6 +1658,337 @@
             <div class="content-container">
               <div class="content-header"><h1>Migration Guide</h1></div>
               <section class="content">
+                <h2 id="moving-from-fhir-012-to-fhir_r4" anchor="true">
+                  <span>Moving from <code>fhir</code> 0.12 to <code>fhir_r4</code></span><a href="/docs/core/migration#moving-from-fhir-012-to-fhir_r4">#</a>
+                </h2>
+                <p>
+                  The <code>fhir</code> package stopped at 0.12.1, and <code>fhir_at_rest</code> at 0.12.0.
+                  <a href="https://pub.dev/packages/fhir_r4"><code>fhir_r4</code></a> and
+                  <a href="https://pub.dev/packages/fhir_r4_at_rest"><code>fhir_r4_at_rest</code></a>
+                   carry on from
+                  them. The resources have the same names and fields, but most fields that
+                  were Dart types are now FHIR types, so an app that builds or reads
+                  resources will have hundreds of compile errors after the switch. A tool
+                  fixes most of them.
+                </p>
+                <h3 id="run-fhir_migrate" anchor="true"><span>Run fhir_migrate</span><a href="/docs/core/migration#run-fhir_migrate">#</a></h3>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang"></span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs">dart pub global activate fhir_migrate
+cd my_app
+git commit -am "before fhir_r4"
+fhir_migrate .</code></pre>
+                </div>
+                <p>
+                  <a href="https://pub.dev/packages/fhir_migrate"><code>fhir_migrate</code></a> changes the
+                  pubspec and imports, then runs the Dart analyzer over the app and fixes
+                  every error whose shape it knows, round after round, until nothing more
+                  changes. It edits the app in place, so commit first and read the result
+                  as a diff. It refuses to start on uncommitted changes (<code>--allow-dirty</code>
+                  overrides that). What it could not fix is printed at the end, one line
+                  each.
+                </p>
+                <p>It was checked on three apps that use <code>fhir</code> 0.12:</p>
+                <table>
+                  <thead><tr><th>App</th><th>Errors after switching packages</th><th>Left after fhir_migrate</th></tr></thead>
+                  <tbody>
+                    <tr><td>HL7 Physical Activity patient app</td><td>1,281</td><td>0</td></tr>
+                    <tr><td>HL7 Physical Activity provider app</td><td>1,245</td><td>14, all there before the switch</td></tr>
+                    <tr><td>Bahmni Connect2</td><td>51</td><td>6</td></tr>
+                  </tbody>
+                </table>
+                <p>
+                  The patient app's Observation builders give the same JSON before and
+                  after, and its patient search and upload give the same results against a
+                  HAPI FHIR server. Bahmni's tests give the same results before and after
+                  once the 6 left are fixed by hand. The tool's
+                  <a href="https://github.com/fhir-fli/fhir_migrate/blob/main/RESULTS.md">RESULTS.md</a>
+                  
+                  has the detail.
+                </p>
+                <p>
+                  After the tool, run <code>dart analyze</code> (or <code>flutter analyze</code>) and your tests,
+                  and read the section below on code that compiles but behaves differently.
+                </p>
+                <h3 id="what-changed" anchor="true"><span>What changed</span><a href="/docs/core/migration#what-changed">#</a></h3>
+                <p>
+                  Each row is a change <code>fhir_migrate</code> makes. The examples are taken from the
+                  apps above.
+                </p>
+                <table>
+                  <thead><tr><th><code>fhir</code> 0.12</th><th><code>fhir_r4</code></th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>HumanName(family: familyName)</code> (a <code>String</code>)</td>
+                      <td>
+                        <code>HumanName(family: familyName?.toFhirString)</code>
+                        . Also 
+                        <code>.toFhirBoolean</code>
+                        , 
+                        <code>.toFhirInteger</code>
+                        , 
+                        <code>.toFhirDecimal</code>
+                        , 
+                        <code>.toFhirDateTime</code>
+                        , 
+                        <code>.toFhirUri</code>
+                         and the others
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>HumanName(given: givenNames)</code> (a <code>List&lt;String&gt;</code>)</td>
+                      <td><code>given: givenNames.map((e) =&gt; e.toFhirString).toList()</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>patient.name?.first.family</code> read as a <code>String</code></td>
+                      <td><code>patient.name?.first.family?.valueString</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>.value</code> on a primitive</td>
+                      <td>
+                        <code>.valueString</code>
+                        , 
+                        <code>.valueBoolean</code>
+                        , 
+                        <code>.valueInt</code>
+                        , 
+                        <code>.valueDouble</code>
+                        , 
+                        <code>.valueDateTime</code>
+                         or 
+                        <code>.valueUri</code>
+                        , by type
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>Patient(fhirId: uuid)</code>, <code>p.fhirId</code></td>
+                      <td><code>Patient(id: uuid?.toFhirString)</code>, <code>p.id?.valueString</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>gender: FhirCode('male')</code></td>
+                      <td><code>gender: AdministrativeGender('male')</code>, where the field now has its own code type</td>
+                    </tr>
+                    <tr><td><code>FhirCode.asConst(x)</code></td><td><code>FhirCode(x)</code></td></tr>
+                    <tr>
+                      <td><code>HumanNameUse.official</code></td>
+                      <td><code>NameUse.official</code>, and 13 other enums whose type was renamed</td>
+                    </tr>
+                    <tr>
+                      <td><code>FhirDateTime(dateTime)</code>, <code>FhirDate('1980-02-03')</code></td>
+                      <td>
+                        <code>FhirDateTime.fromDateTime(dateTime)</code>
+                        , 
+                        <code>FhirDate.fromString('1980-02-03')</code>
+                        ; the same for 
+                        <code>FhirInstant</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>TaskInput(valueReference: ref)</code></td>
+                      <td><code>TaskInput(valueX: ref)</code> where value[x] is one parameter</td>
+                    </tr>
+                    <tr>
+                      <td><code>Task(resourceType: R4ResourceType.Task, ...)</code></td>
+                      <td>no <code>resourceType:</code> parameter</td>
+                    </tr>
+                    <tr>
+                      <td><code>FhirExtension(url: FhirUri('http://...'))</code></td>
+                      <td><code>url: FhirString('http://...')</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>ResourceUtils.resourceTypeFromStringMap[s]</code></td>
+                      <td><code>R4ResourceType.fromString(s)</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  Requests from <code>fhir_at_rest</code> become the typed requests of
+                  <code>fhir_r4_at_rest</code>:
+                </p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-comment">// fhir_at_rest 0.12</span>
+<span class="hljs-keyword">final</span> request = FhirRequest.search(
+  base: base,
+  type: R4ResourceType.Patient,
+  parameters: [<span class="hljs-string">'name=<span class="hljs-subst">$name</span>'</span>],
+);
+<span class="hljs-keyword">final</span> Resource bundle =
+    <span class="hljs-keyword">await</span> request.request(headers: {<span class="hljs-string">'accept'</span>: <span class="hljs-string">'application/fhir+json'</span>});
+
+<span class="hljs-comment">// fhir_r4_at_rest, as fhir_migrate writes it</span>
+<span class="hljs-keyword">final</span> request = FhirSearchRequest(
+  base: base,
+  resourceType: R4ResourceType.Patient.toString(),
+  search: restfulParameters([<span class="hljs-string">'name=<span class="hljs-subst">$name</span>'</span>]),
+  headers: {<span class="hljs-string">'accept'</span>: <span class="hljs-string">'application/fhir+json'</span>},
+);
+<span class="hljs-keyword">final</span> Resource bundle = <span class="hljs-keyword">await</span> sendForResource(request);</code></pre>
+                </div>
+                <p>
+                  <code>FhirRequest.read</code>, <code>create</code>, <code>update</code> and <code>delete</code> become
+                  <code>FhirReadRequest</code>, <code>FhirCreateRequest</code>, <code>FhirUpdateRequest</code>
+                   and
+                  <code>FhirDeleteRequest</code>; a resource is passed as <code>resource.toJson()</code>. The old
+                  <code>request()</code> never threw: a failure came back as an <code>OperationOutcome</code>.
+                  <code>sendForResource</code> keeps that, so code that checks
+                  <code>response is OperationOutcome</code> still works. The tool writes it and
+                  <code>restfulParameters</code> into <code>lib/fhir_rest_compat.dart</code> in your app. New code
+                  can call <code>request.sendRequest()</code> directly, which returns the HTTP response.
+                  See <a href="docs/at_rest/fhir_r4_at_rest">the REST client</a>.
+                </p>
+                <h3 id="what-the-tool-leaves-for-you" anchor="true">
+                  <span>What the tool leaves for you</span><a href="/docs/core/migration#what-the-tool-leaves-for-you">#</a>
+                </h3>
+                <p>In the three apps, the tool left these:</p>
+                <ul>
+                  <li>
+                    A <code>Bundle</code> built without a <code>type</code>. <code>type</code> is now required:
+                    <code>Bundle(type: BundleType.searchset, ...)</code>.
+                  </li>
+                  <li>
+                    A ternary that mixes a FHIR value with a String
+                    (<code>x?.valueString ?? ''</code> where <code>x</code> is now a <code>FhirString</code>).
+                  </li>
+                  <li>
+                    A <code>const</code> constructor call whose argument is now an extension getter,
+                    which cannot be const. Drop the <code>const</code>.
+                  </li>
+                </ul>
+                <h3 id="code-that-compiles-but-behaves-differently" anchor="true">
+                  <span>Code that compiles but behaves differently</span><a href="/docs/core/migration#code-that-compiles-but-behaves-differently">#</a>
+                </h3>
+                <p>Neither the compiler nor the tool catches all of these.</p>
+                <p>
+                  <strong>Equality with a String depends on the side.</strong> Measured with <code>fhir_r4</code>
+                  0.14.1:
+                </p>
+                <table>
+                  <thead><tr><th>Expression</th><th>Result</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>FhirString('a') == 'a'</code></td><td>true</td></tr>
+                    <tr><td><code>'a' == FhirString('a')</code></td><td>false</td></tr>
+                    <tr><td><code>expect(name.family, 'Smith')</code></td><td>fails</td></tr>
+                    <tr><td><code>&lt;String&gt;['Smith'].contains(name.family)</code></td><td>false</td></tr>
+                    <tr><td><code>[name.family].contains('Smith')</code> (a list of FHIR values)</td><td>true</td></tr>
+                    <tr>
+                      <td>a <code>Set</code> or <code>Map</code> mixing the two, either way round</td>
+                      <td>never matches</td>
+                    </tr>
+                    <tr>
+                      <td><code>switch (name.family) { case 'Smith': ... }</code></td>
+                      <td>never matches (the analyzer warns)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  <code>fhir_migrate</code> reads the FHIR value back (<code>name.family?.valueString</code>) in
+                  <code>expect</code>, in <code>==</code> and <code>!=</code> with the String on the left, in a 
+                  <code>switch</code>, and
+                  in <code>contains</code>, <code>remove</code>, <code>containsKey</code>, <code>containsValue</code>
+                   and <code>[]</code> on a
+                  collection of Dart values. A <code>Set</code> or <code>Map</code> that now holds FHIR values and
+                  is looked up with a String is listed for you to fix where the collection
+                  is built. A comparison that reaches a FHIR value through <code>Object</code> or
+                  <code>dynamic</code> is not seen.
+                </p>
+                <p>
+                  <strong>Values from decoded JSON.</strong> <code>HumanName(family: json['family'])</code> compiles
+                  with both packages, since <code>json['family']</code> is <code>dynamic</code>, and fails when it
+                  runs. The tool turns on <code>strict-casts</code> for one pass to find these and
+                  writes <code>(json['family'] as String?)?.toFhirString</code>. Keep <code>strict-casts</code>
+                   on
+                  in your own <code>analysis_options.yaml</code> to catch new ones:
+                </p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">yaml</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-attr">analyzer:</span>
+  <span class="hljs-attr">language:</span>
+    <span class="hljs-attr">strict-casts:</span> <span class="hljs-literal">true</span></code></pre>
+                </div>
+                <p>
+                  <strong>Reads through <code>dynamic</code>.</strong> <code>data.resource.fhirId</code> on a <code>dynamic</code>
+                   compiles
+                  and throws <code>NoSuchMethodError</code> when it runs. The tool rewrites <code>.fhirId</code>
+                   to
+                  <code>.id</code> and <code>.field.value</code> to that field's getter on <code>dynamic</code>
+                   receivers; any
+                  other read through <code>dynamic</code> is yours to find.
+                </p>
+                <p>
+                  <strong>A missing date.</strong> The old <code>FhirDateTime(null)</code> gave the current time,
+                  marked invalid. The migrated <code>end?.toFhirDateTime</code> leaves the field out
+                  when <code>end</code> is null.
+                </p>
+                <p>
+                  <strong>Empty lists are left out of the JSON.</strong> <code>Observation(hasMember: [])</code>
+                  wrote <code>"hasMember": []</code> with <code>fhir</code> 0.12; <code>fhir_r4</code>
+                   leaves the element
+                  out. A server or test that expected the empty array will see a
+                  difference.
+                </p>
+                <h3 id="working-with-code-types" anchor="true"><span>Working with code types</span><a href="/docs/core/migration#working-with-code-types">#</a></h3>
+                <p>
+                  A code type such as <code>AdministrativeGender</code> has a constant for each code
+                  and a Dart enum for <code>switch</code>:
+                </p>
+                <div class="code-block">
+                  <div class="code-head">
+                    <span class="code-lang">dart</span>
+                    <!--@code_copy_button-->
+                    <button class="code-copy" aria-label="Copy code" title="Copy">
+                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <!--/@code_copy_button-->
+                  </div>
+                  <pre><code class="hljs"><span class="hljs-keyword">final</span> gender = AdministrativeGender(<span class="hljs-string">'male'</span>);
+gender == AdministrativeGender.male; <span class="hljs-comment">// true</span>
+
+<span class="hljs-keyword">switch</span> (gender.valueEnum) {
+  <span class="hljs-keyword">case</span> AdministrativeGenderEnum.male:
+    <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">default</span>:
+    <span class="hljs-comment">// ...</span>
+}</code></pre>
+                </div>
+                <p>
+                  A code outside the value set still builds: <code>AdministrativeGender('custom')</code>
+                  has <code>valueString</code> <code>'custom'</code> and <code>valueEnum</code> null.
+                </p>
+                <hr/>
                 <h2 id="upgrading-fhir_r4-012x--0140" anchor="true">
                   <span>Upgrading fhir_r4 0.12.x → 0.14.0</span><a href="/docs/core/migration#upgrading-fhir_r4-012x--0140">#</a>
                 </h2>
@@ -1994,1631 +2325,6 @@
                   </li>
                 </ul>
                 <p>Nothing about serialization, the wire format, or resource APIs changed.</p>
-                <hr/>
-                <h2 id="migration-guide-from-fhir-old-to-fhir_r4-new" anchor="true">
-                  <span>Migration Guide: From fhir (old) to fhir_r4 (new)</span><a href="/docs/core/migration#migration-guide-from-fhir-old-to-fhir_r4-new">#</a>
-                </h2>
-                <h3 id="introduction" anchor="true"><span>Introduction</span><a href="/docs/core/migration#introduction">#</a></h3>
-                <p>
-                  This guide will help you migrate from the older <code>fhir</code> package to the newer, more robust <code>fhir_r4</code>
-                   package. While the syntax is mostly similar since both packages generate code from the same FHIR specification, there are important structural differences and improvements that require attention during migration.
-                </p>
-                <p>
-                  The good news: Most of your resource construction code will work with minimal changes. The main differences are in how primitive types are handled, how polymorphic fields work, and some improved helper methods.
-                </p>
-                <hr/>
-                <h3 id="table-of-contents" anchor="true"><span>Table of Contents</span><a href="/docs/core/migration#table-of-contents">#</a></h3>
-                <ol>
-                  <li><a href="#package-installation">Package Installation</a></li>
-                  <li><a href="#import-changes">Import Changes</a></li>
-                  <li><a href="#primitive-types---the-biggest-change">Primitive Types - The Biggest Change</a></li>
-                  <li><a href="#resource-construction">Resource Construction</a></li>
-                  <li><a href="#enums-and-code-values">Enums and Code Values</a></li>
-                  <li><a href="#polymorphic-types">Polymorphic Types</a></li>
-                  <li><a href="#serialization-and-deserialization">Serialization and Deserialization</a></li>
-                  <li><a href="#utility-methods">Utility Methods</a></li>
-                  <li><a href="#common-migration-patterns">Common Migration Patterns</a></li>
-                  <li><a href="#breaking-changes-checklist">Breaking Changes Checklist</a></li>
-                </ol>
-                <hr/>
-                <h3 id="package-installation" anchor="true"><span>Package Installation</span><a href="/docs/core/migration#package-installation">#</a></h3>
-                <h4 id="old-package">Old Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">yaml</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
-  <span class="hljs-attr">fhir:</span> <span class="hljs-string">^0.x.x</span></code></pre>
-                </div>
-                <h4 id="new-package">New Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">yaml</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-attr">dependencies:</span>
-  <span class="hljs-attr">fhir_r4:</span> <span class="hljs-string">^0.14.0</span></code></pre>
-                </div>
-                <p>
-                  <strong>Action Required:</strong> Update your <code>pubspec.yaml</code> and run <code>flutter pub get</code>.
-                </p>
-                <hr/>
-                <h3 id="import-changes" anchor="true"><span>Import Changes</span><a href="/docs/core/migration#import-changes">#</a></h3>
-                <h4 id="old-package">Old Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir/fhir.dart'</span>;</code></pre>
-                </div>
-                <h4 id="new-package">New Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;</code></pre>
-                </div>
-                <p><strong>Action Required:</strong> Find and replace all imports throughout your codebase.</p>
-                <hr/>
-                <h3 id="primitive-types---the-biggest-change" anchor="true">
-                  <span>Primitive Types - The Biggest Change</span><a href="/docs/core/migration#primitive-types---the-biggest-change">#</a>
-                </h3>
-                <p>
-                  This is where you'll encounter the most errors during migration. The old package handled primitive types differently than the new one.
-                </p>
-                <h4 id="the-old-way">The Old Way</h4>
-                <p>In the old package, primitive types were simpler wrapper classes:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old package</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FhirId</span> </span>{
-  <span class="hljs-keyword">final</span> <span class="hljs-built_in">String</span>? _value;
-  <span class="hljs-keyword">final</span> <span class="hljs-built_in">bool</span> _isValid;
-  
-  <span class="hljs-built_in">String</span>? <span class="hljs-keyword">get</span> value =&gt; _value;
-  <span class="hljs-built_in">bool</span> <span class="hljs-keyword">get</span> isValid =&gt; _isValid;
-}
-
-<span class="hljs-comment">// Usage</span>
-<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
-<span class="hljs-keyword">final</span> idValue = id.value;  <span class="hljs-comment">// Just the string</span></code></pre>
-                </div>
-                <h4 id="the-new-way">The New Way</h4>
-                <p>
-                  In the new package, ALL primitive types extend <code>PrimitiveType</code> and have a more structured approach:
-                </p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// New package</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FhirId</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PrimitiveType</span> </span>{
-  <span class="hljs-keyword">final</span> <span class="hljs-built_in">String</span>? valueString;  <span class="hljs-comment">// The actual value</span>
-  <span class="hljs-keyword">final</span> <span class="hljs-built_in">Element</span>? element;     <span class="hljs-comment">// Metadata/extensions</span>
-  
-  <span class="hljs-comment">// Note: No more .value getter in new package!</span>
-}
-
-<span class="hljs-comment">// Usage</span>
-<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
-<span class="hljs-keyword">final</span> idValue = id.valueString;  <span class="hljs-comment">// Note: .valueString, not .value</span></code></pre>
-                </div>
-                <h4 id="key-differences">Key Differences</h4>
-                <table>
-                  <thead><tr><th>Old Package</th><th>New Package</th><th>Notes</th></tr></thead>
-                  <tbody>
-                    <tr>
-                      <td><code>.value</code></td>
-                      <td><code>.valueString</code></td>
-                      <td>For accessing the string value</td>
-                    </tr>
-                    <tr><td>No element support</td><td><code>.element</code></td><td>Can now carry extensions</td></tr>
-                    <tr><td>Simple constructors</td><td>Rich constructors</td><td>Support for element parameter</td></tr>
-                    <tr><td>Limited metadata</td><td>Full FHIR support</td><td>Proper extension handling</td></tr>
-                  </tbody>
-                </table>
-                <h4 id="migration-actions">Migration Actions</h4>
-                <p><strong>1. Find and Replace <code>.value</code> with <code>.valueString</code></strong></p>
-                <p>This is the most common change you'll need to make:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">if</span> (patient.id?.value == <span class="hljs-string">'123'</span>) { ... }
-<span class="hljs-keyword">final</span> name = patient.name?.first.given?.first.value;
-
-<span class="hljs-comment">// New</span>
-<span class="hljs-keyword">if</span> (patient.id?.valueString == <span class="hljs-string">'123'</span>) { ... }
-<span class="hljs-keyword">final</span> name = patient.name?.first.given?.first.valueString;</code></pre>
-                </div>
-                <p><strong>2. Update Primitive Type Constructors</strong></p>
-                <p>The new package has more ways to create primitives:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">final</span> str = FhirString(<span class="hljs-string">'Hello'</span>);
-<span class="hljs-keyword">final</span> date = FhirDate(<span class="hljs-string">'2024-01-01'</span>);
-<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
-
-<span class="hljs-comment">// New - FhirString and FhirId still work the same way</span>
-<span class="hljs-keyword">final</span> str = FhirString(<span class="hljs-string">'Hello'</span>);
-<span class="hljs-keyword">final</span> id = FhirId(<span class="hljs-string">'patient-123'</span>);
-
-<span class="hljs-comment">// New - Date/time types now use named constructors</span>
-<span class="hljs-keyword">final</span> date = FhirDate.fromString(<span class="hljs-string">'2024-01-01'</span>);
-<span class="hljs-keyword">final</span> dateTime = FhirDateTime.fromString(<span class="hljs-string">'2024-01-01T12:00:00Z'</span>);
-
-<span class="hljs-comment">// New - Extension methods (recommended)</span>
-<span class="hljs-keyword">final</span> str2 = <span class="hljs-string">'Hello'</span>.toFhirString;
-<span class="hljs-keyword">final</span> date2 = <span class="hljs-string">'2024-01-01'</span>.toFhirDate;
-
-<span class="hljs-comment">// New - With element/extensions</span>
-<span class="hljs-comment">// (note: FhirExtension's url field is a FhirString)</span>
-<span class="hljs-keyword">final</span> str3 = FhirString(
-  <span class="hljs-string">'Hello'</span>,
-  element: <span class="hljs-built_in">Element</span>(
-    extension_: [
-      FhirExtension(
-        url: <span class="hljs-string">'http://example.org/ext'</span>.toFhirString,
-        valueString: FhirString(<span class="hljs-string">'metadata'</span>),
-      ),
-    ],
-  ),
-);</code></pre>
-                </div>
-                <p><strong>3. Specific Primitive Type Changes</strong></p>
-                <p>Different primitive types have different getter names in the new package:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Boolean</span>
-<span class="hljs-comment">// Old: myBool.value  (bool?)</span>
-<span class="hljs-comment">// New: myBool.valueBoolean  (bool?)</span>
-
-<span class="hljs-comment">// Integer  </span>
-<span class="hljs-comment">// Old: myInt.value  (int?)</span>
-<span class="hljs-comment">// New: myInt.valueInt  (int?)</span>
-
-<span class="hljs-comment">// Decimal</span>
-<span class="hljs-comment">// Old: myDecimal.value  (double?)</span>
-<span class="hljs-comment">// New: myDecimal.valueDouble  (double?) or myDecimal.valueNum  (num?)</span>
-
-<span class="hljs-comment">// DateTime</span>
-<span class="hljs-comment">// Old: myDateTime.value  (DateTime?)</span>
-<span class="hljs-comment">// New: myDateTime.valueDateTime  (DateTime?)</span>
-
-<span class="hljs-comment">// Date</span>
-<span class="hljs-comment">// Old: myDate.value  (DateTime?)</span>
-<span class="hljs-comment">// New: myDate.valueDateTime  (DateTime?)</span>
-
-<span class="hljs-comment">// String types (FhirString, FhirMarkdown, etc.)</span>
-<span class="hljs-comment">// Old: myString.value  (String?)</span>
-<span class="hljs-comment">// New: myString.valueString  (String?)</span>
-
-<span class="hljs-comment">// Uri types (FhirUri, FhirUrl, FhirCanonical, FhirOid, FhirUuid)</span>
-<span class="hljs-comment">// Old: myUri.value  (String?)</span>
-<span class="hljs-comment">// New: myUri.valueString  (String?) OR myUri.valueUri  (Uri?)</span>
-
-<span class="hljs-comment">// Id</span>
-<span class="hljs-comment">// Old: myId.value  (String?)</span>
-<span class="hljs-comment">// New: myId.valueString  (String?)</span>
-
-<span class="hljs-comment">// Code</span>
-<span class="hljs-comment">// Old: myCode.value  (String?)</span>
-<span class="hljs-comment">// New: myCode.valueString  (String?)</span></code></pre>
-                </div>
-                <h4 id="search-and-replace-strategy">Search and Replace Strategy</h4>
-                <p>Here's a systematic approach:</p>
-                <ol>
-                  <li><strong>Global search for <code>.value</code> in your codebase</strong></li>
-                  <li>
-                    <strong>For each occurrence, determine the type</strong>:<ul><li>If it's a primitive FHIR type, replace with the appropriate getter</li><li>If it's not a FHIR type, leave it alone</li></ul>
-                  </li>
-                  <li><strong>Use your IDE's type inference</strong> to help identify what needs changing</li>
-                </ol>
-                <p><strong>Tip:</strong> You can do a regex search for common patterns:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">regex</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs">\.value(?!\w)</code></pre>
-                </div>
-                <p>
-                  This will find <code>.value</code> but not <code>.valueString</code>, <code>.valueBoolean</code>, etc.
-                </p>
-                <hr/>
-                <h3 id="resource-construction" anchor="true"><span>Resource Construction</span><a href="/docs/core/migration#resource-construction">#</a></h3>
-                <p>Resource construction is largely unchanged, but with improved primitive type handling:</p>
-                <h4 id="old-package">Old Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> patient = Patient(
-  id: FhirId(<span class="hljs-string">'123'</span>),
-  name: [
-    HumanName(
-      family: FhirString(<span class="hljs-string">'Doe'</span>),
-      given: [FhirString(<span class="hljs-string">'John'</span>)],
-    ),
-  ],
-  birthDate: FhirDate(<span class="hljs-string">'1990-01-01'</span>),
-);</code></pre>
-                </div>
-                <h4 id="new-package">New Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Option 1: Direct constructors</span>
-<span class="hljs-keyword">final</span> patient = Patient(
-  id: FhirString(<span class="hljs-string">'123'</span>),  <span class="hljs-comment">// Note: Resource.id is a FhirString now, not FhirId</span>
-  name: [
-    HumanName(
-      family: FhirString(<span class="hljs-string">'Doe'</span>),
-      given: [FhirString(<span class="hljs-string">'John'</span>)],
-    ),
-  ],
-  birthDate: FhirDate.fromString(<span class="hljs-string">'1990-01-01'</span>),
-);
-
-<span class="hljs-comment">// Option 2: Using extension methods (recommended)</span>
-<span class="hljs-keyword">final</span> patient = Patient(
-  id: <span class="hljs-string">'123'</span>.toFhirString,
-  name: [
-    HumanName(
-      family: <span class="hljs-string">'Doe'</span>.toFhirString,
-      given: [<span class="hljs-string">'John'</span>.toFhirString],
-    ),
-  ],
-  birthDate: <span class="hljs-string">'1990-01-01'</span>.toFhirDate,
-);</code></pre>
-                </div>
-                <p>
-                  <strong>Migration Impact:</strong> Small. Most construction code works as-is, with two notable exceptions: 
-                  <code>Resource.id</code> is now a <code>FhirString</code> (not a <code>FhirId</code>), and the date/time types (<code>FhirDate</code>, 
-                  <code>FhirDateTime</code>, <code>FhirInstant</code>) are created with named constructors like <code>FhirDate.fromString(...)</code>
-                   or the extension methods. Consider adopting extension methods for cleaner code.
-                </p>
-                <hr/>
-                <h3 id="enums-and-code-values" anchor="true"><span>Enums and Code Values</span><a href="/docs/core/migration#enums-and-code-values">#</a></h3>
-                <p>
-                  This is another significant change. The old package used simpler enum handling, while the new package has a sophisticated dual-enum system.
-                </p>
-                <h4 id="old-package-approach">Old Package Approach</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old package likely used string values or simple enums</span>
-<span class="hljs-keyword">final</span> status = <span class="hljs-string">'active'</span>;  <span class="hljs-comment">// or</span>
-<span class="hljs-keyword">final</span> status = AppointmentStatus.active;
-
-<span class="hljs-comment">// In resources</span>
-<span class="hljs-keyword">final</span> appointment = Appointment(
-  status: status,
-  <span class="hljs-comment">// ...</span>
-);
-
-<span class="hljs-comment">// Checking values</span>
-<span class="hljs-keyword">if</span> (appointment.status == <span class="hljs-string">'active'</span>) { ... }</code></pre>
-                </div>
-                <h4 id="new-package-approach">New Package Approach</h4>
-                <p>
-                  The new package uses <code>FhirCodeEnum</code> classes that wrap FHIR codes AND provides native Dart enums:
-                </p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// New package - Using the FhirCodeEnum class</span>
-<span class="hljs-keyword">final</span> status = AppointmentStatus.booked;  <span class="hljs-comment">// FhirCodeEnum</span>
-
-<span class="hljs-comment">// In resources</span>
-<span class="hljs-keyword">final</span> appointment = Appointment(
-  status: AppointmentStatus.booked,
-  <span class="hljs-comment">// ...</span>
-);
-
-<span class="hljs-comment">// Checking values - Multiple ways:</span>
-
-<span class="hljs-comment">// 1. Direct equality</span>
-<span class="hljs-keyword">if</span> (appointment.status == AppointmentStatus.booked) { ... }
-
-<span class="hljs-comment">// 2. Using the native enum (recommended for switch statements)</span>
-<span class="hljs-keyword">switch</span> (appointment.status?.valueEnum) {
-  <span class="hljs-keyword">case</span> AppointmentStatusEnum.booked:
-    <span class="hljs-comment">// Handle booked</span>
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> AppointmentStatusEnum.cancelled:
-    <span class="hljs-comment">// Handle cancelled</span>
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> AppointmentStatusEnum.pending:
-    <span class="hljs-comment">// Handle pending</span>
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
-    <span class="hljs-comment">// Handle null or custom values</span>
-    <span class="hljs-keyword">break</span>;
-}
-
-<span class="hljs-comment">// 3. String comparison</span>
-<span class="hljs-keyword">if</span> (appointment.status?.valueString == <span class="hljs-string">'booked'</span>) { ... }
-
-<span class="hljs-comment">// Accessing metadata</span>
-<span class="hljs-keyword">final</span> system = AppointmentStatus.booked.system;  <span class="hljs-comment">// FhirUri</span>
-<span class="hljs-keyword">final</span> display = AppointmentStatus.booked.display;  <span class="hljs-comment">// FhirString</span></code></pre>
-                </div>
-                <h4 id="migration-steps-for-enums">Migration Steps for Enums</h4>
-                <ol><li><strong>Replace string literals</strong> with enum values:</li></ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">final</span> status = <span class="hljs-string">'booked'</span>;
-
-<span class="hljs-comment">// New</span>
-<span class="hljs-keyword">final</span> status = AppointmentStatus.booked;</code></pre>
-                </div>
-                <ol start="2"><li><strong>Update equality checks</strong>:</li></ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">if</span> (status == <span class="hljs-string">'booked'</span>) { ... }
-
-<span class="hljs-comment">// New - Recommended</span>
-<span class="hljs-keyword">if</span> (status == AppointmentStatus.booked) { ... }
-<span class="hljs-comment">// OR</span>
-<span class="hljs-keyword">if</span> (status?.valueEnum == AppointmentStatusEnum.booked) { ... }</code></pre>
-                </div>
-                <ol start="3"><li><strong>Convert switch statements</strong> to use the new enum:</li></ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">switch</span> (status) {
-  <span class="hljs-keyword">case</span> <span class="hljs-string">'booked'</span>:
-    <span class="hljs-comment">// ...</span>
-  <span class="hljs-keyword">case</span> <span class="hljs-string">'cancelled'</span>:
-    <span class="hljs-comment">// ...</span>
-}
-
-<span class="hljs-comment">// New - Much better with native enums!</span>
-<span class="hljs-keyword">switch</span> (status?.valueEnum) {
-  <span class="hljs-keyword">case</span> AppointmentStatusEnum.booked:
-    <span class="hljs-comment">// ...</span>
-  <span class="hljs-keyword">case</span> AppointmentStatusEnum.cancelled:
-    <span class="hljs-comment">// ...</span>
-  <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
-    <span class="hljs-comment">// Handle custom or null values</span>
-}</code></pre>
-                </div>
-                <h4 id="important-custom-enum-values">Important: Custom Enum Values</h4>
-                <p>The new package supports custom/extended enum values:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Create a custom status not in the standard set</span>
-<span class="hljs-keyword">final</span> customStatus = AppointmentStatus(<span class="hljs-string">'custom-value'</span>);
-
-<span class="hljs-comment">// Note: customStatus.valueEnum will be null</span>
-<span class="hljs-comment">// But customStatus.valueString will be 'custom-value'</span>
-
-<span class="hljs-comment">// Handling in code:</span>
-<span class="hljs-keyword">switch</span> (appointment.status?.valueEnum) {
-  <span class="hljs-keyword">case</span> AppointmentStatusEnum.booked:
-    <span class="hljs-comment">// Standard value</span>
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
-    <span class="hljs-comment">// Could be custom or null</span>
-    <span class="hljs-keyword">if</span> (appointment.status?.valueString == <span class="hljs-string">'custom-value'</span>) {
-      <span class="hljs-comment">// Handle custom</span>
-    }
-    <span class="hljs-keyword">break</span>;
-}</code></pre>
-                </div>
-                <hr/>
-                <h3 id="polymorphic-types" anchor="true"><span>Polymorphic Types</span><a href="/docs/core/migration#polymorphic-types">#</a></h3>
-                <p>Polymorphic fields (those that can contain multiple types) are handled differently.</p>
-                <h4 id="old-package">Old Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old package - Less type-safe approach</span>
-<span class="hljs-comment">// Likely used dynamic or Object types</span>
-<span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
-  url: FhirUri(<span class="hljs-string">'http://example.org/ext'</span>),
-  value: FhirString(<span class="hljs-string">'some value'</span>),  <span class="hljs-comment">// Could be various types</span>
-);
-
-<span class="hljs-comment">// Accessing required casting</span>
-<span class="hljs-keyword">final</span> value = <span class="hljs-keyword">extension</span>.value;
-<span class="hljs-keyword">if</span> (value <span class="hljs-keyword">is</span> FhirString) {
-  <span class="hljs-keyword">final</span> stringValue = value.value;
-}</code></pre>
-                </div>
-                <h4 id="new-package">New Package</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// New package - Type-safe with abstract classes</span>
-<span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
-  url: <span class="hljs-string">'http://example.org/ext'</span>.toFhirString,
-  valueX: FhirString(<span class="hljs-string">'some value'</span>),  <span class="hljs-comment">// Note: valueX, not value</span>
-);
-
-<span class="hljs-comment">// Accessing with type-specific getters</span>
-<span class="hljs-keyword">final</span> stringValue = <span class="hljs-keyword">extension</span>.valueString;  <span class="hljs-comment">// FhirString?</span>
-<span class="hljs-keyword">final</span> boolValue = <span class="hljs-keyword">extension</span>.valueBoolean;   <span class="hljs-comment">// FhirBoolean?</span>
-<span class="hljs-keyword">final</span> codeValue = <span class="hljs-keyword">extension</span>.valueCode;       <span class="hljs-comment">// FhirCode?</span>
-
-<span class="hljs-comment">// Using the generic accessor</span>
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueX <span class="hljs-keyword">is</span> FhirString) {
-  <span class="hljs-keyword">final</span> str = <span class="hljs-keyword">extension</span>.valueX <span class="hljs-keyword">as</span> FhirString;
-  <span class="hljs-comment">// Use str</span>
-}
-
-<span class="hljs-comment">// Or using the helper method</span>
-<span class="hljs-keyword">final</span> str = <span class="hljs-keyword">extension</span>.valueX?.isAs&lt;FhirString&gt;();
-<span class="hljs-keyword">if</span> (str != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-comment">// Use str</span>
-}</code></pre>
-                </div>
-                <h4 id="naming-convention-change">Naming Convention Change</h4>
-                <p>
-                  <strong>Old:</strong> Polymorphic fields might have been named <code>value</code>, <code>product</code>, 
-                  <code>subject</code>, etc.
-                </p>
-                <p>
-                  <strong>New:</strong> Polymorphic fields are named with an <code>X</code> suffix: <code>valueX</code>, 
-                  <code>productX</code>, <code>subjectX</code>, <code>scheduledX</code>, etc.
-                </p>
-                <h4 id="migration-for-polymorphic-fields">Migration for Polymorphic Fields</h4>
-                <ol>
-                  <li>
-                    <p><strong>Identify polymorphic fields</strong> in your code (usually documented in FHIR spec as <code>[x]</code>)</p>
-                  </li>
-                  <li><p><strong>Rename the field access</strong> to add <code>X</code> suffix:</p></li>
-                </ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">final</span> value = <span class="hljs-keyword">extension</span>.value;
-<span class="hljs-keyword">final</span> product = carePlanDetail.product;
-
-<span class="hljs-comment">// New</span>
-<span class="hljs-keyword">final</span> value = <span class="hljs-keyword">extension</span>.valueX;
-<span class="hljs-keyword">final</span> product = carePlanDetail.productX;</code></pre>
-                </div>
-                <ol start="3"><li><strong>Use type-specific getters</strong> instead of casting:</li></ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">is</span> FhirString) {
-  <span class="hljs-keyword">final</span> str = (<span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">as</span> FhirString).value;
-}
-
-<span class="hljs-comment">// New - Much cleaner!</span>
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueString != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-keyword">final</span> str = <span class="hljs-keyword">extension</span>.valueString!.valueString;
-}</code></pre>
-                </div>
-                <ol start="4"><li><strong>Update type checking</strong>:</li></ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">switch</span> (value.runtimeType) {
-  <span class="hljs-keyword">case</span> FhirString:
-    <span class="hljs-comment">// ...</span>
-  <span class="hljs-keyword">case</span> FhirBoolean:
-    <span class="hljs-comment">// ...</span>
-}
-
-<span class="hljs-comment">// New - Use getters</span>
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueString != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-comment">// It's a string</span>
-} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueBoolean != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-comment">// It's a boolean</span>
-} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.valueInteger != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-comment">// It's an integer</span>
-}</code></pre>
-                </div>
-                <hr/>
-                <h3 id="serialization-and-deserialization" anchor="true">
-                  <span>Serialization and Deserialization</span><a href="/docs/core/migration#serialization-and-deserialization">#</a>
-                </h3>
-                <p>Both packages support JSON, but the new package adds YAML and convenience methods.</p>
-                <h4 id="json-serialization">JSON Serialization</h4>
-                <p><strong>Old Package:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// To JSON Map</span>
-<span class="hljs-keyword">final</span> json = patient.toJson();
-
-<span class="hljs-comment">// To JSON String (two steps)</span>
-<span class="hljs-keyword">final</span> jsonString = jsonEncode(patient.toJson());
-
-<span class="hljs-comment">// From JSON</span>
-<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonMap);
-
-<span class="hljs-comment">// From JSON String (two steps)</span>
-<span class="hljs-keyword">final</span> jsonMap = jsonDecode(jsonString);
-<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonMap);</code></pre>
-                </div>
-                <p><strong>New Package:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// To JSON Map (same)</span>
-<span class="hljs-keyword">final</span> json = patient.toJson();
-
-<span class="hljs-comment">// To JSON String (one step!)</span>
-<span class="hljs-keyword">final</span> jsonString = patient.toJsonString();
-
-<span class="hljs-comment">// From JSON (same)</span>
-<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonMap);
-
-<span class="hljs-comment">// From JSON String (one step!)</span>
-<span class="hljs-keyword">final</span> patient = Patient.fromJsonString(jsonString);</code></pre>
-                </div>
-                <h4 id="yaml-support-new">YAML Support (New!)</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// To YAML String</span>
-<span class="hljs-keyword">final</span> yamlString = patient.toYaml();
-
-<span class="hljs-comment">// From YAML</span>
-<span class="hljs-keyword">final</span> patient = Patient.fromYaml(yamlString);
-<span class="hljs-comment">// OR</span>
-<span class="hljs-keyword">final</span> patient = Patient.fromYaml(yamlMap);  <span class="hljs-comment">// YamlMap</span></code></pre>
-                </div>
-                <h4 id="migration-steps">Migration Steps</h4>
-                <ol><li><strong>Replace two-step JSON string serialization</strong>:</li></ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">final</span> jsonString = jsonEncode(patient.toJson());
-
-<span class="hljs-comment">// New</span>
-<span class="hljs-keyword">final</span> jsonString = patient.toJsonString();</code></pre>
-                </div>
-                <ol start="2"><li><strong>Replace two-step JSON string deserialization</strong>:</li></ol>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old</span>
-<span class="hljs-keyword">final</span> patient = Patient.fromJson(jsonDecode(jsonString));
-
-<span class="hljs-comment">// New</span>
-<span class="hljs-keyword">final</span> patient = Patient.fromJsonString(jsonString);</code></pre>
-                </div>
-                <ol start="3">
-                  <li><strong>Consider adding YAML support</strong> where it makes sense (debugging, configuration, etc.)</li>
-                </ol>
-                <hr/>
-                <h3 id="utility-methods" anchor="true"><span>Utility Methods</span><a href="/docs/core/migration#utility-methods">#</a></h3>
-                <p>The new package includes powerful reflection-like utilities that weren't in the old package.</p>
-                <h4 id="new-utility-methods">New Utility Methods</h4>
-                <h5 id="1-listchildrennames">1. <code>listChildrenNames()</code></h5>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Get all field names</span>
-<span class="hljs-keyword">final</span> fieldNames = patient.listChildrenNames();
-<span class="hljs-comment">// Returns: ['id', 'meta', 'implicitRules', 'language', 'text', 'contained', ...]</span></code></pre>
-                </div>
-                <h5 id="2-getchildrenbynamestring-name">2. <code>getChildrenByName(String name)</code></h5>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Get specific fields by name</span>
-<span class="hljs-keyword">final</span> names = patient.getChildrenByName(<span class="hljs-string">'name'</span>);
-<span class="hljs-comment">// Returns: List&lt;FhirBase&gt; containing all name values</span></code></pre>
-                </div>
-                <h5 id="3-getchildbynamestring-name">3. <code>getChildByName(String name)</code></h5>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Get a single field by name</span>
-<span class="hljs-keyword">final</span> id = patient.getChildByName(<span class="hljs-string">'id'</span>);
-<span class="hljs-comment">// Returns: FhirBase? (the id field)</span></code></pre>
-                </div>
-                <h5 id="4-copywith">4. <code>copyWith()</code></h5>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Create modified copies (improved from old package)</span>
-<span class="hljs-keyword">final</span> updatedPatient = patient.copyWith(
-  id: <span class="hljs-string">'456'</span>.toFhirString,
-  active: <span class="hljs-keyword">true</span>.toFhirBoolean,
-);
-
-<span class="hljs-comment">// New: Can now pass null to clear fields!</span>
-<span class="hljs-keyword">final</span> patientWithoutName = patient.copyWith(
-  name: <span class="hljs-keyword">null</span>,  <span class="hljs-comment">// This now works!</span>
-);</code></pre>
-                </div>
-                <h5 id="5-equalsdeep">5. <code>equalsDeep()</code></h5>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Deep equality comparison</span>
-<span class="hljs-keyword">final</span> areEqual = patient1.equalsDeep(patient2);</code></pre>
-                </div>
-                <h4 id="migration-benefit">Migration Benefit</h4>
-                <p>
-                  These new methods can simplify a lot of dynamic field access code you might have written in the old package.
-                </p>
-                <p><strong>Example - Dynamic Field Access:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Old package - Had to know exact structure</span>
-<span class="hljs-built_in">String</span>? getPatientName(Patient patient) {
-  <span class="hljs-keyword">if</span> (patient.name != <span class="hljs-keyword">null</span> &amp;&amp; patient.name!.isNotEmpty) {
-    <span class="hljs-keyword">return</span> patient.name!.first.family?.value;
-  }
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-}
-
-<span class="hljs-comment">// New package - Can use reflection-like methods</span>
-<span class="hljs-built_in">List</span>&lt;FhirBase&gt; getFieldByName(Patient patient, <span class="hljs-built_in">String</span> fieldName) {
-  <span class="hljs-keyword">return</span> patient.getChildrenByName(fieldName);
-}
-
-<span class="hljs-comment">// Get all field names for introspection</span>
-<span class="hljs-keyword">void</span> printAllFields(Patient patient) {
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> fieldName <span class="hljs-keyword">in</span> patient.listChildrenNames()) {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">'<span class="hljs-subst">$fieldName</span>: <span class="hljs-subst">${patient.getChildrenByName(fieldName)}</span>'</span>);
-  }
-}</code></pre>
-                </div>
-                <hr/>
-                <h3 id="common-migration-patterns" anchor="true"><span>Common Migration Patterns</span><a href="/docs/core/migration#common-migration-patterns">#</a></h3>
-                <h4 id="pattern-1-accessing-nested-primitive-values">Pattern 1: Accessing Nested Primitive Values</h4>
-                <p><strong>Old:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> patientName = patient.name?.first.given?.first.value;
-<span class="hljs-keyword">final</span> birthDate = patient.birthDate?.value;</code></pre>
-                </div>
-                <p><strong>New:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> patientName = patient.name?.first.given?.first.valueString;
-<span class="hljs-keyword">final</span> birthDate = patient.birthDate?.valueDateTime;</code></pre>
-                </div>
-                <h4 id="pattern-2-creating-resources-with-primitives">Pattern 2: Creating Resources with Primitives</h4>
-                <p><strong>Old:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> observation = Observation(
-  status: ObservationStatus.final_,
-  code: CodeableConcept(
-    coding: [
-      Coding(
-        system: FhirUri(<span class="hljs-string">'http://loinc.org'</span>),
-        code: FhirCode(<span class="hljs-string">'8480-6'</span>),
-        display: FhirString(<span class="hljs-string">'Systolic blood pressure'</span>),
-      ),
-    ],
-  ),
-  valueQuantity: Quantity(
-    value: FhirDecimal(<span class="hljs-number">120</span>),
-    unit: FhirString(<span class="hljs-string">'mmHg'</span>),
-    system: FhirUri(<span class="hljs-string">'http://unitsofmeasure.org'</span>),
-    code: FhirCode(<span class="hljs-string">'mm[Hg]'</span>),
-  ),
-);</code></pre>
-                </div>
-                <p><strong>New (same structure, but consider extension methods):</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> observation = Observation(
-  status: ObservationStatus.final_,
-  code: CodeableConcept(
-    coding: [
-      Coding(
-        system: <span class="hljs-string">'http://loinc.org'</span>.toFhirUri,
-        code: <span class="hljs-string">'8480-6'</span>.toFhirCode,
-        display: <span class="hljs-string">'Systolic blood pressure'</span>.toFhirString,
-      ),
-    ],
-  ),
-  valueQuantity: Quantity(
-    value: <span class="hljs-number">120.0</span>.toFhirDecimal,
-    unit: <span class="hljs-string">'mmHg'</span>.toFhirString,
-    system: <span class="hljs-string">'http://unitsofmeasure.org'</span>.toFhirUri,
-    code: <span class="hljs-string">'mm[Hg]'</span>.toFhirCode,
-  ),
-);</code></pre>
-                </div>
-                <h4 id="pattern-3-checking-for-null-values">Pattern 3: Checking for Null Values</h4>
-                <p><strong>Old:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">if</span> (patient.name != <span class="hljs-keyword">null</span> &amp;&amp; 
-    patient.name!.first.family != <span class="hljs-keyword">null</span> &amp;&amp; 
-    patient.name!.first.family!.value != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-built_in">print</span>(patient.name!.first.family!.value);
-}</code></pre>
-                </div>
-                <p><strong>New:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Same null checking needed</span>
-<span class="hljs-keyword">if</span> (patient.name != <span class="hljs-keyword">null</span> &amp;&amp; 
-    patient.name!.first.family != <span class="hljs-keyword">null</span> &amp;&amp; 
-    patient.name!.first.family!.valueString != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-built_in">print</span>(patient.name!.first.family!.valueString);
-}
-
-<span class="hljs-comment">// OR use null-aware operators</span>
-<span class="hljs-keyword">final</span> familyName = patient.name?.first.family?.valueString;
-<span class="hljs-keyword">if</span> (familyName != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-built_in">print</span>(familyName);
-}</code></pre>
-                </div>
-                <h4 id="pattern-4-working-with-lists">Pattern 4: Working with Lists</h4>
-                <p><strong>Old:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> identifiers = patient.identifier?.map((id) =&gt; id.value?.value).toList();</code></pre>
-                </div>
-                <p><strong>New:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> identifiers = patient.identifier?.map((id) =&gt; id.value?.valueString).toList();</code></pre>
-                </div>
-                <h4 id="pattern-5-polymorphic-extensions">Pattern 5: Polymorphic Extensions</h4>
-                <p><strong>Old:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
-  url: FhirUri(<span class="hljs-string">'http://example.org/height'</span>),
-  value: Quantity(
-    value: FhirDecimal(<span class="hljs-number">175</span>),
-    unit: FhirString(<span class="hljs-string">'cm'</span>),
-  ),
-);
-
-<span class="hljs-comment">// Accessing</span>
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">is</span> Quantity) {
-  <span class="hljs-keyword">final</span> quantity = <span class="hljs-keyword">extension</span>.value <span class="hljs-keyword">as</span> Quantity;
-  <span class="hljs-keyword">final</span> value = quantity.value?.value;
-}</code></pre>
-                </div>
-                <p><strong>New:</strong></p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-keyword">extension</span> = FhirExtension(
-  url: <span class="hljs-string">'http://example.org/height'</span>.toFhirString,
-  valueX: Quantity(
-    value: <span class="hljs-number">175.0</span>.toFhirDecimal,
-    unit: <span class="hljs-string">'cm'</span>.toFhirString,
-  ),
-);
-
-<span class="hljs-comment">// Accessing - Much cleaner!</span>
-<span class="hljs-keyword">final</span> quantity = <span class="hljs-keyword">extension</span>.valueQuantity;
-<span class="hljs-keyword">if</span> (quantity != <span class="hljs-keyword">null</span>) {
-  <span class="hljs-keyword">final</span> value = quantity.value?.valueDouble;
-}</code></pre>
-                </div>
-                <hr/>
-                <h3 id="breaking-changes-checklist" anchor="true">
-                  <span>Breaking Changes Checklist</span><a href="/docs/core/migration#breaking-changes-checklist">#</a>
-                </h3>
-                <p>Use this checklist to systematically update your code:</p>
-                <h4 id="1-imports">1. Imports</h4>
-                <ul class="contains-task-list">
-                  <li class="task-list-item">
-                    <input type="checkbox"/>Replace <code>import 'package:fhir/fhir.dart'</code> with <code>import 'package:fhir_r4/fhir_r4.dart'</code>
-                  </li>
-                  <li class="task-list-item"><input type="checkbox"/>Update pubspec.yaml</li>
-                </ul>
-                <h4 id="2-primitive-types">2. Primitive Types</h4>
-                <ul class="contains-task-list">
-                  <li class="task-list-item"><input type="checkbox"/>Find all <code>.value</code> accessors on FHIR primitive types</li>
-                  <li class="task-list-item">
-                    <input type="checkbox"/>Replace with appropriate typed getters (<code>.valueString</code>, <code>.valueInt</code>, 
-                    <code>.valueBoolean</code>, etc.)
-                  </li>
-                  <li class="task-list-item"><input type="checkbox"/>Update any primitive type constructors if using element/extensions</li>
-                </ul>
-                <h4 id="3-enums">3. Enums</h4>
-                <ul class="contains-task-list">
-                  <li class="task-list-item"><input type="checkbox"/>Replace string literal enum values with FhirCodeEnum values</li>
-                  <li class="task-list-item"><input type="checkbox"/>Update equality checks to use enum values</li>
-                  <li class="task-list-item"><input type="checkbox"/>Convert switch statements to use native enums via <code>.valueEnum</code></li>
-                </ul>
-                <h4 id="4-polymorphic-fields">4. Polymorphic Fields</h4>
-                <ul class="contains-task-list">
-                  <li class="task-list-item"><input type="checkbox"/>Identify all polymorphic fields (those that can be multiple types)</li>
-                  <li class="task-list-item">
-                    <input type="checkbox"/>Rename field access to add <code>X</code> suffix (e.g., <code>value</code> → 
-                    <code>valueX</code>)
-                  </li>
-                  <li class="task-list-item"><input type="checkbox"/>Use type-specific getters instead of casting</li>
-                  <li class="task-list-item"><input type="checkbox"/>Update type checking logic</li>
-                </ul>
-                <h4 id="5-serialization">5. Serialization</h4>
-                <ul class="contains-task-list">
-                  <li class="task-list-item">
-                    <input type="checkbox"/>Replace <code>jsonEncode(resource.toJson())</code> with <code>resource.toJsonString()</code>
-                  </li>
-                  <li class="task-list-item">
-                    <input type="checkbox"/>Replace <code>Resource.fromJson(jsonDecode(string))</code> with <code>Resource.fromJsonString(string)</code>
-                  </li>
-                  <li class="task-list-item"><input type="checkbox"/>Consider adding YAML support where useful</li>
-                </ul>
-                <h4 id="6-testing">6. Testing</h4>
-                <ul class="contains-task-list">
-                  <li class="task-list-item"><input type="checkbox"/>Update all tests that check primitive values</li>
-                  <li class="task-list-item"><input type="checkbox"/>Update JSON serialization/deserialization tests</li>
-                  <li class="task-list-item"><input type="checkbox"/>Add tests for new utility methods if using them</li>
-                  <li class="task-list-item"><input type="checkbox"/>Test enum comparisons</li>
-                </ul>
-                <h4 id="7-consider-adopting-new-features">7. Consider Adopting New Features</h4>
-                <ul class="contains-task-list">
-                  <li class="task-list-item"><input type="checkbox"/>Use extension methods for primitive type creation</li>
-                  <li class="task-list-item"><input type="checkbox"/>Use <code>copyWith()</code> with null values where needed</li>
-                  <li class="task-list-item">
-                    <input type="checkbox"/>Leverage <code>listChildrenNames()</code> and <code>getChildrenByName()</code>
-                     for dynamic access
-                  </li>
-                  <li class="task-list-item"><input type="checkbox"/>Use YAML for debugging/configuration</li>
-                </ul>
-                <hr/>
-                <h3 id="step-by-step-migration-process" anchor="true">
-                  <span>Step-by-Step Migration Process</span><a href="/docs/core/migration#step-by-step-migration-process">#</a>
-                </h3>
-                <h4 id="phase-1-setup-30-minutes">Phase 1: Setup (30 minutes)</h4>
-                <ol>
-                  <li>Create a new branch for migration</li>
-                  <li>Update pubspec.yaml</li>
-                  <li>Run <code>flutter pub get</code></li>
-                  <li>Update all imports</li>
-                </ol>
-                <h4 id="phase-2-fix-compilation-errors-2-4-hours-depending-on-codebase-size">Phase 2: Fix Compilation Errors (2-4 hours depending on codebase size)</h4>
-                <ol>
-                  <li>
-                    <p><strong>Start with primitive value accessors:</strong></p><ul><li>Search for <code>.value</code> globally</li><li>For each FHIR primitive type, replace with appropriate getter</li><li>Start with most common types first (FhirString, FhirId, FhirCode)</li></ul>
-                  </li>
-                  <li>
-                    <p><strong>Fix polymorphic fields:</strong></p><ul><li>Search for known polymorphic field names</li><li>Add <code>X</code> suffix</li><li>Update accessors to use type-specific getters</li></ul>
-                  </li>
-                  <li>
-                    <p><strong>Update enums:</strong></p><ul><li>Replace string literals with enum values</li><li>Update comparisons</li></ul>
-                  </li>
-                  <li>
-                    <p><strong>Fix serialization:</strong></p><ul><li>Replace two-step JSON operations with convenience methods</li></ul>
-                  </li>
-                </ol>
-                <h4 id="phase-3-testing-1-2-hours">Phase 3: Testing (1-2 hours)</h4>
-                <ol>
-                  <li>Run all existing tests</li>
-                  <li>Fix any test failures</li>
-                  <li>Add tests for new patterns if needed</li>
-                </ol>
-                <h4 id="phase-4-optimization-optional-1-2-hours">Phase 4: Optimization (optional, 1-2 hours)</h4>
-                <ol>
-                  <li>Adopt extension methods for cleaner code</li>
-                  <li>Use new utility methods where beneficial</li>
-                  <li>Add YAML support for debugging</li>
-                  <li>Update documentation</li>
-                </ol>
-                <hr/>
-                <h3 id="quick-reference-table" anchor="true"><span>Quick Reference Table</span><a href="/docs/core/migration#quick-reference-table">#</a></h3>
-                <table>
-                  <thead><tr><th>Task</th><th>Old Package</th><th>New Package</th></tr></thead>
-                  <tbody>
-                    <tr><td>Get string value</td><td><code>.value</code></td><td><code>.valueString</code></td></tr>
-                    <tr><td>Get int value</td><td><code>.value</code></td><td><code>.valueInt</code></td></tr>
-                    <tr><td>Get bool value</td><td><code>.value</code></td><td><code>.valueBoolean</code></td></tr>
-                    <tr><td>Get DateTime value</td><td><code>.value</code></td><td><code>.valueDateTime</code></td></tr>
-                    <tr><td>Get double value</td><td><code>.value</code></td><td><code>.valueDouble</code></td></tr>
-                    <tr>
-                      <td>Create FhirString</td>
-                      <td><code>FhirString('text')</code></td>
-                      <td><code>'text'.toFhirString</code></td>
-                    </tr>
-                    <tr>
-                      <td>Create FhirDate</td>
-                      <td><code>FhirDate('2024-01-01')</code></td>
-                      <td><code>'2024-01-01'.toFhirDate</code></td>
-                    </tr>
-                    <tr>
-                      <td>Enum comparison</td>
-                      <td><code>status == 'active'</code></td>
-                      <td><code>status == Status.active</code></td>
-                    </tr>
-                    <tr>
-                      <td>Polymorphic field</td>
-                      <td><code>.value</code> or <code>.product</code></td>
-                      <td><code>.valueX</code> or <code>.productX</code></td>
-                    </tr>
-                    <tr>
-                      <td>Type-specific getter</td>
-                      <td>Cast required</td>
-                      <td><code>.valueString</code>, <code>.valueInt</code>, etc.</td>
-                    </tr>
-                    <tr>
-                      <td>JSON to string</td>
-                      <td><code>jsonEncode(x.toJson())</code></td>
-                      <td><code>x.toJsonString()</code></td>
-                    </tr>
-                    <tr>
-                      <td>String to JSON</td>
-                      <td><code>X.fromJson(jsonDecode(s))</code></td>
-                      <td><code>X.fromJsonString(s)</code></td>
-                    </tr>
-                    <tr><td>YAML support</td><td>Not available</td><td><code>.toYaml()</code>, <code>.fromYaml()</code></td></tr>
-                  </tbody>
-                </table>
-                <hr/>
-                <h3 id="troubleshooting-common-errors" anchor="true">
-                  <span>Troubleshooting Common Errors</span><a href="/docs/core/migration#troubleshooting-common-errors">#</a>
-                </h3>
-                <h4 id="error-the-getter-value-isnt-defined">Error: "The getter 'value' isn't defined"</h4>
-                <p><strong>Cause:</strong> Using old <code>.value</code> accessor on primitive type.</p>
-                <p><strong>Solution:</strong> Replace with typed getter:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Error</span>
-<span class="hljs-keyword">final</span> name = patient.name?.first.family?.value;
-
-<span class="hljs-comment">// Fix</span>
-<span class="hljs-keyword">final</span> name = patient.name?.first.family?.valueString;</code></pre>
-                </div>
-                <h4 id="error-the-argument-type-string-cant-be-assigned-to-the-parameter-type-appointmentstatus">Error: "The argument type 'String' can't be assigned to the parameter type 'AppointmentStatus'"</h4>
-                <p><strong>Cause:</strong> Trying to use string literal where enum is expected.</p>
-                <p><strong>Solution:</strong> Use the enum value:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Error</span>
-<span class="hljs-keyword">final</span> appointment = Appointment(status: <span class="hljs-string">'booked'</span>);
-
-<span class="hljs-comment">// Fix</span>
-<span class="hljs-keyword">final</span> appointment = Appointment(status: AppointmentStatus.booked);</code></pre>
-                </div>
-                <h4 id="error-the-getter-product-isnt-defined">Error: "The getter 'product' isn't defined"</h4>
-                <p><strong>Cause:</strong> Polymorphic field name changed.</p>
-                <p><strong>Solution:</strong> Add <code>X</code> suffix:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Error</span>
-<span class="hljs-keyword">final</span> product = carePlan.activity?.first.detail?.product;
-
-<span class="hljs-comment">// Fix</span>
-<span class="hljs-keyword">final</span> product = carePlan.activity?.first.detail?.productX;</code></pre>
-                </div>
-                <h4 id="error-the-operator--isnt-defined-for-the-type">Error: "The operator '==' isn't defined for the type"</h4>
-                <p><strong>Cause:</strong> Enum comparison issue.</p>
-                <p><strong>Solution:</strong> Use proper enum comparison:</p>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-comment">// Error (comparing incompatible types)</span>
-<span class="hljs-keyword">if</span> (status == <span class="hljs-string">'active'</span>) { }
-
-<span class="hljs-comment">// Fix</span>
-<span class="hljs-keyword">if</span> (status == AppointmentStatus.booked) { }
-<span class="hljs-comment">// OR</span>
-<span class="hljs-keyword">if</span> (status?.valueEnum == AppointmentStatusEnum.booked) { }</code></pre>
-                </div>
-                <hr/>
-                <h3 id="example-complete-migration" anchor="true">
-                  <span>Example: Complete Migration</span><a href="/docs/core/migration#example-complete-migration">#</a>
-                </h3>
-                <h4 id="before-old-package">Before (Old Package)</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir/fhir.dart'</span>;
-
-<span class="hljs-keyword">void</span> createPatient() {
-  <span class="hljs-keyword">final</span> patient = Patient(
-    id: FhirId(<span class="hljs-string">'patient-123'</span>),
-    name: [
-      HumanName(
-        family: FhirString(<span class="hljs-string">'Smith'</span>),
-        given: [FhirString(<span class="hljs-string">'John'</span>)],
-      ),
-    ],
-    gender: <span class="hljs-string">'male'</span>,
-    birthDate: FhirDate(<span class="hljs-string">'1980-05-15'</span>),
-    active: FhirBoolean(<span class="hljs-keyword">true</span>),
-  );
-
-  <span class="hljs-comment">// Accessing values</span>
-  <span class="hljs-keyword">final</span> id = patient.id?.value;
-  <span class="hljs-keyword">final</span> lastName = patient.name?.first.family?.value;
-  <span class="hljs-keyword">final</span> firstName = patient.name?.first.given?.first.value;
-  <span class="hljs-keyword">final</span> birthDate = patient.birthDate?.value;
-  <span class="hljs-keyword">final</span> isActive = patient.active?.value;
-  
-  <span class="hljs-comment">// Gender check</span>
-  <span class="hljs-keyword">if</span> (patient.gender == <span class="hljs-string">'male'</span>) {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Male patient'</span>);
-  }
-
-  <span class="hljs-comment">// Serialization</span>
-  <span class="hljs-keyword">final</span> jsonString = jsonEncode(patient.toJson());
-  
-  <span class="hljs-comment">// Deserialization</span>
-  <span class="hljs-keyword">final</span> patientCopy = Patient.fromJson(jsonDecode(jsonString));
-}</code></pre>
-                </div>
-                <h4 id="after-new-package">After (New Package)</h4>
-                <div class="code-block">
-                  <div class="code-head">
-                    <span class="code-lang">dart</span>
-                    <!--@code_copy_button-->
-                    <button class="code-copy" aria-label="Copy code" title="Copy">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                    </button>
-                    <!--/@code_copy_button-->
-                  </div>
-                  <pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">'package:fhir_r4/fhir_r4.dart'</span>;
-
-<span class="hljs-keyword">void</span> createPatient() {
-  <span class="hljs-keyword">final</span> patient = Patient(
-    id: <span class="hljs-string">'123'</span>.toFhirString,  <span class="hljs-comment">// Resource.id is a FhirString in the new package</span>
-    name: [
-      HumanName(
-        family: <span class="hljs-string">'Smith'</span>.toFhirString,
-        given: [<span class="hljs-string">'John'</span>.toFhirString],
-      ),
-    ],
-    gender: AdministrativeGender.male,  <span class="hljs-comment">// Using enum</span>
-    birthDate: <span class="hljs-string">'1980-05-15'</span>.toFhirDate,
-    active: <span class="hljs-keyword">true</span>.toFhirBoolean,
-  );
-
-  <span class="hljs-comment">// Accessing values - Note the different getters!</span>
-  <span class="hljs-keyword">final</span> id = patient.id?.valueString;  <span class="hljs-comment">// Changed!</span>
-  <span class="hljs-keyword">final</span> lastName = patient.name?.first.family?.valueString;  <span class="hljs-comment">// Changed!</span>
-  <span class="hljs-keyword">final</span> firstName = patient.name?.first.given?.first.valueString;  <span class="hljs-comment">// Changed!</span>
-  <span class="hljs-keyword">final</span> birthDate = patient.birthDate?.valueDateTime;  <span class="hljs-comment">// Changed!</span>
-  <span class="hljs-keyword">final</span> isActive = patient.active?.valueBoolean;  <span class="hljs-comment">// Changed!</span>
-  
-  <span class="hljs-comment">// Gender check using enum</span>
-  <span class="hljs-keyword">if</span> (patient.gender == AdministrativeGender.male) {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">'Male patient'</span>);
-  }
-  
-  <span class="hljs-comment">// OR using native enum for switch</span>
-  <span class="hljs-keyword">switch</span> (patient.gender?.valueEnum) {
-    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.male:
-      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Male patient'</span>);
-      <span class="hljs-keyword">break</span>;
-    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.female:
-      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Female patient'</span>);
-      <span class="hljs-keyword">break</span>;
-    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.other:
-    <span class="hljs-keyword">case</span> AdministrativeGenderEnum.unknown:
-    <span class="hljs-keyword">case</span> <span class="hljs-keyword">null</span>:
-      <span class="hljs-built_in">print</span>(<span class="hljs-string">'Other/Unknown gender'</span>);
-      <span class="hljs-keyword">break</span>;
-  }
-
-  <span class="hljs-comment">// Serialization - One step!</span>
-  <span class="hljs-keyword">final</span> jsonString = patient.toJsonString();
-  
-  <span class="hljs-comment">// Deserialization - One step!</span>
-  <span class="hljs-keyword">final</span> patientCopy = Patient.fromJsonString(jsonString);
-  
-  <span class="hljs-comment">// New: YAML support</span>
-  <span class="hljs-keyword">final</span> yamlString = patient.toYaml();
-  <span class="hljs-built_in">print</span>(yamlString);  <span class="hljs-comment">// Pretty-printed YAML</span>
-}</code></pre>
-                </div>
-                <hr/>
-                <h3 id="getting-help" anchor="true"><span>Getting Help</span><a href="/docs/core/migration#getting-help">#</a></h3>
-                <p>If you run into issues during migration:</p>
-                <ol>
-                  <li><strong>Check the documentation</strong> at the new package's repository</li>
-                  <li><strong>Look at the generated code</strong> - The new package is heavily documented</li>
-                  <li><strong>Use your IDE's type system</strong> - Hover over methods to see return types</li>
-                  <li><strong>Search for similar patterns</strong> in this guide</li>
-                  <li><strong>Create minimal reproducible examples</strong> when asking for help</li>
-                </ol>
-                <hr/>
-                <h3 id="summary" anchor="true"><span>Summary</span><a href="/docs/core/migration#summary">#</a></h3>
-                <p>
-                  The migration from the old <code>fhir</code> package to <code>fhir_r4</code> involves these key changes:
-                </p>
-                <ol>
-                  <li>
-                    <strong>Primitive type accessors</strong>: <code>.value</code> → <code>.valueString</code> (or <code>.valueInt</code>, 
-                    <code>.valueBoolean</code>, etc.)
-                  </li>
-                  <li><strong>Enum handling</strong>: String literals → FhirCodeEnum values with native enum support</li>
-                  <li><strong>Polymorphic fields</strong>: Add <code>X</code> suffix and use type-specific getters</li>
-                  <li>
-                    <strong>Serialization</strong>: Use convenience methods (<code>.toJsonString()</code>, <code>.fromJsonString()</code>)
-                  </li>
-                  <li>
-                    <strong>New utilities</strong>: <code>listChildrenNames()</code>, <code>getChildrenByName()</code>, improved 
-                    <code>copyWith()</code>
-                  </li>
-                </ol>
-                <p>
-                  While there are breaking changes, the migration is straightforward and systematic. Most errors will be caught at compile-time, making the process safe. The new package offers better type safety, cleaner syntax, and more powerful features that will make your FHIR code more maintainable.
-                </p>
-                <p><strong>Estimated migration time:</strong></p>
-                <ul>
-                  <li>Small project (&lt; 1000 lines): 2-3 hours</li>
-                  <li>Medium project (1000-5000 lines): 4-8 hours</li>
-                  <li>Large project (5000+ lines): 1-2 days</li>
-                </ul>
-                <p>The investment is worth it for the improved developer experience and type safety!</p>
-                <hr/>
-                <h3 id="additional-resources" anchor="true"><span>Additional Resources</span><a href="/docs/core/migration#additional-resources">#</a></h3>
-                <ul>
-                  <li>New package documentation (check project README)</li>
-                  <li>FHIR R4 specification: <a href="https://hl7.org/fhir/R4/">https://hl7.org/fhir/R4/</a></li>
-                  <li>
-                    FHIRPath support: the model-independent <a href="https://pub.dev/packages/fhir_path"><code>fhir_path</code></a>
-                     engine with the <a href="https://pub.dev/packages/fhir_r4_path"><code>fhir_r4_path</code></a> binding
-                  </li>
-                </ul>
-                <p>Good luck with your migration! 🚀</p>
               </section>
               <div class="content-footer">
                 <footer class="site-footer">
@@ -3665,37 +2371,19 @@
               <div>
                 <h3>On this page</h3>
                 <ul>
+                  <li style="padding-left: 0em"><a href="/docs/core/migration#moving-from-fhir-012-to-fhir_r4">Moving from fhir 0.12 to fhir_r4</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#run-fhir_migrate">Run fhir_migrate</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#what-changed">What changed</a></li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#what-the-tool-leaves-for-you">What the tool leaves for you</a></li>
+                  <li style="padding-left: 0.75em">
+                    <a href="/docs/core/migration#code-that-compiles-but-behaves-differently">Code that compiles but behaves differently</a>
+                  </li>
+                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#working-with-code-types">Working with code types</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-012x--0140">Upgrading fhir_r4 0.12.x → 0.14.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-09x--0120">Upgrading fhir_r4 0.9.x → 0.12.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-08x--090">Upgrading fhir_r4 0.8.x → 0.9.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-07x--080">Upgrading fhir_r4 0.7.x → 0.8.0</a></li>
                   <li style="padding-left: 0em"><a href="/docs/core/migration#upgrading-fhir_r4-06x--070">Upgrading fhir_r4 0.6.x → 0.7.0</a></li>
-                  <li style="padding-left: 0em">
-                    <a href="/docs/core/migration#migration-guide-from-fhir-old-to-fhir_r4-new">Migration Guide: From fhir (old) to fhir_r4 (new)</a>
-                  </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#introduction">Introduction</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#table-of-contents">Table of Contents</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#package-installation">Package Installation</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#import-changes">Import Changes</a></li>
-                  <li style="padding-left: 0.75em">
-                    <a href="/docs/core/migration#primitive-types---the-biggest-change">Primitive Types - The Biggest Change</a>
-                  </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#resource-construction">Resource Construction</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#enums-and-code-values">Enums and Code Values</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#polymorphic-types">Polymorphic Types</a></li>
-                  <li style="padding-left: 0.75em">
-                    <a href="/docs/core/migration#serialization-and-deserialization">Serialization and Deserialization</a>
-                  </li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#utility-methods">Utility Methods</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#common-migration-patterns">Common Migration Patterns</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#breaking-changes-checklist">Breaking Changes Checklist</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#step-by-step-migration-process">Step-by-Step Migration Process</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#quick-reference-table">Quick Reference Table</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#troubleshooting-common-errors">Troubleshooting Common Errors</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#example-complete-migration">Example: Complete Migration</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#getting-help">Getting Help</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#summary">Summary</a></li>
-                  <li style="padding-left: 0.75em"><a href="/docs/core/migration#additional-resources">Additional Resources</a></li>
                 </ul>
               </div>
             </aside>
